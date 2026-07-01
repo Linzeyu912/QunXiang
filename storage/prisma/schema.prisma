@@ -1,0 +1,170 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  createdAt DateTime @default(now())
+
+  books    Book[]
+  reviews  CharacterReview[]
+  sessions ExtractionSession[]
+}
+
+model Book {
+  id        String   @id @default(uuid())
+  title     String
+  filePath  String
+  fileSize  Int
+  mimeType  String   @default("text/plain")
+  status    String   @default("UPLOADED")
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  characters Character[]
+  locations  Location[]
+  items      Item[]
+  sessions   ExtractionSession[]
+
+  @@index([userId])
+}
+
+model Character {
+  id          String   @id @default(uuid())
+  bookId      String
+  book        Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  name        String
+  aliases     String   @default("[]")
+  description String?
+  confidence  Float    @default(0.5)
+  status      String   @default("PENDING")
+  chapterRef  String?
+
+  // 新增字段：用于重要性评估
+  firstChapter      Int?
+  lastChapter       Int?
+  chapterAppearances String @default("[]")
+  mentionCount      Int      @default(0)
+  dialogueCount     Int      @default(0)
+  coCharacters     String   @default("[]")
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  reviews CharacterReview[]
+
+  @@index([bookId])
+}
+
+model Location {
+  id                 String   @id @default(uuid())
+  bookId             String
+  book               Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  name               String
+  aliases            String   @default("[]")
+  description        String?
+  confidence         Float    @default(0.5)
+  status             String   @default("PENDING")
+  chapterRef         String?
+
+  // 重要性评估字段
+  importanceScore    Float    @default(0)
+  tier               String   @default("candidate")
+  storyScore         Int      @default(0)
+  productionScore    Float    @default(0)
+  pillarCausal       Int      @default(0)
+  pillarUniqueness   Int      @default(0)
+  pillarTransition   Int      @default(0)
+  mentionCount       Int      @default(0)
+  firstChapter       Int?
+  lastChapter        Int?
+  chapterAppearances String   @default("[]")
+
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([bookId])
+  @@index([tier])
+}
+
+model Item {
+  id                 String   @id @default(uuid())
+  bookId             String
+  book               Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  name               String
+  aliases            String   @default("[]")
+  description        String?
+  confidence         Float    @default(0.5)
+  status             String   @default("PENDING")
+  chapterRef         String?
+
+  // 重要性评估字段
+  importanceScore    Float    @default(0)
+  tier               String   @default("candidate")
+  storyScore         Int      @default(0)
+  productionScore    Float    @default(0)
+  pillarCausal       Int      @default(0)
+  pillarUniqueness   Int      @default(0)
+  pillarTransition   Int      @default(0)
+  mentionCount       Int      @default(0)
+  firstChapter       Int?
+  lastChapter        Int?
+  chapterAppearances String   @default("[]")
+
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([bookId])
+  @@index([tier])
+}
+
+model CharacterReview {
+  id            String   @id @default(uuid())
+  characterId    String
+  character     Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  action        String
+  previousValue String?
+  newValue      String?
+  createdAt     DateTime @default(now())
+}
+
+model ExtractionSession {
+  id         String   @id @default(uuid())
+  bookId     String
+  book       Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  status     String   @default("RUNNING")
+  createdAt  DateTime @default(now())
+  completedAt DateTime?
+}
+
+model Task {
+  id           String    @id @default(uuid())
+  bookId       String
+  agentType    String
+  payload      String    @default("{}")
+  status       String    @default("pending")
+  result       String?
+  error        String?
+  retryCount   Int       @default(0)
+  deadLettered Boolean   @default(false)
+  failedAt     DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([status])
+  @@index([agentType])
+  @@index([bookId])
+}

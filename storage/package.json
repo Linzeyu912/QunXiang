@@ -1,0 +1,25 @@
+{
+  "name": "@novel-agent/storage",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "prisma": {
+    "schema": "./prisma/schema.prisma"
+  },
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:migrate-data": "tsx scripts/migrate-data.ts",
+    "db:rollback": "tsx scripts/rollback.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.10.0"
+  },
+  "devDependencies": {
+    "better-sqlite3": "^11.0.0",
+    "prisma": "^5.10.0",
+    "tsx": "^4.7.0"
+  }
+}
