@@ -1,0 +1,19 @@
+{
+  "name": "@novel-agent/scheduler",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@novel-agent/core": "workspace:*",
+    "@novel-agent/storage": "workspace:*",
+    "@novel-agent/import": "workspace:*",
+    "@novel-agent/extractors": "workspace:*",
+    "@novel-agent/llm": "workspace:*",
+    "@novel-agent/validators": "workspace:*",
+    "@novel-agent/entity-prescan": "workspace:*",
+    "@novel-agent/entity-resolution": "workspace:*",
+    "@novel-agent/story-arcs": "workspace:*",
+    "zod": "^3.25.76"
+  }
+}

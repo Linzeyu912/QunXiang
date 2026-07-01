@@ -1,0 +1,32 @@
+{
+  "name": "novel-agent",
+  "private": true,
+  "workspaces": [
+    "core",
+    "schemas",
+    "storage",
+    "import",
+    "extractors",
+    "validators",
+    "entity-resolution",
+    "scheduler",
+    "agent",
+    "story-arcs",
+    "llm",
+    "api",
+    "web",
+    "export",
+    "prompts"
+  ],
+  "scripts": {
+    "dev": "pnpm --parallel -r dev",
+    "build": "pnpm -r build",
+    "test": "cd storage && DATABASE_URL=file:./prisma/test.db pnpm prisma db push --schema=./prisma/schema.prisma --force-reset --skip-generate && cd .. && vitest run",
+    "test:watch": "cd storage && DATABASE_URL=file:./prisma/test.db pnpm prisma db push --schema=./prisma/schema.prisma --force-reset --skip-generate && cd .. && vitest"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2",
+    "tsx": "^4.22.3",
+    "vitest": "^2.1.9"
+  }
+}

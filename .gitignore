@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+.pnpm/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Logs
+*.log
+pnpm-debug.log*
+logs/
+
+# Database
+*.db
+*.db-journal
+prisma/dev.db
+prisma/dev.db-journal
+
+# Environment files
+.env
+.env.local
+.env.*.local
+api.env
+!.env.example
+
+# Encrypted config (contains API keys)
+.novel-agent-config.encrypted
+
+# Claude Code
+.claude/
+.codebuddy/
+.omc/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test/Debug files
+test_*.bat
+test_*.mjs
+startup_log*.txt
+test_results.txt
+test/
+
+# Uploads and runtime data
+storage/uploads/
+storage/dispatcher.log
+
+# Pipeline run output (contains verbatim excerpts of source novels — never commit)
+output/
+
+# Intermediate prescan output (backend-only, not user-facing)
+.intermediate/
+

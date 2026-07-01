@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2020"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "paths": {
+      "@novel-agent/core": ["./core/src"],
+      "@novel-agent/core/*": ["./core/src/*"],
+      "@novel-agent/schemas": ["./schemas/src"],
+      "@novel-agent/schemas/*": ["./schemas/src/*"],
+      "@novel-agent/storage": ["./storage/src"],
+      "@novel-agent/storage/*": ["./storage/src/*"],
+      "@novel-agent/llm": ["./llm/src"],
+      "@novel-agent/llm/*": ["./llm/src/*"],
+      "@novel-agent/import": ["./import/src"],
+      "@novel-agent/extractors": ["./extractors/src"],
+      "@novel-agent/validators": ["./validators/src"],
+      "@novel-agent/entity-resolution": ["./entity-resolution/src"],
+      "@novel-agent/scheduler": ["./scheduler/src"],
+      "@novel-agent/scheduler/*": ["./scheduler/src/*"],
+      "@novel-agent/agent": ["./agent/src"],
+      "@novel-agent/story-arcs": ["./story-arcs/src"],
+      "@novel-agent/exporters": ["./exporters/src"],
+      "@novel-agent/prompts": ["./prompts/src"],
+      "@novel-agent/api": ["./api/src"],
+      "@novel-agent/web": ["./web/src"],
+      "@novel-agent/entity-prescan": ["./entity-prescan/src"],
+      "@novel-agent/entity-prescan/*": ["./entity-prescan/src/*"]
+    }
+  }
+}

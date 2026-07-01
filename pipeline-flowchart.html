@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Novel-Agent Pipeline Flowchart</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", sans-serif; background: #0f172a; color: #e2e8f0; padding: 32px; }
+        h1 { text-align: center; font-size: 26px; color: #38bdf8; margin-bottom: 6px; }
+        .sub { text-align: center; color: #64748b; font-size: 13px; margin-bottom: 28px; }
+        .wrap { max-width: 1100px; margin: 0 auto 36px; background: #1e293b; border-radius: 10px; padding: 24px; border: 1px solid #334155; }
+        .wrap h2 { font-size: 17px; color: #38bdf8; margin-bottom: 14px; border-bottom: 1px solid #334155; padding-bottom: 6px; }
+
+        /* flowchart nodes */
+        .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+        .node {
+            padding: 10px 18px; border-radius: 8px; font-size: 13px; text-align: center;
+            min-width: 180px; max-width: 320px; line-height: 1.4; position: relative;
+            border: 2px solid transparent;
+        }
+        .node small { display: block; font-size: 11px; opacity: 0.7; margin-top: 2px; }
+        .arrow { width: 2px; height: 24px; background: #475569; position: relative; }
+        .arrow::after { content: ""; position: absolute; bottom: -5px; left: -4px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #475569; }
+
+        /* color classes */
+        .c-green  { background: #166534; border-color: #4CAF50; color: #bbf7d0; }
+        .c-blue   { background: #1e3a5f; border-color: #2196F3; color: #bfdbfe; }
+        .c-orange { background: #7c4a1e; border-color: #FF9800; color: #fed7aa; }
+        .c-purple { background: #581c87; border-color: #9C27B0; color: #e9d5ff; }
+        .c-slate  { background: #334155; border-color: #607D8B; color: #cbd5e1; }
+        .c-pink   { background: #831843; border-color: #E91E63; color: #fbcfe8; }
+        .c-gray   { background: #1e293b; border-color: #475569; color: #94a3b8; }
+
+        /* stage header */
+        .stage {
+            background: #0f172a; color: #38bdf8; font-weight: bold; font-size: 14px;
+            padding: 6px 16px; border-radius: 20px; border: 2px solid #38bdf8;
+            margin: 8px 0 4px;
+        }
+
+        /* branch row */
+        .branch { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 4px 0; }
+        .branch .node { min-width: 140px; max-width: 200px; font-size: 12px; }
+
+        /* connector with label */
+        .conn { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+        .conn-line { width: 2px; height: 18px; background: #475569; }
+        .conn-label { font-size: 11px; color: #64748b; font-style: italic; }
+
+        /* table */
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 7px 10px; border: 1px solid #334155; text-align: left; }
+        th { background: #334155; color: #7dd3fc; }
+
+        /* side-by-side entries */
+        .entries { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .entry-box { background: #0f172a; border-radius: 8px; padding: 14px; border: 1px solid #334155; }
+        .entry-box h3 { font-size: 13px; margin-bottom: 8px; }
+        .entry-box .node { font-size: 12px; min-width: 0; max-width: 100%; width: 100%; }
+
+        /* prescan sub */
+        .ps-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 4px 0; }
+        .ps-row .node { min-width: 110px; max-width: 160px; font-size: 11px; padding: 7px 10px; }
+
+        /* importance pillars */
+        .pillars { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 4px 0; }
+        .pillars .node { min-width: 130px; max-width: 180px; font-size: 11px; padding: 7px 10px; }
+    </style>
+</head>
+<body>
+
+<h1>Novel-Agent Pipeline Flowchart</h1>
+<p class="sub">中文小说实体提取系统 · 4-Agent 管道 · 预扫描 + LLM 双引擎</p>
+
+<!-- ==================== 1. 端到端总览 ==================== -->
+<div class="wrap">
+    <h2>1. 端到端流程总览</h2>
+    <div class="flow">
+        <div class="node c-green">TXT 小说文件</div>
+        <div class="arrow"></div>
+        <div class="node c-gray">run_producer.mjs / API Server</div>
+        <div class="arrow"></div>
+        <div class="node c-gray">ProducerAgent.run(bookId)</div>
+        <div class="arrow"></div>
+        <div class="node c-gray">TaskDispatcher.startExtraction()</div>
+        <div class="arrow"></div>
+
+        <div class="stage">Stage 1: Extractor Agent</div>
+        <div class="node c-blue">BookRepository.findById → 读取文件</div>
+        <div class="arrow"></div>
+        <div class="node c-blue">parseTxtEnhanced()</div>
+        <div class="arrow"></div>
+        <div class="node c-blue">preprocess → splitChapters → analyzeChapters<small>归一化 + 章节切分 + 重要性分析</small></div>
+        <div class="arrow"></div>
+        <div class="node c-pink">prescanEntities() 实体预扫描<small>正则+LLM+置信度+重要性+分层路由</small></div>
+        <div class="arrow"></div>
+        <div class="node c-blue">createExtractor() LLM 批量提取<small>30 章/批, 并发 3 批</small></div>
+        <div class="arrow"></div>
+        <div class="node c-blue">fuseCharactersWithPrescan()<small>LLM 为主体, 预扫描补充提及数/覆盖/置信度</small></div>
+        <div class="arrow"></div>
+        <div class="node c-blue">幻觉过滤<small>0 提及 + 0 对话 → 丢弃</small></div>
+        <div class="arrow"></div>
+        <div class="node c-blue">llmEntitiesWithPrescan() + extractStoryAssets()<small>位置/物品增强 + 故事资产</small></div>
+        <div class="arrow"></div>
+        <div class="node c-gray">Dispatcher: 持久化到 DB</div>
+        <div class="arrow"></div>
+
+        <div class="stage">Stage 2: Validator Agent</div>
+        <div class="node c-orange">validateCharacters()<small>低置信 / 缺字段 / 别名冲突</small></div>
+        <div class="arrow"></div>
+        <div class="node c-orange">validateEntityBatch()<small>位置+物品: 去重 + 无效名 + 阈值 0.4</small></div>
+        <div class="arrow"></div>
+
+        <div class="stage">Stage 3: Entity Resolution Agent</div>
+        <div class="node c-purple">resolve()<small>同名合并 / 别名匹配 / 中文称谓归一化</small></div>
+        <div class="arrow"></div>
+        <div class="node c-purple">选择规范名 + 清洗别名</div>
+        <div class="arrow"></div>
+        <div class="node c-gray">Dispatcher: 再次持久化到 DB</div>
+        <div class="arrow"></div>
+
+        <div class="stage">Stage 4: Reviewer Agent</div>
+        <div class="node c-slate">标记: 等待人工审核</div>
+        <div class="arrow"></div>
+        <div class="node c-slate">writePipelineFinalSummary()</div>
+        <div class="arrow"></div>
+        <div class="node c-gray">output/run-summary.json + entities/*.json</div>
+        <div class="arrow"></div>
+        <div class="node c-green">BookRepository.updateStatus('EXTRACTED')<small>eventBus.emit('completed')</small></div>
+    </div>
+</div>
+
+<!-- ==================== 2. Pre-Scan 模块 ==================== -->
+<div class="wrap">
+    <h2>2. Entity Pre-Scan 模块内部流程</h2>
+    <div class="flow">
+        <div class="node c-green">章节文本输入</div>
+        <div class="arrow"></div>
+
+        <div class="stage">Step 1: 正则扫描 ×4</div>
+        <div class="ps-row">
+            <div class="node c-blue">scanCharacterEntities<small>人物</small></div>
+            <div class="node c-blue">scanLocationEntities<small>地点</small></div>
+            <div class="node c-blue">scanItemEntities<small>物品</small></div>
+            <div class="node c-blue">scanEventEntities<small>事件</small></div>
+        </div>
+        <div class="arrow"></div>
+
+        <div class="stage">Step 2: 全文角色发现</div>
+        <div class="node c-orange">discoverFullTextCharacterMentions()</div>
+        <div class="arrow"></div>
+        <div class="node c-orange">合并可信别名映射<small>许宁宴 → 许七安, 魏公 → 魏渊 ...</small></div>
+        <div class="arrow"></div>
+        <div class="node c-orange">产出: 提及信号<small>count + 章节覆盖率</small></div>
+        <div class="arrow"></div>
+
+        <div class="stage">Step 3: LLM 补全 (可选)</div>
+        <div class="node c-gray">llmComplete() — 调用 LLM 补充正则遗漏实体</div>
+        <div class="arrow"></div>
+
+        <div class="stage">Step 4: 别名规范化</div>
+        <div class="node c-gray">canonicalizeCharacterMentions()</div>
+        <div class="arrow"></div>
+
+        <div class="stage">Step 5: 置信度过滤</div>
+        <div class="node c-purple">filterByConfidence()<small>maxConfidence ≥ 0.6 AND totalCount ≥ 1</small></div>
+        <div class="arrow"></div>
+
+        <div class="stage">Step 6: 评分参数 + 置信度计算</div>
+        <div class="node c-purple">calcScoringParams() → calcConfidence()</div>
+        <div class="ps-row">
+            <div class="node c-purple">位置特征<small>首次/末次/平均位置</small></div>
+            <div class="node c-purple">分布广度<small>章节覆盖/跨度/均匀性</small></div>
+            <div class="node c-purple">语义段落<small>上下文多样性/密度</small></div>
+        </div>
+        <div class="arrow"></div>
+        <div class="node c-purple">加权混合置信度 + 惩罚项<small>不足提及 / 高可替代性 / 高方差</small></div>
+        <div class="arrow"></div>
+
+        <div class="stage">Step 7: 重要性分析</div>
+        <div class="pillars">
+            <div class="node c-pink">因果必要性<small>行为驱动 + 不可替代</small></div>
+            <div class="node c-pink">信息独特性<small>bigram 语义相似度</small></div>
+            <div class="node c-pink">状态转换<small>情绪波动 + 关系变化</small></div>
+            <div class="node c-pink">制作价值<small>写作完整度 + 改编可用性</small></div>
+        </div>
+        <div class="arrow"></div>
+        <div class="node c-pink">importance = 0.7 × storyValue + 0.3 × productionValue</div>
+        <div class="arrow"></div>
+
+        <div class="stage">Step 8: 分层路由</div>
+        <div class="ps-row">
+            <div class="node c-green">core<small>imp ≥ 0.7, conf ≥ 0.3<br>→ main</small></div>
+            <div class="node c-green">supporting<small>imp ≥ 0.5, conf ≥ 0.2<br>→ main</small></div>
+            <div class="node c-orange">candidate<small>imp ≥ 0.3<br>→ staging</small></div>
+            <div class="node c-slate">archived<small>其余<br>→ archive</small></div>
+        </div>
+        <div class="arrow"></div>
+
+        <div class="stage">Step 9: 输出</div>
+        <div class="node c-green">selectOutputEntities() → writeEntityFiles()<small>character.txt / location.txt / item.txt / importance.txt</small></div>
+    </div>
+</div>
+
+<!-- ==================== 3. 四种入口 ==================== -->
+<div class="wrap">
+    <h2>3. 四种入口对比</h2>
+    <div class="entries">
+        <div class="entry-box">
+            <h3 style="color:#2196F3">入口 A: CLI Producer (完整管道)</h3>
+            <div class="node c-blue">run_producer.mjs</div>
+            <div class="arrow" style="margin:0 auto"></div>
+            <div class="node c-blue">ProducerAgent</div>
+            <div class="arrow" style="margin:0 auto"></div>
+            <div class="node c-blue">完整 4-Agent 管道 + DB 持久化</div>
+        </div>
+        <div class="entry-box">
+            <h3 style="color:#FF9800">入口 B: Prescan Only (轻量)</h3>
+            <div class="node c-orange">run-prescan.ts</div>
+            <div class="arrow" style="margin:0 auto"></div>
+            <div class="node c-orange">prescanEntities()</div>
+            <div class="arrow" style="margin:0 auto"></div>
+            <div class="node c-orange">无 DB, 仅正则 + LLM 扫描</div>
+        </div>
+        <div class="entry-box">
+            <h3 style="color:#9C27B0">入口 C: API Server (在线)</h3>
+            <div class="node c-purple">Fastify POST /books/:id/extract</div>
+            <div class="arrow" style="margin:0 auto"></div>
+            <div class="node c-purple">TaskDispatcher + DatabaseTaskQueue</div>
+            <div class="arrow" style="margin:0 auto"></div>
+            <div class="node c-purple">SSE Stream 实时进度推送</div>
+        </div>
+        <div class="entry-box">
+            <h3 style="color:#607D8B">入口 D: Test Script (验证)</h3>
+            <div class="node c-slate">test_full_pipeline.mjs</div>
+            <div class="arrow" style="margin:0 auto"></div>
+            <div class="node c-slate">Import 管道验证</div>
+            <div class="arrow" style="margin:0 auto"></div>
+            <div class="node c-slate">无 Scheduler, 仅预扫描子系统</div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 4. 模块架构 ==================== -->
+<div class="wrap">
+    <h2>4. 模块依赖架构</h2>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+        <div class="entry-box">
+            <h3 style="color:#38bdf8">核心模块</h3>
+            <div class="node c-gray" style="margin:4px 0">core — 共享类型</div>
+            <div class="node c-gray" style="margin:4px 0">llm — LLM 提供商抽象 (Ollama / Custom / Mock)</div>
+            <div class="node c-gray" style="margin:4px 0">prompts — LLM 提示词模板</div>
+            <div class="node c-gray" style="margin:4px 0">schemas — Zod 校验 schema</div>
+        </div>
+        <div class="entry-box">
+            <h3 style="color:#E91E63">数据处理管道</h3>
+            <div class="node c-pink" style="margin:4px 0">import → preprocess → chapter-analysis</div>
+            <div class="node c-pink" style="margin:4px 0">entity-prescan (正则+LLM+置信度+重要性)</div>
+            <div class="node c-pink" style="margin:4px 0">story-arcs (故事弧线提取)</div>
+        </div>
+        <div class="entry-box">
+            <h3 style="color:#2196F3">Agent 管道</h3>
+            <div class="node c-blue" style="margin:4px 0">extractors — LLM 批量提取</div>
+            <div class="node c-orange" style="margin:4px 0">validators — 实体校验</div>
+            <div class="node c-purple" style="margin:4px 0">entity-resolution — 消歧合并</div>
+            <div class="node c-blue" style="margin:4px 0">scheduler — TaskDispatcher + EventBus</div>
+            <div class="node c-green" style="margin:4px 0">agent — ProducerAgent 主编排</div>
+        </div>
+        <div class="entry-box">
+            <h3 style="color:#FF9800">存储 & API</h3>
+            <div class="node c-orange" style="margin:4px 0">storage — Prisma ORM (SQLite / PostgreSQL)</div>
+            <div class="node c-purple" style="margin:4px 0">api — Fastify HTTP + JWT + SSE</div>
+            <div class="node c-blue" style="margin:4px 0">web — React + Vite + Tailwind</div>
+            <div class="node c-gray" style="margin:4px 0">exporters — JSON / CSV / Markdown 导出</div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 5. 配置参数 ==================== -->
+<div class="wrap">
+    <h2>5. 配置参数速查</h2>
+    <table>
+        <thead><tr><th>参数</th><th>值</th><th>位置</th></tr></thead>
+        <tbody>
+            <tr><td>LLM 批次大小</td><td>30 章/批</td><td>scheduler/dispatcher.ts</td></tr>
+            <tr><td>最大并发批次</td><td>3</td><td>scheduler/dispatcher.ts</td></tr>
+            <tr><td>最大重试次数</td><td>3 次, 指数退避 (1s → 30s)</td><td>scheduler/dispatcher.ts</td></tr>
+            <tr><td>预扫描置信度阈值</td><td>0.6</td><td>entity-prescan/confidence.ts</td></tr>
+            <tr><td>验证器实体阈值</td><td>0.4</td><td>validators</td></tr>
+            <tr><td>故事权重 / 制作权重</td><td>0.7 / 0.3</td><td>entity-prescan/importance.ts</td></tr>
+            <tr><td>core 层</td><td>importance ≥ 0.7, confidence ≥ 0.3</td><td>entity-prescan/scoring.ts</td></tr>
+            <tr><td>supporting 层</td><td>importance ≥ 0.5, confidence ≥ 0.2</td><td>entity-prescan/scoring.ts</td></tr>
+            <tr><td>candidate 层</td><td>importance ≥ 0.3</td><td>entity-prescan/scoring.ts</td></tr>
+            <tr><td>archived 层</td><td>其余</td><td>entity-prescan/scoring.ts</td></tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

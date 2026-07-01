@@ -1,0 +1,12 @@
+{
+  "name": "@novel-agent/entity-prescan",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@novel-agent/core": "workspace:*",
+    "@novel-agent/llm": "workspace:*",
+    "zod": "^3.22.0"
+  }
+}

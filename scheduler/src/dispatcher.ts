@@ -1,0 +1,305 @@
+import type { AgentType, Task } from '@novel-agent/core';
+import type { TaskQueue } from './task-queue.js';
+import { getNextAgent, EXTRACTION_PIPELINE } from './pipeline.js';
+import {
+  executeExtractor,
+  executeValidator,
+  executeResolution,
+  executeDescriptionFusion,
+  executeVisualDescription,
+  executePromptGeneration,
+  executeReviewer,
+} from './agents/index.js';
+import { CharacterRepository, LocationRepository, ItemRepository, BookRepository } from '@novel-agent/storage';
+import { eventBus, type PipelineEvent } from './event-bus.js';
+import { writePipelineFinalSummary } from './pipeline-summary.js';
+
+const DEFAULT_RETRY_CONFIG = {
+  maxRetries: 3,
+  baseDelayMs: 1000,
+  maxDelayMs: 30000,
+};
+
+interface RetryResult<T> {
+  result?: T;
+  error?: string;
+  attempts: number;
+}
+
+async function withRetry<T>(
+  fn: () => Promise<T>,
+  config = DEFAULT_RETRY_CONFIG
+): Promise<RetryResult<T>> {
+  let attempts = 0;
+  let lastError: unknown;
+
+  while (attempts <= config.maxRetries) {
+    attempts++;
+    try {
+      const result = await fn();
+      return { result, attempts };
+    } catch (error) {
+      lastError = error;
+      if (attempts <= config.maxRetries) {
+        const delay = Math.min(
+          config.baseDelayMs * Math.pow(2, attempts - 1),
+          config.maxDelayMs
+        );
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
+    }
+  }
+
+  return {
+    error: lastError instanceof Error ? lastError.message : String(lastError),
+    attempts,
+  };
+}
+
+export class TaskDispatcher {
+  private agents = new Map<AgentType, (payload: unknown) => Promise<any>>();
+  private isProcessing = false;
+  private workerTimer: ReturnType<typeof setInterval> | null = null;
+
+  private static readonly STAGE_NAMES: Record<AgentType, string> = {
+    extractor: '角色提取',
+    validator: '置信度校验',
+    'entity-resolution': '实体消解',
+    'description-fusion': '简介融合',
+    reviewer: '审核入库',
+    'visual-description': '视觉描述补全',
+    'prompt-generation': '提示词生成',
+  };
+
+  constructor(private queue: TaskQueue) {
+    this.agents
+      .set('extractor', executeExtractor)
+      .set('validator', executeValidator)
+      .set('entity-resolution', executeResolution)
+      .set('description-fusion', executeDescriptionFusion)
+      .set('visual-description', executeVisualDescription)
+      .set('prompt-generation', executePromptGeneration)
+      .set('reviewer', executeReviewer);
+  }
+
+  /** Only enqueue the first task; execution is handled by the background worker */
+  async startExtraction(bookId: string, userId: string): Promise<{ extractorTaskId: string }> {
+    const extractorTaskId = await this.queue.enqueue({
+      bookId,
+      agentType: 'extractor',
+      payload: { bookId, userId },
+      status: 'pending',
+    });
+
+    return { extractorTaskId };
+  }
+
+  /** Start a background worker that polls for pending extractor tasks */
+  startWorker(intervalMs = 1000) {
+    if (this.workerTimer) return;
+    this.workerTimer = setInterval(async () => {
+      if (this.isProcessing) return;
+      this.isProcessing = true;
+      try {
+        await this.processNext('extractor');
+      } finally {
+        this.isProcessing = false;
+      }
+    }, intervalMs);
+  }
+
+  /** Stop the background worker */
+  stopWorker() {
+    if (this.workerTimer) {
+      clearInterval(this.workerTimer);
+      this.workerTimer = null;
+    }
+  }
+
+  async processNext(agentType: AgentType): Promise<string | undefined> {
+    const task = await this.queue.dequeue(agentType);
+    if (!task) return undefined;
+
+    console.log(`[Dispatcher] Processing ${agentType} task ${task.id}, bookId: ${task.bookId}, payload:`, JSON.stringify(task.payload));
+
+    // Emit stage_start event
+    eventBus.emit({
+      type: 'stage_start',
+      bookId: task.bookId,
+      stageId: agentType,
+      stageName: TaskDispatcher.STAGE_NAMES[agentType],
+      timestamp: Date.now(),
+    });
+
+    const agent = this.agents.get(agentType);
+    if (!agent) {
+      await this.queue.fail(task.id, `Unknown agent type: ${agentType}`);
+      await this.finalizePipeline(task.bookId, 'failed');
+      eventBus.emit({ type: 'error', bookId: task.bookId, stageId: agentType, message: `Unknown agent type: ${agentType}`, timestamp: Date.now() });
+      return undefined;
+    }
+
+    const payloadBookId = (task.payload as { bookId?: string })?.bookId;
+    if (!task.bookId || !payloadBookId) {
+      console.error(`[Dispatcher] FATAL: Task ${task.id} missing bookId! task.bookId=${task.bookId}, payload.bookId=${payloadBookId}`);
+    }
+
+    try {
+      const { result, error, attempts } = await withRetry(
+        () => agent(task.payload)
+      );
+
+      if (error) {
+        if (attempts > DEFAULT_RETRY_CONFIG.maxRetries) {
+          await this.queue.addToDeadLetter(task.id, error, attempts);
+        } else {
+          await this.queue.fail(task.id, error);
+        }
+        await this.finalizePipeline(task.bookId, 'failed');
+        eventBus.emit({ type: 'error', bookId: task.bookId, stageId: agentType, message: error, timestamp: Date.now() });
+        return undefined;
+      }
+
+      await this.queue.complete(task.id, result);
+
+      // Emit stage_complete with cumulative progress weight
+      const completedWeight = EXTRACTION_PIPELINE.findIndex((s) => s === agentType);
+      const progress = ((completedWeight + 1) / EXTRACTION_PIPELINE.length) * 100;
+      eventBus.emit({
+        type: 'stage_complete',
+        bookId: task.bookId,
+        stageId: agentType,
+        stageName: TaskDispatcher.STAGE_NAMES[agentType],
+        progress: Math.round(progress),
+        timestamp: Date.now(),
+      });
+
+      // Save characters to database before reviewer stage
+      const nextAgent = getNextAgent(agentType);
+      if (nextAgent === 'reviewer' && result && typeof result === 'object' && 'characters' in result) {
+        const bookId = (task.payload as { bookId?: string }).bookId || task.bookId;
+        const chars = (result as { characters: any[] }).characters;
+        if (chars.length > 0) {
+          await CharacterRepository.createMany(
+            chars.map((c: any) => ({
+              bookId,
+              name: c.name,
+              aliases: Array.isArray(c.aliases) ? c.aliases : [],
+              description: c.description || null,
+              confidence: c.confidence || 0.5,
+              status: 'PENDING',
+              chapterRef: c.chapterRef || null,
+              firstChapter: c.firstChapter ?? null,
+              lastChapter: c.lastChapter ?? null,
+              chapterAppearances: c.chapterAppearances ?? [],
+              mentionCount: c.mentionCount ?? 0,
+              dialogueCount: c.dialogueCount ?? 0,
+              coCharacters: c.coCharacters ?? [],
+              tier: c.tier || 'candidate',
+              importanceScore: c.importanceScore ?? 0,
+              storyScore: c.storyScore ?? 0,
+              productionScore: c.productionScore ?? 0,
+              pillarCausal: c.pillarCausal ?? 0,
+              pillarUniqueness: c.pillarUniqueness ?? 0,
+              pillarTransition: c.pillarTransition ?? 0,
+            }))
+          );
+        }
+
+        // Persist locations
+        if ('locations' in result) {
+          const locs = (result as { locations: any[] }).locations;
+          if (locs.length > 0) {
+            await LocationRepository.createMany(
+              locs.map((l: any) => ({
+                bookId,
+                name: l.name,
+                aliases: Array.isArray(l.aliases) ? l.aliases : [],
+                description: l.description || undefined,
+                confidence: l.confidence || 0.7,
+                chapterRef: l.chapterRef || undefined,
+                importanceScore: l.importanceScore ?? 0,
+                tier: l.tier ?? 'candidate',
+                storyScore: l.storyScore ?? 0,
+                productionScore: l.productionScore ?? 0,
+                pillarCausal: l.pillarCausal ?? 0,
+                pillarUniqueness: l.pillarUniqueness ?? 0,
+                pillarTransition: l.pillarTransition ?? 0,
+                mentionCount: l.mentionCount ?? 0,
+                firstChapter: l.firstChapter ?? undefined,
+                lastChapter: l.lastChapter ?? undefined,
+                chapterAppearances: l.chapterAppearances ?? [],
+              }))
+            );
+            console.log(`[Dispatcher] Persisted ${locs.length} locations`);
+          }
+        }
+
+        // Persist items
+        if ('items' in result) {
+          const entityItems = (result as { items: any[] }).items;
+          if (entityItems.length > 0) {
+            await ItemRepository.createMany(
+              entityItems.map((i: any) => ({
+                bookId,
+                name: i.name,
+                aliases: Array.isArray(i.aliases) ? i.aliases : [],
+                description: i.description || undefined,
+                confidence: i.confidence || 0.7,
+                chapterRef: i.chapterRef || undefined,
+                importanceScore: i.importanceScore ?? 0,
+                tier: i.tier ?? 'candidate',
+                storyScore: i.storyScore ?? 0,
+                productionScore: i.productionScore ?? 0,
+                pillarCausal: i.pillarCausal ?? 0,
+                pillarUniqueness: i.pillarUniqueness ?? 0,
+                pillarTransition: i.pillarTransition ?? 0,
+                mentionCount: i.mentionCount ?? 0,
+                firstChapter: i.firstChapter ?? undefined,
+                lastChapter: i.lastChapter ?? undefined,
+                chapterAppearances: i.chapterAppearances ?? [],
+              }))
+            );
+            console.log(`[Dispatcher] Persisted ${entityItems.length} items`);
+          }
+        }
+      }
+
+      if (nextAgent) {
+        const taskPayload = task.payload && typeof task.payload === 'object' ? task.payload as Record<string, unknown> : {};
+        const resultPayload = result && typeof result === 'object' ? result as Record<string, unknown> : {};
+        await this.queue.enqueue({
+          bookId: task.bookId,
+          agentType: nextAgent,
+          payload: { ...taskPayload, ...resultPayload, bookId: task.bookId, userId: taskPayload.userId },
+          status: 'pending',
+        });
+        return await this.processNext(nextAgent);
+      }
+
+      // Pipeline completed successfully
+      await writePipelineFinalSummary(task.bookId, task.payload, result);
+      await this.finalizePipeline(task.bookId, 'completed');
+      eventBus.emit({ type: 'completed', bookId: task.bookId, progress: 100, timestamp: Date.now() });
+      return task.id;
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      await this.queue.fail(task.id, errorMessage);
+      await this.finalizePipeline(task.bookId, 'failed');
+      eventBus.emit({ type: 'error', bookId: task.bookId, stageId: agentType, message: errorMessage, timestamp: Date.now() });
+      return undefined;
+    }
+  }
+
+  private async finalizePipeline(bookId: string, outcome: 'completed' | 'failed') {
+    try {
+      await BookRepository.updateStatus(bookId, outcome === 'completed' ? 'EXTRACTED' : 'FAILED');
+    } catch (err) {
+      console.error(`[Dispatcher] Failed to update book status for ${bookId}:`, err);
+    }
+  }
+
+  async getTaskStatus(taskId: string): Promise<Task | null> {
+    return this.queue.getStatus(taskId);
+  }
+}

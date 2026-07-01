@@ -1,0 +1,10 @@
+### 健康检查
+GET http://localhost:3000/health
+
+### 列出书籍
+GET http://localhost:3000/books
+x-user-id: demo-user
+
+### 查看角色
+GET http://localhost:3000/characters?bookId=YOUR_BOOK_ID
+x-user-id: demo-user
