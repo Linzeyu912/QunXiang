@@ -1,0 +1,124 @@
+{
+  "storyId": "story-1-10-202606291344-9-9-2",
+  "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+  "characters": [
+    {
+      "name": "萧炎",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "药老从戒指中现身",
+      "conflictRelation": "萧炎 is connected to the story conflict: 药老从戒指中现身",
+      "firstMentionChapter": 9,
+      "lastMentionChapter": 9,
+      "keyActions": [
+        "闻言，萧炎一怔，旋即眉头大皱：“在斗气大陆，只要是个人，都想成为炼药师，可炼药师，是随便什么人都能当上的么？",
+        "那些苛刻的条件……”话音忽然一顿，萧炎猛的抬头，张大着嘴：“我达到了？",
+        "非常欣赏萧炎这幅震撼中夹杂着期盼与狂喜的神色，老者抚着胡子想了片刻，又上下打量了一番，方才似乎有些为难的叹道：“虽然只是勉强够格，不过谁让我欠你一个人情啊..."
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "萧炎 appears in \"戒指秘密\" as a protagonist tied to the conflict: 药老从戒指中现身",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 服装/配色：黑色的眸子、药老无视萧炎那充斥着怒火的黑色眸子\n- 面部/五官：萧炎舔了舔嘴唇、涎着小脸、萧炎一张小脸、黑色的眸子、让得萧炎小脸顿时僵硬了下来、药老无视萧炎那充斥着怒火的黑色眸子、药老瞟了一眼小脸平静的萧炎\n- 神情/气质：非常欣赏萧炎这幅震撼中夹杂着期盼与狂喜的神色、药老瞟了一眼小脸平静的萧炎\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "萧炎，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 服装/配色：黑色的眸子、药老无视萧炎那充斥着怒火的黑色眸子\n- 面部/五官：萧炎舔了舔嘴唇、涎着小脸、萧炎一张小脸、黑色的眸子、让得萧炎小脸顿时僵硬了下来、药老无视萧炎那充斥着怒火的黑色眸子、药老瞟了一眼小脸平静的萧炎\n- 神情/气质：非常欣赏萧炎这幅震撼中夹杂着期盼与狂喜的神色、药老瞟了一眼小脸平静的萧炎\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "闻言，萧炎一怔，旋即眉头大皱：“在斗气大陆，只要是个人，都想成为炼药师，可炼药师，是随便什么人都能当上的么？",
+        "那些苛刻的条件……”话音忽然一顿，萧炎猛的抬头，张大着嘴：“我达到了？",
+        "非常欣赏萧炎这幅震撼中夹杂着期盼与狂喜的神色，老者抚着胡子想了片刻，又上下打量了一番，方才似乎有些为难的叹道：“虽然只是勉强够格，不过谁让我欠你一个人情啊，唉，罢了，就当是还人情债吧……”"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9"
+    },
+    {
+      "name": "药老",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 药老从戒指中现身",
+      "conflictRelation": "药老 is connected to the story conflict: 药老从戒指中现身",
+      "firstMentionChapter": 9,
+      "lastMentionChapter": 9,
+      "keyActions": [
+        "第9章 药老！",
+        "第9章 药老！",
+        "一板一眼的瞧着萧炎礼数齐全了，老者这才满意的点了点头，声音中也是多了几分亲切：“我名为药老，至于我的来历，现在还是先不和你说，免得你分心，你只需要知道，象..."
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "药老 appears in \"戒指秘密\" as a supporting tied to the conflict: 药老从戒指中现身",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：药老脸庞笑容缓缓收敛、药老脸庞一抖、让得萧炎小脸顿时僵硬了下来、盯着药老戏谑的脸庞、瞧着药老认真的面孔、药老脸色凝重的道、药老瞟了一眼小脸平静的萧炎\n- 神情/气质：药老脸庞笑容缓缓收敛、药老瞟了一眼小脸平静的萧炎\n- 饰物/随身特征：我先回戒指了\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "药老，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：药老脸庞笑容缓缓收敛、药老脸庞一抖、让得萧炎小脸顿时僵硬了下来、盯着药老戏谑的脸庞、瞧着药老认真的面孔、药老脸色凝重的道、药老瞟了一眼小脸平静的萧炎\n- 神情/气质：药老脸庞笑容缓缓收敛、药老瞟了一眼小脸平静的萧炎\n- 饰物/随身特征：我先回戒指了\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "第9章 药老！",
+        "第9章 药老！",
+        "一板一眼的瞧着萧炎礼数齐全了，老者这才满意的点了点头，声音中也是多了几分亲切：“我名为药老，至于我的来历，现在还是先不和你说，免得你分心，你只需要知道，象那什么号称丹王的货色，其实……其实也就是屁罢了。"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9"
+    },
+    {
+      "name": "古河",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 药老从戒指中现身",
+      "conflictRelation": "古河 is connected to the story conflict: 药老从戒指中现身",
+      "firstMentionChapter": 9,
+      "lastMentionChapter": 9,
+      "keyActions": [
+        "斗气大陆，炼药师虽然稀少，不过由于尊贵的身份，所以也有着明确的等级制度，由低到高，分为一至九品，先前大厅中纳兰嫣然手中的聚气散的主人，丹王古河，便是一名六...",
+        "名震加玛帝国的丹王古河，是个屁……？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "古河 appears in \"戒指秘密\" as a supporting tied to the conflict: 药老从戒指中现身",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "古河，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "斗气大陆，炼药师虽然稀少，不过由于尊贵的身份，所以也有着明确的等级制度，由低到高，分为一至九品，先前大厅中纳兰嫣然手中的聚气散的主人，丹王古河，便是一名六品的炼药师，在加玛帝国的炼药界中，堪称第一人。",
+        "名震加玛帝国的丹王古河，是个屁……？"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9"
+    },
+    {
+      "name": "纳兰嫣然",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 药老从戒指中现身",
+      "conflictRelation": "纳兰嫣然 is connected to the story conflict: 药老从戒指中现身",
+      "firstMentionChapter": 9,
+      "lastMentionChapter": 9,
+      "keyActions": [
+        "斗气大陆，炼药师虽然稀少，不过由于尊贵的身份，所以也有着明确的等级制度，由低到高，分为一至九品，先前大厅中纳兰嫣然手中的聚气散的主人，丹王古河，便是一名六..."
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "纳兰嫣然 appears in \"戒指秘密\" as a supporting tied to the conflict: 药老从戒指中现身",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "纳兰嫣然，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "斗气大陆，炼药师虽然稀少，不过由于尊贵的身份，所以也有着明确的等级制度，由低到高，分为一至九品，先前大厅中纳兰嫣然手中的聚气散的主人，丹王古河，便是一名六品的炼药师，在加玛帝国的炼药界中，堪称第一人。"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9"
+    }
+  ]
+}

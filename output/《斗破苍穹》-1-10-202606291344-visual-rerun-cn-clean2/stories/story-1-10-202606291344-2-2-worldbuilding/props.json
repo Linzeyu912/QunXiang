@@ -1,0 +1,32 @@
+{
+  "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+  "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+  "props": [
+    {
+      "name": "戒指",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "ownerOrHolder": "萧炎",
+      "firstAppearance": "chapters 2-2",
+      "keyMoments": [
+        "黯然的叹了口气，萧炎抬起手掌，手指上有一颗黑色戒指，戒指很是古朴，不知是何材料所铸，其上还绘有些模糊的纹路，这是母亲临死前送给他的唯一礼物，从四岁开始，他已经佩戴了十年，母亲的遗物，让得萧炎对它也是有着一份眷恋，手指轻轻的抚摸着戒指，萧炎苦笑道：“这几年，还真是辜负母亲的期望了……”",
+        "”抚摸着手指上的古朴戒指，萧炎抬头喃喃道。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "戒指 functions as a other in \"斗气大陆设定\", connected to: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "戒指, prop type: other, story function: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "黯然的叹了口气，萧炎抬起手掌，手指上有一颗黑色戒指，戒指很是古朴，不知是何材料所铸，其上还绘有些模糊的纹路，这是母亲临死前送给他的唯一礼物，从四岁开始，他已经佩戴了十年，母亲的遗物，让得萧炎对它也是有着一份眷恋，手指轻轻的抚摸着戒指，萧炎苦笑道：“这几年，还真是辜负母亲的期望了……”",
+        "”抚摸着手指上的古朴戒指，萧炎抬头喃喃道。"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2"
+    }
+  ]
+}

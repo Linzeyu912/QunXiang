@@ -1,0 +1,145 @@
+{
+  "storyId": "story-100-202606230638-12-12-2",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "characters": [
+    {
+      "name": "萧炎",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "纳兰嫣然要求解除婚约",
+      "conflictRelation": "萧炎 is connected to the story conflict: 纳兰嫣然要求解除婚约",
+      "firstMentionChapter": 12,
+      "lastMentionChapter": 12,
+      "keyActions": [
+        "瞧着薰儿竟然点头应下来的萧炎的话，加列奥嘴角一阵抽搐，拳头捏得嘎吱作响，目光阴鹫的狠狠盯着面前一脸平淡的少年。",
+        "坊市深处，人流同样不少，瞧得这边的事故，都不由得好奇的望了过来，萧炎与加列奥在乌坦城也是小有名声，萧炎是因为他的废柴之名，而加列奥，则是那始乱终弃的风流之...",
+        "望着对方一干人的举动，萧炎眉尖挑了挑，稚嫩的小脸上，浮现一抹戏谑，微偏过头，对着坊市的一处，轻吹了一声口哨。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "萧炎 appears in \"退婚冲突\" as a protagonist tied to the conflict: 纳兰嫣然要求解除婚约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：稚嫩的小脸上、偏头望着脸色难看的加列奥、小脸上的那副无奈模样\n- 年龄/身份视觉线索：稚嫩的小脸上\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "萧炎，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：稚嫩的小脸上、偏头望着脸色难看的加列奥、小脸上的那副无奈模样\n- 年龄/身份视觉线索：稚嫩的小脸上\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "瞧着薰儿竟然点头应下来的萧炎的话，加列奥嘴角一阵抽搐，拳头捏得嘎吱作响，目光阴鹫的狠狠盯着面前一脸平淡的少年。",
+        "坊市深处，人流同样不少，瞧得这边的事故，都不由得好奇的望了过来，萧炎与加列奥在乌坦城也是小有名声，萧炎是因为他的废柴之名，而加列奥，则是那始乱终弃的风流之名，虽然这名声都不太好听，不过也能勉强算做是两位名人了。",
+        "望着对方一干人的举动，萧炎眉尖挑了挑，稚嫩的小脸上，浮现一抹戏谑，微偏过头，对着坊市的一处，轻吹了一声口哨。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12"
+    },
+    {
+      "name": "萧炎似",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 纳兰嫣然要求解除婚约",
+      "conflictRelation": "萧炎似 is connected to the story conflict: 纳兰嫣然要求解除婚约",
+      "firstMentionChapter": 12,
+      "lastMentionChapter": 12,
+      "keyActions": [
+        "望着一脸挑衅的加列奥，萧炎似是有些无奈的叹了一口气，手掌摸了摸额头，片刻后，方才抬头，微微耸了耸肩，一脸的纯真与无辜：“加列奥少爷，我想问问，您今年多少岁了？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "萧炎似 appears in \"退婚冲突\" as a supporting tied to the conflict: 纳兰嫣然要求解除婚约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "萧炎似，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "望着一脸挑衅的加列奥，萧炎似是有些无奈的叹了一口气，手掌摸了摸额头，片刻后，方才抬头，微微耸了耸肩，一脸的纯真与无辜：“加列奥少爷，我想问问，您今年多少岁了？"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12"
+    },
+    {
+      "name": "纳兰嫣然",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 纳兰嫣然要求解除婚约",
+      "conflictRelation": "纳兰嫣然 is connected to the story conflict: 纳兰嫣然要求解除婚约",
+      "firstMentionChapter": 12,
+      "lastMentionChapter": 12,
+      "keyActions": [
+        "“哦，对了……”脚步忽然一顿，加列奥似乎是想起了什么，转过头讥笑道：“萧炎小少爷，听说你们萧家，被纳兰家族的纳兰嫣然强行解除婚约了？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "纳兰嫣然 appears in \"退婚冲突\" as a supporting tied to the conflict: 纳兰嫣然要求解除婚约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "纳兰嫣然，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“哦，对了……”脚步忽然一顿，加列奥似乎是想起了什么，转过头讥笑道：“萧炎小少爷，听说你们萧家，被纳兰家族的纳兰嫣然强行解除婚约了？"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12"
+    },
+    {
+      "name": "纳兰小姐",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 纳兰嫣然要求解除婚约",
+      "conflictRelation": "纳兰小姐 is connected to the story conflict: 纳兰嫣然要求解除婚约",
+      "firstMentionChapter": 12,
+      "lastMentionChapter": 12,
+      "keyActions": [
+        "嘿嘿，其实也没什么，以你的修炼天赋，也的确配不上纳兰小姐，哈哈……”说完这些，加列奥这才大笑着离去。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "纳兰小姐 appears in \"退婚冲突\" as a supporting tied to the conflict: 纳兰嫣然要求解除婚约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "纳兰小姐，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "嘿嘿，其实也没什么，以你的修炼天赋，也的确配不上纳兰小姐，哈哈……”说完这些，加列奥这才大笑着离去。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12"
+    },
+    {
+      "name": "药老",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 纳兰嫣然要求解除婚约",
+      "conflictRelation": "药老 is connected to the story conflict: 纳兰嫣然要求解除婚约",
+      "firstMentionChapter": 12,
+      "lastMentionChapter": 12,
+      "keyActions": [
+        "就在萧炎有些为自己的感应感到奇怪的时候，药老的声音，忽然的在心中响了起来。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "药老 appears in \"退婚冲突\" as a supporting tied to the conflict: 纳兰嫣然要求解除婚约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "药老，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "就在萧炎有些为自己的感应感到奇怪的时候，药老的声音，忽然的在心中响了起来。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "storyId": "story-150-202606290629-145-150-13",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "character",
+      "assetId": "王师叔",
+      "assetName": "王师叔",
+      "prompt": "王师叔，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：但随即脸色就恢复了正常\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "但随即脸色就恢复了正常，"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150",
+      "metadata": {
+        "storyId": "story-150-202606290629-145-150-13",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：但随即脸色就恢复了正常\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩师侄",
+      "assetName": "韩师侄",
+      "prompt": "韩师侄，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“王师弟，我想和韩师侄单独谈一下，你回避一下好吗？",
+        "“当然可以，那师弟就先回掌门那里去了，师兄和韩师侄聊完后，也都一起过去吧！",
+        "“韩师侄，师叔我是个直姓子，所以也不打算拐弯抹角了，就明说了吧！"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150",
+      "metadata": {
+        "storyId": "story-150-202606290629-145-150-13",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "叶师叔",
+      "assetName": "叶师叔",
+      "prompt": "叶师叔，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "所以叫我叶师叔即可，不必这么见外了！",
+        "虽然不知这位叶师叔要干什么，韩立却隐隐的有了一丝不好的预感。",
+        "而这位叶师叔竟打算用一些灵石和法器将其换走，难道真以为自己是刚出山的毛头小子？"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150",
+      "metadata": {
+        "storyId": "story-150-202606290629-145-150-13",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ]
+}

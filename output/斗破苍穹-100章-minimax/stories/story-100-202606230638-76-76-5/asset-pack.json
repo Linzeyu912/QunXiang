@@ -1,0 +1,189 @@
+{
+  "storyId": "story-100-202606230638-76-76-5",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "characters": [
+    {
+      "name": "药老",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "萧炎所拿出聚气散",
+      "conflictRelation": "药老 is connected to the story conflict: 萧炎所拿出聚气散",
+      "firstMentionChapter": 76,
+      "lastMentionChapter": 76,
+      "keyActions": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "不置可否的笑了笑，这话别说是药老，就连萧炎，也是在心中嗤之以鼻，若真照她这般尽份内之事，恐怕米特尔拍卖场早就倒闭了。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "药老 appears in \"资源争夺\" as a protagonist tied to the conflict: 萧炎所拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：雅妃俏脸微变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "药老，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：雅妃俏脸微变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "不置可否的笑了笑，这话别说是药老，就连萧炎，也是在心中嗤之以鼻，若真照她这般尽份内之事，恐怕米特尔拍卖场早就倒闭了。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76"
+    },
+    {
+      "name": "萧炎",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 萧炎所拿出聚气散",
+      "conflictRelation": "萧炎 is connected to the story conflict: 萧炎所拿出聚气散",
+      "firstMentionChapter": 76,
+      "lastMentionChapter": 76,
+      "keyActions": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "不置可否的笑了笑，这话别说是药老，就连萧炎，也是在心中嗤之以鼻，若真照她这般尽份内之事，恐怕米特尔拍卖场早就倒闭了。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "萧炎 appears in \"资源争夺\" as a supporting tied to the conflict: 萧炎所拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "萧炎，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "不置可否的笑了笑，这话别说是药老，就连萧炎，也是在心中嗤之以鼻，若真照她这般尽份内之事，恐怕米特尔拍卖场早就倒闭了。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "story-100-202606230638-76-76-5-scene-1",
+      "name": "资源争夺 - 未指定场景",
+      "location": "未指定场景",
+      "sourceRange": "chapters 76-76",
+      "summary": "药老卷入“资源争夺”：萧炎所拿出聚气散、断其药、小的淡青丹。",
+      "conflictBeat": "萧炎所拿出聚气散",
+      "involvedCharacters": [
+        "药老",
+        "萧炎"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"资源争夺\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 萧炎所拿出聚气散, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "药老卷入“资源争夺”：萧炎所拿出聚气散、断其药、小的淡青丹。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76"
+    }
+  ],
+  "props": [
+    {
+      "name": "丹药",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 萧炎所拿出聚气散",
+      "ownerOrHolder": "药老",
+      "firstAppearance": "chapters 76-76",
+      "keyMoments": [
+        "整洁的桌面之上，摆放着小小的玉盒，玉盒之中，一枚龙眼大小的淡青丹药，正安静的躺在其中，丹药表面圆润而富有光泽，浓郁的异香，从中飘散而出，让得人心旷神怡。",
+        "望着玉盒中的丹药，作为拍卖场的主事人，雅妃与谷尼脸庞上的欣喜，几乎难以掩饰。",
+        "”再次深看了几眼这枚淡青丹药，谷尼由衷赞叹道。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "丹药 functions as a other in \"资源争夺\", connected to: 萧炎所拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "丹药, prop type: other, story function: 萧炎所拿出聚气散, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "整洁的桌面之上，摆放着小小的玉盒，玉盒之中，一枚龙眼大小的淡青丹药，正安静的躺在其中，丹药表面圆润而富有光泽，浓郁的异香，从中飘散而出，让得人心旷神怡。",
+        "望着玉盒中的丹药，作为拍卖场的主事人，雅妃与谷尼脸庞上的欣喜，几乎难以掩饰。",
+        "”再次深看了几眼这枚淡青丹药，谷尼由衷赞叹道。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76"
+    },
+    {
+      "name": "聚气散",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 萧炎所拿出聚气散",
+      "ownerOrHolder": "药老",
+      "firstAppearance": "chapters 76-76",
+      "keyMoments": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "“老先生的炼药术，真是让人佩服，这枚聚气散的品质，恐怕都能与一些五品炼药师所炼制的聚气散相比了。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "聚气散 functions as a other in \"资源争夺\", connected to: 萧炎所拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "聚气散, prop type: other, story function: 萧炎所拿出聚气散, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "“老先生的炼药术，真是让人佩服，这枚聚气散的品质，恐怕都能与一些五品炼药师所炼制的聚气散相比了。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76"
+    },
+    {
+      "name": "药材",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "药材 supports, reveals, or complicates the story conflict: 萧炎所拿出聚气散",
+      "ownerOrHolder": "药老",
+      "firstAppearance": "chapters 76-76",
+      "keyMoments": [
+        "从怀中取出一卷纸张，萧炎将之递给雅妃，苍老的声音笑道：“麻烦帮我准备一下上面的一些药材。",
+        "“加列家族，在这里，购买了不少药材吧？",
+        "闻言，雅妃心头微紧，妩媚的俏脸微变，偷偷的与一旁的谷尼对视了一眼，沉默了一会，方才迟疑的道：“上次加列家族的确在拍卖会购买了将近十万金币的药材，而这些药材……也都具有一些止血疗伤的效果。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "药材 functions as a other in \"资源争夺\", connected to: 萧炎所拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "药材, prop type: other, story function: 萧炎所拿出聚气散, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "从怀中取出一卷纸张，萧炎将之递给雅妃，苍老的声音笑道：“麻烦帮我准备一下上面的一些药材。",
+        "“加列家族，在这里，购买了不少药材吧？",
+        "闻言，雅妃心头微紧，妩媚的俏脸微变，偷偷的与一旁的谷尼对视了一眼，沉默了一会，方才迟疑的道：“上次加列家族的确在拍卖会购买了将近十万金币的药材，而这些药材……也都具有一些止血疗伤的效果。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76"
+    }
+  ],
+  "assetWarnings": [
+    {
+      "assetType": "scene",
+      "assetName": "资源争夺 - 未指定场景",
+      "issue": "low_confidence",
+      "message": "资源争夺 - 未指定场景 is a candidate scene and should be treated as reference only."
+    }
+  ]
+}

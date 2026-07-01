@@ -1,0 +1,300 @@
+{
+  "storyId": "story-100-202606230638-63-63-4",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "characterPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：脸庞上闪过一抹狡猾的笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "脸庞上闪过一抹狡猾的笑意，"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：脸庞上闪过一抹狡猾的笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：脸庞上闪过一抹狡猾的笑意、萧炎有点激动的将之放在鼻下轻嗅了嗅\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "脸庞上闪过一抹狡猾的笑意，",
+        "萧炎有点激动的将之放在鼻下轻嗅了嗅，"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：脸庞上闪过一抹狡猾的笑意、萧炎有点激动的将之放在鼻下轻嗅了嗅\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰嫣然",
+      "assetName": "纳兰嫣然",
+      "prompt": "纳兰嫣然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "望着瓶中那蓝绿交替的丹药，萧炎依靠着出色的灵魂感知力，他能模糊的知道，这一枚聚气散，绝对比上次纳兰嫣然拿出的聚气散，品阶与药力，要更强一些！"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ],
+  "scenePrompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-100-202606230638-63-63-4-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"资源争夺\" with insufficient location detail.；冲突氛围：萧炎依靠拿出聚气散；可保留人物比例参考：药老、萧炎、纳兰嫣然；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "药老卷入“资源争夺”：萧炎依靠拿出聚气散、仅炼出的丹、药药。"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "location": "未指定场景",
+        "conflictBeat": "萧炎依靠拿出聚气散",
+        "involvedCharacters": [
+          "药老",
+          "萧炎",
+          "纳兰嫣然"
+        ]
+      }
+    }
+  ],
+  "propPrompts": [
+    {
+      "assetType": "prop",
+      "assetId": "聚气散",
+      "assetName": "聚气散",
+      "prompt": "聚气散，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：聚气散 functions as a other in \"资源争夺\", connected to: 萧炎依靠拿出聚气散；持有者/关联人物：药老；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "第63章 炼制聚气散",
+        "第64章 炼制聚气散",
+        "望着瓶中那蓝绿交替的丹药，萧炎依靠着出色的灵魂感知力，他能模糊的知道，这一枚聚气散，绝对比上次纳兰嫣然拿出的聚气散，品阶与药力，要更强一些！"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "propType": "other",
+        "ownerOrHolder": "药老",
+        "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 萧炎依靠拿出聚气散"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"资源争夺\", connected to: 萧炎依靠拿出聚气散；持有者/关联人物：药老；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”药老得意的扬了扬掌心中的白色火焰，笑道：“只要拥有了异火，不仅炼出的丹药药力更浓，而且与人对敌时，同等级的强者，根本不敢与之硬碰。",
+        "白气逐渐减弱，一颗表面粗糙的丹药雏形，悄悄的在火焰中现出了形来。",
+        "平静的望着那颗已具雏形的丹药，药老微微点头，再次将聚灵草与那颗水属性的二级魔核投入其中。"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "propType": "other",
+        "ownerOrHolder": "药老",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 萧炎依靠拿出聚气散"
+      }
+    }
+  ],
+  "allPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：脸庞上闪过一抹狡猾的笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "脸庞上闪过一抹狡猾的笑意，"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：脸庞上闪过一抹狡猾的笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：脸庞上闪过一抹狡猾的笑意、萧炎有点激动的将之放在鼻下轻嗅了嗅\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "脸庞上闪过一抹狡猾的笑意，",
+        "萧炎有点激动的将之放在鼻下轻嗅了嗅，"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：脸庞上闪过一抹狡猾的笑意、萧炎有点激动的将之放在鼻下轻嗅了嗅\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰嫣然",
+      "assetName": "纳兰嫣然",
+      "prompt": "纳兰嫣然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "望着瓶中那蓝绿交替的丹药，萧炎依靠着出色的灵魂感知力，他能模糊的知道，这一枚聚气散，绝对比上次纳兰嫣然拿出的聚气散，品阶与药力，要更强一些！"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-100-202606230638-63-63-4-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"资源争夺\" with insufficient location detail.；冲突氛围：萧炎依靠拿出聚气散；可保留人物比例参考：药老、萧炎、纳兰嫣然；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "药老卷入“资源争夺”：萧炎依靠拿出聚气散、仅炼出的丹、药药。"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "location": "未指定场景",
+        "conflictBeat": "萧炎依靠拿出聚气散",
+        "involvedCharacters": [
+          "药老",
+          "萧炎",
+          "纳兰嫣然"
+        ]
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "聚气散",
+      "assetName": "聚气散",
+      "prompt": "聚气散，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：聚气散 functions as a other in \"资源争夺\", connected to: 萧炎依靠拿出聚气散；持有者/关联人物：药老；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "第63章 炼制聚气散",
+        "第64章 炼制聚气散",
+        "望着瓶中那蓝绿交替的丹药，萧炎依靠着出色的灵魂感知力，他能模糊的知道，这一枚聚气散，绝对比上次纳兰嫣然拿出的聚气散，品阶与药力，要更强一些！"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "propType": "other",
+        "ownerOrHolder": "药老",
+        "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 萧炎依靠拿出聚气散"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"资源争夺\", connected to: 萧炎依靠拿出聚气散；持有者/关联人物：药老；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”药老得意的扬了扬掌心中的白色火焰，笑道：“只要拥有了异火，不仅炼出的丹药药力更浓，而且与人对敌时，同等级的强者，根本不敢与之硬碰。",
+        "白气逐渐减弱，一颗表面粗糙的丹药雏形，悄悄的在火焰中现出了形来。",
+        "平静的望着那颗已具雏形的丹药，药老微微点头，再次将聚灵草与那颗水属性的二级魔核投入其中。"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63",
+      "metadata": {
+        "storyId": "story-100-202606230638-63-63-4",
+        "propType": "other",
+        "ownerOrHolder": "药老",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 萧炎依靠拿出聚气散"
+      }
+    }
+  ]
+}

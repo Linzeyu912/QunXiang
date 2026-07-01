@@ -1,0 +1,76 @@
+{
+  "storyId": "story-150-202606290629-37-48-4",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "character",
+      "assetId": "施展",
+      "assetName": "施展",
+      "prompt": "施展，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "基本上，每本剑谱都代表了一招剑式，而每个剑招又会被拆分为上百的分剑式，每个分式还要讲究在不同的环境和不同的天时下，施展时的种种不同技巧等。",
+        "韩立望了望屋外的太阳，估计了一下，觉得时候倒是差不多，正适合施展此招。",
+        "你刚才使用的步法很神奇不错，但看起来有不小的限制，光从体力上看，就无法支撑你再顺利的施展出来。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48",
+      "metadata": {
+        "storyId": "story-150-202606290629-37-48-4",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "乐意",
+      "assetName": "乐意",
+      "prompt": "乐意，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "不过，如果在自身安无恙，没有危险的情况下，去听些他人的小秘密，韩立还是很乐意为之的。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48",
+      "metadata": {
+        "storyId": "story-150-202606290629-37-48-4",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ]
+}

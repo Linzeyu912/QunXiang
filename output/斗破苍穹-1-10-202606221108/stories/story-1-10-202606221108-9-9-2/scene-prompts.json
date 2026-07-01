@@ -1,0 +1,62 @@
+{
+  "storyId": "story-1-10-202606221108-9-9-2",
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606221108-9-9-2-scene-1",
+      "assetName": "加玛帝国",
+      "prompt": "加玛帝国，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：加玛帝国 scene in \"戒指秘密\", shaped by the conflict: 药老从戒指中现身；冲突氛围：药老从戒指中现身；可保留人物比例参考：萧炎、药老、古河、纳兰嫣然；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "斗气大陆，炼药师虽然稀少，不过由于尊贵的身份，所以也有着明确的等级制度，由低到高，分为一至九品，先前大厅中纳兰嫣然手中的聚气散的主人，丹王古河，便是一名六品的炼药师，在加玛帝国的炼药界中，堪称第一人。",
+        "名震加玛帝国的丹王古河，是个屁……？",
+        "这话如果放了出去，恐怕会被整个加玛帝国嘲笑成神经病吧？"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-9-9-2",
+        "location": "加玛帝国",
+        "conflictBeat": "药老从戒指中现身",
+        "involvedCharacters": [
+          "萧炎",
+          "药老",
+          "古河",
+          "纳兰嫣然"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606221108-9-9-2-scene-2",
+      "assetName": "紧急关",
+      "prompt": "紧急关，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：紧急关 scene in \"戒指秘密\", shaped by the conflict: 药老从戒指中现身；冲突氛围：炼药；可保留人物比例参考：萧炎、药老、古河、纳兰嫣然；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "对于这点，萧炎倒是明白，在他成为废物的三年中，他的父亲因为心急，几次都想强行向其体内灌注斗气，不过每次都在紧急关头刹了车，所以，萧炎很清楚这其中的利害关系。"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-9-9-2",
+        "location": "紧急关",
+        "conflictBeat": "炼药",
+        "involvedCharacters": [
+          "萧炎",
+          "药老",
+          "古河",
+          "纳兰嫣然"
+        ]
+      }
+    }
+  ]
+}

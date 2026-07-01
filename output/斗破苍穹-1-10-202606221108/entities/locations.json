@@ -1,0 +1,306 @@
+[
+  {
+    "id": "b721ae02-dfdb-43e8-89c5-6d7e9d8e10f8",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "后山",
+    "aliases": [
+      "后山",
+      "山崖之颠",
+      "山壁",
+      "山顶",
+      "悬崖边"
+    ],
+    "description": "萧家后方的山崖，风景优美，是萧炎常来思考和修炼的地方",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "第2章",
+    "importanceScore": 0.469,
+    "tier": "supporting",
+    "storyScore": 4,
+    "productionScore": 0,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 4,
+    "firstChapter": 2,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      2,
+      8,
+      9,
+      10
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  },
+  {
+    "id": "38944d68-436c-4aba-a7f3-1759d9a18709",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "魔兽山脉",
+    "aliases": [
+      "魔兽山脉"
+    ],
+    "description": "加玛帝国闻名的险峻山脉，魔兽众多，是冒险者和修炼者的历练之地",
+    "confidence": 0.85,
+    "status": "PENDING",
+    "chapterRef": "第2章",
+    "importanceScore": 0.469,
+    "tier": "supporting",
+    "storyScore": 4,
+    "productionScore": 0,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 2,
+    "firstChapter": 2,
+    "lastChapter": 8,
+    "chapterAppearances": [
+      2,
+      8
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  },
+  {
+    "id": "42012e43-e483-497b-8afb-5f8b3c1a00c3",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "萧家",
+    "aliases": [
+      "萧家",
+      "家族",
+      "萧家族中",
+      "萧家族地"
+    ],
+    "description": "乌坦城三大家族之一的萧家，萧炎的家族所在地，族中有测验广场、迎客大厅、后山等",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "第1章",
+    "importanceScore": 0.425,
+    "tier": "supporting",
+    "storyScore": 3,
+    "productionScore": 0.25,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 4,
+    "firstChapter": 1,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      1,
+      2,
+      3,
+      10
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  },
+  {
+    "id": "bd80fb35-606b-4399-a9d3-4915d4afc218",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "加玛帝国",
+    "aliases": [
+      "加玛帝国"
+    ],
+    "description": "斗气大陆上的一个大帝国，云岚宗的所在地，萧家隶属于此帝国",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "第1章",
+    "importanceScore": 0.425,
+    "tier": "supporting",
+    "storyScore": 3,
+    "productionScore": 0.25,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 3,
+    "firstChapter": 1,
+    "lastChapter": 9,
+    "chapterAppearances": [
+      1,
+      4,
+      6,
+      9
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  },
+  {
+    "id": "8595f036-eb3c-4b93-85dd-0ac1c868d4ff",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "迎客大厅",
+    "aliases": [
+      "大厅",
+      "迎客大厅",
+      "萧家大厅"
+    ],
+    "description": "萧家接待贵客的大厅，宽敞肃穆，上方有族长和三位长老的座位",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "第3章",
+    "importanceScore": 0.35,
+    "tier": "supporting",
+    "storyScore": 3,
+    "productionScore": 0,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 5,
+    "firstChapter": 3,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  },
+  {
+    "id": "b9228c9d-1e08-4c17-8c2f-c66e503696cb",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "斗气大陆",
+    "aliases": [
+      "斗气大陆",
+      "大陆"
+    ],
+    "description": "故事发生的世界，没有魔法只有斗气，地域辽阔万族林立，是一片充满奇迹的大陆",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "第2章",
+    "importanceScore": 0.35,
+    "tier": "supporting",
+    "storyScore": 3,
+    "productionScore": 0,
+    "pillarCausal": 1,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 3,
+    "firstChapter": 2,
+    "lastChapter": 9,
+    "chapterAppearances": [
+      2,
+      6,
+      9
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  },
+  {
+    "id": "156ea0ff-7039-449d-abbd-2772024d8325",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "乌坦城",
+    "aliases": [
+      "乌坦"
+    ],
+    "description": "加玛帝国东部的大型城市，背靠魔兽山脉跻身帝国大城市之列（末座）。萧家所在地，与另外两大家族三足鼎立争斗数十年",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "第1章",
+    "importanceScore": 0.306,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0.25,
+    "pillarCausal": 1,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 4,
+    "firstChapter": 1,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      1,
+      3,
+      4,
+      7,
+      10
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  },
+  {
+    "id": "f74c87ef-a82a-4f78-8e9d-99c21781c37b",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "云岚宗",
+    "aliases": [
+      "云岚宗"
+    ],
+    "description": "加玛帝国的霸主级势力，门风严厉，宗主为云韵（斗皇），是纳兰嫣然修习之地，被誉为整个加玛帝国的一霸",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "第4章",
+    "importanceScore": 0.2685,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0.125,
+    "pillarCausal": 2,
+    "pillarUniqueness": 0,
+    "pillarTransition": 0,
+    "mentionCount": 4,
+    "firstChapter": 4,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  },
+  {
+    "id": "f16e5898-8bda-404b-a3f4-a190ade07ad1",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "乌坦城大街",
+    "aliases": [
+      "大街",
+      "街道"
+    ],
+    "description": "乌坦城人来人往的商业大街，人气旺盛，有时能看见奇异种族",
+    "confidence": 0.8,
+    "status": "PENDING",
+    "chapterRef": "第10章",
+    "importanceScore": 0.231,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0,
+    "pillarCausal": 1,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 1,
+    "firstChapter": 10,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      10
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  },
+  {
+    "id": "2d92e624-fce9-4080-9c67-e6891a2d17ca",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "药材店",
+    "aliases": [
+      "药材店"
+    ],
+    "description": "乌坦城中售卖药材的店铺，萧炎和萧薰儿在此购买了三支二十年份紫叶兰草和两株五年份洗骨花",
+    "confidence": 0.8,
+    "status": "PENDING",
+    "chapterRef": "第10章",
+    "importanceScore": 0.231,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0,
+    "pillarCausal": 1,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 1,
+    "firstChapter": 10,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      10
+    ],
+    "createdAt": "2026-06-22T11:09:25.974Z",
+    "updatedAt": "2026-06-22T11:09:25.974Z"
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "storyId": "story-100-202606230638-1-1-worldbuilding",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-100-202606230638-1-1-worldbuilding-scene-1",
+      "assetName": "斗气大陆",
+      "prompt": "斗气大陆，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：斗气大陆 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；冲突氛围：斗气大陆修炼体系；可保留人物比例参考：萧炎、萧战、黄阶、萧炎也、萧炎微、萧炎却；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "第1章 斗气大陆",
+        "第2章 斗气大陆",
+        "大陆名为斗气大陆，大陆上并没有小说中常见的各系魔法，而斗气，才是大陆的唯一主调！"
+      ],
+      "sourceChapters": [
+        1
+      ],
+      "sourceRangeHint": "chapters 1-1",
+      "metadata": {
+        "storyId": "story-100-202606230638-1-1-worldbuilding",
+        "location": "斗气大陆",
+        "conflictBeat": "斗气大陆修炼体系",
+        "involvedCharacters": [
+          "萧炎",
+          "萧战",
+          "黄阶",
+          "萧炎也",
+          "萧炎微",
+          "萧炎却"
+        ]
+      }
+    }
+  ]
+}

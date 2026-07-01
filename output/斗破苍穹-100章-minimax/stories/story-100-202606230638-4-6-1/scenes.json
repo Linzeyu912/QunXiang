@@ -1,0 +1,40 @@
+{
+  "storyId": "story-100-202606230638-4-6-1",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "scenes": [
+    {
+      "id": "story-100-202606230638-4-6-1-scene-1",
+      "name": "退婚冲突 - 未指定场景",
+      "location": "未指定场景",
+      "sourceRange": "chapters 4-6",
+      "summary": "纳兰嫣然卷入“退婚冲突”：葛叶提出退婚请求、葛叶拿出聚气散、萧炎拒绝解除婚约。",
+      "conflictBeat": "葛叶提出退婚请求",
+      "involvedCharacters": [
+        "纳兰嫣然",
+        "萧炎",
+        "萧战",
+        "葛叶",
+        "萧叔叔",
+        "纳兰侄女",
+        "纳兰小姐",
+        "云韵",
+        "古河"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"退婚冲突\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 葛叶提出退婚请求, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "纳兰嫣然卷入“退婚冲突”：葛叶提出退婚请求、葛叶拿出聚气散、萧炎拒绝解除婚约。"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6"
+    }
+  ]
+}

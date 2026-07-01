@@ -1,0 +1,33 @@
+{
+  "storyId": "story-100-202606230638-52-52-3",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "scenes": [
+    {
+      "id": "story-100-202606230638-52-52-3-scene-1",
+      "name": "退婚冲突 - 未指定场景",
+      "location": "未指定场景",
+      "sourceRange": "chapters 52-52",
+      "summary": "萧炎卷入“退婚冲突”：萧炎立下三年之约、时出现的药、还有着丹。",
+      "conflictBeat": "萧炎立下三年之约",
+      "involvedCharacters": [
+        "萧炎",
+        "药老",
+        "纳兰嫣然",
+        "古河"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"退婚冲突\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 萧炎立下三年之约, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "萧炎卷入“退婚冲突”：萧炎立下三年之约、时出现的药、还有着丹。"
+      ],
+      "sourceChapters": [
+        52
+      ],
+      "sourceRangeHint": "chapters 52-52"
+    }
+  ]
+}

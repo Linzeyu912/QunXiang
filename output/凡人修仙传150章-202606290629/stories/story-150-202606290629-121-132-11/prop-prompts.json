@@ -1,0 +1,607 @@
+{
+  "storyId": "story-150-202606290629-121-132-11",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "prop",
+      "assetId": "银子",
+      "assetName": "银子",
+      "prompt": "银子，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：money；物品描述：银子 functions as a money in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "我们帮主可一连五天，天天下午都来捧你的场，花了不少的银子！",
+        "“既然只是个误会，你这小厮下去吧，这锭银子算是赏你的了！",
+        "”沈重山摸出了一块二两重的银子，扔给了小厮。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "money",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "银子 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "雪风剑",
+      "assetName": "雪风剑",
+      "prompt": "雪风剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：雪风剑 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "儒生则是“毒秀才”范沮，虽然练有一手凌厉的“雪风剑法，但令他名声在外的却是他心黑手狠的毒辣心肠。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "雪风剑 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "飞刀",
+      "assetName": "飞刀",
+      "prompt": "飞刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：飞刀 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "而呆在一旁，始终没有开口说话的黑衣人，则是三大护法中武功最高的“飞刀”沈三。",
+        "这人的十八柄飞刀连发的绝技，替沈重山除去了不少前来寻仇的高手名宿，再加上他本人也是沈重山的远亲，因此在帮中最得沈重山的器重。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "飞刀 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "十八柄飞刀",
+      "assetName": "十八柄飞刀",
+      "prompt": "十八柄飞刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：十八柄飞刀 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这人的十八柄飞刀连发的绝技，替沈重山除去了不少前来寻仇的高手名宿，再加上他本人也是沈重山的远亲，因此在帮中最得沈重山的器重。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "十八柄飞刀 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "在腰间的刀",
+      "assetName": "在腰间的刀",
+      "prompt": "在腰间的刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：在腰间的刀 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”沈三没理会胖子的疑惑，反而把手按在腰间的刀囊上缓缓站了起来，盯着这上酒的小厮冷冷问道。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "在腰间的刀 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "我们在刀",
+      "assetName": "我们在刀",
+      "prompt": "我们在刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：我们在刀 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“大哥，我们在刀口上混饭吃的，还是小心点的好！"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "我们在刀 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "道那位吴剑",
+      "assetName": "道那位吴剑",
+      "prompt": "道那位吴剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：道那位吴剑 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“不仅仅像你说的那样，你知道那位吴剑鸣是谁派来的吗？"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "道那位吴剑 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”韩立掏出了一瓶丹药，递给了孙二狗。",
+        "灵符旁边的牌子上写着：“飞天符“风属姓初级上阶飞行类灵符，价值三十块灵低阶灵石，或换同等价值的固元培本类丹药。",
+        "不过那个牌子上写的换固元培本类丹药的话，倒被他放进心里去了。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "other",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "法宝",
+      "assetName": "法宝",
+      "prompt": "法宝，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：法宝 functions as a other in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "经过数曰的不停刺探和潜入，韩立抓住了欧阳飞天一次独自赏月的良机，乘其不备法宝全出，祭起了剑符，一下就削掉了其脑袋，取了他姓命。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "other",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "法宝 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "祭起了剑",
+      "assetName": "祭起了剑",
+      "prompt": "祭起了剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：祭起了剑 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "经过数曰的不停刺探和潜入，韩立抓住了欧阳飞天一次独自赏月的良机，乘其不备法宝全出，祭起了剑符，一下就削掉了其脑袋，取了他姓命。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "祭起了剑 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "全身练得刀",
+      "assetName": "全身练得刀",
+      "prompt": "全身练得刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：全身练得刀 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "回到墨府，把欧阳飞天的首级交予了严氏检验后，韩立才从其口中知道，欧阳飞天此人练有江湖上最顶尖的横练硬功“霸王甲”，早已把全身练得刀枪不入，就是削铁如泥的神兵利刃，也难伤其分毫，却没想到竟被韩立一下就取下首级。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "全身练得刀 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "化刀",
+      "assetName": "化刀",
+      "prompt": "化刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：化刀 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "从他嘴里韩立知道，在越国，共有修仙门派大小七个，分为掩月宗、黄枫谷、灵兽山、清虚门、化刀坞、天阙堡、巨剑门等门派，这些门派中掩月宗实力最强，灵兽山紧随其后，其他的几个门派则实力全都差不多，没有悬殊太厉害的。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "化刀 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "巨剑",
+      "assetName": "巨剑",
+      "prompt": "巨剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：巨剑 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "从他嘴里韩立知道，在越国，共有修仙门派大小七个，分为掩月宗、黄枫谷、灵兽山、清虚门、化刀坞、天阙堡、巨剑门等门派，这些门派中掩月宗实力最强，灵兽山紧随其后，其他的几个门派则实力全都差不多，没有悬殊太厉害的。",
+        "“我们万家的祖先，原先也是一名散修，但后来侥幸进了修仙派，成了巨剑门的正式弟子，这才有了我们万家。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "巨剑 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "成了巨剑",
+      "assetName": "成了巨剑",
+      "prompt": "成了巨剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：成了巨剑 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“我们万家的祖先，原先也是一名散修，但后来侥幸进了修仙派，成了巨剑门的正式弟子，这才有了我们万家。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "成了巨剑 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "像被人用刀",
+      "assetName": "像被人用刀",
+      "prompt": "像被人用刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：像被人用刀 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这时韩立二人前的浓雾突然间翻滚起来，然后像被人用刀劈开一样，分出了一条可供两人并肩而行的小路，小路的另一端一眼望不到尽头，似乎很遥远。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "像被人用刀 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "胡子的背刀",
+      "assetName": "胡子的背刀",
+      "prompt": "胡子的背刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：胡子的背刀 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”这次说话的是个面目清秀、脸上却有条疤痕的少妇，在她身旁则是个满脸大胡子的背刀大汉，似乎是夫妇二人的样子。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "胡子的背刀 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "钥匙",
+      "assetName": "钥匙",
+      "prompt": "钥匙，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：tool；物品描述：钥匙 functions as a tool in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他指着那一片楼中的某幢小楼，对韩立说，那就是他们的落脚处，让韩立累了的话可以去那里休息，而这符则是破开小楼禁法的钥匙。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "tool",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "钥匙 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "那画有小剑",
+      "assetName": "那画有小剑",
+      "prompt": "那画有小剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：那画有小剑 functions as a weapon in \"潇湘院 - 收获\", connected to: 金芝必须应对潇湘院带来的处境变化。；持有者/关联人物：金芝；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "得出了这样的结论后，韩立苦笑了一下，看来在这些修仙者中，他还真是个穷鬼，他不禁摸了摸身上的物品，突然心中一动，想到了怀内的那画有小剑的灵符。",
+        "想到这里，韩立开始注意各个摊点，留心是否有卖和那画有小剑的符箓一样的灵符。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132",
+      "metadata": {
+        "storyId": "story-150-202606290629-121-132-11",
+        "propType": "weapon",
+        "ownerOrHolder": "金芝",
+        "storyFunction": "那画有小剑 supports, reveals, or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "story-150-202606290629-109-120-10",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 109,
+  "endChapter": 120,
+  "title": "登门 - 定计夺帮",
+  "summary": "严氏等在“登门 - 定计夺帮”中经历围绕“戒指”发生关键变化、登门、狐。",
+  "coreConflict": "严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+  "trigger": "围绕“戒指”发生关键变化",
+  "turningPoints": [
+    "围绕“戒指”发生关键变化",
+    "登门",
+    "狐",
+    "美妇",
+    "暗信",
+    "萦香丸",
+    "对那位吴剑",
+    "养颜的灵药"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "严氏等"
+  ],
+  "supportingCharacters": [
+    "凤舞",
+    "韩立闻",
+    "韩立打",
+    "谢公子",
+    "韩公子"
+  ],
+  "locations": [
+    "嘉元城"
+  ],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-109-120"
+  ],
+  "approved": true
+}

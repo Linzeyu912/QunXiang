@@ -1,0 +1,644 @@
+{
+  "storyId": "story-150-202606290629-49-60-5",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "props": [
+    {
+      "name": "短剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "短剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "对方手段果然还有些幼稚，如果一声不响的躲在一旁偷袭，他恐怕还真的要有些发愁，但这么大摇大摆的从正面进攻，那有什么可怕，要知道闻风辨音的功夫，他早就练得炉火纯青，不要说是短剑的直刺，就是一枚纤细的绣花针袭来，他也能听得一清二楚。",
+        "墨大夫脸上狞笑了一下，等候多时的右手突然出手，闪电般的一把抓住了剑刃，扣的死死的，毫不畏惧短剑的锐利刃口。",
+        "对方明显知道不，用力把短剑被往回猛扯了几下，但在魔银手的控制之下，哪又能动弹分毫，只是白费力气罢了。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "短剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "短剑, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "对方手段果然还有些幼稚，如果一声不响的躲在一旁偷袭，他恐怕还真的要有些发愁，但这么大摇大摆的从正面进攻，那有什么可怕，要知道闻风辨音的功夫，他早就练得炉火纯青，不要说是短剑的直刺，就是一枚纤细的绣花针袭来，他也能听得一清二楚。",
+        "墨大夫脸上狞笑了一下，等候多时的右手突然出手，闪电般的一把抓住了剑刃，扣的死死的，毫不畏惧短剑的锐利刃口。",
+        "对方明显知道不，用力把短剑被往回猛扯了几下，但在魔银手的控制之下，哪又能动弹分毫，只是白费力气罢了。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "把抓住了剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "把抓住了剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "墨大夫脸上狞笑了一下，等候多时的右手突然出手，闪电般的一把抓住了剑刃，扣的死死的，毫不畏惧短剑的锐利刃口。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "把抓住了剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "把抓住了剑, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "墨大夫脸上狞笑了一下，等候多时的右手突然出手，闪电般的一把抓住了剑刃，扣的死死的，毫不畏惧短剑的锐利刃口。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "一个无柄剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "一个无柄剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "一个无柄剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "一个无柄剑, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "原来这个剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "原来这个剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "原来这个剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "原来这个剑, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "这个剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "这个剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "这个剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "这个剑, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "和你明刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "和你明刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "真……真有意思，我竟然忘了这么重要的事情，竟然真和你……和你明刀明枪的过起招来。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "和你明刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "和你明刀, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "真……真有意思，我竟然忘了这么重要的事情，竟然真和你……和你明刀明枪的过起招来。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "明枪",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "明枪 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "真……真有意思，我竟然忘了这么重要的事情，竟然真和你……和你明刀明枪的过起招来。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "明枪 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "明枪, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "真……真有意思，我竟然忘了这么重要的事情，竟然真和你……和你明刀明枪的过起招来。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "药材",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "药材 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "墨大夫这才回想起，当初得到这药方之时，因为配制所的药材种类太多，步骤也很繁琐，生怕以后会忘掉什么，便把它的制作之法，所需药材，都详详细细的抄在了一张纸条上，随手夹在了某本书中，后来因发生了太多的事，便把这纸条忘得一干二净，没想到如今便宜了韩立，给自己带来了这么大的麻烦。",
+        "当然有可能的话，能找到一些珍贵的药材，拿回去炼灵丹，那就更好了，不过他也知道这个希望很渺茫，但不管怎么说，这也是一个运气的问题，说不定，就让他人品大爆发，捡了个漏呢！",
+        "但余子童所说的良药，虽说不是血灵草这样的奇珍，但也是十几种珍贵药材，用修仙者的方式，耗费了大量元气才炼制而成，在他身上也所剩不多。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "药材 functions as a other in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "药材, prop type: other, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "墨大夫这才回想起，当初得到这药方之时，因为配制所的药材种类太多，步骤也很繁琐，生怕以后会忘掉什么，便把它的制作之法，所需药材，都详详细细的抄在了一张纸条上，随手夹在了某本书中，后来因发生了太多的事，便把这纸条忘得一干二净，没想到如今便宜了韩立，给自己带来了这么大的麻烦。",
+        "当然有可能的话，能找到一些珍贵的药材，拿回去炼灵丹，那就更好了，不过他也知道这个希望很渺茫，但不管怎么说，这也是一个运气的问题，说不定，就让他人品大爆发，捡了个漏呢！",
+        "但余子童所说的良药，虽说不是血灵草这样的奇珍，但也是十几种珍贵药材，用修仙者的方式，耗费了大量元气才炼制而成，在他身上也所剩不多。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "看起来似刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "看起来似刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "看起来似刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "看起来似刀, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "非刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "非刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "非刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "非刀, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "似剑非剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "似剑非剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "似剑非剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "似剑非剑, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "竟然刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "竟然刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "小子，你还真有几分胆色，竟然刀刃都架到了脖子上，还不开口求饶，真有你的！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "竟然刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "竟然刀, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "小子，你还真有几分胆色，竟然刀刃都架到了脖子上，还不开口求饶，真有你的！"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "身上下都刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "身上下都刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "这名叫“铁奴”的巨汉，也不知是何方怪物，竟然和墨大夫的“魔银手”一样，全身上下都刀枪不入，就连男人最致命的软肋，也同样如此。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "身上下都刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "身上下都刀, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这名叫“铁奴”的巨汉，也不知是何方怪物，竟然和墨大夫的“魔银手”一样，全身上下都刀枪不入，就连男人最致命的软肋，也同样如此。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "但人为刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "但人为刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "但人为刀俎，又无可奈何，随后只好自我安慰了一番，幸亏还不是面朝底下，否则连屋顶也没得看。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "但人为刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "但人为刀, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "但人为刀俎，又无可奈何，随后只好自我安慰了一番，幸亏还不是面朝底下，否则连屋顶也没得看。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "丹药",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "他依仗着对丹药的了解，从对方尸体上辨识出了那几颗药丸，并欢天喜地的服了下去，果然药到病除，墨大夫的功力尽复。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "丹药 functions as a other in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "丹药, prop type: other, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他依仗着对丹药的了解，从对方尸体上辨识出了那几颗药丸，并欢天喜地的服了下去，果然药到病除，墨大夫的功力尽复。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "锃亮的宝剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "锃亮的宝剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "韩立没有理睬对方的怒火，他伸手抓住了腹部上方的腰带扣，“唰”的一声，从腰带夹层上，抽出了一把锃亮的宝剑。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "锃亮的宝剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "锃亮的宝剑, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立没有理睬对方的怒火，他伸手抓住了腹部上方的腰带扣，“唰”的一声，从腰带夹层上，抽出了一把锃亮的宝剑。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "完全把软剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "完全把软剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "他用憎恶的眼神望了一眼，还在微微颤抖的元神，二话不说，一个飞步上前，劈头盖脸的向光团砍了去，完全把软剑当成了劈柴刀一样的使用。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "完全把软剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "完全把软剑, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他用憎恶的眼神望了一眼，还在微微颤抖的元神，二话不说，一个飞步上前，劈头盖脸的向光团砍了去，完全把软剑当成了劈柴刀一样的使用。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "成了劈柴刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "成了劈柴刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "余子童",
+      "firstAppearance": "chapters 49-60",
+      "keyMoments": [
+        "他用憎恶的眼神望了一眼，还在微微颤抖的元神，二话不说，一个飞步上前，劈头盖脸的向光团砍了去，完全把软剑当成了劈柴刀一样的使用。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "成了劈柴刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "成了劈柴刀, prop type: weapon, story function: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他用憎恶的眼神望了一眼，还在微微颤抖的元神，二话不说，一个飞步上前，劈头盖脸的向光团砍了去，完全把软剑当成了劈柴刀一样的使用。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "storyId": "story-100-202606230638-12-12-2",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：稚嫩的小脸上、偏头望着脸色难看的加列奥、小脸上的那副无奈模样\n- 年龄/身份视觉线索：稚嫩的小脸上\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "稚嫩的小脸上，",
+        "偏头望着脸色难看的加列奥，",
+        "小脸上的那副无奈模样，"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：稚嫩的小脸上、偏头望着脸色难看的加列奥、小脸上的那副无奈模样\n- 年龄/身份视觉线索：稚嫩的小脸上\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧炎似",
+      "assetName": "萧炎似",
+      "prompt": "萧炎似，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "望着一脸挑衅的加列奥，萧炎似是有些无奈的叹了一口气，手掌摸了摸额头，片刻后，方才抬头，微微耸了耸肩，一脸的纯真与无辜：“加列奥少爷，我想问问，您今年多少岁了？"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰嫣然",
+      "assetName": "纳兰嫣然",
+      "prompt": "纳兰嫣然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“哦，对了……”脚步忽然一顿，加列奥似乎是想起了什么，转过头讥笑道：“萧炎小少爷，听说你们萧家，被纳兰家族的纳兰嫣然强行解除婚约了？"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰小姐",
+      "assetName": "纳兰小姐",
+      "prompt": "纳兰小姐，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "嘿嘿，其实也没什么，以你的修炼天赋，也的确配不上纳兰小姐，哈哈……”说完这些，加列奥这才大笑着离去。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "就在萧炎有些为自己的感应感到奇怪的时候，药老的声音，忽然的在心中响了起来。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "storyId": "story-100-202606230638-63-63-4",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "props": [
+    {
+      "name": "聚气散",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 萧炎依靠拿出聚气散",
+      "ownerOrHolder": "药老",
+      "firstAppearance": "chapters 63-63",
+      "keyMoments": [
+        "第63章 炼制聚气散",
+        "第64章 炼制聚气散",
+        "望着瓶中那蓝绿交替的丹药，萧炎依靠着出色的灵魂感知力，他能模糊的知道，这一枚聚气散，绝对比上次纳兰嫣然拿出的聚气散，品阶与药力，要更强一些！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "聚气散 functions as a other in \"资源争夺\", connected to: 萧炎依靠拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "聚气散, prop type: other, story function: 萧炎依靠拿出聚气散, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "第63章 炼制聚气散",
+        "第64章 炼制聚气散",
+        "望着瓶中那蓝绿交替的丹药，萧炎依靠着出色的灵魂感知力，他能模糊的知道，这一枚聚气散，绝对比上次纳兰嫣然拿出的聚气散，品阶与药力，要更强一些！"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63"
+    },
+    {
+      "name": "丹药",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 萧炎依靠拿出聚气散",
+      "ownerOrHolder": "药老",
+      "firstAppearance": "chapters 63-63",
+      "keyMoments": [
+        "”药老得意的扬了扬掌心中的白色火焰，笑道：“只要拥有了异火，不仅炼出的丹药药力更浓，而且与人对敌时，同等级的强者，根本不敢与之硬碰。",
+        "白气逐渐减弱，一颗表面粗糙的丹药雏形，悄悄的在火焰中现出了形来。",
+        "平静的望着那颗已具雏形的丹药，药老微微点头，再次将聚灵草与那颗水属性的二级魔核投入其中。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "丹药 functions as a other in \"资源争夺\", connected to: 萧炎依靠拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "丹药, prop type: other, story function: 萧炎依靠拿出聚气散, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "”药老得意的扬了扬掌心中的白色火焰，笑道：“只要拥有了异火，不仅炼出的丹药药力更浓，而且与人对敌时，同等级的强者，根本不敢与之硬碰。",
+        "白气逐渐减弱，一颗表面粗糙的丹药雏形，悄悄的在火焰中现出了形来。",
+        "平静的望着那颗已具雏形的丹药，药老微微点头，再次将聚灵草与那颗水属性的二级魔核投入其中。"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63"
+    }
+  ]
+}

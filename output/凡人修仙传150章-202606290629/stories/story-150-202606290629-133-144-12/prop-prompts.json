@@ -1,0 +1,640 @@
+{
+  "storyId": "story-150-202606290629-133-144-12",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "prop",
+      "assetId": "背后的大刀",
+      "assetName": "背后的大刀",
+      "prompt": "背后的大刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：背后的大刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "而她丈夫大胡子，虽然不曾言语，但也手按背后的大刀，怒目瞪视着少年。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "背后的大刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“说起这升仙大会，就不得不说起筑基丹了，这令所有炼气期修仙者疯狂的丹药……”",
+        "因为筑基丹的原料实在极为难觅，即使整个越国修仙门派共同联手，出物出力，也要每隔十年，才有望出炉那么几鼎丹药，区区千余颗而已。",
+        "而这些丹药即使被各门派全瓜分干净，也远远无法满足他们自身的需要，所以根本不可能再有筑基丹流露到外面。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "other",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "对如同镰刀",
+      "assetName": "对如同镰刀",
+      "prompt": "对如同镰刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：对如同镰刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这鸟似鹰非鹰，长满了灰色的羽毛，双翅展开足有数丈之宽，身下还有一对如同镰刀般锋利的爪子，而脖颈上两颗秃顶的凶恶鸟头，则有四只小眼微泛着绿光。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "对如同镰刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "法宝",
+      "assetName": "法宝",
+      "prompt": "法宝，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：法宝 functions as a other in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "第139章 法宝残片",
+        "第一百三十九章 法宝残片",
+        "“这可是法宝的残片！"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "other",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "法宝 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "冻结的长刀",
+      "assetName": "冻结的长刀",
+      "prompt": "冻结的长刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：冻结的长刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "比如说：可以自动追敌的飞镖法器，可以往外喷火的葫芦，能砍到人让人冻结的长刀，银翅蚁的卵可以制药，百年铁线蛇的鳞片能铸器，等等。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "冻结的长刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "逼人的小刀",
+      "assetName": "逼人的小刀",
+      "prompt": "逼人的小刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：逼人的小刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "说完此话，汉子拿出了一把寸许长的、灵气逼人的小刀放在地上，并再次把“布”罩上，结果同样的消失无影了，而且一丝灵气也没外露。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "逼人的小刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "把小刀",
+      "assetName": "把小刀",
+      "prompt": "把小刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：把小刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”汉子再次取下“布”，把小刀收好后，向摊主说道。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "把小刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "了隐匿小刀",
+      "assetName": "了隐匿小刀",
+      "prompt": "了隐匿小刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：了隐匿小刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "等到黑汉做了了隐匿小刀的演示后，韩立脑中的想法更清晰了，对此法宝残片立刻变得势在必得！"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "了隐匿小刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "令牌",
+      "assetName": "令牌",
+      "prompt": "令牌，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：token；物品描述：令牌 functions as a token in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立看得津津有味，但当把书册翻到最后几页时，眼前出现了七个不同图案的令牌一样的图画，而在图画的最下方则标有几行字：",
+        "是各修仙派奖给立下巨功的修仙家族之物，只要有人持令找上发令牌的修仙门派，其效果等同于升仙会的最后胜出者，可获同等待遇！",
+        "当初韩立一听到“升仙大会”这几个字时，就隐隐联想到了从侏儒那里得到的奇怪令牌，那令牌有一面也铭刻着“升仙”二字，让韩立觉得两者间是不是应该有某些牵连？"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "token",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "令牌 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "和画着小剑",
+      "assetName": "和画着小剑",
+      "prompt": "和画着小剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：和画着小剑 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "而金光上人别看修仙资质不行，但察言观色的本领倒不小，再加上他胆小如鼠，因此叶家刚要有所行动时，提前得到风声的侏儒就急忙卷走了升仙令和画着小剑的符箓，逃之夭夭。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "和画着小剑 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "长剑",
+      "assetName": "长剑",
+      "prompt": "长剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：长剑 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立脸色大变，他手往腰间一按，锵啷一声，寒光一闪，一把明晃晃的长剑亮了出来，接着毫不迟疑的一剑砍了下去。",
+        "“啪”的一下，韩立把手中长剑扔了出去，十指跳动，飞快来的封住了伤口附近的血脉，让鲜血嘎然而止。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "长剑 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "迟疑的一剑",
+      "assetName": "迟疑的一剑",
+      "prompt": "迟疑的一剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：迟疑的一剑 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立脸色大变，他手往腰间一按，锵啷一声，寒光一闪，一把明晃晃的长剑亮了出来，接着毫不迟疑的一剑砍了下去。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "迟疑的一剑 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "这一剑",
+      "assetName": "这一剑",
+      "prompt": "这一剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：这一剑 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“铛”，这一剑如同砍在了岩石上，火星直冒，而那只黄色大手安然无恙！"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "这一剑 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "萦绕的长刀",
+      "assetName": "萦绕的长刀",
+      "prompt": "萦绕的长刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：萦绕的长刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "因为那个刚才藏在土里的大汉，从背后抽出了一把黑气萦绕的长刀，恶狠狠的向韩立扑了过来。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "萦绕的长刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "妖异的长刀",
+      "assetName": "妖异的长刀",
+      "prompt": "妖异的长刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：妖异的长刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "大汉已冲到了韩立附近，身上黄光大盛，举起那妖异的长刀，向韩立狠狠劈了下来。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "妖异的长刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "就闪出了刀",
+      "assetName": "就闪出了刀",
+      "prompt": "就闪出了刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：就闪出了刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立哼了一声，身子一晃，人就闪出了刀势的范围。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "就闪出了刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "手里的长刀",
+      "assetName": "手里的长刀",
+      "prompt": "手里的长刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：手里的长刀 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "手里的长刀黑光一闪，化为了一道长长的黑索，如同长蛇一般，紧跟着韩立的身形缠绕过来，大有把韩立不锁住而不罢休之势！"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "手里的长刀 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "那剑",
+      "assetName": "那剑",
+      "prompt": "那剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：那剑 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他把手冲着大汉一指，那剑光立即尾随激射出去，眨眼间就到了大汉的身后。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "那剑 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "则指挥着剑",
+      "assetName": "则指挥着剑",
+      "prompt": "则指挥着剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：则指挥着剑 functions as a weapon in \"偷技 - 筑基丹之争\", connected to: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：吴九指；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "而韩立则指挥着剑光追了过来，紧跟着黄衣人身后不放，黄衣人越飞越快，灰光竟一时追他不上。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144",
+      "metadata": {
+        "storyId": "story-150-202606290629-133-144-12",
+        "propType": "weapon",
+        "ownerOrHolder": "吴九指",
+        "storyFunction": "则指挥着剑 supports, reveals, or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    }
+  ]
+}

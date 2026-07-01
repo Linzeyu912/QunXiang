@@ -1,0 +1,411 @@
+[
+  {
+    "id": "c61786a2-9b9b-4e41-a04d-12912a1e3d09",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "萧炎",
+    "aliases": [
+      "萧炎哥",
+      "萧炎哥哥",
+      "炎儿"
+    ],
+    "description": "萧家三少爷，曾是家族百年内最年轻的斗者，四岁练气，十岁拥有九段斗之气，十一岁成为斗者，三年前斗气开始离奇倒退沦为三段废物，性格倔强坚韧，心智远超同龄人，在被纳兰嫣然当众退婚后休掉对方，誓要三年后雪耻",
+    "confidence": 0.98,
+    "status": "PENDING",
+    "chapterRef": "1",
+    "firstChapter": 1,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "mentionCount": 316,
+    "dialogueCount": 88,
+    "coCharacters": [
+      "萧薰儿",
+      "萧媚",
+      "萧战",
+      "纳兰嫣然",
+      "墨管家",
+      "云韵",
+      "纳兰桀",
+      "葛叶",
+      "古河",
+      "英俊青年",
+      "药老"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "58dd8493-ce3e-4fb2-bb9a-0e6e3b57dbeb",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "纳兰嫣然",
+    "aliases": [
+      "纳兰小姐",
+      "嫣然"
+    ],
+    "description": "纳兰桀元帅的孙女，云岚宗宗主云韵的弟子，身着月白袍服，三星斗者，与萧炎有指腹为婚的婚约，因被云韵当作下一任宗主培养而前来退婚，美貌娇贵，性格骄傲",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "3",
+    "firstChapter": 3,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "mentionCount": 136,
+    "dialogueCount": 72,
+    "coCharacters": [
+      "萧炎",
+      "萧薰儿",
+      "萧战",
+      "云韵",
+      "纳兰桀",
+      "葛叶",
+      "萧媚",
+      "古河",
+      "英俊青年",
+      "药老",
+      "墨管家"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "4d1a5598-6de6-4072-b2bb-2fb716ff6592",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "萧薰儿",
+    "aliases": [
+      "薰儿",
+      "熏儿",
+      "薰儿小姐"
+    ],
+    "description": "萧家紫裙少女，气质清冷淡然如青莲初绽，对萧炎始终保持尊敬和亲近，拥有神秘身份和强大背景，让三位长老都忌惮，眸中曾涌出金色火焰令葛叶惊恐逃离",
+    "confidence": 0.98,
+    "status": "PENDING",
+    "chapterRef": "1",
+    "firstChapter": 1,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      1,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "mentionCount": 87,
+    "dialogueCount": 33,
+    "coCharacters": [
+      "萧炎",
+      "萧媚",
+      "萧战",
+      "纳兰嫣然",
+      "葛叶",
+      "纳兰桀",
+      "古河",
+      "墨管家",
+      "云韵"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "31c92b45-7b35-4757-8a06-a723131b546c",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "萧战",
+    "aliases": [
+      "萧叔叔",
+      "萧族长"
+    ],
+    "description": "萧家现任族长，五星大斗师，身着华贵灰色衣衫，性格豪气，对萧炎百般宠爱，在纳兰嫣然退婚时愤怒却无奈",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "2",
+    "firstChapter": 2,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "mentionCount": 64,
+    "dialogueCount": 26,
+    "coCharacters": [
+      "萧炎",
+      "萧薰儿",
+      "萧媚",
+      "纳兰嫣然",
+      "墨管家",
+      "云韵",
+      "纳兰桀",
+      "葛叶",
+      "古河",
+      "英俊青年"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "d5651de6-c17b-4bd6-a286-44c324d674ff",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "药老",
+    "aliases": [],
+    "description": "隐藏在萧炎母亲遗物黑色古戒中的神秘灵魂体，曾吸收萧炎三年斗之气使其沦为废物，实为炼药师，收萧炎为徒，承诺教其炼药术和可进化的神秘功法",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "8",
+    "firstChapter": 8,
+    "lastChapter": 9,
+    "chapterAppearances": [
+      8,
+      9
+    ],
+    "mentionCount": 26,
+    "dialogueCount": 10,
+    "coCharacters": [
+      "萧炎",
+      "纳兰嫣然",
+      "古河"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "52de53a3-8ba5-4262-ab4c-7ca86057be7b",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "葛叶",
+    "aliases": [
+      "葛叶先生"
+    ],
+    "description": "云岚宗长老，月白衣袍老者，满脸笑容，七星大斗师，实力比萧战高出两星，奉命带纳兰嫣然前来萧家退婚，见到萧薰儿眸中金色火焰后惊恐逃离",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "3",
+    "firstChapter": 3,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "mentionCount": 23,
+    "dialogueCount": 8,
+    "coCharacters": [
+      "萧炎",
+      "萧战",
+      "纳兰嫣然",
+      "云韵",
+      "纳兰桀",
+      "萧薰儿",
+      "萧媚",
+      "古河",
+      "英俊青年"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "7a2484b2-0298-4995-b357-cdad47d24927",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "云韵",
+    "aliases": [
+      "云韵大人",
+      "宗主大人",
+      "云岚宗宗主"
+    ],
+    "description": "云岚宗宗主，大斗师，将纳兰嫣然收为弟子并当作下一任宗主培养，在斗气大陆影响力极大",
+    "confidence": 0.85,
+    "status": "PENDING",
+    "chapterRef": "4",
+    "firstChapter": 4,
+    "lastChapter": 4,
+    "chapterAppearances": [
+      4
+    ],
+    "mentionCount": 16,
+    "dialogueCount": 20,
+    "coCharacters": [
+      "萧炎",
+      "萧薰儿",
+      "萧战",
+      "纳兰嫣然",
+      "纳兰桀",
+      "葛叶",
+      "英俊青年"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "8121cdfc-b500-43ba-ba09-6dfa61d3b3e8",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "萧媚",
+    "aliases": [],
+    "description": "萧家少女，萧炎堂妹，年龄十四左右，拥有七段斗之气，天赋优秀，是家族种子级别人物，对落魄后的萧炎态度冷淡疏远",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "1",
+    "firstChapter": 1,
+    "lastChapter": 3,
+    "chapterAppearances": [
+      1,
+      3
+    ],
+    "mentionCount": 11,
+    "dialogueCount": 7,
+    "coCharacters": [
+      "萧炎",
+      "萧薰儿",
+      "萧战",
+      "纳兰嫣然",
+      "墨管家",
+      "葛叶",
+      "纳兰桀",
+      "古河"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "467ea664-f42a-43d0-93b1-ce16309628ee",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "古河",
+    "aliases": [
+      "丹王古河",
+      "古河大人"
+    ],
+    "description": "云岚宗名誉长老，六品炼药师，在加玛帝国影响力庞大，一手炼药术神奇莫测，已晋入斗王之阶，名列加玛帝国十大强者之一",
+    "confidence": 0.85,
+    "status": "PENDING",
+    "chapterRef": "6",
+    "firstChapter": 6,
+    "lastChapter": 6,
+    "chapterAppearances": [
+      6
+    ],
+    "mentionCount": 11,
+    "dialogueCount": 23,
+    "coCharacters": [
+      "萧炎",
+      "萧薰儿",
+      "萧战",
+      "萧媚",
+      "纳兰嫣然",
+      "葛叶",
+      "纳兰桀",
+      "药老"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "6b1ffaa0-b05e-47fa-a00b-201c97f78140",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "纳兰桀",
+    "aliases": [
+      "纳兰老爷子"
+    ],
+    "description": "加玛帝国狮心元帅，性子桀骜，极在乎承诺，是萧炎爷爷的生死好友，当年亲口定下萧炎与纳兰嫣然的婚事",
+    "confidence": 0.85,
+    "status": "PENDING",
+    "chapterRef": "4",
+    "firstChapter": 4,
+    "lastChapter": 4,
+    "chapterAppearances": [
+      4
+    ],
+    "mentionCount": 7,
+    "dialogueCount": 9,
+    "coCharacters": [
+      "萧炎",
+      "萧薰儿",
+      "萧战",
+      "纳兰嫣然",
+      "云韵",
+      "葛叶",
+      "萧媚",
+      "古河",
+      "英俊青年"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "bd46dd57-d31d-49eb-9042-990ce3cdcc1b",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "墨管家",
+    "aliases": [
+      "青衫老者"
+    ],
+    "description": "萧家老管家，青衫老者，对萧炎和善，对萧炎的处境感到惋惜",
+    "confidence": 0.8,
+    "status": "PENDING",
+    "chapterRef": "3",
+    "firstChapter": 3,
+    "lastChapter": 3,
+    "chapterAppearances": [
+      3
+    ],
+    "mentionCount": 3,
+    "dialogueCount": 4,
+    "coCharacters": [
+      "萧炎",
+      "萧薰儿",
+      "萧战",
+      "萧媚",
+      "纳兰嫣然"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  },
+  {
+    "id": "a1536844-fda1-412e-85c1-261cd5359d18",
+    "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+    "name": "英俊青年",
+    "aliases": [],
+    "description": "随葛叶和纳兰嫣然而来的云岚宗弟子，二十岁左右，英俊挺拔，五星斗者，对纳兰嫣然有意",
+    "confidence": 0.75,
+    "status": "PENDING",
+    "chapterRef": "3",
+    "firstChapter": 3,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      3,
+      4,
+      5,
+      7
+    ],
+    "mentionCount": 1,
+    "dialogueCount": 3,
+    "coCharacters": [
+      "萧炎",
+      "萧战",
+      "纳兰嫣然",
+      "葛叶",
+      "云韵",
+      "纳兰桀"
+    ],
+    "createdAt": "2026-06-30T13:03:42.398Z",
+    "updatedAt": "2026-06-30T13:03:42.398Z"
+  }
+]

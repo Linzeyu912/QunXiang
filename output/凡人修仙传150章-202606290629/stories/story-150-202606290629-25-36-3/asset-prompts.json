@@ -1,0 +1,1786 @@
+{
+  "storyId": "story-150-202606290629-25-36-3",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characterPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "韩立无",
+      "assetName": "韩立无",
+      "prompt": "韩立无，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "此人身材异常高大魁梧，比韩立足足高出两个头来，有着巨灵神样的巨大身板，但因带着斗篷，韩立无法从外面看清楚此人的面貌，只能隐隐约约的觉得此人的面容肯定会是狰狞可怖，丑陋异常。",
+        "”一个令韩立无法置信的数字从墨大夫口中说了出来。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立进",
+      "assetName": "韩立进",
+      "prompt": "韩立进，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "其实也说不上是偷偷的出去，墨大夫对他经常出谷的事情，早已了如指掌，但对此毫不干涉，任由韩立进出自由。",
+        "听到韩立进来的声音，他头也不抬，直接抱怨道："
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立很",
+      "assetName": "韩立很",
+      "prompt": "韩立很，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "韩立很清醒，知道这个问题的回答不但关系到对方一年后的姓命，更是自己此时能否活下来的关键。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "方已",
+      "assetName": "方已",
+      "prompt": "方已，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "而此时的韩立正想加强自身的实力，在得知对方已进入七绝堂进修，便直接提出传授七绝堂绝学的交换要求。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立似乎",
+      "assetName": "韩立似乎",
+      "prompt": "韩立似乎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "听了他的这句玩笑话后，韩立似乎才清醒过来。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ],
+  "scenePrompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-25-36-3-scene-1",
+      "assetName": "开封",
+      "prompt": "开封，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：夜晚；场景描述：开封 scene in \"插柳成 - 吃惊\", shaped by the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：围绕“失败”发生关键变化；可保留人物比例参考：韩立无、韩立进、韩立很、方已、韩立似乎；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "一打开封面，现露出秘籍的第一页，上面白纸黑字，清清楚楚的写着“眨眼剑谱”四个大字。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "location": "开封",
+        "timeHint": "夜晚",
+        "conflictBeat": "围绕“失败”发生关键变化",
+        "involvedCharacters": [
+          "韩立无",
+          "韩立进",
+          "韩立很",
+          "方已",
+          "韩立似乎"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-25-36-3-scene-2",
+      "assetName": "越国岚州",
+      "prompt": "越国岚州，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：夜晚；场景描述：越国岚州 scene in \"插柳成 - 吃惊\", shaped by the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：插柳成；可保留人物比例参考：韩立无、韩立进、韩立很、方已、韩立似乎；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“我墨居仁，早年在越国岚州武林也声名赫赫过，创下不小的名头，赤手空拳的打出一片自己的天地，嘿嘿！"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "location": "越国岚州",
+        "timeHint": "夜晚",
+        "conflictBeat": "插柳成",
+        "involvedCharacters": [
+          "韩立无",
+          "韩立进",
+          "韩立很",
+          "方已",
+          "韩立似乎"
+        ]
+      }
+    }
+  ],
+  "propPrompts": [
+    {
+      "assetType": "prop",
+      "assetId": "药材",
+      "assetName": "药材",
+      "prompt": "药材，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：药材 functions as a other in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”韩立又仔细检查了一遍药草，确定它们和药书上所说的完全一致，真的是已经有了好些年头的珍贵药材。",
+        "“如果照着这种方式来催熟草药，自己岂不是要多少就有多少珍贵药材了吗！",
+        "如果以上两方面都没有什么问题，自己还要确实具体的掌握住这种催生药材的细节和步骤，完全控制住这种不可思议的方法。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "other",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "药材 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "银子",
+      "assetName": "银子",
+      "prompt": "银子，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：money；物品描述：银子 functions as a money in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "而且自己用不了的药草也可以再卖给别人，这样一来多少银子都挣得回来。",
+        "他用这些药材，按照配方调配了不少的珍稀药物，但在配制过程中也发生了不少次的失败，每次的失败都让韩立肉疼了好久，要知道用来制作这些药物的药材，无一不是世上少有的极品材料，失败一次就代表了不知多少的银子打了水漂。",
+        "“对了，听说你家里的父母亲人不少，不知每月送回家的银子还够用吗？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "money",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "银子 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前，韩立看着这些药瓶，脸上也是喜形于色，有了这些灵丹药，他别说练成口诀的第四层，就连第五层、第六层也不会费太多的力气就能练成。",
+        "韩立在丹药配制完成的当天，就开始按照配方上所说的服用方法，分别吃了一颗“黄龙丹”和“金髓丸”。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "other",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "中射出让刀",
+      "assetName": "中射出让刀",
+      "prompt": "中射出让刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：中射出让刀 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他随着自己的描述，眼中射出让刀剑一般锐利的神采，好像又回到了当初意气风发，大权在握的时候。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "中射出让刀 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "连创立此剑",
+      "assetName": "连创立此剑",
+      "prompt": "连创立此剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：连创立此剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "连创立此剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "叫眨眼剑",
+      "assetName": "叫眨眼剑",
+      "prompt": "叫眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：叫眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "叫眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "眨眼剑",
+      "assetName": "眨眼剑",
+      "prompt": "眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。",
+        "第34章 眨眼剑法",
+        "第三十四章 眨眼剑法"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "复了一遍剑",
+      "assetName": "复了一遍剑",
+      "prompt": "复了一遍剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：复了一遍剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”韩立自言自语的重复了一遍剑法的名字。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "复了一遍剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "你说剑",
+      "assetName": "你说剑",
+      "prompt": "你说剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：你说剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“是啊，你说剑法和眨眼有什么关系？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "你说剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "这眨眼剑",
+      "assetName": "这眨眼剑",
+      "prompt": "这眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：这眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“听说，要不是当初创立它的那位长老，曾经挽救过七玄门数次危机，在临终前又立下遗嘱，一定要把这剑法列入七绝堂，这眨眼剑法根本就不可能放入七绝堂绝学之列。",
+        "没问题，要说其它的武功，我是不好给你誊录一份，因为每天都有专人察看、检查，这眨眼剑法却放在角落里根本无人注意。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "这眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "脆我把原剑",
+      "assetName": "脆我把原剑",
+      "prompt": "脆我把原剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：脆我把原剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "不过抄录起来太麻烦，干脆我把原剑谱给你悄悄带出来就是，等你自己默记或誊抄完毕，我再偷偷的放回去，绝对不会有人注意到。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "脆我把原剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "给他抄记剑",
+      "assetName": "给他抄记剑",
+      "prompt": "给他抄记剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：给他抄记剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他本来还有些担心眼前之人丢三落四的恶习，万一给他抄记剑法时，一不小心，漏了几处，他岂不冤枉。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "给他抄记剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "能拿到原剑",
+      "assetName": "能拿到原剑",
+      "prompt": "能拿到原剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：能拿到原剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "现在能拿到原剑谱当然是更好了。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "能拿到原剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "偷拿剑",
+      "assetName": "偷拿剑",
+      "prompt": "偷拿剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：偷拿剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立不再说什么，只是嘱咐他，偷拿剑谱时小心一点，别栽在了上面。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "偷拿剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "于那眨眼剑",
+      "assetName": "于那眨眼剑",
+      "prompt": "于那眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：于那眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他现在只有期望于那眨眼剑法了，希望它会给他带来个惊喜。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "于那眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "我把眨眼剑",
+      "assetName": "我把眨眼剑",
+      "prompt": "我把眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：我把眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "不是你让我把眨眼剑法的剑谱带出来的吗？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "我把眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "这是剑",
+      "assetName": "这是剑",
+      "prompt": "这是剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：这是剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“这是剑谱？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "这是剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "子里的磨刀",
+      "assetName": "子里的磨刀",
+      "prompt": "子里的磨刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：子里的磨刀 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "你不会是错把你院子里的磨刀石放了进去吧。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "子里的磨刀 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "都是眨眼剑",
+      "assetName": "都是眨眼剑",
+      "prompt": "都是眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：都是眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“这不可能，这里足足有近百本书，怎么可能都是眨眼剑谱？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "都是眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    }
+  ],
+  "allPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "韩立无",
+      "assetName": "韩立无",
+      "prompt": "韩立无，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "此人身材异常高大魁梧，比韩立足足高出两个头来，有着巨灵神样的巨大身板，但因带着斗篷，韩立无法从外面看清楚此人的面貌，只能隐隐约约的觉得此人的面容肯定会是狰狞可怖，丑陋异常。",
+        "”一个令韩立无法置信的数字从墨大夫口中说了出来。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立进",
+      "assetName": "韩立进",
+      "prompt": "韩立进，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "其实也说不上是偷偷的出去，墨大夫对他经常出谷的事情，早已了如指掌，但对此毫不干涉，任由韩立进出自由。",
+        "听到韩立进来的声音，他头也不抬，直接抱怨道："
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立很",
+      "assetName": "韩立很",
+      "prompt": "韩立很，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "韩立很清醒，知道这个问题的回答不但关系到对方一年后的姓命，更是自己此时能否活下来的关键。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "方已",
+      "assetName": "方已",
+      "prompt": "方已，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "而此时的韩立正想加强自身的实力，在得知对方已进入七绝堂进修，便直接提出传授七绝堂绝学的交换要求。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立似乎",
+      "assetName": "韩立似乎",
+      "prompt": "韩立似乎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "听了他的这句玩笑话后，韩立似乎才清醒过来。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-25-36-3-scene-1",
+      "assetName": "开封",
+      "prompt": "开封，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：夜晚；场景描述：开封 scene in \"插柳成 - 吃惊\", shaped by the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：围绕“失败”发生关键变化；可保留人物比例参考：韩立无、韩立进、韩立很、方已、韩立似乎；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "一打开封面，现露出秘籍的第一页，上面白纸黑字，清清楚楚的写着“眨眼剑谱”四个大字。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "location": "开封",
+        "timeHint": "夜晚",
+        "conflictBeat": "围绕“失败”发生关键变化",
+        "involvedCharacters": [
+          "韩立无",
+          "韩立进",
+          "韩立很",
+          "方已",
+          "韩立似乎"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-25-36-3-scene-2",
+      "assetName": "越国岚州",
+      "prompt": "越国岚州，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：夜晚；场景描述：越国岚州 scene in \"插柳成 - 吃惊\", shaped by the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：插柳成；可保留人物比例参考：韩立无、韩立进、韩立很、方已、韩立似乎；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“我墨居仁，早年在越国岚州武林也声名赫赫过，创下不小的名头，赤手空拳的打出一片自己的天地，嘿嘿！"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "location": "越国岚州",
+        "timeHint": "夜晚",
+        "conflictBeat": "插柳成",
+        "involvedCharacters": [
+          "韩立无",
+          "韩立进",
+          "韩立很",
+          "方已",
+          "韩立似乎"
+        ]
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "药材",
+      "assetName": "药材",
+      "prompt": "药材，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：药材 functions as a other in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”韩立又仔细检查了一遍药草，确定它们和药书上所说的完全一致，真的是已经有了好些年头的珍贵药材。",
+        "“如果照着这种方式来催熟草药，自己岂不是要多少就有多少珍贵药材了吗！",
+        "如果以上两方面都没有什么问题，自己还要确实具体的掌握住这种催生药材的细节和步骤，完全控制住这种不可思议的方法。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "other",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "药材 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "银子",
+      "assetName": "银子",
+      "prompt": "银子，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：money；物品描述：银子 functions as a money in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "而且自己用不了的药草也可以再卖给别人，这样一来多少银子都挣得回来。",
+        "他用这些药材，按照配方调配了不少的珍稀药物，但在配制过程中也发生了不少次的失败，每次的失败都让韩立肉疼了好久，要知道用来制作这些药物的药材，无一不是世上少有的极品材料，失败一次就代表了不知多少的银子打了水漂。",
+        "“对了，听说你家里的父母亲人不少，不知每月送回家的银子还够用吗？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "money",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "银子 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前，韩立看着这些药瓶，脸上也是喜形于色，有了这些灵丹药，他别说练成口诀的第四层，就连第五层、第六层也不会费太多的力气就能练成。",
+        "韩立在丹药配制完成的当天，就开始按照配方上所说的服用方法，分别吃了一颗“黄龙丹”和“金髓丸”。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "other",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "中射出让刀",
+      "assetName": "中射出让刀",
+      "prompt": "中射出让刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：中射出让刀 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他随着自己的描述，眼中射出让刀剑一般锐利的神采，好像又回到了当初意气风发，大权在握的时候。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "中射出让刀 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "连创立此剑",
+      "assetName": "连创立此剑",
+      "prompt": "连创立此剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：连创立此剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "连创立此剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "叫眨眼剑",
+      "assetName": "叫眨眼剑",
+      "prompt": "叫眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：叫眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "叫眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "眨眼剑",
+      "assetName": "眨眼剑",
+      "prompt": "眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。",
+        "第34章 眨眼剑法",
+        "第三十四章 眨眼剑法"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "复了一遍剑",
+      "assetName": "复了一遍剑",
+      "prompt": "复了一遍剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：复了一遍剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”韩立自言自语的重复了一遍剑法的名字。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "复了一遍剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "你说剑",
+      "assetName": "你说剑",
+      "prompt": "你说剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：你说剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“是啊，你说剑法和眨眼有什么关系？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "你说剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "这眨眼剑",
+      "assetName": "这眨眼剑",
+      "prompt": "这眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：这眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“听说，要不是当初创立它的那位长老，曾经挽救过七玄门数次危机，在临终前又立下遗嘱，一定要把这剑法列入七绝堂，这眨眼剑法根本就不可能放入七绝堂绝学之列。",
+        "没问题，要说其它的武功，我是不好给你誊录一份，因为每天都有专人察看、检查，这眨眼剑法却放在角落里根本无人注意。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "这眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "脆我把原剑",
+      "assetName": "脆我把原剑",
+      "prompt": "脆我把原剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：脆我把原剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "不过抄录起来太麻烦，干脆我把原剑谱给你悄悄带出来就是，等你自己默记或誊抄完毕，我再偷偷的放回去，绝对不会有人注意到。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "脆我把原剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "给他抄记剑",
+      "assetName": "给他抄记剑",
+      "prompt": "给他抄记剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：给他抄记剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他本来还有些担心眼前之人丢三落四的恶习，万一给他抄记剑法时，一不小心，漏了几处，他岂不冤枉。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "给他抄记剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "能拿到原剑",
+      "assetName": "能拿到原剑",
+      "prompt": "能拿到原剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：能拿到原剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "现在能拿到原剑谱当然是更好了。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "能拿到原剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "偷拿剑",
+      "assetName": "偷拿剑",
+      "prompt": "偷拿剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：偷拿剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立不再说什么，只是嘱咐他，偷拿剑谱时小心一点，别栽在了上面。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "偷拿剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "于那眨眼剑",
+      "assetName": "于那眨眼剑",
+      "prompt": "于那眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：于那眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他现在只有期望于那眨眼剑法了，希望它会给他带来个惊喜。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "于那眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "我把眨眼剑",
+      "assetName": "我把眨眼剑",
+      "prompt": "我把眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：我把眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "不是你让我把眨眼剑法的剑谱带出来的吗？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "我把眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "这是剑",
+      "assetName": "这是剑",
+      "prompt": "这是剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：这是剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“这是剑谱？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "这是剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "子里的磨刀",
+      "assetName": "子里的磨刀",
+      "prompt": "子里的磨刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：子里的磨刀 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "你不会是错把你院子里的磨刀石放了进去吧。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "子里的磨刀 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "都是眨眼剑",
+      "assetName": "都是眨眼剑",
+      "prompt": "都是眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：都是眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：韩立无；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“这不可能，这里足足有近百本书，怎么可能都是眨眼剑谱？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "propType": "weapon",
+        "ownerOrHolder": "韩立无",
+        "storyFunction": "都是眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    }
+  ]
+}

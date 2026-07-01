@@ -1,0 +1,46 @@
+{
+  "storyId": "story-150-202606290629-61-72-6",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "scenes": [
+    {
+      "id": "story-150-202606290629-61-72-6-scene-1",
+      "name": "神灭 - 拔毒 - 未指定场景",
+      "location": "未指定场景",
+      "sourceRange": "chapters 61-72",
+      "summary": "马门主在“神灭 - 拔毒”中经历神灭、交易、真容。",
+      "conflictBeat": "神灭",
+      "involvedCharacters": [
+        "马门主",
+        "李氏",
+        "马荣",
+        "张袖儿",
+        "韩立见",
+        "平常"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"神灭 - 拔毒\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 马门主必须应对神灭带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "马门主在“神灭 - 拔毒”中经历神灭、交易、真容。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    }
+  ]
+}

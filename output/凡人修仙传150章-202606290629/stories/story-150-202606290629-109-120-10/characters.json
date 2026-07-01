@@ -1,0 +1,250 @@
+{
+  "storyId": "story-150-202606290629-109-120-10",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "严氏等",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "严氏等 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "严氏等所有人都做完了自己应该做的事后，就拿起茶杯轻轻摇晃起来，结果杯内原本五颜六色的液体，竟在轻轻晃动中变得清澈透明。",
+        "屋内很安静，人数也不多，只有严氏等寥寥数人的呼吸和心跳声，看来并没有不应该出的人在里面，这就让韩立放心了许多。",
+        "严氏等几位丽妇人此时全都穿白挂素，一身的缟素孝服，端坐在几张椅子上，正冷眼直盯着他不放。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "严氏等 appears in \"登门 - 定计夺帮\" as a protagonist tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：脸色开始时是愕然、脸色更是大变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "严氏等，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：脸色开始时是愕然、脸色更是大变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "严氏等所有人都做完了自己应该做的事后，就拿起茶杯轻轻摇晃起来，结果杯内原本五颜六色的液体，竟在轻轻晃动中变得清澈透明。",
+        "屋内很安静，人数也不多，只有严氏等寥寥数人的呼吸和心跳声，看来并没有不应该出的人在里面，这就让韩立放心了许多。",
+        "严氏等几位丽妇人此时全都穿白挂素，一身的缟素孝服，端坐在几张椅子上，正冷眼直盯着他不放。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "凤舞",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "凤舞 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "“不过也幸好指名的是你大姐，如果他要求嫁的人是你或凤舞的话，我还真不知该怎么办才好！",
+        "要知道凭你和凤舞的脾气，怎么能忍耐和此人虚伪应付啊！",
+        "“对了，二姐凤舞配出了一副提神养颜的灵药，让我给你带来了，娘你可以试用一下，听说效果很好啊！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "凤舞 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "凤舞，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“不过也幸好指名的是你大姐，如果他要求嫁的人是你或凤舞的话，我还真不知该怎么办才好！",
+        "要知道凭你和凤舞的脾气，怎么能忍耐和此人虚伪应付啊！",
+        "“对了，二姐凤舞配出了一副提神养颜的灵药，让我给你带来了，娘你可以试用一下，听说效果很好啊！"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "韩立闻",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立闻 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "韩立闻言二话不说，拿出早已准备好的书信，双手递给了对方。",
+        "韩立闻听此言后，偷看了严氏一眼，只见严氏一只手按着眉头，一脸的无奈，看来她对那个妩媚声音的主人，也大感头痛。",
+        "韩立闻言愣了半天，然后就木然无语，他现在突然有种吐血三碗的感觉。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立闻 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立闻，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "韩立闻言二话不说，拿出早已准备好的书信，双手递给了对方。",
+        "韩立闻听此言后，偷看了严氏一眼，只见严氏一只手按着眉头，一脸的无奈，看来她对那个妩媚声音的主人，也大感头痛。",
+        "韩立闻言愣了半天，然后就木然无语，他现在突然有种吐血三碗的感觉。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "韩立打",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立打 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "韩立打量完后，才走上前去对着严氏施了一礼。",
+        "韩立打定了主意，既然已无法从墨府骗到宝玉，那为了身上的阴毒，也只有采取强硬手段了。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立打 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立打，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "韩立打量完后，才走上前去对着严氏施了一礼。",
+        "韩立打定了主意，既然已无法从墨府骗到宝玉，那为了身上的阴毒，也只有采取强硬手段了。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "谢公子",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "谢公子 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "“多谢公子了！",
+        "“多谢公子厚爱，小人一定对公子肝脑涂地！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "谢公子 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "谢公子，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“多谢公子了！",
+        "“多谢公子厚爱，小人一定对公子肝脑涂地！"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "韩公子",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩公子 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "“韩公子不是修仙者吗？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩公子 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩公子，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“韩公子不是修仙者吗？"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    }
+  ]
+}

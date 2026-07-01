@@ -1,0 +1,412 @@
+[
+  {
+    "name": "黑色古戒",
+    "aliases": [
+      "戒指",
+      "古朴戒指",
+      "黑色戒指"
+    ],
+    "description": "萧炎母亲遗物，内藏神秘灵魂体药老。曾自动吸取萧炎三年斗之气，导致其实力倒退。是药老的栖身之所。",
+    "confidence": 1,
+    "firstChapter": 1,
+    "lastChapter": 90,
+    "chapterAppearances": [
+      1,
+      2,
+      3,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      26,
+      27,
+      28,
+      45,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90
+    ]
+  },
+  {
+    "name": "聚气散",
+    "aliases": [],
+    "description": "二品丹药，能让九段斗之气者百分之百成功凝聚斗之气旋，成为斗者。由丹王古河炼制，被云岚宗作为赔礼送给萧家。",
+    "confidence": 1,
+    "firstChapter": 5,
+    "lastChapter": 77,
+    "chapterAppearances": [
+      5,
+      6,
+      53,
+      54,
+      60,
+      64,
+      65,
+      77
+    ]
+  },
+  {
+    "name": "筑基灵液",
+    "aliases": [
+      "灵液"
+    ],
+    "description": "药老独创的辅助修炼药液，可温和提升斗之气修炼速度。需配合木属性魔晶、紫叶兰草、洗骨花炼制。萧炎多次用其泡澡修炼。",
+    "confidence": 1,
+    "firstChapter": 15,
+    "lastChapter": 60,
+    "chapterAppearances": [
+      15,
+      19,
+      20,
+      25,
+      27,
+      29,
+      32,
+      36,
+      38,
+      54,
+      55,
+      57,
+      58,
+      59,
+      60
+    ]
+  },
+  {
+    "name": "吸掌",
+    "aliases": [],
+    "description": "玄阶低级斗技，记载于一块黑铁片中。炼至大成可吸千斤巨石，对敌时能产生强大吸力，甚至可强行扯出血液。萧炎从坊市购得。",
+    "confidence": 1,
+    "firstChapter": 14,
+    "lastChapter": 86,
+    "chapterAppearances": [
+      14,
+      15,
+      28,
+      62,
+      86
+    ]
+  },
+  {
+    "name": "八极崩",
+    "aliases": [],
+    "description": "玄阶高级斗技，近身攻击型，以攻击力强横著称，炼至大成攻击暗含八重劲气，威力堪比地阶低级。由药老传授给萧炎。",
+    "confidence": 1,
+    "firstChapter": 18,
+    "lastChapter": 87,
+    "chapterAppearances": [
+      18,
+      19,
+      26,
+      86,
+      87
+    ]
+  },
+  {
+    "name": "吹火掌",
+    "aliases": [],
+    "description": "玄阶低级斗技，可造出强大风压。与“吸掌”配合使用，可增强“吸掌”的攻击力。由药老传授给萧炎。",
+    "confidence": 0.75,
+    "firstChapter": 28,
+    "lastChapter": 28,
+    "chapterAppearances": [
+      28
+    ]
+  },
+  {
+    "name": "木灵手链",
+    "aliases": [],
+    "description": "加列奥打算送给薰儿的手链，以金蓝铁为材质，镶嵌一级木属性魔晶，对斗之气的回复有增幅作用。后被萧炎用普通手链替换掉。",
+    "confidence": 0.65,
+    "firstChapter": 12,
+    "lastChapter": 12,
+    "chapterAppearances": [
+      12
+    ]
+  },
+  {
+    "name": "风卷决",
+    "aliases": [],
+    "description": "玄阶高级风属性功法卷轴，在特米尔拍卖场拍卖，最终被加列家族族长加列毕以五十五万金币拍得。",
+    "confidence": 0.9,
+    "firstChapter": 23,
+    "lastChapter": 86,
+    "chapterAppearances": [
+      23,
+      86
+    ]
+  },
+  {
+    "name": "狂狮怒罡",
+    "aliases": [],
+    "description": "萧家顶级功法，风属性，玄阶中级。只有族长及少数长老有资格修炼，萧战曾施展。",
+    "confidence": 0.7,
+    "firstChapter": 5,
+    "lastChapter": 5,
+    "chapterAppearances": [
+      5
+    ]
+  },
+  {
+    "name": "青木剑诀",
+    "aliases": [],
+    "description": "云岚宗高深功法，玄阶低级。葛叶在与萧战对峙时使用。",
+    "confidence": 0.6,
+    "firstChapter": 5,
+    "lastChapter": 5,
+    "chapterAppearances": [
+      5
+    ]
+  },
+  {
+    "name": "增气散",
+    "aliases": [],
+    "description": "二品丹药，能让服用者短时间内拥有斗者实力，但副作用是之后一个月无法行动。萧玉曾给萧宁在比试中使用。",
+    "confidence": 1,
+    "firstChapter": 41,
+    "lastChapter": 43,
+    "chapterAppearances": [
+      41,
+      42,
+      43
+    ]
+  },
+  {
+    "name": "炼火焚",
+    "aliases": [
+      "炼火焚功法",
+      "暗红色卷轴"
+    ],
+    "description": "黄阶高级火属性功法，萧家顶尖功法之一，由萧炎在斗气阁中获得。",
+    "confidence": 1,
+    "firstChapter": 49,
+    "lastChapter": 51,
+    "chapterAppearances": [
+      49,
+      50,
+      51
+    ]
+  },
+  {
+    "name": "弄炎决",
+    "aliases": [],
+    "description": "玄阶高级功法，薰儿曾拿出来想给萧炎，但被拒绝。",
+    "confidence": 0.9,
+    "firstChapter": 49,
+    "lastChapter": 49,
+    "chapterAppearances": [
+      49
+    ]
+  },
+  {
+    "name": "黑石测验碑",
+    "aliases": [
+      "黑石碑",
+      "石碑",
+      "测验碑"
+    ],
+    "description": "用于测试斗之气等级的仪器，在测验和成人仪式中多次使用。",
+    "confidence": 1,
+    "firstChapter": 31,
+    "lastChapter": 40,
+    "chapterAppearances": [
+      31,
+      32,
+      33,
+      39,
+      40
+    ]
+  },
+  {
+    "name": "骨灵冷火",
+    "aliases": [],
+    "description": "药老拥有的异火，异火榜排名第十一位，森白色，炼药和对敌威力强大。",
+    "confidence": 1,
+    "firstChapter": 63,
+    "lastChapter": 68,
+    "chapterAppearances": [
+      63,
+      64,
+      65,
+      66,
+      67,
+      68
+    ]
+  },
+  {
+    "name": "焚决",
+    "aliases": [],
+    "description": "功法，可进化，需吞噬异火提升等级，危险率高，但潜力巨大。",
+    "confidence": 1,
+    "firstChapter": 66,
+    "lastChapter": 68,
+    "chapterAppearances": [
+      66,
+      67,
+      68
+    ]
+  },
+  {
+    "name": "凝血散",
+    "aliases": [],
+    "description": "萧炎炼制的疗伤药，比回春散药力更强，帮助萧家在疗伤药市场竞争。",
+    "confidence": 1,
+    "firstChapter": 73,
+    "lastChapter": 85,
+    "chapterAppearances": [
+      73,
+      74,
+      75,
+      76,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85
+    ]
+  },
+  {
+    "name": "回春散",
+    "aliases": [],
+    "description": "加列家族的疗伤药，由柳席炼制，价格低廉但药力较弱。",
+    "confidence": 1,
+    "firstChapter": 69,
+    "lastChapter": 84,
+    "chapterAppearances": [
+      69,
+      70,
+      71,
+      79,
+      80,
+      81,
+      84
+    ]
+  },
+  {
+    "name": "纳戒",
+    "aliases": [
+      "淡红色戒指"
+    ],
+    "description": "储物戒指，由纳石制造，内有小空间可存放物品，价格昂贵。",
+    "confidence": 1,
+    "firstChapter": 70,
+    "lastChapter": 100,
+    "chapterAppearances": [
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      100
+    ]
+  },
+  {
+    "name": "异火榜",
+    "aliases": [],
+    "description": "斗气大陆炼药界编制的天地异火排名，共二十三种，骨灵冷火排名第十一位。",
+    "confidence": 1,
+    "firstChapter": 63,
+    "lastChapter": 68,
+    "chapterAppearances": [
+      63,
+      68
+    ]
+  },
+  {
+    "name": "养气散",
+    "aliases": [],
+    "description": "药老给薰儿的丹药，用于恢复状态",
+    "confidence": 1,
+    "firstChapter": 91,
+    "lastChapter": 91,
+    "chapterAppearances": [
+      91
+    ]
+  },
+  {
+    "name": "疗伤药",
+    "aliases": [],
+    "description": "萧家和加列家族竞争的产品，萧炎炼制的凝血散等",
+    "confidence": 1,
+    "firstChapter": 92,
+    "lastChapter": 96,
+    "chapterAppearances": [
+      92,
+      95,
+      96
+    ]
+  },
+  {
+    "name": "测验水晶",
+    "aliases": [],
+    "description": "用于迦南学院招生测验，检测斗之气",
+    "confidence": 0.8,
+    "firstChapter": 98,
+    "lastChapter": 98,
+    "chapterAppearances": [
+      98
+    ]
+  },
+  {
+    "name": "碧绿色牌子",
+    "aliases": [],
+    "description": "萧玉用来通过检查的牌子",
+    "confidence": 0.7,
+    "firstChapter": 97,
+    "lastChapter": 97,
+    "chapterAppearances": [
+      97
+    ]
+  }
+]

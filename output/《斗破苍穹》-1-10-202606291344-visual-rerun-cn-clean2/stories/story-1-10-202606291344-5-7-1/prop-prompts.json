@@ -1,0 +1,155 @@
+{
+  "storyId": "story-1-10-202606291344-5-7-1",
+  "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+  "prompts": [
+    {
+      "assetType": "prop",
+      "assetId": "聚气散",
+      "assetName": "聚气散",
+      "prompt": "聚气散，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：聚气散 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "第5章 聚气散",
+        "第5章 聚气散",
+        "三位长老好奇的伸过头，望着玉匣子内，身体猛的一震，惊声道：“聚气散？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-5-7-1",
+        "propType": "other",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "青木剑",
+      "assetName": "青木剑",
+      "prompt": "青木剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：青木剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "云岚宗高深功法，青木剑诀！"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-5-7-1",
+        "propType": "weapon",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "青木剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "戒指",
+      "assetName": "戒指",
+      "prompt": "戒指，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：戒指 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "说着，葛叶伸手抹了抹手指上的一枚戒指，一只通体泛绿的古玉盒子在手中凭空出现……",
+        "葛叶手掌向后一探，稳稳的抓住匣子，苦笑了一声，将之收进了戒指内。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-5-7-1",
+        "propType": "other",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "炼药师，顾名思义，他们能够炼制出种种提升实力的神奇丹药，任何一名炼药师，都将会被各方势力不惜代价，竭力拉拢，身份地位显赫之极！",
+        "炼制丹药，最重要的三种条件：材料，火种，灵魂感知力！",
+        "火种，也就是炼药时所需要的火焰，炼制丹药，不可能用普通火，而必须使用由火属性斗气催化而出的斗气火焰，当然，世间充斥着天地异火，一些实力强横的炼药师，也会取而用之，用这些异火来炼药，不仅成功率会高上许多！"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-5-7-1",
+        "propType": "other",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "长剑",
+      "assetName": "长剑",
+      "prompt": "长剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：长剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“啊……”被少年狰狞模样吓了一跳，少女急忙后退一步，一旁的那位英俊青年，豁然的拔出长剑，目光阴冷的直指萧炎。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-5-7-1",
+        "propType": "weapon",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "长剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "短剑",
+      "assetName": "短剑",
+      "prompt": "短剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：短剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎右手骤然抽出桌上的短剑，锋利的剑刃，在左手掌之上，猛然划出一道血口……"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-5-7-1",
+        "propType": "weapon",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "短剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    }
+  ]
+}

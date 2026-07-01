@@ -1,0 +1,33 @@
+{
+  "storyId": "story-100-202606230638-88-88-6",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "scenes": [
+    {
+      "id": "story-100-202606230638-88-88-6-scene-1",
+      "name": "戒指秘密 - 未指定场景",
+      "location": "未指定场景",
+      "timeHint": "白天",
+      "sourceRange": "chapters 88-88",
+      "summary": "萧炎卷入“戒指秘密”：药老从戒指中现身、上的漆黑戒指、柳席的炼药。",
+      "conflictBeat": "药老从戒指中现身",
+      "involvedCharacters": [
+        "萧炎",
+        "药老",
+        "萧战"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"戒指秘密\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 药老从戒指中现身, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "萧炎卷入“戒指秘密”：药老从戒指中现身、上的漆黑戒指、柳席的炼药。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88"
+    }
+  ]
+}

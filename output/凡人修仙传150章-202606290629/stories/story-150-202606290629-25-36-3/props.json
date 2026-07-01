@@ -1,0 +1,687 @@
+{
+  "storyId": "story-150-202606290629-25-36-3",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "props": [
+    {
+      "name": "药材",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "药材 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "”韩立又仔细检查了一遍药草，确定它们和药书上所说的完全一致，真的是已经有了好些年头的珍贵药材。",
+        "“如果照着这种方式来催熟草药，自己岂不是要多少就有多少珍贵药材了吗！",
+        "如果以上两方面都没有什么问题，自己还要确实具体的掌握住这种催生药材的细节和步骤，完全控制住这种不可思议的方法。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "药材 functions as a other in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "药材, prop type: other, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "”韩立又仔细检查了一遍药草，确定它们和药书上所说的完全一致，真的是已经有了好些年头的珍贵药材。",
+        "“如果照着这种方式来催熟草药，自己岂不是要多少就有多少珍贵药材了吗！",
+        "如果以上两方面都没有什么问题，自己还要确实具体的掌握住这种催生药材的细节和步骤，完全控制住这种不可思议的方法。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "银子",
+      "aliases": [],
+      "propType": "money",
+      "storyFunction": "银子 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "而且自己用不了的药草也可以再卖给别人，这样一来多少银子都挣得回来。",
+        "他用这些药材，按照配方调配了不少的珍稀药物，但在配制过程中也发生了不少次的失败，每次的失败都让韩立肉疼了好久，要知道用来制作这些药物的药材，无一不是世上少有的极品材料，失败一次就代表了不知多少的银子打了水漂。",
+        "“对了，听说你家里的父母亲人不少，不知每月送回家的银子还够用吗？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "银子 functions as a money in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "银子, prop type: money, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "而且自己用不了的药草也可以再卖给别人，这样一来多少银子都挣得回来。",
+        "他用这些药材，按照配方调配了不少的珍稀药物，但在配制过程中也发生了不少次的失败，每次的失败都让韩立肉疼了好久，要知道用来制作这些药物的药材，无一不是世上少有的极品材料，失败一次就代表了不知多少的银子打了水漂。",
+        "“对了，听说你家里的父母亲人不少，不知每月送回家的银子还够用吗？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "丹药",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前，韩立看着这些药瓶，脸上也是喜形于色，有了这些灵丹药，他别说练成口诀的第四层，就连第五层、第六层也不会费太多的力气就能练成。",
+        "韩立在丹药配制完成的当天，就开始按照配方上所说的服用方法，分别吃了一颗“黄龙丹”和“金髓丸”。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "丹药 functions as a other in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "丹药, prop type: other, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前，韩立看着这些药瓶，脸上也是喜形于色，有了这些灵丹药，他别说练成口诀的第四层，就连第五层、第六层也不会费太多的力气就能练成。",
+        "韩立在丹药配制完成的当天，就开始按照配方上所说的服用方法，分别吃了一颗“黄龙丹”和“金髓丸”。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "中射出让刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "中射出让刀 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "他随着自己的描述，眼中射出让刀剑一般锐利的神采，好像又回到了当初意气风发，大权在握的时候。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "中射出让刀 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "中射出让刀, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他随着自己的描述，眼中射出让刀剑一般锐利的神采，好像又回到了当初意气风发，大权在握的时候。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "连创立此剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "连创立此剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "连创立此剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "连创立此剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "叫眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "叫眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "叫眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "叫眨眼剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。",
+        "第34章 眨眼剑法",
+        "第三十四章 眨眼剑法"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "眨眼剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“不过这剑法在七绝堂内放了上百年，还从来没人修炼成功过，据说连创立此剑法的那位长老，也没有练成就过世了，这剑法的名字也古怪，叫眨眼剑法。",
+        "第34章 眨眼剑法",
+        "第三十四章 眨眼剑法"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "复了一遍剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "复了一遍剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "”韩立自言自语的重复了一遍剑法的名字。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "复了一遍剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "复了一遍剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "”韩立自言自语的重复了一遍剑法的名字。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "你说剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "你说剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "“是啊，你说剑法和眨眼有什么关系？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "你说剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "你说剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“是啊，你说剑法和眨眼有什么关系？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "这眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "这眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "“听说，要不是当初创立它的那位长老，曾经挽救过七玄门数次危机，在临终前又立下遗嘱，一定要把这剑法列入七绝堂，这眨眼剑法根本就不可能放入七绝堂绝学之列。",
+        "没问题，要说其它的武功，我是不好给你誊录一份，因为每天都有专人察看、检查，这眨眼剑法却放在角落里根本无人注意。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "这眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "这眨眼剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“听说，要不是当初创立它的那位长老，曾经挽救过七玄门数次危机，在临终前又立下遗嘱，一定要把这剑法列入七绝堂，这眨眼剑法根本就不可能放入七绝堂绝学之列。",
+        "没问题，要说其它的武功，我是不好给你誊录一份，因为每天都有专人察看、检查，这眨眼剑法却放在角落里根本无人注意。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "脆我把原剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "脆我把原剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "不过抄录起来太麻烦，干脆我把原剑谱给你悄悄带出来就是，等你自己默记或誊抄完毕，我再偷偷的放回去，绝对不会有人注意到。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "脆我把原剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "脆我把原剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "不过抄录起来太麻烦，干脆我把原剑谱给你悄悄带出来就是，等你自己默记或誊抄完毕，我再偷偷的放回去，绝对不会有人注意到。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "给他抄记剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "给他抄记剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "他本来还有些担心眼前之人丢三落四的恶习，万一给他抄记剑法时，一不小心，漏了几处，他岂不冤枉。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "给他抄记剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "给他抄记剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他本来还有些担心眼前之人丢三落四的恶习，万一给他抄记剑法时，一不小心，漏了几处，他岂不冤枉。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "能拿到原剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "能拿到原剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "现在能拿到原剑谱当然是更好了。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "能拿到原剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "能拿到原剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "现在能拿到原剑谱当然是更好了。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "偷拿剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "偷拿剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "韩立不再说什么，只是嘱咐他，偷拿剑谱时小心一点，别栽在了上面。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "偷拿剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "偷拿剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立不再说什么，只是嘱咐他，偷拿剑谱时小心一点，别栽在了上面。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "于那眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "于那眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "他现在只有期望于那眨眼剑法了，希望它会给他带来个惊喜。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "于那眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "于那眨眼剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他现在只有期望于那眨眼剑法了，希望它会给他带来个惊喜。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "我把眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "我把眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "不是你让我把眨眼剑法的剑谱带出来的吗？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "我把眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "我把眨眼剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "不是你让我把眨眼剑法的剑谱带出来的吗？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "这是剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "这是剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "“这是剑谱？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "这是剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "这是剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“这是剑谱？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "子里的磨刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "子里的磨刀 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "你不会是错把你院子里的磨刀石放了进去吧。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "子里的磨刀 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "子里的磨刀, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "你不会是错把你院子里的磨刀石放了进去吧。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "都是眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "都是眨眼剑 supports, reveals, or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立无",
+      "firstAppearance": "chapters 25-36",
+      "keyMoments": [
+        "“这不可能，这里足足有近百本书，怎么可能都是眨眼剑谱？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "都是眨眼剑 functions as a weapon in \"插柳成 - 吃惊\", connected to: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "都是眨眼剑, prop type: weapon, story function: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“这不可能，这里足足有近百本书，怎么可能都是眨眼剑谱？"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    }
+  ]
+}

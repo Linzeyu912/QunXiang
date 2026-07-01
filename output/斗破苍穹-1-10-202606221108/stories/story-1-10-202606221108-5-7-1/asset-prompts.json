@@ -1,0 +1,862 @@
+{
+  "storyId": "story-1-10-202606221108-5-7-1",
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "characterPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "纳兰嫣然",
+      "assetName": "纳兰嫣然",
+      "prompt": "纳兰嫣然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：当下气得小脸有些铁青、小脸微沉的道、也不理会那俏脸冰寒的纳兰嫣然\n- 饰物/随身特征：手指紧张的绞在了一起\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "手指紧张的绞在了一起。",
+        "当下气得小脸有些铁青，",
+        "小脸微沉的道。",
+        "也不理会那俏脸冰寒的纳兰嫣然，"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：当下气得小脸有些铁青、小脸微沉的道、也不理会那俏脸冰寒的纳兰嫣然\n- 饰物/随身特征：手指紧张的绞在了一起\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上、小脸冷肃\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上。",
+        "小脸冷肃，"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上、小脸冷肃\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧战",
+      "assetName": "萧战",
+      "prompt": "萧战，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：萧战脸色淡漠的望着低头不言的纳兰嫣然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧战脸色淡漠的望着低头不言的纳兰嫣然，"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：萧战脸色淡漠的望着低头不言的纳兰嫣然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "葛叶",
+      "assetName": "葛叶",
+      "prompt": "葛叶，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：脸庞上的表情、葛叶脸色忽然出现了一抹尴尬、惊恐的神色顷刻间覆盖了那苍老的面孔\n- 神情/气质：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 年龄/身份视觉线索：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 饰物/随身特征：葛叶伸手抹了抹手指上的一枚戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "脸庞上的表情，",
+        "葛叶脸色忽然出现了一抹尴尬，",
+        "葛叶伸手抹了抹手指上的一枚戒指，",
+        "惊恐的神色顷刻间覆盖了那苍老的面孔，"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：脸庞上的表情、葛叶脸色忽然出现了一抹尴尬、惊恐的神色顷刻间覆盖了那苍老的面孔\n- 神情/气质：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 年龄/身份视觉线索：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 饰物/随身特征：葛叶伸手抹了抹手指上的一枚戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰侄女",
+      "assetName": "纳兰侄女",
+      "prompt": "纳兰侄女，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "”萧战先是一怔，紧接着满脸大喜，想必是记起了当年的那事，当下，急忙对着少女露出温和的笑容：“原来是纳兰侄女，萧叔叔可有好多年未曾与你见面了，可别怪罪叔叔眼拙。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "葛叶说是与纳兰侄女有关，难道？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰小姐",
+      "assetName": "纳兰小姐",
+      "prompt": "纳兰小姐，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "压下心中的疑问，萧炎大步行上，先是对着萧战恭敬的行了一礼，然后转过身面对着纳兰嫣然，深吐了一口气，平静的出言问道：“纳兰小姐，我想请问一下，今日悔婚之事，纳兰老爷子，可曾答应？",
+        "听着少女宛如神灵般的审判，萧炎嘴角溢出一抹冷笑：“纳兰小姐……你应该知道，在斗气大陆，女方悔婚会让对方有多难堪，呵呵，我脸皮厚，倒是没什么，可我的父亲！",
+        "“纳兰小姐，你又不是不清楚炎儿的状况，你让他拿什么和你挑战？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "云韵",
+      "assetName": "云韵",
+      "prompt": "云韵，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "当年纳兰嫣然被云韵收为弟子之时，年仅十岁，在云岚宗中修炼了五年时间，所谓女大十八变，好多年未见，萧战自然不知道面前的少女，便是自己名义上的儿媳妇。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "脸色微微一变，萧战也是收敛了笑容，云岚宗宗主云韵可是加玛帝国的大人物，他这小小的一族之长，可是半点都遭惹不起，可以她的实力与势力，又有何事需要萧家帮忙？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "古河",
+      "assetName": "古河",
+      "prompt": "古河，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“呵呵，这是本宗名誉长老古河大人亲自所炼，想必各位也听过他老人家的名讳吧？",
+        "“此药竟然还是出自丹王古河之手？",
+        "丹王古河，在加玛帝国中影响力极其庞大，一手炼药之术，神奇莫测，无数强者想对其巴结逢迎，都是无路可寻。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰老爷",
+      "assetName": "纳兰老爷",
+      "prompt": "纳兰老爷，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "纳兰老爷子的孙女纳兰嫣然？",
+        "压下心中的疑问，萧炎大步行上，先是对着萧战恭敬的行了一礼，然后转过身面对着纳兰嫣然，深吐了一口气，平静的出言问道：“纳兰小姐，我想请问一下，今日悔婚之事，纳兰老爷子，可曾答应？",
+        "“纳兰小姐，看在纳兰老爷子的面上，萧炎奉劝你几句话，三十年河东，三十年河西，莫欺少年穷！"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ],
+  "scenePrompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606221108-5-7-1-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"退婚冲突\" with insufficient location detail.；冲突氛围：葛叶提出退婚请求；可保留人物比例参考：纳兰嫣然、萧炎、萧战、葛叶、纳兰侄女、纳兰小姐、云韵、古河、纳兰老爷；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "纳兰嫣然卷入“退婚冲突”：葛叶提出退婚请求、葛叶拿出聚气散、萧炎拒绝解除婚约。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "location": "未指定场景",
+        "conflictBeat": "葛叶提出退婚请求",
+        "involvedCharacters": [
+          "纳兰嫣然",
+          "萧炎",
+          "萧战",
+          "葛叶",
+          "纳兰侄女",
+          "纳兰小姐",
+          "云韵",
+          "古河",
+          "纳兰老爷"
+        ]
+      }
+    }
+  ],
+  "propPrompts": [
+    {
+      "assetType": "prop",
+      "assetId": "聚气散",
+      "assetName": "聚气散",
+      "prompt": "聚气散，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：聚气散 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "第5章 聚气散",
+        "第5章 聚气散",
+        "三位长老好奇的伸过头，望着玉匣子内，身体猛的一震，惊声道：“聚气散？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "other",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "青木剑",
+      "assetName": "青木剑",
+      "prompt": "青木剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：青木剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "云岚宗高深功法，青木剑诀！"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "weapon",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "青木剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "戒指",
+      "assetName": "戒指",
+      "prompt": "戒指，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：戒指 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "说着，葛叶伸手抹了抹手指上的一枚戒指，一只通体泛绿的古玉盒子在手中凭空出现……",
+        "葛叶手掌向后一探，稳稳的抓住匣子，苦笑了一声，将之收进了戒指内。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "other",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "炼药师，顾名思义，他们能够炼制出种种提升实力的神奇丹药，任何一名炼药师，都将会被各方势力不惜代价，竭力拉拢，身份地位显赫之极！",
+        "炼制丹药，最重要的三种条件：材料，火种，灵魂感知力！",
+        "火种，也就是炼药时所需要的火焰，炼制丹药，不可能用普通火，而必须使用由火属性斗气催化而出的斗气火焰，当然，世间充斥着天地异火，一些实力强横的炼药师，也会取而用之，用这些异火来炼药，不仅成功率会高上许多！"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "other",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "长剑",
+      "assetName": "长剑",
+      "prompt": "长剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：长剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“啊……”被少年狰狞模样吓了一跳，少女急忙后退一步，一旁的那位英俊青年，豁然的拔出长剑，目光阴冷的直指萧炎。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "weapon",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "长剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "短剑",
+      "assetName": "短剑",
+      "prompt": "短剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：短剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎右手骤然抽出桌上的短剑，锋利的剑刃，在左手掌之上，猛然划出一道血口……"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "weapon",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "短剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    }
+  ],
+  "allPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "纳兰嫣然",
+      "assetName": "纳兰嫣然",
+      "prompt": "纳兰嫣然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：当下气得小脸有些铁青、小脸微沉的道、也不理会那俏脸冰寒的纳兰嫣然\n- 饰物/随身特征：手指紧张的绞在了一起\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "手指紧张的绞在了一起。",
+        "当下气得小脸有些铁青，",
+        "小脸微沉的道。",
+        "也不理会那俏脸冰寒的纳兰嫣然，"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：当下气得小脸有些铁青、小脸微沉的道、也不理会那俏脸冰寒的纳兰嫣然\n- 饰物/随身特征：手指紧张的绞在了一起\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上、小脸冷肃\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上。",
+        "小脸冷肃，"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上、小脸冷肃\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧战",
+      "assetName": "萧战",
+      "prompt": "萧战，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：萧战脸色淡漠的望着低头不言的纳兰嫣然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧战脸色淡漠的望着低头不言的纳兰嫣然，"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：萧战脸色淡漠的望着低头不言的纳兰嫣然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "葛叶",
+      "assetName": "葛叶",
+      "prompt": "葛叶，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：脸庞上的表情、葛叶脸色忽然出现了一抹尴尬、惊恐的神色顷刻间覆盖了那苍老的面孔\n- 神情/气质：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 年龄/身份视觉线索：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 饰物/随身特征：葛叶伸手抹了抹手指上的一枚戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "脸庞上的表情，",
+        "葛叶脸色忽然出现了一抹尴尬，",
+        "葛叶伸手抹了抹手指上的一枚戒指，",
+        "惊恐的神色顷刻间覆盖了那苍老的面孔，"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：脸庞上的表情、葛叶脸色忽然出现了一抹尴尬、惊恐的神色顷刻间覆盖了那苍老的面孔\n- 神情/气质：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 年龄/身份视觉线索：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 饰物/随身特征：葛叶伸手抹了抹手指上的一枚戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰侄女",
+      "assetName": "纳兰侄女",
+      "prompt": "纳兰侄女，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "”萧战先是一怔，紧接着满脸大喜，想必是记起了当年的那事，当下，急忙对着少女露出温和的笑容：“原来是纳兰侄女，萧叔叔可有好多年未曾与你见面了，可别怪罪叔叔眼拙。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "葛叶说是与纳兰侄女有关，难道？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰小姐",
+      "assetName": "纳兰小姐",
+      "prompt": "纳兰小姐，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "压下心中的疑问，萧炎大步行上，先是对着萧战恭敬的行了一礼，然后转过身面对着纳兰嫣然，深吐了一口气，平静的出言问道：“纳兰小姐，我想请问一下，今日悔婚之事，纳兰老爷子，可曾答应？",
+        "听着少女宛如神灵般的审判，萧炎嘴角溢出一抹冷笑：“纳兰小姐……你应该知道，在斗气大陆，女方悔婚会让对方有多难堪，呵呵，我脸皮厚，倒是没什么，可我的父亲！",
+        "“纳兰小姐，你又不是不清楚炎儿的状况，你让他拿什么和你挑战？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "云韵",
+      "assetName": "云韵",
+      "prompt": "云韵，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "当年纳兰嫣然被云韵收为弟子之时，年仅十岁，在云岚宗中修炼了五年时间，所谓女大十八变，好多年未见，萧战自然不知道面前的少女，便是自己名义上的儿媳妇。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "脸色微微一变，萧战也是收敛了笑容，云岚宗宗主云韵可是加玛帝国的大人物，他这小小的一族之长，可是半点都遭惹不起，可以她的实力与势力，又有何事需要萧家帮忙？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "古河",
+      "assetName": "古河",
+      "prompt": "古河，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“呵呵，这是本宗名誉长老古河大人亲自所炼，想必各位也听过他老人家的名讳吧？",
+        "“此药竟然还是出自丹王古河之手？",
+        "丹王古河，在加玛帝国中影响力极其庞大，一手炼药之术，神奇莫测，无数强者想对其巴结逢迎，都是无路可寻。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰老爷",
+      "assetName": "纳兰老爷",
+      "prompt": "纳兰老爷，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "纳兰老爷子的孙女纳兰嫣然？",
+        "压下心中的疑问，萧炎大步行上，先是对着萧战恭敬的行了一礼，然后转过身面对着纳兰嫣然，深吐了一口气，平静的出言问道：“纳兰小姐，我想请问一下，今日悔婚之事，纳兰老爷子，可曾答应？",
+        "“纳兰小姐，看在纳兰老爷子的面上，萧炎奉劝你几句话，三十年河东，三十年河西，莫欺少年穷！"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606221108-5-7-1-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"退婚冲突\" with insufficient location detail.；冲突氛围：葛叶提出退婚请求；可保留人物比例参考：纳兰嫣然、萧炎、萧战、葛叶、纳兰侄女、纳兰小姐、云韵、古河、纳兰老爷；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "纳兰嫣然卷入“退婚冲突”：葛叶提出退婚请求、葛叶拿出聚气散、萧炎拒绝解除婚约。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "location": "未指定场景",
+        "conflictBeat": "葛叶提出退婚请求",
+        "involvedCharacters": [
+          "纳兰嫣然",
+          "萧炎",
+          "萧战",
+          "葛叶",
+          "纳兰侄女",
+          "纳兰小姐",
+          "云韵",
+          "古河",
+          "纳兰老爷"
+        ]
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "聚气散",
+      "assetName": "聚气散",
+      "prompt": "聚气散，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：聚气散 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "第5章 聚气散",
+        "第5章 聚气散",
+        "三位长老好奇的伸过头，望着玉匣子内，身体猛的一震，惊声道：“聚气散？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "other",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "青木剑",
+      "assetName": "青木剑",
+      "prompt": "青木剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：青木剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "云岚宗高深功法，青木剑诀！"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "weapon",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "青木剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "戒指",
+      "assetName": "戒指",
+      "prompt": "戒指，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：戒指 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "说着，葛叶伸手抹了抹手指上的一枚戒指，一只通体泛绿的古玉盒子在手中凭空出现……",
+        "葛叶手掌向后一探，稳稳的抓住匣子，苦笑了一声，将之收进了戒指内。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "other",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "炼药师，顾名思义，他们能够炼制出种种提升实力的神奇丹药，任何一名炼药师，都将会被各方势力不惜代价，竭力拉拢，身份地位显赫之极！",
+        "炼制丹药，最重要的三种条件：材料，火种，灵魂感知力！",
+        "火种，也就是炼药时所需要的火焰，炼制丹药，不可能用普通火，而必须使用由火属性斗气催化而出的斗气火焰，当然，世间充斥着天地异火，一些实力强横的炼药师，也会取而用之，用这些异火来炼药，不仅成功率会高上许多！"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "other",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "长剑",
+      "assetName": "长剑",
+      "prompt": "长剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：长剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“啊……”被少年狰狞模样吓了一跳，少女急忙后退一步，一旁的那位英俊青年，豁然的拔出长剑，目光阴冷的直指萧炎。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "weapon",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "长剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "短剑",
+      "assetName": "短剑",
+      "prompt": "短剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：短剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求；持有者/关联人物：纳兰嫣然；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎右手骤然抽出桌上的短剑，锋利的剑刃，在左手掌之上，猛然划出一道血口……"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "propType": "weapon",
+        "ownerOrHolder": "纳兰嫣然",
+        "storyFunction": "短剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求"
+      }
+    }
+  ]
+}

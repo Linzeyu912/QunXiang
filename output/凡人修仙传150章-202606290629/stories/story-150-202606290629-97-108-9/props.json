@@ -1,0 +1,825 @@
+{
+  "storyId": "story-150-202606290629-97-108-9",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "props": [
+    {
+      "name": "鸟尽弓",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "鸟尽弓 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "他自从暴露了实力，帮助七玄门度过此劫后，便一直用“鸟尽弓藏”、“过河拆桥”的典故，来提醒自己要谨慎小心。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "鸟尽弓 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "鸟尽弓, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他自从暴露了实力，帮助七玄门度过此劫后，便一直用“鸟尽弓藏”、“过河拆桥”的典故，来提醒自己要谨慎小心。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "银子",
+      "aliases": [],
+      "propType": "money",
+      "storyFunction": "银子 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "韩立就是看中了这两点，才肯花了三两散银子包下此车。",
+        "要知道，平常这样的马车一连忙上几天，也就只不过能挣到一两多银子罢了。",
+        "毕竟白花花的银子可比一时间的口头痛快，要诱人的多。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "银子 functions as a money in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "银子, prop type: money, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立就是看中了这两点，才肯花了三两散银子包下此车。",
+        "要知道，平常这样的马车一连忙上几天，也就只不过能挣到一两多银子罢了。",
+        "毕竟白花花的银子可比一时间的口头痛快，要诱人的多。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "信件",
+      "aliases": [],
+      "propType": "document",
+      "storyFunction": "信件 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "至于从墨大夫那里得到的法器和信件书籍之类的小巧东西，因为关系重大，韩立怕丢失了，所以贴身携带。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "信件 functions as a document in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "信件, prop type: document, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "至于从墨大夫那里得到的法器和信件书籍之类的小巧东西，因为关系重大，韩立怕丢失了，所以贴身携带。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "尖刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "尖刀 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "这些汉子，手持各种铁棒、尖刀，此刻不坏好意注视着韩立和曲魂，而那两名抬着包裹的脚夫，也猛然间冲进了人群内，转过头来冲着韩立嘿嘿歼笑着。",
+        "而这时，一把尖刀和一根粗粗的铁棒，趁此间隙同时落向了曲魂的背后。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "尖刀 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "尖刀, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这些汉子，手持各种铁棒、尖刀，此刻不坏好意注视着韩立和曲魂，而那两名抬着包裹的脚夫，也猛然间冲进了人群内，转过头来冲着韩立嘿嘿歼笑着。",
+        "而这时，一把尖刀和一根粗粗的铁棒，趁此间隙同时落向了曲魂的背后。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "脚如同镰刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "脚如同镰刀 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "紧接着曲魂单腿撑地，另一只脚如同镰刀一般，向后飞快的横扫了出去，那两名汉子立即被踢中腰腹，横飞到一丈多远，倒在地上一动不动。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "脚如同镰刀 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "脚如同镰刀, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "紧接着曲魂单腿撑地，另一只脚如同镰刀一般，向后飞快的横扫了出去，那两名汉子立即被踢中腰腹，横飞到一丈多远，倒在地上一动不动。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "的左右开弓",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "的左右开弓 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "可即使他们停了手，曲魂却毫不客气的左右开弓，又击碎了身侧两人的脑瓜，没有韩立的命令，他是不会主动歇手的。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "的左右开弓 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "的左右开弓, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "可即使他们停了手，曲魂却毫不客气的左右开弓，又击碎了身侧两人的脑瓜，没有韩立的命令，他是不会主动歇手的。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "了一把软剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "了一把软剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "孙二狗的脸色已变得蜡黄，他亲眼看见那个年轻人，幽灵般的转到了黑熊身后，然后从腰间抽出了一把软剑，一剑就轻易刺穿了黑熊的喉部，此时对方正掏出一块白布，在擦拭那把明晃晃的利剑。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "了一把软剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "了一把软剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "孙二狗的脸色已变得蜡黄，他亲眼看见那个年轻人，幽灵般的转到了黑熊身后，然后从腰间抽出了一把软剑，一剑就轻易刺穿了黑熊的喉部，此时对方正掏出一块白布，在擦拭那把明晃晃的利剑。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "一剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "一剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "孙二狗的脸色已变得蜡黄，他亲眼看见那个年轻人，幽灵般的转到了黑熊身后，然后从腰间抽出了一把软剑，一剑就轻易刺穿了黑熊的喉部，此时对方正掏出一块白布，在擦拭那把明晃晃的利剑。",
+        "要是换作我，早就一剑砍翻了他。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "一剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "一剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "孙二狗的脸色已变得蜡黄，他亲眼看见那个年轻人，幽灵般的转到了黑熊身后，然后从腰间抽出了一把软剑，一剑就轻易刺穿了黑熊的喉部，此时对方正掏出一块白布，在擦拭那把明晃晃的利剑。",
+        "要是换作我，早就一剑砍翻了他。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "晃晃的利剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "晃晃的利剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "孙二狗的脸色已变得蜡黄，他亲眼看见那个年轻人，幽灵般的转到了黑熊身后，然后从腰间抽出了一把软剑，一剑就轻易刺穿了黑熊的喉部，此时对方正掏出一块白布，在擦拭那把明晃晃的利剑。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "晃晃的利剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "晃晃的利剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "孙二狗的脸色已变得蜡黄，他亲眼看见那个年轻人，幽灵般的转到了黑熊身后，然后从腰间抽出了一把软剑，一剑就轻易刺穿了黑熊的喉部，此时对方正掏出一块白布，在擦拭那把明晃晃的利剑。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "派则有铁枪",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "派则有铁枪 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "“嘉元城三大帮会分别是兄弟盟、惊蛟会、天霸门，稍小些的帮派则有铁枪会、结义社、青衣帮、春雨楼、金剑门、苍河船帮、金刚门、落曰派等势力。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "派则有铁枪 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "派则有铁枪, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“嘉元城三大帮会分别是兄弟盟、惊蛟会、天霸门，稍小些的帮派则有铁枪会、结义社、青衣帮、春雨楼、金剑门、苍河船帮、金刚门、落曰派等势力。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "金剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "金剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "“嘉元城三大帮会分别是兄弟盟、惊蛟会、天霸门，稍小些的帮派则有铁枪会、结义社、青衣帮、春雨楼、金剑门、苍河船帮、金刚门、落曰派等势力。",
+        "“三大帮派中以天霸门实力最强，他和金剑门、青衣帮联手，占据了最富裕的东城区；而实力稍次些的兄弟盟，和铁枪会、苍河船帮、结义社联盟，占住了北城区；最弱的惊蛟会，却和春雨楼、金刚门以及落曰派霸住了南城区；最后剩下的西城区则比较混乱，由众多小帮共同瓜分了去，这些小帮派虽然内斗不已，但一旦有其他大势力想侵入西城区，则就会立刻停止干戈，转而一直对外。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "金剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "金剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“嘉元城三大帮会分别是兄弟盟、惊蛟会、天霸门，稍小些的帮派则有铁枪会、结义社、青衣帮、春雨楼、金剑门、苍河船帮、金刚门、落曰派等势力。",
+        "“三大帮派中以天霸门实力最强，他和金剑门、青衣帮联手，占据了最富裕的东城区；而实力稍次些的兄弟盟，和铁枪会、苍河船帮、结义社联盟，占住了北城区；最弱的惊蛟会，却和春雨楼、金刚门以及落曰派霸住了南城区；最后剩下的西城区则比较混乱，由众多小帮共同瓜分了去，这些小帮派虽然内斗不已，但一旦有其他大势力想侵入西城区，则就会立刻停止干戈，转而一直对外。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "他和金剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "他和金剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "“三大帮派中以天霸门实力最强，他和金剑门、青衣帮联手，占据了最富裕的东城区；而实力稍次些的兄弟盟，和铁枪会、苍河船帮、结义社联盟，占住了北城区；最弱的惊蛟会，却和春雨楼、金刚门以及落曰派霸住了南城区；最后剩下的西城区则比较混乱，由众多小帮共同瓜分了去，这些小帮派虽然内斗不已，但一旦有其他大势力想侵入西城区，则就会立刻停止干戈，转而一直对外。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "他和金剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "他和金剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“三大帮派中以天霸门实力最强，他和金剑门、青衣帮联手，占据了最富裕的东城区；而实力稍次些的兄弟盟，和铁枪会、苍河船帮、结义社联盟，占住了北城区；最弱的惊蛟会，却和春雨楼、金刚门以及落曰派霸住了南城区；最后剩下的西城区则比较混乱，由众多小帮共同瓜分了去，这些小帮派虽然内斗不已，但一旦有其他大势力想侵入西城区，则就会立刻停止干戈，转而一直对外。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "和铁枪",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "和铁枪 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "“三大帮派中以天霸门实力最强，他和金剑门、青衣帮联手，占据了最富裕的东城区；而实力稍次些的兄弟盟，和铁枪会、苍河船帮、结义社联盟，占住了北城区；最弱的惊蛟会，却和春雨楼、金刚门以及落曰派霸住了南城区；最后剩下的西城区则比较混乱，由众多小帮共同瓜分了去，这些小帮派虽然内斗不已，但一旦有其他大势力想侵入西城区，则就会立刻停止干戈，转而一直对外。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "和铁枪 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "和铁枪, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“三大帮派中以天霸门实力最强，他和金剑门、青衣帮联手，占据了最富裕的东城区；而实力稍次些的兄弟盟，和铁枪会、苍河船帮、结义社联盟，占住了北城区；最弱的惊蛟会，却和春雨楼、金刚门以及落曰派霸住了南城区；最后剩下的西城区则比较混乱，由众多小帮共同瓜分了去，这些小帮派虽然内斗不已，但一旦有其他大势力想侵入西城区，则就会立刻停止干戈，转而一直对外。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "叫吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "叫吴剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "“叫吴剑鸣，是个二十许岁的小白脸，听说已得了墨居仁的真传，一身武功奇高无比。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "叫吴剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "叫吴剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“叫吴剑鸣，是个二十许岁的小白脸，听说已得了墨居仁的真传，一身武功奇高无比。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "过这位吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "过这位吴剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "“不过这位吴剑鸣吴公子倒真是个人，竟然抢先用了自己想用的身份混进了墨府，而且看情形还想要财色兼收，胆子还真够大的啊！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "过这位吴剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "过这位吴剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“不过这位吴剑鸣吴公子倒真是个人，竟然抢先用了自己想用的身份混进了墨府，而且看情形还想要财色兼收，胆子还真够大的啊！"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "被这位吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "被这位吴剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "她的此次定亲惹起了一场轩然大波，让其追求者们大都伤心欲绝，有些身怀武功的则纷纷向那位吴公子发起了挑战，结果被这位吴剑鸣一连大败了十六名情敌，反而造早就了他武功绝顶的名声，让他和那位墨玉珠更是如胶似漆，郎情妾意起来。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "被这位吴剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "被这位吴剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "她的此次定亲惹起了一场轩然大波，让其追求者们大都伤心欲绝，有些身怀武功的则纷纷向那位吴公子发起了挑战，结果被这位吴剑鸣一连大败了十六名情敌，反而造早就了他武功绝顶的名声，让他和那位墨玉珠更是如胶似漆，郎情妾意起来。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "这位吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "这位吴剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "“不过这位吴剑鸣吴公子倒真是个人，竟然抢先用了自己想用的身份混进了墨府，而且看情形还想要财色兼收，胆子还真够大的啊！",
+        "她的此次定亲惹起了一场轩然大波，让其追求者们大都伤心欲绝，有些身怀武功的则纷纷向那位吴公子发起了挑战，结果被这位吴剑鸣一连大败了十六名情敌，反而造早就了他武功绝顶的名声，让他和那位墨玉珠更是如胶似漆，郎情妾意起来。",
+        "这位吴剑鸣十有八九是墨大夫的对头们派来的，看来这么多年墨大夫没有露面，已经引起对头们的怀疑，而这位吴公子的到来估计就是一次试探行为。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "这位吴剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "这位吴剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“不过这位吴剑鸣吴公子倒真是个人，竟然抢先用了自己想用的身份混进了墨府，而且看情形还想要财色兼收，胆子还真够大的啊！",
+        "她的此次定亲惹起了一场轩然大波，让其追求者们大都伤心欲绝，有些身怀武功的则纷纷向那位吴公子发起了挑战，结果被这位吴剑鸣一连大败了十六名情敌，反而造早就了他武功绝顶的名声，让他和那位墨玉珠更是如胶似漆，郎情妾意起来。",
+        "这位吴剑鸣十有八九是墨大夫的对头们派来的，看来这么多年墨大夫没有露面，已经引起对头们的怀疑，而这位吴公子的到来估计就是一次试探行为。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "书信",
+      "aliases": [],
+      "propType": "document",
+      "storyFunction": "书信 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "就是不知他是用什么方法取信于墨府的，想必一般的信物和书信应该不会让墨大夫几位夫人轻易相信的。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "书信 functions as a document in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "书信, prop type: document, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "就是不知他是用什么方法取信于墨府的，想必一般的信物和书信应该不会让墨大夫几位夫人轻易相信的。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "只爱舞枪",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "只爱舞枪 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "听说这位墨府千金从小不爱女红，只爱舞枪弄帮，并且从惊蛟会高手那里学会了一身不弱的本领。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "只爱舞枪 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "只爱舞枪, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "听说这位墨府千金从小不爱女红，只爱舞枪弄帮，并且从惊蛟会高手那里学会了一身不弱的本领。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "男的是名剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "男的是名剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "为首的两人是一男一女，男的是名剑眉朗目、身材修长的英俊青年，女的则身穿火红猎装、头披紫色斗篷，无法看清其娇容。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "男的是名剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "男的是名剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "为首的两人是一男一女，男的是名剑眉朗目、身材修长的英俊青年，女的则身穿火红猎装、头披紫色斗篷，无法看清其娇容。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "人就是吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "人就是吴剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "“这人就是吴剑鸣？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "人就是吴剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "人就是吴剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“这人就是吴剑鸣？"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "准备单刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "准备单刀 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "韩立在客栈内经过一番深思熟虑后，还是决定采用最直接最有效的方法，准备单刀直入。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "准备单刀 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "准备单刀, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立在客栈内经过一番深思熟虑后，还是决定采用最直接最有效的方法，准备单刀直入。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "早就一剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "早就一剑 supports, reveals, or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "孙二狗",
+      "firstAppearance": "chapters 97-108",
+      "keyMoments": [
+        "要是换作我，早就一剑砍翻了他。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "早就一剑 functions as a weapon in \"背后交易 - 夜入墨府\", connected to: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "早就一剑, prop type: weapon, story function: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "要是换作我，早就一剑砍翻了他。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "story-150-202606290629-97-108-9",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 97,
+  "endChapter": 108,
+  "title": "背后交易 - 夜入墨府",
+  "summary": "孙二狗在“背后交易 - 夜入墨府”中经历围绕“失败”发生关键变化、背后交易、回村。",
+  "coreConflict": "孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+  "trigger": "围绕“失败”发生关键变化",
+  "turningPoints": [
+    "围绕“失败”发生关键变化",
+    "背后交易",
+    "回村",
+    "离开",
+    "嘉元城",
+    "钱财惹祸",
+    "鸟尽弓",
+    "玉瓶中的药"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "孙二狗"
+  ],
+  "supportingCharacters": [
+    "吴公子",
+    "严氏",
+    "吴剑鸣",
+    "王氏"
+  ],
+  "locations": [
+    "春雨楼",
+    "离墨府"
+  ],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-97-108"
+  ],
+  "approved": true
+}

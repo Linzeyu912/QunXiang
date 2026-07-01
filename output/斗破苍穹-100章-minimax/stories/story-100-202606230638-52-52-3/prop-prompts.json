@@ -1,0 +1,28 @@
+{
+  "storyId": "story-100-202606230638-52-52-3",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "prop",
+      "assetId": "聚气散",
+      "assetName": "聚气散",
+      "prompt": "聚气散，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：聚气散 functions as a other in \"退婚冲突\", connected to: 萧炎立下三年之约；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“明天去买材料，嘁，不就是聚气散嘛，我炼给你当豆子吃……我还不信，那纳兰嫣然能有这般待遇？"
+      ],
+      "sourceChapters": [
+        52
+      ],
+      "sourceRangeHint": "chapters 52-52",
+      "metadata": {
+        "storyId": "story-100-202606230638-52-52-3",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 萧炎立下三年之约"
+      }
+    }
+  ]
+}

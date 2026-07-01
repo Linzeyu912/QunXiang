@@ -1,0 +1,117 @@
+{
+  "id": "story-1-10-202606221108-5-7-1",
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "arcId": "arc-1-10-202606221108-5-7-1",
+  "arcType": "conflict",
+  "goal": "维护尊严并回应婚约羞辱",
+  "startChapter": 5,
+  "endChapter": 7,
+  "title": "退婚冲突",
+  "summary": "纳兰嫣然卷入“退婚冲突”：葛叶提出退婚请求、葛叶拿出聚气散、萧炎拒绝解除婚约。",
+  "coreConflict": "葛叶提出退婚请求",
+  "trigger": "葛叶提出退婚请求",
+  "turningPoints": [
+    "葛叶提出退婚请求",
+    "葛叶拿出聚气散",
+    "萧炎拒绝解除婚约",
+    "纳兰嫣然要求解除婚约",
+    "萧炎立下三年之约",
+    "青木剑",
+    "灵动的眼珠",
+    "而凌厉的剑"
+  ],
+  "conflictStatus": "ongoing",
+  "events": [
+    {
+      "id": "event-1-10-5-1",
+      "chapterIndex": 5,
+      "eventType": "conflict",
+      "function": "inciting",
+      "summary": "葛叶提出退婚请求",
+      "participants": [
+        "葛叶"
+      ],
+      "trigger": "解除婚约",
+      "consequence": "婚约冲突公开化，主角尊严受压。",
+      "confidence": 0.84,
+      "source": "regex"
+    },
+    {
+      "id": "event-1-10-5-2",
+      "chapterIndex": 5,
+      "eventType": "resource",
+      "function": "escalation",
+      "summary": "葛叶拿出聚气散",
+      "participants": [
+        "葛叶"
+      ],
+      "trigger": "聚气散",
+      "consequence": "外部势力用资源交换制造羞辱和诱惑。",
+      "confidence": 0.84,
+      "source": "regex"
+    },
+    {
+      "id": "event-1-10-7-3",
+      "chapterIndex": 7,
+      "eventType": "conflict",
+      "function": "inciting",
+      "summary": "萧炎拒绝解除婚约",
+      "participants": [
+        "萧炎"
+      ],
+      "trigger": "解除婚约",
+      "consequence": "婚约冲突公开化，主角尊严受压。",
+      "confidence": 0.86,
+      "source": "regex"
+    },
+    {
+      "id": "event-1-10-7-4",
+      "chapterIndex": 7,
+      "eventType": "conflict",
+      "function": "inciting",
+      "summary": "纳兰嫣然要求解除婚约",
+      "participants": [
+        "纳兰嫣然",
+        "萧炎"
+      ],
+      "trigger": "解除婚约",
+      "consequence": "婚约冲突公开化，主角尊严受压。",
+      "confidence": 0.86,
+      "source": "regex"
+    },
+    {
+      "id": "event-1-10-7-5",
+      "chapterIndex": 7,
+      "eventType": "turning_point",
+      "function": "turning_point",
+      "summary": "萧炎立下三年之约",
+      "participants": [
+        "萧炎",
+        "纳兰嫣然"
+      ],
+      "trigger": "三年之约",
+      "consequence": "冲突被延展为长期目标。",
+      "confidence": 0.88,
+      "source": "regex"
+    }
+  ],
+  "mainCharacters": [
+    "纳兰嫣然"
+  ],
+  "supportingCharacters": [
+    "萧炎",
+    "萧战",
+    "葛叶",
+    "纳兰侄女",
+    "纳兰小姐",
+    "云韵",
+    "古河",
+    "纳兰老爷"
+  ],
+  "locations": [],
+  "boundaryConfidence": 0.9,
+  "boundaryDecisionIds": [
+    "arc-5-7"
+  ],
+  "approved": true
+}

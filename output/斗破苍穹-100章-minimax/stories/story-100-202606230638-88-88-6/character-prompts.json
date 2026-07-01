@@ -1,0 +1,79 @@
+{
+  "storyId": "story-100-202606230638-88-88-6",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：萧炎脸庞微喜\n- 体态/身形：身材单薄的少年、身形在半空急落而下、急降的身形、漆黑的身形\n- 发型：黑色短发，整洁利落\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎脸庞微喜，",
+        "身材单薄的少年，",
+        "身形在半空急落而下，",
+        "急降的身形，",
+        "漆黑的身形，"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：萧炎脸庞微喜\n- 体态/身形：身材单薄的少年、身形在半空急落而下、急降的身形、漆黑的身形\n- 发型：黑色短发，整洁利落\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 饰物/随身特征：戒指之中药老的轻声\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "戒指之中药老的轻声，"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 饰物/随身特征：戒指之中药老的轻声\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧战",
+      "assetName": "萧战",
+      "prompt": "萧战，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“柳席先生，如果我们加列家族动了萧家的人，那萧战就有借口对我们加列家族正面宣战，到时候，恐怕就不再是这种经济上的对决，而是要真正的拔刀相向了啊……”叹了一口气，加列毕苦笑道。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ]
+}

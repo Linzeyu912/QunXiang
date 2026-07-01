@@ -1,0 +1,360 @@
+{
+  "storyId": "story-150-202606290629-1-12-1",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "props": [
+    {
+      "name": "银子",
+      "aliases": [],
+      "propType": "money",
+      "storyFunction": "银子 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "只要成为内门弟子，不但以后可以免费习武吃喝不愁，每月还能有一两多的散银子零花。",
+        "当听到有可能每月有一两银子可拿，还有机会成为和三叔一样的体面人，韩父终于拿定了主意，答应了下来。",
+        "又留下几两银子，说一个月后就来带韩立走，在这期间给韩立多做点好吃的，给他补补身子，好应付考验。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "银子 functions as a money in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "银子, prop type: money, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "只要成为内门弟子，不但以后可以免费习武吃喝不愁，每月还能有一两多的散银子零花。",
+        "当听到有可能每月有一两银子可拿，还有机会成为和三叔一样的体面人，韩父终于拿定了主意，答应了下来。",
+        "又留下几两银子，说一个月后就来带韩立走，在这期间给韩立多做点好吃的，给他补补身子，好应付考验。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "name": "上或挎着刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "上或挎着刀 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "一路遇到的人大都身穿青缎衣，身上或挎着刀，或背着剑，偶尔一些赤授空拳的人腰间也鼓鼓囊囊的，不知揣着升吗东西，从行为举止上，可以看出这些人身手矫健，都有一身不错的功夫在身。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "上或挎着刀 functions as a weapon in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "上或挎着刀, prop type: weapon, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "一路遇到的人大都身穿青缎衣，身上或挎着刀，或背着剑，偶尔一些赤授空拳的人腰间也鼓鼓囊囊的，不知揣着升吗东西，从行为举止上，可以看出这些人身手矫健，都有一身不错的功夫在身。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "name": "或背着剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "或背着剑 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "一路遇到的人大都身穿青缎衣，身上或挎着刀，或背着剑，偶尔一些赤授空拳的人腰间也鼓鼓囊囊的，不知揣着升吗东西，从行为举止上，可以看出这些人身手矫健，都有一身不错的功夫在身。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "或背着剑 functions as a weapon in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "或背着剑, prop type: weapon, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "一路遇到的人大都身穿青缎衣，身上或挎着刀，或背着剑，偶尔一些赤授空拳的人腰间也鼓鼓囊囊的，不知揣着升吗东西，从行为举止上，可以看出这些人身手矫健，都有一身不错的功夫在身。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "name": "手拿金剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "手拿金剑 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "在晚上的睡梦中，韩立在梦里梦到自己身穿锦衣，手拿金剑，身怀绝世武功，把村里自己一直都打不过的铁匠的儿子痛打了一顿，好不威风，直到第二天早上起来仍回味不已。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "手拿金剑 functions as a weapon in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "手拿金剑, prop type: weapon, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "在晚上的睡梦中，韩立在梦里梦到自己身穿锦衣，手拿金剑，身怀绝世武功，把村里自己一直都打不过的铁匠的儿子痛打了一顿，好不威风，直到第二天早上起来仍回味不已。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "name": "就连宝刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "就连宝刀 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "据说练至第九层的人如同身穿宝甲一般，可刀枪不入，水火不近，不要说是掌劲、拳劲，就连宝刀宝剑也难以重伤于他。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "就连宝刀 functions as a weapon in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "就连宝刀, prop type: weapon, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "据说练至第九层的人如同身穿宝甲一般，可刀枪不入，水火不近，不要说是掌劲、拳劲，就连宝刀宝剑也难以重伤于他。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "name": "宝剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "宝剑 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "据说练至第九层的人如同身穿宝甲一般，可刀枪不入，水火不近，不要说是掌劲、拳劲，就连宝刀宝剑也难以重伤于他。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "宝剑 functions as a weapon in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "宝剑, prop type: weapon, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "据说练至第九层的人如同身穿宝甲一般，可刀枪不入，水火不近，不要说是掌劲、拳劲，就连宝刀宝剑也难以重伤于他。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "name": "进行实刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "进行实刀 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "每当韩立看到其他同门聚到一起，进行实刀实枪训练的情形，心里就有些不是滋味，自己也好想拿起真刀、真枪狠狠地耍上一把。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "进行实刀 functions as a weapon in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "进行实刀, prop type: weapon, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "每当韩立看到其他同门聚到一起，进行实刀实枪训练的情形，心里就有些不是滋味，自己也好想拿起真刀、真枪狠狠地耍上一把。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "name": "实枪",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "实枪 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "每当韩立看到其他同门聚到一起，进行实刀实枪训练的情形，心里就有些不是滋味，自己也好想拿起真刀、真枪狠狠地耍上一把。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "实枪 functions as a weapon in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "实枪, prop type: weapon, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "每当韩立看到其他同门聚到一起，进行实刀实枪训练的情形，心里就有些不是滋味，自己也好想拿起真刀、真枪狠狠地耍上一把。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "name": "想拿起真刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "想拿起真刀 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "每当韩立看到其他同门聚到一起，进行实刀实枪训练的情形，心里就有些不是滋味，自己也好想拿起真刀、真枪狠狠地耍上一把。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "想拿起真刀 functions as a weapon in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "想拿起真刀, prop type: weapon, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "每当韩立看到其他同门聚到一起，进行实刀实枪训练的情形，心里就有些不是滋味，自己也好想拿起真刀、真枪狠狠地耍上一把。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "name": "真枪",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "真枪 supports, reveals, or complicates the story conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "韩立",
+      "firstAppearance": "chapters 1-12",
+      "keyMoments": [
+        "每当韩立看到其他同门聚到一起，进行实刀实枪训练的情形，心里就有些不是滋味，自己也好想拿起真刀、真枪狠狠地耍上一把。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "真枪 functions as a weapon in \"山边小村 - 砸瓶子\", connected to: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "真枪, prop type: weapon, story function: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "每当韩立看到其他同门聚到一起，进行实刀实枪训练的情形，心里就有些不是滋味，自己也好想拿起真刀、真枪狠狠地耍上一把。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    }
+  ]
+}

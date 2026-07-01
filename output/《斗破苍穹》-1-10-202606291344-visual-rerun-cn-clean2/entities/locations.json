@@ -1,0 +1,281 @@
+[
+  {
+    "id": "89f070e6-2500-4e0c-a43a-e54e914c349e",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "斗气大陆",
+    "aliases": [
+      "大陆"
+    ],
+    "description": "故事所在的世界，没有花俏艳丽的魔法，斗气是唯一主调；斗气修炼功法由高到低分为天地玄黄四阶十二级；存在蛮族、高智商魔兽家族和黑暗种族等势力",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "第2章",
+    "importanceScore": 0.469,
+    "tier": "supporting",
+    "storyScore": 4,
+    "productionScore": 0,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 6,
+    "firstChapter": 2,
+    "lastChapter": 9,
+    "chapterAppearances": [
+      2,
+      4,
+      5,
+      6,
+      7,
+      9
+    ],
+    "createdAt": "2026-06-29T13:54:31.605Z",
+    "updatedAt": "2026-06-29T13:54:31.605Z"
+  },
+  {
+    "id": "a4ddea21-5a9f-4b44-9706-a117f97953d3",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "魔兽山脉",
+    "aliases": [],
+    "description": "加玛帝国闻名的魔兽山脉，乌坦城背靠此山脉，是斗气大陆上危险的魔兽聚集之地",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "第2章",
+    "importanceScore": 0.469,
+    "tier": "supporting",
+    "storyScore": 4,
+    "productionScore": 0,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 2,
+    "firstChapter": 2,
+    "lastChapter": 8,
+    "chapterAppearances": [
+      2,
+      8
+    ],
+    "createdAt": "2026-06-29T13:54:31.605Z",
+    "updatedAt": "2026-06-29T13:54:31.605Z"
+  },
+  {
+    "id": "99ab206f-d54c-4229-b19d-3b50c63bd92b",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "乌坦城",
+    "aliases": [
+      "乌坦"
+    ],
+    "description": "加玛帝国的一座大型城市，因背靠魔兽山脉而跻身帝国大城市之列，萧家所在地，城市中还有两大家族与萧家势力相当",
+    "confidence": 0.98,
+    "status": "PENDING",
+    "chapterRef": "第1章",
+    "importanceScore": 0.425,
+    "tier": "supporting",
+    "storyScore": 3,
+    "productionScore": 0.25,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 4,
+    "firstChapter": 1,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      1,
+      2,
+      4,
+      7,
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.605Z",
+    "updatedAt": "2026-06-29T13:54:31.605Z"
+  },
+  {
+    "id": "b18fa4f6-d453-49e2-92f7-6f8317504809",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "萧家迎客大厅",
+    "aliases": [
+      "迎客大厅",
+      "大厅",
+      "客厅"
+    ],
+    "description": "萧家接待客人的宽敞肃穆大厅，纳兰嫣然退婚事件发生地，萧战与三位长老接待葛叶一行人之处",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "第3章",
+    "importanceScore": 0.35,
+    "tier": "supporting",
+    "storyScore": 3,
+    "productionScore": 0,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 5,
+    "firstChapter": 3,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "createdAt": "2026-06-29T13:54:31.605Z",
+    "updatedAt": "2026-06-29T13:54:31.605Z"
+  },
+  {
+    "id": "c60d640f-c289-448a-a5fd-39ee5a95fb1d",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "萧家后山山崖",
+    "aliases": [
+      "后山",
+      "山崖",
+      "山顶",
+      "山崖之颠"
+    ],
+    "description": "萧家后方的山崖，萧炎常来此处休息、修炼、宣泄情绪的地点，也是萧炎在山顶遇到药老并揭穿其吸取斗之气秘密的地方",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "第2章",
+    "importanceScore": 0.35,
+    "tier": "supporting",
+    "storyScore": 3,
+    "productionScore": 0,
+    "pillarCausal": 1,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 3,
+    "firstChapter": 2,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      2,
+      8,
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.605Z",
+    "updatedAt": "2026-06-29T13:54:31.605Z"
+  },
+  {
+    "id": "e4def664-13ea-44d1-bacb-78897981b56f",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "萧家",
+    "aliases": [
+      "萧家宅院",
+      "萧家家族"
+    ],
+    "description": "位于乌坦城的家族势力，萧战为族长，萧炎所属家族，与城中另外两大家族明争暗斗了几十年",
+    "confidence": 0.98,
+    "status": "PENDING",
+    "chapterRef": "第1章",
+    "importanceScore": 0.306,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0.25,
+    "pillarCausal": 1,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 8,
+    "firstChapter": 1,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.605Z",
+    "updatedAt": "2026-06-29T13:54:31.605Z"
+  },
+  {
+    "id": "e7770153-2df9-408d-9dae-d839bdd0110d",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "家族测验广场",
+    "aliases": [
+      "广场",
+      "测验广场"
+    ],
+    "description": "萧家用于家族成员斗之气测试的广场，设有测验魔石碑，每年族中年轻一辈在此测试斗之气等级",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "第1章",
+    "importanceScore": 0.306,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0.25,
+    "pillarCausal": 1,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 1,
+    "firstChapter": 1,
+    "lastChapter": 1,
+    "chapterAppearances": [
+      1
+    ],
+    "createdAt": "2026-06-29T13:54:31.605Z",
+    "updatedAt": "2026-06-29T13:54:31.605Z"
+  },
+  {
+    "id": "d64d23a4-17dd-4363-9770-8562b505cdbe",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "云岚宗",
+    "aliases": [
+      "云岚宗门",
+      "云岚宗门派"
+    ],
+    "description": "加玛帝国的一霸势力，宗主为云韵，门风严厉，宗门规要求宗主传人在成为正式宗主前不可与男子有纠葛；纳兰嫣然为该宗弟子",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "第4章",
+    "importanceScore": 0.26849999999999996,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0.125,
+    "pillarCausal": 2,
+    "pillarUniqueness": 0,
+    "pillarTransition": 0,
+    "mentionCount": 4,
+    "firstChapter": 4,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "createdAt": "2026-06-29T13:54:31.605Z",
+    "updatedAt": "2026-06-29T13:54:31.605Z"
+  },
+  {
+    "id": "59bcd271-fc32-4cd2-a84f-d55425f732ff",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "加玛帝国",
+    "aliases": [
+      "帝国"
+    ],
+    "description": "斗气大陆上的帝国，乌坦城隶属于此，狮心元帅纳兰桀、丹王古河、云岚宗宗主云韵等风云人物皆出自此",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "第4章",
+    "importanceScore": 0.26849999999999996,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0.125,
+    "pillarCausal": 2,
+    "pillarUniqueness": 0,
+    "pillarTransition": 0,
+    "mentionCount": 3,
+    "firstChapter": 4,
+    "lastChapter": 9,
+    "chapterAppearances": [
+      4,
+      5,
+      6,
+      7,
+      9
+    ],
+    "createdAt": "2026-06-29T13:54:31.605Z",
+    "updatedAt": "2026-06-29T13:54:31.605Z"
+  }
+]

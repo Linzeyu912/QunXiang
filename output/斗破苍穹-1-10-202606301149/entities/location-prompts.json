@@ -1,0 +1,152 @@
+[
+  {
+    "entityName": "后山",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "对面为魔兽山脉。白日时分。光线从山峦雾气中透出。山壁、悬崖、草地、对面雾气笼罩的魔兽山脉，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "萧家",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "从后院穿过可至迎客大厅。可容纳数十人。室内以自然采光为主。大厅光线从窗棂透入，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "乌坦城",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "背靠魔兽山脉。三大家族明争暗斗。白日热闹。街市繁华。繁华街市、药材店铺、魔兽山脉背景，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "魔兽山脉",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "虽然此城因为背靠魔兽山脉的地利。连绵不绝的山脉。自萧家后山可远眺其轮廓。神秘凶险。雾气缭绕。危机四伏。光线朦胧。险峻峰峦、弥漫雾气、连绵轮廓，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "斗气阁",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "萧家内部存放斗气功法的专属建筑。内部设有功法书架或石壁。功法珍重之地。室内以烛火或魔法照明为主。功法书架、功法玉简或典籍、挑选仪式，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "测验广场",
+    "entityType": "location",
+    "tier": "candidate",
+    "prompt": "便是不出意外的在人头汹涌的广场上带起了一阵嘲讽的骚动。广场中央设有测验魔石碑。四周可容纳大量观众。户外自然光照明，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "云岚宗",
+    "entityType": "location",
+    "tier": "candidate",
+    "prompt": "殿内光线柔和。云雾缭绕的山峰、宏伟大殿、宗主云韵、宗门标志，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "加玛帝国",
+    "entityType": "location",
+    "tier": "candidate",
+    "prompt": "先前大厅中纳兰嫣然手中的聚气散的主人。帝国气象。日光照耀帝国大地。皇城、乌坦城、云岚宗、魔兽山脉，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "纳兰家",
+    "entityType": "location",
+    "tier": "candidate",
+    "prompt": "厅堂院落分明。名门气象。纳兰嫣然由此出发。府邸内光影交织。纳兰桀、纳兰嫣然、世交婚约。纳兰嫣然在此成长，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "药材店",
+    "entityType": "location",
+    "tier": "candidate",
+    "prompt": "销售各类药材与炼药材料。陈列各类药材。药材气味混杂。掌柜精于议价。室内光线适中。便于查看药材成色。木制药架、药材瓶罐、柜台、掌柜。萧炎前往采购药材的时日，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  }
+]

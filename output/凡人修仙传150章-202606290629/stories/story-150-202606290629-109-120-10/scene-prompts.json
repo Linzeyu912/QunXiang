@@ -1,0 +1,48 @@
+{
+  "storyId": "story-150-202606290629-109-120-10",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-109-120-10-scene-1",
+      "assetName": "嘉元城",
+      "prompt": "嘉元城，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：嘉元城 scene in \"登门 - 定计夺帮\", shaped by the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。；冲突氛围：围绕“戒指”发生关键变化；可保留人物比例参考：严氏等、凤舞、韩立闻、韩立打、谢公子、韩公子；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“这没什么可隐瞒的，嘉元城有不少人，都知道修仙者的存在。",
+        "”韩立拍了一下后脑勺，他竟忘了嘉元城可不是彩霞山那样的小地方，有修仙者在这里露过面似乎并不是一件稀奇的事，他昨天不是才见过一位蓝衣人吗！",
+        "”严氏此话一出口，人就完全恢复了嘉元城三大帮会首脑的风范，刚才那种柔弱无力的小妇人感觉荡然无存，身上散发出久处上位的威严。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120",
+      "metadata": {
+        "storyId": "story-150-202606290629-109-120-10",
+        "location": "嘉元城",
+        "conflictBeat": "围绕“戒指”发生关键变化",
+        "involvedCharacters": [
+          "严氏等",
+          "凤舞",
+          "韩立闻",
+          "韩立打",
+          "谢公子",
+          "韩公子"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "storyId": "story-150-202606290629-97-108-9",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "孙二狗",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "孙二狗 is connected to the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 97,
+      "lastMentionChapter": 108,
+      "keyActions": [
+        "从事这一行的车夫、苦力、船工更是多如牛毛，有数万人之多，孙二狗就是其中一位靠码头为生的人。",
+        "孙二狗人如其名，长的斜眉歪目，一副烂梨坏枣的痞子模样，不过因为擅长察言观色、溜须拍马，倒让他在码头上混成了一个帮派小头目，手下管着数十名苦力脚夫，靠帮过往...",
+        "因此当今曰一早，孙二狗来到这小码头时，他的几名手下急忙凑了过来，恭敬的称呼道："
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "孙二狗 appears in \"背后交易 - 夜入墨府\" as a protagonist tied to the conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：脸色蓦然沉了下来、孙二狗和黑熊的脸色很难看、孙二狗的脸色已变得蜡黄、让他的脸色由蜡黄变成了苍白、孙二狗看韩立脸色阴沉沉的\n- 神情/气质：韩立一直冷眼旁观孙二狗的神情变化\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "孙二狗，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：脸色蓦然沉了下来、孙二狗和黑熊的脸色很难看、孙二狗的脸色已变得蜡黄、让他的脸色由蜡黄变成了苍白、孙二狗看韩立脸色阴沉沉的\n- 神情/气质：韩立一直冷眼旁观孙二狗的神情变化\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "从事这一行的车夫、苦力、船工更是多如牛毛，有数万人之多，孙二狗就是其中一位靠码头为生的人。",
+        "孙二狗人如其名，长的斜眉歪目，一副烂梨坏枣的痞子模样，不过因为擅长察言观色、溜须拍马，倒让他在码头上混成了一个帮派小头目，手下管着数十名苦力脚夫，靠帮过往商客搬运货物和行李为生。",
+        "因此当今曰一早，孙二狗来到这小码头时，他的几名手下急忙凑了过来，恭敬的称呼道："
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "吴公子",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "吴公子 is connected to the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 97,
+      "lastMentionChapter": 108,
+      "keyActions": [
+        "”孙二狗小心的说道，他这时已看出了些什么，知道眼前这位肯定和惊蛟会有些关联，并且对那位吴公子仿佛很在意。",
+        "“我听人说，这位吴公子好像和墨府的千金墨玉珠定过亲了，听说最近就要成婚。",
+        "“你听好了，你的任务很简单，从今曰起，你给我悄悄搜集墨府的情报，特别是这位吴公子的消息，越详细越好。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "吴公子 appears in \"背后交易 - 夜入墨府\" as a supporting tied to the conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "吴公子，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "”孙二狗小心的说道，他这时已看出了些什么，知道眼前这位肯定和惊蛟会有些关联，并且对那位吴公子仿佛很在意。",
+        "“我听人说，这位吴公子好像和墨府的千金墨玉珠定过亲了，听说最近就要成婚。",
+        "“你听好了，你的任务很简单，从今曰起，你给我悄悄搜集墨府的情报，特别是这位吴公子的消息，越详细越好。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "严氏",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "严氏 is connected to the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 97,
+      "lastMentionChapter": 108,
+      "keyActions": [
+        "“四夫人严氏，余之表妹，生姓沉稳，心计过人，有大家风范，生养一女墨彩环，临走时惊蛟会权利大部分移交严氏，可以信任。",
+        "韩立这时已经肯定，屋内的女人就是他要找的严氏，女孩则应是其与墨大夫所生的墨彩环，看来他真的很幸运，竟然一下就找对了地方。",
+        "”严氏闻言郑重了起来，有些严厉的说道。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "严氏 appears in \"背后交易 - 夜入墨府\" as a supporting tied to the conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "严氏，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“四夫人严氏，余之表妹，生姓沉稳，心计过人，有大家风范，生养一女墨彩环，临走时惊蛟会权利大部分移交严氏，可以信任。",
+        "韩立这时已经肯定，屋内的女人就是他要找的严氏，女孩则应是其与墨大夫所生的墨彩环，看来他真的很幸运，竟然一下就找对了地方。",
+        "”严氏闻言郑重了起来，有些严厉的说道。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "吴剑鸣",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "吴剑鸣 is connected to the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 97,
+      "lastMentionChapter": 108,
+      "keyActions": [
+        "“叫吴剑鸣，是个二十许岁的小白脸，听说已得了墨居仁的真传，一身武功奇高无比。",
+        "“不过这位吴剑鸣吴公子倒真是个人，竟然抢先用了自己想用的身份混进了墨府，而且看情形还想要财色兼收，胆子还真够大的啊！",
+        "她的此次定亲惹起了一场轩然大波，让其追求者们大都伤心欲绝，有些身怀武功的则纷纷向那位吴公子发起了挑战，结果被这位吴剑鸣一连大败了十六名情敌，反而造早就了他..."
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "吴剑鸣 appears in \"背后交易 - 夜入墨府\" as a supporting tied to the conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "吴剑鸣，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“叫吴剑鸣，是个二十许岁的小白脸，听说已得了墨居仁的真传，一身武功奇高无比。",
+        "“不过这位吴剑鸣吴公子倒真是个人，竟然抢先用了自己想用的身份混进了墨府，而且看情形还想要财色兼收，胆子还真够大的啊！",
+        "她的此次定亲惹起了一场轩然大波，让其追求者们大都伤心欲绝，有些身怀武功的则纷纷向那位吴公子发起了挑战，结果被这位吴剑鸣一连大败了十六名情敌，反而造早就了他武功绝顶的名声，让他和那位墨玉珠更是如胶似漆，郎情妾意起来。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "name": "王氏",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "王氏 is connected to the story conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 97,
+      "lastMentionChapter": 108,
+      "keyActions": [
+        "“五夫人王氏，沉默寡言，对吾痴心一片，原大夫人金氏贴身丫环，未育子女，暗中握有秘密力量，可绝对信任。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "王氏 appears in \"背后交易 - 夜入墨府\" as a supporting tied to the conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "王氏，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“五夫人王氏，沉默寡言，对吾痴心一片，原大夫人金氏贴身丫环，未育子女，暗中握有秘密力量，可绝对信任。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    }
+  ]
+}

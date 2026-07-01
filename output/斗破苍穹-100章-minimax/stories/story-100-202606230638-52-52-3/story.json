@@ -1,0 +1,51 @@
+{
+  "id": "story-100-202606230638-52-52-3",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "arcId": "arc-100-202606230638-52-52-3",
+  "arcType": "conflict",
+  "goal": "维护尊严并回应婚约羞辱",
+  "startChapter": 52,
+  "endChapter": 52,
+  "title": "退婚冲突",
+  "summary": "萧炎卷入“退婚冲突”：萧炎立下三年之约、时出现的药、还有着丹。",
+  "coreConflict": "萧炎立下三年之约",
+  "trigger": "萧炎立下三年之约",
+  "turningPoints": [
+    "萧炎立下三年之约",
+    "时出现的药",
+    "还有着丹",
+    "强大的炼药"
+  ],
+  "conflictStatus": "ongoing",
+  "events": [
+    {
+      "id": "event-100-52-5",
+      "chapterIndex": 52,
+      "eventType": "turning_point",
+      "function": "turning_point",
+      "summary": "萧炎立下三年之约",
+      "participants": [
+        "萧炎",
+        "纳兰嫣然"
+      ],
+      "trigger": "三年之约",
+      "consequence": "冲突被延展为长期目标。",
+      "confidence": 0.88,
+      "source": "regex"
+    }
+  ],
+  "mainCharacters": [
+    "萧炎"
+  ],
+  "supportingCharacters": [
+    "药老",
+    "纳兰嫣然",
+    "古河"
+  ],
+  "locations": [],
+  "boundaryConfidence": 0.88,
+  "boundaryDecisionIds": [
+    "arc-52-52"
+  ],
+  "approved": true
+}

@@ -1,0 +1,197 @@
+[
+  {
+    "entityName": "聚气散",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "丹药表面光滑温润，质地细腻，通体碧绿，呈龙眼大小的圆润丹形，完好无损，保存于玉匣之中，龙眼大小，散发淡绿色光泽与异香，闻之令人精神振奋，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "古玉盒子",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "古玉材质，触手温润，泛着幽幽绿光，通体翠绿，呈长方形盒式造型，边缘线条流畅，古朴精致，表面略有岁月包浆，保存完好，约巴掌大小，匣盖开启时宝光隐隐外露，引得厅内众人目光炽热，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "青木剑诀",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "功法秘籍，斗气凝聚时可显化为有形剑气，功法属性为木系，斗气颜色为青色，云岚宗传承功法，青色斗气汇聚可化为凌厉剑气，威力强大，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "黑色古戒",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "戒身漆黑如墨，材质不明，触手微凉，古朴圆环造型，表面隐约可见模糊的古老纹路，古朴陈旧，纹路已模糊不清，表面略带磨损，成人指圈大小，斗气修炼时泛起极其微弱的诡异毫光，片刻后沉寂消失，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "狂狮怒罡",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "功法秘籍凝聚斗气，可化为有形的狮头形态，风属性斗气，青色，萧家最高层功法，斗气释放时在脸庞处隐隐汇聚成虚幻的狮头，威势惊人，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "木系一级魔核",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "魔兽体内的能量结晶，质地坚硬，表面光滑，拇指大小，散发淡淡翠绿或墨绿色泽，完好无损，拇指大小，散发淡淡木属性灵光，是魔兽斗气凝聚的精华，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "紫叶兰草",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "草本植物，茎叶柔韧，兰草形态，细长挺拔，叶片呈紫色，完整的三株，年份约二十年，品质良好，约二十厘米高，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "魔石碑",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "测验魔石碑之旁。小手轻车熟路的触摸着漆黑的魔石碑。漆黑的魔石碑之上再次亮起了光芒……。名为萧薰儿的少女行到魔石碑之前。然后轻触着石碑……，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "洗骨花",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "两株洗骨花，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "黑色存金卡",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "薰儿笑吟吟的递过来一张黑色卡片，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "五纹紫金卡",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "萧薰儿持有的高级存金卡，卡片闪烁着五道不同颜色的波纹，需要斗灵实力或超然势力才有资格办理，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "休证",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "那纸解除婚约的契约。手中的那纸契约，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "云彩银剑",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "云岚宗弟子袍服袖口处的云彩形状银剑标记，是云岚宗的标志，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  }
+]

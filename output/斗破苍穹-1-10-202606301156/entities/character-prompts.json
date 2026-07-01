@@ -1,0 +1,182 @@
+[
+  {
+    "entityName": "萧炎",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "老者身形降下地面。少年身材修长。身形略显单薄。美丽的俏脸上。萧炎脸庞上的笑容更浓了一分。她的容貌。清秀的瓜子脸。轮廓尚带稚气。漆黑深邃的眼眸。高挺的鼻梁。肤色白皙。青色劲装。手指佩戴黑色古朴戒指。清爽自然。黑色古朴戒指，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "纳兰嫣然",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "那张清秀的稚嫩小脸。也不理会那俏脸冰寒的纳兰嫣然。带着淡淡的冷漠，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "萧薰儿",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "一条紧腿长裤将那纤细而修长的美腿包裹得极为圆润。身姿纤细修长。体态婀娜。一旁的中年测验员漠然的脸庞上竟然也是罕见的露出了一丝笑意。略微稚嫩的嗓音。萧薰儿纤细的眉毛微微皱了皱。少女白皙的俏脸。俏美的鹅蛋脸。容貌精致。淡雅从容、隐晦冷漠。眼眸明亮。修长睫毛。纤细的鼻梁。白皙如玉。萧薰儿宛如一只紫色蝴蝶一般。换了一身得体的淡绿色装饰。薰儿笑吟吟的递过来一张黑色卡片。清雅自然。无浓妆。充满着活力与诱人的青春气息，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "萧战",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "中年身形。身形魁梧。最后竟然隐隐约约的在脸庞处汇聚成了一个虚幻的狮头。萧战脸庞淡漠。棱角分明。威严、豪气、宠溺儿子。黑发（推断）。目光锐利威严。鼻梁端正。嘴唇紧抿时显威严。古铜肤色，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "药老",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "虚幻老者身形。身着月白衣袍。身形虚幻飘渺的老者。药老脸色凝重的道。苍老面容。皱纹刻画着岁月的痕迹。银白长发（推断灵魂体特征）。目光深邃。高挺的鼻梁。苍白如纸。月白衣袍。胸口处有标志，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "葛叶",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "老者身形。老者身形消瘦但挺拔。惊恐的神色顷刻间覆盖了那苍老的面孔。苍老面容。皱纹纵横。一双双炽热的目光。惊恐的神色顷刻间覆盖了那苍老的面孔。银白或灰白。鹰隼般锐利的眼睛。鹰钩鼻。薄唇紧抿。苍白干枯。胸口佩戴七颗金星。葛叶伸手抹了抹手指上的一枚戒指。将之收进了戒指内，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "云韵",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "云岚宗宗主，实力强横，在加玛帝国地位显赫; 亲自收纳兰嫣然为弟子并极度宠爱她，甚至派葛叶代为处理悔婚之事，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "萧媚",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "粉嫩娇舌轻轻的添了添红唇。论起美貌与气质来。这名紫裙少女，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "古河",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "云岚宗名誉长老，六品炼药师，在加玛帝国炼药界堪称第一人，名列帝国十大强者之一，自身实力已晋入斗王之阶，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "纳兰桀",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "加玛帝国狮心元帅，性子桀骜，极度重视承诺; 当年与萧炎爷爷是生死好友，定下萧炎与纳兰嫣然的婚事，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "纳兰肃",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "即纳兰桀，纳兰嫣然的爷爷，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "墨管家",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "萧家老管家，苍老和善，对萧炎抱有惋惜之情，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  }
+]

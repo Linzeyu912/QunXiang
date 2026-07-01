@@ -1,0 +1,32 @@
+{
+  "storyId": "story-100-202606230638-63-63-4",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "scenes": [
+    {
+      "id": "story-100-202606230638-63-63-4-scene-1",
+      "name": "资源争夺 - 未指定场景",
+      "location": "未指定场景",
+      "sourceRange": "chapters 63-63",
+      "summary": "药老卷入“资源争夺”：萧炎依靠拿出聚气散、仅炼出的丹、药药。",
+      "conflictBeat": "萧炎依靠拿出聚气散",
+      "involvedCharacters": [
+        "药老",
+        "萧炎",
+        "纳兰嫣然"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"资源争夺\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 萧炎依靠拿出聚气散, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "药老卷入“资源争夺”：萧炎依靠拿出聚气散、仅炼出的丹、药药。"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63"
+    }
+  ]
+}

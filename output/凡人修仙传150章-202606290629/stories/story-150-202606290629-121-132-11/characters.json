@@ -1,0 +1,338 @@
+{
+  "storyId": "story-150-202606290629-121-132-11",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "金芝",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "金芝必须应对潇湘院带来的处境变化。",
+      "conflictRelation": "金芝 is connected to the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "firstMentionChapter": 121,
+      "lastMentionChapter": 132,
+      "keyActions": [
+        "“就是的，金芝姑娘！",
+        "此时这位咯咯笑着的小金芝，听闻“狂拳”和“毒秀才”范沮如此一说，立刻两眼雾气腾腾，似乎随时都有泪珠掉落下来。",
+        "“范爷和钱爷这样说人家，可真是冤枉金芝了。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "金芝 appears in \"潇湘院 - 收获\" as a protagonist tied to the conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "金芝，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“就是的，金芝姑娘！",
+        "此时这位咯咯笑着的小金芝，听闻“狂拳”和“毒秀才”范沮如此一说，立刻两眼雾气腾腾，似乎随时都有泪珠掉落下来。",
+        "“范爷和钱爷这样说人家，可真是冤枉金芝了。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132"
+    },
+    {
+      "name": "沈三",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "conflictRelation": "沈三 is connected to the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "firstMentionChapter": 121,
+      "lastMentionChapter": 132,
+      "keyActions": [
+        "而呆在一旁，始终没有开口说话的黑衣人，则是三大护法中武功最高的“飞刀”沈三。",
+        "”一直都沉默寡言的黑衣人沈三，突然间喝住了钱进往嘴里灌酒的举动。",
+        "”钱进奇怪的问道，但出于一贯对沈三的信任，他还是下意识的停下了来。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "沈三 appears in \"潇湘院 - 收获\" as a supporting tied to the conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 神情/气质：沈三的神色倒缓和了几分\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "沈三，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 神情/气质：沈三的神色倒缓和了几分\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "而呆在一旁，始终没有开口说话的黑衣人，则是三大护法中武功最高的“飞刀”沈三。",
+        "”一直都沉默寡言的黑衣人沈三，突然间喝住了钱进往嘴里灌酒的举动。",
+        "”钱进奇怪的问道，但出于一贯对沈三的信任，他还是下意识的停下了来。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132"
+    },
+    {
+      "name": "欧阳",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "conflictRelation": "欧阳 is connected to the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "firstMentionChapter": 121,
+      "lastMentionChapter": 132,
+      "keyActions": [
+        "我们就按公子说的条件成交，只要韩公子能杀掉独霸山庄的庄主“怒狮”欧阳飞天，我们就将暖阳宝玉交付与你，让下解毒。",
+        "我听说欧阳飞天此人正当壮年，而且尚无子女。",
+        "就是这位欧阳霸主指使的，而且他还是欧阳飞天的七弟子，甚得其宠爱。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "欧阳 appears in \"潇湘院 - 收获\" as a supporting tied to the conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "欧阳，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "我们就按公子说的条件成交，只要韩公子能杀掉独霸山庄的庄主“怒狮”欧阳飞天，我们就将暖阳宝玉交付与你，让下解毒。",
+        "我听说欧阳飞天此人正当壮年，而且尚无子女。",
+        "就是这位欧阳霸主指使的，而且他还是欧阳飞天的七弟子，甚得其宠爱。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132"
+    },
+    {
+      "name": "欧阳飞",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "conflictRelation": "欧阳飞 is connected to the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "firstMentionChapter": 121,
+      "lastMentionChapter": 132,
+      "keyActions": [
+        "我们就按公子说的条件成交，只要韩公子能杀掉独霸山庄的庄主“怒狮”欧阳飞天，我们就将暖阳宝玉交付与你，让下解毒。",
+        "我听说欧阳飞天此人正当壮年，而且尚无子女。",
+        "就是这位欧阳霸主指使的，而且他还是欧阳飞天的七弟子，甚得其宠爱。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "欧阳飞 appears in \"潇湘院 - 收获\" as a supporting tied to the conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "欧阳飞，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "我们就按公子说的条件成交，只要韩公子能杀掉独霸山庄的庄主“怒狮”欧阳飞天，我们就将暖阳宝玉交付与你，让下解毒。",
+        "我听说欧阳飞天此人正当壮年，而且尚无子女。",
+        "就是这位欧阳霸主指使的，而且他还是欧阳飞天的七弟子，甚得其宠爱。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132"
+    },
+    {
+      "name": "范沮",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "conflictRelation": "范沮 is connected to the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "firstMentionChapter": 121,
+      "lastMentionChapter": 132,
+      "keyActions": [
+        "儒生则是“毒秀才”范沮，虽然练有一手凌厉的“雪风剑法，但令他名声在外的却是他心黑手狠的毒辣心肠。",
+        "此时这位咯咯笑着的小金芝，听闻“狂拳”和“毒秀才”范沮如此一说，立刻两眼雾气腾腾，似乎随时都有泪珠掉落下来。",
+        "这番似真似假的话，让那钱进、范沮面面相觑，一时之间无话可说。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "范沮 appears in \"潇湘院 - 收获\" as a supporting tied to the conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "范沮，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "儒生则是“毒秀才”范沮，虽然练有一手凌厉的“雪风剑法，但令他名声在外的却是他心黑手狠的毒辣心肠。",
+        "此时这位咯咯笑着的小金芝，听闻“狂拳”和“毒秀才”范沮如此一说，立刻两眼雾气腾腾，似乎随时都有泪珠掉落下来。",
+        "这番似真似假的话，让那钱进、范沮面面相觑，一时之间无话可说。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132"
+    },
+    {
+      "name": "钱进",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "conflictRelation": "钱进 is connected to the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "firstMentionChapter": 121,
+      "lastMentionChapter": 132,
+      "keyActions": [
+        "黑胖子是“狂拳”钱进，别看其奇胖无比，可一手“疯癫十八打”却练的熟练之极，击毙过不少颇有名气的高手。",
+        "这番似真似假的话，让那钱进、范沮面面相觑，一时之间无话可说。",
+        "”正有些不痛快的黑胖子“狂拳”钱进，没好气的喝问道。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "钱进 appears in \"潇湘院 - 收获\" as a supporting tied to the conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "钱进，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "黑胖子是“狂拳”钱进，别看其奇胖无比，可一手“疯癫十八打”却练的熟练之极，击毙过不少颇有名气的高手。",
+        "这番似真似假的话，让那钱进、范沮面面相觑，一时之间无话可说。",
+        "”正有些不痛快的黑胖子“狂拳”钱进，没好气的喝问道。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132"
+    },
+    {
+      "name": "韩兄",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "conflictRelation": "韩兄 is connected to the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "firstMentionChapter": 121,
+      "lastMentionChapter": 132,
+      "keyActions": [
+        "接着，少年又对老者说：“韩兄是我在谷外刚刚认识的，虽然是位散修，可是我们却很谈的来，世伯可要多照顾几分！",
+        "“太好了，有韩兄的加入，我们这个团体的实力又强了一分！",
+        "“等到晚上聚头时，韩兄弟就会见到那二人了，到时给你介绍一下，那二人的确是有那么一点点与众不同！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩兄 appears in \"潇湘院 - 收获\" as a supporting tied to the conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩兄，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "接着，少年又对老者说：“韩兄是我在谷外刚刚认识的，虽然是位散修，可是我们却很谈的来，世伯可要多照顾几分！",
+        "“太好了，有韩兄的加入，我们这个团体的实力又强了一分！",
+        "“等到晚上聚头时，韩兄弟就会见到那二人了，到时给你介绍一下，那二人的确是有那么一点点与众不同！"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132"
+    },
+    {
+      "name": "欧阳霸",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "conflictRelation": "欧阳霸 is connected to the story conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "firstMentionChapter": 121,
+      "lastMentionChapter": 132,
+      "keyActions": [
+        "就是这位欧阳霸主指使的，而且他还是欧阳飞天的七弟子，甚得其宠爱。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "欧阳霸 appears in \"潇湘院 - 收获\" as a supporting tied to the conflict: 金芝必须应对潇湘院带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "欧阳霸，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "就是这位欧阳霸主指使的，而且他还是欧阳飞天的七弟子，甚得其宠爱。"
+      ],
+      "sourceChapters": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "sourceRangeHint": "chapters 121-132"
+    }
+  ]
+}

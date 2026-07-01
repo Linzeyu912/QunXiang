@@ -1,0 +1,39 @@
+{
+  "id": "story-150-202606290629-25-36-3",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 25,
+  "endChapter": 36,
+  "title": "插柳成 - 吃惊",
+  "summary": "韩立无在“插柳成 - 吃惊”中经历围绕“失败”发生关键变化、插柳成、催药生。",
+  "coreConflict": "韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+  "trigger": "围绕“失败”发生关键变化",
+  "turningPoints": [
+    "围绕“失败”发生关键变化",
+    "插柳成",
+    "催药生",
+    "配灵药",
+    "墨回谷",
+    "冲突起",
+    "就往药",
+    "下那几株药"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "韩立无"
+  ],
+  "supportingCharacters": [
+    "韩立进",
+    "韩立很",
+    "方已",
+    "韩立似乎"
+  ],
+  "locations": [
+    "开封",
+    "越国岚州"
+  ],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-25-36"
+  ],
+  "approved": true
+}

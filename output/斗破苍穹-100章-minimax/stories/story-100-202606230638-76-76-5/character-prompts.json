@@ -1,0 +1,54 @@
+{
+  "storyId": "story-100-202606230638-76-76-5",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：雅妃俏脸微变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "雅妃俏脸微变，"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76",
+      "metadata": {
+        "storyId": "story-100-202606230638-76-76-5",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：雅妃俏脸微变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "不置可否的笑了笑，这话别说是药老，就连萧炎，也是在心中嗤之以鼻，若真照她这般尽份内之事，恐怕米特尔拍卖场早就倒闭了。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76",
+      "metadata": {
+        "storyId": "story-100-202606230638-76-76-5",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ]
+}

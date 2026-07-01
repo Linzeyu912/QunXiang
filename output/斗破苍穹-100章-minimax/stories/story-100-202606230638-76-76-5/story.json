@@ -1,0 +1,48 @@
+{
+  "id": "story-100-202606230638-76-76-5",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "arcId": "arc-100-202606230638-76-76-5",
+  "arcType": "resource",
+  "startChapter": 76,
+  "endChapter": 76,
+  "title": "资源争夺",
+  "summary": "药老卷入“资源争夺”：萧炎所拿出聚气散、断其药、小的淡青丹。",
+  "coreConflict": "萧炎所拿出聚气散",
+  "trigger": "萧炎所拿出聚气散",
+  "turningPoints": [
+    "萧炎所拿出聚气散",
+    "断其药",
+    "小的淡青丹",
+    "丹药"
+  ],
+  "conflictStatus": "ongoing",
+  "events": [
+    {
+      "id": "event-100-76-7",
+      "chapterIndex": 76,
+      "eventType": "resource",
+      "function": "escalation",
+      "summary": "萧炎所拿出聚气散",
+      "participants": [
+        "萧炎",
+        "药老"
+      ],
+      "trigger": "聚气散",
+      "consequence": "外部势力用资源交换制造羞辱和诱惑。",
+      "confidence": 0.84,
+      "source": "regex"
+    }
+  ],
+  "mainCharacters": [
+    "药老"
+  ],
+  "supportingCharacters": [
+    "萧炎"
+  ],
+  "locations": [],
+  "boundaryConfidence": 0.84,
+  "boundaryDecisionIds": [
+    "arc-76-76"
+  ],
+  "approved": true
+}

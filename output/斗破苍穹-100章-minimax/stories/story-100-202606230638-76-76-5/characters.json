@@ -1,0 +1,68 @@
+{
+  "storyId": "story-100-202606230638-76-76-5",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "characters": [
+    {
+      "name": "药老",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "萧炎所拿出聚气散",
+      "conflictRelation": "药老 is connected to the story conflict: 萧炎所拿出聚气散",
+      "firstMentionChapter": 76,
+      "lastMentionChapter": 76,
+      "keyActions": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "不置可否的笑了笑，这话别说是药老，就连萧炎，也是在心中嗤之以鼻，若真照她这般尽份内之事，恐怕米特尔拍卖场早就倒闭了。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "药老 appears in \"资源争夺\" as a protagonist tied to the conflict: 萧炎所拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：雅妃俏脸微变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "药老，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：雅妃俏脸微变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "不置可否的笑了笑，这话别说是药老，就连萧炎，也是在心中嗤之以鼻，若真照她这般尽份内之事，恐怕米特尔拍卖场早就倒闭了。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76"
+    },
+    {
+      "name": "萧炎",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 萧炎所拿出聚气散",
+      "conflictRelation": "萧炎 is connected to the story conflict: 萧炎所拿出聚气散",
+      "firstMentionChapter": 76,
+      "lastMentionChapter": 76,
+      "keyActions": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "不置可否的笑了笑，这话别说是药老，就连萧炎，也是在心中嗤之以鼻，若真照她这般尽份内之事，恐怕米特尔拍卖场早就倒闭了。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "萧炎 appears in \"资源争夺\" as a supporting tied to the conflict: 萧炎所拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "萧炎，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "不置可否的笑了笑，这话别说是药老，就连萧炎，也是在心中嗤之以鼻，若真照她这般尽份内之事，恐怕米特尔拍卖场早就倒闭了。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76"
+    }
+  ]
+}

@@ -1,0 +1,1015 @@
+[
+  {
+    "entityType": "item",
+    "name": "聚气散",
+    "aliases": [
+      "聚气散丹药"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "visualEffects",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.46,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.694,
+    "visualFields": {
+      "material": "通体碧绿的丹药",
+      "colorShape": "约龙眼大小，表面光滑圆润",
+      "condition": "完好无损",
+      "usage": "能让九段斗之气百分之百成功凝聚斗之气旋",
+      "visualEffects": "我还可以让你进入云岚宗修习高深斗气功法；斗气大陆",
+      "ownership": "从他手中传出来的聚气散；先前大厅中纳兰嫣然手中的聚气散的主人"
+    },
+    "visualDetails": {
+      "materialTexture": "丹药表面光滑温润，质地细腻",
+      "colorShape": "通体碧绿，呈龙眼大小的圆润丹形",
+      "condition": "完好无损，保存于玉匣之中",
+      "scale": "龙眼大小",
+      "usage": "帮助九段斗之气成功凝聚斗之气旋，使修炼者顺利晋升为斗者",
+      "effects": "散发淡绿色光泽与异香，闻之令人精神振奋",
+      "ownership": "丹王古河炼制，葛叶代云岚宗带来，萧战曾将装有聚气散的玉匣甩飞"
+    },
+    "inferredFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "聚气散是一枚通体碧绿的丹药，约龙眼大小，表面光滑温润，质地细腻，隐隐散发着一层淡绿色的柔和光泽，一缕异香从中弥漫而出，闻之便让人精神为之一振。丹药装在一只通体泛绿的古玉匣子之中，匣盖开启时，宝光隐隐外露。聚气散由丹王古河亲自炼制，丹王古河身为六品炼药师，在加玛帝国炼药界堪称第一人，由他手中传出的聚气散价值连城，被炒至天价。",
+    "finalDescription": "聚气散是一枚通体碧绿的丹药，约龙眼大小，表面光滑温润，质地细腻，隐隐散发着一层淡绿色的柔和光泽，一缕异香从中弥漫而出，闻之便让人精神为之一振。丹药装在一只通体泛绿的古玉匣子之中，匣盖开启时，宝光隐隐外露。聚气散由丹王古河亲自炼制，丹王古河身为六品炼药师，在加玛帝国炼药界堪称第一人，由他手中传出的聚气散价值连城，被炒至天价。",
+    "llmSupplement": "material、colorShape、condition、usage 均为原著未详尽描写，根据丹药常识与剧情描述保守补写",
+    "supplementDescription": "material、colorShape、condition、usage 均为原著未详尽描写，根据丹药常识与剧情描述保守补写",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "古玉盒子",
+    "aliases": [
+      "玉匣子",
+      "玉盒",
+      "通体泛绿的古玉盒子"
+    ],
+    "missingFields": [
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "古玉盒子",
+          "玉盒",
+          "通体泛绿的古玉盒子"
+        ],
+        "otherMatchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "玉匣子"
+        ],
+        "otherMatchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "玉匣子"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "玉匣子"
+        ],
+        "fields": [
+          "ownership",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "玉匣子"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.694,
+    "visualFields": {
+      "material": "通体泛绿的古老玉料",
+      "colorShape": "一只通体泛绿的古玉盒子在手中凭空出现……",
+      "condition": "古朴精致，保存完好",
+      "usage": "盛装聚气散，从储物戒指中取出",
+      "visualEffects": "匣盖开启时宝光隐隐外露",
+      "ownership": "一只通体泛绿的古玉盒子在手中凭空出现……；死死的盯在葛叶手中的玉匣子；坐在父亲身旁的萧媚"
+    },
+    "visualDetails": {
+      "materialTexture": "古玉材质，触手温润，泛着幽幽绿光",
+      "colorShape": "通体翠绿，呈长方形盒式造型，边缘线条流畅",
+      "condition": "古朴精致，表面略有岁月包浆，保存完好",
+      "scale": "约巴掌大小",
+      "usage": "盛装聚气散，可从储物戒指中凭空取出",
+      "effects": "匣盖开启时宝光隐隐外露，引得厅内众人目光炽热",
+      "ownership": "葛叶从左手储物戒指中取出，内装聚气散"
+    },
+    "inferredFields": [
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "summarizedFields": [
+      "material"
+    ],
+    "enhancedDescription": "古玉盒子由通体泛绿的古老玉料雕琢而成，翠绿的盒身泛着幽幽温润的光泽，造型古朴典雅，边缘线条流畅，触手温润，透着岁月的厚重感。匣盖开启时，一缕宝光隐隐外露，令厅内少年少女们一双双炽热的目光死死盯在玉匣子上。玉匣约巴掌大小，内中盛装着那枚通体碧绿的聚气散。葛叶从左手储物戒指中凭空取出此匣，其储物戒指内似乎还收有其他物品。",
+    "finalDescription": "古玉盒子由通体泛绿的古老玉料雕琢而成，翠绿的盒身泛着幽幽温润的光泽，造型古朴典雅，边缘线条流畅，触手温润，透着岁月的厚重感。匣盖开启时，一缕宝光隐隐外露，令厅内少年少女们一双双炽热的目光死死盯在玉匣子上。玉匣约巴掌大小，内中盛装着那枚通体碧绿的聚气散。葛叶从左手储物戒指中凭空取出此匣，其储物戒指内似乎还收有其他物品。",
+    "llmSupplement": "condition、visualEffects 原著仅暗示，根据玉匣材质与聚气散的珍贵属性，保守补写为古朴精致、匣盖开启时宝光外露",
+    "supplementDescription": "condition、visualEffects 原著仅暗示，根据玉匣材质与聚气散的珍贵属性，保守补写为古朴精致、匣盖开启时宝光外露",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "青木剑诀",
+    "aliases": [
+      "云岚宗高深功法"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "青木剑诀",
+          "云岚宗高深功法"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.694,
+    "visualFields": {
+      "material": "青木剑诀",
+      "colorShape": "",
+      "condition": "",
+      "usage": "木系斗气功法，修炼至大成可凝聚剑气",
+      "visualEffects": "青色斗气化为凌厉剑气",
+      "ownership": "云岚宗"
+    },
+    "visualDetails": {
+      "materialTexture": "功法秘籍，斗气凝聚时可显化为有形剑气",
+      "colorShape": "功法属性为木系，斗气颜色为青色",
+      "condition": "云岚宗传承功法",
+      "usage": "木系斗气功法，修炼后斗气可化为凌厉剑气进行攻击",
+      "effects": "青色斗气汇聚可化为凌厉剑气，威力强大",
+      "ownership": "云岚宗"
+    },
+    "inferredFields": [
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "青木剑诀是云岚宗历代传承的高深功法，属木系属性，品阶为玄阶低级。修炼此功法者，斗气颜色呈青色，凝聚时可化为凌厉剑气，威力不俗。云岚宗以剑道闻名，青木剑诀正是其代表性功法之一，剑气一出，凌厉无匹。此功法为云岚宗所有，由葛叶代宗门提出传授给萧家作为退婚补偿之一。",
+    "finalDescription": "青木剑诀是云岚宗历代传承的高深功法，属木系属性，品阶为玄阶低级。修炼此功法者，斗气颜色呈青色，凝聚时可化为凌厉剑气，威力不俗。云岚宗以剑道闻名，青木剑诀正是其代表性功法之一，剑气一出，凌厉无匹。此功法为云岚宗所有，由葛叶代宗门提出传授给萧家作为退婚补偿之一。",
+    "llmSupplement": "colorShape、condition、usage、visualEffects 均为原著极简提及，根据功法名称与属性推断补写",
+    "supplementDescription": "colorShape、condition、usage、visualEffects 均为原著极简提及，根据功法名称与属性推断补写",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "黑色古戒",
+    "aliases": [
+      "古朴戒指",
+      "戒指"
+    ],
+    "missingFields": [
+      "material"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "ownership",
+          "condition",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "古朴戒指",
+          "戒指"
+        ],
+        "fields": [
+          "condition",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "黑色古戒"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "condition",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "古玉盒子",
+          "玉盒",
+          "通体泛绿的古玉盒子"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "古朴戒指",
+          "戒指"
+        ],
+        "fields": [
+          "ownership",
+          "colorShape",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "古朴戒指",
+          "戒指"
+        ],
+        "fields": [
+          "ownership",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.469,
+    "visualFields": {
+      "material": "古朴黑色，材质不明，戒身漆黑如墨",
+      "colorShape": "戒指古朴，表面有模糊的古老纹路",
+      "condition": "古朴陈旧，纹路模糊，表面略带磨损",
+      "usage": "他已经佩戴了十年；刚刚知晓自己三年来受辱的罪魁祸首竟然便是一直佩戴的戒指",
+      "visualEffects": "愣愣的望着那消失在雾气中的戒指",
+      "ownership": "萧炎，从四岁开始佩戴至今"
+    },
+    "visualDetails": {
+      "materialTexture": "戒身漆黑如墨，材质不明，触手微凉",
+      "colorShape": "古朴圆环造型，表面隐约可见模糊的古老纹路",
+      "condition": "古朴陈旧，纹路已模糊不清，表面略带磨损",
+      "scale": "成人指圈大小",
+      "usage": "萧炎佩戴了十年，斗气修炼时会产生反应，内藏药老灵魂体",
+      "effects": "斗气修炼时泛起极其微弱的诡异毫光，片刻后沉寂消失",
+      "ownership": "萧炎所有，四岁起佩戴，为母亲临终遗物"
+    },
+    "inferredFields": [
+      "material"
+    ],
+    "summarizedFields": [
+      "colorShape",
+      "condition",
+      "ownership"
+    ],
+    "enhancedDescription": "黑色古戒通体漆黑如墨，造型古朴简约，戒身浑然一体，材质不明，触手微凉。戒面上隐约可见模糊的古老纹路，因岁月侵蚀已难辨其详，戒身表面亦略有磨损痕迹，透着陈旧的年代感。戒指约成人指圈大小，套在萧炎左手无名指上。这枚古戒是母亲临终前送给萧炎的唯一遗物，他从四岁起便佩戴至今，已整整十年。当萧炎闭目修炼斗气之时，戒面偶尔会泛起极其微弱的诡异毫光，眨眼即逝，不引起任何人察觉——戒中正寄居着神秘的灵魂体药老。",
+    "finalDescription": "黑色古戒通体漆黑如墨，造型古朴简约，戒身浑然一体，材质不明，触手微凉。戒面上隐约可见模糊的古老纹路，因岁月侵蚀已难辨其详，戒身表面亦略有磨损痕迹，透着陈旧的年代感。戒指约成人指圈大小，套在萧炎左手无名指上。这枚古戒是母亲临终前送给萧炎的唯一遗物，他从四岁起便佩戴至今，已整整十年。当萧炎闭目修炼斗气之时，戒面偶尔会泛起极其微弱的诡异毫光，眨眼即逝，不引起任何人察觉——戒中正寄居着神秘的灵魂体药老。",
+    "llmSupplement": "material 原著仅提及材质不明，根据外观描述保守补写为戒身漆黑如墨，触手微凉",
+    "supplementDescription": "material 原著仅提及材质不明，根据外观描述保守补写为戒身漆黑如墨，触手微凉",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "狂狮怒罡",
+    "aliases": [
+      "狂狮怒罡功",
+      "萧家顶级功法"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "狂狮怒罡"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.469,
+    "visualFields": {
+      "material": "风属性斗气功法",
+      "colorShape": "",
+      "condition": "",
+      "usage": "萧家族长专属修炼功法，玄阶中级风属性斗气功法",
+      "visualEffects": "不过高级斗气修炼功法常人很难得到；并且是玄阶中级的斗气功法",
+      "ownership": "萧家族长"
+    },
+    "visualDetails": {
+      "materialTexture": "功法秘籍凝聚斗气，可化为有形的狮头形态",
+      "colorShape": "风属性斗气，青色",
+      "condition": "萧家最高层功法",
+      "usage": "萧家族长专属斗气功法，修炼至大成可凝聚斗气之狮",
+      "effects": "斗气释放时在脸庞处隐隐汇聚成虚幻的狮头，威势惊人",
+      "ownership": "萧家历代族长"
+    },
+    "inferredFields": [
+      "material",
+      "usage",
+      "ownership"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "狂狮怒罡是萧家最为顶层的斗气功法，风属性，品阶为玄阶中级，历来只有萧家族长才有资格修炼。此功法属于高阶斗气修炼之法，在萧家比族长更低级别的长老们都无法染指。修炼此功法后，斗气呈青色，催动至极处时，淡淡的青色斗气会在修炼者脸庞处隐隐汇聚成一个虚幻的狮头，威势惊人，令对手胆寒。在整个斗气大陆上，玄阶功法已属稀有，萧家能拥有此等功法，可见其底蕴深厚。",
+    "finalDescription": "狂狮怒罡是萧家最为顶层的斗气功法，风属性，品阶为玄阶中级，历来只有萧家族长才有资格修炼。此功法属于高阶斗气修炼之法，在萧家比族长更低级别的长老们都无法染指。修炼此功法后，斗气呈青色，催动至极处时，淡淡的青色斗气会在修炼者脸庞处隐隐汇聚成一个虚幻的狮头，威势惊人，令对手胆寒。在整个斗气大陆上，玄阶功法已属稀有，萧家能拥有此等功法，可见其底蕴深厚。",
+    "llmSupplement": "狂狮",
+    "supplementDescription": "狂狮",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "木系一级魔核",
+    "aliases": [
+      "一级魔核",
+      "魔核"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "一级魔核",
+          "魔核"
+        ],
+        "otherMatchedNames": [
+          "戒指",
+          "紫叶兰草",
+          "紫叶兰",
+          "洗骨花",
+          "洗骨"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "木系一级魔核",
+          "一级魔核",
+          "魔核"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "魔核"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.34,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.381,
+    "visualFields": {
+      "material": "还有一颗木系的一级魔核；一枚木系一级魔核；便是一枚一级的木系魔核了",
+      "colorShape": "拇指大小",
+      "condition": "完好",
+      "usage": "药老指导萧炎修炼所需的核心材料",
+      "visualEffects": "散发淡淡木属性灵光",
+      "ownership": "萧炎准备购买"
+    },
+    "visualDetails": {
+      "materialTexture": "魔兽体内的能量结晶，质地坚硬，表面光滑",
+      "colorShape": "拇指大小，散发淡淡翠绿或墨绿色泽",
+      "condition": "完好无损",
+      "scale": "拇指大小",
+      "usage": "药老要求的修炼材料，用于配合紫叶兰草和洗骨花配制修炼辅助药剂",
+      "effects": "散发淡淡木属性灵光，是魔兽斗气凝聚的精华",
+      "ownership": "萧炎准备购买"
+    },
+    "inferredFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "还有一颗木系的一级魔核；一枚木系一级魔核；便是一枚一级的木系魔核了，拇指大小，完好，魔兽体内的能量结晶，质地坚硬，表面光滑，拇指大小，散发淡淡翠绿或墨绿色泽，完好无损，药老要求的修炼材料，用于配合紫叶兰草和洗骨花配制修炼辅助药剂，散发淡淡木属性灵光，是魔兽斗气凝聚的精华，萧炎准备购买，散发淡淡木属性灵光，药老指导萧炎修炼所需的核心材料，萧炎准备购买，colorShape、condition、visualEffects 均为原著未具体描写，根据一级木系魔核的属性特征与剧情需要，保守推断补写。",
+    "finalDescription": "还有一颗木系的一级魔核；一枚木系一级魔核；便是一枚一级的木系魔核了，拇指大小，完好，魔兽体内的能量结晶，质地坚硬，表面光滑，拇指大小，散发淡淡翠绿或墨绿色泽，完好无损，药老要求的修炼材料，用于配合紫叶兰草和洗骨花配制修炼辅助药剂，散发淡淡木属性灵光，是魔兽斗气凝聚的精华，萧炎准备购买，散发淡淡木属性灵光，药老指导萧炎修炼所需的核心材料，萧炎准备购买，colorShape、condition、visualEffects 均为原著未具体描写，根据一级木系魔核的属性特征与剧情需要，保守推断补写。",
+    "llmSupplement": "colorShape、condition、visualEffects 均为原著未具体描写，根据一级木系魔核的属性特征与剧情需要，保守推断补写",
+    "supplementDescription": "colorShape、condition、visualEffects 均为原著未具体描写，根据一级木系魔核的属性特征与剧情需要，保守推断补写",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "紫叶兰草",
+    "aliases": [
+      "紫叶兰"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.381,
+    "visualFields": {
+      "material": "紫叶兰草，紫色叶片",
+      "colorShape": "细长挺拔的兰草，紫色叶片",
+      "condition": "完整的三株，萧炎购买了二十年份",
+      "usage": "药老要求的修炼材料，配合洗骨花和魔核使用",
+      "visualEffects": "",
+      "ownership": "萧炎在乌坦城药材店购买"
+    },
+    "visualDetails": {
+      "materialTexture": "草本植物，茎叶柔韧",
+      "colorShape": "兰草形态，细长挺拔，叶片呈紫色",
+      "condition": "完整的三株，年份约二十年，品质良好",
+      "scale": "约二十厘米高",
+      "usage": "药老配制修炼辅助药剂所需的药材之一，需完整三株",
+      "ownership": "萧炎在乌坦城药材店购买"
+    },
+    "inferredFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "紫叶兰草是一种细长挺拔的兰草植物，约二十厘米高，茎叶柔韧，整体泛着淡淡的紫色光泽，叶片呈标志性的紫色，故名紫叶兰草。萧炎在乌坦城药材店购买了二十年份的三株完整紫叶兰草，年份越久药效越佳。这三株兰草叶色深紫，茎秆粗壮，散发着草木清香，是药老为萧炎配制修炼辅助药剂所指定的药材之一，需配合洗骨花与木系魔核一同使用。",
+    "finalDescription": "紫叶兰草是一种细长挺拔的兰草植物，约二十厘米高，茎叶柔韧，整体泛着淡淡的紫色光泽，叶片呈标志性的紫色，故名紫叶兰草。萧炎在乌坦城药材店购买了二十年份的三株完整紫叶兰草，年份越久药效越佳。这三株兰草叶色深紫，茎秆粗壮，散发着草木清香，是药老为萧炎配制修炼辅助药剂所指定的药材之一，需配合洗骨花与木系魔核一同使用。",
+    "llmSupplement": "紫叶兰",
+    "supplementDescription": "紫叶兰",
+    "completionStatus": "llm_inferred",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "魔石碑",
+    "aliases": [
+      "测验魔石碑",
+      "漆黑的魔石碑"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑",
+          "测验魔石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑",
+          "测验魔石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑",
+          "漆黑的魔石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑",
+          "漆黑的魔石碑"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.306,
+    "visualFields": {
+      "material": "望着测验魔石碑上面闪亮得甚至有些刺眼的五个大字; 测验魔石碑之旁; 小手轻车熟路的触摸着漆黑的魔石碑; 漆黑的魔石碑之上再次亮起了光芒……; 名为萧薰儿的少女行到魔石碑之前; 然后轻触着石碑……",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "漆黑的魔石碑之上再次亮起了光芒……",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家用于测试斗之气的石碑，闪亮刺眼会显示斗之气的段数和级别",
+    "finalDescription": "萧家用于测试斗之气的石碑，闪亮刺眼会显示斗之气的段数和级别",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "洗骨花",
+    "aliases": [
+      "洗骨"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "洗骨花",
+          "洗骨"
+        ],
+        "otherMatchedNames": [
+          "戒指",
+          "一级魔核",
+          "魔核",
+          "紫叶兰草",
+          "紫叶兰"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "洗骨花",
+          "洗骨"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.269,
+    "visualFields": {
+      "material": "两株洗骨花",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "药老要求的修炼材料，两株，年份随意，萧炎买了五年份的",
+    "finalDescription": "药老要求的修炼材料，两株，年份随意，萧炎买了五年份的",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "黑色存金卡",
+    "aliases": [
+      "存金卡",
+      "黑卡"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "存金卡"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.23099999999999998,
+    "visualFields": {
+      "material": "",
+      "colorShape": "薰儿笑吟吟的递过来一张黑色卡片",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧薰儿给萧炎的普通存金卡，最大值不能超过五千金币",
+    "finalDescription": "萧薰儿给萧炎的普通存金卡，最大值不能超过五千金币",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "五纹紫金卡",
+    "aliases": [
+      "紫金卡",
+      "五纹紫金卡片"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "五纹紫金卡",
+          "紫金卡"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "紫金卡"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.23099999999999998,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "在斗气大陆上",
+      "ownership": "薰儿背后的紫金卡片"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧薰儿持有的高级存金卡，卡片闪烁着五道不同颜色的波纹，需要斗灵实力或超然势力才有资格办理",
+    "finalDescription": "萧薰儿持有的高级存金卡，卡片闪烁着五道不同颜色的波纹，需要斗灵实力或超然势力才有资格办理",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "休证",
+    "aliases": [
+      "血手契约",
+      "契约",
+      "血手印"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "契约"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "契约"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.23099999999999998,
+    "visualFields": {
+      "material": "那纸解除婚约的契约；手中的那纸契约",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": "手中的那纸契约"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧炎在被纳兰嫣然退婚时写下的休书，用左手鲜血写成，重重砸在纳兰嫣然面前，将她逐出萧家",
+    "finalDescription": "萧炎在被纳兰嫣然退婚时写下的休书，用左手鲜血写成，重重砸在纳兰嫣然面前，将她逐出萧家",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "云彩银剑",
+    "aliases": [
+      "云彩银剑标记",
+      "云彩银剑刺绣"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.1565,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "云岚宗弟子袍服袖口处的云彩形状银剑标记，是云岚宗的标志",
+    "finalDescription": "云岚宗弟子袍服袖口处的云彩形状银剑标记，是云岚宗的标志",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  }
+]

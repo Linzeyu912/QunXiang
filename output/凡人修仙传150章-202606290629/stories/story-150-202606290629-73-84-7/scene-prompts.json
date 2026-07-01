@@ -1,0 +1,82 @@
+{
+  "storyId": "story-150-202606290629-73-84-7",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-73-84-7-scene-1",
+      "assetName": "忽然山",
+      "prompt": "忽然山，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：忽然山 scene in \"厉飞雨的心思 - 地动山摇\", shaped by the conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：围绕“失败”发生关键变化；可保留人物比例参考：王绝楚、金光、韩立淡、韩立此；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "忽然山上某处响起了一声尖锐的警哨声。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84",
+      "metadata": {
+        "storyId": "story-150-202606290629-73-84-7",
+        "location": "忽然山",
+        "conflictBeat": "围绕“失败”发生关键变化",
+        "involvedCharacters": [
+          "王绝楚",
+          "金光",
+          "韩立淡",
+          "韩立此"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-73-84-7-scene-2",
+      "assetName": "尽管山",
+      "prompt": "尽管山，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：尽管山 scene in \"厉飞雨的心思 - 地动山摇\", shaped by the conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：围绕“戒指”发生关键变化；可保留人物比例参考：王绝楚、金光、韩立淡、韩立此；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”这时，突然传来了王绝楚嘲讽的话语，尽管山峰上如此的混乱，但仍清晰的传进了每个人的耳里，可见其功力的精纯。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84",
+      "metadata": {
+        "storyId": "story-150-202606290629-73-84-7",
+        "location": "尽管山",
+        "conflictBeat": "围绕“戒指”发生关键变化",
+        "involvedCharacters": [
+          "王绝楚",
+          "金光",
+          "韩立淡",
+          "韩立此"
+        ]
+      }
+    }
+  ]
+}

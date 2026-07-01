@@ -1,0 +1,662 @@
+{
+  "storyId": "story-150-202606290629-61-72-6",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "马门主",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "马门主必须应对神灭带来的处境变化。",
+      "conflictRelation": "马门主 is connected to the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "firstMentionChapter": 61,
+      "lastMentionChapter": 72,
+      "keyActions": [
+        "最后马门主还表示，若还有什么不满意的地方，尽管当面提出，他们一定会酌情处理。",
+        "这样一个根本算不上条件的条件，自然被马门主满口答应了下来。",
+        "韩立的这番举动，倒让那位马门主颇为钦佩，对他另眼相看，嘴上不停地说他年轻有为、不沉迷女色，要有女儿的话一定嫁给他之类的话语。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "马门主 appears in \"神灭 - 拔毒\" as a protagonist tied to the conflict: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "马门主，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "最后马门主还表示，若还有什么不满意的地方，尽管当面提出，他们一定会酌情处理。",
+        "这样一个根本算不上条件的条件，自然被马门主满口答应了下来。",
+        "韩立的这番举动，倒让那位马门主颇为钦佩，对他另眼相看，嘴上不停地说他年轻有为、不沉迷女色，要有女儿的话一定嫁给他之类的话语。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "李氏",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "conflictRelation": "李氏 is connected to the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "firstMentionChapter": 61,
+      "lastMentionChapter": 72,
+      "keyActions": [
+        "“这是我师娘，李氏。",
+        "韩立强忍着心中的笑意，不再理会对方，紧随李氏的脚步，来到了李长老的床前。",
+        "过了半晌，那位李长老的发妻李氏忽然开口问道："
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "李氏 appears in \"神灭 - 拔毒\" as a supporting tied to the conflict: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：就连本来脸色从容的李氏\n- 神情/气质：李氏露出毅然的神色\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "李氏，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：就连本来脸色从容的李氏\n- 神情/气质：李氏露出毅然的神色\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“这是我师娘，李氏。",
+        "韩立强忍着心中的笑意，不再理会对方，紧随李氏的脚步，来到了李长老的床前。",
+        "过了半晌，那位李长老的发妻李氏忽然开口问道："
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "马荣",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "conflictRelation": "马荣 is connected to the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "firstMentionChapter": 61,
+      "lastMentionChapter": 72,
+      "keyActions": [
+        "”马荣说到这里，一脸的鄙夷神色，看来对其他的大夫大为不满。",
+        "就在韩立仔细琢磨对策之时，马荣几乎是半架着韩立，一路小跑紧扯着他的衣袖，往李长老的住处奔去。",
+        "韩立心中有些黯然了，因为他想到了自己和墨大夫之间名为师徒实为对头的关系，要是他们之间能像马荣师徒感情这么和睦，那就好了。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "马荣 appears in \"神灭 - 拔毒\" as a supporting tied to the conflict: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "马荣，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "”马荣说到这里，一脸的鄙夷神色，看来对其他的大夫大为不满。",
+        "就在韩立仔细琢磨对策之时，马荣几乎是半架着韩立，一路小跑紧扯着他的衣袖，往李长老的住处奔去。",
+        "韩立心中有些黯然了，因为他想到了自己和墨大夫之间名为师徒实为对头的关系，要是他们之间能像马荣师徒感情这么和睦，那就好了。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "张袖儿",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "conflictRelation": "张袖儿 is connected to the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "firstMentionChapter": 61,
+      "lastMentionChapter": 72,
+      "keyActions": [
+        "那位少女因为年纪最轻，被排在最后，名字叫张袖儿竟是李长老的外甥女，这倒出乎了韩立意料之外。",
+        "站在旁边一直红着眼的张袖儿应声之后，往屋外走了去。",
+        "不一会儿，张袖儿一脸无奈的走了进来，两手空空。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "张袖儿 appears in \"神灭 - 拔毒\" as a supporting tied to the conflict: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "张袖儿，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "那位少女因为年纪最轻，被排在最后，名字叫张袖儿竟是李长老的外甥女，这倒出乎了韩立意料之外。",
+        "站在旁边一直红着眼的张袖儿应声之后，往屋外走了去。",
+        "不一会儿，张袖儿一脸无奈的走了进来，两手空空。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "韩立见",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "conflictRelation": "韩立见 is connected to the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "firstMentionChapter": 61,
+      "lastMentionChapter": 72,
+      "keyActions": [
+        "让韩立有些莫名其的是，对方隐约的指出，铁奴是一名无魂无魄的尸人，只是具行尸走肉，原来的真魂早已投胎转世了，让韩立见了不必难过。",
+        "韩立见床前有了空隙，才不慌不忙的走上前去，细细观察起来。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立见 appears in \"神灭 - 拔毒\" as a supporting tied to the conflict: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立见，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "让韩立有些莫名其的是，对方隐约的指出，铁奴是一名无魂无魄的尸人，只是具行尸走肉，原来的真魂早已投胎转世了，让韩立见了不必难过。",
+        "韩立见床前有了空隙，才不慌不忙的走上前去，细细观察起来。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "平常",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "conflictRelation": "平常 is connected to the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "firstMentionChapter": 61,
+      "lastMentionChapter": 72,
+      "keyActions": [
+        "韩立看到这里时，心中一阵的苦笑，墨大夫如此工余心计恐怕也没料到，最后他本人竟是掉进了这个平常看不起之人的陷井里，要不是自己隐瞒了真正的长春功进度，十有八九...",
+        "“厉护法一贯如此，平常就是这幅脾气，不是专门针对韩大夫你的，请韩神医不要往心里去。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "平常 appears in \"神灭 - 拔毒\" as a supporting tied to the conflict: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "平常，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "韩立看到这里时，心中一阵的苦笑，墨大夫如此工余心计恐怕也没料到，最后他本人竟是掉进了这个平常看不起之人的陷井里，要不是自己隐瞒了真正的长春功进度，十有八九就会与墨大夫同归于尽，白白让余子童在一旁捡了个便宜。",
+        "“厉护法一贯如此，平常就是这幅脾气，不是专门针对韩大夫你的，请韩神医不要往心里去。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "story-150-202606290629-61-72-6-scene-1",
+      "name": "神灭 - 拔毒 - 未指定场景",
+      "location": "未指定场景",
+      "sourceRange": "chapters 61-72",
+      "summary": "马门主在“神灭 - 拔毒”中经历神灭、交易、真容。",
+      "conflictBeat": "神灭",
+      "involvedCharacters": [
+        "马门主",
+        "李氏",
+        "马荣",
+        "张袖儿",
+        "韩立见",
+        "平常"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"神灭 - 拔毒\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 马门主必须应对神灭带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "马门主在“神灭 - 拔毒”中经历神灭、交易、真容。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    }
+  ],
+  "props": [
+    {
+      "name": "对方利剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "对方利剑 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "他心中绝望了，对方利剑的追砍，虽然让他的元神变弱了不少，但他并不如何在意。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "对方利剑 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "对方利剑, prop type: weapon, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他心中绝望了，对方利剑的追砍，虽然让他的元神变弱了不少，但他并不如何在意。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "劈了十几剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "劈了十几剑 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "韩立并没有立刻停手，而是对落在地面上，只有烛火那么微弱的元神，又一连砍劈了十几剑，看到实在是无法灭掉最后残存的绿光，这才收起了软剑，把它缠回到了腰带上。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "劈了十几剑 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "劈了十几剑, prop type: weapon, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立并没有立刻停手，而是对落在地面上，只有烛火那么微弱的元神，又一连砍劈了十几剑，看到实在是无法灭掉最后残存的绿光，这才收起了软剑，把它缠回到了腰带上。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "收起了软剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "收起了软剑 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "韩立并没有立刻停手，而是对落在地面上，只有烛火那么微弱的元神，又一连砍劈了十几剑，看到实在是无法灭掉最后残存的绿光，这才收起了软剑，把它缠回到了腰带上。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "收起了软剑 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "收起了软剑, prop type: weapon, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立并没有立刻停手，而是对落在地面上，只有烛火那么微弱的元神，又一连砍劈了十几剑，看到实在是无法灭掉最后残存的绿光，这才收起了软剑，把它缠回到了腰带上。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "这么一个刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "这么一个刀 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "要说韩立知道元神怕光，这还是墨大夫一进屋就灭掉不少灯火的举止，给他提的醒，否则还真拿这么一个刀枪不灭的最后隐患没辙，让韩立一直得提心吊但下去。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "这么一个刀 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "这么一个刀, prop type: weapon, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "要说韩立知道元神怕光，这还是墨大夫一进屋就灭掉不少灯火的举止，给他提的醒，否则还真拿这么一个刀枪不灭的最后隐患没辙，让韩立一直得提心吊但下去。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "种被人把刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "种被人把刀 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "现如今他终于解脱了，再也不用过那种被人把刀架到脖子上，时刻准备亡命的曰子。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "种被人把刀 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "种被人把刀, prop type: weapon, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "现如今他终于解脱了，再也不用过那种被人把刀架到脖子上，时刻准备亡命的曰子。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "像被刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "像被刀 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "“我——”嘎嘣一下，韩立的声音，像被刀切断了一样，突然停下了欢呼。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "像被刀 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "像被刀, prop type: weapon, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“我——”嘎嘣一下，韩立的声音，像被刀切断了一样，突然停下了欢呼。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "书信",
+      "aliases": [],
+      "propType": "document",
+      "storyFunction": "书信 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "在书信中，墨大夫提出的交易很简单，他要求韩立迟则一年，多则两年，必须去他的家中一趟。",
+        "在那天刚刚过去第二曰，韩立为了掩盖墨大夫已死的迹象，亲手模仿了墨大夫的笔迹，写了一封要重回故里、回乡探亲的假书信，假借墨大夫的名义交给了门中的巡查长老。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "书信 functions as a document in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "书信, prop type: document, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "在书信中，墨大夫提出的交易很简单，他要求韩立迟则一年，多则两年，必须去他的家中一趟。",
+        "在那天刚刚过去第二曰，韩立为了掩盖墨大夫已死的迹象，亲手模仿了墨大夫的笔迹，写了一封要重回故里、回乡探亲的假书信，假借墨大夫的名义交给了门中的巡查长老。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "药材",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "药材 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "把信交上去后，几位管事的长老，明显没有丝毫的怀疑，因为墨大夫以前就因收集药材，而常年累月的不回山上，在七玄门虽说挂着供奉的招牌，但因救过王门主的姓命，实质上却是个客卿的身份，非常的自由。",
+        "如果能继续呆在山谷内，让整个山谷都由他一人所控制，那么他就可在谷内明目张胆的使用神秘小瓶子，来大量催生珍稀药材，而不必忌讳他人会发现此秘密。",
+        "因此韩立为了展现自己的医术高明，在为众弟子看病时格外的卖力，不惜把每曰催生出来的大量名贵药材都偷偷的使了出来。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "药材 functions as a other in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "药材, prop type: other, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "把信交上去后，几位管事的长老，明显没有丝毫的怀疑，因为墨大夫以前就因收集药材，而常年累月的不回山上，在七玄门虽说挂着供奉的招牌，但因救过王门主的姓命，实质上却是个客卿的身份，非常的自由。",
+        "如果能继续呆在山谷内，让整个山谷都由他一人所控制，那么他就可在谷内明目张胆的使用神秘小瓶子，来大量催生珍稀药材，而不必忌讳他人会发现此秘密。",
+        "因此韩立为了展现自己的医术高明，在为众弟子看病时格外的卖力，不惜把每曰催生出来的大量名贵药材都偷偷的使了出来。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "眨眼剑 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "他本以为凭自己学习“眨眼剑法”的那种聪慧，学习法术应该也不会太难，可谁知他在这上面一下子变得奇笨无比起来，明明知道其原理了，但真正上手时却怎么也做不正确，不是手法不对，就是口诀念错，要么就是法力没有到位，显得整个人都愚钝起来。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "眨眼剑 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "眨眼剑, prop type: weapon, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他本以为凭自己学习“眨眼剑法”的那种聪慧，学习法术应该也不会太难，可谁知他在这上面一下子变得奇笨无比起来，明明知道其原理了，但真正上手时却怎么也做不正确，不是手法不对，就是口诀念错，要么就是法力没有到位，显得整个人都愚钝起来。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    },
+    {
+      "name": "于笑里藏刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "于笑里藏刀 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。",
+      "ownerOrHolder": "马门主",
+      "firstAppearance": "chapters 61-72",
+      "keyMoments": [
+        "马门主显然是属于笑里藏刀的人，对赵长老话中暗含的讽刺并不在意，笑眯眯的坦然承受了对方的假意恭维。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "于笑里藏刀 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "于笑里藏刀, prop type: weapon, story function: 马门主必须应对神灭带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "马门主显然是属于笑里藏刀的人，对赵长老话中暗含的讽刺并不在意，笑眯眯的坦然承受了对方的假意恭维。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72"
+    }
+  ],
+  "assetWarnings": [
+    {
+      "assetType": "scene",
+      "assetName": "神灭 - 拔毒 - 未指定场景",
+      "issue": "low_confidence",
+      "message": "神灭 - 拔毒 - 未指定场景 is a candidate scene and should be treated as reference only."
+    }
+  ]
+}

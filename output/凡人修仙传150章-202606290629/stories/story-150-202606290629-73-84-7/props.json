@@ -1,0 +1,955 @@
+{
+  "storyId": "story-150-202606290629-73-84-7",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "props": [
+    {
+      "name": "家具或者刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "家具或者刀 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "韩立以前认为，“驱物术”随便找个东西就可以当作靶子来施法，所以掐决念咒驱使的对象都是家具或者刀剑之类的常见之物，当然没有丝毫的效果。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "家具或者刀 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "家具或者刀, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立以前认为，“驱物术”随便找个东西就可以当作靶子来施法，所以掐决念咒驱使的对象都是家具或者刀剑之类的常见之物，当然没有丝毫的效果。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "药材",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "药材 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "所以他在谈判队伍离开的数曰内，仍是不慌不忙的催生自己所需的药材，并且开始收集一些珍贵药草的种子，以备后用。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "药材 functions as a other in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "药材, prop type: other, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "所以他在谈判队伍离开的数曰内，仍是不慌不忙的催生自己所需的药材，并且开始收集一些珍贵药草的种子，以备后用。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "还有一些刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "还有一些刀 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "因为入目不远之处，尽是火光冲天，人影憧憧，还有一些刀光剑影不停闪烁，并且到处都是厮杀声、报警声、怒斥声响成一片的慌乱之声。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "还有一些刀 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "还有一些刀, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "因为入目不远之处，尽是火光冲天，人影憧憧，还有一些刀光剑影不停闪烁，并且到处都是厮杀声、报警声、怒斥声响成一片的慌乱之声。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "光剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "光剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "因为入目不远之处，尽是火光冲天，人影憧憧，还有一些刀光剑影不停闪烁，并且到处都是厮杀声、报警声、怒斥声响成一片的慌乱之声。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "光剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "光剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "因为入目不远之处，尽是火光冲天，人影憧憧，还有一些刀光剑影不停闪烁，并且到处都是厮杀声、报警声、怒斥声响成一片的慌乱之声。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "地图",
+      "aliases": [],
+      "propType": "document",
+      "storyFunction": "地图 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "“恩，按地图上所说，和这口大钟来看，是这里没错了。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "地图 functions as a document in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "地图, prop type: document, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“恩，按地图上所说，和这口大钟来看，是这里没错了。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "还有铁枪",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "还有铁枪 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "“你这张乌鸦嘴说的倒满准的，坏消息就是，这次攻上山的敌人除了野狼帮外，还有铁枪会、断水门等数个中小帮派，看来本门真是大难临头了。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "还有铁枪 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "还有铁枪, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“你这张乌鸦嘴说的倒满准的，坏消息就是，这次攻上山的敌人除了野狼帮外，还有铁枪会、断水门等数个中小帮派，看来本门真是大难临头了。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "令牌",
+      "aliases": [],
+      "propType": "token",
+      "storyFunction": "令牌 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "这个令牌乃是王门主的贴身信物，持有它就可暂时向长老以下的弟子发号施令，而这个胖子是王门主的贴身亲信，听说还是比较近的表亲，所以王门主如果有什么口信、命令，都是通过此人来传达的。",
+        "不久前，这人被王门主匆匆赐下这面令牌，来此地凭令请李长老上山议事。",
+        "这个丝毫武功不会的胖子，却在此时又冒了出来，他不但阻止了探查敌情的举动，还依仗令牌一举夺走马荣对这些外刃堂弟子的指挥权，然后就打算紧缩在这里，掩耳盗铃般的什么事都不做。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "令牌 functions as a token in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "令牌, prop type: token, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这个令牌乃是王门主的贴身信物，持有它就可暂时向长老以下的弟子发号施令，而这个胖子是王门主的贴身亲信，听说还是比较近的表亲，所以王门主如果有什么口信、命令，都是通过此人来传达的。",
+        "不久前，这人被王门主匆匆赐下这面令牌，来此地凭令请李长老上山议事。",
+        "这个丝毫武功不会的胖子，却在此时又冒了出来，他不但阻止了探查敌情的举动，还依仗令牌一举夺走马荣对这些外刃堂弟子的指挥权，然后就打算紧缩在这里，掩耳盗铃般的什么事都不做。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "受刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "受刀 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "就这样，马荣在客厅内急得如同热锅上的蚂蚁一样团团乱转，却拿这什么都不懂的胖子毫无办法，要知道在七玄门不听上命、擅自行动的罪名可是很大，轻则会废弃武功赶出山门，重则会姓命难保，受刀斩之刑。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "受刀 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "受刀, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "就这样，马荣在客厅内急得如同热锅上的蚂蚁一样团团乱转，却拿这什么都不懂的胖子毫无办法，要知道在七玄门不听上命、擅自行动的罪名可是很大，轻则会废弃武功赶出山门，重则会姓命难保，受刀斩之刑。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "几名持钢刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "几名持钢刀 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "现在这十几名持钢刀的青衣人，从四面八方包围了上来，把他们困在了中间。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "几名持钢刀 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "几名持钢刀, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "现在这十几名持钢刀的青衣人，从四面八方包围了上来，把他们困在了中间。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "首的那名刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "首的那名刀 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "为首的那名刀疤客也在仔细打量着自己手下困住的这几人，他心里感到有些奇怪。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "首的那名刀 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "首的那名刀, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "为首的那名刀疤客也在仔细打量着自己手下困住的这几人，他心里感到有些奇怪。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "想舞动钢刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "想舞动钢刀 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "那人大吃一惊，刚想舞动钢刀，却忽觉手中一轻，刀已到了对面敌人的手中，他急忙仓皇后退，然而已迟了，一道白光在眼前闪过后，他就身首两离了。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "想舞动钢刀 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "想舞动钢刀, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "那人大吃一惊，刚想舞动钢刀，却忽觉手中一轻，刀已到了对面敌人的手中，他急忙仓皇后退，然而已迟了，一道白光在眼前闪过后，他就身首两离了。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "就已夺刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "就已夺刀 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "厉飞雨这一连串的动作，干净利索，快如闪电，让其余的断水门弟子人尚未能反应过来，就已夺刀杀了人。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "就已夺刀 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "就已夺刀, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "厉飞雨这一连串的动作，干净利索，快如闪电，让其余的断水门弟子人尚未能反应过来，就已夺刀杀了人。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "是为首的刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "是为首的刀 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "剩下的人脸色开始大变，特别是为首的刀疤客，因为他武功高出其他人一大截，所以他的心沉得也最厉害。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "是为首的刀 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "是为首的刀, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "剩下的人脸色开始大变，特别是为首的刀疤客，因为他武功高出其他人一大截，所以他的心沉得也最厉害。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "来了个一剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "来了个一剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "这时他才明白过来，自己竟然被人从身后来了个一剑穿喉。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "来了个一剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "来了个一剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这时他才明白过来，自己竟然被人从身后来了个一剑穿喉。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "飘飘的一剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "飘飘的一剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "他费力的把头颅扭向一边，终于看到了临死前的最后一幕：一个黑影，忽隐忽现的出现在一名逃得最远的青衣人背后，轻飘飘的一剑后，黑影微微一晃，又消失了，然后马上在另一名的同门后出现了，又同样的白光闪过，此时上一名被一剑穿喉后的同门，他的身体才和自己一样倒在了草地上，并从喉部呼呼的往外冒着鲜血。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "飘飘的一剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "飘飘的一剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他费力的把头颅扭向一边，终于看到了临死前的最后一幕：一个黑影，忽隐忽现的出现在一名逃得最远的青衣人背后，轻飘飘的一剑后，黑影微微一晃，又消失了，然后马上在另一名的同门后出现了，又同样的白光闪过，此时上一名被一剑穿喉后的同门，他的身体才和自己一样倒在了草地上，并从喉部呼呼的往外冒着鲜血。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "否则铁枪",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "否则铁枪 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "这批人一向都被他视若至宝，平时舍不得用在曰常争斗中，但此时他却全部带在了身边，为的就是完全震慑住那些中小帮派的蠢蠢欲动，否则铁枪会、断水门等帮派的大小头目，那能如此乖乖的俯首听命。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "否则铁枪 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "否则铁枪, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这批人一向都被他视若至宝，平时舍不得用在曰常争斗中，但此时他却全部带在了身边，为的就是完全震慑住那些中小帮派的蠢蠢欲动，否则铁枪会、断水门等帮派的大小头目，那能如此乖乖的俯首听命。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "而是铁枪",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "而是铁枪 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "但贾天龙毫不在乎，因为此时进攻的并不是他们野狼帮的人，而是铁枪会、断水流等帮派的帮众，他本来也没指望这些人能够拿下落曰峰这最后一道，也是最险恶的关卡，只是想让这些帮会之人多耗费些守关之人的精力，然后再派本帮的精锐之士用连弩一击而下。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "而是铁枪 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "而是铁枪, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "但贾天龙毫不在乎，因为此时进攻的并不是他们野狼帮的人，而是铁枪会、断水流等帮派的帮众，他本来也没指望这些人能够拿下落曰峰这最后一道，也是最险恶的关卡，只是想让这些帮会之人多耗费些守关之人的精力，然后再派本帮的精锐之士用连弩一击而下。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "银子",
+      "aliases": [],
+      "propType": "money",
+      "storyFunction": "银子 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "贾天龙闻言大喜，当即花二万多两银子，从这位堂兄那里换来了三百多张连珠弩，交予了心腹手下小心的使用，这才有了这几天的一连串胜利。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "银子 functions as a money in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "银子, prop type: money, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "贾天龙闻言大喜，当即花二万多两银子，从这位堂兄那里换来了三百多张连珠弩，交予了心腹手下小心的使用，这才有了这几天的一连串胜利。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "戒指",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "这侏儒有四十几岁的年纪，长得干干瘦瘦，他身上套着一件金丝绣边的红袍，手指、脖子上分别带着金戒指和挂着粗粗的金链，腰间还系着几个金铃，张嘴说话间口中金光闪闪，看来镶了金牙在里面，从外表上看，一副十足的暴发户的打扮。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "戒指 functions as a other in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "戒指, prop type: other, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这侏儒有四十几岁的年纪，长得干干瘦瘦，他身上套着一件金丝绣边的红袍，手指、脖子上分别带着金戒指和挂着粗粗的金链，腰间还系着几个金铃，张嘴说话间口中金光闪闪，看来镶了金牙在里面，从外表上看，一副十足的暴发户的打扮。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "演示了飞剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "演示了飞剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "要知道这红袍侏儒，可是他无意中在邻近蛮人地界的某一道观中认识的，此人自称金光上人，法力无穷，并亲自给他演示了飞剑之术和金刚不坏之功。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "演示了飞剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "演示了飞剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "要知道这红袍侏儒，可是他无意中在邻近蛮人地界的某一道观中认识的，此人自称金光上人，法力无穷，并亲自给他演示了飞剑之术和金刚不坏之功。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "不是我飞剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "不是我飞剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "哪怕他们功力再高，武艺再强，也决不是我飞剑术的对手，你尽管放心！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "不是我飞剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "不是我飞剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "哪怕他们功力再高，武艺再强，也决不是我飞剑术的对手，你尽管放心！"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "白色剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "白色剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "最后，一个白色衣衫的中年人出现在了入口处，此人头上插着一把木簪，全身上下只挎有一把白色剑鞘的长剑，脸色苍白无比，然而眼睛却炯炯有神，目光所到之处，犹如利剑般直刺人心扉，令人不寒而颤。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "白色剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "白色剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "最后，一个白色衣衫的中年人出现在了入口处，此人头上插着一把木簪，全身上下只挎有一把白色剑鞘的长剑，脸色苍白无比，然而眼睛却炯炯有神，目光所到之处，犹如利剑般直刺人心扉，令人不寒而颤。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "长剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "长剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "最后，一个白色衣衫的中年人出现在了入口处，此人头上插着一把木簪，全身上下只挎有一把白色剑鞘的长剑，脸色苍白无比，然而眼睛却炯炯有神，目光所到之处，犹如利剑般直刺人心扉，令人不寒而颤。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "长剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "长剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "最后，一个白色衣衫的中年人出现在了入口处，此人头上插着一把木簪，全身上下只挎有一把白色剑鞘的长剑，脸色苍白无比，然而眼睛却炯炯有神，目光所到之处，犹如利剑般直刺人心扉，令人不寒而颤。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "犹如利剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "犹如利剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "最后，一个白色衣衫的中年人出现在了入口处，此人头上插着一把木簪，全身上下只挎有一把白色剑鞘的长剑，脸色苍白无比，然而眼睛却炯炯有神，目光所到之处，犹如利剑般直刺人心扉，令人不寒而颤。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "犹如利剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "犹如利剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "最后，一个白色衣衫的中年人出现在了入口处，此人头上插着一把木簪，全身上下只挎有一把白色剑鞘的长剑，脸色苍白无比，然而眼睛却炯炯有神，目光所到之处，犹如利剑般直刺人心扉，令人不寒而颤。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "的搭在了剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "的搭在了剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "”王门主眼睛微眯了一下，把手随意的搭在了剑柄之上，缓缓的说道。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "的搭在了剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "的搭在了剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "”王门主眼睛微眯了一下，把手随意的搭在了剑柄之上，缓缓的说道。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "修炼眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "修炼眨眼剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "醒过神来的厉飞雨，以为韩立能有如此惊人的身手，全是修炼眨眼剑法所致。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "修炼眨眼剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "修炼眨眼剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "醒过神来的厉飞雨，以为韩立能有如此惊人的身手，全是修炼眨眼剑法所致。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "改修眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "改修眨眼剑 supports, reveals, or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王绝楚",
+      "firstAppearance": "chapters 73-84",
+      "keyMoments": [
+        "这种想法让他几乎当场就抓了狂，马上就有了自废功力，来改修眨眼剑法的念头。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "改修眨眼剑 functions as a weapon in \"厉飞雨的心思 - 地动山摇\", connected to: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "改修眨眼剑, prop type: weapon, story function: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这种想法让他几乎当场就抓了狂，马上就有了自废功力，来改修眨眼剑法的念头。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    }
+  ]
+}

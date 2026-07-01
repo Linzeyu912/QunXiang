@@ -1,0 +1,53 @@
+{
+  "id": "story-1-10-202606221108-9-9-2",
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "arcId": "arc-1-10-202606221108-9-9-2",
+  "arcType": "reveal",
+  "goal": "发现隐藏助力与修炼转机",
+  "startChapter": 9,
+  "endChapter": 9,
+  "title": "戒指秘密",
+  "summary": "萧炎卷入“戒指秘密”：药老从戒指中现身、炼药、想成为炼药。",
+  "coreConflict": "药老从戒指中现身",
+  "trigger": "药老从戒指中现身",
+  "turningPoints": [
+    "药老从戒指中现身",
+    "炼药",
+    "想成为炼药",
+    "可炼药"
+  ],
+  "conflictStatus": "ongoing",
+  "events": [
+    {
+      "id": "event-1-10-9-6",
+      "chapterIndex": 9,
+      "eventType": "reveal",
+      "function": "inciting",
+      "summary": "药老从戒指中现身",
+      "participants": [
+        "药老"
+      ],
+      "trigger": "药老",
+      "consequence": "隐藏助力浮出水面，修炼线开启。",
+      "confidence": 0.84,
+      "source": "regex"
+    }
+  ],
+  "mainCharacters": [
+    "萧炎"
+  ],
+  "supportingCharacters": [
+    "药老",
+    "古河",
+    "纳兰嫣然"
+  ],
+  "locations": [
+    "加玛帝国",
+    "紧急关"
+  ],
+  "boundaryConfidence": 0.84,
+  "boundaryDecisionIds": [
+    "arc-9-9"
+  ],
+  "approved": true
+}

@@ -1,0 +1,303 @@
+{
+  "storyId": "story-1-10-202606221108-5-7-1",
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "characters": [
+    {
+      "name": "纳兰嫣然",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "葛叶提出退婚请求",
+      "conflictRelation": "纳兰嫣然 is connected to the story conflict: 葛叶提出退婚请求",
+      "firstMentionChapter": 5,
+      "lastMentionChapter": 7,
+      "keyActions": [
+        "当年纳兰嫣然被云韵收为弟子之时，年仅十岁，在云岚宗中修炼了五年时间，所谓女大十八变，好多年未见，萧战自然不知道面前的少女，便是自己名义上的儿媳妇。",
+        "“咳……她的名字叫纳兰嫣然。",
+        "“纳兰嫣然？"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "纳兰嫣然 appears in \"退婚冲突\" as a protagonist tied to the conflict: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：当下气得小脸有些铁青、小脸微沉的道、也不理会那俏脸冰寒的纳兰嫣然\n- 饰物/随身特征：手指紧张的绞在了一起\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "纳兰嫣然，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：当下气得小脸有些铁青、小脸微沉的道、也不理会那俏脸冰寒的纳兰嫣然\n- 饰物/随身特征：手指紧张的绞在了一起\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "当年纳兰嫣然被云韵收为弟子之时，年仅十岁，在云岚宗中修炼了五年时间，所谓女大十八变，好多年未见，萧战自然不知道面前的少女，便是自己名义上的儿媳妇。",
+        "“咳……她的名字叫纳兰嫣然。",
+        "“纳兰嫣然？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7"
+    },
+    {
+      "name": "萧炎",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 葛叶提出退婚请求",
+      "conflictRelation": "萧炎 is connected to the story conflict: 葛叶提出退婚请求",
+      "firstMentionChapter": 5,
+      "lastMentionChapter": 7,
+      "keyActions": [
+        "一些年轻一辈的少年少女并不知晓萧炎与纳兰嫣然的婚约，不过在向身旁的父母打听了一下之后，他们的脸色，顿时变得精彩了起来，讥诮的嘲讽目光，投向了角落处的萧炎……",
+        "大厅噶然一静，所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上。",
+        "“萧炎，这里哪有你说话的份？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "萧炎 appears in \"退婚冲突\" as a supporting tied to the conflict: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上、小脸冷肃\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "萧炎，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上、小脸冷肃\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "一些年轻一辈的少年少女并不知晓萧炎与纳兰嫣然的婚约，不过在向身旁的父母打听了一下之后，他们的脸色，顿时变得精彩了起来，讥诮的嘲讽目光，投向了角落处的萧炎……",
+        "大厅噶然一静，所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上。",
+        "“萧炎，这里哪有你说话的份？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7"
+    },
+    {
+      "name": "萧战",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 葛叶提出退婚请求",
+      "conflictRelation": "萧战 is connected to the story conflict: 葛叶提出退婚请求",
+      "firstMentionChapter": 5,
+      "lastMentionChapter": 7,
+      "keyActions": [
+        "”白袍老者轻咳了一声，站起身来对着萧战拱了拱手，微笑道：“萧族长，此次前来贵家族，主要是有事相求！",
+        "”对于这位老者，萧战可不敢怠慢，连忙站起来客气的道，不过由于不知道对方到底所求何事，所以也不敢把话说得太满。",
+        "“呃……恕萧战眼拙，这位小姐……”闻言，萧战一愣，上下打量了一下少女，略微有些尴尬的摇了摇头。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "萧战 appears in \"退婚冲突\" as a supporting tied to the conflict: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：萧战脸色淡漠的望着低头不言的纳兰嫣然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "萧战，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：萧战脸色淡漠的望着低头不言的纳兰嫣然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "”白袍老者轻咳了一声，站起身来对着萧战拱了拱手，微笑道：“萧族长，此次前来贵家族，主要是有事相求！",
+        "”对于这位老者，萧战可不敢怠慢，连忙站起来客气的道，不过由于不知道对方到底所求何事，所以也不敢把话说得太满。",
+        "“呃……恕萧战眼拙，这位小姐……”闻言，萧战一愣，上下打量了一下少女，略微有些尴尬的摇了摇头。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7"
+    },
+    {
+      "name": "葛叶",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 葛叶提出退婚请求",
+      "conflictRelation": "葛叶 is connected to the story conflict: 葛叶提出退婚请求",
+      "firstMentionChapter": 5,
+      "lastMentionChapter": 7,
+      "keyActions": [
+        "“呵呵，葛叶先生，有事请说便是，如果力所能及，萧家应该不会推辞。",
+        "”葛叶微微一笑，指着身旁的少女含笑问道。",
+        "“嫣然只是好运罢了……”浅浅一笑，纳兰嫣然有些吃不消萧战的热情，桌下的手掌，轻轻扯了扯身旁的葛叶。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "葛叶 appears in \"退婚冲突\" as a supporting tied to the conflict: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：脸庞上的表情、葛叶脸色忽然出现了一抹尴尬、惊恐的神色顷刻间覆盖了那苍老的面孔\n- 神情/气质：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 年龄/身份视觉线索：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 饰物/随身特征：葛叶伸手抹了抹手指上的一枚戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "葛叶，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：脸庞上的表情、葛叶脸色忽然出现了一抹尴尬、惊恐的神色顷刻间覆盖了那苍老的面孔\n- 神情/气质：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 年龄/身份视觉线索：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 饰物/随身特征：葛叶伸手抹了抹手指上的一枚戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“呵呵，葛叶先生，有事请说便是，如果力所能及，萧家应该不会推辞。",
+        "”葛叶微微一笑，指着身旁的少女含笑问道。",
+        "“嫣然只是好运罢了……”浅浅一笑，纳兰嫣然有些吃不消萧战的热情，桌下的手掌，轻轻扯了扯身旁的葛叶。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7"
+    },
+    {
+      "name": "纳兰侄女",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 葛叶提出退婚请求",
+      "conflictRelation": "纳兰侄女 is connected to the story conflict: 葛叶提出退婚请求",
+      "firstMentionChapter": 5,
+      "lastMentionChapter": 7,
+      "keyActions": [
+        "”萧战先是一怔，紧接着满脸大喜，想必是记起了当年的那事，当下，急忙对着少女露出温和的笑容：“原来是纳兰侄女，萧叔叔可有好多年未曾与你见面了，可别怪罪叔叔眼拙。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "葛叶说是与纳兰侄女有关，难道？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "纳兰侄女 appears in \"退婚冲突\" as a supporting tied to the conflict: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "纳兰侄女，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "”萧战先是一怔，紧接着满脸大喜，想必是记起了当年的那事，当下，急忙对着少女露出温和的笑容：“原来是纳兰侄女，萧叔叔可有好多年未曾与你见面了，可别怪罪叔叔眼拙。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "葛叶说是与纳兰侄女有关，难道？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7"
+    },
+    {
+      "name": "纳兰小姐",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 葛叶提出退婚请求",
+      "conflictRelation": "纳兰小姐 is connected to the story conflict: 葛叶提出退婚请求",
+      "firstMentionChapter": 5,
+      "lastMentionChapter": 7,
+      "keyActions": [
+        "压下心中的疑问，萧炎大步行上，先是对着萧战恭敬的行了一礼，然后转过身面对着纳兰嫣然，深吐了一口气，平静的出言问道：“纳兰小姐，我想请问一下，今日悔婚之事，...",
+        "听着少女宛如神灵般的审判，萧炎嘴角溢出一抹冷笑：“纳兰小姐……你应该知道，在斗气大陆，女方悔婚会让对方有多难堪，呵呵，我脸皮厚，倒是没什么，可我的父亲！",
+        "“纳兰小姐，你又不是不清楚炎儿的状况，你让他拿什么和你挑战？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "纳兰小姐 appears in \"退婚冲突\" as a supporting tied to the conflict: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "纳兰小姐，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "压下心中的疑问，萧炎大步行上，先是对着萧战恭敬的行了一礼，然后转过身面对着纳兰嫣然，深吐了一口气，平静的出言问道：“纳兰小姐，我想请问一下，今日悔婚之事，纳兰老爷子，可曾答应？",
+        "听着少女宛如神灵般的审判，萧炎嘴角溢出一抹冷笑：“纳兰小姐……你应该知道，在斗气大陆，女方悔婚会让对方有多难堪，呵呵，我脸皮厚，倒是没什么，可我的父亲！",
+        "“纳兰小姐，你又不是不清楚炎儿的状况，你让他拿什么和你挑战？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7"
+    },
+    {
+      "name": "云韵",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 葛叶提出退婚请求",
+      "conflictRelation": "云韵 is connected to the story conflict: 葛叶提出退婚请求",
+      "firstMentionChapter": 5,
+      "lastMentionChapter": 7,
+      "keyActions": [
+        "当年纳兰嫣然被云韵收为弟子之时，年仅十岁，在云岚宗中修炼了五年时间，所谓女大十八变，好多年未见，萧战自然不知道面前的少女，便是自己名义上的儿媳妇。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "脸色微微一变，萧战也是收敛了笑容，云岚宗宗主云韵可是加玛帝国的大人物，他这小小的一族之长，可是半点都遭惹不起，可以她的实力与势力，又有何事需要萧家帮忙？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "云韵 appears in \"退婚冲突\" as a supporting tied to the conflict: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "云韵，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "当年纳兰嫣然被云韵收为弟子之时，年仅十岁，在云岚宗中修炼了五年时间，所谓女大十八变，好多年未见，萧战自然不知道面前的少女，便是自己名义上的儿媳妇。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "脸色微微一变，萧战也是收敛了笑容，云岚宗宗主云韵可是加玛帝国的大人物，他这小小的一族之长，可是半点都遭惹不起，可以她的实力与势力，又有何事需要萧家帮忙？"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7"
+    },
+    {
+      "name": "古河",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 葛叶提出退婚请求",
+      "conflictRelation": "古河 is connected to the story conflict: 葛叶提出退婚请求",
+      "firstMentionChapter": 5,
+      "lastMentionChapter": 7,
+      "keyActions": [
+        "“呵呵，这是本宗名誉长老古河大人亲自所炼，想必各位也听过他老人家的名讳吧？",
+        "“此药竟然还是出自丹王古河之手？",
+        "丹王古河，在加玛帝国中影响力极其庞大，一手炼药之术，神奇莫测，无数强者想对其巴结逢迎，都是无路可寻。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "古河 appears in \"退婚冲突\" as a supporting tied to the conflict: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "古河，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“呵呵，这是本宗名誉长老古河大人亲自所炼，想必各位也听过他老人家的名讳吧？",
+        "“此药竟然还是出自丹王古河之手？",
+        "丹王古河，在加玛帝国中影响力极其庞大，一手炼药之术，神奇莫测，无数强者想对其巴结逢迎，都是无路可寻。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7"
+    },
+    {
+      "name": "纳兰老爷",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 葛叶提出退婚请求",
+      "conflictRelation": "纳兰老爷 is connected to the story conflict: 葛叶提出退婚请求",
+      "firstMentionChapter": 5,
+      "lastMentionChapter": 7,
+      "keyActions": [
+        "纳兰老爷子的孙女纳兰嫣然？",
+        "压下心中的疑问，萧炎大步行上，先是对着萧战恭敬的行了一礼，然后转过身面对着纳兰嫣然，深吐了一口气，平静的出言问道：“纳兰小姐，我想请问一下，今日悔婚之事，...",
+        "“纳兰小姐，看在纳兰老爷子的面上，萧炎奉劝你几句话，三十年河东，三十年河西，莫欺少年穷！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "纳兰老爷 appears in \"退婚冲突\" as a supporting tied to the conflict: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "纳兰老爷，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "纳兰老爷子的孙女纳兰嫣然？",
+        "压下心中的疑问，萧炎大步行上，先是对着萧战恭敬的行了一礼，然后转过身面对着纳兰嫣然，深吐了一口气，平静的出言问道：“纳兰小姐，我想请问一下，今日悔婚之事，纳兰老爷子，可曾答应？",
+        "“纳兰小姐，看在纳兰老爷子的面上，萧炎奉劝你几句话，三十年河东，三十年河西，莫欺少年穷！"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7"
+    }
+  ]
+}

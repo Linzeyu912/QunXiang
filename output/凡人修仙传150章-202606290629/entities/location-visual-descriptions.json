@@ -1,0 +1,5131 @@
+[
+  {
+    "entityType": "location",
+    "name": "惊蛟会",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 105,
+        "chapterTitle": "惊信",
+        "matchedNames": [
+          "惊蛟会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "惊蛟会"
+        ],
+        "otherMatchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "他这时已看出了些什么；他打算夜里悄悄的去见那位主持惊蛟会的严夫人",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "墨大夫创立的帮会，拥有普通帮众六万四千人，核心帮众七千余人，岚州三大霸主之一，总舵设在嘉元城，分舵有多处; 墨府所掌握的帮会势力，严氏手掌其大权多年; 墨大夫所创、由严氏等夫人执掌的帮会，是严氏等人的依靠; 曾因马空天、赵坤被反间而实力大损，被独霸山庄打得节节败退，不得已收缩固守嘉元城",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "血刃堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门内门四大分堂之一; 七玄门下辖堂口，设有数队精锐弟子负责接应谈判队伍撤退",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "长老会",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门中地位只在正门主之下、与各副门主并驾齐驱的机构; 墨大夫曾在其中说服数位长老同意，在神手谷山壁上为韩立建造练功石室",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "供奉堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门内门分堂之一，墨大夫被王陆门主请入门内后即落户此地成为供奉",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "汇源客栈",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城一家客栈，韩立下榻的上房所在，孙二狗次日上门拜访之处",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "金狮镖局",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "金狮镖局，金灿为总镖头",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "曲陵城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "曲陵城，长风门门主刘锋所在之城",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "长风门",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "曲陵城门派，刘锋为门主",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "秦叶岭叶家",
+    "aliases": [
+      "叶家"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "有名的修仙家族，弟子衣领上绣有树叶形状图案，在太南谷交易广场中有弟子摆摊售卖物品",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "石屋",
+    "aliases": [],
+    "missingFields": [
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "第三人",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 56,
+        "chapterTitle": "光球之战",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "身醒敌亡",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "神灭",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "layout",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "神灭",
+        "matchedNames": [
+          "石屋"
+        ],
+        "otherMatchedNames": [
+          "石门"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false,
+    "visualFields": {
+      "environment": "但石屋内除了他们二人；石屋内再次陷入了寂静；只有墨大夫在屋内焦躁的徘徊声；巨汉仿佛对石屋内的事情一点都不感兴趣；向石屋内走去；还要把石屋内残留的一切物品都销毁扔掉；但韩立也没有真打算在此石屋内长住下去的意思",
+      "layout": "在石屋的角落边；缓缓走回石屋中央的韩立",
+      "atmosphere": "石屋内再次陷入了寂静",
+      "lighting": "",
+      "time": "",
+      "actionContext": "站在那里静静的呆了片刻；韩立站在曾经的石屋；韩立站在自己挑选的石屋前"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "墨大夫在七玄门内新近建成的石砌密室，墙壁用石灰水粉刷，封闭无窗，室内点满油灯蜡烛，中间画有数丈大小的奇怪图案，图案周边镶嵌青玉，是墨大夫施展夺舍法术的场所; 墨大夫居住的石质房间，韩立在此与余子童元神对峙并将其灭杀，发现巨汉铁奴守在石门外，最终下令曲魂将整个石屋捣毁",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "落曰峰",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "贾天龙",
+        "matchedNames": [
+          "落曰峰"
+        ],
+        "otherMatchedNames": [
+          "七玄门",
+          "野狼帮"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": "他现在站在落曰峰的山腰上"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门总堂所在山峰，是野狼帮集中主力进攻的目标; 七玄门总堂所在地，山势险恶，易守难攻; 山腹内有先天形成的巨大石乳洞，山顶有数十亩空地，是攻防战的主战场; 被野狼帮联合铁枪会、断水门等帮派围攻",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "岚州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 106,
+        "chapterTitle": "蓝衣人",
+        "matchedNames": [
+          "岚州"
+        ],
+        "otherMatchedNames": [
+          "升仙大会"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "这样浅的法力也来岚州凑什么热闹",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "墨大夫功力恢复后打算动身回去报仇雪恨、重振雄风的地方; 韩立打算去解毒的地方，凭借改进后的极限身法和手中高温火球，他自信有底气前往; 越国十三州之一，面积第八大，富足程度第二，土地肥沃，水道、湖泊和运河密布，是全国首屈一指的产粮大区，嘉元城位于其中部; 墨府所在地，嘉元城所属之地，帮派争斗激烈",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "太南谷",
+    "aliases": [
+      "太南小会",
+      "太南会"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 128,
+        "chapterTitle": "太南小会",
+        "matchedNames": [
+          "太南谷",
+          "太南小会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "太南小会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 142,
+        "chapterTitle": "袭杀",
+        "matchedNames": [
+          "太南谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 133,
+        "chapterTitle": "偷技",
+        "matchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 133,
+        "chapterTitle": "偷技",
+        "matchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "才神不知鬼不觉的悄悄溜出了山谷",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "不过既然这时来太南谷；这时万小山说过的; 这时万小山说过的",
+      "actionContext": "大家是不是也该出手了；大家可别慌着离开；这谷内少说也已聚集了上千多人了"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "位于太南山上的修仙者聚居之处，三面靠山，唯一出口是被迷雾阵法封锁的怪坡; 山谷中种满奇花异草，有雕栏玉砌的宫殿式楼和宽阔的青砖广场，每五年举办一次太南小会，是岚州修仙者交易聚会的场所; 太南小会的举办地，散修与修仙家族进行以物换物或灵石交易的场所，内有宫殿式楼台建筑且布设禁法，韩立等散修在此摆摊交易; 太南会举办的地点，位于岚州，原本只是岚州本地年轻修仙者数百人规模的交易会，因升仙会在此召开而聚集了上千甚至两千多名修仙者",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "苍狼岭",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "散修黑木和黑金兄弟俩的出身地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "飞莲洞",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "散修红莲散人出身之地的修仙洞府",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "菩露山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "苦桑大师所在的佛门之地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "天水寨",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "胡萍姑和熊大力夫妇的出身地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "卧牛山青牛冠",
+    "aliases": [
+      "青牛冠",
+      "卧牛山"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "松纹道士挂单的道观所在之地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "交易广场",
+    "aliases": [
+      "广场",
+      "大交易广场"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 128,
+        "chapterTitle": "太南小会",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "lighting",
+          "time",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "time",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 130,
+        "chapterTitle": "入伙",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 130,
+        "chapterTitle": "入伙",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 132,
+        "chapterTitle": "收获",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 132,
+        "chapterTitle": "收获",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "actionContext",
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "交易广场",
+          "广场",
+          "大交易广场"
+        ],
+        "fields": [
+          "time",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 142,
+        "chapterTitle": "袭杀",
+        "matchedNames": [
+          "广场"
+        ],
+        "otherMatchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false,
+    "visualFields": {
+      "environment": "则有一个很宽阔的青砖广场; 围着广场的四周摆起了小货摊; 就转身继续朝广场走去; 人却渐渐靠近了摆着小摊的广场; 围着比较宽阔的广场",
+      "layout": "围着广场的四周摆起了小货摊；人却渐渐靠近了摆着小摊的广场；围着比较宽阔的广场",
+      "atmosphere": "让这个地方一时间热闹非凡；虽然还比不上昨晚看到的那么热闹",
+      "lighting": "这时天色已有些昏暗；广场上却灯火通明起来",
+      "time": "这时天色已有些昏暗；有大批修仙者在此时涌入到了场内；看来喜欢夜晚出来的夜猫子型修仙者；此时",
+      "actionContext": "在离开广场不远时"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "太南会上的修仙者交易场所，太南会最后两天达到最高峰，两千多名修仙者挤满广场，货摊数量比平时翻了数倍",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "镜州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "背后交易",
+        "matchedNames": [
+          "镜州"
+        ],
+        "otherMatchedNames": [
+          "越国"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": "估计对方会离开镜州"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门等江湖门派所在的地名，七玄门曾雄霸此地区，控制包括青牛镇在内的十几个小城镇; 七玄门曾经称霸的地区; 彩霞山所在的州，王绝楚推测韩立会离开镜州甚至越国",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "青牛镇",
+    "aliases": [
+      "青牛城"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "一个小镇，被七玄门控制，主街道只有一条东西方向的青牛街，附近山沟里的人常叫它\"青牛城\"; 镇上只有一家青牛客栈和春香酒楼",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "石拓谷",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "散修黄孝天的出身地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "云门涧",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "散修吴九指的出身地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "春香酒楼",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "青牛镇",
+        "matchedNames": [
+          "春香酒楼"
+        ],
+        "otherMatchedNames": [
+          "青牛镇",
+          "青牛客栈"
+        ],
+        "fields": [
+          "layout"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "春香酒楼的门口前",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "青牛镇上的酒楼，不算大但古色古香，韩立三叔（韩胖子）担任大掌柜，属于七玄门所有，是韩立前往七玄门前的暂住地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "独霸山庄",
+    "aliases": [
+      "毒霸山庄"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "欧阳飞天所掌控的势力所在的庄园; 欧阳飞天整日躲在山庄内极少外出; '毒霸山庄'为原文中出现的别字; 欧阳飞天的所在之处，位于岚州（与嘉元城一南一北），是韩立前去刺杀的地方",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "姑雨山燕家",
+    "aliases": [
+      "燕家",
+      "第一修仙大族"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "燕家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "万一擂台上碰到了燕家两人",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "唯一在修仙大派外存有结丹期修士的第一修仙大族，圈养灵禽双首鹜，此次派了兄妹二人参加升仙大会的擂台赛",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "镜州城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "镜州首府，七玄门曾在此处占据，后被其他门派联手挤出，被迫迁往偏僻的彩霞山",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "青牛街",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "青牛镇",
+        "matchedNames": [
+          "青牛街"
+        ],
+        "otherMatchedNames": [
+          "青牛镇",
+          "青牛客栈"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "主街道只有一条东西方向的青牛街",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "青牛镇唯一的主街道",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "青牛客栈",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "青牛镇唯一的客栈，坐落在长条形状镇子的西端，过往商客不想露宿野外只能住这里",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "石乳洞",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "落曰峰山腹内先天形成的巨大洞穴，几乎占据整座落曰峰腹地的三分之二; 第七代李门主利用此洞地势结合土木机关术，将整座山峰变成天然大陷阱，启动机关可使整座山峰倒塌",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "五色门",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "岚州的势力之一，与独霸山庄、惊蛟会并立; 严氏希望韩立能将其与独霸山庄魁首一起灭掉，但被韩立拒绝",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "七玄门",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "炼骨崖",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "otherMatchedNames": [
+          "山崖",
+          "炼骨崖"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "江湖斗",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "法武并用",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "otherMatchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "谈判与火起",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "贾天龙",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "otherMatchedNames": [
+          "落曰峰"
+        ],
+        "fields": [
+          "time",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "金光罩",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "矛与盾",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "飞剑？",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false,
+    "visualFields": {
+      "environment": "而院子里的人；轻则会废弃武功赶出山门",
+      "layout": "",
+      "atmosphere": "现在韩立安静的坐在车内",
+      "lighting": "",
+      "time": "要是正午前无法到达；乃是七玄门此时的最大依仗；这时汉子已经离七玄门的本阵只有几步远了",
+      "actionContext": "独自离开了七玄门；长长实际的战斗经验；准备找个借口离开七玄门下山时；因为他即将离开此地；当听贾天龙说起和七玄门最近发生的冲突厮杀时；还值得花重金请我出手；一个七玄门的门主还不劳仙师出手；也只有请仙师你出手对付了；站在人群后面的韩立；自然不会贸然出手；他已经离开了七玄门；现在韩立安静的坐在车内；并没有因为离开七玄门而有什么伤感"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "本故事主角所入门之江湖门派; 有正门主王陆与三位副门主，另有长老会; 分外门（飞鸟堂、聚宝堂、四海堂、外刃堂）和内门（百锻堂、七绝堂、供奉堂、血刃堂）; 外门待遇最好的四海堂只招收武林成名人物",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "神手谷",
+    "aliases": [],
+    "missingFields": [
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "止痛药",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 27,
+        "chapterTitle": "配灵药",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "拷问",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "才拖着受伤的脚回到了屋内；也不用到山谷外去用饭；因为整个山谷就只有他一个人；在离神手谷大约数里路远的地方——李长老的院子里",
+      "layout": "你来神手谷门口等我",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "墨大夫在七玄门中所住的山谷，入口隐蔽，除了进出的入口之外没有其他通往外边的出口; 谷内左侧是大片药田，右侧有十几间相连房屋; 墨大夫用特殊方法说服长老，在山壁上建了一间只有门主、长老、堂主才能享用的练功静室，指定交给韩立独自使用; 韩立和张铁居住修炼的场所，墨大夫的弟子们聚居其中，曾被墨大夫暂时对外封闭，连看病治人都在谷外进行",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "嘉元城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 101,
+        "chapterTitle": "钱财惹祸",
+        "matchedNames": [
+          "嘉元城"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 125,
+        "chapterTitle": "安排",
+        "matchedNames": [
+          "嘉元城"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "嘉元城"
+        ],
+        "otherMatchedNames": [
+          "墨府",
+          "太南山"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.46,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "而这时的嘉元城里",
+      "actionContext": "在离开小舟上码头前；就立即再次离开了嘉元城"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "岚州中部，乡鲁大运河穿城而过，水运枢纽，商贸要道，岚州第一大城; 岚州三大霸主之一惊蛟会总舵所在城市，城内分为东城、北城、南城、西城四大区域，由天霸门、兄弟盟、惊蛟会等帮派瓜分鼎立; 岚州大城，不少人知道修仙者的存在，传说有人在城外目睹过修仙者争斗; 惊蛟会、五色门、独霸山庄等帮派在此盘踞，四平帮也活动于此",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "野狼帮",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "法武并用",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "对策",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "time",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "贾天龙",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "落曰峰",
+          "铁枪会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 83,
+        "chapterTitle": "大陷阱",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "石殿"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "金光罩",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "剑符",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "秦叶岭叶家",
+          "叶家",
+          "秦叶岭"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "完胜",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "魔名赫起",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "魔名赫起",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false,
+    "visualFields": {
+      "environment": "",
+      "layout": "突然从四周地下钻出无数的野狼帮帮众",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "就在这时；因为此时进攻的并不是他们野狼帮的人；此时全都有了主心骨一般；变得还不如此时的野狼帮；而这时",
+      "actionContext": "都是野狼帮在冲突中占据了上风；他们情不自禁的把目光也聚集到了此处；金光上人一脸傲然之色的站在场地中间；出手帮了一下"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门的大敌，帮众多为马贼出身，帮主为金狼贾天龙，曾派奸细潜入七玄门，近期内要采取对七玄门不利的行动; 七玄门的敌对帮派，不断蚕食七玄门势力，拥有五煞三鹰二豹等高手，曾被厉飞雨斩杀紫衣掌旗使一名; 与七玄门敌对的帮派，策划了对七玄门的大举进攻，联合铁枪会、断水门等帮派攻山; 贾天龙领导的帮派，与七玄门进行死斗，请金光上人相助",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "墨府",
+    "aliases": [
+      "墨府上下"
+    ],
+    "missingFields": [
+      "environment",
+      "atmosphere"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 106,
+        "chapterTitle": "蓝衣人",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 108,
+        "chapterTitle": "夜入墨府",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 108,
+        "chapterTitle": "夜入墨府",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 110,
+        "chapterTitle": "狐",
+        "matchedNames": [
+          "墨府",
+          "墨府上下"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 110,
+        "chapterTitle": "狐",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 110,
+        "chapterTitle": "狐",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 124,
+        "chapterTitle": "墨凤舞",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 124,
+        "chapterTitle": "墨凤舞",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 124,
+        "chapterTitle": "墨凤舞",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false,
+    "visualFields": {
+      "environment": "",
+      "layout": "在匾牌下面则有八名劲装大汉分站两侧；他围着宅院转了一圈后；这不明摆着告诉别人",
+      "atmosphere": "",
+      "lighting": "乌黑明亮的眼睛；虽然因天色昏暗而看不清；韩立看着小楼的二层还灯火通明",
+      "time": "而此时墨府若面临什么麻烦可以让韩立去解决；因此对严氏这时的一举一动都格外的上心",
+      "actionContext": "结了帐离开了酒楼；但又怕离开墨府太久；然后离开这是非之地；家父离开墨府时；见墨凤舞两姐妹离开后；离开了墨府"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "墨居仁及严夫人的宅院，占地数亩，位于嘉元城南城区南陵街上，黑漆大门挂有墨府匾牌，门前有八名劲装大汉守卫，内部戒备森严设有明岗暗哨; 墨大夫的府邸，戒备森严，后宅厢房供韩立居住; 府内小楼是严氏处理惊蛟会事务的重地，附近暗哨、警卫二三十处之多，后院花园是墨玉珠与吴剑鸣并立之处; 墨大夫的府邸，位于嘉元城，韩立曾在此处被迫修炼长春功",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "越国",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 100,
+        "chapterTitle": "嘉元城",
+        "matchedNames": [
+          "越国"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "越国"
+        ],
+        "otherMatchedNames": [
+          "升仙会",
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "贯穿越国南北的乡鲁大运河就从此城中心穿过；就可上哪座擂台进行比试",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "故事中的国家，墨大夫被暗算后离开北地到越国其它地方寻觅良方，韩立家乡也在越国境内; 越国，十三州之地，乡鲁大运河贯穿越国南北; 故事发生的国家，修仙大派与各散修聚集之地，整个越国修仙门派共同联手炼制筑基丹; 升仙大会所在国度，境内有七大修仙门派，升仙大会升仙会从此七大门派选拔弟子",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "百机堂",
+    "aliases": [
+      "百机堂大殿"
+    ],
+    "missingFields": [
+      "layout",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "百机堂"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "百机堂"
+        ],
+        "fields": [
+          "actionContext",
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.5,
+    "needsReview": false,
+    "visualFields": {
+      "environment": "然后在一个挂着“百机堂”大殿前落了下来",
+      "layout": "",
+      "atmosphere": "沉默不语",
+      "lighting": "",
+      "time": "",
+      "actionContext": "叶姓老者站在百机堂的殿口"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄枫谷内的大殿建筑，是杂务工作领取的地方，堂主为叶姓老者，于执事在此负责分配工作给弟子; 黄枫谷内负责派发任务的堂口，叶姓老者任堂主，韩立在此处选择接下药园任务",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "广贵城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "位于岚州最南部的小城，只有数十万人口，只有嘉元城五分之一，三面环山一面靠湖，太南山在其西面四十里处",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "李长老院子",
+    "aliases": [
+      "李长老家"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "对策",
+        "matchedNames": [
+          "李长老家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "都安排在了李长老家附近的几间屋内",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "李长老的住所，位于神手谷外数里处，挤满了人，厉飞雨的二十多名手下安排在附近几间屋内",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "石室",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "石室"
+        ],
+        "otherMatchedNames": [
+          "住处"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "惊魂定",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "墨回谷",
+        "matchedNames": [
+          "石室"
+        ],
+        "otherMatchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "墨回谷",
+        "matchedNames": [
+          "石室"
+        ],
+        "otherMatchedNames": [
+          "谷口"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "云翅鸟",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "time",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "石室"
+        ],
+        "otherMatchedNames": [
+          "石屋",
+          "石屋群"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "推开石室门走了出去；这种石室专门是为了修习高深内功的人而建；这间石室一完工；韩立走出石室后；他还要赶回石室；一天两次的进入石室；就又去石室练功去了；他当时正在石室内打坐修炼；走出石室；正在一间石室里；并让他随意选间石室作为住所",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "而这时的墨大夫",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "韩立每日修炼打坐的场所，位于神手谷内，是韩立日常修行的核心地点; 神手谷内韩立练功的石室，韩立在此修炼口诀",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "太南山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "太南山"
+        ],
+        "fields": [
+          "time",
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "而此时在太南山山脚下的一处树林里",
+      "actionContext": "一人盘坐在一颗茂密的巨树之下"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "岚州第四高山，高达三千多米，常年被山雾笼罩，位于广贵城西面四十里处，山顶建有太南寺，北面有常年白雾笼罩的神秘怪坡",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "太南寺",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "建在太南山山顶的寺庙，占卜问签非常灵验，每年有达官贵人不辞辛苦来此上香许愿，捐赠大批香油钱",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "天雾台",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "升仙大会的举办地，是越国十年一度修仙者打擂台争夺七大门派入门资格和筑基丹奖励的场所",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "香家酒楼",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 106,
+        "chapterTitle": "蓝衣人",
+        "matchedNames": [
+          "香家酒楼"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "此时正是午时用饭时分",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城排得上字号的三层大酒楼，位于墨府对面街面，以招牌酒水百里香闻名; 韩立曾在此处用餐并观察墨府",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "百机堂内殿",
+    "aliases": [
+      "内殿",
+      "大殿后面屋内"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "百机堂殿后堆满各式卷宗的房间，叶姓老者在此向韩立展示药园任务的相关卷宗",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "传功石楼",
+    "aliases": [
+      "传功"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "依山而建的巨大石楼，石牌上写着\"传功\"三个金字，后半部分延伸进山腹之内，里面宽广，有一排石门并列，是新弟子学习功法的场所",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "韩立住处",
+    "aliases": [
+      "住处"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 41,
+        "chapterTitle": "留言夜出",
+        "matchedNames": [
+          "住处"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "当天的夜里",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "韩立的个人居所，把曲魂安排好后韩立回到此处，疲惫不堪倒头便睡",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "金蚨岭",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄枫谷辖区内的山岭，百药园所在之地，韩立于执事带领下前往此地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "落沙坡",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门与野狼帮协商后确定的谈判交界之地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "南陵街",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城南城区最繁华的街道，墨府及香家酒楼均坐落于此街",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "青石岭百药园",
+    "aliases": [
+      "百药园",
+      "马师伯药园"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "青石岭上由马师伯负责的药园，任务内容为接管此园并每年上交规定数量珍稀药材，多年来无人能完成此任务",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "玄坤山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "玄坤山"
+        ],
+        "fields": [
+          "time",
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "这时他已知道",
+      "actionContext": "就可以离开这里"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄枫谷内的一处地方，功法练至十层以上的弟子可以搬去那里居住，弟子可自由在山上建立自己的住处，对房子类型大小也完全没有限制",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "迎宾楼",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄枫谷内的建筑，韩立被安排在此处等候升仙令的处理答复，屋内被下了禁法不可出屋",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "越国北地",
+    "aliases": [
+      "北地"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "越国北部地区，墨大夫被暗算前在北地立足，受伤后无法在北地立足，抛下基业和家人销声匿迹",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "越国岚州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "越国的州，墨大夫早年在岚州武林声名赫赫，号称\"鬼手\"，黑白两道皆知其声威",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "西郊",
+    "aliases": [
+      "嘉元城西郊"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城西部郊外，四平帮小头目曾在此做买卖失败并意外偷听到神仙大会消息",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "彩霞山",
+    "aliases": [
+      "仙霞山",
+      "落凤山"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "七玄门",
+        "matchedNames": [
+          "彩霞山"
+        ],
+        "otherMatchedNames": [
+          "青牛镇",
+          "七玄门"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "背后交易",
+        "matchedNames": [
+          "彩霞山"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "背后交易",
+        "matchedNames": [
+          "彩霞山"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "彩霞山"
+        ],
+        "otherMatchedNames": [
+          "外刃堂"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "终于在第五天傍晚时分赶到了彩霞山",
+      "actionContext": "就会离开此地；因为韩立已经离开了彩霞山；在韩立离开彩霞山不久"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "镜州境内第二大山，原名落凤山，相传古时一头五色彩凤落在此地化成此山，因落日时分美丽异常犹如彩霞笼罩而得名; 七玄门总门所在地，方圆十几里都是山脉所在，拥有大大小小十几座险峰; 七玄门所在的山脉，山上有巡山弟子; 近年因与野狼帮冲突，山中除必要守山弟子外只剩未出师的年幼弟子",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "七绝堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "私下交易",
+        "matchedNames": [
+          "七绝堂"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "而此时的韩立正想加强自身的实力",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门内门分堂之一，是传授本门绝技的核心重地; 入门弟子学成后最起码也是护法身份，舞岩即被直接保送至此学习; 七玄门下属堂口之一，舞岩依靠马副门主的权势直接进入此处; 七玄门中入门测试表现杰出的弟子可直接进入的地方，能被几位门主收为入室弟子传授门内绝技",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "四平帮",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 122,
+        "chapterTitle": "毒杀",
+        "matchedNames": [
+          "四平帮"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": "在当晚爆发了"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城西城三十三小帮之一，有近千名帮众，帮主是猿臂沈重山，手下有三大护法，孙二狗为其码头管事; 嘉元城的帮会之一; 沈重山任帮主时势力强大; 韩立毒杀沈重山及三大护法后，扶持孙二狗继任帮主，并暗派曲魂为其撑腰",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "山崖",
+    "aliases": [
+      "崖下"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "炼骨崖",
+        "matchedNames": [
+          "崖下"
+        ],
+        "fields": [
+          "time",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "墨大夫",
+        "matchedNames": [
+          "山崖"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "山崖",
+          "崖下"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "山崖"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "只剩不到半个时辰就会完全到正午了；这时舞岩已经攀上了崖顶",
+      "actionContext": "便离开了；眼前只有六名小童盘坐在一旁休息；岳堂主和王护法都正站在他的身旁；正站在树枝上；离开山崖已经有不少路程；这些人最后怎么处理王大胖和张长贵之间的争执"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "彩霞山内一处被树木完全遮挡住的山崖，王大胖与张长贵两方比试的场所，围观者达一百多人; 七玄门内进行比武的山崖，厉飞雨曾在此大展神威击败对手",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "太南会",
+    "aliases": [
+      "太南小会",
+      "太南谷"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 128,
+        "chapterTitle": "太南小会",
+        "matchedNames": [
+          "太南谷",
+          "太南小会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "太南小会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 142,
+        "chapterTitle": "袭杀",
+        "matchedNames": [
+          "太南谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 133,
+        "chapterTitle": "偷技",
+        "matchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 133,
+        "chapterTitle": "偷技",
+        "matchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "才神不知鬼不觉的悄悄溜出了山谷",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "不过既然这时来太南谷；这时万小山说过的; 这时万小山说过的",
+      "actionContext": "大家是不是也该出手了；大家可别慌着离开；这谷内少说也已聚集了上千多人了"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "岚州本地年轻修仙者的交易会，借升仙大会契机规模空前扩大，大部分修仙者前来既是为淘换物品，也是想观察升仙会潜在对手，做到知己知彼; 修仙者之间的交易集会，谷口有浓雾，广场上聚集了众多修仙者，会期两天后正式结束",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "百锻堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门内门分堂之一，本章中六名合格童子正式进入此堂成为内门弟子; 七玄门中进行兵器格斗训练的场所，由教习师兄给新入门的师弟进行实刀实枪训练; 七玄门内门弟子接受两年基础训练的场所，训练结束后才会被送到长一辈门人处磕头拜师",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "黄枫谷",
+    "aliases": [],
+    "missingFields": [
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 144,
+        "chapterTitle": "筑基丹之争",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 144,
+        "chapterTitle": "筑基丹之争",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "fields": [
+          "environment",
+          "actionContext",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 145,
+        "chapterTitle": "不速之客",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "fields": [
+          "environment",
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 145,
+        "chapterTitle": "不速之客",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "otherMatchedNames": [
+          "巨大石殿",
+          "石殿"
+        ],
+        "fields": [
+          "layout"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false,
+    "visualFields": {
+      "environment": "整座山脉中部早已被七大修仙派之一的黄枫谷；坐在大殿的主位上；而大殿两侧还另坐有十几位神情各异的修士；各擂台都决出了最后的优胜者；否则光让他自己去找黄枫谷的山门",
+      "layout": "而大殿两侧还另坐有十几位神情各异的修士；好奇的打量着守在门口的数名黄枫谷弟子",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "这时七大仙派的引路人终于现身了",
+      "actionContext": "坐在大殿的主位上"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "越国七大修仙派之一，占据太岳山脉中部数千年，以超大奇门大阵覆盖外表，内部楼台大殿密布，掌门为钟灵道，签发升仙令的门派; 七大仙派之一，韩立持升仙令加入的门派，掌门为钟灵道; 修仙大派，韩立所在的门派，内有低级弟子必须完成的杂务工作，由叶姓老者负责分配; 越国境内的七大仙派之一，上万弟子，分为执事弟子、领事弟子和筑基期弟子三个阶层，谷内有筑基期管事、结丹期长老及元婴级师叔祖各司其职",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "药园",
+    "aliases": [
+      "药田",
+      "药田地里"
+    ],
+    "missingFields": [
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "心魔生",
+        "matchedNames": [
+          "药园"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "插柳成",
+        "matchedNames": [
+          "药园"
+        ],
+        "fields": [
+          "layout"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "在山谷中的药园里就能找到所需的所有药材",
+      "layout": "而把兔子栓在了自己的房门口",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "神手谷内的药园，种植各种药材，是韩立配制止痛药的药材来源，韩立也曾在此做绿液试验导致两只野兔爆炸; 神手谷内韩立种植草药的园地，是韩立进行绿液催生草药试验的地方; 园中曾种有黄龙草、苦莲花、忘忧果等草药，韩立在此反复试验绿液的催熟效果",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "秦叶岭",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "修仙家族叶家所在之地，金光上人自称是秦叶岭叶家弟子; 叶豹出身的修仙家族所在地，韩立曾在此地附近遭遇所述侏儒; 越国地名，当年秦家和叶家两大修仙家族均住在此处，因两家是姻亲关系相处融洽，后因秦家败落而只剩叶家威名远播",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "铁拳会",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城三十三小帮之一，黑熊为头目，与四平帮为同盟帮派，联合对抗毒龙帮",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "彩霞山脉",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "韩立与童子们参加入门考核时奔跑的方圆十几里的山域，是入门考察项目之一; 十几里长的山脉，韩立在此找了多处隐秘处所与厉飞雨秘密碰面交易; 其中一处小水潭被悬崖峭壁包围，通过狭窄山洞与外界相连，出口在一棵老槐树树洞内; 七玄门搬迁至此的山脉，山林中本就不多的大小动物早已被清扫一空",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "七玄殿",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门总堂，位于落曰峰顶，由几座青色巨石修筑的石殿组成，一大六小，高大粗犷、宏伟壮丽，主殿入口漆黑",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "山边小村",
+    "aliases": [
+      "小村",
+      "村子",
+      "韩立出生的小村"
+    ],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "山边小村",
+        "matchedNames": [
+          "村子"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "小村"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "但他的内心深处",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": "正站在村口和几位村民手舞足蹈的说些什么"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "韩立出生的偏僻小山村，巴掌大，村民多以\"二愣子\"\"狗娃\"\"二蛋\"等绰号称呼，村里有老张叔是唯一识字的人; 村中生活清苦，一年也吃不上几顿带荤腥的饭菜，全家人一直在温饱线上徘徊; 韩立出生的小村，有矮矮的泥巴墙、一排排的稻草堆、坑坑洼洼的小路; 韩立离开父母多年后回村，正赶上小妹出嫁之日，远远看了父母和至亲后再次离开",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "升仙大会",
+    "aliases": [
+      "升仙会",
+      "擂台赛"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 134,
+        "chapterTitle": "升仙大会",
+        "matchedNames": [
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 134,
+        "chapterTitle": "升仙大会",
+        "matchedNames": [
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "升仙会",
+          "擂台赛"
+        ],
+        "otherMatchedNames": [
+          "越国"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "升仙大会"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "升仙大会",
+          "擂台赛"
+        ],
+        "otherMatchedNames": [
+          "燕家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "升仙会"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "升仙会",
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 145,
+        "chapterTitle": "不速之客",
+        "matchedNames": [
+          "升仙大会"
+        ],
+        "otherMatchedNames": [
+          "岚州"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "我们夫妇二人是不打算参加擂台赛了；那我就告诉你们一些擂台赛的厉害之处；让这擂台赛变得更加的惨烈；因为参加擂台赛的人太多；所以升仙会同时会摆下七座擂台；升仙大会擂台比试的流程说起来就是这样的；要参加升仙大会的擂台赛；凡是准备参加升仙会擂台比试的人；大都不会立即参加升仙会的擂台赛；并亲眼目睹了比胡萍姑所说的还要惨烈三分的擂台争斗赛",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "越国境内举行的修仙门派选拔弟子大会，符合五行基础功法第七层以上、四十岁以下的修仙者可参加擂台赛，七座擂台分别代表越国七大仙派，最后十名胜者可直接获得服用筑基丹资格",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "石门",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "第三人",
+        "matchedNames": [
+          "石门"
+        ],
+        "otherMatchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment",
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "神灭",
+        "matchedNames": [
+          "石门"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "屋内点满了各式各样的油灯",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "被照的犹如白昼下一样明亮；几道耀眼的阳光从门外射了进来",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "石屋的厚重石门，余子童最后的残存元神在石门打开时被射入的阳光照射而彻底消散，后被曲魂三五下砸碎",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "潇湘院",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 121,
+        "chapterTitle": "潇湘院",
+        "matchedNames": [
+          "潇湘院"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": "因为他正坐在潇湘院的包房内"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城西城最红的青楼，天霸门的产业; 小金芝是院中头牌姑娘，院内有王嬷嬷掌控姑娘们的接客权; 沈重山每日必来此处，最终连同三大护法在此被韩立用'笑魂散'毒杀",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "小水潭",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "私下交易",
+        "matchedNames": [
+          "小水潭"
+        ],
+        "fields": [
+          "layout"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "四周都被悬崖峭壁包围",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "韩立与厉飞雨在老槐树秘密通道后的碰头地点",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "赤水峰",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "赤水峰"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "张铁又没在屋内",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门内一山峰，山下有数十米高的瀑布; 张铁为冲破象甲功第二层，在墨大夫建议下每日下午去瀑布下顶住冲击练功; 从神手谷小路上可眺望到的山峰，韩立习惯性向此处走去",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "黑水巷",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城一处偏僻巷子，黑熊安排手下将韩立引入此处准备谋财害命，发生格杀事件之地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "聚宝堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门外门四大分堂之一; 七玄门下属堂口之一，赵长老曾在山外督察其工作，前两天才回山上",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "李长老住处",
+    "aliases": [
+      "李宅"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "建在山坳里比较偏僻的房屋，住着李长老及附近七玄门中帮众的家属",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "炼骨崖",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门入门测试的场所，分为竹林地段、岩壁地带和山崖三段路，正午前到达崖顶者可成为正式弟子，未能到达但表现出色者可收为记名弟子; 七玄门内的一处地方，马副门主曾在炼骨崖上见到过韩立",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "死斗场",
+    "aliases": [
+      "决斗场"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "死契血斗",
+        "matchedNames": [
+          "决斗场"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": "只有一方才可离开决斗场的血斗"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门锦衣弟子在殿前空地上用木桩和绳索临时圈划的决斗场地，双方各出五十人进行混战死斗",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "太岳山脉",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "太岳山脉"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "会被允许在整个太岳山脉找一个灵气充足的地方；单辟洞府独自修炼",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "建州西部方圆连绵数千里的山脉，人迹罕至，传闻有神仙妖怪出没，山脉中部被黄枫谷以奇门大阵覆盖数千年; 黄枫谷所在地，筑基期弟子可在整个太岳山脉中寻找灵气充足的地方单独开辟洞府修炼",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "西城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城的一个城区，嘉元城最红的青楼潇湘院即坐落于此",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "百莽山",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "七玄门",
+        "matchedNames": [
+          "百莽山"
+        ],
+        "otherMatchedNames": [
+          "镜州",
+          "彩霞山"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "方圆十几里内都是此山的山脉所在",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "镜州境内最大的山，比彩霞山还大，占地最广",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "毒龙帮",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城较大的帮派，为四平帮与铁拳会联合对抗的对象",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "断水门",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 84,
+        "chapterTitle": "地动山摇",
+        "matchedNames": [
+          "断水门"
+        ],
+        "fields": [
+          "actionContext",
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "这时他才知道韩立的真正实力",
+      "actionContext": "韩立不得不亲自出手；把原本还想继续出手的厉飞雨给惊得目瞪口呆"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "参与进攻七玄门的中小帮派之一",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "飞鸟堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门外门四大分堂之一",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "怪坡",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "太南山北面一个被浓密白雾笼罩的神秘山坡，村民进入会迷失方向，困两三天才能走出",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "金光观",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "位于邻近蛮人地界某处的道观，金光上人所在的修炼之地",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "巨大石殿",
+    "aliases": [
+      "石殿",
+      "主殿"
+    ],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "主殿"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "主殿"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "又看了下四周的属下",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "就在此时忽然从那黑黑的主殿入口处传来了一声冰冷的声音",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄枫谷内数十米高的宏伟建筑，黄枫谷掌门钟灵道在此召见韩立，殿外有数名法力深厚的弟子守卫，殿内有叶姓老者、王师弟等十几位管事",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "枯崖山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "万小山万家所在之地，万家祖先为散修，后入巨剑门成为正式弟子",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "蓝月镇",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "惊蛟会暗舵所在的城镇之一，上月解送银子一万零五百两至墨府总舵",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "练功石室",
+    "aliases": [
+      "练功静室",
+      "青石屋门"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "墨大夫说服长老在神手谷山壁上用花岗岩掏空制成的练功静室，屋门由整块大青石打制，专为修习高深内功者防止走火入魔之用; 通常只供门主、长老、堂主乃至七绝堂核心弟子使用，石室一建成即由墨大夫指定交韩立独自使用",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "林师弟的屋子",
+    "aliases": [
+      "寒舍"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "新弟子居住区内比普通石屋大许多的一间房子，屋内宽敞，各种物品杂七杂八堆放，中间有八仙桌，林师弟在此处管理新弟子物品发放并雕刻木头",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "落谷镇",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "惊蛟会暗舵所在的城镇之一，上月解送银子五千八百两至墨府总舵",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "落日峰",
+    "aliases": [
+      "主峰"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "彩霞山的主峰，奇高陡峭，从山底到峰顶只有一条路可走，七玄门总堂设在此处，路上设了十三处或明或暗的哨卡，号称万无一失",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "墨府后院",
+    "aliases": [
+      "墨府后花园"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "墨府内一座不小的花园，种有许多罕见花草及草药，韩立深夜潜入墨府后曾在此处辨别到熟悉药草之香",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "清客院",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "彩霞山上一处接待外来孩童的住处，由岳堂主指示王护法将新到的孩童送到此处休息一晚，准备第二天的入门选拔",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "神手谷谷口",
+    "aliases": [
+      "谷口"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "神手谷的谷口，厉飞雨与韩立约定在此交换秘药",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "四海堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "修炼难",
+        "matchedNames": [
+          "四海堂"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": "没有一两手拿得出手的功夫"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门外门四大分堂中待遇最好的一个，只招收武林道上的成名人物",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "铁枪会",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "参与进攻七玄门的中小帮派之一",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "外刃堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "外刃堂"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "却在此时又冒了出来",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "七玄门外门四大分堂之一，会进一步挑选训练从聚宝堂、飞鸟堂中较杰出者",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "五领镇",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "惊蛟会暗舵所在的城镇之一",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "新弟子居住区",
+    "aliases": [
+      "平屋群",
+      "空屋群"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄枫谷内一座郁郁葱葱山岭上由普通山石垒建的平房群，本是给刚入门新弟子居住之处，因十年轮换之期新弟子未入门而暂时空置",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "越州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "韩立原所在州，多为荒山野岭和丘陵山地，吃水靠水井小溪",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "长平镇",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "惊蛟会暗舵所在的城镇之一，上月解送银子七千三百两至墨府总舵",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "主殿",
+    "aliases": [
+      "石殿",
+      "巨大石殿"
+    ],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "主殿"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "主殿"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "又看了下四周的属下",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "就在此时忽然从那黑黑的主殿入口处传来了一声冰冷的声音",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "落曰峰上的主殿，王绝楚从主殿内调出锦衣弟子圈划死斗场，并在此挑选死斗人员",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "山沟",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "云翅鸟",
+        "matchedNames": [
+          "山沟"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "云翅鸟",
+        "matchedNames": [
+          "山沟"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "而此时的韩立；而此时的山沟内",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "韩立秘密修炼的地方，地势呈长条状，被两座陡峭小山峰夹成一字形，两端被灌木丛堵住，仅可从较矮山峰顶垂下的绳索进出，生长着密密麻麻的荆棘林，顶部有藤蔓编织成的天然绿色天幕，韩立在此处建造小木屋进行特训四个多月",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "石屋群",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "灰衣老者所在的地方，韩立在此处挑选了一间石室作为住所，条件简陋，只有基础功法练至十层的弟子才能离开去往玄坤山",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "建州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "越国北部十三州之一，面积排名第二，境内多山川丘陵、人口稀少，并与邻国元武国交界，太岳山脉位于其西部",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "天霸门",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "嘉元城三大帮会之一，潇湘院为其产业，背景深厚，连沈重山等帮主也不敢在其地盘闹事",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "辛州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "越国十三州之一，富足程度第一",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  },
+  {
+    "entityType": "location",
+    "name": "越州七玄门彩霞山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "environment": "",
+      "layout": "",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "墨大夫八年前因旧伤未愈隐居之地，韩立初次进山时被墨大夫收为关门弟子",
+    "llmSupplement": "",
+    "completionStatus": "source_only"
+  }
+]

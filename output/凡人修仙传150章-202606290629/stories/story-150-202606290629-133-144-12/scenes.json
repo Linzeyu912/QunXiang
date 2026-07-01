@@ -1,0 +1,50 @@
+{
+  "storyId": "story-150-202606290629-133-144-12",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "scenes": [
+    {
+      "id": "story-150-202606290629-133-144-12-scene-1",
+      "name": "偷技 - 筑基丹之争 - 江湖",
+      "location": "江湖",
+      "timeHint": "白天",
+      "sourceRange": "chapters 133-144",
+      "summary": "吴九指在“偷技 - 筑基丹之争”中经历围绕“失败”发生关键变化、偷技、升仙大会。",
+      "conflictBeat": "围绕“失败”发生关键变化",
+      "involvedCharacters": [
+        "吴九指",
+        "黄衣",
+        "叶师",
+        "叶姓",
+        "王师",
+        "吴师兄",
+        "王师弟",
+        "慕容师"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "江湖 scene in \"偷技 - 筑基丹之争\", shaped by the conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "江湖, cinematic scene, conflict beat: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "这时韩立，倒对这叫吴九指的家伙起了兴趣，明明是个修仙者，但却用江湖人的偷技，扒窃他的东西，还真有些意思。",
+        "“看来这修仙界也和世俗江湖也差不多，只有实力强大的人，才受人尊敬！"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144"
+    }
+  ]
+}

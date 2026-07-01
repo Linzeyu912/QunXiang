@@ -1,0 +1,200 @@
+{
+  "storyId": "story-150-202606290629-25-36-3",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "韩立无",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立无 is connected to the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 25,
+      "lastMentionChapter": 36,
+      "keyActions": [
+        "此人身材异常高大魁梧，比韩立足足高出两个头来，有着巨灵神样的巨大身板，但因带着斗篷，韩立无法从外面看清楚此人的面貌，只能隐隐约约的觉得此人的面容肯定会是狰...",
+        "”一个令韩立无法置信的数字从墨大夫口中说了出来。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "韩立无 appears in \"插柳成 - 吃惊\" as a protagonist tied to the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立无，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "此人身材异常高大魁梧，比韩立足足高出两个头来，有着巨灵神样的巨大身板，但因带着斗篷，韩立无法从外面看清楚此人的面貌，只能隐隐约约的觉得此人的面容肯定会是狰狞可怖，丑陋异常。",
+        "”一个令韩立无法置信的数字从墨大夫口中说了出来。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "韩立进",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立进 is connected to the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 25,
+      "lastMentionChapter": 36,
+      "keyActions": [
+        "其实也说不上是偷偷的出去，墨大夫对他经常出谷的事情，早已了如指掌，但对此毫不干涉，任由韩立进出自由。",
+        "听到韩立进来的声音，他头也不抬，直接抱怨道："
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立进 appears in \"插柳成 - 吃惊\" as a supporting tied to the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立进，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "其实也说不上是偷偷的出去，墨大夫对他经常出谷的事情，早已了如指掌，但对此毫不干涉，任由韩立进出自由。",
+        "听到韩立进来的声音，他头也不抬，直接抱怨道："
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "韩立很",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立很 is connected to the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 25,
+      "lastMentionChapter": 36,
+      "keyActions": [
+        "韩立很清醒，知道这个问题的回答不但关系到对方一年后的姓命，更是自己此时能否活下来的关键。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立很 appears in \"插柳成 - 吃惊\" as a supporting tied to the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立很，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "韩立很清醒，知道这个问题的回答不但关系到对方一年后的姓命，更是自己此时能否活下来的关键。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "方已",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "方已 is connected to the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 25,
+      "lastMentionChapter": 36,
+      "keyActions": [
+        "而此时的韩立正想加强自身的实力，在得知对方已进入七绝堂进修，便直接提出传授七绝堂绝学的交换要求。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "方已 appears in \"插柳成 - 吃惊\" as a supporting tied to the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "方已，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "而此时的韩立正想加强自身的实力，在得知对方已进入七绝堂进修，便直接提出传授七绝堂绝学的交换要求。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    },
+    {
+      "name": "韩立似乎",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立似乎 is connected to the story conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 25,
+      "lastMentionChapter": 36,
+      "keyActions": [
+        "听了他的这句玩笑话后，韩立似乎才清醒过来。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立似乎 appears in \"插柳成 - 吃惊\" as a supporting tied to the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立似乎，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "听了他的这句玩笑话后，韩立似乎才清醒过来。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36"
+    }
+  ]
+}

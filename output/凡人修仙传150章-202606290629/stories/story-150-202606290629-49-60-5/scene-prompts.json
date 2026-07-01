@@ -1,0 +1,45 @@
+{
+  "storyId": "story-150-202606290629-49-60-5",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-49-60-5-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"套中套 - 试毒\" with insufficient location detail.；冲突氛围：围绕“失败”发生关键变化；可保留人物比例参考：余子童、韩立吃、方也、方话、韩立点；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "余子童在“套中套 - 试毒”中经历围绕“失败”发生关键变化、套中套、缠香丝。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "location": "未指定场景",
+        "conflictBeat": "围绕“失败”发生关键变化",
+        "involvedCharacters": [
+          "余子童",
+          "韩立吃",
+          "方也",
+          "方话",
+          "韩立点"
+        ]
+      }
+    }
+  ]
+}

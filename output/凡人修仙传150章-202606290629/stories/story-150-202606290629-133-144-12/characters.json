@@ -1,0 +1,332 @@
+{
+  "storyId": "story-150-202606290629-133-144-12",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "吴九指",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "吴九指 is connected to the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 133,
+      "lastMentionChapter": 144,
+      "keyActions": [
+        "在下吴九指。",
+        "这时韩立，倒对这叫吴九指的家伙起了兴趣，明明是个修仙者，但却用江湖人的偷技，扒窃他的东西，还真有些意思。",
+        "”吴九指撇撇嘴，刻薄的说道。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "吴九指 appears in \"偷技 - 筑基丹之争\" as a protagonist tied to the conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：吴九指一听脸色大变\n- 神情/气质：但神情也阴沉起来\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "吴九指，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：吴九指一听脸色大变\n- 神情/气质：但神情也阴沉起来\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "在下吴九指。",
+        "这时韩立，倒对这叫吴九指的家伙起了兴趣，明明是个修仙者，但却用江湖人的偷技，扒窃他的东西，还真有些意思。",
+        "”吴九指撇撇嘴，刻薄的说道。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144"
+    },
+    {
+      "name": "黄衣",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "黄衣 is connected to the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 133,
+      "lastMentionChapter": 144,
+      "keyActions": [
+        "韩立这时并未理睬那大坑，而是死死盯住了一跃而出的黄衣人，一个三十来岁一脸狡诈之色的精瘦汉子。",
+        "黄衣人一听此言，眼珠一转，歼笑了几声，道：",
+        "”黄衣汉子得意的歼笑道，接着把双手一抬，直对着韩立，嘴中开始念念有词。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "黄衣 appears in \"偷技 - 筑基丹之争\" as a supporting tied to the conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 神情/气质：就见对方神情肃然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "黄衣，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 神情/气质：就见对方神情肃然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "韩立这时并未理睬那大坑，而是死死盯住了一跃而出的黄衣人，一个三十来岁一脸狡诈之色的精瘦汉子。",
+        "黄衣人一听此言，眼珠一转，歼笑了几声，道：",
+        "”黄衣汉子得意的歼笑道，接着把双手一抬，直对着韩立，嘴中开始念念有词。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144"
+    },
+    {
+      "name": "叶师",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "叶师 is connected to the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 133,
+      "lastMentionChapter": 144,
+      "keyActions": [
+        "“叶师弟，这不是发生了意外了嘛！",
+        "“叶师弟，话可不能这么说！",
+        "说不定叶师弟的叶家某一天也会败落下去，是不是到时候叶家后人拿升仙令找上门来时，我们黄枫谷的人也要不给筑基丹，只让他入门即可啊？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "叶师 appears in \"偷技 - 筑基丹之争\" as a supporting tied to the conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "叶师，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“叶师弟，这不是发生了意外了嘛！",
+        "“叶师弟，话可不能这么说！",
+        "说不定叶师弟的叶家某一天也会败落下去，是不是到时候叶家后人拿升仙令找上门来时，我们黄枫谷的人也要不给筑基丹，只让他入门即可啊？"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144"
+    },
+    {
+      "name": "叶姓",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "叶姓 is connected to the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 133,
+      "lastMentionChapter": 144,
+      "keyActions": [
+        "”一个面目有些阴沉，长了一个鹰勾鼻子的老者站了出来，向叶姓老者安慰道。",
+        "”叶姓老者一听，精神一振，在门内这位吴师兄可是出名的足智多谋，说不定还真有什么办法！",
+        "”叶姓老者按奈不住的问道。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "叶姓 appears in \"偷技 - 筑基丹之争\" as a supporting tied to the conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "叶姓，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "”一个面目有些阴沉，长了一个鹰勾鼻子的老者站了出来，向叶姓老者安慰道。",
+        "”叶姓老者一听，精神一振，在门内这位吴师兄可是出名的足智多谋，说不定还真有什么办法！",
+        "”叶姓老者按奈不住的问道。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144"
+    },
+    {
+      "name": "王师",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "王师 is connected to the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 133,
+      "lastMentionChapter": 144,
+      "keyActions": [
+        "王师弟，你亲自带来的人并做的测试，你来说下吧！",
+        "”吴姓老者还未等这位王师弟说完，就大声打断道。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "王师 appears in \"偷技 - 筑基丹之争\" as a supporting tied to the conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "王师，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "王师弟，你亲自带来的人并做的测试，你来说下吧！",
+        "”吴姓老者还未等这位王师弟说完，就大声打断道。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144"
+    },
+    {
+      "name": "吴师兄",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "吴师兄 is connected to the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 133,
+      "lastMentionChapter": 144,
+      "keyActions": [
+        "吴师兄还有办法？",
+        "”叶姓老者一听，精神一振，在门内这位吴师兄可是出名的足智多谋，说不定还真有什么办法！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "吴师兄 appears in \"偷技 - 筑基丹之争\" as a supporting tied to the conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "吴师兄，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "吴师兄还有办法？",
+        "”叶姓老者一听，精神一振，在门内这位吴师兄可是出名的足智多谋，说不定还真有什么办法！"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144"
+    },
+    {
+      "name": "王师弟",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "王师弟 is connected to the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 133,
+      "lastMentionChapter": 144,
+      "keyActions": [
+        "王师弟，你亲自带来的人并做的测试，你来说下吧！",
+        "”吴姓老者还未等这位王师弟说完，就大声打断道。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "王师弟 appears in \"偷技 - 筑基丹之争\" as a supporting tied to the conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "王师弟，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "王师弟，你亲自带来的人并做的测试，你来说下吧！",
+        "”吴姓老者还未等这位王师弟说完，就大声打断道。"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144"
+    },
+    {
+      "name": "慕容师",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "慕容师 is connected to the story conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 133,
+      "lastMentionChapter": 144,
+      "keyActions": [
+        "“慕容师兄！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "慕容师 appears in \"偷技 - 筑基丹之争\" as a supporting tied to the conflict: 吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "慕容师，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“慕容师兄！"
+      ],
+      "sourceChapters": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sourceRangeHint": "chapters 133-144"
+    }
+  ]
+}

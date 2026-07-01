@@ -1,0 +1,35 @@
+{
+  "id": "story-150-202606290629-37-48-4",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 37,
+  "endChapter": 48,
+  "title": "三不练 - 诈语",
+  "summary": "施展在“三不练 - 诈语”中经历围绕“失败”发生关键变化、三不练、夜遇奸细。",
+  "coreConflict": "施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+  "trigger": "围绕“失败”发生关键变化",
+  "turningPoints": [
+    "围绕“失败”发生关键变化",
+    "三不练",
+    "夜遇奸细",
+    "变态条件",
+    "秘技渊源",
+    "留言夜出",
+    "土里的长刀",
+    "眨眼剑"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "施展"
+  ],
+  "supportingCharacters": [
+    "乐意"
+  ],
+  "locations": [
+    "以泰山"
+  ],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-37-48"
+  ],
+  "approved": true
+}

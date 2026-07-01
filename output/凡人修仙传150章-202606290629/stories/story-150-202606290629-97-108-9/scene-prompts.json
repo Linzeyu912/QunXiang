@@ -1,0 +1,86 @@
+{
+  "storyId": "story-150-202606290629-97-108-9",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-97-108-9-scene-1",
+      "assetName": "春雨楼",
+      "prompt": "春雨楼，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：春雨楼 scene in \"背后交易 - 夜入墨府\", shaped by the conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：围绕“失败”发生关键变化；可保留人物比例参考：孙二狗、吴公子、严氏、吴剑鸣、王氏；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“嘉元城三大帮会分别是兄弟盟、惊蛟会、天霸门，稍小些的帮派则有铁枪会、结义社、青衣帮、春雨楼、金剑门、苍河船帮、金刚门、落曰派等势力。",
+        "“三大帮派中以天霸门实力最强，他和金剑门、青衣帮联手，占据了最富裕的东城区；而实力稍次些的兄弟盟，和铁枪会、苍河船帮、结义社联盟，占住了北城区；最弱的惊蛟会，却和春雨楼、金刚门以及落曰派霸住了南城区；最后剩下的西城区则比较混乱，由众多小帮共同瓜分了去，这些小帮派虽然内斗不已，但一旦有其他大势力想侵入西城区，则就会立刻停止干戈，转而一直对外。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108",
+      "metadata": {
+        "storyId": "story-150-202606290629-97-108-9",
+        "location": "春雨楼",
+        "conflictBeat": "围绕“失败”发生关键变化",
+        "involvedCharacters": [
+          "孙二狗",
+          "吴公子",
+          "严氏",
+          "吴剑鸣",
+          "王氏"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-97-108-9-scene-2",
+      "assetName": "离墨府",
+      "prompt": "离墨府，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：离墨府 scene in \"背后交易 - 夜入墨府\", shaped by the conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：背后交易；可保留人物比例参考：孙二狗、吴公子、严氏、吴剑鸣、王氏；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "离墨府不远处的街对面，有一家三层的香家酒楼。",
+        "虽然离墨府大门有些距离，但韩立在楼上仍从侧面把此女的面容看了个七八分，他不禁深吸了一口气，那晶莹似雪的肌肤，挺直小巧的琼鼻，乌黑明亮的眼睛，红亮诱人的杏唇，沉鱼落雁、羞花闭月大概就是这样子了。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108",
+      "metadata": {
+        "storyId": "story-150-202606290629-97-108-9",
+        "location": "离墨府",
+        "conflictBeat": "背后交易",
+        "involvedCharacters": [
+          "孙二狗",
+          "吴公子",
+          "严氏",
+          "吴剑鸣",
+          "王氏"
+        ]
+      }
+    }
+  ]
+}

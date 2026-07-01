@@ -1,0 +1,137 @@
+[
+  {
+    "entityName": "萧家后山",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "悬崖边缘的草地，地势较高。山顶平台，有山壁可倚坐。僻静，适合独处思考。对面笼罩在雾气中的险峻山峦、魔兽山脉，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "乌坦城",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "加玛帝国东部大城市，背靠魔兽山脉。城市格局，内有萧家府邸。萧家府邸、魔兽山脉，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "魔兽山脉",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "加玛帝国闻名的险峻山峦。山峦连绵起伏，悬崖峭壁。神秘危险，雾气缭绕。险峻山峦、悬崖峭壁、雾气，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "萧家大厅",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "宽敞的迎客大厅。正上方设主座与三位长老席位，可容数十人聚集，角落处有人静坐。肃穆，气氛紧张。自然光透入，光线明亮。主座与长老席位、萧薰儿静坐的角落，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "斗气大陆",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "地域辽阔。万族分布各地。万族争辉，强者为尊。加玛帝国、蛮族、魔兽家族，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "萧家后院",
+    "entityType": "location",
+    "tier": "supporting",
+    "prompt": "萧家庭院。与萧家大厅相连。居所庭院，安静。萧炎住处、通往大厅的路径，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "测试广场",
+    "entityType": "location",
+    "tier": "candidate",
+    "prompt": "萧家测试广场。广场中央设有测验魔石碑。嘲讽与落寞交织。日光照耀。测验魔石碑、围观人群，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "加玛帝国",
+    "entityType": "location",
+    "tier": "candidate",
+    "prompt": "斗气大陆上的帝国。疆域之内有乌坦城等大城市。乌坦城、云岚宗，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "药材店",
+    "entityType": "location",
+    "tier": "candidate",
+    "prompt": "乌坦城内的药材店铺。店内设有柜台与展示架。室内正常光照。药材柜台、展示架，全景视角，广角构图，景深层次分明，古风建筑场景，电影级光影，大气透视，高质量CG。",
+    "styleTags": [
+      "古风建筑场景",
+      "电影级光影",
+      "大气透视",
+      "高质量CG",
+      "全景视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  }
+]

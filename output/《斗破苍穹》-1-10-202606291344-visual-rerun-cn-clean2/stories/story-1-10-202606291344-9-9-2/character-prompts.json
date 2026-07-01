@@ -1,0 +1,113 @@
+{
+  "storyId": "story-1-10-202606291344-9-9-2",
+  "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+  "prompts": [
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 服装/配色：黑色的眸子、药老无视萧炎那充斥着怒火的黑色眸子\n- 面部/五官：萧炎舔了舔嘴唇、涎着小脸、萧炎一张小脸、黑色的眸子、让得萧炎小脸顿时僵硬了下来、药老无视萧炎那充斥着怒火的黑色眸子、药老瞟了一眼小脸平静的萧炎\n- 神情/气质：非常欣赏萧炎这幅震撼中夹杂着期盼与狂喜的神色、药老瞟了一眼小脸平静的萧炎\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "非常欣赏萧炎这幅震撼中夹杂着期盼与狂喜的神色，",
+        "萧炎舔了舔嘴唇，",
+        "涎着小脸，",
+        "萧炎一张小脸，",
+        "黑色的眸子，",
+        "让得萧炎小脸顿时僵硬了下来。",
+        "药老无视萧炎那充斥着怒火的黑色眸子，",
+        "药老瞟了一眼小脸平静的萧炎，"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-9-9-2",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 服装/配色：黑色的眸子、药老无视萧炎那充斥着怒火的黑色眸子\n- 面部/五官：萧炎舔了舔嘴唇、涎着小脸、萧炎一张小脸、黑色的眸子、让得萧炎小脸顿时僵硬了下来、药老无视萧炎那充斥着怒火的黑色眸子、药老瞟了一眼小脸平静的萧炎\n- 神情/气质：非常欣赏萧炎这幅震撼中夹杂着期盼与狂喜的神色、药老瞟了一眼小脸平静的萧炎\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：药老脸庞笑容缓缓收敛、药老脸庞一抖、让得萧炎小脸顿时僵硬了下来、盯着药老戏谑的脸庞、瞧着药老认真的面孔、药老脸色凝重的道、药老瞟了一眼小脸平静的萧炎\n- 神情/气质：药老脸庞笑容缓缓收敛、药老瞟了一眼小脸平静的萧炎\n- 饰物/随身特征：我先回戒指了\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "药老脸庞笑容缓缓收敛，",
+        "药老脸庞一抖，",
+        "让得萧炎小脸顿时僵硬了下来。",
+        "盯着药老戏谑的脸庞，",
+        "瞧着药老认真的面孔，",
+        "药老脸色凝重的道。",
+        "药老瞟了一眼小脸平静的萧炎，",
+        "我先回戒指了！"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-9-9-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：药老脸庞笑容缓缓收敛、药老脸庞一抖、让得萧炎小脸顿时僵硬了下来、盯着药老戏谑的脸庞、瞧着药老认真的面孔、药老脸色凝重的道、药老瞟了一眼小脸平静的萧炎\n- 神情/气质：药老脸庞笑容缓缓收敛、药老瞟了一眼小脸平静的萧炎\n- 饰物/随身特征：我先回戒指了\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "古河",
+      "assetName": "古河",
+      "prompt": "古河，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "斗气大陆，炼药师虽然稀少，不过由于尊贵的身份，所以也有着明确的等级制度，由低到高，分为一至九品，先前大厅中纳兰嫣然手中的聚气散的主人，丹王古河，便是一名六品的炼药师，在加玛帝国的炼药界中，堪称第一人。",
+        "名震加玛帝国的丹王古河，是个屁……？"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-9-9-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰嫣然",
+      "assetName": "纳兰嫣然",
+      "prompt": "纳兰嫣然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "斗气大陆，炼药师虽然稀少，不过由于尊贵的身份，所以也有着明确的等级制度，由低到高，分为一至九品，先前大厅中纳兰嫣然手中的聚气散的主人，丹王古河，便是一名六品的炼药师，在加玛帝国的炼药界中，堪称第一人。"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-9-9-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ]
+}

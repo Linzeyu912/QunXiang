@@ -1,0 +1,68 @@
+{
+  "storyId": "story-1-10-202606221108-2-2-worldbuilding",
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "characters": [
+    {
+      "name": "萧炎",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "conflictRelation": "萧炎 is connected to the story conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "firstMentionChapter": 2,
+      "lastMentionChapter": 2,
+      "keyActions": [
+        "山崖之颠，萧炎斜躺在草地之上，嘴中叼中一根青草，微微嚼动，任由那淡淡的苦涩在嘴中弥漫开来……",
+        "“唉……”想起下午的测试，萧炎轻叹了一口气，懒懒的抽回手掌，双手枕着脑袋，眼神有些恍惚……",
+        "在萧炎的心中，有一个仅有他自己知道的秘密：他并不是这个世界的人，或者说，萧炎的灵魂，并不属于这个世界，他来自一个名叫地球的蔚蓝星球，至于为什么会来到这里，..."
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "萧炎 appears in \"斗气大陆设定\" as a protagonist tied to the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 服装/配色：佩戴一枚黑色戒指、手中持有黑色古戒\n- 面部/五官：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 神情/气质：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 饰物/随身特征：佩戴一枚黑色戒指、戒指很是古朴、手指轻轻的抚摸着戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "萧炎，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 服装/配色：佩戴一枚黑色戒指、手中持有黑色古戒\n- 面部/五官：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 神情/气质：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 饰物/随身特征：佩戴一枚黑色戒指、戒指很是古朴、手指轻轻的抚摸着戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "山崖之颠，萧炎斜躺在草地之上，嘴中叼中一根青草，微微嚼动，任由那淡淡的苦涩在嘴中弥漫开来……",
+        "“唉……”想起下午的测试，萧炎轻叹了一口气，懒懒的抽回手掌，双手枕着脑袋，眼神有些恍惚……",
+        "在萧炎的心中，有一个仅有他自己知道的秘密：他并不是这个世界的人，或者说，萧炎的灵魂，并不属于这个世界，他来自一个名叫地球的蔚蓝星球，至于为什么会来到这里，这种离奇经过，他也无法解释，不过在生活了一段时间之后，他还是后知后觉的明白了过来：他穿越了！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2"
+    },
+    {
+      "name": "萧战",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "conflictRelation": "萧战 is connected to the story conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "firstMentionChapter": 2,
+      "lastMentionChapter": 2,
+      "keyActions": [
+        "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气，他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！",
+        "”大步上前，萧战笑道。",
+        "“唉……”望着萧炎那依旧有些稚嫩的清秀脸庞，萧战叹了一口气，沉默了片刻，忽然道：“炎儿，你十五岁了吧？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "萧战 appears in \"斗气大陆设定\" as a supporting tied to the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "萧战，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气，他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！",
+        "”大步上前，萧战笑道。",
+        "“唉……”望着萧炎那依旧有些稚嫩的清秀脸庞，萧战叹了一口气，沉默了片刻，忽然道：“炎儿，你十五岁了吧？"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2"
+    }
+  ]
+}

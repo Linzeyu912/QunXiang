@@ -1,0 +1,95 @@
+{
+  "storyId": "story-100-202606230638-63-63-4",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "characters": [
+    {
+      "name": "药老",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "萧炎依靠拿出聚气散",
+      "conflictRelation": "药老 is connected to the story conflict: 萧炎依靠拿出聚气散",
+      "firstMentionChapter": 63,
+      "lastMentionChapter": 63,
+      "keyActions": [
+        "“当年为了成功获得这‘骨灵冷火’，我可是在那暗无天日的鬼地方待了八年，而且在最后吸收的那一刻，绕是我准备周全，也差点被这鬼东西烧成灰烬……”药老感叹的摇了...",
+        "”药老得意的扬了扬掌心中的白色火焰，笑道：“只要拥有了异火，不仅炼出的丹药药力更浓，而且与人对敌时，同等级的强者，根本不敢与之硬碰。",
+        "瞧着萧炎那副羡慕的模样，药老嘿嘿一笑，脸庞上闪过一抹狡猾的笑意，话音却是忽然一转：“异火对你来说，还颇为遥远，现在，你最大的期盼，还是祈祷自己早日成为一名..."
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "药老 appears in \"资源争夺\" as a protagonist tied to the conflict: 萧炎依靠拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：脸庞上闪过一抹狡猾的笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "药老，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：脸庞上闪过一抹狡猾的笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“当年为了成功获得这‘骨灵冷火’，我可是在那暗无天日的鬼地方待了八年，而且在最后吸收的那一刻，绕是我准备周全，也差点被这鬼东西烧成灰烬……”药老感叹的摇了摇头，平静的老脸上，罕见的露出一抹后怕，看来，那次的遭遇，还真的是让他记忆犹深啊。",
+        "”药老得意的扬了扬掌心中的白色火焰，笑道：“只要拥有了异火，不仅炼出的丹药药力更浓，而且与人对敌时，同等级的强者，根本不敢与之硬碰。",
+        "瞧着萧炎那副羡慕的模样，药老嘿嘿一笑，脸庞上闪过一抹狡猾的笑意，话音却是忽然一转：“异火对你来说，还颇为遥远，现在，你最大的期盼，还是祈祷自己早日成为一名斗者吧。"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63"
+    },
+    {
+      "name": "萧炎",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 萧炎依靠拿出聚气散",
+      "conflictRelation": "萧炎 is connected to the story conflict: 萧炎依靠拿出聚气散",
+      "firstMentionChapter": 63,
+      "lastMentionChapter": 63,
+      "keyActions": [
+        "闻言，萧炎望着那团不断翻腾的森白火焰，满脸的羡慕。",
+        "瞧着萧炎那副羡慕的模样，药老嘿嘿一笑，脸庞上闪过一抹狡猾的笑意，话音却是忽然一转：“异火对你来说，还颇为遥远，现在，你最大的期盼，还是祈祷自己早日成为一名...",
+        "有些遗憾的点了点头，萧炎也只得暂时的撤回自己对异火的垂涎，将心神拉到现实中来。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "萧炎 appears in \"资源争夺\" as a supporting tied to the conflict: 萧炎依靠拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：脸庞上闪过一抹狡猾的笑意、萧炎有点激动的将之放在鼻下轻嗅了嗅\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "萧炎，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：脸庞上闪过一抹狡猾的笑意、萧炎有点激动的将之放在鼻下轻嗅了嗅\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "闻言，萧炎望着那团不断翻腾的森白火焰，满脸的羡慕。",
+        "瞧着萧炎那副羡慕的模样，药老嘿嘿一笑，脸庞上闪过一抹狡猾的笑意，话音却是忽然一转：“异火对你来说，还颇为遥远，现在，你最大的期盼，还是祈祷自己早日成为一名斗者吧。",
+        "有些遗憾的点了点头，萧炎也只得暂时的撤回自己对异火的垂涎，将心神拉到现实中来。"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63"
+    },
+    {
+      "name": "纳兰嫣然",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 萧炎依靠拿出聚气散",
+      "conflictRelation": "纳兰嫣然 is connected to the story conflict: 萧炎依靠拿出聚气散",
+      "firstMentionChapter": 63,
+      "lastMentionChapter": 63,
+      "keyActions": [
+        "望着瓶中那蓝绿交替的丹药，萧炎依靠着出色的灵魂感知力，他能模糊的知道，这一枚聚气散，绝对比上次纳兰嫣然拿出的聚气散，品阶与药力，要更强一些！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "纳兰嫣然 appears in \"资源争夺\" as a supporting tied to the conflict: 萧炎依靠拿出聚气散",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "纳兰嫣然，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "望着瓶中那蓝绿交替的丹药，萧炎依靠着出色的灵魂感知力，他能模糊的知道，这一枚聚气散，绝对比上次纳兰嫣然拿出的聚气散，品阶与药力，要更强一些！"
+      ],
+      "sourceChapters": [
+        63
+      ],
+      "sourceRangeHint": "chapters 63-63"
+    }
+  ]
+}

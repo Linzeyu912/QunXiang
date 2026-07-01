@@ -1,0 +1,1634 @@
+{
+  "storyId": "story-150-202606290629-49-60-5",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characterPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "余子童",
+      "assetName": "余子童",
+      "prompt": "余子童，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：便脸色一沉\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "便脸色一沉，"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：便脸色一沉\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立吃",
+      "assetName": "韩立吃",
+      "prompt": "韩立吃，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "今天让韩立吃惊的事太多了，可都没有像现在所看到的事情，那么的扉人所思，让他如此的忘形。",
+        "墨大夫口吐脏话，让韩立吃惊不小，要是在以前，这没有什么大不了的。",
+        "韩立吃了一惊，浑身上下立刻绷紧肌肉，虚弱的感觉被丢到了九霄云外，他心里的第一个念头，就是要抢先出手，先下手为强。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "方也",
+      "assetName": "方也",
+      "prompt": "方也，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“你老别忘了，当初你的医书可是完全对我敞开的，这配方也是夹带在一本冷僻的药书之中，不是我看得仔细，恐怕还真的就错过了。",
+        "最后一点，则夺舍成功后的墨大夫，有了充足缓冲时间后，就要帮对方也寻觅一个合适的肉身，并协助其夺舍。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "方话",
+      "assetName": "方话",
+      "prompt": "方话，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "”韩立不是女人，自然不会因对方俊美过人，而对眼前之人客气，何况对方话里没有丝毫放过他的意思，那就更没必要给对方好脸色看了。",
+        "去掉对方话中可能的虚假部分，韩立对事情的经过，有了大概的了解。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立点",
+      "assetName": "韩立点",
+      "prompt": "韩立点，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "余子童在解释完了最后一句话后，见韩立点点头，看来是相信了他所说的话，心中不禁一喜，元神所化的光球，也似乎更亮了几分，他期切的问道："
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ],
+  "scenePrompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-49-60-5-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"套中套 - 试毒\" with insufficient location detail.；冲突氛围：围绕“失败”发生关键变化；可保留人物比例参考：余子童、韩立吃、方也、方话、韩立点；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "余子童在“套中套 - 试毒”中经历围绕“失败”发生关键变化、套中套、缠香丝。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "location": "未指定场景",
+        "conflictBeat": "围绕“失败”发生关键变化",
+        "involvedCharacters": [
+          "余子童",
+          "韩立吃",
+          "方也",
+          "方话",
+          "韩立点"
+        ]
+      }
+    }
+  ],
+  "propPrompts": [
+    {
+      "assetType": "prop",
+      "assetId": "短剑",
+      "assetName": "短剑",
+      "prompt": "短剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：短剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "对方手段果然还有些幼稚，如果一声不响的躲在一旁偷袭，他恐怕还真的要有些发愁，但这么大摇大摆的从正面进攻，那有什么可怕，要知道闻风辨音的功夫，他早就练得炉火纯青，不要说是短剑的直刺，就是一枚纤细的绣花针袭来，他也能听得一清二楚。",
+        "墨大夫脸上狞笑了一下，等候多时的右手突然出手，闪电般的一把抓住了剑刃，扣的死死的，毫不畏惧短剑的锐利刃口。",
+        "对方明显知道不，用力把短剑被往回猛扯了几下，但在魔银手的控制之下，哪又能动弹分毫，只是白费力气罢了。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "短剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "把抓住了剑",
+      "assetName": "把抓住了剑",
+      "prompt": "把抓住了剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：把抓住了剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫脸上狞笑了一下，等候多时的右手突然出手，闪电般的一把抓住了剑刃，扣的死死的，毫不畏惧短剑的锐利刃口。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "把抓住了剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "一个无柄剑",
+      "assetName": "一个无柄剑",
+      "prompt": "一个无柄剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：一个无柄剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "一个无柄剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "原来这个剑",
+      "assetName": "原来这个剑",
+      "prompt": "原来这个剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：原来这个剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "原来这个剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "这个剑",
+      "assetName": "这个剑",
+      "prompt": "这个剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：这个剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "这个剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "和你明刀",
+      "assetName": "和你明刀",
+      "prompt": "和你明刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：和你明刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "真……真有意思，我竟然忘了这么重要的事情，竟然真和你……和你明刀明枪的过起招来。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "和你明刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "明枪",
+      "assetName": "明枪",
+      "prompt": "明枪，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：明枪 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "真……真有意思，我竟然忘了这么重要的事情，竟然真和你……和你明刀明枪的过起招来。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "明枪 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "药材",
+      "assetName": "药材",
+      "prompt": "药材，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：药材 functions as a other in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫这才回想起，当初得到这药方之时，因为配制所的药材种类太多，步骤也很繁琐，生怕以后会忘掉什么，便把它的制作之法，所需药材，都详详细细的抄在了一张纸条上，随手夹在了某本书中，后来因发生了太多的事，便把这纸条忘得一干二净，没想到如今便宜了韩立，给自己带来了这么大的麻烦。",
+        "当然有可能的话，能找到一些珍贵的药材，拿回去炼灵丹，那就更好了，不过他也知道这个希望很渺茫，但不管怎么说，这也是一个运气的问题，说不定，就让他人品大爆发，捡了个漏呢！",
+        "但余子童所说的良药，虽说不是血灵草这样的奇珍，但也是十几种珍贵药材，用修仙者的方式，耗费了大量元气才炼制而成，在他身上也所剩不多。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "other",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "药材 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "看起来似刀",
+      "assetName": "看起来似刀",
+      "prompt": "看起来似刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：看起来似刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "看起来似刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "非刀",
+      "assetName": "非刀",
+      "prompt": "非刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：非刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "非刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "似剑非剑",
+      "assetName": "似剑非剑",
+      "prompt": "似剑非剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：似剑非剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "似剑非剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "竟然刀",
+      "assetName": "竟然刀",
+      "prompt": "竟然刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：竟然刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "小子，你还真有几分胆色，竟然刀刃都架到了脖子上，还不开口求饶，真有你的！"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "竟然刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "身上下都刀",
+      "assetName": "身上下都刀",
+      "prompt": "身上下都刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：身上下都刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这名叫“铁奴”的巨汉，也不知是何方怪物，竟然和墨大夫的“魔银手”一样，全身上下都刀枪不入，就连男人最致命的软肋，也同样如此。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "身上下都刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "但人为刀",
+      "assetName": "但人为刀",
+      "prompt": "但人为刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：但人为刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "但人为刀俎，又无可奈何，随后只好自我安慰了一番，幸亏还不是面朝底下，否则连屋顶也没得看。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "但人为刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他依仗着对丹药的了解，从对方尸体上辨识出了那几颗药丸，并欢天喜地的服了下去，果然药到病除，墨大夫的功力尽复。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "other",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "锃亮的宝剑",
+      "assetName": "锃亮的宝剑",
+      "prompt": "锃亮的宝剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：锃亮的宝剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立没有理睬对方的怒火，他伸手抓住了腹部上方的腰带扣，“唰”的一声，从腰带夹层上，抽出了一把锃亮的宝剑。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "锃亮的宝剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "完全把软剑",
+      "assetName": "完全把软剑",
+      "prompt": "完全把软剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：完全把软剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他用憎恶的眼神望了一眼，还在微微颤抖的元神，二话不说，一个飞步上前，劈头盖脸的向光团砍了去，完全把软剑当成了劈柴刀一样的使用。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "完全把软剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "成了劈柴刀",
+      "assetName": "成了劈柴刀",
+      "prompt": "成了劈柴刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：成了劈柴刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他用憎恶的眼神望了一眼，还在微微颤抖的元神，二话不说，一个飞步上前，劈头盖脸的向光团砍了去，完全把软剑当成了劈柴刀一样的使用。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "成了劈柴刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    }
+  ],
+  "allPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "余子童",
+      "assetName": "余子童",
+      "prompt": "余子童，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：便脸色一沉\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "便脸色一沉，"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：便脸色一沉\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立吃",
+      "assetName": "韩立吃",
+      "prompt": "韩立吃，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "今天让韩立吃惊的事太多了，可都没有像现在所看到的事情，那么的扉人所思，让他如此的忘形。",
+        "墨大夫口吐脏话，让韩立吃惊不小，要是在以前，这没有什么大不了的。",
+        "韩立吃了一惊，浑身上下立刻绷紧肌肉，虚弱的感觉被丢到了九霄云外，他心里的第一个念头，就是要抢先出手，先下手为强。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "方也",
+      "assetName": "方也",
+      "prompt": "方也，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“你老别忘了，当初你的医书可是完全对我敞开的，这配方也是夹带在一本冷僻的药书之中，不是我看得仔细，恐怕还真的就错过了。",
+        "最后一点，则夺舍成功后的墨大夫，有了充足缓冲时间后，就要帮对方也寻觅一个合适的肉身，并协助其夺舍。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "方话",
+      "assetName": "方话",
+      "prompt": "方话，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "”韩立不是女人，自然不会因对方俊美过人，而对眼前之人客气，何况对方话里没有丝毫放过他的意思，那就更没必要给对方好脸色看了。",
+        "去掉对方话中可能的虚假部分，韩立对事情的经过，有了大概的了解。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立点",
+      "assetName": "韩立点",
+      "prompt": "韩立点，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "余子童在解释完了最后一句话后，见韩立点点头，看来是相信了他所说的话，心中不禁一喜，元神所化的光球，也似乎更亮了几分，他期切的问道："
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-49-60-5-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"套中套 - 试毒\" with insufficient location detail.；冲突氛围：围绕“失败”发生关键变化；可保留人物比例参考：余子童、韩立吃、方也、方话、韩立点；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "余子童在“套中套 - 试毒”中经历围绕“失败”发生关键变化、套中套、缠香丝。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "location": "未指定场景",
+        "conflictBeat": "围绕“失败”发生关键变化",
+        "involvedCharacters": [
+          "余子童",
+          "韩立吃",
+          "方也",
+          "方话",
+          "韩立点"
+        ]
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "短剑",
+      "assetName": "短剑",
+      "prompt": "短剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：短剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "对方手段果然还有些幼稚，如果一声不响的躲在一旁偷袭，他恐怕还真的要有些发愁，但这么大摇大摆的从正面进攻，那有什么可怕，要知道闻风辨音的功夫，他早就练得炉火纯青，不要说是短剑的直刺，就是一枚纤细的绣花针袭来，他也能听得一清二楚。",
+        "墨大夫脸上狞笑了一下，等候多时的右手突然出手，闪电般的一把抓住了剑刃，扣的死死的，毫不畏惧短剑的锐利刃口。",
+        "对方明显知道不，用力把短剑被往回猛扯了几下，但在魔银手的控制之下，哪又能动弹分毫，只是白费力气罢了。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "短剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "把抓住了剑",
+      "assetName": "把抓住了剑",
+      "prompt": "把抓住了剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：把抓住了剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫脸上狞笑了一下，等候多时的右手突然出手，闪电般的一把抓住了剑刃，扣的死死的，毫不畏惧短剑的锐利刃口。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "把抓住了剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "一个无柄剑",
+      "assetName": "一个无柄剑",
+      "prompt": "一个无柄剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：一个无柄剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "一个无柄剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "原来这个剑",
+      "assetName": "原来这个剑",
+      "prompt": "原来这个剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：原来这个剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "原来这个剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "这个剑",
+      "assetName": "这个剑",
+      "prompt": "这个剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：这个剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他低头一看，是一个无柄剑刃，轻飘飘的，拿起来仔细一瞧，才恍然大悟，原来这个剑刃是空心的，看空洞的大小形状，藏在其中的正是那个尖锥，这个剑刃只不过是套在锥子之上的一个遮人眼目的外套而已。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "这个剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "和你明刀",
+      "assetName": "和你明刀",
+      "prompt": "和你明刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：和你明刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "真……真有意思，我竟然忘了这么重要的事情，竟然真和你……和你明刀明枪的过起招来。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "和你明刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "明枪",
+      "assetName": "明枪",
+      "prompt": "明枪，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：明枪 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "真……真有意思，我竟然忘了这么重要的事情，竟然真和你……和你明刀明枪的过起招来。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "明枪 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "药材",
+      "assetName": "药材",
+      "prompt": "药材，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：药材 functions as a other in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫这才回想起，当初得到这药方之时，因为配制所的药材种类太多，步骤也很繁琐，生怕以后会忘掉什么，便把它的制作之法，所需药材，都详详细细的抄在了一张纸条上，随手夹在了某本书中，后来因发生了太多的事，便把这纸条忘得一干二净，没想到如今便宜了韩立，给自己带来了这么大的麻烦。",
+        "当然有可能的话，能找到一些珍贵的药材，拿回去炼灵丹，那就更好了，不过他也知道这个希望很渺茫，但不管怎么说，这也是一个运气的问题，说不定，就让他人品大爆发，捡了个漏呢！",
+        "但余子童所说的良药，虽说不是血灵草这样的奇珍，但也是十几种珍贵药材，用修仙者的方式，耗费了大量元气才炼制而成，在他身上也所剩不多。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "other",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "药材 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "看起来似刀",
+      "assetName": "看起来似刀",
+      "prompt": "看起来似刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：看起来似刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "看起来似刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "非刀",
+      "assetName": "非刀",
+      "prompt": "非刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：非刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "非刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "似剑非剑",
+      "assetName": "似剑非剑",
+      "prompt": "似剑非剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：似剑非剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "似剑非剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "竟然刀",
+      "assetName": "竟然刀",
+      "prompt": "竟然刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：竟然刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "小子，你还真有几分胆色，竟然刀刃都架到了脖子上，还不开口求饶，真有你的！"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "竟然刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "身上下都刀",
+      "assetName": "身上下都刀",
+      "prompt": "身上下都刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：身上下都刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这名叫“铁奴”的巨汉，也不知是何方怪物，竟然和墨大夫的“魔银手”一样，全身上下都刀枪不入，就连男人最致命的软肋，也同样如此。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "身上下都刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "但人为刀",
+      "assetName": "但人为刀",
+      "prompt": "但人为刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：但人为刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "但人为刀俎，又无可奈何，随后只好自我安慰了一番，幸亏还不是面朝底下，否则连屋顶也没得看。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "但人为刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他依仗着对丹药的了解，从对方尸体上辨识出了那几颗药丸，并欢天喜地的服了下去，果然药到病除，墨大夫的功力尽复。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "other",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "锃亮的宝剑",
+      "assetName": "锃亮的宝剑",
+      "prompt": "锃亮的宝剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：锃亮的宝剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立没有理睬对方的怒火，他伸手抓住了腹部上方的腰带扣，“唰”的一声，从腰带夹层上，抽出了一把锃亮的宝剑。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "锃亮的宝剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "完全把软剑",
+      "assetName": "完全把软剑",
+      "prompt": "完全把软剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：完全把软剑 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他用憎恶的眼神望了一眼，还在微微颤抖的元神，二话不说，一个飞步上前，劈头盖脸的向光团砍了去，完全把软剑当成了劈柴刀一样的使用。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "完全把软剑 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "成了劈柴刀",
+      "assetName": "成了劈柴刀",
+      "prompt": "成了劈柴刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：成了劈柴刀 functions as a weapon in \"套中套 - 试毒\", connected to: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。；持有者/关联人物：余子童；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他用憎恶的眼神望了一眼，还在微微颤抖的元神，二话不说，一个飞步上前，劈头盖脸的向光团砍了去，完全把软剑当成了劈柴刀一样的使用。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60",
+      "metadata": {
+        "storyId": "story-150-202606290629-49-60-5",
+        "propType": "weapon",
+        "ownerOrHolder": "余子童",
+        "storyFunction": "成了劈柴刀 supports, reveals, or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。"
+      }
+    }
+  ]
+}

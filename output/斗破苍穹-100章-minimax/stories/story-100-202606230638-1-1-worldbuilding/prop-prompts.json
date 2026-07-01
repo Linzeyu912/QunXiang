@@ -1,0 +1,29 @@
+{
+  "storyId": "story-100-202606230638-1-1-worldbuilding",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "prop",
+      "assetId": "戒指",
+      "assetName": "戒指",
+      "prompt": "戒指，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：戒指 functions as a other in \"斗气大陆设定\", connected to: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "黯然的叹了口气，萧炎抬起手掌，手指上有一颗黑色戒指，戒指很是古朴，不知是何材料所铸，其上还绘有些模糊的纹路，这是母亲临死前送给他的唯一礼物，从四岁开始，他已经佩戴了十年，母亲的遗物，让得萧炎对它也是有着一份眷恋，手指轻轻的抚摸着戒指，萧炎苦笑道：“这几年，还真是辜负母亲的期望了……”",
+        "”抚摸着手指上的古朴戒指，萧炎抬头喃喃道。"
+      ],
+      "sourceChapters": [
+        1
+      ],
+      "sourceRangeHint": "chapters 1-1",
+      "metadata": {
+        "storyId": "story-100-202606230638-1-1-worldbuilding",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。"
+      }
+    }
+  ]
+}
