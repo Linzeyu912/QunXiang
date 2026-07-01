@@ -1,0 +1,191 @@
+{
+  "storyId": "story-100-202606230638-52-52-3",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "characters": [
+    {
+      "name": "萧炎",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "萧炎立下三年之约",
+      "conflictRelation": "萧炎 is connected to the story conflict: 萧炎立下三年之约",
+      "firstMentionChapter": 52,
+      "lastMentionChapter": 52,
+      "keyActions": [
+        "茂密的小森林之中，一丝丝淡白的能量气流从空气中渗发而出，然后不断的涌进那沉睡中的萧炎身体之内。",
+        "望着那几乎成了能量源头的萧炎，薰儿略微有些惊喜，悄悄的退后了一些距离，警戒的守在周围，此时若是将萧炎从这种修炼状态中惊醒，恐怕他又将会失去一次晋级的好机会。",
+        "萧炎此次的晋级，几乎可以说是水到渠成般的顺利，随着斗之气的不断涌入，萧炎脸庞上隐隐的一丝疲惫，也是缓缓的消逝，清秀的小脸，散发着淡淡的白光，看上去，犹如温..."
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "萧炎 appears in \"退婚冲突\" as a protagonist tied to the conflict: 萧炎立下三年之约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：萧炎脸庞上隐隐的一丝疲惫、清秀的小脸、小脸突兀变得阴沉下来、萧炎脸庞上顿时多了几分笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "萧炎，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：萧炎脸庞上隐隐的一丝疲惫、清秀的小脸、小脸突兀变得阴沉下来、萧炎脸庞上顿时多了几分笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "茂密的小森林之中，一丝丝淡白的能量气流从空气中渗发而出，然后不断的涌进那沉睡中的萧炎身体之内。",
+        "望着那几乎成了能量源头的萧炎，薰儿略微有些惊喜，悄悄的退后了一些距离，警戒的守在周围，此时若是将萧炎从这种修炼状态中惊醒，恐怕他又将会失去一次晋级的好机会。",
+        "萧炎此次的晋级，几乎可以说是水到渠成般的顺利，随着斗之气的不断涌入，萧炎脸庞上隐隐的一丝疲惫，也是缓缓的消逝，清秀的小脸，散发着淡淡的白光，看上去，犹如温玉一般。"
+      ],
+      "sourceChapters": [
+        52
+      ],
+      "sourceRangeHint": "chapters 52-52"
+    },
+    {
+      "name": "药老",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 萧炎立下三年之约",
+      "conflictRelation": "药老 is connected to the story conflict: 萧炎立下三年之约",
+      "firstMentionChapter": 52,
+      "lastMentionChapter": 52,
+      "keyActions": [
+        "抬了抬眼皮，望着那不知何时出现的药老，萧炎皱眉问道：“和薰儿有关？",
+        "”药老透明的身体悬浮在座椅之上，淡淡的道。",
+        "闻言，药老不置可否的抬了抬眼皮。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "药老 appears in \"退婚冲突\" as a supporting tied to the conflict: 萧炎立下三年之约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：萧炎脸庞上顿时多了几分笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "药老，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：萧炎脸庞上顿时多了几分笑意\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "抬了抬眼皮，望着那不知何时出现的药老，萧炎皱眉问道：“和薰儿有关？",
+        "”药老透明的身体悬浮在座椅之上，淡淡的道。",
+        "闻言，药老不置可否的抬了抬眼皮。"
+      ],
+      "sourceChapters": [
+        52
+      ],
+      "sourceRangeHint": "chapters 52-52"
+    },
+    {
+      "name": "纳兰嫣然",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 萧炎立下三年之约",
+      "conflictRelation": "纳兰嫣然 is connected to the story conflict: 萧炎立下三年之约",
+      "firstMentionChapter": 52,
+      "lastMentionChapter": 52,
+      "keyActions": [
+        "无奈的耸了耸肩，萧炎将头埋在被窝中，闷声道：“现在已经九段了，想要突破到斗者级别，恐怕得再要半年左右时间才行……”说到这里，话音忽然一顿，萧炎掀开被子，小...",
+        "“纳兰嫣然能够被云岚宗当成下代宗主培养，天赋绝对不弱，而且，云岚宗实力雄厚，宗门中，还有着丹王古河这种强大的炼药师……如果他要帮助纳兰嫣然，恐怕她晋级的速...",
+        "“明天去买材料，嘁，不就是聚气散嘛，我炼给你当豆子吃……我还不信，那纳兰嫣然能有这般待遇？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "纳兰嫣然 appears in \"退婚冲突\" as a supporting tied to the conflict: 萧炎立下三年之约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "纳兰嫣然，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "无奈的耸了耸肩，萧炎将头埋在被窝中，闷声道：“现在已经九段了，想要突破到斗者级别，恐怕得再要半年左右时间才行……”说到这里，话音忽然一顿，萧炎掀开被子，小脸突兀变得阴沉下来，轻声中有着一抹冷意：“时间已经过去一年多了，我却还没成为一名斗者，如果是这种进度，三年之后……恐怕还是赶不上纳兰嫣然。",
+        "“纳兰嫣然能够被云岚宗当成下代宗主培养，天赋绝对不弱，而且，云岚宗实力雄厚，宗门中，还有着丹王古河这种强大的炼药师……如果他要帮助纳兰嫣然，恐怕她晋级的速度，不会比我慢。",
+        "“明天去买材料，嘁，不就是聚气散嘛，我炼给你当豆子吃……我还不信，那纳兰嫣然能有这般待遇？"
+      ],
+      "sourceChapters": [
+        52
+      ],
+      "sourceRangeHint": "chapters 52-52"
+    },
+    {
+      "name": "古河",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 萧炎立下三年之约",
+      "conflictRelation": "古河 is connected to the story conflict: 萧炎立下三年之约",
+      "firstMentionChapter": 52,
+      "lastMentionChapter": 52,
+      "keyActions": [
+        "“纳兰嫣然能够被云岚宗当成下代宗主培养，天赋绝对不弱，而且，云岚宗实力雄厚，宗门中，还有着丹王古河这种强大的炼药师……如果他要帮助纳兰嫣然，恐怕她晋级的速...",
+        "“咳……”沉默了好片刻之后，药老这才慢吞吞的咳了一声，站起身来，渡着步子，撇嘴不屑的笑道：“那古河不过个六品炼药师，也配称作丹王？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "古河 appears in \"退婚冲突\" as a supporting tied to the conflict: 萧炎立下三年之约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "古河，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“纳兰嫣然能够被云岚宗当成下代宗主培养，天赋绝对不弱，而且，云岚宗实力雄厚，宗门中，还有着丹王古河这种强大的炼药师……如果他要帮助纳兰嫣然，恐怕她晋级的速度，不会比我慢。",
+        "“咳……”沉默了好片刻之后，药老这才慢吞吞的咳了一声，站起身来，渡着步子，撇嘴不屑的笑道：“那古河不过个六品炼药师，也配称作丹王？"
+      ],
+      "sourceChapters": [
+        52
+      ],
+      "sourceRangeHint": "chapters 52-52"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "story-100-202606230638-52-52-3-scene-1",
+      "name": "退婚冲突 - 未指定场景",
+      "location": "未指定场景",
+      "sourceRange": "chapters 52-52",
+      "summary": "萧炎卷入“退婚冲突”：萧炎立下三年之约、时出现的药、还有着丹。",
+      "conflictBeat": "萧炎立下三年之约",
+      "involvedCharacters": [
+        "萧炎",
+        "药老",
+        "纳兰嫣然",
+        "古河"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"退婚冲突\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 萧炎立下三年之约, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "萧炎卷入“退婚冲突”：萧炎立下三年之约、时出现的药、还有着丹。"
+      ],
+      "sourceChapters": [
+        52
+      ],
+      "sourceRangeHint": "chapters 52-52"
+    }
+  ],
+  "props": [
+    {
+      "name": "聚气散",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 萧炎立下三年之约",
+      "ownerOrHolder": "萧炎",
+      "firstAppearance": "chapters 52-52",
+      "keyMoments": [
+        "“明天去买材料，嘁，不就是聚气散嘛，我炼给你当豆子吃……我还不信，那纳兰嫣然能有这般待遇？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "聚气散 functions as a other in \"退婚冲突\", connected to: 萧炎立下三年之约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "聚气散, prop type: other, story function: 萧炎立下三年之约, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“明天去买材料，嘁，不就是聚气散嘛，我炼给你当豆子吃……我还不信，那纳兰嫣然能有这般待遇？"
+      ],
+      "sourceChapters": [
+        52
+      ],
+      "sourceRangeHint": "chapters 52-52"
+    }
+  ],
+  "assetWarnings": [
+    {
+      "assetType": "scene",
+      "assetName": "退婚冲突 - 未指定场景",
+      "issue": "low_confidence",
+      "message": "退婚冲突 - 未指定场景 is a candidate scene and should be treated as reference only."
+    }
+  ]
+}

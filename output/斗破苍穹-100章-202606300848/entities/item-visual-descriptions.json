@@ -1,0 +1,8232 @@
+[
+  {
+    "entityType": "item",
+    "name": "二级水属性魔核",
+    "aliases": [
+      "二级魔核",
+      "水属性二级魔核"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "二级水属性魔核"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "通体蔚蓝，蕴含丰厚水属性能量",
+      "colorShape": "二级水属性魔核通体呈蔚蓝之色",
+      "condition": "",
+      "usage": "用于炼制聚气散，灌注纯净能量进丹药雏形",
+      "visualEffects": "淡淡的湿气散发，将桌面侵得湿透",
+      "ownership": ""
+    },
+    "visualDetails": {
+      "materialTexture": "通体光滑，触感冰凉",
+      "colorShape": "通体蔚蓝，晶莹剔透，散发幽幽水光",
+      "condition": "完好无损，能量充沛",
+      "scale": "约拇指大小",
+      "usage": "炼制聚气散时灌注纯净水属性斗气能量",
+      "effects": "散发淡淡湿气，冰凉沁人"
+    },
+    "inferredFields": [
+      "material",
+      "usage",
+      "visualEffects"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "通体蔚蓝，蕴含丰厚水属性能量，二级水属性魔核通体呈蔚蓝之色，通体光滑，触感冰凉，通体蔚蓝，晶莹剔透，散发幽幽水光，完好无损，能量充沛，约拇指大小，炼制聚气散时灌注纯净水属性斗气能量，散发淡淡湿气，冰凉沁人，淡淡的湿气散发，将桌面侵得湿透，用于炼制聚气散，灌注纯净能量进丹药雏形。",
+    "finalDescription": "通体蔚蓝，蕴含丰厚水属性能量，二级水属性魔核通体呈蔚蓝之色，通体光滑，触感冰凉，通体蔚蓝，晶莹剔透，散发幽幽水光，完好无损，能量充沛，约拇指大小，炼制聚气散时灌注纯净水属性斗气能量，散发淡淡湿气，冰凉沁人，淡淡的湿气散发，将桌面侵得湿透，用于炼制聚气散，灌注纯净能量进丹药雏形。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "测验魔石碑",
+    "aliases": [
+      "测验碑",
+      "黑石测验碑",
+      "测验黑石碑",
+      "石碑",
+      "黑石碑测验",
+      "魔石碑",
+      "黑石碑"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "石碑"
+        ],
+        "otherMatchedNames": [
+          "魔石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "重要的日子",
+        "matchedNames": [
+          "黑石碑",
+          "测验碑",
+          "测验黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "辱人者，人恒辱之",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "辱人者，人恒辱之",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "辱人者，人恒辱之",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 38,
+        "chapterTitle": "仪式复测",
+        "matchedNames": [
+          "测验碑",
+          "黑石测验碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 38,
+        "chapterTitle": "仪式复测",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 38,
+        "chapterTitle": "仪式复测",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 38,
+        "chapterTitle": "仪式复测",
+        "matchedNames": [
+          "测验碑"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 38,
+        "chapterTitle": "仪式复测",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 38,
+        "chapterTitle": "仪式复测",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 38,
+        "chapterTitle": "仪式复测",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "visualEffects",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 39,
+        "chapterTitle": "震撼",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 39,
+        "chapterTitle": "震撼",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 39,
+        "chapterTitle": "震撼",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 40,
+        "chapterTitle": "增气散",
+        "matchedNames": [
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 40,
+        "chapterTitle": "增气散",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 40,
+        "chapterTitle": "增气散",
+        "matchedNames": [
+          "黑石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "测验魔石碑",
+          "魔石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "测验魔石碑",
+          "魔石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑",
+          "石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "辱人者，人恒辱之",
+        "matchedNames": [
+          "石碑"
+        ],
+        "otherMatchedNames": [
+          "黑石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "石碑"
+        ],
+        "otherMatchedNames": [
+          "黑石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "石碑"
+        ],
+        "otherMatchedNames": [
+          "黑石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 38,
+        "chapterTitle": "仪式复测",
+        "matchedNames": [
+          "石碑"
+        ],
+        "otherMatchedNames": [
+          "黑石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": true,
+    "visualFields": {
+      "material": "黑色石碑，表面光滑冰凉",
+      "colorShape": "硕大的金色字体显示测验结果",
+      "condition": "经久耐用，价值不菲",
+      "usage": "从怀中取出名单册",
+      "visualEffects": "刺眼的光芒再次绽放；你应该便能凝聚斗气之旋；巨大的黑石碑光芒乍放; 漆黑的魔石碑之上再次亮起了光芒……；刺眼的光芒再次绽放；你应该便能凝聚斗气之旋",
+      "ownership": "从怀中取出名单册；亲自监控萧炎的测验"
+    },
+    "visualDetails": {
+      "materialTexture": "黑色石质，表面光滑冰凉，质地坚硬",
+      "colorShape": "漆黑的石碑表面，金色大字熠熠生辉",
+      "condition": "保养完好，功能正常",
+      "scale": "巨大，需抬头仰望",
+      "usage": "手掌轻触石碑，斗气催动后显示段数与级别",
+      "effects": "催动后刺眼金色光芒绽放，显示成绩后回复深沉漆黑",
+      "ownership": "萧家训练场专属测验石碑"
+    },
+    "inferredFields": [
+      "condition"
+    ],
+    "summarizedFields": [
+      "material",
+      "colorShape"
+    ],
+    "enhancedDescription": "萧家训练场边缘处矗立着一块巨大的测验黑石碑，漆黑的石碑表面光滑冰凉，质地坚硬沉重，需人抬头仰望方能看清全貌。这是萧家斥重金配置的测验碑，价值不菲，唯有有实力的家族才有资格配备。每当学员手掌轻触石碑并催动斗气时，漆黑的魔石碑上便乍放刺眼金色光芒，硕大的金色大字熠熠生辉，显示出斗之气段数与潜力级别，随后光芒缓缓收敛，石碑再次回复深沉而冰凉的黑色，静待下一位测验者。",
+    "finalDescription": "萧家训练场边缘处矗立着一块巨大的测验黑石碑，漆黑的石碑表面光滑冰凉，质地坚硬沉重，需人抬头仰望方能看清全貌。这是萧家斥重金配置的测验碑，价值不菲，唯有有实力的家族才有资格配备。每当学员手掌轻触石碑并催动斗气时，漆黑的魔石碑上便乍放刺眼金色光芒，硕大的金色大字熠熠生辉，显示出斗之气段数与潜力级别，随后光芒缓缓收敛，石碑再次回复深沉而冰凉的黑色，静待下一位测验者。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "龟息丹",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "柳席从老师处偷来的救命丹药，被萧炎击杀后曾用它续命",
+    "finalDescription": "柳席从老师处偷来的救命丹药，被萧炎击杀后曾用它续命",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "筑基灵液",
+    "aliases": [
+      "灵液",
+      "青色水液",
+      "翡翠色液体",
+      "白玉瓶",
+      "白玉小瓶",
+      "二品灵液",
+      "青色液体",
+      "二品丹药",
+      "白玉瓶装的筑基灵液"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "灵液"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "青色水液"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "青色液体"
+        ],
+        "fields": [
+          "usage",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "青色水液"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "青色水液"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 18,
+        "chapterTitle": "残酷训练",
+        "matchedNames": [
+          "青色水液"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 18,
+        "chapterTitle": "残酷训练",
+        "matchedNames": [
+          "青色水液"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "ownership",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "visualEffects",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "material",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液",
+          "白玉小瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "visualEffects",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "青色液体"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "灵液",
+          "青色液体",
+          "二品丹药"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "白玉小瓶"
+        ],
+        "fields": [
+          "ownership",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "白玉小瓶"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "争抢",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "一切待续",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "钱由我出",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "钱由我出",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "钱由我出",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "钱由我出",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "冲击第七段",
+        "matchedNames": [
+          "青色水液"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "冲击第七段",
+        "matchedNames": [
+          "青色水液"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "冲击第七段",
+        "matchedNames": [
+          "青色液体"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "冲击第七段",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "冲击第七段",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "otherMatchedNames": [
+          "戒指",
+          "黑色戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "冲击第七段",
+        "matchedNames": [
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 27,
+        "chapterTitle": "强化“吸掌”",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "重要的日子",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液",
+          "青色水液"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "重要的日子",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 35,
+        "chapterTitle": "滑稽的突破",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 37,
+        "chapterTitle": "这小家伙，不简单呐",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暴怒的萧炎",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "灵液"
+        ],
+        "otherMatchedNames": [
+          "黑袍"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液",
+          "白玉瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 54,
+        "chapterTitle": "不小心",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 54,
+        "chapterTitle": "不小心",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 56,
+        "chapterTitle": "广告",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 56,
+        "chapterTitle": "广告",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "高价",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "高价",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液",
+          "白玉瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "高价",
+        "matchedNames": [
+          "白玉瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "高价",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "高价",
+        "matchedNames": [
+          "灵液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 58,
+        "chapterTitle": "拍卖结束",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 58,
+        "chapterTitle": "拍卖结束",
+        "matchedNames": [
+          "灵液"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 59,
+        "chapterTitle": "药材到手",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "承喏",
+        "matchedNames": [
+          "灵液"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects",
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false,
+    "visualFields": {
+      "material": "青色水液，沾染肌肤后顺着毛孔溜进体内，温养骨骼，洗刷脉络",
+      "colorShape": "青色液体，高级时为晶莹剔透的翡翠色，普通时呈斑驳青绿色",
+      "condition": "也是从晶莹剔透的翡翠色变成了斑驳的青绿之色……",
+      "usage": "用于斗者以下修炼者浸泡修炼，温养骨骼、洗刷脉络、强化肉体，提升斗之气修炼速度",
+      "visualEffects": "淡淡青色气流从水液中散发，缓缓攀升钻进体内",
+      "ownership": "药老为萧炎炼制，后交由萧战在拍卖会拍卖"
+    },
+    "visualDetails": {
+      "materialTexture": "水液质地温和细腻，触感滑润",
+      "colorShape": "高级品呈晶莹剔透的翡翠绿，普通品呈斑驳青绿色",
+      "condition": "药效随使用逐渐消散，颜色由深转浅",
+      "scale": "每次使用约半木盆，炼制后装入白玉小瓶",
+      "usage": "修炼者浸泡其中，通过皮肤贪婪吸取温和能量",
+      "effects": "散发淡青色温和气流，渗入皮肤温养骨骼洗刷脉络",
+      "ownership": "药老初炼，后归萧家拍卖，萧炎在药老指导下自行炼制"
+    },
+    "inferredFields": [],
+    "summarizedFields": [
+      "material",
+      "colorShape",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "enhancedDescription": "筑基灵液呈青色水液状，质地温和细腻，触感滑润如水。高级品晶莹剔透呈翡翠绿色，散发幽幽光泽，装在古朴的白玉小瓶之中；普通品则呈斑驳青绿色，药效稍逊。当萧炎手脚并用跳入盛有青色水液的木盆时，淡淡的青色气流从水液表面缓缓升起，略带温热的灵气顺着少年呼吸钻进体内，一丝丝顺着皮肤毛孔渗入，温养着骨骼、洗刷着脉络、强化着肉体。伴随修炼深入，青色液体的颜色逐渐变浅，从翡翠绿褪成斑驳青绿，最终归于平淡。",
+    "finalDescription": "筑基灵液呈青色水液状，质地温和细腻，触感滑润如水。高级品晶莹剔透呈翡翠绿色，散发幽幽光泽，装在古朴的白玉小瓶之中；普通品则呈斑驳青绿色，药效稍逊。当萧炎手脚并用跳入盛有青色水液的木盆时，淡淡的青色气流从水液表面缓缓升起，略带温热的灵气顺着少年呼吸钻进体内，一丝丝顺着皮肤毛孔渗入，温养着骨骼、洗刷着脉络、强化着肉体。伴随修炼深入，青色液体的颜色逐渐变浅，从翡翠绿褪成斑驳青绿，最终归于平淡。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "llm"
+  },
+  {
+    "entityType": "item",
+    "name": "黑色戒指",
+    "aliases": [
+      "古朴戒指",
+      "戒指",
+      "神秘戒指",
+      "古朴黑色戒指",
+      "漆黑戒指",
+      "古戒",
+      "黑色古戒"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "黑色戒指"
+        ],
+        "fields": [
+          "condition",
+          "colorShape",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "古朴戒指",
+          "戒指"
+        ],
+        "fields": [
+          "condition",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "黑色古戒",
+          "古戒"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership",
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "古朴戒指",
+          "戒指"
+        ],
+        "fields": [
+          "ownership",
+          "colorShape",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "古朴戒指",
+          "戒指"
+        ],
+        "fields": [
+          "ownership",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "黑色戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 27,
+        "chapterTitle": "强化“吸掌”",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "visualEffects",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 44,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "戒指",
+          "漆黑戒指"
+        ],
+        "fields": [
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "戒指",
+          "漆黑戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "戒指",
+          "漆黑戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "黑色戒指",
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "ownership",
+          "condition",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "黑色戒指",
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "condition",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "黑色戒指",
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "黑色戒指",
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "colorShape",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 18,
+        "chapterTitle": "残酷训练",
+        "matchedNames": [
+          "黑色戒指",
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "冲击第七段",
+        "matchedNames": [
+          "黑色戒指",
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 59,
+        "chapterTitle": "药材到手",
+        "matchedNames": [
+          "黑色戒指",
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "condition",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "黑色戒指",
+          "戒指"
+        ],
+        "fields": [
+          "ownership",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "坦白",
+        "matchedNames": [
+          "黑色戒指",
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "黑袍"
+        ],
+        "fields": [
+          "colorShape",
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false,
+    "visualFields": {
+      "material": "一只通体泛绿的古玉盒子在手中凭空出现……",
+      "colorShape": "通体漆黑，古朴，戒指表面绘有模糊纹路",
+      "condition": "古朴，母亲遗物，佩戴十年",
+      "usage": "萧炎母亲临终遗物，佩戴十年，药老栖身之所",
+      "visualEffects": "愣愣的望着那消失在雾气中的戒指；手指上的戒指光芒微闪；光芒闪动……; 愣愣的望着那消失在雾气中的戒指；萧炎手指上的黑色戒指光芒微闪；手指上的戒指光芒微闪；光芒闪动……",
+      "ownership": "萧炎（四岁起佩戴）、葛叶（另有一枚相同的戒指）"
+    },
+    "visualDetails": {
+      "materialTexture": "古朴材质，触感温润，纹路模糊难辨",
+      "colorShape": "通体漆黑，呈环形，古朴内敛，表面隐约可见模糊纹路",
+      "condition": "历经十年佩戴，古朴依旧，是萧炎母亲的唯一遗物",
+      "scale": "约指节大小，套于手指之上",
+      "usage": "佩戴于手指，作为母亲遗物；内藏药老灵魂体；可收入物体",
+      "effects": "偶尔泛起微弱毫光，光芒微闪时会引出药老",
+      "ownership": "萧炎为主，葛叶另有一枚外观相同的戒指"
+    },
+    "inferredFields": [],
+    "summarizedFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "enhancedDescription": "这是一枚通体漆黑如墨的古朴戒指，不知由何种材料铸就，表面隐约可见模糊的纹路，虽历经十年佩戴却依然散发着内敛的光泽。戒指是萧炎母亲临终前留给他的唯一遗物，从四岁起便戴在指间，十年来从未离身。它既是萧炎对母亲的眷恋寄托，也是药老栖身之所——每当戒指光芒微闪，便会引出那位藏在其中的神秘灵魂体。",
+    "finalDescription": "这是一枚通体漆黑如墨的古朴戒指，不知由何种材料铸就，表面隐约可见模糊的纹路，虽历经十年佩戴却依然散发着内敛的光泽。戒指是萧炎母亲临终前留给他的唯一遗物，从四岁起便戴在指间，十年来从未离身。它既是萧炎对母亲的眷恋寄托，也是药老栖身之所——每当戒指光芒微闪，便会引出那位藏在其中的神秘灵魂体。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "llm"
+  },
+  {
+    "entityType": "item",
+    "name": "黑色斗篷",
+    "aliases": [
+      "斗篷袍子",
+      "黑袍",
+      "黑袍人",
+      "大黑斗篷"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "黑色斗篷",
+          "斗篷袍子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "黑袍"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "一切待续",
+        "matchedNames": [
+          "黑袍"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "黑色斗篷"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "黑色斗篷"
+        ],
+        "fields": [
+          "ownership",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "黑袍"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "黑色斗篷"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "otherMatchedNames": [
+          "小玉瓶"
+        ],
+        "fields": [
+          "condition",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "黑色斗篷"
+        ],
+        "fields": [
+          "ownership",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "料理后事",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "夜中相遇",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material",
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false,
+    "visualFields": {
+      "material": "黑色布料",
+      "colorShape": "臃肿宽大的黑色斗篷袍子，可将全身裹住",
+      "condition": "这才继续将视线投注于手中的古朴书籍",
+      "usage": "那一直保持着沉默的黑袍人；望着那拿着药材；雅妃努力保持着肩膀；后面几十名护卫立刻拔出腰间武器",
+      "visualEffects": "流转的迷人眼波在面前的黑袍人身上扫过；眼瞳中寒光闪过",
+      "ownership": "萧炎"
+    },
+    "visualDetails": {
+      "materialTexture": "厚实黑色布料，质地普通但遮蔽效果极佳",
+      "colorShape": "臃肿宽大的袍式斗篷，黑色，从头披下可将全身裹住",
+      "condition": "新购入时状态完好，使用后曾被踢入水沟遗弃",
+      "scale": "宽大到足以将萧炎整个人笼罩其中",
+      "usage": "萧炎扮演神秘炼药师时的主要伪装，覆盖全身遮掩身份与容貌，使萧战等人无法辨认其真实身份",
+      "effects": "斗篷之下声音会变得干涩苍老，由药老控制发声，完全遮蔽穿戴者真容",
+      "ownership": "萧炎"
+    },
+    "inferredFields": [],
+    "summarizedFields": [
+      "material",
+      "colorShape",
+      "ownership"
+    ],
+    "enhancedDescription": "一件臃肿宽大的黑色斗篷袍子，由厚实黑色布料缝制而成，从头披下可将整个人严严实实地裹住。这件斗篷是萧炎为扮演神秘炼药师特意购买的伪装装备，宽大的袍摆垂至脚踝，将他的身形与面容完全遮蔽。在斗篷的遮掩下，萧炎化身为那位身份神秘的老练炼药师，而藏在斗篷下的药老则控制着干涩苍老的嗓音与外人交谈，使得萧战等人完全无法辨认这位黑袍人的真实身份。",
+    "finalDescription": "一件臃肿宽大的黑色斗篷袍子，由厚实黑色布料缝制而成，从头披下可将整个人严严实实地裹住。这件斗篷是萧炎为扮演神秘炼药师特意购买的伪装装备，宽大的袍摆垂至脚踝，将他的身形与面容完全遮蔽。在斗篷的遮掩下，萧炎化身为那位身份神秘的老练炼药师，而藏在斗篷下的药老则控制着干涩苍老的嗓音与外人交谈，使得萧战等人完全无法辨认这位黑袍人的真实身份。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "llm"
+  },
+  {
+    "entityType": "item",
+    "name": "增气散",
+    "aliases": [
+      "二品丹药增气散"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "强横的萧炎",
+        "matchedNames": [
+          "增气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "趁着服下“增气散”的药力",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "二品丹药，绿色圆润，能让人短时间内拥有斗者实力，但服用后一个月需躺在床上度过，萧玉给萧宁服用以挑战萧炎",
+    "finalDescription": "二品丹药，绿色圆润，能让人短时间内拥有斗者实力，但服用后一个月需躺在床上度过，萧玉给萧宁服用以挑战萧炎",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "养气散",
+    "aliases": [
+      "养气丹药"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "药老给薰儿的丹药，用于恢复因使用秘法而虚弱的身体",
+    "finalDescription": "药老给薰儿的丹药，用于恢复因使用秘法而虚弱的身体",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "蓝色玉卡",
+    "aliases": [
+      "绿卡",
+      "金币卡",
+      "绿色卡片"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "一切待续",
+        "matchedNames": [
+          "绿色卡片"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "绿色卡片"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 59,
+        "chapterTitle": "药材到手",
+        "matchedNames": [
+          "蓝色玉卡"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "蓝色玉卡"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "聚气散"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "蓝色玉卡"
+        ],
+        "otherMatchedNames": [
+          "纳戒"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "蓝色玉卡"
+        ],
+        "otherMatchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "material",
+          "usage",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false,
+    "visualFields": {
+      "material": "伸手接过蓝色玉卡; 轻抚了抚玉卡; 白皙的手掌从怀中掏出蓝色玉卡; 桌上的蓝色玉卡; 将蓝色玉卡收入手中",
+      "colorShape": "",
+      "condition": "",
+      "usage": "将一张绿色卡片恭敬的递给了雅妃; 将蓝色玉卡收入手中",
+      "visualEffects": "",
+      "ownership": "将一张绿色卡片恭敬的递给了雅妃；萧炎抛了抛手中的绿色卡片; 白皙的手掌从怀中掏出蓝色玉卡；将蓝色玉卡收入手中"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "药老交给雅妃用于支付药材费用的卡片，萧炎嫌欠人情而留下",
+    "finalDescription": "药老交给雅妃用于支付药材费用的卡片，萧炎嫌欠人情而留下",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "聚气散",
+    "aliases": [
+      "丹药",
+      "聚气散材料"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "斗气火焰",
+          "火焰"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "visualEffects",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "坊市",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "坊市",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "visualEffects",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 17,
+        "chapterTitle": "玄阶高级斗技：八极崩",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "筑基灵液",
+          "灵液",
+          "魔晶"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "筑基灵液",
+          "灵液"
+        ],
+        "fields": [
+          "usage",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "白玉小瓶"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "争抢",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 27,
+        "chapterTitle": "强化“吸掌”",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 40,
+        "chapterTitle": "增气散",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "二品丹药",
+          "增气散"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 43,
+        "chapterTitle": "陪你试试",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "筹钱",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 58,
+        "chapterTitle": "拍卖结束",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 59,
+        "chapterTitle": "药材到手",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "晋级斗者",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "晋级斗者",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "晋级斗者",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "otherMatchedNames": [
+          "纳戒"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "otherMatchedNames": [
+          "蓝色玉卡"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "otherMatchedNames": [
+          "黑袍"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "聚气散",
+          "丹药"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "坦白",
+        "matchedNames": [
+          "聚气散",
+          "丹药"
+        ],
+        "fields": [
+          "visualEffects",
+          "ownership",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 83,
+        "chapterTitle": "废掉",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "回春散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "疗伤药",
+          "蓄力丸"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "小玉瓶"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "丹药"
+        ],
+        "otherMatchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": true,
+    "visualFields": {
+      "material": "装于古玉盒子中，玉匣边缘镶金线",
+      "colorShape": "然后一把将那枚略微碧绿中略微带着一抹淡蓝的丹药装入其中；一粒略微泛着碧绿色光泽的圆润丹药",
+      "condition": "全新炼制，六品丹药，品相上佳",
+      "usage": "让九段斗之气百分之百成功凝聚斗之气旋，助人突破斗者；悔婚赔礼",
+      "visualEffects": "泛着碧绿色光泽，异香弥漫",
+      "ownership": "丹王古河（炼制者），纳兰嫣然（悔婚时赠予萧家），萧炎（持有）"
+    },
+    "visualDetails": {
+      "materialTexture": "丹药表面光滑温润，装于古玉匣中",
+      "colorShape": "龙眼大小的圆润丹药，通体碧绿，略微带着一抹淡蓝的色泽",
+      "condition": "全新炼制，品相完好，六品丹药，药力强横",
+      "scale": "龙眼大小，圆润饱满",
+      "usage": "服用后可让九段斗之气百分之百成功凝聚斗之气旋，是突破斗者的神药；纳兰嫣然以此作为悔婚赔礼赠予萧家",
+      "effects": "泛着碧绿色光泽，异香从中弥漫而出，光是闻一闻便让人精神为之一振",
+      "ownership": "丹王古河炼制，原为纳兰嫣然所有，现归萧家；药老炼制之聚气散药力更胜一筹"
+    },
+    "inferredFields": [
+      "condition"
+    ],
+    "summarizedFields": [
+      "material",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "enhancedDescription": "一枚通体碧绿的圆润丹药，约龙眼大小，表面光滑温润，碧绿之中微微透出一抹淡蓝色的光泽，异香从中弥漫而出，闻之便觉精神一振。此丹装于古色古香的玉匣之中，玉匣边缘镶有一圈金线，彰显其珍贵。丹药乃丹王古河亲自炼制的六品奇药，能让九段斗之气的修炼者百分之百成功凝聚斗之气旋，是加玛帝国被炒成天价的灵药。纳兰嫣然曾以此作为悔婚赔礼赠予萧家，而药老所炼之聚气散，药力更远超纳兰嫣然所给的那一枚。",
+    "finalDescription": "一枚通体碧绿的圆润丹药，约龙眼大小，表面光滑温润，碧绿之中微微透出一抹淡蓝色的光泽，异香从中弥漫而出，闻之便觉精神一振。此丹装于古色古香的玉匣之中，玉匣边缘镶有一圈金线，彰显其珍贵。丹药乃丹王古河亲自炼制的六品奇药，能让九段斗之气的修炼者百分之百成功凝聚斗之气旋，是加玛帝国被炒成天价的灵药。纳兰嫣然曾以此作为悔婚赔礼赠予萧家，而药老所炼之聚气散，药力更远超纳兰嫣然所给的那一枚。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "凝血散",
+    "aliases": [
+      "疗伤药"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "otherMatchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "凝血散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "小坊主",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "小坊主",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 84,
+        "chapterTitle": "接受",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "otherMatchedNames": [
+          "蓄力丸"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "otherMatchedNames": [
+          "蓄力丸"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "承喏",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "承喏",
+        "matchedNames": [
+          "凝血散"
+        ],
+        "otherMatchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "疗伤药"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": true,
+    "visualFields": {
+      "material": "那些药材都有止血生骨的效果；也唯有水属性与木属性斗气",
+      "colorShape": "由于乌坦城临近魔兽山脉的边缘",
+      "condition": "药效强于回春散，价格更低，批量生产",
+      "usage": "疗伤止血，帮助萧家抢占乌坦城五成以上疗伤药市场",
+      "visualEffects": "从这些大汉身上隐隐散发的血腥味来看；雅妃眼波流转；也唯有水属性与木属性斗气",
+      "ownership": "再加上这家伙每次谈得兴起就会从怀中掏出限量疗伤药送人；萧炎的这所坊市；而且因为萧炎的缘故；萧炎的成功率"
+    },
+    "visualDetails": {
+      "materialTexture": "由多种具有止血生骨效果的药材炼制而成",
+      "colorShape": "疗伤药，呈药粉或药液形态，批量存放于玉瓶之中",
+      "condition": "批量生产，药效强劲，远优于回春散",
+      "scale": "批量生产，每瓶可售出",
+      "usage": "用于疗伤止血、生骨续筋，药效强于回春散而价格更低；萧炎以此帮助萧家抢占乌坦城五成以上疗伤药市场，日收入已能比得上萧家以前一两月的收入",
+      "effects": "药效显著，能在危急时刻挽回佣兵性命",
+      "ownership": "萧炎炼制，萧家坊市销售"
+    },
+    "inferredFields": [
+      "condition"
+    ],
+    "summarizedFields": [
+      "usage"
+    ],
+    "enhancedDescription": "凝血散是一种由多种具有止血生骨效果的药材炼制而成的疗伤药，需要水属性与木属性斗气催化方能成功炼制。它以批量形式存放于玉瓶之中，药效强劲，远胜于回春散，而售价却更为低廉。萧炎在药老指导下成功炼制出这种疗伤药后，投入萧家坊市销售，迅速帮助萧家抢占了乌坦城五成以上的疗伤药市场，日收入已经能比得上萧家以前一两月的总收入，深受那些刀口舔血的佣兵们喜爱。",
+    "finalDescription": "凝血散是一种由多种具有止血生骨效果的药材炼制而成的疗伤药，需要水属性与木属性斗气催化方能成功炼制。它以批量形式存放于玉瓶之中，药效强劲，远胜于回春散，而售价却更为低廉。萧炎在药老指导下成功炼制出这种疗伤药后，投入萧家坊市销售，迅速帮助萧家抢占了乌坦城五成以上的疗伤药市场，日收入已经能比得上萧家以前一两月的总收入，深受那些刀口舔血的佣兵们喜爱。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "纳戒",
+    "aliases": [
+      "淡红色戒指",
+      "空间戒指",
+      "暗红色纳戒",
+      "低级纳戒"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "otherMatchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "otherMatchedNames": [
+          "蓝色玉卡"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "fields": [
+          "ownership",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "otherMatchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "纳戒",
+          "淡红色戒指"
+        ],
+        "otherMatchedNames": [
+          "戒指",
+          "药鼎",
+          "红色药鼎"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "otherMatchedNames": [
+          "小玉瓶"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "otherMatchedNames": [
+          "小玉瓶"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "纳戒"
+        ],
+        "otherMatchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "visualEffects",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": true,
+    "visualFields": {
+      "material": "生骨花六百朵；这种纳戒是由一种名为“纳石”的稀有材料所铸；不过由于“纳石”的稀少",
+      "colorShape": "淡红色，暗红色",
+      "condition": "低级纳戒，空间仅三四平方米，价格接近十万金币",
+      "usage": "然后取出一套早已经准备好的漆黑大斗篷",
+      "visualEffects": "将一道斗气输入其中；手指上一枚纳戒光芒闪烁",
+      "ownership": "萧炎（低价购得）、萧战与大长老（各持一枚）"
+    },
+    "visualDetails": {
+      "materialTexture": "纳石材质，稀有坚硬，触感冰凉",
+      "colorShape": "淡红色或暗红色，呈戒指形态",
+      "condition": "低级纳戒，空间仅三四平方米，价格近十万金币，成色完好",
+      "scale": "指环大小，可套于手指或揣入怀中",
+      "usage": "佩戴后可将一道斗气输入其中，开启小空间存取没有生命气息的物品；萧炎常将贵重之物收入其中",
+      "effects": "输入斗气后光芒闪烁，物品可凭空存入或取出",
+      "ownership": "萧炎从米特尔拍卖场低价购得，萧战与大长老各持一枚更高级的纳戒"
+    },
+    "inferredFields": [
+      "colorShape",
+      "condition"
+    ],
+    "summarizedFields": [
+      "ownership"
+    ],
+    "enhancedDescription": "这枚纳戒由一种名为'纳石'的稀有材料铸造而成，通体呈淡红色或暗红色，触感冰凉而坚硬。这种低级纳戒内部拥有一片特殊的小空间，约三四平方米大小，可以存放任何没有生命气息的物品，极为方便实用。由于纳石极为稀少，纳戒也因此珍贵异常——象萧炎手中这枚最低级的纳戒，价格便要接近十万金币，在萧家也只有萧战与大长老各拥有一枚。纳戒需要输入斗气方可激活，光芒闪烁之间，物品便能凭空存入或取出。",
+    "finalDescription": "这枚纳戒由一种名为'纳石'的稀有材料铸造而成，通体呈淡红色或暗红色，触感冰凉而坚硬。这种低级纳戒内部拥有一片特殊的小空间，约三四平方米大小，可以存放任何没有生命气息的物品，极为方便实用。由于纳石极为稀少，纳戒也因此珍贵异常——象萧炎手中这枚最低级的纳戒，价格便要接近十万金币，在萧家也只有萧战与大长老各拥有一枚。纳戒需要输入斗气方可激活，光芒闪烁之间，物品便能凭空存入或取出。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "八极崩",
+    "aliases": [
+      "玄阶高级斗技",
+      "八极崩斗技",
+      "玄阶斗技八极崩"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 17,
+        "chapterTitle": "玄阶高级斗技：八极崩",
+        "matchedNames": [
+          "八极崩"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "苦修",
+        "matchedNames": [
+          "八极崩"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.5,
+    "needsReview": true,
+    "visualFields": {
+      "material": "记载于铁片或药老传授",
+      "colorShape": "斗技功法形态",
+      "condition": "玄阶高级斗技，近身攻击型，攻击力极强",
+      "usage": "所发挥出来的破坏力",
+      "visualEffects": "在斗气大陆之上",
+      "ownership": "而这所谓能与地阶斗技相媲美的八极崩也的确没有辜负萧炎的期待"
+    },
+    "visualDetails": {
+      "materialTexture": "通过药老传授，刻于铁片之上",
+      "colorShape": "近身攻击型斗技，以拳头或掌为媒介施展",
+      "condition": "玄阶高级斗技，威力可与地阶斗技相媲美",
+      "scale": "施展时以身体某一部位为载体进行攻击",
+      "usage": "近身战斗时打出强横一击，炼至大成可产生八重劲气，八重叠加威力惊人，可越级击败对手；对肉体强度要求极高，使用后会造成身体严重负荷，一击便会让人脱力",
+      "effects": "攻击力极为强横，八重劲气层层叠加，破坏力惊人，可比上八段斗之气",
+      "ownership": "药老传授萧炎"
+    },
+    "inferredFields": [
+      "material",
+      "colorShape",
+      "condition"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "八极崩是药老传授给萧炎的一门玄阶高级斗技，以近身战斗的方式施展，通过拳头或手掌打出强横的穿透力。在斗气大陆之上，玄阶与地阶之间的差距犹如天壤之别，而这门仅仅玄阶高级的斗技，却号称在攻击力上能够堪比地阶斗技——炼至大成时，攻击暗含八重劲气，八重叠加威力惊人。萧炎仅凭第六段斗之气便成功用出这一斗技，所发挥的破坏力足以比上八段斗之气。不过这门斗技对肉体强度要求极高，每使用一次都会造成身体严重负荷，一击便让人脱力，是萧炎真正的底牌之一。",
+    "finalDescription": "八极崩是药老传授给萧炎的一门玄阶高级斗技，以近身战斗的方式施展，通过拳头或手掌打出强横的穿透力。在斗气大陆之上，玄阶与地阶之间的差距犹如天壤之别，而这门仅仅玄阶高级的斗技，却号称在攻击力上能够堪比地阶斗技——炼至大成时，攻击暗含八重劲气，八重叠加威力惊人。萧炎仅凭第六段斗之气便成功用出这一斗技，所发挥的破坏力足以比上八段斗之气。不过这门斗技对肉体强度要求极高，每使用一次都会造成身体严重负荷，一击便让人脱力，是萧炎真正的底牌之一。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "回春散",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 84,
+        "chapterTitle": "接受",
+        "matchedNames": [
+          "回春散"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "药材炼制",
+      "colorShape": "粉状或药液形态",
+      "condition": "低级疗伤药，一品炼药师所制",
+      "usage": "微笑道：“你应该就是炼制‘回春散’的人吧",
+      "visualEffects": "药力低微，量大便宜",
+      "ownership": "柳席（炼制者），加列家族（销售方）"
+    },
+    "visualDetails": {
+      "materialTexture": "由普通药材炼制，材料成本低廉",
+      "colorShape": "粉状或药液形态，包装简朴",
+      "condition": "低级疗伤药，药力低微，属于一品炼药师才能炼制的最低级药物",
+      "scale": "批量存放于普通药瓶中",
+      "usage": "用于轻微伤患的疗伤，量大便宜，深受佣兵喜爱；加列家族曾以此打压萧家坊市，后因涨价三倍引起佣兵不满，又因凝血散出现而滞销",
+      "effects": "药力低微，只能治疗轻微伤势",
+      "ownership": "柳席（一品炼药师）为加列家族炼制"
+    },
+    "inferredFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "回春散是一种由普通药材炼制的低级疗伤药，呈粉状或药液形态，包装简朴，药力低微，属于一品炼药师方能炼制的最低级药物。由于原材料成本低廉，回春散售价便宜，量大实惠，深受那些刀口舔血的佣兵们喜爱。加列家族曾请来一品炼药师柳席炼制大量回春散，试图以此打压萧家坊市的生意。然而后来加列家族将回春散涨价三倍，引发佣兵们的不满，加上萧炎炼制的凝血散出现，回春散便逐渐滞销，最终退出市场竞争。",
+    "finalDescription": "回春散是一种由普通药材炼制的低级疗伤药，呈粉状或药液形态，包装简朴，药力低微，属于一品炼药师方能炼制的最低级药物。由于原材料成本低廉，回春散售价便宜，量大实惠，深受那些刀口舔血的佣兵们喜爱。加列家族曾请来一品炼药师柳席炼制大量回春散，试图以此打压萧家坊市的生意。然而后来加列家族将回春散涨价三倍，引发佣兵们的不满，加上萧炎炼制的凝血散出现，回春散便逐渐滞销，最终退出市场竞争。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "黑色卷轴",
+    "aliases": [
+      "卷轴"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "萧宁",
+        "matchedNames": [
+          "黑色卷轴",
+          "卷轴"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 16,
+        "chapterTitle": "冲突",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 16,
+        "chapterTitle": "冲突",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "visualEffects",
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 16,
+        "chapterTitle": "冲突",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "otherMatchedNames": [
+          "碎石掌"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 16,
+        "chapterTitle": "冲突",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 16,
+        "chapterTitle": "冲突",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 16,
+        "chapterTitle": "冲突",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 16,
+        "chapterTitle": "冲突",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "material",
+          "usage",
+          "colorShape",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 48,
+        "chapterTitle": "选择功法",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 48,
+        "chapterTitle": "选择功法",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 48,
+        "chapterTitle": "选择功法",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "condition",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 50,
+        "chapterTitle": "安心",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "ownership",
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 50,
+        "chapterTitle": "安心",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 50,
+        "chapterTitle": "安心",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 66,
+        "chapterTitle": "选择",
+        "matchedNames": [
+          "黑色卷轴",
+          "卷轴"
+        ],
+        "otherMatchedNames": [
+          "焚决",
+          "红色卷轴"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 66,
+        "chapterTitle": "选择",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "otherMatchedNames": [
+          "纳戒"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false,
+    "visualFields": {
+      "material": "纸质或竹木所制，特殊墨竹材质",
+      "colorShape": "黑色卷轴，背面有黄色大字；另有青色、火玉之色等不同卷轴",
+      "condition": "有着一卷青色的古朴卷轴；一卷通体呈火玉之色的古朴卷轴出现在手中",
+      "usage": "随手从身后的书架中取出一张卷轴；从台中取出一块银盘；递给了老者",
+      "visualEffects": "那股隐晦而弱小的斗气波动；卷轴略微泛着青光；刚开始修炼斗气的时候",
+      "ownership": "萧家斗技堂，萧炎，薰儿"
+    },
+    "visualDetails": {
+      "materialTexture": "纸质或竹木材质，部分以特殊墨竹所铸，触手温润",
+      "colorShape": "呈卷轴形态，黑色、青色、火玉之色等不同颜色，背面有黄色大字；展开后可见人体脉络形状",
+      "condition": "古朴陈旧，部分卷轴边缘微微泛青光",
+      "scale": "展开后约一臂长，可平铺观看；卷起后便于存放于书架之上",
+      "usage": "存放于萧家斗技堂书架中，供萧家族人修炼斗技；展开后可看到人体脉络形状与穴位催动位置，供人记诵修炼",
+      "effects": "隐晦散发斗气波动，修炼时会产生斗气运转的异象",
+      "ownership": "萧家斗技堂公有，萧炎、薰儿等人曾取阅"
+    },
+    "inferredFields": [],
+    "summarizedFields": [
+      "material",
+      "colorShape",
+      "ownership"
+    ],
+    "enhancedDescription": "黑色卷轴是萧家斗技堂中存放斗技功法的载体，由纸质或特殊墨竹材质制成，呈细长的卷轴形态，卷起后可整齐摆放在书架之上。萧炎曾在斗技堂随手抽过一只黑色卷轴，缓缓摊开后，卷轴背面显出几个黄色大字，正面则是详细的人体脉络形状与穴位走向。目光扫过这些脉络图，萧炎暗暗记下碎石掌的穴位催动与斗气走向位置。卷轴古朴陈旧，部分微微泛着青光，隐晦散发着弱小的斗气波动。此外，斗技堂中还有青色、古朴火玉之色等多种不同卷轴，供萧家族人修炼取阅。",
+    "finalDescription": "黑色卷轴是萧家斗技堂中存放斗技功法的载体，由纸质或特殊墨竹材质制成，呈细长的卷轴形态，卷起后可整齐摆放在书架之上。萧炎曾在斗技堂随手抽过一只黑色卷轴，缓缓摊开后，卷轴背面显出几个黄色大字，正面则是详细的人体脉络形状与穴位走向。目光扫过这些脉络图，萧炎暗暗记下碎石掌的穴位催动与斗气走向位置。卷轴古朴陈旧，部分微微泛着青光，隐晦散发着弱小的斗气波动。此外，斗技堂中还有青色、古朴火玉之色等多种不同卷轴，供萧家族人修炼取阅。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "llm"
+  },
+  {
+    "entityType": "item",
+    "name": "聚灵草",
+    "aliases": [
+      "二十年份聚灵草"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "聚气散材料之一，二十年份曾在拍卖会拍出一万五千金币; 与普通草叶无异，草枝顶尖部分有淡淡萤光，萤光越浓纯净能量越雄厚，用于炼制聚气散时中和魔核中的狂暴能量",
+    "finalDescription": "聚气散材料之一，二十年份曾在拍卖会拍出一万五千金币; 与普通草叶无异，草枝顶尖部分有淡淡萤光，萤光越浓纯净能量越雄厚，用于炼制聚气散时中和魔核中的狂暴能量",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "墨叶莲",
+    "aliases": [
+      "五十年份墨叶莲"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "墨叶莲"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "墨叶莲"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "通体枯黄",
+      "condition": "",
+      "usage": "将它们全部炼制成了四颗犹如黑珍珠般的纯净液体",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "聚气散材料之一，五十年份约三千多金币一株，通体枯黄五片叶子如黑墨，五片叶子代表年份十年成长一片，萧炎购买用于炼制聚气散",
+    "finalDescription": "聚气散材料之一，五十年份约三千多金币一株，通体枯黄五片叶子如黑墨，五片叶子代表年份十年成长一片，萧炎购买用于炼制聚气散",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "木系魔核",
+    "aliases": [
+      "魔晶",
+      "一级魔核",
+      "木系一级魔核",
+      "吞木狐魔晶",
+      "青木鼠魔晶"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "一级魔核"
+        ],
+        "otherMatchedNames": [
+          "戒指",
+          "洗骨花",
+          "紫叶兰草",
+          "紫叶兰"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "一级魔核",
+          "木系一级魔核"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "木系魔核"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "坊市",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "坊市",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "离他远点",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "ownership",
+          "colorShape",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "离他远点",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "otherMatchedNames": [
+          "木灵手链"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "离他远点",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "离他远点",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "离他远点",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "otherMatchedNames": [
+          "木灵之链"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "otherMatchedNames": [
+          "黑色铁片"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "otherMatchedNames": [
+          "筑基灵液",
+          "灵液",
+          "丹药"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "魔晶",
+          "青木鼠魔晶"
+        ],
+        "otherMatchedNames": [
+          "洗骨花",
+          "紫叶兰草",
+          "紫叶兰"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "钱由我出",
+        "matchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": true,
+    "visualFields": {
+      "material": "魔兽体内能量晶核，充斥狂暴天地能量；薰儿所选手链以冰银为材质",
+      "colorShape": "手链呈淡蓝金色；吊坠着一枚被磨成了圆珠形状的绿色魔晶",
+      "condition": "一级魔核，品质完好，坊市售价四百至五百金币",
+      "usage": "很适合夏天佩戴；筛选出能够中和你需要炼制的魔晶之中狂暴能量的药材",
+      "visualEffects": "不过却隐隐有着光芒流动",
+      "ownership": "伸出手在怀中掏了掏；萧炎轻抛了抛手中沾有血丝的绿色魔晶；萧炎从怀中掏出所购买的药物与魔晶；最后从怀中掏出一大堆的药草以及几颗魔晶"
+    },
+    "visualDetails": {
+      "materialTexture": "魔兽体内能量晶核，质地坚硬，内部充斥狂暴的天地能量；手链链条为金蓝铁所铸",
+      "colorShape": "呈绿色圆珠形状或圆润魔晶形态，大小约拇指肚，可作为吊坠镶嵌于手链之上",
+      "condition": "一级木系魔核，坊市常见货品，品质完好",
+      "scale": "圆珠直径约拇指肚大小，可作为吊坠；一级木系魔核为最小规格",
+      "usage": "一级木系魔核是炼制筑基灵液的必需材料；可打磨加工后作为饰品佩戴；炼丹时可筛选药材中和平稳魔核内的狂暴能量",
+      "effects": "淡淡的绿芒从中透出，隐隐有光芒流动，将周围环境渲染得美轮美奂",
+      "ownership": "萧炎购买用于炼丹，薰儿曾拥有镶有绿色魔晶的淡绿手链，加列奥以魔晶手链示好薰儿"
+    },
+    "inferredFields": [
+      "condition"
+    ],
+    "summarizedFields": [
+      "material"
+    ],
+    "enhancedDescription": "木系魔核是魔兽体内蕴含的一种能量晶核，也被称为魔晶，其内充斥着极为狂暴的天地能量。一级木系魔核呈圆润的绿色圆珠形状，大小约拇指肚，坊市售价约四百至五百金币。打磨加工后，它可被磨成圆珠吊坠于手链之上——加列奥曾以一条金蓝铁链条的手链吊着一枚绿色魔晶赠予薰儿，淡淡的绿芒从中透出，将手链渲染得美轮美奂。萧炎购买木系魔核用于炼制筑基灵液，这是炼丹的必需材料；而炼丹时还需筛选出能够中和平和魔核内狂暴能量的药材，方能成功炼制。",
+    "finalDescription": "木系魔核是魔兽体内蕴含的一种能量晶核，也被称为魔晶，其内充斥着极为狂暴的天地能量。一级木系魔核呈圆润的绿色圆珠形状，大小约拇指肚，坊市售价约四百至五百金币。打磨加工后，它可被磨成圆珠吊坠于手链之上——加列奥曾以一条金蓝铁链条的手链吊着一枚绿色魔晶赠予薰儿，淡淡的绿芒从中透出，将手链渲染得美轮美奂。萧炎购买木系魔核用于炼制筑基灵液，这是炼丹的必需材料；而炼丹时还需筛选出能够中和平和魔核内狂暴能量的药材，方能成功炼制。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "蛇涎果",
+    "aliases": [
+      "成熟蛇涎果"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "蛇涎果"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "蛇涎果是一种碧绿色的圆形果子",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "聚气散材料之一，成熟后属于低级药材中的极品，市价八千金币以上; 碧绿色圆形果子半个拳头大小，有甜腻酸味，只生长在五阶蛇形魔兽巢穴旁偏阴寒，用于中和炼药时的烈性药材",
+    "finalDescription": "聚气散材料之一，成熟后属于低级药材中的极品，市价八千金币以上; 碧绿色圆形果子半个拳头大小，有甜腻酸味，只生长在五阶蛇形魔兽巢穴旁偏阴寒，用于中和炼药时的烈性药材",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "炎火精药鼎",
+    "aliases": [
+      "药鼎",
+      "红色药鼎",
+      "暗红药鼎"
+    ],
+    "missingFields": [
+      "usage"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "otherMatchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "otherMatchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 83,
+        "chapterTitle": "废掉",
+        "matchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "condition",
+          "colorShape",
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": false,
+    "visualFields": {
+      "material": "散布着一些用冰银打造的细密孔洞; 安置了一块由寒冰精打造而成的透明镜面; 打造期间; 目光转移到摆放在药鼎面前的十几个玉盒上; 玉盒之中",
+      "colorShape": "药鼎通体呈暗红之色; 盛满着从凝血草中提炼而出的淡白色粉末; 将活气果的黑色小颗粒; 黑色小颗粒进入药鼎; 细小的黑色颗粒在不断增高的温度下; 一撮撮乌黑色的粉末",
+      "condition": "绘着一个古朴的药鼎",
+      "usage": "",
+      "visualEffects": "然后运转体内的斗气输入其中；反射着异样光芒",
+      "ownership": "就如同武士手中的宝剑一般重要；萧炎的灵魂感知力逐渐的侵入进药鼎之中"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "由加玛帝国著名荷尔大师铸造，材料为炎火精; 对斗气火焰有增幅作用，掺杂的稀有金属能提高炼药成功几率; 是两口之鼎，萧炎用来炼制凝血散",
+    "finalDescription": "由加玛帝国著名荷尔大师铸造，材料为炎火精; 对斗气火焰有增幅作用，掺杂的稀有金属能提高炼药成功几率; 是两口之鼎，萧炎用来炼制凝血散",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "测验水晶球",
+    "aliases": [
+      "测验水晶",
+      "红色水晶球"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "刁难",
+        "matchedNames": [
+          "测验水晶",
+          "红色水晶球"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "刁难",
+        "matchedNames": [
+          "测验水晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "visualFields": {
+      "material": "罗布从怀中掏出一枚拳头大小的红色水晶球; 笑道：“正好刚才若琳导师给了我一块测验水晶; 其他的测验水晶已经全部拿到前面测验通道中去了; 萧玉略微迟疑; 偏头对着萧炎柔声解释道：“这测验水晶很简单",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": "罗布从怀中掏出一枚拳头大小的红色水晶球"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "迦南学院用于测试学员斗之气等级的器具，绿色碧绿牌子用于通行",
+    "finalDescription": "迦南学院用于测试学员斗之气等级的器具，绿色碧绿牌子用于通行",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "黑色铁片",
+    "aliases": [
+      "黑铁片"
+    ],
+    "missingFields": [
+      "condition",
+      "usage"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "黑铁片"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "黑色铁片"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "黑铁片"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "黑色铁片"
+        ],
+        "otherMatchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "黑铁片"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "黑铁片"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "黑铁片"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "黑铁片"
+        ],
+        "otherMatchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "黑铁片"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "黑铁片"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false,
+    "visualFields": {
+      "material": "第13章 黑铁片; 黑色铁片很是古旧; 把那黑铁片买上; 并没有立即拿起那块黑色铁片; 忽然道：“你不看看那黑铁片么; 旋即又赶忙掏出那枚黑铁片",
+      "colorShape": "黑色铁片很是古旧；并没有立即拿起那块黑色铁片",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "斗气大陆辽阔之极",
+      "ownership": "双掌将铁片夹在手中"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧炎在坊市偶然购买的古旧黑铁片，沾有黄泥和锈斑; 内有玄阶低级斗技吸掌，只有灵魂感知力过人者才能感应",
+    "finalDescription": "萧炎在坊市偶然购买的古旧黑铁片，沾有黄泥和锈斑; 内有玄阶低级斗技吸掌，只有灵魂感知力过人者才能感应",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "狂狮怒罡",
+    "aliases": [
+      "萧家顶级功法"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "狂狮怒罡"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "不过高级斗气修炼功法常人很难得到；并且是玄阶中级的斗气功法",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家最顶层的斗气功法，风属性，玄阶中级，只有族长才有资格修炼; 萧战曾以此功法催动斗气在脸庞汇聚成虚幻狮头",
+    "finalDescription": "萧家最顶层的斗气功法，风属性，玄阶中级，只有族长才有资格修炼; 萧战曾以此功法催动斗气在脸庞汇聚成虚幻狮头",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "绿色小瓶",
+    "aliases": [
+      "小玉瓶"
+    ],
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "otherMatchedNames": [
+          "纳戒"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "绿色小瓶"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "料理后事",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material",
+          "ownership",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "夜中相遇",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "otherMatchedNames": [
+          "纳戒"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "小玉瓶"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false,
+    "visualFields": {
+      "material": "上百个小玉瓶; 便被整齐的小玉瓶覆盖得没有丝毫缝隙; 望着这凭空出现的无数小玉瓶; 死死的盯着桌上的上千小玉瓶; 瞥了瞥桌上堆满的小玉瓶; 柳席从怀中掏出一个小玉瓶",
+      "colorShape": "小心翼翼的从中倒出一些白色粉末在伤口之上",
+      "condition": "",
+      "usage": "然后从中取出五只小玉瓶",
+      "visualEffects": "",
+      "ownership": "萧战手中宝贝似的捧着一个绿色小瓶；柳席从怀中掏出一个小玉瓶；望着手中的小玉瓶"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "用于盛放凝血散等丹药的容器",
+    "finalDescription": "用于盛放凝血散等丹药的容器",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "怒狮狂罡",
+    "aliases": [
+      "玄阶中级功法",
+      "玄阶中级功法怒狮狂罡"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "玄阶中级功法"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "修炼的斗气功法等级的高低",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家最顶级的斗气功法，玄阶中级，萧战所修炼的功法",
+    "finalDescription": "萧家最顶级的斗气功法，玄阶中级，萧战所修炼的功法",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "水属性二级魔核",
+    "aliases": [
+      "二级魔核",
+      "二级水属性魔核"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "二级水属性魔核"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "二级水属性魔核通体呈蔚蓝之色",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "聚气散材料之一，需两千金币以上",
+    "finalDescription": "聚气散材料之一，需两千金币以上",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "洗骨花",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "洗骨花"
+        ],
+        "otherMatchedNames": [
+          "戒指",
+          "一级魔核",
+          "紫叶兰草",
+          "紫叶兰"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "洗骨花"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "洗骨花"
+        ],
+        "otherMatchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.34,
+    "needsReview": true,
+    "visualFields": {
+      "material": "两株洗骨花；药老又将两株洗骨花",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "筑基灵液主材料之一，与紫叶兰草配合使用; 萧炎购买年份最低的洗骨花用于炼制效力较弱的灵液",
+    "finalDescription": "筑基灵液主材料之一，与紫叶兰草配合使用; 萧炎购买年份最低的洗骨花用于炼制效力较弱的灵液",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "紫叶兰草",
+    "aliases": [
+      "紫叶兰"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "筑基灵液主材料之一，萧炎在药材店购买年份最低的紫叶兰草用于炼制效力较弱的灵液; 年份越久药力越强",
+    "finalDescription": "筑基灵液主材料之一，萧炎在药材店购买年份最低的紫叶兰草用于炼制效力较弱的灵液; 年份越久药力越强",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "普通存金卡",
+    "aliases": [
+      "黑卡",
+      "黑色卡片"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "黑色卡片"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "薰儿笑吟吟的递过来一张黑色卡片",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧薰儿给萧炎的普通存金卡，最大存储额五千金币; 萧炎用来存薰儿借的一千多金币",
+    "finalDescription": "萧薰儿给萧炎的普通存金卡，最大存储额五千金币; 萧炎用来存薰儿借的一千多金币",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "紫金卡",
+    "aliases": [
+      "紫金色卡片",
+      "紫金卡片",
+      "五纹紫金卡"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "紫金卡",
+          "紫金卡片"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "钱由我出",
+        "matchedNames": [
+          "紫金卡"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "visualFields": {
+      "material": "修长的玉指一夹",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": "薰儿背后的紫金卡片"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "薰儿持有的紫色金卡，内有十万金币，薰儿用此卡替萧战支付了四万金币的筑基灵液费用",
+    "finalDescription": "薰儿持有的紫色金卡，内有十万金币，薰儿用此卡替萧战支付了四万金币的筑基灵液费用",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "吹火掌",
+    "aliases": [
+      "玄阶低级斗技",
+      "反推力斗技",
+      "风压",
+      "吸掌",
+      "吸力",
+      "玄阶斗技吸掌"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "玄阶低级斗技"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 27,
+        "chapterTitle": "强化“吸掌”",
+        "matchedNames": [
+          "吹火掌"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "强横的萧炎",
+        "matchedNames": [
+          "风压"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "下杀手",
+        "matchedNames": [
+          "玄阶低级斗技"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "下杀手",
+        "matchedNames": [
+          "风压"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "下杀手",
+        "matchedNames": [
+          "风压"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "吸掌",
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 17,
+        "chapterTitle": "玄阶高级斗技：八极崩",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 27,
+        "chapterTitle": "强化“吸掌”",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暴怒的萧炎",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暴怒的萧炎",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暴怒的萧炎",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "突破",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "吸掌",
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": true,
+    "visualFields": {
+      "material": "刻于铁片之上，玄阶低级斗技",
+      "colorShape": "露出一双清冷的黑色眸子；青色斗气在拳头表面急速凝聚; 青色斗气在拳头表面急速凝聚",
+      "condition": "玄阶低级斗技，由一位铁匠所创，名字虽不雅观但推力强横",
+      "usage": "应该就能发挥出一些威力",
+      "visualEffects": "青色斗气在拳头表面急速凝聚; 萧玉体内的斗气便是急速凝聚在脚掌上；青色斗气在拳头表面急速凝聚",
+      "ownership": "在药老的指点下；居然将萧炎身旁地面上的杂物; 在药老的指点下；恐怕就能堪比玄阶中级或者高级的斗技了……”似是没有看见萧炎的脸色"
+    },
+    "visualDetails": {
+      "materialTexture": "刻于铁片之上，文字与图示并存",
+      "colorShape": "掌法型斗技，以手掌为媒介施展",
+      "condition": "玄阶低级斗技，名字虽难听但实用高效",
+      "scale": "以身体手掌为载体施展",
+      "usage": "近身战斗时打出强力风压，产生巨大反推力；可与吸掌配合使用，一吸一推形成连环攻势；炼成后配合吸掌，威力可堪比玄阶中级甚至高级斗技",
+      "effects": "施展时带起尖利破风声响，巨大的风压能将周围杂物全部掀飞",
+      "ownership": "药老传授萧炎"
+    },
+    "inferredFields": [
+      "condition"
+    ],
+    "summarizedFields": [
+      "material"
+    ],
+    "enhancedDescription": "吹火掌是一门玄阶低级斗技，刻于铁片之上，原本由一位铁匠所创，名字虽不雅观，但推力却极为强横。萧炎在药老指点下，仅用两个小时便初步掌握了其诀窍。这门斗技以手掌为媒介施展，施展时能产生强大的风压和反推力，带起尖利的破风声响，巨大的风压能将周围地面上的杂物全部掀飞。若与吸掌配合使用，一吸一推连环出击，威力可堪比玄阶中级甚至高级斗技，是萧炎常用的实战斗技组合。",
+    "finalDescription": "吹火掌是一门玄阶低级斗技，刻于铁片之上，原本由一位铁匠所创，名字虽不雅观，但推力却极为强横。萧炎在药老指点下，仅用两个小时便初步掌握了其诀窍。这门斗技以手掌为媒介施展，施展时能产生强大的风压和反推力，带起尖利的破风声响，巨大的风压能将周围地面上的杂物全部掀飞。若与吸掌配合使用，一吸一推连环出击，威力可堪比玄阶中级甚至高级斗技，是萧炎常用的实战斗技组合。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "吸掌",
+    "aliases": [
+      "玄阶低级斗技",
+      "吸力",
+      "玄阶斗技吸掌",
+      "吹火掌",
+      "反推力斗技",
+      "风压"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "玄阶低级斗技"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 27,
+        "chapterTitle": "强化“吸掌”",
+        "matchedNames": [
+          "吹火掌"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "强横的萧炎",
+        "matchedNames": [
+          "风压"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "下杀手",
+        "matchedNames": [
+          "玄阶低级斗技"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "下杀手",
+        "matchedNames": [
+          "风压"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "下杀手",
+        "matchedNames": [
+          "风压"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "吸掌",
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 17,
+        "chapterTitle": "玄阶高级斗技：八极崩",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 27,
+        "chapterTitle": "强化“吸掌”",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暴怒的萧炎",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暴怒的萧炎",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暴怒的萧炎",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "突破",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "吸掌"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "吸掌",
+          "吸力"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": true,
+    "visualFields": {
+      "material": "刻于铁片之上，玄阶低级斗技",
+      "colorShape": "露出一双清冷的黑色眸子；青色斗气在拳头表面急速凝聚; 青色斗气在拳头表面急速凝聚",
+      "condition": "玄阶低级斗技，古老传承，威力强大",
+      "usage": "应该就能发挥出一些威力",
+      "visualEffects": "青色斗气在拳头表面急速凝聚; 萧玉体内的斗气便是急速凝聚在脚掌上；青色斗气在拳头表面急速凝聚",
+      "ownership": "在药老的指点下；居然将萧炎身旁地面上的杂物; 在药老的指点下；恐怕就能堪比玄阶中级或者高级的斗技了……”似是没有看见萧炎的脸色"
+    },
+    "visualDetails": {
+      "materialTexture": "刻于铁片之上，文字与图示并存",
+      "colorShape": "掌法型斗技，以手掌为媒介施展",
+      "condition": "玄阶低级斗技，古老传承，实用性极强",
+      "scale": "以身体手掌为载体施展",
+      "usage": "近身战斗时打出凶猛吸力，能将对手吸入掌前；炼至大成可吸千斤巨石；战斗时甚至能将人体内的血液强行扯出；对等级高于或等于自己的对手效果最佳；常与吹火掌配合使用",
+      "effects": "施展时产生狂猛吸力，能将立脚不稳的对手身形扯得朝前一扑，破坏对手重心",
+      "ownership": "药老传授萧炎"
+    },
+    "inferredFields": [
+      "condition"
+    ],
+    "summarizedFields": [
+      "material"
+    ],
+    "enhancedDescription": "吸掌是一门刻于铁片之上的玄阶低级斗技，以手掌为媒介施展，能产生极为凶猛的超强吸力。萧炎在药老指点下修习这门斗技，炼至大成时可吸千斤巨石，战斗时甚至能将人体内的血液强行扯出，威力惊人。施展时产生的狂猛吸力，能将立脚不稳的对手身形扯得朝前一扑，瞬间破坏其重心与攻势。这门斗技对等级高于或等于自己的对手效果最佳，萧炎常将它与吹火掌配合使用——一吸一推，连环出击，将敌人玩弄于股掌之间。",
+    "finalDescription": "吸掌是一门刻于铁片之上的玄阶低级斗技，以手掌为媒介施展，能产生极为凶猛的超强吸力。萧炎在药老指点下修习这门斗技，炼至大成时可吸千斤巨石，战斗时甚至能将人体内的血液强行扯出，威力惊人。施展时产生的狂猛吸力，能将立脚不稳的对手身形扯得朝前一扑，瞬间破坏其重心与攻势。这门斗技对等级高于或等于自己的对手效果最佳，萧炎常将它与吹火掌配合使用——一吸一推，连环出击，将敌人玩弄于股掌之间。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "骨灵冷火",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "骨灵冷火"
+        ],
+        "otherMatchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "骨灵冷火"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "骨灵冷火"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "骨灵冷火"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "骨灵冷火"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 65,
+        "chapterTitle": "焚决",
+        "matchedNames": [
+          "骨灵冷火"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true,
+    "visualFields": {
+      "material": "便是排名第十一位的‘骨灵冷火’",
+      "colorShape": "白色火焰",
+      "condition": "极寒与极阴之地生成，需百年日月交替之时遇见",
+      "usage": "可提升丹药药力，比斗气催化的火焰更强",
+      "visualEffects": "经过长久煅烧可使物体融合或煅烧至虚无",
+      "ownership": "药老"
+    },
+    "visualDetails": {
+      "materialTexture": "异火，极为特殊的存在，斗气大陆炼药界认定的二十三种异火之一",
+      "colorShape": "白色火焰，呈现冷焰形态",
+      "condition": "百年日月交替时在极寒极阴之地遇见，获取后药老在其中修炼八年才成功吸收",
+      "scale": "火种形态，可由药老掌心释放",
+      "usage": "用于炼制丹药，能够提升丹药的药力与品质",
+      "effects": "温度极高，可煅烧金属与药材，比普通斗气火焰强大得多"
+    },
+    "inferredFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "summarizedFields": [
+      "material"
+    ],
+    "enhancedDescription": "骨灵冷火是药老拥有的异火，排名异火榜第十一位，通体呈现冷冽的白色火焰形态。这团异火只在每百年的日月交替之时，才会在极寒与极阴之地出现，药老为了获得它，在那暗无天日的极阴之地苦熬了八年，历经九死一生才将其收服。白色冷焰从药老掌心涌出时，温度远超普通斗气催化的火焰，用以炼制丹药可大幅提升药力与品质，长久煅烧之下，金石药材皆可化为虚无。",
+    "finalDescription": "骨灵冷火是药老拥有的异火，排名异火榜第十一位，通体呈现冷冽的白色火焰形态。这团异火只在每百年的日月交替之时，才会在极寒与极阴之地出现，药老为了获得它，在那暗无天日的极阴之地苦熬了八年，历经九死一生才将其收服。白色冷焰从药老掌心涌出时，温度远超普通斗气催化的火焰，用以炼制丹药可大幅提升药力与品质，长久煅烧之下，金石药材皆可化为虚无。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "铁棍",
+    "aliases": [
+      "精钢铁棍",
+      "漆黑的铁棍",
+      "铁棒"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 83,
+        "chapterTitle": "废掉",
+        "matchedNames": [
+          "铁棍",
+          "精钢铁棍"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 83,
+        "chapterTitle": "废掉",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 84,
+        "chapterTitle": "接受",
+        "matchedNames": [
+          "铁棍",
+          "漆黑的铁棍"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 84,
+        "chapterTitle": "接受",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "铁棒"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "下杀手",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "下杀手",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "下杀手",
+        "matchedNames": [
+          "铁棍",
+          "漆黑的铁棍"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "ownership",
+          "colorShape",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "otherMatchedNames": [
+          "风压"
+        ],
+        "fields": [
+          "material",
+          "ownership",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material",
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "铁棍"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": true,
+    "visualFields": {
+      "material": "精钢铁棍",
+      "colorShape": "漆黑",
+      "condition": "被加列毕的风刃切成碎块",
+      "usage": "少年手持着一根精钢铁棍；萧炎右手紧握着铁棍",
+      "visualEffects": "淡淡的青色斗气；泛着青色斗气的手掌反手一握；青色斗气急速凝聚；一道淡青色斗气风刃再次凭空出现",
+      "ownership": "萧炎"
+    },
+    "visualDetails": {
+      "materialTexture": "精钢打造，质地坚硬",
+      "colorShape": "通体漆黑",
+      "condition": "战斗中遭加列毕风刃切割，已断裂破损成碎块",
+      "scale": "约手臂长短",
+      "usage": "近身战斗武器，可挥舞攻击或脱手投掷",
+      "effects": "可附着使用者斗气增强威力，萧炎曾将铁棍脱手投掷攻击敌人"
+    },
+    "inferredFields": [
+      "condition"
+    ],
+    "summarizedFields": [
+      "material",
+      "colorShape",
+      "ownership"
+    ],
+    "enhancedDescription": "萧炎手中的武器是一根精钢打造的铁棍，通体漆黑，约有手臂长短，质地坚硬，可承载斗气附着。萧炎常将铁棍扛在肩头或紧握手中战斗，曾在激战中将铁棍脱手掷出击向敌人。最终这根铁棍在加列家族的冲突中，被加列毕的风刃切成碎块，断裂破损。",
+    "finalDescription": "萧炎手中的武器是一根精钢打造的铁棍，通体漆黑，约有手臂长短，质地坚硬，可承载斗气附着。萧炎常将铁棍扛在肩头或紧握手中战斗，曾在激战中将铁棍脱手掷出击向敌人。最终这根铁棍在加列家族的冲突中，被加列毕的风刃切成碎块，断裂破损。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "炼火焚",
+    "aliases": [
+      "黄阶高级功法炼火焚"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家最顶尖的火属性功法，黄阶高级，萧战通过关系让萧炎获得，萧炎实际另有药老传授的功法",
+    "finalDescription": "萧家最顶尖的火属性功法，黄阶高级，萧战通过关系让萧炎获得，萧炎实际另有药老传授的功法",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "绿色长鞭",
+    "aliases": [
+      "长鞭"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 83,
+        "chapterTitle": "废掉",
+        "matchedNames": [
+          "长鞭"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 84,
+        "chapterTitle": "接受",
+        "matchedNames": [
+          "长鞭"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "绿色长鞭",
+          "长鞭"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "长鞭"
+        ],
+        "fields": [
+          "ownership",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "长鞭"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false,
+    "visualFields": {
+      "material": "萧玉气得柳眉倒竖; 玉手在腰间一抽; 萧玉柳眉微竖; 萧玉恨恨的跺了跺脚; 萧玉俏脸一急; 却是让得她的动作停滞了下来：“萧玉表姐",
+      "colorShape": "",
+      "condition": "",
+      "usage": "却依旧紧紧的握着长鞭",
+      "visualEffects": "",
+      "ownership": "玉手在腰间一抽; 手中长鞭一甩; 手中绿色长鞭将空气甩得劈啦作响：“还是我来吧; 瞧着萧炎的举动; 手中长鞭刚欲将之卷回来"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧玉的武器，用于战斗",
+    "finalDescription": "萧玉的武器，用于战斗",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "白色火焰",
+    "aliases": [
+      "斗气火焰",
+      "火焰"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "斗气火焰",
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "usage",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "condition",
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "紫叶兰草",
+          "紫叶兰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "白色火焰",
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "白色火焰",
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "紫叶兰草",
+          "紫叶兰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "白色火焰",
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "紫叶兰草",
+          "紫叶兰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "洗骨花"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "白色火焰",
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "usage",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "辱人者，人恒辱之",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "翻身",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 39,
+        "chapterTitle": "震撼",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 44,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 48,
+        "chapterTitle": "选择功法",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 56,
+        "chapterTitle": "广告",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects",
+          "ownership",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "白色火焰",
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "骨灵冷火"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "白色火焰",
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "白色火焰",
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "墨叶莲"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "墨叶莲",
+          "骨灵冷火"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "蛇涎果"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "白色火焰",
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "炼制聚气散",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "丹药"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "斗气火焰",
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "药鼎"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 72,
+        "chapterTitle": "第一次炼药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "usage",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 84,
+        "chapterTitle": "接受",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "料理后事",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "料理后事",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "料理后事",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "料理后事",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "黑袍"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "料理后事",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "料理后事",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "夜中相遇",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "夜中相遇",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "夜中相遇",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "visualEffects",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人",
+          "长枪"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "黑袍"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "白色火焰",
+          "火焰"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "黑袍"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "承喏",
+        "matchedNames": [
+          "火焰"
+        ],
+        "otherMatchedNames": [
+          "凝血散"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false,
+    "visualFields": {
+      "material": "药老修炼出的白色火焰",
+      "colorShape": "白色火焰，药老掌心略显苍白的火焰",
+      "condition": "少女从古朴的书页中抬起了精美的小脸",
+      "usage": "长时间的炼制；在炼制的过程之中；灵魂感知力一方面要保持着一边的火焰温度",
+      "visualEffects": "炼制丹药所用火焰，温度极高，瞬间可将紫叶兰草化为绿色液体",
+      "ownership": "药老"
+    },
+    "visualDetails": {
+      "materialTexture": "由火属性斗气催化而成的斗气火焰",
+      "colorShape": "白色火焰，掌心略呈苍白的颜色",
+      "condition": "火焰刚出现时房间温度便骤然上升",
+      "scale": "掌心大小的火焰",
+      "usage": "炼制丹药，可煅烧药材、魔晶中和狂暴能量",
+      "effects": "温度极高，能瞬间将紫叶兰草、洗骨花等药材化为液体，极其消耗斗气"
+    },
+    "inferredFields": [],
+    "summarizedFields": [
+      "material",
+      "colorShape",
+      "visualEffects",
+      "ownership"
+    ],
+    "enhancedDescription": "药老掌心涌出的白色火焰，是其修炼火属性斗气催化而成的斗气火焰，火焰略呈苍白，却蕴含着极高的温度。白色火焰刚一出现，房间中的温度便骤然上升，将紫叶兰草或洗骨花等药材丢入其中，瞬间便能将其化为液体，经过长久煅烧后可使药材融合或中和魔晶中的狂暴能量。不过长时间维持这种火焰炼制丹药，极为消耗斗气。",
+    "finalDescription": "药老掌心涌出的白色火焰，是其修炼火属性斗气催化而成的斗气火焰，火焰略呈苍白，却蕴含着极高的温度。白色火焰刚一出现，房间中的温度便骤然上升，将紫叶兰草或洗骨花等药材丢入其中，瞬间便能将其化为液体，经过长久煅烧后可使药材融合或中和魔晶中的狂暴能量。不过长时间维持这种火焰炼制丹药，极为消耗斗气。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "llm"
+  },
+  {
+    "entityType": "item",
+    "name": "巨型弓箭",
+    "aliases": [
+      "弓箭"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "巨型弓箭",
+          "弓箭"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": "加列怒一把从身旁的护卫手中取过巨型弓箭"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "加列怒使用的武器",
+    "finalDescription": "加列怒使用的武器",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "木灵手链",
+    "aliases": [
+      "木灵之链"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "离他远点",
+        "matchedNames": [
+          "木灵手链"
+        ],
+        "otherMatchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "离他远点",
+        "matchedNames": [
+          "木灵之链"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "离他远点",
+        "matchedNames": [
+          "木灵之链"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "离他远点",
+        "matchedNames": [
+          "木灵之链"
+        ],
+        "otherMatchedNames": [
+          "魔晶"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "visualFields": {
+      "material": "殷勤的笑道：“这是刚刚在坊市中特意购买的木灵手链；急忙将木灵之链递前了一点；萧炎斜瞥了一眼加列奥手中的木灵之链；而他的木灵之链",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": "萧炎斜瞥了一眼加列奥手中的木灵之链；也是伸手在怀中掏出一条淡绿色的手链"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "加列奥购买送萧薰儿的首饰，金蓝铁链条，吊坠一级木属性魔晶; 价值一千多金币，对斗之气回复有增幅作用; 被萧炎讽刺比不上五金币地摊货",
+    "finalDescription": "加列奥购买送萧薰儿的首饰，金蓝铁链条，吊坠一级木属性魔晶; 价值一千多金币，对斗之气回复有增幅作用; 被萧炎讽刺比不上五金币地摊货",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "弄炎决",
+    "aliases": [
+      "玄阶高级功法弄炎决"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "火属性玄阶高级功法，薰儿曾想送给萧炎，被萧炎婉拒，通体呈火玉之色",
+    "finalDescription": "火属性玄阶高级功法，薰儿曾想送给萧炎，被萧炎婉拒，通体呈火玉之色",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "劈山掌",
+    "aliases": [
+      "黄阶中级斗技"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄阶中级斗技，需要五段斗之气以上的族人才能学习",
+    "finalDescription": "黄阶中级斗技，需要五段斗之气以上的族人才能学习",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "深蓝色长枪",
+    "aliases": [
+      "长枪"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "长枪"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "长枪"
+        ],
+        "otherMatchedNames": [
+          "黑袍",
+          "黑袍人"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "长枪"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "半路毁药",
+        "matchedNames": [
+          "长枪"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "手掌紧握着长枪",
+      "visualEffects": "淡淡的蓝色斗气渗发而出；他的斗气功法是偏向略微阴寒的水属性；其上斗气光华四射",
+      "ownership": "加列毕从身后的侍从手中拿起一把深蓝色的长枪；手中长枪猛然扭动；手中长枪劲气狂涌"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "加列怒使用的武器，水属性斗气",
+    "finalDescription": "加列怒使用的武器，水属性斗气",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "碎石掌",
+    "aliases": [
+      "黄阶低级斗技"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "萧宁",
+        "matchedNames": [
+          "碎石掌"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "萧宁",
+        "matchedNames": [
+          "碎石掌"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "萧宁",
+        "matchedNames": [
+          "碎石掌"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 16,
+        "chapterTitle": "冲突",
+        "matchedNames": [
+          "碎石掌"
+        ],
+        "otherMatchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 32,
+        "chapterTitle": "证实",
+        "matchedNames": [
+          "碎石掌"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 32,
+        "chapterTitle": "证实",
+        "matchedNames": [
+          "碎石掌",
+          "黄阶低级斗技"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "visualFields": {
+      "material": "黄阶中级：碎石掌; 萧炎一边读着这碎石掌的修炼之法; 继续研习着手中的碎石掌; 萧炎暗暗的将那碎石掌的穴位催动以及脉络走向的位置牢牢的记了下来; 碎石掌",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": "继续研习着手中的碎石掌"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄阶低级斗技，只需三段斗之气就能学习",
+    "finalDescription": "黄阶低级斗技，只需三段斗之气就能学习",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "蓄力丸",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "蓄力丸"
+        ],
+        "otherMatchedNames": [
+          "疗伤药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "蓄力丸"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "我的确能够炼制；我随时开工炼制蓄力丸",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "柳席声称能炼制的丹药，能在短时间内增加服用者约一成力量",
+    "finalDescription": "柳席声称能炼制的丹药，能在短时间内增加服用者约一成力量",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "陨落心炎",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "迦南学院内的异火，异火榜排名第十四; 药老情报显示学院中存在此异火，是萧炎修炼焚决的目标",
+    "finalDescription": "迦南学院内的异火，异火榜排名第十四; 药老情报显示学院中存在此异火，是萧炎修炼焚决的目标",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "铁山拳",
+    "aliases": [
+      "黄阶高级斗技铁山拳"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 41,
+        "chapterTitle": "你输了",
+        "matchedNames": [
+          "铁山拳"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 41,
+        "chapterTitle": "你输了",
+        "matchedNames": [
+          "铁山拳"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "强横的萧炎",
+        "matchedNames": [
+          "铁山拳"
+        ],
+        "fields": [
+          "ownership",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "强横的萧炎",
+        "matchedNames": [
+          "铁山拳"
+        ],
+        "otherMatchedNames": [
+          "风压"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "visualFields": {
+      "material": "铁山拳；狞声大喝：“铁山拳；让得此次的铁山拳",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": "让得萧宁迅速扑身到了萧炎身旁"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄阶高级斗技，威力不俗，需斗之气七段以上方能修习，萧宁和萧炎都曾使用",
+    "finalDescription": "黄阶高级斗技，威力不俗，需斗之气七段以上方能修习，萧宁和萧炎都曾使用",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "风卷决",
+    "aliases": [
+      "玄阶高级功法",
+      "青色卷轴",
+      "青色古朴卷轴"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "争抢",
+        "matchedNames": [
+          "风卷决"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 56,
+        "chapterTitle": "广告",
+        "matchedNames": [
+          "玄阶高级功法"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "美丽的脸颊上保持着妩媚的笑容",
+      "visualEffects": "也够他将以前的斗气转换成新功法的斗气了",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "玄阶高级斗气功法，威力比萧家顶级功法怒狮狂罡还高一级，加列毕以五十五万金币拍得",
+    "finalDescription": "玄阶高级斗气功法，威力比萧家顶级功法怒狮狂罡还高一级，加列毕以五十五万金币拍得",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "裂爪击",
+    "aliases": [
+      "黄阶中级斗技裂爪击"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "黄阶中级斗技，萧宁所使用的手爪攻击技法",
+    "finalDescription": "黄阶中级斗技，萧宁所使用的手爪攻击技法",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "青木剑诀",
+    "aliases": [
+      "云岚宗高深功法"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "青木剑诀",
+          "云岚宗高深功法"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "青木剑诀",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "云岚宗高深功法，玄阶低级; 葛叶以此功法催动青色斗气在鹰爪中汇聚，散发细小凌厉剑气",
+    "finalDescription": "云岚宗高深功法，玄阶低级; 葛叶以此功法催动青色斗气在鹰爪中汇聚，散发细小凌厉剑气",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "狮山裂",
+    "aliases": [
+      "玄阶低级斗技狮山裂"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 43,
+        "chapterTitle": "陪你试试",
+        "matchedNames": [
+          "狮山裂"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "visualFields": {
+      "material": "雅妃端着茶杯的玉手忽然一紧",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家最高级斗技，玄阶低级，与玄阶功法怒狮狂罡相匹配",
+    "finalDescription": "萧家最高级斗技，玄阶低级，与玄阶功法怒狮狂罡相匹配",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "燕返击",
+    "aliases": [
+      "玄阶高级斗技燕返击"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "玄阶高级斗技，薰儿所使用，能将对方攻击反馈回去，萧炎曾评价为借力打力",
+    "finalDescription": "玄阶高级斗技，薰儿所使用，能将对方攻击反馈回去，萧炎曾评价为借力打力",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  }
+]

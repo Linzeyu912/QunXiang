@@ -1,0 +1,48 @@
+{
+  "id": "story-100-202606230638-63-63-4",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "arcId": "arc-100-202606230638-63-63-4",
+  "arcType": "resource",
+  "startChapter": 63,
+  "endChapter": 63,
+  "title": "资源争夺",
+  "summary": "药老卷入“资源争夺”：萧炎依靠拿出聚气散、仅炼出的丹、药药。",
+  "coreConflict": "萧炎依靠拿出聚气散",
+  "trigger": "萧炎依靠拿出聚气散",
+  "turningPoints": [
+    "萧炎依靠拿出聚气散",
+    "仅炼出的丹",
+    "药药",
+    "例外的被药"
+  ],
+  "conflictStatus": "ongoing",
+  "events": [
+    {
+      "id": "event-100-63-6",
+      "chapterIndex": 63,
+      "eventType": "resource",
+      "function": "escalation",
+      "summary": "萧炎依靠拿出聚气散",
+      "participants": [
+        "萧炎"
+      ],
+      "trigger": "聚气散",
+      "consequence": "外部势力用资源交换制造羞辱和诱惑。",
+      "confidence": 0.84,
+      "source": "regex"
+    }
+  ],
+  "mainCharacters": [
+    "药老"
+  ],
+  "supportingCharacters": [
+    "萧炎",
+    "纳兰嫣然"
+  ],
+  "locations": [],
+  "boundaryConfidence": 0.84,
+  "boundaryDecisionIds": [
+    "arc-63-63"
+  ],
+  "approved": true
+}

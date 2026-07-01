@@ -1,0 +1,42 @@
+{
+  "id": "story-150-202606290629-13-24-2",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 13,
+  "endChapter": 24,
+  "title": "异象起 - 惊魂定",
+  "summary": "韩师在“异象起 - 惊魂定”中经历围绕“失败”发生关键变化、异象起、神秘液。",
+  "coreConflict": "韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+  "trigger": "围绕“失败”发生关键变化",
+  "turningPoints": [
+    "围绕“失败”发生关键变化",
+    "异象起",
+    "神秘液",
+    "四年后",
+    "小算盘",
+    "厉师兄（1）",
+    "些难闻的药",
+    "发给你的银子"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "韩师"
+  ],
+  "supportingCharacters": [
+    "韩师兄",
+    "韩师弟",
+    "韩立还",
+    "韩立并",
+    "韩立才",
+    "金冬宝",
+    "韩立微",
+    "韩立面"
+  ],
+  "locations": [
+    "望山谷"
+  ],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-13-24"
+  ],
+  "approved": true
+}

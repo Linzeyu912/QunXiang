@@ -1,0 +1,170 @@
+{
+  "storyId": "story-150-202606290629-73-84-7",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "王绝楚",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "王绝楚 is connected to the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 73,
+      "lastMentionChapter": 84,
+      "keyActions": [
+        "“王绝楚”贾天龙也毫不示弱的喊出了对方的身份。",
+        "王绝楚毫无表情的回视着贾天龙，一言不发，气氛似乎开始紧张起来。",
+        "”七玄门门主王绝楚，犹如冰人般的冷冷回答道。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "王绝楚 appears in \"厉飞雨的心思 - 地动山摇\" as a protagonist tied to the conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "王绝楚，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“王绝楚”贾天龙也毫不示弱的喊出了对方的身份。",
+        "王绝楚毫无表情的回视着贾天龙，一言不发，气氛似乎开始紧张起来。",
+        "”七玄门门主王绝楚，犹如冰人般的冷冷回答道。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "金光",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "金光 is connected to the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 73,
+      "lastMentionChapter": 84,
+      "keyActions": [
+        "第82章 金光上人",
+        "第八十二章 金光上人",
+        "这侏儒有四十几岁的年纪，长得干干瘦瘦，他身上套着一件金丝绣边的红袍，手指、脖子上分别带着金戒指和挂着粗粗的金链，腰间还系着几个金铃，张嘴说话间口中金光闪闪..."
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "金光 appears in \"厉飞雨的心思 - 地动山摇\" as a supporting tied to the conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "金光，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "第82章 金光上人",
+        "第八十二章 金光上人",
+        "这侏儒有四十几岁的年纪，长得干干瘦瘦，他身上套着一件金丝绣边的红袍，手指、脖子上分别带着金戒指和挂着粗粗的金链，腰间还系着几个金铃，张嘴说话间口中金光闪闪，看来镶了金牙在里面，从外表上看，一副十足的暴发户的打扮。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "韩立淡",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立淡 is connected to the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 73,
+      "lastMentionChapter": 84,
+      "keyActions": [
+        "”韩立淡淡的说道。",
+        "”韩立淡淡的说道。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立淡 appears in \"厉飞雨的心思 - 地动山摇\" as a supporting tied to the conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立淡，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "”韩立淡淡的说道。",
+        "”韩立淡淡的说道。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "name": "韩立此",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立此 is connected to the story conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 73,
+      "lastMentionChapter": 84,
+      "keyActions": [
+        "厉飞雨听到韩立此话后，脸上立刻喜笑颜开，他使劲的拍了韩立肩膀几下。",
+        "”韩立此话说的轻描淡写，但话中的含义却杀气腾腾，充满了血腥味。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立此 appears in \"厉飞雨的心思 - 地动山摇\" as a supporting tied to the conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立此，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "厉飞雨听到韩立此话后，脸上立刻喜笑颜开，他使劲的拍了韩立肩膀几下。",
+        "”韩立此话说的轻描淡写，但话中的含义却杀气腾腾，充满了血腥味。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    }
+  ]
+}

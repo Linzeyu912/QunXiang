@@ -1,0 +1,86 @@
+{
+  "storyId": "story-150-202606290629-97-108-9",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "scenes": [
+    {
+      "id": "story-150-202606290629-97-108-9-scene-1",
+      "name": "背后交易 - 夜入墨府 - 春雨楼",
+      "location": "春雨楼",
+      "sourceRange": "chapters 97-108",
+      "summary": "孙二狗在“背后交易 - 夜入墨府”中经历围绕“失败”发生关键变化、背后交易、回村。",
+      "conflictBeat": "围绕“失败”发生关键变化",
+      "involvedCharacters": [
+        "孙二狗",
+        "吴公子",
+        "严氏",
+        "吴剑鸣",
+        "王氏"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "春雨楼 scene in \"背后交易 - 夜入墨府\", shaped by the conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "春雨楼, cinematic scene, conflict beat: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "“嘉元城三大帮会分别是兄弟盟、惊蛟会、天霸门，稍小些的帮派则有铁枪会、结义社、青衣帮、春雨楼、金剑门、苍河船帮、金刚门、落曰派等势力。",
+        "“三大帮派中以天霸门实力最强，他和金剑门、青衣帮联手，占据了最富裕的东城区；而实力稍次些的兄弟盟，和铁枪会、苍河船帮、结义社联盟，占住了北城区；最弱的惊蛟会，却和春雨楼、金刚门以及落曰派霸住了南城区；最后剩下的西城区则比较混乱，由众多小帮共同瓜分了去，这些小帮派虽然内斗不已，但一旦有其他大势力想侵入西城区，则就会立刻停止干戈，转而一直对外。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    },
+    {
+      "id": "story-150-202606290629-97-108-9-scene-2",
+      "name": "背后交易 - 夜入墨府 - 离墨府",
+      "location": "离墨府",
+      "sourceRange": "chapters 97-108",
+      "summary": "孙二狗在“背后交易 - 夜入墨府”中经历围绕“失败”发生关键变化、背后交易、回村。",
+      "conflictBeat": "背后交易",
+      "involvedCharacters": [
+        "孙二狗",
+        "吴公子",
+        "严氏",
+        "吴剑鸣",
+        "王氏"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "离墨府 scene in \"背后交易 - 夜入墨府\", shaped by the conflict: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "离墨府, cinematic scene, conflict beat: 孙二狗必须应对围绕“失败”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "离墨府不远处的街对面，有一家三层的香家酒楼。",
+        "虽然离墨府大门有些距离，但韩立在楼上仍从侧面把此女的面容看了个七八分，他不禁深吸了一口气，那晶莹似雪的肌肤，挺直小巧的琼鼻，乌黑明亮的眼睛，红亮诱人的杏唇，沉鱼落雁、羞花闭月大概就是这样子了。"
+      ],
+      "sourceChapters": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceRangeHint": "chapters 97-108"
+    }
+  ]
+}

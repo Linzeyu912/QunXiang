@@ -1,0 +1,36 @@
+{
+  "id": "story-150-202606290629-85-96-8",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 85,
+  "endChapter": 96,
+  "title": "死契血斗 - 缺陷",
+  "summary": "金罩在“死契血斗 - 缺陷”中经历死契血斗、突变、略显身手。",
+  "coreConflict": "金罩必须应对死契血斗带来的处境变化。",
+  "trigger": "死契血斗",
+  "turningPoints": [
+    "死契血斗",
+    "突变",
+    "略显身手",
+    "金光罩",
+    "矛与盾",
+    "飞剑？",
+    "绝楚手按剑",
+    "有了会飞剑"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "金罩"
+  ],
+  "supportingCharacters": [
+    "秦叶岭",
+    "方既然"
+  ],
+  "locations": [
+    "假装关"
+  ],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-85-96"
+  ],
+  "approved": true
+}

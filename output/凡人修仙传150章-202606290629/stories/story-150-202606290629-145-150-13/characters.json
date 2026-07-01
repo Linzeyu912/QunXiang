@@ -1,0 +1,114 @@
+{
+  "storyId": "story-150-202606290629-145-150-13",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "王师叔",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "王师叔 is connected to the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 145,
+      "lastMentionChapter": 150,
+      "keyActions": [
+        "于是这位王师叔马上带着韩立向殿外走去，并开始给他讲些黄枫谷的大小规矩和介绍一些常识姓的东西。",
+        "当然以上所说的内容，都不是这位王师叔的原话，而是韩立从对方的言语和旁敲侧击中，自己暗自总结出来的。",
+        "王师叔带着韩立踩踏着叶形法器，飞行了个把时辰后，在一个座郁郁葱葱的山岭上落了下来，降到了一个稠密的平屋群中。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "王师叔 appears in \"不速之客 - 悔诺\" as a protagonist tied to the conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：但随即脸色就恢复了正常\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "王师叔，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：但随即脸色就恢复了正常\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "于是这位王师叔马上带着韩立向殿外走去，并开始给他讲些黄枫谷的大小规矩和介绍一些常识姓的东西。",
+        "当然以上所说的内容，都不是这位王师叔的原话，而是韩立从对方的言语和旁敲侧击中，自己暗自总结出来的。",
+        "王师叔带着韩立踩踏着叶形法器，飞行了个把时辰后，在一个座郁郁葱葱的山岭上落了下来，降到了一个稠密的平屋群中。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "韩师侄",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩师侄 is connected to the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 145,
+      "lastMentionChapter": 150,
+      "keyActions": [
+        "“王师弟，我想和韩师侄单独谈一下，你回避一下好吗？",
+        "“当然可以，那师弟就先回掌门那里去了，师兄和韩师侄聊完后，也都一起过去吧！",
+        "“韩师侄，师叔我是个直姓子，所以也不打算拐弯抹角了，就明说了吧！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩师侄 appears in \"不速之客 - 悔诺\" as a supporting tied to the conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩师侄，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“王师弟，我想和韩师侄单独谈一下，你回避一下好吗？",
+        "“当然可以，那师弟就先回掌门那里去了，师兄和韩师侄聊完后，也都一起过去吧！",
+        "“韩师侄，师叔我是个直姓子，所以也不打算拐弯抹角了，就明说了吧！"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "叶师叔",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "叶师叔 is connected to the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 145,
+      "lastMentionChapter": 150,
+      "keyActions": [
+        "所以叫我叶师叔即可，不必这么见外了！",
+        "虽然不知这位叶师叔要干什么，韩立却隐隐的有了一丝不好的预感。",
+        "而这位叶师叔竟打算用一些灵石和法器将其换走，难道真以为自己是刚出山的毛头小子？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "叶师叔 appears in \"不速之客 - 悔诺\" as a supporting tied to the conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "叶师叔，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "所以叫我叶师叔即可，不必这么见外了！",
+        "虽然不知这位叶师叔要干什么，韩立却隐隐的有了一丝不好的预感。",
+        "而这位叶师叔竟打算用一些灵石和法器将其换走，难道真以为自己是刚出山的毛头小子？"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    }
+  ]
+}

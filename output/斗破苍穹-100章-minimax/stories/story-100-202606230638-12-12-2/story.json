@@ -1,0 +1,51 @@
+{
+  "id": "story-100-202606230638-12-12-2",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "arcId": "arc-100-202606230638-12-12-2",
+  "arcType": "conflict",
+  "goal": "维护尊严并回应婚约羞辱",
+  "startChapter": 12,
+  "endChapter": 12,
+  "title": "退婚冲突",
+  "summary": "萧炎卷入“退婚冲突”：纳兰嫣然要求解除婚约、双方有些剑。",
+  "coreConflict": "纳兰嫣然要求解除婚约",
+  "trigger": "纳兰嫣然要求解除婚约",
+  "turningPoints": [
+    "纳兰嫣然要求解除婚约",
+    "双方有些剑"
+  ],
+  "conflictStatus": "ongoing",
+  "events": [
+    {
+      "id": "event-100-12-4",
+      "chapterIndex": 12,
+      "eventType": "conflict",
+      "function": "inciting",
+      "summary": "纳兰嫣然要求解除婚约",
+      "participants": [
+        "纳兰嫣然",
+        "萧炎",
+        "纳兰家族"
+      ],
+      "trigger": "解除婚约",
+      "consequence": "婚约冲突公开化，主角尊严受压。",
+      "confidence": 0.86,
+      "source": "regex"
+    }
+  ],
+  "mainCharacters": [
+    "萧炎"
+  ],
+  "supportingCharacters": [
+    "萧炎似",
+    "纳兰嫣然",
+    "纳兰小姐",
+    "药老"
+  ],
+  "locations": [],
+  "boundaryConfidence": 0.86,
+  "boundaryDecisionIds": [
+    "arc-12-12"
+  ],
+  "approved": true
+}

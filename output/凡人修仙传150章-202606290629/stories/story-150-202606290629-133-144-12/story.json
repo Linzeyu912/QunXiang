@@ -1,0 +1,41 @@
+{
+  "id": "story-150-202606290629-133-144-12",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 133,
+  "endChapter": 144,
+  "title": "偷技 - 筑基丹之争",
+  "summary": "吴九指在“偷技 - 筑基丹之争”中经历围绕“失败”发生关键变化、偷技、升仙大会。",
+  "coreConflict": "吴九指必须应对围绕“失败”发生关键变化带来的处境变化。",
+  "trigger": "围绕“失败”发生关键变化",
+  "turningPoints": [
+    "围绕“失败”发生关键变化",
+    "偷技",
+    "升仙大会",
+    "惊闻",
+    "燕家",
+    "金竺笔",
+    "背后的大刀",
+    "说起筑基丹"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "吴九指"
+  ],
+  "supportingCharacters": [
+    "黄衣",
+    "叶师",
+    "叶姓",
+    "王师",
+    "吴师兄",
+    "王师弟",
+    "慕容师"
+  ],
+  "locations": [
+    "江湖"
+  ],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-133-144"
+  ],
+  "approved": true
+}

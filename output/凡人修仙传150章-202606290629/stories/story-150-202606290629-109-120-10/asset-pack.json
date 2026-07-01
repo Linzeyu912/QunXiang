@@ -1,0 +1,733 @@
+{
+  "storyId": "story-150-202606290629-109-120-10",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "严氏等",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "严氏等 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "严氏等所有人都做完了自己应该做的事后，就拿起茶杯轻轻摇晃起来，结果杯内原本五颜六色的液体，竟在轻轻晃动中变得清澈透明。",
+        "屋内很安静，人数也不多，只有严氏等寥寥数人的呼吸和心跳声，看来并没有不应该出的人在里面，这就让韩立放心了许多。",
+        "严氏等几位丽妇人此时全都穿白挂素，一身的缟素孝服，端坐在几张椅子上，正冷眼直盯着他不放。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "严氏等 appears in \"登门 - 定计夺帮\" as a protagonist tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：脸色开始时是愕然、脸色更是大变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "严氏等，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：脸色开始时是愕然、脸色更是大变\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "严氏等所有人都做完了自己应该做的事后，就拿起茶杯轻轻摇晃起来，结果杯内原本五颜六色的液体，竟在轻轻晃动中变得清澈透明。",
+        "屋内很安静，人数也不多，只有严氏等寥寥数人的呼吸和心跳声，看来并没有不应该出的人在里面，这就让韩立放心了许多。",
+        "严氏等几位丽妇人此时全都穿白挂素，一身的缟素孝服，端坐在几张椅子上，正冷眼直盯着他不放。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "凤舞",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "凤舞 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "“不过也幸好指名的是你大姐，如果他要求嫁的人是你或凤舞的话，我还真不知该怎么办才好！",
+        "要知道凭你和凤舞的脾气，怎么能忍耐和此人虚伪应付啊！",
+        "“对了，二姐凤舞配出了一副提神养颜的灵药，让我给你带来了，娘你可以试用一下，听说效果很好啊！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "凤舞 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "凤舞，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“不过也幸好指名的是你大姐，如果他要求嫁的人是你或凤舞的话，我还真不知该怎么办才好！",
+        "要知道凭你和凤舞的脾气，怎么能忍耐和此人虚伪应付啊！",
+        "“对了，二姐凤舞配出了一副提神养颜的灵药，让我给你带来了，娘你可以试用一下，听说效果很好啊！"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "韩立闻",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立闻 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "韩立闻言二话不说，拿出早已准备好的书信，双手递给了对方。",
+        "韩立闻听此言后，偷看了严氏一眼，只见严氏一只手按着眉头，一脸的无奈，看来她对那个妩媚声音的主人，也大感头痛。",
+        "韩立闻言愣了半天，然后就木然无语，他现在突然有种吐血三碗的感觉。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立闻 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立闻，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "韩立闻言二话不说，拿出早已准备好的书信，双手递给了对方。",
+        "韩立闻听此言后，偷看了严氏一眼，只见严氏一只手按着眉头，一脸的无奈，看来她对那个妩媚声音的主人，也大感头痛。",
+        "韩立闻言愣了半天，然后就木然无语，他现在突然有种吐血三碗的感觉。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "韩立打",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立打 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "韩立打量完后，才走上前去对着严氏施了一礼。",
+        "韩立打定了主意，既然已无法从墨府骗到宝玉，那为了身上的阴毒，也只有采取强硬手段了。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立打 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立打，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "韩立打量完后，才走上前去对着严氏施了一礼。",
+        "韩立打定了主意，既然已无法从墨府骗到宝玉，那为了身上的阴毒，也只有采取强硬手段了。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "谢公子",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "谢公子 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "“多谢公子了！",
+        "“多谢公子厚爱，小人一定对公子肝脑涂地！"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "谢公子 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "谢公子，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“多谢公子了！",
+        "“多谢公子厚爱，小人一定对公子肝脑涂地！"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "韩公子",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩公子 is connected to the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 109,
+      "lastMentionChapter": 120,
+      "keyActions": [
+        "“韩公子不是修仙者吗？"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩公子 appears in \"登门 - 定计夺帮\" as a supporting tied to the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩公子，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“韩公子不是修仙者吗？"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "story-150-202606290629-109-120-10-scene-1",
+      "name": "登门 - 定计夺帮 - 嘉元城",
+      "location": "嘉元城",
+      "sourceRange": "chapters 109-120",
+      "summary": "严氏等在“登门 - 定计夺帮”中经历围绕“戒指”发生关键变化、登门、狐。",
+      "conflictBeat": "围绕“戒指”发生关键变化",
+      "involvedCharacters": [
+        "严氏等",
+        "凤舞",
+        "韩立闻",
+        "韩立打",
+        "谢公子",
+        "韩公子"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "嘉元城 scene in \"登门 - 定计夺帮\", shaped by the conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "嘉元城, cinematic scene, conflict beat: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "“这没什么可隐瞒的，嘉元城有不少人，都知道修仙者的存在。",
+        "”韩立拍了一下后脑勺，他竟忘了嘉元城可不是彩霞山那样的小地方，有修仙者在这里露过面似乎并不是一件稀奇的事，他昨天不是才见过一位蓝衣人吗！",
+        "”严氏此话一出口，人就完全恢复了嘉元城三大帮会首脑的风范，刚才那种柔弱无力的小妇人感觉荡然无存，身上散发出久处上位的威严。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    }
+  ],
+  "props": [
+    {
+      "name": "对那位吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "对那位吴剑 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "”墨彩环恨恨的说道，看来对那位吴剑鸣痛恨之极。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "对那位吴剑 functions as a weapon in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "对那位吴剑, prop type: weapon, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "”墨彩环恨恨的说道，看来对那位吴剑鸣痛恨之极。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "戒指",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "韩立想到这里，伸手从怀内掏出了墨大夫的信物——一枚龙形戒指，然后悄声走到屋子窗外，一甩手把戒指隔着窗纸扔进了房内。",
+        "“当”的一声传来戒指落地的清响，屋内惊呼声起。",
+        "仍进来的怎么是枚戒指！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "戒指 functions as a other in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "戒指, prop type: other, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立想到这里，伸手从怀内掏出了墨大夫的信物——一枚龙形戒指，然后悄声走到屋子窗外，一甩手把戒指隔着窗纸扔进了房内。",
+        "“当”的一声传来戒指落地的清响，屋内惊呼声起。",
+        "仍进来的怎么是枚戒指！"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "书信",
+      "aliases": [],
+      "propType": "document",
+      "storyFunction": "书信 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "韩立闻言二话不说，拿出早已准备好的书信，双手递给了对方。",
+        "严氏看韩立对她如此恭敬，满意的点点头，才接过书信展开来仔细观看。",
+        "书信上内容韩立早已看过数遍，讲的并不复杂，就是说送信的韩立是墨大夫的关门弟子，可以予以完全信任，而此时墨府若面临什么麻烦可以让韩立去解决，只要韩立能保住墨府上下平安，就让严氏从三位千金中选出一位许配给韩立为妻，而嫁妆指明了是那颗“暖阳宝玉”，至于墨大夫自己则声称有要事在身，还不能回来和妻女团聚，让严氏她们不要挂心。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "书信 functions as a document in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "书信, prop type: document, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立闻言二话不说，拿出早已准备好的书信，双手递给了对方。",
+        "严氏看韩立对她如此恭敬，满意的点点头，才接过书信展开来仔细观看。",
+        "书信上内容韩立早已看过数遍，讲的并不复杂，就是说送信的韩立是墨大夫的关门弟子，可以予以完全信任，而此时墨府若面临什么麻烦可以让韩立去解决，只要韩立能保住墨府上下平安，就让严氏从三位千金中选出一位许配给韩立为妻，而嫁妆指明了是那颗“暖阳宝玉”，至于墨大夫自己则声称有要事在身，还不能回来和妻女团聚，让严氏她们不要挂心。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "信件",
+      "aliases": [],
+      "propType": "document",
+      "storyFunction": "信件 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "没有多久，书信就完全干透了，信上的黑色墨迹已荡然无存，反而现出了一些红色的淡淡字迹，这就是墨大夫耗费心机想让韩立带给妻女的信件——暗信。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "信件 functions as a document in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "信件, prop type: document, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "没有多久，书信就完全干透了，信上的黑色墨迹已荡然无存，反而现出了一些红色的淡淡字迹，这就是墨大夫耗费心机想让韩立带给妻女的信件——暗信。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "银子",
+      "aliases": [],
+      "propType": "money",
+      "storyFunction": "银子 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "实在不行的话，给个七八千两银子，那也马马虎虎，那也算你过关！",
+        "“七八千两银子？",
+        "“自己身上满打满算，也没有这么多银子。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "银子 functions as a money in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "银子, prop type: money, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "实在不行的话，给个七八千两银子，那也马马虎虎，那也算你过关！",
+        "“七八千两银子？",
+        "“自己身上满打满算，也没有这么多银子。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "银票",
+      "aliases": [],
+      "propType": "money",
+      "storyFunction": "银票 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "要知道，那个前年来的吴公子，可一见面就给人家一万多两的银票做零花呢！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "银票 functions as a money in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "银票, prop type: money, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "要知道，那个前年来的吴公子，可一见面就给人家一万多两的银票做零花呢！"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "玉珠和吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "玉珠和吴剑 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "当二人经过后院的花园时，竟然意外的遇见了一对青年男女——正是韩立昨曰远远望见过的墨玉珠和吴剑鸣。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "玉珠和吴剑 functions as a weapon in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "玉珠和吴剑, prop type: weapon, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "当二人经过后院的花园时，竟然意外的遇见了一对青年男女——正是韩立昨曰远远望见过的墨玉珠和吴剑鸣。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "吴剑 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "”墨彩环恨恨的说道，看来对那位吴剑鸣痛恨之极。",
+        "当二人经过后院的花园时，竟然意外的遇见了一对青年男女——正是韩立昨曰远远望见过的墨玉珠和吴剑鸣。",
+        "”吴剑鸣笑着问道。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "吴剑 functions as a weapon in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "吴剑, prop type: weapon, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "”墨彩环恨恨的说道，看来对那位吴剑鸣痛恨之极。",
+        "当二人经过后院的花园时，竟然意外的遇见了一对青年男女——正是韩立昨曰远远望见过的墨玉珠和吴剑鸣。",
+        "”吴剑鸣笑着问道。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "还能对吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "还能对吴剑 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "此时的燕师兄，竟然一脸的痴迷，正呆呆的望着墨玉珠墨大小姐出神，完全进入到了忘我的境界，如何还能对吴剑鸣的话做出反应！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "还能对吴剑 functions as a weapon in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "还能对吴剑, prop type: weapon, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "此时的燕师兄，竟然一脸的痴迷，正呆呆的望着墨玉珠墨大小姐出神，完全进入到了忘我的境界，如何还能对吴剑鸣的话做出反应！"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "而那吴剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "而那吴剑 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "”墨玉珠杏唇微张，冷冷的向燕歌微施一礼，就移动娇躯离开了此地，而那吴剑鸣冲燕歌哼了一声，什么话也没说，追了下去。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "而那吴剑 functions as a weapon in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "而那吴剑, prop type: weapon, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "”墨玉珠杏唇微张，冷冷的向燕歌微施一礼，就移动娇躯离开了此地，而那吴剑鸣冲燕歌哼了一声，什么话也没说，追了下去。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "对方没有刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "对方没有刀 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "而且对方没有刀光剑影的埋伏高手在屋内，这就说明了这些妇人还没有现在就对自己出手的打算，看来要么是有什么顾忌，要么就有求于自己。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "对方没有刀 functions as a weapon in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "对方没有刀, prop type: weapon, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "而且对方没有刀光剑影的埋伏高手在屋内，这就说明了这些妇人还没有现在就对自己出手的打算，看来要么是有什么顾忌，要么就有求于自己。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    },
+    {
+      "name": "光剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "光剑 supports, reveals, or complicates the story conflict: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "严氏等",
+      "firstAppearance": "chapters 109-120",
+      "keyMoments": [
+        "而且对方没有刀光剑影的埋伏高手在屋内，这就说明了这些妇人还没有现在就对自己出手的打算，看来要么是有什么顾忌，要么就有求于自己。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "光剑 functions as a weapon in \"登门 - 定计夺帮\", connected to: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "光剑, prop type: weapon, story function: 严氏等必须应对围绕“戒指”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "而且对方没有刀光剑影的埋伏高手在屋内，这就说明了这些妇人还没有现在就对自己出手的打算，看来要么是有什么顾忌，要么就有求于自己。"
+      ],
+      "sourceChapters": [
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sourceRangeHint": "chapters 109-120"
+    }
+  ],
+  "assetWarnings": []
+}

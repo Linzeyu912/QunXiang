@@ -1,0 +1,352 @@
+{
+  "storyId": "story-100-202606230638-88-88-6",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "characterPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：萧炎脸庞微喜\n- 体态/身形：身材单薄的少年、身形在半空急落而下、急降的身形、漆黑的身形\n- 发型：黑色短发，整洁利落\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎脸庞微喜，",
+        "身材单薄的少年，",
+        "身形在半空急落而下，",
+        "急降的身形，",
+        "漆黑的身形，"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：萧炎脸庞微喜\n- 体态/身形：身材单薄的少年、身形在半空急落而下、急降的身形、漆黑的身形\n- 发型：黑色短发，整洁利落\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 饰物/随身特征：戒指之中药老的轻声\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "戒指之中药老的轻声，"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 饰物/随身特征：戒指之中药老的轻声\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧战",
+      "assetName": "萧战",
+      "prompt": "萧战，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“柳席先生，如果我们加列家族动了萧家的人，那萧战就有借口对我们加列家族正面宣战，到时候，恐怕就不再是这种经济上的对决，而是要真正的拔刀相向了啊……”叹了一口气，加列毕苦笑道。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ],
+  "scenePrompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-100-202606230638-88-88-6-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：白天；场景描述：A story scene for \"戒指秘密\" with insufficient location detail.；冲突氛围：药老从戒指中现身；可保留人物比例参考：萧炎、药老、萧战；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎卷入“戒指秘密”：药老从戒指中现身、上的漆黑戒指、柳席的炼药。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "location": "未指定场景",
+        "timeHint": "白天",
+        "conflictBeat": "药老从戒指中现身",
+        "involvedCharacters": [
+          "萧炎",
+          "药老",
+          "萧战"
+        ]
+      }
+    }
+  ],
+  "propPrompts": [
+    {
+      "assetType": "prop",
+      "assetId": "戒指",
+      "assetName": "戒指",
+      "prompt": "戒指，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：戒指 functions as a other in \"戒指秘密\", connected to: 药老从戒指中现身；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”手指上的漆黑戒指中传出一句随意的反问声，片刻后，药老含糊的道：“虽然现在只是灵魂状态，不过凭借着异火，对付一些大斗师或者斗灵这些小杂鱼，应该没什么问题吧。",
+        "”沉默了一下，戒指之中，传出药老的戏谑声：“看来你对那位叫做薰儿的妮子还真的很在意啊，那家伙不过是表现得下流了一些，你便是记恨下了心，还真是一个爱吃醋的小孩子啊。",
+        "”点了点头，萧炎轻手轻脚的行至窗边，犹如做贼一般的四处望了望，这才跻身跳了出去，身形在半空急落而下，一股莫名的强大力量从手指上的戒指中传了出来。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 药老从戒指中现身"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"戒指秘密\", connected to: 药老从戒指中现身；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“柳席先生真的还能炼制别的丹药？",
+        "非常满意加列毕这幅惊喜的模样，柳席端起身旁茶杯喝了一口，脸庞上的表情，颇为自傲：“除了疗伤药之外，我还能炼制一种极其适合佣兵需要的丹药，丹药名为蓄力丸，能够在短时间内，让得服用此药之人，增加约有一成左右的力量。",
+        "闻言，加列毕脸上的喜意更是甚了几分，如果真的能够炼制出这种药效如此特别的丹药，那加列家族便能借此为广告，然后拉回不少的人气，最后说不定，还能再次压下萧家。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 药老从戒指中现身"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "真正的拔刀",
+      "assetName": "真正的拔刀",
+      "prompt": "真正的拔刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：真正的拔刀 functions as a weapon in \"戒指秘密\", connected to: 药老从戒指中现身；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“柳席先生，如果我们加列家族动了萧家的人，那萧战就有借口对我们加列家族正面宣战，到时候，恐怕就不再是这种经济上的对决，而是要真正的拔刀相向了啊……”叹了一口气，加列毕苦笑道。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "propType": "weapon",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "真正的拔刀 supports, reveals, or complicates the story conflict: 药老从戒指中现身"
+      }
+    }
+  ],
+  "allPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：萧炎脸庞微喜\n- 体态/身形：身材单薄的少年、身形在半空急落而下、急降的身形、漆黑的身形\n- 发型：黑色短发，整洁利落\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎脸庞微喜，",
+        "身材单薄的少年，",
+        "身形在半空急落而下，",
+        "急降的身形，",
+        "漆黑的身形，"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：萧炎脸庞微喜\n- 体态/身形：身材单薄的少年、身形在半空急落而下、急降的身形、漆黑的身形\n- 发型：黑色短发，整洁利落\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 饰物/随身特征：戒指之中药老的轻声\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "戒指之中药老的轻声，"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 饰物/随身特征：戒指之中药老的轻声\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧战",
+      "assetName": "萧战",
+      "prompt": "萧战，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“柳席先生，如果我们加列家族动了萧家的人，那萧战就有借口对我们加列家族正面宣战，到时候，恐怕就不再是这种经济上的对决，而是要真正的拔刀相向了啊……”叹了一口气，加列毕苦笑道。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-100-202606230638-88-88-6-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：白天；场景描述：A story scene for \"戒指秘密\" with insufficient location detail.；冲突氛围：药老从戒指中现身；可保留人物比例参考：萧炎、药老、萧战；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎卷入“戒指秘密”：药老从戒指中现身、上的漆黑戒指、柳席的炼药。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "location": "未指定场景",
+        "timeHint": "白天",
+        "conflictBeat": "药老从戒指中现身",
+        "involvedCharacters": [
+          "萧炎",
+          "药老",
+          "萧战"
+        ]
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "戒指",
+      "assetName": "戒指",
+      "prompt": "戒指，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：戒指 functions as a other in \"戒指秘密\", connected to: 药老从戒指中现身；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”手指上的漆黑戒指中传出一句随意的反问声，片刻后，药老含糊的道：“虽然现在只是灵魂状态，不过凭借着异火，对付一些大斗师或者斗灵这些小杂鱼，应该没什么问题吧。",
+        "”沉默了一下，戒指之中，传出药老的戏谑声：“看来你对那位叫做薰儿的妮子还真的很在意啊，那家伙不过是表现得下流了一些，你便是记恨下了心，还真是一个爱吃醋的小孩子啊。",
+        "”点了点头，萧炎轻手轻脚的行至窗边，犹如做贼一般的四处望了望，这才跻身跳了出去，身形在半空急落而下，一股莫名的强大力量从手指上的戒指中传了出来。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 药老从戒指中现身"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"戒指秘密\", connected to: 药老从戒指中现身；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“柳席先生真的还能炼制别的丹药？",
+        "非常满意加列毕这幅惊喜的模样，柳席端起身旁茶杯喝了一口，脸庞上的表情，颇为自傲：“除了疗伤药之外，我还能炼制一种极其适合佣兵需要的丹药，丹药名为蓄力丸，能够在短时间内，让得服用此药之人，增加约有一成左右的力量。",
+        "闻言，加列毕脸上的喜意更是甚了几分，如果真的能够炼制出这种药效如此特别的丹药，那加列家族便能借此为广告，然后拉回不少的人气，最后说不定，还能再次压下萧家。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 药老从戒指中现身"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "真正的拔刀",
+      "assetName": "真正的拔刀",
+      "prompt": "真正的拔刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：真正的拔刀 functions as a weapon in \"戒指秘密\", connected to: 药老从戒指中现身；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“柳席先生，如果我们加列家族动了萧家的人，那萧战就有借口对我们加列家族正面宣战，到时候，恐怕就不再是这种经济上的对决，而是要真正的拔刀相向了啊……”叹了一口气，加列毕苦笑道。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "propType": "weapon",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "真正的拔刀 supports, reveals, or complicates the story conflict: 药老从戒指中现身"
+      }
+    }
+  ]
+}

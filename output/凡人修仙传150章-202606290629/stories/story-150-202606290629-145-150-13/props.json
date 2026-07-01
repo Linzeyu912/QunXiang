@@ -1,0 +1,273 @@
+{
+  "storyId": "story-150-202606290629-145-150-13",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "props": [
+    {
+      "name": "丹药",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王师叔",
+      "firstAppearance": "chapters 145-150",
+      "keyMoments": [
+        "看来他若想在修仙路上有所建树，也只有依靠丹药之类的外力了。",
+        "只是他长春功升到了九层之后，感到“黄龙丹”和“金髓丸”的效力明显减少许多，对他的帮助没有以前那么大了，看来必须另找几种灵药配方，去配制一些真正适合修仙者的丹药出来，这才不会耽误自己的修行进度。",
+        "七八块中阶灵石，一些初级中高阶的灵符和几样上好的法器，师叔我还是能拿出手的，实在不行的话，师叔还有些精进法力的丹药，虽然无法和筑基丹相比，但也是门内难得的灵药了！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "丹药 functions as a other in \"不速之客 - 悔诺\", connected to: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "丹药, prop type: other, story function: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "看来他若想在修仙路上有所建树，也只有依靠丹药之类的外力了。",
+        "只是他长春功升到了九层之后，感到“黄龙丹”和“金髓丸”的效力明显减少许多，对他的帮助没有以前那么大了，看来必须另找几种灵药配方，去配制一些真正适合修仙者的丹药出来，这才不会耽误自己的修行进度。",
+        "七八块中阶灵石，一些初级中高阶的灵符和几样上好的法器，师叔我还是能拿出手的，实在不行的话，师叔还有些精进法力的丹药，虽然无法和筑基丹相比，但也是门内难得的灵药了！"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "血的一刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "血的一刀 supports, reveals, or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王师叔",
+      "firstAppearance": "chapters 145-150",
+      "keyMoments": [
+        "韩立想清楚其中的利害后，心中便拿定了主意，不过该让对方大出血的一刀，还是要狠狠割下去的。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "血的一刀 functions as a weapon in \"不速之客 - 悔诺\", connected to: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "血的一刀, prop type: weapon, story function: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立想清楚其中的利害后，心中便拿定了主意，不过该让对方大出血的一刀，还是要狠狠割下去的。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "有些则是刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "有些则是刀 supports, reveals, or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王师叔",
+      "firstAppearance": "chapters 145-150",
+      "keyMoments": [
+        "有些是衣物，有些则是刀剑之类的兵刃，不过从兵刃上的灵力波动看来，它们其实都是些制作不错的法器。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "有些则是刀 functions as a weapon in \"不速之客 - 悔诺\", connected to: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "有些则是刀, prop type: weapon, story function: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "有些是衣物，有些则是刀剑之类的兵刃，不过从兵刃上的灵力波动看来，它们其实都是些制作不错的法器。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "闪闪的小刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "闪闪的小刀 supports, reveals, or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王师叔",
+      "firstAppearance": "chapters 145-150",
+      "keyMoments": [
+        "这老者没理睬进屋的韩立二人，而专心的用一把精光闪闪的小刀，雕刻着手中一块巴掌大的黄木。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "闪闪的小刀 functions as a weapon in \"不速之客 - 悔诺\", connected to: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "闪闪的小刀, prop type: weapon, story function: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这老者没理睬进屋的韩立二人，而专心的用一把精光闪闪的小刀，雕刻着手中一块巴掌大的黄木。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "烈阳剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "烈阳剑 supports, reveals, or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王师叔",
+      "firstAppearance": "chapters 145-150",
+      "keyMoments": [
+        "“黄丝衫一件、青叶法器一个、曰常精炼工具一套、烈阳剑冷月刀各一把、十倍储物袋一个。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "烈阳剑 functions as a weapon in \"不速之客 - 悔诺\", connected to: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "烈阳剑, prop type: weapon, story function: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“黄丝衫一件、青叶法器一个、曰常精炼工具一套、烈阳剑冷月刀各一把、十倍储物袋一个。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "冷月刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "冷月刀 supports, reveals, or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王师叔",
+      "firstAppearance": "chapters 145-150",
+      "keyMoments": [
+        "“黄丝衫一件、青叶法器一个、曰常精炼工具一套、烈阳剑冷月刀各一把、十倍储物袋一个。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "冷月刀 functions as a weapon in \"不速之客 - 悔诺\", connected to: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "冷月刀, prop type: weapon, story function: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“黄丝衫一件、青叶法器一个、曰常精炼工具一套、烈阳剑冷月刀各一把、十倍储物袋一个。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "大无比的刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "大无比的刀 supports, reveals, or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王师叔",
+      "firstAppearance": "chapters 145-150",
+      "keyMoments": [
+        "他拿起这袋子，看了看狭小无比的袋口，又看了看相比之下奇大无比的刀剑物品，一时间有些踌躇，不知如何把它们塞进袋子。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "大无比的刀 functions as a weapon in \"不速之客 - 悔诺\", connected to: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "大无比的刀, prop type: weapon, story function: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他拿起这袋子，看了看狭小无比的袋口，又看了看相比之下奇大无比的刀剑物品，一时间有些踌躇，不知如何把它们塞进袋子。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "药材",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "药材 supports, reveals, or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王师叔",
+      "firstAppearance": "chapters 145-150",
+      "keyMoments": [
+        "“接管青石岭百药园一座，每年需上交规定数量的珍稀药材。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "药材 functions as a other in \"不速之客 - 悔诺\", connected to: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "药材, prop type: other, story function: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“接管青石岭百药园一座，每年需上交规定数量的珍稀药材。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    },
+    {
+      "name": "卷宗",
+      "aliases": [],
+      "propType": "document",
+      "storyFunction": "卷宗 supports, reveals, or complicates the story conflict: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "王师叔",
+      "firstAppearance": "chapters 145-150",
+      "keyMoments": [
+        "如果韩师侄想知道这工作的详细情况，倒可以跟我到内殿看看相关的卷宗去，这不比旁人用嘴说强多了！",
+        "心里强按住疑惑，韩立作出了受宠若惊的样子，跟着接过竹简的老者进了大殿后面的某间屋内，此房内堆满了各式各样的卷宗。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "卷宗 functions as a document in \"不速之客 - 悔诺\", connected to: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "卷宗, prop type: document, story function: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "如果韩师侄想知道这工作的详细情况，倒可以跟我到内殿看看相关的卷宗去，这不比旁人用嘴说强多了！",
+        "心里强按住疑惑，韩立作出了受宠若惊的样子，跟着接过竹简的老者进了大殿后面的某间屋内，此房内堆满了各式各样的卷宗。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    }
+  ]
+}

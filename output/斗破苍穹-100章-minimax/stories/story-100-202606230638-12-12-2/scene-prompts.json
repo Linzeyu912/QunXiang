@@ -1,0 +1,34 @@
+{
+  "storyId": "story-100-202606230638-12-12-2",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-100-202606230638-12-12-2-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"退婚冲突\" with insufficient location detail.；冲突氛围：纳兰嫣然要求解除婚约；可保留人物比例参考：萧炎、萧炎似、纳兰嫣然、纳兰小姐、药老；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎卷入“退婚冲突”：纳兰嫣然要求解除婚约、双方有些剑。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "location": "未指定场景",
+        "conflictBeat": "纳兰嫣然要求解除婚约",
+        "involvedCharacters": [
+          "萧炎",
+          "萧炎似",
+          "纳兰嫣然",
+          "纳兰小姐",
+          "药老"
+        ]
+      }
+    }
+  ]
+}

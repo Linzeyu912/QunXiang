@@ -1,0 +1,326 @@
+{
+  "storyId": "story-150-202606290629-1-12-1",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "character",
+      "assetId": "韩立",
+      "assetName": "韩立",
+      "prompt": "韩立，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 服装/配色：所以当韩立见到穿着一身崭新的缎子衣服、韩立在梦里梦到自己身穿锦衣、总算身上的衣服够结实\n- 面部/五官：韩立咬紧了嘴唇、扎在韩立的皮肤上微微的有点刺痛、韩立皮肤上的那一点不适\n- 神情/气质：墨大夫从韩立脸上的神情、神情变的怪起来\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "所以当韩立见到穿着一身崭新的缎子衣服，",
+        "韩立咬紧了嘴唇，",
+        "韩立在梦里梦到自己身穿锦衣，",
+        "总算身上的衣服够结实，",
+        "扎在韩立的皮肤上微微的有点刺痛，",
+        "韩立皮肤上的那一点不适，",
+        "墨大夫从韩立脸上的神情，",
+        "神情变的怪起来，"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12",
+      "metadata": {
+        "storyId": "story-150-202606290629-1-12-1",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 服装/配色：所以当韩立见到穿着一身崭新的缎子衣服、韩立在梦里梦到自己身穿锦衣、总算身上的衣服够结实\n- 面部/五官：韩立咬紧了嘴唇、扎在韩立的皮肤上微微的有点刺痛、韩立皮肤上的那一点不适\n- 神情/气质：墨大夫从韩立脸上的神情、神情变的怪起来\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "张铁",
+      "assetName": "张铁",
+      "prompt": "张铁，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 服装/配色：韩立就看到张铁穿着薄薄的青布衫\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立就看到张铁穿着薄薄的青布衫，"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12",
+      "metadata": {
+        "storyId": "story-150-202606290629-1-12-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 服装/配色：韩立就看到张铁穿着薄薄的青布衫\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "武功",
+      "assetName": "武功",
+      "prompt": "武功，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 服装/配色：后来知道他除了医术高超外竟然还有一身不弱的武功\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "后来知道他除了医术高超外竟然还有一身不弱的武功，"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12",
+      "metadata": {
+        "storyId": "story-150-202606290629-1-12-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 服装/配色：后来知道他除了医术高超外竟然还有一身不弱的武功\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "王护",
+      "assetName": "王护",
+      "prompt": "王护，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 神情/气质：神色有些缓松了下来\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "神色有些缓松了下来。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12",
+      "metadata": {
+        "storyId": "story-150-202606290629-1-12-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 神情/气质：神色有些缓松了下来\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立又",
+      "assetName": "韩立又",
+      "prompt": "韩立又，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "韩立又回头扫视了后方几眼，后面还有不少人影在移动着，韩立吸了一口气，又加速前进。",
+        "所有的这些测试，另韩立又情不自禁地有了一点幸灾乐祸的感觉。",
+        "听到这些声音，韩立又望了望那座山峰，刚有些好转的心情又变坏了。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12",
+      "metadata": {
+        "storyId": "story-150-202606290629-1-12-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立只",
+      "assetName": "韩立只",
+      "prompt": "韩立只，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 服装/配色：总算身上的衣服够结实\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "总算身上的衣服够结实，"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12",
+      "metadata": {
+        "storyId": "story-150-202606290629-1-12-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 服装/配色：总算身上的衣服够结实\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立也",
+      "assetName": "韩立也",
+      "prompt": "韩立也，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "因此，韩立也就只能干干的眼馋着，偶尔私下里，才能从几个交好的同门那里借过来几件兵刃，舞上几个来回，过把干瘾。",
+        "”韩立也不知道为什么，并不想告诉他关于瓶子的实情。",
+        "韩立也参于了其中的一次打架，只可惜的是，他被那些习过武的富家弟子打的鼻青脸肿，无法出门见人。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12",
+      "metadata": {
+        "storyId": "story-150-202606290629-1-12-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "费力",
+      "assetName": "费力",
+      "prompt": "费力，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "韩立抬起头费力的望了望，现在爬在最前边的人是舞岩，舞岩毕竟比韩立长了不止一岁，还练过一些武功，身体比其他孩子强壮的多，爬在最前并不令人惊奇。",
+        "当他费了好大力气爬上了最末端一个绳结，一下坐在上面后，就觉得全身上下软绵绵的，连一根手指都动弹不得了，费力的扭头看了看，后面的石壁处还有一些孩童子坐在那里，正大口大口的喘着粗气，看来和自己一样用完了最后一丝的力气。",
+        "对他们说的话韩立心里似懂非懂，但隐隐约约的知道，舞岩并非靠真才实学进的那个七绝堂，而是因为门内有个副门主的亲戚做靠山，才能毫不费力得以进入。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12",
+      "metadata": {
+        "storyId": "story-150-202606290629-1-12-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "韩立所",
+      "assetName": "韩立所",
+      "prompt": "韩立所，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "可是这一关，并不是韩立所想的那吗容易过。",
+        "用手掂了掂它的份量，很沉，可是此物明显并不是韩立所知道的某种金属制成，更不是他所知的哪种瓷器。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12",
+      "metadata": {
+        "storyId": "story-150-202606290629-1-12-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ]
+}

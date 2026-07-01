@@ -1,0 +1,45 @@
+{
+  "storyId": "story-150-202606290629-49-60-5",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "scenes": [
+    {
+      "id": "story-150-202606290629-49-60-5-scene-1",
+      "name": "套中套 - 试毒 - 未指定场景",
+      "location": "未指定场景",
+      "sourceRange": "chapters 49-60",
+      "summary": "余子童在“套中套 - 试毒”中经历围绕“失败”发生关键变化、套中套、缠香丝。",
+      "conflictBeat": "围绕“失败”发生关键变化",
+      "involvedCharacters": [
+        "余子童",
+        "韩立吃",
+        "方也",
+        "方话",
+        "韩立点"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"套中套 - 试毒\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "余子童在“套中套 - 试毒”中经历围绕“失败”发生关键变化、套中套、缠香丝。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    }
+  ]
+}

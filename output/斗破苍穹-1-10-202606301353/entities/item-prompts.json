@@ -1,0 +1,182 @@
+[
+  {
+    "entityName": "聚气散",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "丹药表面光滑温润；玉匣古色古香，通体碧绿，龙眼大小，龙眼大小，隐隐散发淡绿色光泽，异香弥漫，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "青木剑诀",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "斗气汇聚成细小凌厉剑气，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "狂狮怒罡",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "凝聚斗气时脸庞浮现虚幻狮头，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "黑色古戒",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "古朴，材质不明，表面有模糊纹路，纯黑色戒指，戒面纹路模糊，古朴陈旧，偶尔泛起极其微弱的诡异毫光，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "木系一级魔核",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "木系一级魔核，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "紫叶兰草",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "完整紫叶兰草，三支完整的紫叶兰草，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "绿色玉坠",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "玉石质地，绿色，微微摇动时发出清脆玉石相击之声，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "测验魔石碑",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "石材，漆黑表面，触碰时亮起刺眼甚至令人睁不开眼的光芒，漆黑的魔石碑，手掌触碰后显示等级信息，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "洗骨花",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "洗骨花，两株洗骨花，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "黑色存金卡",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "纯黑色卡片，黑色卡片，普通存金卡。最大值不超过五千金币，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "五纹紫金卡",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "紫金色，边缘闪烁五道波纹，闪烁五道不同颜色的波纹光芒，紫金色卡片。闪烁五道波纹，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "休书",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "萧炎所写的血手印契约，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  }
+]

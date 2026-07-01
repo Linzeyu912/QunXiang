@@ -1,0 +1,248 @@
+{
+  "storyId": "story-100-202606230638-4-6-1",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "character",
+      "assetId": "纳兰嫣然",
+      "assetName": "纳兰嫣然",
+      "prompt": "纳兰嫣然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：当下气得小脸有些铁青、小脸微沉的道、也不理会那俏脸冰寒的纳兰嫣然\n- 饰物/随身特征：手指紧张的绞在了一起\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "手指紧张的绞在了一起。",
+        "当下气得小脸有些铁青，",
+        "小脸微沉的道。",
+        "也不理会那俏脸冰寒的纳兰嫣然，"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6",
+      "metadata": {
+        "storyId": "story-100-202606230638-4-6-1",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：当下气得小脸有些铁青、小脸微沉的道、也不理会那俏脸冰寒的纳兰嫣然\n- 饰物/随身特征：手指紧张的绞在了一起\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上、小脸冷肃\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上。",
+        "小脸冷肃，"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6",
+      "metadata": {
+        "storyId": "story-100-202606230638-4-6-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：所有目光都是豁然转移到了角落中那扬起清秀脸庞的萧炎身上、小脸冷肃\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧战",
+      "assetName": "萧战",
+      "prompt": "萧战，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：萧战脸色淡漠的望着低头不言的纳兰嫣然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧战脸色淡漠的望着低头不言的纳兰嫣然，"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6",
+      "metadata": {
+        "storyId": "story-100-202606230638-4-6-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：萧战脸色淡漠的望着低头不言的纳兰嫣然\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "葛叶",
+      "assetName": "葛叶",
+      "prompt": "葛叶，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：脸庞上的表情、葛叶脸色忽然出现了一抹尴尬、惊恐的神色顷刻间覆盖了那苍老的面孔\n- 神情/气质：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 年龄/身份视觉线索：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 饰物/随身特征：葛叶伸手抹了抹手指上的一枚戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "脸庞上的表情，",
+        "葛叶脸色忽然出现了一抹尴尬，",
+        "葛叶伸手抹了抹手指上的一枚戒指，",
+        "惊恐的神色顷刻间覆盖了那苍老的面孔，"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6",
+      "metadata": {
+        "storyId": "story-100-202606230638-4-6-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "- 面部/五官：脸庞上的表情、葛叶脸色忽然出现了一抹尴尬、惊恐的神色顷刻间覆盖了那苍老的面孔\n- 神情/气质：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 年龄/身份视觉线索：惊恐的神色顷刻间覆盖了那苍老的面孔\n- 饰物/随身特征：葛叶伸手抹了抹手指上的一枚戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧叔叔",
+      "assetName": "萧叔叔",
+      "prompt": "萧叔叔，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "”萧战先是一怔，紧接着满脸大喜，想必是记起了当年的那事，当下，急忙对着少女露出温和的笑容：“原来是纳兰侄女，萧叔叔可有好多年未曾与你见面了，可别怪罪叔叔眼拙。",
+        "“萧叔叔，侄女一直未曾前来拜见，该赔罪的，可是我呢，哪敢怪罪萧叔叔。",
+        "娇躯微微一颤，纳兰嫣然呐呐的道：“萧叔叔……”"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6",
+      "metadata": {
+        "storyId": "story-100-202606230638-4-6-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰侄女",
+      "assetName": "纳兰侄女",
+      "prompt": "纳兰侄女，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "”萧战先是一怔，紧接着满脸大喜，想必是记起了当年的那事，当下，急忙对着少女露出温和的笑容：“原来是纳兰侄女，萧叔叔可有好多年未曾与你见面了，可别怪罪叔叔眼拙。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "葛叶说是与纳兰侄女有关，难道？"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6",
+      "metadata": {
+        "storyId": "story-100-202606230638-4-6-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰小姐",
+      "assetName": "纳兰小姐",
+      "prompt": "纳兰小姐，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "压下心中的疑问，萧炎大步行上，先是对着萧战恭敬的行了一礼，然后转过身面对着纳兰嫣然，深吐了一口气，平静的出言问道：“纳兰小姐，我想请问一下，今日悔婚之事，纳兰老爷子，可曾答应？",
+        "听着少女宛如神灵般的审判，萧炎嘴角溢出一抹冷笑：“纳兰小姐……你应该知道，在斗气大陆，女方悔婚会让对方有多难堪，呵呵，我脸皮厚，倒是没什么，可我的父亲！",
+        "“纳兰小姐，你又不是不清楚炎儿的状况，你让他拿什么和你挑战？"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6",
+      "metadata": {
+        "storyId": "story-100-202606230638-4-6-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "云韵",
+      "assetName": "云韵",
+      "prompt": "云韵，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "当年纳兰嫣然被云韵收为弟子之时，年仅十岁，在云岚宗中修炼了五年时间，所谓女大十八变，好多年未见，萧战自然不知道面前的少女，便是自己名义上的儿媳妇。",
+        "“呵呵，纳兰侄女，以前便听说了你被云韵大人收入门下，当时还以为是流言，没想到，竟然是真的，侄女真是好天赋啊……”萧战笑着赞叹道。",
+        "脸色微微一变，萧战也是收敛了笑容，云岚宗宗主云韵可是加玛帝国的大人物，他这小小的一族之长，可是半点都遭惹不起，可以她的实力与势力，又有何事需要萧家帮忙？"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6",
+      "metadata": {
+        "storyId": "story-100-202606230638-4-6-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "古河",
+      "assetName": "古河",
+      "prompt": "古河，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“呵呵，这是本宗名誉长老古河大人亲自所炼，想必各位也听过他老人家的名讳吧？",
+        "“此药竟然还是出自丹王古河之手？",
+        "丹王古河，在加玛帝国中影响力极其庞大，一手炼药之术，神奇莫测，无数强者想对其巴结逢迎，都是无路可寻。"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6",
+      "metadata": {
+        "storyId": "story-100-202606230638-4-6-1",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ]
+}

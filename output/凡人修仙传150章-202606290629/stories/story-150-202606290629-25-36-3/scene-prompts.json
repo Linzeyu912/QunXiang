@@ -1,0 +1,86 @@
+{
+  "storyId": "story-150-202606290629-25-36-3",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-25-36-3-scene-1",
+      "assetName": "开封",
+      "prompt": "开封，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：夜晚；场景描述：开封 scene in \"插柳成 - 吃惊\", shaped by the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：围绕“失败”发生关键变化；可保留人物比例参考：韩立无、韩立进、韩立很、方已、韩立似乎；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "一打开封面，现露出秘籍的第一页，上面白纸黑字，清清楚楚的写着“眨眼剑谱”四个大字。"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "location": "开封",
+        "timeHint": "夜晚",
+        "conflictBeat": "围绕“失败”发生关键变化",
+        "involvedCharacters": [
+          "韩立无",
+          "韩立进",
+          "韩立很",
+          "方已",
+          "韩立似乎"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-25-36-3-scene-2",
+      "assetName": "越国岚州",
+      "prompt": "越国岚州，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：夜晚；场景描述：越国岚州 scene in \"插柳成 - 吃惊\", shaped by the conflict: 韩立无必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：插柳成；可保留人物比例参考：韩立无、韩立进、韩立很、方已、韩立似乎；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“我墨居仁，早年在越国岚州武林也声名赫赫过，创下不小的名头，赤手空拳的打出一片自己的天地，嘿嘿！"
+      ],
+      "sourceChapters": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceRangeHint": "chapters 25-36",
+      "metadata": {
+        "storyId": "story-150-202606290629-25-36-3",
+        "location": "越国岚州",
+        "timeHint": "夜晚",
+        "conflictBeat": "插柳成",
+        "involvedCharacters": [
+          "韩立无",
+          "韩立进",
+          "韩立很",
+          "方已",
+          "韩立似乎"
+        ]
+      }
+    }
+  ]
+}

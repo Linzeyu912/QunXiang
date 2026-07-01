@@ -1,0 +1,44 @@
+{
+  "id": "story-150-202606290629-121-132-11",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 121,
+  "endChapter": 132,
+  "title": "潇湘院 - 收获",
+  "summary": "金芝在“潇湘院 - 收获”中经历潇湘院、毒杀、交易。",
+  "coreConflict": "金芝必须应对潇湘院带来的处境变化。",
+  "trigger": "潇湘院",
+  "turningPoints": [
+    "潇湘院",
+    "毒杀",
+    "交易",
+    "墨凤舞",
+    "安排",
+    "太南山、太南谷、少年",
+    "墨玉珠",
+    "金刚符"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "金芝"
+  ],
+  "supportingCharacters": [
+    "沈三",
+    "欧阳",
+    "欧阳飞",
+    "范沮",
+    "钱进",
+    "韩兄",
+    "欧阳霸"
+  ],
+  "locations": [
+    "独霸山",
+    "太南谷",
+    "整座楼",
+    "毒霸山庄"
+  ],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-121-132"
+  ],
+  "approved": true
+}

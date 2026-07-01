@@ -1,0 +1,36 @@
+{
+  "id": "story-150-202606290629-49-60-5",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 49,
+  "endChapter": 60,
+  "title": "套中套 - 试毒",
+  "summary": "余子童在“套中套 - 试毒”中经历围绕“失败”发生关键变化、套中套、缠香丝。",
+  "coreConflict": "余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+  "trigger": "围绕“失败”发生关键变化",
+  "turningPoints": [
+    "围绕“失败”发生关键变化",
+    "套中套",
+    "缠香丝",
+    "巨汉显威",
+    "七鬼噬魂",
+    "美男子",
+    "把手中的剑",
+    "依仗刀枪"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "余子童"
+  ],
+  "supportingCharacters": [
+    "韩立吃",
+    "方也",
+    "方话",
+    "韩立点"
+  ],
+  "locations": [],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-49-60"
+  ],
+  "approved": true
+}

@@ -1,0 +1,33 @@
+{
+  "storyId": "story-100-202606230638-88-88-6",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-100-202606230638-88-88-6-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：白天；场景描述：A story scene for \"戒指秘密\" with insufficient location detail.；冲突氛围：药老从戒指中现身；可保留人物比例参考：萧炎、药老、萧战；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎卷入“戒指秘密”：药老从戒指中现身、上的漆黑戒指、柳席的炼药。"
+      ],
+      "sourceChapters": [
+        88
+      ],
+      "sourceRangeHint": "chapters 88-88",
+      "metadata": {
+        "storyId": "story-100-202606230638-88-88-6",
+        "location": "未指定场景",
+        "timeHint": "白天",
+        "conflictBeat": "药老从戒指中现身",
+        "involvedCharacters": [
+          "萧炎",
+          "药老",
+          "萧战"
+        ]
+      }
+    }
+  ]
+}

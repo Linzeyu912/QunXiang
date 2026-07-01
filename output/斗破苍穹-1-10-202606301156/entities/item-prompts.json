@@ -1,0 +1,197 @@
+[
+  {
+    "entityName": "聚气散",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "丹药表面光滑温润。质地细腻，通体碧绿，龙眼大小，散发淡绿色光泽与异香，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "青木剑诀",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "青木剑诀，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "玉石杯",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "萧战手中的玉石杯，玉石质地。温润细腻，掌心大小，碎裂时发出轰然声响，萧战手中饮器，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "狂狮怒罡",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "汇聚成狮头形状，只有族长可修炼，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "黑色古戒",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "一只通体泛绿的古玉盒子在手中凭空出现……，手指上有一颗黑色戒指。其上还绘有些模糊的纹路。手指中的黑色古戒。手指上那古朴的黑色戒指。一只通体泛绿的古玉盒子在手中凭空出现……。陡然停在了右手之上……的黑色古朴戒指，戒指很是古朴。抚摸着手指上的古朴戒指。手指上那古朴的黑色戒指。陡然停在了右手之上……的黑色古朴戒指。此时正悬浮着一颗漆黑的古朴戒指，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "木系一级魔核",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "还有一颗木系的一级魔核。一枚木系一级魔核，晶体质感。坚硬光滑，木系属性，约拇指大小，隐隐散发木系能量波动，药老配置温养灵液的材料，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "紫叶兰草",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "草本植物药材，质地柔韧，紫色叶片，叶片鲜嫩，普通草本高度，药老配置温养灵液的药材，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "古朴书籍",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "纸质书页。装帧古朴，纸张泛黄。封面皮质或布面装帧，有岁月痕迹，约巴掌宽。半掌厚，萧薰儿常捧在手中阅读，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "魔石碑",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "测验魔石碑之旁。小手轻车熟路的触摸着漆黑的魔石碑。漆黑的魔石碑之上再次亮起了光芒……。名为萧薰儿的少女行到魔石碑之前。然后轻触着石碑……，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "洗骨花",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "两株洗骨花，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "黑色存金卡",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "薰儿笑吟吟的递过来一张黑色卡片，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "五纹紫金卡",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "代表身份的珍贵金卡，需要斗灵实力或超然势力才有资格办理; 萧薰儿持有此卡，内有千余金币，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "休书",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "萧炎当众所写，用左手鲜血按印，将纳兰嫣然逐出萧家的契约; 萧炎称之为休证而非解除婚约，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  }
+]

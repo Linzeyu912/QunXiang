@@ -1,0 +1,182 @@
+[
+  {
+    "entityName": "萧炎",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "少年身材单薄，身形略显清瘦。清秀的瓜子脸，稚嫩中透着几分清俊。乌黑短发，额前有几缕碎发。漆黑深邃的眼眸，神态随情绪变化丰富。鼻梁高挺。薄唇紧抿。肤色白皙，透着少年人的清秀。倔强坚韧，外表沉静内心坚毅，落寞时与周围世界格格不入，爆发时眼中燃着暴怒火焰。素面，无需妆饰。左手无名指上戴着一枚古朴的黑色戒指。戒面古朴。戒身漆黑。表面有模糊纹路，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "纳兰嫣然",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "那张清秀的稚嫩小脸。也不理会那俏脸冰寒的纳兰嫣然，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "萧薰儿",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "身材纤细修长，身形轻盈婀娜。俏美的脸颊，五官精致。长发及腰，随风轻扬。明亮的眼眸，眼眸弯成浅浅月牙时格外动人。纤细挺秀。微笑时露出可爱的小酒窝，樱唇微启。白皙如玉的肌肤。气质淡雅从容如青莲初绽，对萧炎温柔亲近，对外人蕴含一股隐晦的冷漠。清新淡雅，透着少女的活泼与书卷气。随身携带一本古籍或文书，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "萧战",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "身材魁梧挺拔，不怒自威。面容坚毅，轮廓硬朗。头发花白。目光威严有力。鼻梁高挺。薄唇紧抿。肤色健康，透着中年人的沉稳。威严庄重中透着正气，平日表情淡漠，愤怒时脸色阴沉至极。素面，族长威严气度自然流露。左手无名指戴着一枚古朴的家族信物戒指，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "药老",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "灵魂形态，虚幻缥缈。面容苍老虚幻，轮廓隐约可辨。虚幻中隐约可见灰白须发。眼神深邃有力，透着智慧与岁月沧桑。虚幻缥缈的质感。睿智深沉，偶尔戏谑，正色时极为严肃认真。灵魂形态，无需妆饰，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "葛叶",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "身形精瘦高挺，背脊挺直。苍老面容，皱纹深刻，轮廓削瘦。银发白须。鹰爪般锐利的眼神。鼻梁清瘦。薄唇紧抿。苍老干枯的皮肤。威严凌厉中透着几分得意，惊恐时神色顷刻覆盖全脸。素面，透着修行者的凌厉气度。葛叶伸手抹了抹手指上的一枚戒指。将之收进了戒指内，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "云韵",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "云岚宗宗主，大斗师，将纳兰嫣然收为弟子并当作下一任宗主培养，在斗气大陆影响力极大，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "萧媚",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "粉嫩娇舌轻轻的添了添红唇。这名紫裙少女，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "古河",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "云岚宗名誉长老，六品炼药师，在加玛帝国影响力庞大，一手炼药术神奇莫测，已晋入斗王之阶，名列加玛帝国十大强者之一，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "纳兰桀",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "加玛帝国狮心元帅，性子桀骜，极在乎承诺，是萧炎爷爷的生死好友，当年亲口定下萧炎与纳兰嫣然的婚事，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "墨管家",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "萧家老管家，青衫老者，对萧炎和善，对萧炎的处境感到惋惜，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "英俊青年",
+    "entityType": "character",
+    "tier": "candidate",
+    "prompt": "豁然的拔出长剑，头像特写，古风玄幻，精致细节，柔和光影，高质量CG。",
+    "styleTags": [
+      "古风玄幻",
+      "精致细节",
+      "柔和光影",
+      "高质量CG",
+      "头像特写"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  }
+]

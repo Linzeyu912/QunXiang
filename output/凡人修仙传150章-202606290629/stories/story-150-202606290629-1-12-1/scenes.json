@@ -1,0 +1,96 @@
+{
+  "storyId": "story-150-202606290629-1-12-1",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "scenes": [
+    {
+      "id": "story-150-202606290629-1-12-1-scene-1",
+      "name": "山边小村 - 砸瓶子 - 青牛镇",
+      "location": "青牛镇",
+      "timeHint": "白天",
+      "sourceRange": "chapters 1-12",
+      "summary": "韩立在“山边小村 - 砸瓶子”中经历围绕“炼药”发生关键变化、山边小村、青牛镇。",
+      "conflictBeat": "围绕“炼药”发生关键变化",
+      "involvedCharacters": [
+        "韩立",
+        "张铁",
+        "武功",
+        "王护",
+        "韩立又",
+        "韩立只",
+        "韩立也",
+        "费力",
+        "韩立所"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "青牛镇 scene in \"山边小村 - 砸瓶子\", shaped by the conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "青牛镇, cinematic scene, conflict beat: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "第2章 青牛镇",
+        "第二章 青牛镇",
+        "这是一个小城，说是小城其实只是一个大点的镇子，名字也叫青牛镇，只有那些住在附近山沟里、没啥见识的土人，才“青牛城”“青牛城”的叫个不停。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    },
+    {
+      "id": "story-150-202606290629-1-12-1-scene-2",
+      "name": "山边小村 - 砸瓶子 - 达山崖",
+      "location": "达山崖",
+      "timeHint": "白天",
+      "sourceRange": "chapters 1-12",
+      "summary": "韩立在“山边小村 - 砸瓶子”中经历围绕“炼药”发生关键变化、山边小村、青牛镇。",
+      "conflictBeat": "山边小村",
+      "involvedCharacters": [
+        "韩立",
+        "张铁",
+        "武功",
+        "王护",
+        "韩立又",
+        "韩立只",
+        "韩立也",
+        "费力",
+        "韩立所"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "达山崖 scene in \"山边小村 - 砸瓶子\", shaped by the conflict: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "达山崖, cinematic scene, conflict beat: 韩立必须应对围绕“炼药”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "“另一人舞岩，第一个到达山崖，表现杰出，直接保送到七绝堂学习本门绝技。"
+      ],
+      "sourceChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourceRangeHint": "chapters 1-12"
+    }
+  ]
+}

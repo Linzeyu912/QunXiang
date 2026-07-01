@@ -1,0 +1,43 @@
+{
+  "storyId": "story-150-202606290629-85-96-8",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "scenes": [
+    {
+      "id": "story-150-202606290629-85-96-8-scene-1",
+      "name": "死契血斗 - 缺陷 - 假装关",
+      "location": "假装关",
+      "sourceRange": "chapters 85-96",
+      "summary": "金罩在“死契血斗 - 缺陷”中经历死契血斗、突变、略显身手。",
+      "conflictBeat": "死契血斗",
+      "involvedCharacters": [
+        "金罩",
+        "秦叶岭",
+        "方既然"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "假装关 scene in \"死契血斗 - 缺陷\", shaped by the conflict: 金罩必须应对死契血斗带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "假装关, cinematic scene, conflict beat: 金罩必须应对死契血斗带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "”侏儒一听此话，吓了一跳，连忙做出假装关心对方的样子，急忙劝阻道。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96"
+    }
+  ]
+}

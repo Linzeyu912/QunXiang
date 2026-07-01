@@ -1,0 +1,37 @@
+{
+  "storyId": "story-100-202606230638-1-1-worldbuilding",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "scenes": [
+    {
+      "id": "story-100-202606230638-1-1-worldbuilding-scene-1",
+      "name": "斗气大陆设定 - 斗气大陆",
+      "location": "斗气大陆",
+      "sourceRange": "chapters 1-1",
+      "summary": "本段建立“斗气大陆”相关规则：斗气大陆修炼体系、斗气功法等级、斗技等级。",
+      "conflictBeat": "斗气大陆修炼体系",
+      "involvedCharacters": [
+        "萧炎",
+        "萧战",
+        "黄阶",
+        "萧炎也",
+        "萧炎微",
+        "萧炎却"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "斗气大陆 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "斗气大陆, cinematic scene, conflict beat: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "第1章 斗气大陆",
+        "第2章 斗气大陆",
+        "大陆名为斗气大陆，大陆上并没有小说中常见的各系魔法，而斗气，才是大陆的唯一主调！"
+      ],
+      "sourceChapters": [
+        1
+      ],
+      "sourceRangeHint": "chapters 1-1"
+    }
+  ]
+}

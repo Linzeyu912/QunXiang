@@ -1,0 +1,340 @@
+[
+  {
+    "id": "1c511d3e-f89e-46bd-a69a-e882f34a8a11",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "聚气散",
+    "aliases": [
+      "聚气丸",
+      "丹药"
+    ],
+    "description": "斗气大陆神奇丹药，通体碧绿龙眼大小，散发异香；能让一位九段斗之气百分之百成功凝聚斗之气旋；由云岚宗名誉长老丹王古河亲自炼制，葛叶带来作为退婚赔礼，被萧战冷声拒绝甩飞",
+    "confidence": 0.95,
+    "status": "PENDING",
+    "chapterRef": "第5章",
+    "importanceScore": 0.694,
+    "tier": "supporting",
+    "storyScore": 4,
+    "productionScore": 0.75,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 3,
+    "firstChapter": 5,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      5,
+      6,
+      7
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "16a7c868-033b-404c-ae30-37d9a81ec395",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "通绿古玉匣子",
+    "aliases": [
+      "古玉盒子",
+      "玉匣子",
+      "玉盒"
+    ],
+    "description": "通体泛绿的古玉盒子，葛叶从纳戒中取出用以盛放退婚赔礼聚气散，被萧战一掌甩飞",
+    "confidence": 0.7,
+    "status": "PENDING",
+    "chapterRef": "第5章",
+    "importanceScore": 0.694,
+    "tier": "supporting",
+    "storyScore": 4,
+    "productionScore": 0.75,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 3,
+    "firstChapter": 5,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      5,
+      6,
+      7
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "324194eb-3628-4379-96ec-51142b19bff8",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "青木剑诀",
+    "aliases": [],
+    "description": "云岚宗高深功法，等级为玄阶低级，葛叶在退婚对峙中所施展，斗气汇聚于鹰爪散发细小凌厉剑气",
+    "confidence": 0.85,
+    "status": "PENDING",
+    "chapterRef": "第5章",
+    "importanceScore": 0.694,
+    "tier": "supporting",
+    "storyScore": 4,
+    "productionScore": 0.75,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 1,
+    "firstChapter": 5,
+    "lastChapter": 5,
+    "chapterAppearances": [
+      5
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "8d639772-2d8f-493f-b961-3e6629ec76f5",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "黑色古戒",
+    "aliases": [
+      "古朴戒指",
+      "黑色戒指",
+      "戒指"
+    ],
+    "description": "萧炎母亲临死前送他的唯一礼物，不知何材料所铸，绘有模糊纹路；内藏神秘灵魂体药老，曾吸取萧炎三年斗之气导致萧炎沦为废物；可脱离手指漂浮于空中，并释放出药老的透明苍老人影",
+    "confidence": 0.98,
+    "status": "PENDING",
+    "chapterRef": "第2章",
+    "importanceScore": 0.469,
+    "tier": "supporting",
+    "storyScore": 4,
+    "productionScore": 0,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 5,
+    "firstChapter": 2,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      2,
+      3,
+      8,
+      9,
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "376b8ff6-c491-48e4-a77f-09762baa0d8d",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "狂狮怒罡",
+    "aliases": [],
+    "description": "萧家最顶层的斗气功法，风属性，只有族长才有资格修炼，等级为玄阶中级，萧战所习",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "第2章",
+    "importanceScore": 0.469,
+    "tier": "supporting",
+    "storyScore": 4,
+    "productionScore": 0,
+    "pillarCausal": 2,
+    "pillarUniqueness": 1,
+    "pillarTransition": 1,
+    "mentionCount": 2,
+    "firstChapter": 2,
+    "lastChapter": 5,
+    "chapterAppearances": [
+      2,
+      5
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "9672067b-8a6c-422e-9ca5-3996764a0275",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "木系一级魔核",
+    "aliases": [
+      "一级魔核",
+      "木系魔核",
+      "魔核"
+    ],
+    "description": "斗气大陆木系一级魔核，药老配置温养灵液所需材料之一，价值约四百金币",
+    "confidence": 0.85,
+    "status": "PENDING",
+    "chapterRef": "第9章",
+    "importanceScore": 0.381,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0.5,
+    "pillarCausal": 2,
+    "pillarUniqueness": 0,
+    "pillarTransition": 0,
+    "mentionCount": 2,
+    "firstChapter": 9,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      9,
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "3a9486bf-29c4-49ac-9add-d4f609f2d035",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "温养灵液",
+    "aliases": [],
+    "description": "药老配置的特殊灵液，需以紫叶兰草、洗骨花和木系一级魔核等低级材料配置，可温和地提升萧炎斗之气以避免伤害脉络，外人有钱也难买到",
+    "confidence": 0.8,
+    "status": "PENDING",
+    "chapterRef": "第9章",
+    "importanceScore": 0.381,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0.5,
+    "pillarCausal": 2,
+    "pillarUniqueness": 0,
+    "pillarTransition": 0,
+    "mentionCount": 2,
+    "firstChapter": 9,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      9,
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "b0217af8-2e06-4bc6-a09d-4708785d1663",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "紫叶兰草",
+    "aliases": [
+      "紫叶兰"
+    ],
+    "description": "斗气大陆低级药材，药老配置温养灵液所需材料之一，需要三支完整的，年份越久越好，萧炎花费约九百金币从药材店买下三支二十年份的",
+    "confidence": 0.85,
+    "status": "PENDING",
+    "chapterRef": "第9章",
+    "importanceScore": 0.381,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0.5,
+    "pillarCausal": 2,
+    "pillarUniqueness": 0,
+    "pillarTransition": 0,
+    "mentionCount": 2,
+    "firstChapter": 9,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      9,
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "6879f7ff-9c39-460e-9f29-189c6d2be749",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "洗骨花",
+    "aliases": [],
+    "description": "斗气大陆低级药材，药老配置温养灵液所需材料之一，需要两株，年份随意，萧炎买下两株五年份的",
+    "confidence": 0.85,
+    "status": "PENDING",
+    "chapterRef": "第9章",
+    "importanceScore": 0.269,
+    "tier": "candidate",
+    "storyScore": 1,
+    "productionScore": 0.5,
+    "pillarCausal": 1,
+    "pillarUniqueness": 0,
+    "pillarTransition": 0,
+    "mentionCount": 2,
+    "firstChapter": 9,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      9,
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "d1b02d7d-8c66-44ee-b370-2e04db1a5aef",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "神秘可进化功法",
+    "aliases": [
+      "比天阶功法还要诡异的功法",
+      "药老的功法"
+    ],
+    "description": "药老所拥有的功法，登记为黄阶低级，最特殊之处在于它能进化，药老打算在萧炎成为斗者时再传授，功法上自称能进化但无人修炼过",
+    "confidence": 0.8,
+    "status": "PENDING",
+    "chapterRef": "第9章",
+    "importanceScore": 0.269,
+    "tier": "candidate",
+    "storyScore": 1,
+    "productionScore": 0.5,
+    "pillarCausal": 1,
+    "pillarUniqueness": 0,
+    "pillarTransition": 0,
+    "mentionCount": 1,
+    "firstChapter": 9,
+    "lastChapter": 9,
+    "chapterAppearances": [
+      9
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "d2b798d2-558a-47ad-87c5-f068413ad78b",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "黑色存金卡",
+    "aliases": [
+      "存金卡",
+      "黑卡"
+    ],
+    "description": "斗气大陆普通存金卡，最大值不能超过五千金币，萧薰儿交给萧炎供其购买炼药材料使用",
+    "confidence": 0.8,
+    "status": "PENDING",
+    "chapterRef": "第10章",
+    "importanceScore": 0.23099999999999998,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0,
+    "pillarCausal": 1,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 1,
+    "firstChapter": 10,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  },
+  {
+    "id": "8f8281e2-6f0b-4186-aada-f67ebb5d2db1",
+    "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+    "name": "五纹紫金卡",
+    "aliases": [
+      "紫金卡"
+    ],
+    "description": "斗气大陆上代表身份的金卡，绘有五道不同颜色的波纹，至少需要斗灵实力才有资格办理，萧薰儿所拥有，可用以借出大量金币",
+    "confidence": 0.9,
+    "status": "PENDING",
+    "chapterRef": "第10章",
+    "importanceScore": 0.23099999999999998,
+    "tier": "candidate",
+    "storyScore": 2,
+    "productionScore": 0,
+    "pillarCausal": 1,
+    "pillarUniqueness": 1,
+    "pillarTransition": 0,
+    "mentionCount": 1,
+    "firstChapter": 10,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      10
+    ],
+    "createdAt": "2026-06-29T13:54:31.618Z",
+    "updatedAt": "2026-06-29T13:54:31.618Z"
+  }
+]

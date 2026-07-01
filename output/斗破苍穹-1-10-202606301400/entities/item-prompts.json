@@ -1,0 +1,107 @@
+[
+  {
+    "entityName": "聚气散",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "通体碧绿，质地温润如玉，表面光滑细腻，龙眼大小的圆润丹药，通体碧绿晶莹，全新完好，散发着淡淡光泽，异香扑鼻，龙眼大小，约拇指第一节大小，丹药表面散发淡绿色光泽，异香弥漫，光是闻一闻便让人精神一振，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "狂狮怒罡",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "风属性斗气凝聚而成，虚幻狮头，斗气在脸庞汇聚成形，玄阶中级功法，功法级别，斗气在脸庞汇聚成虚幻狮头，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "青木剑诀",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "木属性斗气凝聚，剑形剑气，玄阶低级功法，功法级别，斗气在鹰爪中汇聚，散发细小凌厉剑气，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "黑色古戒",
+    "entityType": "item",
+    "tier": "supporting",
+    "prompt": "材质不明，表面光滑，通体漆黑，戒面刻有模糊纹路，古朴，陈旧，约拇指大小，诡异毫光时隐时现，有时微微发光，修炼时亦有光芒，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "llm-fallback",
+    "quality": "high"
+  },
+  {
+    "entityName": "魔石碑",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "黑色石材，通体漆黑，石碑形态，完好，用于测试，约一人高，刺眼光芒绽放，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "黑色卡片",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "金属薄卡，长方形卡片，通体黑色，完好，崭新的普通存金卡，掌心大小，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  },
+  {
+    "entityName": "五纹紫金卡",
+    "entityType": "item",
+    "tier": "candidate",
+    "prompt": "紫金材质，长方形卡片，紫金色泽，表面刻有五道纹路，完好，高级身份金卡，掌心大小，产品展示视角，主体突出，纯色背景，实物拍摄质感，精致细节，柔和棚拍光，高质量CG。",
+    "styleTags": [
+      "实物拍摄质感",
+      "精致细节",
+      "柔和棚拍光",
+      "高质量CG",
+      "产品展示视角"
+    ],
+    "source": "template-only",
+    "quality": "medium"
+  }
+]

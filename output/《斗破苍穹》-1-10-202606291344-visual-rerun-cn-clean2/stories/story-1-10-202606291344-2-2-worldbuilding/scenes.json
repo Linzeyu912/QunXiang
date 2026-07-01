@@ -1,0 +1,83 @@
+{
+  "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+  "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+  "scenes": [
+    {
+      "id": "story-1-10-202606291344-2-2-worldbuilding-scene-1",
+      "name": "斗气大陆设定 - 掉落山",
+      "location": "掉落山",
+      "sourceRange": "chapters 2-2",
+      "summary": "本段建立“斗气大陆”相关规则：斗气大陆修炼体系、斗气功法等级、斗技等级。",
+      "conflictBeat": "斗气大陆修炼体系",
+      "involvedCharacters": [
+        "萧炎",
+        "萧战"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "掉落山 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "掉落山, cinematic scene, conflict beat: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "由于地域的辽阔，也有很多不为人知的无名隐士，在生命走到尽头之后，性子孤僻的他们，或许会将平生所创功法隐于某处，等待有缘人取之，在斗气大陆上，流传一句话：如果某日，你摔落悬崖，掉落山洞，不要惊慌，往前走两步，或许，你，将成为强者！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2"
+    },
+    {
+      "id": "story-1-10-202606291344-2-2-worldbuilding-scene-2",
+      "name": "斗气大陆设定 - 斗气阁",
+      "location": "斗气阁",
+      "sourceRange": "chapters 2-2",
+      "summary": "本段建立“斗气大陆”相关规则：斗气大陆修炼体系、斗气功法等级、斗技等级。",
+      "conflictBeat": "斗气功法等级",
+      "involvedCharacters": [
+        "萧炎",
+        "萧战"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "斗气阁 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "斗气阁, cinematic scene, conflict beat: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "”手掌微微一紧，萧炎平静的回道，成年仪式代表什么，他自然非常清楚，只要度过了成年仪式，那么没有修炼潜力的他，便将会被取消进入斗气阁寻找斗气功法的资格，从而被分配到家族的各处产业之中，为家族打理一些普通事物，这是家族的族规，就算他的父亲是族长，那也不可能改变！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2"
+    },
+    {
+      "id": "story-1-10-202606291344-2-2-worldbuilding-scene-3",
+      "name": "斗气大陆设定 - 斗气大陆",
+      "location": "斗气大陆",
+      "sourceRange": "chapters 2-2",
+      "summary": "本段建立“斗气大陆”相关规则：斗气大陆修炼体系、斗气功法等级、斗技等级。",
+      "conflictBeat": "斗技等级",
+      "involvedCharacters": [
+        "萧炎",
+        "萧战"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "斗气大陆 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "斗气大陆, cinematic scene, conflict beat: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "第2章 斗气大陆",
+        "第2章 斗气大陆",
+        "大陆名为斗气大陆，大陆上并没有小说中常见的各系魔法，而斗气，才是大陆的唯一主调！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2"
+    }
+  ]
+}

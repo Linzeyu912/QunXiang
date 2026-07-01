@@ -1,0 +1,530 @@
+[
+  {
+    "entityType": "location",
+    "name": "后山",
+    "aliases": [
+      "山崖之颠",
+      "山壁",
+      "山顶",
+      "悬崖边"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "后山",
+          "山壁"
+        ],
+        "otherMatchedNames": [
+          "魔兽山脉",
+          "山脉",
+          "大厅",
+          "家族",
+          "加玛帝国",
+          "帝国"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "魔兽山脉",
+    "aliases": [
+      "山脉"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "魔兽山脉",
+          "山脉"
+        ],
+        "otherMatchedNames": [
+          "萧家",
+          "乌坦城",
+          "乌坦",
+          "加玛帝国",
+          "帝国"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "萧家",
+    "aliases": [
+      "萧家大厅",
+      "大厅",
+      "家族",
+      "迎客大厅"
+    ],
+    "missingFields": [
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "家族"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅",
+          "迎客大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "家族"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "云岚宗"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧家",
+          "家族"
+        ],
+        "otherMatchedNames": [
+          "云岚宗"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅",
+          "家族"
+        ],
+        "otherMatchedNames": [
+          "后山",
+          "山壁",
+          "魔兽山脉",
+          "山脉",
+          "加玛帝国",
+          "帝国"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "家族"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "乌坦城",
+    "aliases": [
+      "乌坦"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "测验广场",
+    "aliases": [
+      "广场",
+      "魔石碑"
+    ],
+    "missingFields": [
+      "layout",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "云岚宗",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "云岚宗"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "云岚宗"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "加玛帝国",
+    "aliases": [
+      "帝国"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "纳兰家",
+    "aliases": [
+      "纳兰家族"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  }
+]

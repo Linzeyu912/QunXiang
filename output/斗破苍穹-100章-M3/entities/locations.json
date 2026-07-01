@@ -1,0 +1,494 @@
+[
+  {
+    "name": "乌坦城",
+    "aliases": [
+      "乌坦"
+    ],
+    "description": "加玛帝国东部的一座城市，萧家、加列家族、奥巴家族三大家族所在地，主要经济来源为面向佣兵的疗伤药与坊市",
+    "confidence": 1,
+    "firstChapter": 1,
+    "lastChapter": 83,
+    "chapterAppearances": [
+      1,
+      2,
+      4,
+      5,
+      10,
+      11,
+      12,
+      13,
+      20,
+      21,
+      22,
+      24,
+      25,
+      37,
+      38,
+      40,
+      51,
+      53,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      64,
+      68,
+      69,
+      70,
+      71,
+      76,
+      77,
+      78,
+      82,
+      83
+    ]
+  },
+  {
+    "name": "米特尔拍卖场",
+    "aliases": [
+      "拍卖场",
+      "拍卖会",
+      "特米尔拍卖场",
+      "特米尔拍卖行",
+      "一号拍卖场"
+    ],
+    "description": "乌坦城最大的资源库与拍卖场所，由雅妃与谷尼等主事，后台为加玛帝国排行前列的强大势力",
+    "confidence": 0.98,
+    "firstChapter": 21,
+    "lastChapter": 81,
+    "chapterAppearances": [
+      21,
+      22,
+      23,
+      24,
+      37,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      70,
+      76,
+      77,
+      78,
+      81
+    ]
+  },
+  {
+    "name": "萧家",
+    "aliases": [
+      "萧家宅院",
+      "萧家族",
+      "萧家内部"
+    ],
+    "description": "乌坦城三大家族之一，萧炎家族所在地，包含议事厅、各族人所住院落及后山",
+    "confidence": 1,
+    "firstChapter": 1,
+    "lastChapter": 89,
+    "chapterAppearances": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      62,
+      65,
+      69,
+      74,
+      75,
+      78,
+      79,
+      81,
+      82,
+      89
+    ]
+  },
+  {
+    "name": "萧家坊市",
+    "aliases": [
+      "萧家疗伤药坊市"
+    ],
+    "description": "萧家经营的坊市，凝血散推出后人气大涨，成为萧家反击加列家族的重要阵地",
+    "confidence": 0.98,
+    "firstChapter": 79,
+    "lastChapter": 88,
+    "chapterAppearances": [
+      79,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88
+    ]
+  },
+  {
+    "name": "加列家族坊市",
+    "aliases": [
+      "加列家族小型坊市"
+    ],
+    "description": "加列家族经营的坊市，原本以回春散垄断乌坦城疗伤药市场，后因萧家凝血散而人气大降",
+    "confidence": 0.95,
+    "firstChapter": 70,
+    "lastChapter": 79,
+    "chapterAppearances": [
+      70,
+      79
+    ]
+  },
+  {
+    "name": "萧家后山山洞",
+    "aliases": [
+      "后山峭壁山洞",
+      "萧家后山峭壁"
+    ],
+    "description": "萧家后山峭壁下一处隐蔽的修炼山洞，仅一米多宽，对面云雾缭绕可俯瞰魔兽山脉，是萧炎突破斗者与炼制丹药的秘密修炼场所",
+    "confidence": 0.95,
+    "firstChapter": 65,
+    "lastChapter": 73,
+    "chapterAppearances": [
+      65,
+      66,
+      67,
+      68,
+      69,
+      72,
+      73
+    ]
+  },
+  {
+    "name": "萧家议事厅",
+    "aliases": [
+      "会议厅",
+      "议事大厅"
+    ],
+    "description": "萧家族内高层议事场所，萧战、长老及族中重要人物在此商讨家族事务",
+    "confidence": 0.95,
+    "firstChapter": 69,
+    "lastChapter": 81,
+    "chapterAppearances": [
+      69,
+      71,
+      74,
+      75,
+      81
+    ]
+  },
+  {
+    "name": "加列家族",
+    "aliases": [
+      "加列家族大厅"
+    ],
+    "description": "乌坦城三大家族之一，加列毕所统领的家族，与萧家长期对立，曾雇佣柳席为炼药师",
+    "confidence": 0.95,
+    "firstChapter": 80,
+    "lastChapter": 90,
+    "chapterAppearances": [
+      80,
+      89,
+      90
+    ]
+  },
+  {
+    "name": "迦南学院",
+    "aliases": [
+      "学院"
+    ],
+    "description": "斗气大陆上著名的高级学院，萧炎即将前往报名的目标院校，传说院中藏有异火榜排名第十四的陨落心炎",
+    "confidence": 0.9,
+    "firstChapter": 37,
+    "lastChapter": 68,
+    "chapterAppearances": [
+      37,
+      38,
+      56,
+      68
+    ]
+  },
+  {
+    "name": "训练场",
+    "aliases": [
+      "青石训练场",
+      "家族训练场",
+      "巨大训练场"
+    ],
+    "description": "萧家用于家族年轻一辈斗之气测试和比试的场所，设有黑石碑和高台，是萧家举行测验和成人仪式的重要场地",
+    "confidence": 0.95,
+    "firstChapter": 30,
+    "lastChapter": 35,
+    "chapterAppearances": [
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ]
+  },
+  {
+    "name": "高台",
+    "aliases": [
+      "高高的木台",
+      "木台",
+      "高台"
+    ],
+    "description": "萧家训练场中央用于举行成人仪式和重要比试的高大木制平台，由巨木所铸，萧炎的成人仪式复测和与萧宁、萧玉的对决均在此进行",
+    "confidence": 0.95,
+    "firstChapter": 31,
+    "lastChapter": 45,
+    "chapterAppearances": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+    ]
+  },
+  {
+    "name": "斗气阁",
+    "aliases": [
+      "斗气阁",
+      "楼阁",
+      "阁楼"
+    ],
+    "description": "萧家最重要的禁地，存放着家族几百年来所收集的斗气功法，防守极为森严，由冷面人萧旱管理，仅在成人仪式后才会对族人短暂开放，内部分火道、风道等不同属性通道",
+    "confidence": 0.95,
+    "firstChapter": 48,
+    "lastChapter": 51,
+    "chapterAppearances": [
+      48,
+      49,
+      50,
+      51
+    ]
+  },
+  {
+    "name": "后山",
+    "aliases": [
+      "萧家后山",
+      "后山小森林",
+      "后山山顶",
+      "小密林",
+      "小森林",
+      "家族后山",
+      "山崖之颠",
+      "山顶",
+      "后山顶"
+    ],
+    "description": "萧家后方的山岭，森林茂密，是萧炎日常修炼斗技和与薰儿对练的场所，萧炎曾多次在此处练习八极崩等斗技，也在此处与萧玉发生冲突",
+    "confidence": 0.95,
+    "firstChapter": 8,
+    "lastChapter": 53,
+    "chapterAppearances": [
+      8,
+      10,
+      18,
+      19,
+      26,
+      36,
+      46,
+      47,
+      52,
+      53
+    ]
+  },
+  {
+    "name": "候客厅",
+    "aliases": [
+      "候客厅",
+      "鉴宝室附近"
+    ],
+    "description": "米特尔拍卖场中接待贵宾和神秘客户的场所，神秘炼药师（药老）多次在此与雅妃、谷尼进行交接",
+    "confidence": 0.8,
+    "firstChapter": 54,
+    "lastChapter": 60,
+    "chapterAppearances": [
+      54,
+      60
+    ]
+  },
+  {
+    "name": "加玛帝国",
+    "aliases": [
+      "帝国"
+    ],
+    "description": "斗气大陆上的泱泱大国，乌坦城即位于此帝国东部，帝国内有三大家族和云岚宗等强大势力，斗皇级别的强者在帝国中极为稀少",
+    "confidence": 0.95,
+    "firstChapter": 4,
+    "lastChapter": 56,
+    "chapterAppearances": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      21,
+      24,
+      40,
+      56
+    ]
+  },
+  {
+    "name": "云岚宗",
+    "aliases": [
+      "宗门",
+      "云岚宗门",
+      "云韵门下"
+    ],
+    "description": "加玛帝国强大的宗门势力，纳兰嫣然的师门所在，宗内有丹王古河等强者，宗门势力庞大，宗主的弟子在加玛帝国地位尊崇",
+    "confidence": 0.97,
+    "firstChapter": 4,
+    "lastChapter": 56,
+    "chapterAppearances": [
+      4,
+      5,
+      6,
+      7,
+      53,
+      56
+    ]
+  },
+  {
+    "name": "斗气大陆",
+    "aliases": [
+      "大陆"
+    ],
+    "description": "斗气修炼文明发达的大陆，没有魔法，斗气为主调，斗气功法分天地玄黄四阶十二级，种族林立，地域辽阔，充满奇遇，强者为尊",
+    "confidence": 0.99,
+    "firstChapter": 2,
+    "lastChapter": 24,
+    "chapterAppearances": [
+      2,
+      6,
+      8,
+      9,
+      11,
+      14,
+      15,
+      18,
+      20,
+      21,
+      24
+    ]
+  },
+  {
+    "name": "坊市",
+    "aliases": [
+      "中型坊市",
+      "乌坦城坊市"
+    ],
+    "description": "乌坦城中的中型交易场所，由萧家把持并维持秩序与安全，佣兵和商人在此摆摊交易需向家族缴纳佣金，门口有萧家护卫把守",
+    "confidence": 0.92,
+    "firstChapter": 11,
+    "lastChapter": 13,
+    "chapterAppearances": [
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "name": "斗技堂",
+    "aliases": [
+      "萧家斗技堂"
+    ],
+    "description": "萧家存放家族斗技的场所，分为东西两部分，东部存放斗技卷轴，西部为训练场，萧炎在此研习碎石掌等斗技并目睹薰儿与萧宁的比试",
+    "confidence": 0.9,
+    "firstChapter": 15,
+    "lastChapter": 18,
+    "chapterAppearances": [
+      15,
+      16,
+      17,
+      18
+    ]
+  },
+  {
+    "name": "魔兽山脉",
+    "aliases": [
+      "魔兽山脉"
+    ],
+    "description": "加玛帝国闻名的山脉，雾气笼罩，险峻非常，位于乌坦城附近，背靠此山使乌坦城跻身帝国大城市之列，是魔兽栖息之地",
+    "confidence": 0.88,
+    "firstChapter": 8,
+    "lastChapter": 8,
+    "chapterAppearances": [
+      8
+    ]
+  },
+  {
+    "name": "迎客大厅",
+    "aliases": [
+      "大厅",
+      "萧家大厅",
+      "肃穆的迎客大厅"
+    ],
+    "description": "萧家中宽敞肃穆的会客大厅，上方设有族长与长老之位，下方坐家族长辈与杰出年轻一辈，是萧战接待云岚宗葛叶一行人、宣布重大决定之处",
+    "confidence": 0.93,
+    "firstChapter": 3,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "name": "纳兰家族",
+    "aliases": [
+      "纳兰家"
+    ],
+    "description": "加玛帝国狮心元帅纳兰桀所在的家族，纳兰嫣然的家族，与萧家同为加玛三巨头之一，在帝国军界商界等皆有势力",
+    "confidence": 0.85,
+    "firstChapter": 4,
+    "lastChapter": 5,
+    "chapterAppearances": [
+      4,
+      5
+    ]
+  }
+]

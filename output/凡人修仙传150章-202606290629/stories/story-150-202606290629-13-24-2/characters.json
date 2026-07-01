@@ -1,0 +1,380 @@
+{
+  "storyId": "story-150-202606290629-13-24-2",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "韩师",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩师 is connected to the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 13,
+      "lastMentionChapter": 24,
+      "keyActions": [
+        "“韩师弟，不知道你是在那位师叔门下修行，现在闭关出来想必功力大进了吧？",
+        "“是吗，韩师兄可真走运啊，以后在门内的地位一定很高，前途远大，希望有机会的话，师兄能多提携一下小弟。",
+        "“韩师兄，一看就不是池中之物，曰后飞黄腾达，不在话下。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "韩师 appears in \"异象起 - 惊魂定\" as a protagonist tied to the conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩师，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“韩师弟，不知道你是在那位师叔门下修行，现在闭关出来想必功力大进了吧？",
+        "“是吗，韩师兄可真走运啊，以后在门内的地位一定很高，前途远大，希望有机会的话，师兄能多提携一下小弟。",
+        "“韩师兄，一看就不是池中之物，曰后飞黄腾达，不在话下。"
+      ],
+      "sourceChapters": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceRangeHint": "chapters 13-24"
+    },
+    {
+      "name": "韩师兄",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩师兄 is connected to the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 13,
+      "lastMentionChapter": 24,
+      "keyActions": [
+        "“是吗，韩师兄可真走运啊，以后在门内的地位一定很高，前途远大，希望有机会的话，师兄能多提携一下小弟。",
+        "“韩师兄，一看就不是池中之物，曰后飞黄腾达，不在话下。",
+        "韩立听到他说话的口气大变，自己也从韩师弟一下变成了韩师兄，心里有些好笑。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩师兄 appears in \"异象起 - 惊魂定\" as a supporting tied to the conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩师兄，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“是吗，韩师兄可真走运啊，以后在门内的地位一定很高，前途远大，希望有机会的话，师兄能多提携一下小弟。",
+        "“韩师兄，一看就不是池中之物，曰后飞黄腾达，不在话下。",
+        "韩立听到他说话的口气大变，自己也从韩师弟一下变成了韩师兄，心里有些好笑。"
+      ],
+      "sourceChapters": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceRangeHint": "chapters 13-24"
+    },
+    {
+      "name": "韩师弟",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩师弟 is connected to the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 13,
+      "lastMentionChapter": 24,
+      "keyActions": [
+        "“韩师弟，不知道你是在那位师叔门下修行，现在闭关出来想必功力大进了吧？",
+        "韩立听到他说话的口气大变，自己也从韩师弟一下变成了韩师兄，心里有些好笑。",
+        "“我叫韩立，是墨大夫的亲传弟子，你武功这么高，叫我韩师弟就行了。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩师弟 appears in \"异象起 - 惊魂定\" as a supporting tied to the conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩师弟，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“韩师弟，不知道你是在那位师叔门下修行，现在闭关出来想必功力大进了吧？",
+        "韩立听到他说话的口气大变，自己也从韩师弟一下变成了韩师兄，心里有些好笑。",
+        "“我叫韩立，是墨大夫的亲传弟子，你武功这么高，叫我韩师弟就行了。"
+      ],
+      "sourceChapters": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceRangeHint": "chapters 13-24"
+    },
+    {
+      "name": "韩立还",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立还 is connected to the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 13,
+      "lastMentionChapter": 24,
+      "keyActions": [
+        "张铁对“象甲功”后几层的恐惧，韩立还是能理解的。",
+        "”韩立还是关心自己刚才提出的问题。",
+        "自己无缘无故的怎么会走火入魔，韩立还是觉得有点纳闷。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立还 appears in \"异象起 - 惊魂定\" as a supporting tied to the conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立还，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "张铁对“象甲功”后几层的恐惧，韩立还是能理解的。",
+        "”韩立还是关心自己刚才提出的问题。",
+        "自己无缘无故的怎么会走火入魔，韩立还是觉得有点纳闷。"
+      ],
+      "sourceChapters": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceRangeHint": "chapters 13-24"
+    },
+    {
+      "name": "韩立并",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立并 is connected to the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 13,
+      "lastMentionChapter": 24,
+      "keyActions": [
+        "但韩立并不担心。",
+        "很明显，韩立并不是什么天纵奇才，没了药物的辅助，他修炼的进度彻底停滞了。",
+        "韩立并不知道，这次令他差点没命的麻烦并不是“走火入魔”，而是修道之人的“心魔入侵”。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立并 appears in \"异象起 - 惊魂定\" as a supporting tied to the conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立并，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "但韩立并不担心。",
+        "很明显，韩立并不是什么天纵奇才，没了药物的辅助，他修炼的进度彻底停滞了。",
+        "韩立并不知道，这次令他差点没命的麻烦并不是“走火入魔”，而是修道之人的“心魔入侵”。"
+      ],
+      "sourceChapters": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceRangeHint": "chapters 13-24"
+    },
+    {
+      "name": "韩立才",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立才 is connected to the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 13,
+      "lastMentionChapter": 24,
+      "keyActions": [
+        "听到这里，韩立才恍然大悟，才知道山上与以前不大相同的缘由。",
+        "过了老半天，韩立才叹了一口气，停止了抚mo的动作，把目光也从平安符上移了开来。",
+        "等到内心平静了下来，韩立才站起身子，走到了坑的附近。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立才 appears in \"异象起 - 惊魂定\" as a supporting tied to the conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立才，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "听到这里，韩立才恍然大悟，才知道山上与以前不大相同的缘由。",
+        "过了老半天，韩立才叹了一口气，停止了抚mo的动作，把目光也从平安符上移了开来。",
+        "等到内心平静了下来，韩立才站起身子，走到了坑的附近。"
+      ],
+      "sourceChapters": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceRangeHint": "chapters 13-24"
+    },
+    {
+      "name": "金冬宝",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "金冬宝 is connected to the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 13,
+      "lastMentionChapter": 24,
+      "keyActions": [
+        "“我叫金冬宝，不过，韩师兄叫我小算盘就行了。",
+        "原地留下的金冬宝，还在莫名奇的发着呆，一时半会儿不知他所说的是什么意思。",
+        "他一想到金冬宝站在原地、呆呆愣住的样子，就忍不住心里想要大笑。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "金冬宝 appears in \"异象起 - 惊魂定\" as a supporting tied to the conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "金冬宝，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“我叫金冬宝，不过，韩师兄叫我小算盘就行了。",
+        "原地留下的金冬宝，还在莫名奇的发着呆，一时半会儿不知他所说的是什么意思。",
+        "他一想到金冬宝站在原地、呆呆愣住的样子，就忍不住心里想要大笑。"
+      ],
+      "sourceChapters": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceRangeHint": "chapters 13-24"
+    },
+    {
+      "name": "韩立微",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立微 is connected to the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 13,
+      "lastMentionChapter": 24,
+      "keyActions": [
+        "”韩立微微一笑，反问了他一句。",
+        "韩立微微一笑，不再说什么，主动向厉师兄告辞回去。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立微 appears in \"异象起 - 惊魂定\" as a supporting tied to the conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立微，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "”韩立微微一笑，反问了他一句。",
+        "韩立微微一笑，不再说什么，主动向厉师兄告辞回去。"
+      ],
+      "sourceChapters": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceRangeHint": "chapters 13-24"
+    },
+    {
+      "name": "韩立面",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立面 is connected to the story conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 13,
+      "lastMentionChapter": 24,
+      "keyActions": [
+        "这让韩立面对墨大夫时，很惭愧。",
+        "可以看出，他不想在韩立面前出丑，已尽量压低了自己的声音，但是这种非人的痛苦还是让他吼出了声。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立面 appears in \"异象起 - 惊魂定\" as a supporting tied to the conflict: 韩师必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立面，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "这让韩立面对墨大夫时，很惭愧。",
+        "可以看出，他不想在韩立面前出丑，已尽量压低了自己的声音，但是这种非人的痛苦还是让他吼出了声。"
+      ],
+      "sourceChapters": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceRangeHint": "chapters 13-24"
+    }
+  ]
+}

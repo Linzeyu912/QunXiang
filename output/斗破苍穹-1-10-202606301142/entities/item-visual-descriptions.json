@@ -1,0 +1,783 @@
+[
+  {
+    "entityType": "item",
+    "name": "聚气散",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "聚气散"
+        ],
+        "fields": [
+          "visualEffects",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.694,
+    "visualFields": {
+      "material": "望着玉匣子内；三位长老喜笑颜开的望着玉匣子中的聚气散",
+      "colorShape": "龙眼大小的药丸",
+      "condition": "",
+      "usage": "能使九段斗之气百分之百凝聚斗之气旋",
+      "visualEffects": "我还可以让你进入云岚宗修习高深斗气功法；斗气大陆",
+      "ownership": "从他手中传出来的聚气散；先前大厅中纳兰嫣然手中的聚气散的主人"
+    },
+    "visualDetails": {
+      "materialTexture": "通体碧绿，表面光滑温润，触手微凉",
+      "colorShape": "龙眼大小的圆润药丸",
+      "condition": "完好无损，珍贵至极",
+      "scale": "约龙眼大小",
+      "effects": "散发淡淡绿色光泽，异香弥漫",
+      "usage": "九段斗之气服用后百分之百凝聚斗之气旋，成为斗者"
+    },
+    "inferredFields": [
+      "colorShape",
+      "usage"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "望着玉匣子内；三位长老喜笑颜开的望着玉匣子中的聚气散，龙眼大小的药丸，通体碧绿，表面光滑温润，触手微凉，龙眼大小的圆润药丸，完好无损，珍贵至极，约龙眼大小，散发淡淡绿色光泽，异香弥漫，九段斗之气服用后百分之百凝聚斗之气旋，成为斗者，我还可以让你进入云岚宗修习高深斗气功法；斗气大陆，能使九段斗之气百分之百凝聚斗之气旋，从他手中传出来的聚气散；先前大厅中纳兰嫣然手中的聚气散的主人。",
+    "finalDescription": "望着玉匣子内；三位长老喜笑颜开的望着玉匣子中的聚气散，龙眼大小的药丸，通体碧绿，表面光滑温润，触手微凉，龙眼大小的圆润药丸，完好无损，珍贵至极，约龙眼大小，散发淡淡绿色光泽，异香弥漫，九段斗之气服用后百分之百凝聚斗之气旋，成为斗者，我还可以让你进入云岚宗修习高深斗气功法；斗气大陆，能使九段斗之气百分之百凝聚斗之气旋，从他手中传出来的聚气散；先前大厅中纳兰嫣然手中的聚气散的主人。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "古玉盒",
+    "aliases": [
+      "通体泛绿的古玉盒子"
+    ],
+    "missingFields": [
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "古玉盒",
+          "通体泛绿的古玉盒子"
+        ],
+        "otherMatchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.694,
+    "visualFields": {
+      "material": "一只通体泛绿的古玉盒子在手中凭空出现……",
+      "colorShape": "一只通体泛绿的古玉盒子在手中凭空出现……",
+      "condition": "",
+      "usage": "用于盛放聚气散",
+      "visualEffects": "凭空出现在手中",
+      "ownership": "一只通体泛绿的古玉盒子在手中凭空出现……"
+    },
+    "visualDetails": {
+      "materialTexture": "通体泛绿的古老玉石，触手温润，质地细腻",
+      "colorShape": "盒子造型古朴典雅，绿意盎然",
+      "condition": "完好，古色古香",
+      "scale": "约巴掌大小，可捧于掌中",
+      "effects": "葛叶以斗气催动戒指，凭空取出"
+    },
+    "inferredFields": [
+      "usage",
+      "visualEffects"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "一只通体泛绿的古玉盒子，古朴的玉石泛着温润的绿光，造型典雅庄重，触手细腻温凉。葛叶以斗气催动指上戒指，玉盒便凭空出现在掌心之中，神奇非凡。盒内盛放着珍贵的聚气散，打开时异香扑面而来，令人精神一振。",
+    "finalDescription": "一只通体泛绿的古玉盒子，古朴的玉石泛着温润的绿光，造型典雅庄重，触手细腻温凉。葛叶以斗气催动指上戒指，玉盒便凭空出现在掌心之中，神奇非凡。盒内盛放着珍贵的聚气散，打开时异香扑面而来，令人精神一振。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "青木剑诀",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "青木剑诀"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.694,
+    "visualFields": {
+      "material": "青木剑诀",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": "云岚宗高深功法"
+    },
+    "visualDetails": {
+      "materialTexture": "功法秘籍载体",
+      "colorShape": "无实体形态，以斗气催动",
+      "condition": "云岚宗传承功法",
+      "effects": "青色斗气汇聚成细小凌厉剑气，寒光闪烁，威力惊人"
+    },
+    "inferredFields": [
+      "ownership"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "云岚宗高深功法秘籍，习得后以斗气催动，可凝聚风属性斗气。当葛叶施展此功法时，鹰爪般锐利的双手猛地曲拢，青色斗气在指尖汇聚升腾，化作细小而凌厉的剑气，散发着森森寒光，空气中剑气纵横，威力惊人。此功法为云岚宗秘传，等级达玄阶低级，在加玛帝国享有盛名。",
+    "finalDescription": "云岚宗高深功法秘籍，习得后以斗气催动，可凝聚风属性斗气。当葛叶施展此功法时，鹰爪般锐利的双手猛地曲拢，青色斗气在指尖汇聚升腾，化作细小而凌厉的剑气，散发着森森寒光，空气中剑气纵横，威力惊人。此功法为云岚宗秘传，等级达玄阶低级，在加玛帝国享有盛名。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "狂狮怒罡",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "狂狮怒罡"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.469,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "不过高级斗气修炼功法常人很难得到；并且是玄阶中级的斗气功法",
+      "ownership": ""
+    },
+    "visualDetails": {
+      "materialTexture": "功法秘籍，以斗气催动",
+      "colorShape": "无实体形态，风属性斗气缭绕",
+      "condition": "萧家最高传承功法",
+      "effects": "脸庞汇聚虚幻狮头，威风凛凛，气势逼人"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家最顶层的斗气功法秘籍，等级达玄阶中级，属风属性，是只有族长才有资格修炼的镇族绝学。施展之际，青色斗气缭绕周身翻涌，最后隐隐约约在修炼者脸庞处汇聚成一个虚幻的狮头，威风凛凛，气势惊人，令见者心生敬畏。此功法是萧战的成名绝技，伴随他纵横斗气大陆多年。",
+    "finalDescription": "萧家最顶层的斗气功法秘籍，等级达玄阶中级，属风属性，是只有族长才有资格修炼的镇族绝学。施展之际，青色斗气缭绕周身翻涌，最后隐隐约约在修炼者脸庞处汇聚成一个虚幻的狮头，威风凛凛，气势惊人，令见者心生敬畏。此功法是萧战的成名绝技，伴随他纵横斗气大陆多年。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "llm"
+  },
+  {
+    "entityType": "item",
+    "name": "黑色古戒",
+    "aliases": [
+      "古朴戒指",
+      "戒指"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "ownership",
+          "condition",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "古朴戒指",
+          "戒指"
+        ],
+        "fields": [
+          "condition",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "黑色古戒"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "condition",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "古玉盒",
+          "通体泛绿的古玉盒子"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "古朴戒指",
+          "戒指"
+        ],
+        "fields": [
+          "ownership",
+          "colorShape",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "古朴戒指",
+          "戒指"
+        ],
+        "fields": [
+          "ownership",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "戒指"
+        ],
+        "fields": [
+          "colorShape",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false,
+    "tier": "supporting",
+    "importanceScore": 0.425,
+    "visualFields": {
+      "material": "两株洗骨花；还有一颗木系的一级魔核",
+      "colorShape": "手指上有一颗黑色戒指; 其上还绘有些模糊的纹路; 手指中的黑色古戒; 手指上那古朴的黑色戒指; 陡然停在了右手之上……的黑色古朴戒指; 径直投进了黑色戒指之中",
+      "condition": "戒指很是古朴; 抚摸着手指上的古朴戒指; 手指上那古朴的黑色戒指; 陡然停在了右手之上……的黑色古朴戒指; 此时正悬浮着一颗漆黑的古朴戒指",
+      "usage": "他已经佩戴了十年；刚刚知晓自己三年来受辱的罪魁祸首竟然便是一直佩戴的戒指",
+      "visualEffects": "愣愣的望着那消失在雾气中的戒指",
+      "ownership": "手指上有一颗黑色戒指; 抚摸着手指上的古朴戒指; 手指上那古朴的黑色戒指; 葛叶伸手抹了抹手指上的一枚戒指; 萧炎的目光; 不假思索的利马扯下手指上的戒指"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧炎母亲临死前遗留给他的唯一礼物，古朴的黑色戒指，不知是何材料所铸，上有模糊纹路; 戒指中寄居着神秘老者药老的灵魂体，曾吸取萧炎三年斗之气导致其沦为废物; 药老现身时会自动飞回萧炎手中",
+    "finalDescription": "萧炎母亲临死前遗留给他的唯一礼物，古朴的黑色戒指，不知是何材料所铸，上有模糊纹路; 戒指中寄居着神秘老者药老的灵魂体，曾吸取萧炎三年斗之气导致其沦为废物; 药老现身时会自动飞回萧炎手中",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "古朴书籍",
+    "aliases": [
+      "紫色古书",
+      "厚厚的书籍",
+      "古朴的书籍"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "厚厚的书籍"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "古朴的书籍"
+        ],
+        "fields": [
+          "condition",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.35,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "纤细的指尖再次翻开手中那本古朴的书籍",
+      "usage": "萧薰儿常在角落静静阅读",
+      "visualEffects": "",
+      "ownership": "萧熏儿微笑着合拢了手中厚厚的书籍；纤细的指尖再次翻开手中那本古朴的书籍"
+    },
+    "visualDetails": {
+      "materialTexture": "古朴厚实的纸张，泛黄的书面",
+      "colorShape": "厚本大书，开本适中",
+      "condition": "品相完好，边角微卷，显然被频繁翻阅",
+      "scale": "约两指厚，可捧于掌中",
+      "usage": "萧薰儿常在大厅角落静静阅读，小小年纪便有知性之美"
+    },
+    "inferredFields": [
+      "usage"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "一本厚本古朴的书籍，书面泛黄，边角微卷，显然被主人频繁翻阅，透着岁月沉淀的厚重感。少女纤细的指尖轻轻翻开书页，在大厅角落静静阅读的姿态如同一幅淡雅的仕女图。萧薰儿捧着此书时周身散发出一股独特的知性美感，小小年纪便有沉稳的书卷气，令人不由得心生赞叹。",
+    "finalDescription": "一本厚本古朴的书籍，书面泛黄，边角微卷，显然被主人频繁翻阅，透着岁月沉淀的厚重感。少女纤细的指尖轻轻翻开书页，在大厅角落静静阅读的姿态如同一幅淡雅的仕女图。萧薰儿捧着此书时周身散发出一股独特的知性美感，小小年纪便有沉稳的书卷气，令人不由得心生赞叹。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "item",
+    "name": "魔石碑",
+    "aliases": [
+      "测验魔石碑"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑",
+          "测验魔石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑",
+          "测验魔石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "魔石碑"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.306,
+    "visualFields": {
+      "material": "望着测验魔石碑上面闪亮得甚至有些刺眼的五个大字; 测验魔石碑之旁; 小手轻车熟路的触摸着漆黑的魔石碑; 漆黑的魔石碑之上再次亮起了光芒……; 名为萧薰儿的少女行到魔石碑之前; 然后轻触着石碑……",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "漆黑的魔石碑之上再次亮起了光芒……",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家用于测试斗之气的黑色石碑，能够显示测试者的斗之气段数和级别; 萧炎在上面显示三段低级，纳兰嫣然触摸时显示三星斗者",
+    "finalDescription": "萧家用于测试斗之气的黑色石碑，能够显示测试者的斗之气段数和级别; 萧炎在上面显示三段低级，纳兰嫣然触摸时显示三星斗者",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "神秘功法",
+    "aliases": [
+      "能进化的功法",
+      "黄阶低级功法"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.269,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "药老承诺传给萧炎的神秘功法，品阶只有黄阶低级，但声称具有进化能力，从未有人修炼过; 萧炎需要先成为斗者才能修习",
+    "finalDescription": "药老承诺传给萧炎的神秘功法，品阶只有黄阶低级，但声称具有进化能力，从未有人修炼过; 萧炎需要先成为斗者才能修习",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "黑色存金卡",
+    "aliases": [
+      "黑色卡片"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "黑色卡片"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.23099999999999998,
+    "visualFields": {
+      "material": "",
+      "colorShape": "薰儿笑吟吟的递过来一张黑色卡片",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "普通的金币存储卡，最大值不能超过五千金币; 薰儿借给萧炎使用",
+    "finalDescription": "普通的金币存储卡，最大值不能超过五千金币; 薰儿借给萧炎使用",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "五纹紫金卡",
+    "aliases": [
+      "紫金卡片"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "五纹紫金卡"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "紫金卡片"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.23099999999999998,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "在斗气大陆上",
+      "ownership": "薰儿背后的紫金卡片"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "代表身份的金色卡片，需要斗灵实力或超然势力才有资格办理; 萧薰儿持有此卡，卡上有五道不同颜色的波纹",
+    "finalDescription": "代表身份的金色卡片，需要斗灵实力或超然势力才有资格办理; 萧薰儿持有此卡，卡上有五道不同颜色的波纹",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "item",
+    "name": "休书",
+    "aliases": [
+      "休证",
+      "血手契约"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.23099999999999998,
+    "visualFields": {
+      "material": "",
+      "colorShape": "",
+      "condition": "",
+      "usage": "",
+      "visualEffects": "",
+      "ownership": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧炎在手掌划出血口后亲笔写下的休书，将纳兰嫣然逐出萧家，结束了两人指腹为婚的婚约",
+    "finalDescription": "萧炎在手掌划出血口后亲笔写下的休书，将纳兰嫣然逐出萧家，结束了两人指腹为婚的婚约",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  }
+]

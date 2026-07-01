@@ -1,0 +1,172 @@
+{
+  "storyId": "story-100-202606230638-4-6-1",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "props": [
+    {
+      "name": "聚气散",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求",
+      "ownerOrHolder": "纳兰嫣然",
+      "firstAppearance": "chapters 4-6",
+      "keyMoments": [
+        "第4章 聚气散",
+        "第5章 聚气散",
+        "三位长老好奇的伸过头，望着玉匣子内，身体猛的一震，惊声道：“聚气散？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "聚气散 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "聚气散, prop type: other, story function: 葛叶提出退婚请求, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "第4章 聚气散",
+        "第5章 聚气散",
+        "三位长老好奇的伸过头，望着玉匣子内，身体猛的一震，惊声道：“聚气散？"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6"
+    },
+    {
+      "name": "青木剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "青木剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求",
+      "ownerOrHolder": "纳兰嫣然",
+      "firstAppearance": "chapters 4-6",
+      "keyMoments": [
+        "云岚宗高深功法，青木剑诀！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "青木剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "青木剑, prop type: weapon, story function: 葛叶提出退婚请求, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "云岚宗高深功法，青木剑诀！"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6"
+    },
+    {
+      "name": "戒指",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求",
+      "ownerOrHolder": "纳兰嫣然",
+      "firstAppearance": "chapters 4-6",
+      "keyMoments": [
+        "说着，葛叶伸手抹了抹手指上的一枚戒指，一只通体泛绿的古玉盒子在手中凭空出现……",
+        "葛叶手掌向后一探，稳稳的抓住匣子，苦笑了一声，将之收进了戒指内。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "戒指 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "戒指, prop type: other, story function: 葛叶提出退婚请求, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "说着，葛叶伸手抹了抹手指上的一枚戒指，一只通体泛绿的古玉盒子在手中凭空出现……",
+        "葛叶手掌向后一探，稳稳的抓住匣子，苦笑了一声，将之收进了戒指内。"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6"
+    },
+    {
+      "name": "丹药",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求",
+      "ownerOrHolder": "纳兰嫣然",
+      "firstAppearance": "chapters 4-6",
+      "keyMoments": [
+        "炼药师，顾名思义，他们能够炼制出种种提升实力的神奇丹药，任何一名炼药师，都将会被各方势力不惜代价，竭力拉拢，身份地位显赫之极！",
+        "炼制丹药，最重要的三种条件：材料，火种，灵魂感知力！",
+        "火种，也就是炼药时所需要的火焰，炼制丹药，不可能用普通火，而必须使用由火属性斗气催化而出的斗气火焰，当然，世间充斥着天地异火，一些实力强横的炼药师，也会取而用之，用这些异火来炼药，不仅成功率会高上许多！"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "丹药 functions as a other in \"退婚冲突\", connected to: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "丹药, prop type: other, story function: 葛叶提出退婚请求, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "炼药师，顾名思义，他们能够炼制出种种提升实力的神奇丹药，任何一名炼药师，都将会被各方势力不惜代价，竭力拉拢，身份地位显赫之极！",
+        "炼制丹药，最重要的三种条件：材料，火种，灵魂感知力！",
+        "火种，也就是炼药时所需要的火焰，炼制丹药，不可能用普通火，而必须使用由火属性斗气催化而出的斗气火焰，当然，世间充斥着天地异火，一些实力强横的炼药师，也会取而用之，用这些异火来炼药，不仅成功率会高上许多！"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6"
+    },
+    {
+      "name": "长剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "长剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求",
+      "ownerOrHolder": "纳兰嫣然",
+      "firstAppearance": "chapters 4-6",
+      "keyMoments": [
+        "“啊……”被少年狰狞模样吓了一跳，少女急忙后退一步，一旁的那位英俊青年，豁然的拔出长剑，目光阴冷的直指萧炎。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "长剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "长剑, prop type: weapon, story function: 葛叶提出退婚请求, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“啊……”被少年狰狞模样吓了一跳，少女急忙后退一步，一旁的那位英俊青年，豁然的拔出长剑，目光阴冷的直指萧炎。"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6"
+    },
+    {
+      "name": "短剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "短剑 supports, reveals, or complicates the story conflict: 葛叶提出退婚请求",
+      "ownerOrHolder": "纳兰嫣然",
+      "firstAppearance": "chapters 4-6",
+      "keyMoments": [
+        "萧炎右手骤然抽出桌上的短剑，锋利的剑刃，在左手掌之上，猛然划出一道血口……"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "短剑 functions as a weapon in \"退婚冲突\", connected to: 葛叶提出退婚请求",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "短剑, prop type: weapon, story function: 葛叶提出退婚请求, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "萧炎右手骤然抽出桌上的短剑，锋利的剑刃，在左手掌之上，猛然划出一道血口……"
+      ],
+      "sourceChapters": [
+        4,
+        5,
+        6
+      ],
+      "sourceRangeHint": "chapters 4-6"
+    }
+  ]
+}

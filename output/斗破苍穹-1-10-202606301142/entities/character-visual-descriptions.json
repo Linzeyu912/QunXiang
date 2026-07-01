@@ -1,0 +1,2887 @@
+[
+  {
+    "entityType": "character",
+    "name": "萧炎",
+    "aliases": [
+      "炎儿",
+      "萧炎哥哥",
+      "萧炎哥"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "clothing",
+          "signatureItems",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎",
+          "炎儿"
+        ],
+        "otherMatchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament",
+          "abilityVisuals",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎",
+          "炎儿"
+        ],
+        "otherMatchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "statusMarkers",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "clothing",
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament",
+          "clothing"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "萧熏儿",
+          "熏儿",
+          "萧媚"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament",
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "萧熏儿",
+          "熏儿"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "熏儿"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "萧炎",
+          "萧炎哥哥",
+          "萧炎哥"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "英俊青年"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers",
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "炎儿"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament",
+          "abilityVisuals",
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "萧战",
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "炎儿"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament",
+          "clothing",
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament",
+          "statusMarkers",
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems",
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems",
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "body",
+          "temperament",
+          "appearance",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "clothing",
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "药老"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers",
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament",
+          "clothing"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "clothing"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "萧熏儿",
+          "熏儿"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "otherMatchedNames": [
+          "熏儿"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false,
+    "visualFields": {
+      "appearance": "美丽的俏脸上; 脸庞狰狞; 脸庞再次回复了平日的落寞; 萧炎脸庞上的笑容更浓了一分; 唉……”望着萧炎那依旧有些稚嫩的清秀脸庞; 她的容貌",
+      "clothing": "青色劲装",
+      "body": "老者身形降下地面",
+      "temperament": "落寞、坚毅、隐忍",
+      "signatureItems": "手指上戴着一枚黑色古朴戒指",
+      "abilityVisuals": "萧炎的灵魂; 不过高级斗气修炼功法常人很难得到; 流传在普通阶层的功法; 顶多只是黄阶功法; 最为顶层的功法; 并且是玄阶中级的斗气功法",
+      "statusMarkers": "便是只有族长才有资格修炼的：狂狮怒罡; 至少需要成为一名真正的斗者之后; 这是母亲临死前送给他的唯一礼物; 母亲的遗物; 还真是辜负母亲的期望了……; 对着漆黑的树林温暖的笑道：“父亲"
+    },
+    "visualDetails": {
+      "bodyBuild": "少年身材修长挺拔",
+      "faceShape": "清秀的瓜子脸，略显稚嫩",
+      "temperament": "落寞中透着与年龄不符的坚毅，眼神内敛而沉稳",
+      "hair": "乌黑长发，常随意束在脑后",
+      "eyes": "漆黑的眼睛，目光平静时深沉如潭",
+      "nose": "高挺的鼻梁",
+      "lips": "薄唇紧抿",
+      "skin": "肤色偏白，透着几分清秀",
+      "makeupStyling": "无妆，纯素面容"
+    },
+    "inferredFields": [],
+    "summarizedFields": [
+      "clothing",
+      "temperament",
+      "signatureItems"
+    ],
+    "enhancedDescription": "少年身材修长挺拔，一张清秀的瓜子脸上嵌着深邃如夜空的黑瞳，高挺的鼻梁下薄唇紧抿，透着与年龄不符的坚毅。乌黑长发随意束在脑后，几缕碎发垂落额前。身着青色劲装，袖口干净利落，透着习武之人的干练气质。左手无名指上戴着一枚古朴的黑色戒指，戒面光滑而神秘。少年眉宇间常笼罩着一层落寞，与周围热闹的人群格格不入，眼观鼻、鼻观心，安静得像一座孤岛。",
+    "finalDescription": "少年身材修长挺拔，一张清秀的瓜子脸上嵌着深邃如夜空的黑瞳，高挺的鼻梁下薄唇紧抿，透着与年龄不符的坚毅。乌黑长发随意束在脑后，几缕碎发垂落额前。身着青色劲装，袖口干净利落，透着习武之人的干练气质。左手无名指上戴着一枚古朴的黑色戒指，戒面光滑而神秘。少年眉宇间常笼罩着一层落寞，与周围热闹的人群格格不入，眼观鼻、鼻观心，安静得像一座孤岛。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "llm"
+  },
+  {
+    "entityType": "character",
+    "name": "纳兰嫣然",
+    "aliases": [
+      "嫣然"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers",
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "otherMatchedNames": [
+          "萧族长",
+          "葛叶"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "嫣然"
+        ],
+        "otherMatchedNames": [
+          "萧族长"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "otherMatchedNames": [
+          "萧战",
+          "葛叶"
+        ],
+        "fields": [
+          "clothing",
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "otherMatchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "otherMatchedNames": [
+          "萧炎",
+          "萧战"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "body"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "otherMatchedNames": [
+          "云韵"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false,
+    "visualFields": {
+      "appearance": "萧战脸色淡漠的望着低头不言的纳兰嫣然; 当下气得小脸有些铁青; 那张清秀的稚嫩小脸; 小脸微沉的道; 也不理会那俏脸冰寒的纳兰嫣然",
+      "clothing": "青色斗气在鹰爪中汇聚而起",
+      "body": "有些茫然的盯着那道逐渐消失的背影",
+      "temperament": "现在却是狰狞得有些可怖……；带着淡淡的冷漠",
+      "signatureItems": "却是犹如刀割在心头一般",
+      "abilityVisuals": "在斗气大陆这么多年的历史中；都早已经成为了斗气修炼界中的泰山北斗；青色斗气在鹰爪中汇聚而起",
+      "statusMarkers": "年仅十五岁的斗师; 不过想起宗主对纳兰嫣然的疼爱; 而且宗主大人对嫣然的期望也是很高; 现在基本上已经是把她当做云岚宗下一任的宗主在培养……而因为一些特殊的规矩; 宗主传人在未成为正式宗主之前; 宗主大人在询问过嫣然之后"
+    },
+    "visualDetails": {
+      "bodyBuild": "身形纤细的少女",
+      "faceShape": "美丽的俏脸，冷艳清雅，五官精致",
+      "temperament": "冷艳高傲，宛如公主般骄傲，气质凌厉",
+      "hair": "乌黑长发",
+      "eyes": "眼神冷艳",
+      "skin": "肌肤白皙",
+      "makeupStyling": "淡妆，气质清雅",
+      "clothingStyle": "云岚宗宗门服饰"
+    },
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "少女身形纤细婀娜，一张冷艳的俏脸上五官精致，透着与年龄不符的凌厉与骄傲。乌黑长发随风轻摆，白皙的肌肤衬得她如冰雪美人。身着云岚宗宗门服饰，衣袂间隐隐有青色斗气流转。少女周身散发着一股拒人千里的冷漠气息，举手投足间尽显大宗弟子的傲气。当被激怒时，那张冷艳的小脸便会铁青一片，眉宇间透出几分狰狞，生动诠释了大小姐脾气。",
+    "finalDescription": "少女身形纤细婀娜，一张冷艳的俏脸上五官精致，透着与年龄不符的凌厉与骄傲。乌黑长发随风轻摆，白皙的肌肤衬得她如冰雪美人。身着云岚宗宗门服饰，衣袂间隐隐有青色斗气流转。少女周身散发着一股拒人千里的冷漠气息，举手投足间尽显大宗弟子的傲气。当被激怒时，那张冷艳的小脸便会铁青一片，眉宇间透出几分狰狞，生动诠释了大小姐脾气。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "llm"
+  },
+  {
+    "entityType": "character",
+    "name": "萧薰儿",
+    "aliases": [
+      "薰儿",
+      "熏儿",
+      "薰儿小姐",
+      "萧熏儿"
+    ],
+    "missingFields": [
+      "signatureItems"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "薰儿",
+          "薰儿小姐"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "薰儿",
+          "薰儿小姐"
+        ],
+        "fields": [
+          "appearance",
+          "statusMarkers",
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "萧薰儿",
+          "薰儿"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "萧薰儿",
+          "薰儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎",
+          "萧炎哥哥",
+          "萧炎哥"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "萧薰儿",
+          "薰儿"
+        ],
+        "fields": [
+          "body"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧熏儿",
+          "熏儿"
+        ],
+        "fields": [
+          "statusMarkers",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧熏儿",
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧熏儿",
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧熏儿",
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎",
+          "萧炎哥哥",
+          "萧炎哥"
+        ],
+        "fields": [
+          "appearance",
+          "body"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎",
+          "嫣然"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧熏儿",
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎",
+          "萧炎哥哥",
+          "萧炎哥"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎",
+          "萧炎哥哥",
+          "萧炎哥"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧薰儿",
+          "薰儿"
+        ],
+        "fields": [
+          "clothing",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "薰儿"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧薰儿",
+          "薰儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎",
+          "萧炎哥哥",
+          "萧炎哥"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "萧熏儿",
+          "熏儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "薰儿"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "薰儿"
+        ],
+        "fields": [
+          "clothing",
+          "body"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "薰儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "abilityVisuals",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "薰儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "clothing"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "薰儿"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "借钱",
+        "matchedNames": [
+          "薰儿"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.9,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "一旁的中年测验员漠然的脸庞上竟然也是罕见的露出了一丝笑意; 略微稚嫩的嗓音; 萧薰儿纤细的眉毛微微皱了皱; 少女白皙的俏脸; 望着萧熏儿那微笑的小脸; 小脸上露出可爱的小酒窝",
+      "clothing": "萧薰儿宛如一只紫色蝴蝶一般；换了一身得体的淡绿色装饰；薰儿笑吟吟的递过来一张黑色卡片",
+      "body": "站在原地望着少年那恍如与世隔绝的孤独背影；眨动着修长的睫毛在书中徘徊了片刻；一条紧腿长裤将那纤细而修长的美腿包裹得极为圆润",
+      "temperament": "淡雅从容、温柔、隐含冷漠",
+      "signatureItems": "随身携带一本厚本古朴书籍",
+      "abilityVisuals": "你应该便能凝聚斗气之旋；充满着活力与诱人的青春气息",
+      "statusMarkers": "恐怕非薰儿小姐莫属了; 对着少女略微恭声道：“薰儿小姐; 那么以十四岁年龄成为一名真正的斗者; 三位长老微愣; 除了父亲; 今天给父亲丢了那么大的面子"
+    },
+    "visualDetails": {
+      "bodyBuild": "纤细修长的少女",
+      "faceShape": "白皙的俏脸，俏美精致，略带稚嫩",
+      "temperament": "淡雅从容，温柔中蕴含一股隐晦的冷漠",
+      "hair": "长发随风轻摆",
+      "eyes": "修长的睫毛，双眸清亮，隐有金色火焰流动",
+      "nose": "小巧挺直",
+      "lips": "唇边常带浅浅笑意，有可爱的小酒窝",
+      "skin": "白皙如玉",
+      "makeupStyling": "淡妆，自然清新"
+    },
+    "inferredFields": [
+      "signatureItems"
+    ],
+    "summarizedFields": [
+      "temperament"
+    ],
+    "enhancedDescription": "少女纤细修长，白皙的俏脸上五官精致，纤细的眉毛如远山含黛，一双清亮的眼眸眨动着修长的睫毛，眼眸深处隐隐流动着神秘的金色火焰，令见者心生敬畏。小巧的鼻子下，唇边常浮现浅浅的笑容，两侧露出可爱的小酒窝，透着几分少女的娇憨。身着得体的淡绿色装饰，长裤紧裹纤细美腿，行走间宛如一只轻盈的蝴蝶。少女气质淡雅从容，在角落捧着厚厚的古朴书籍静静阅读，小小年纪便散发出一股知性的美感，然而那股独特的淡雅之中，又蕴含着一股隐晦的冷漠。",
+    "finalDescription": "少女纤细修长，白皙的俏脸上五官精致，纤细的眉毛如远山含黛，一双清亮的眼眸眨动着修长的睫毛，眼眸深处隐隐流动着神秘的金色火焰，令见者心生敬畏。小巧的鼻子下，唇边常浮现浅浅的笑容，两侧露出可爱的小酒窝，透着几分少女的娇憨。身着得体的淡绿色装饰，长裤紧裹纤细美腿，行走间宛如一只轻盈的蝴蝶。少女气质淡雅从容，在角落捧着厚厚的古朴书籍静静阅读，小小年纪便散发出一股知性的美感，然而那股独特的淡雅之中，又蕴含着一股隐晦的冷漠。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "character",
+    "name": "萧战",
+    "aliases": [
+      "萧叔叔",
+      "萧族长"
+    ],
+    "missingFields": [
+      "body",
+      "signatureItems"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "萧战"
+        ],
+        "otherMatchedNames": [
+          "萧炎",
+          "炎儿"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "appearance",
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧战",
+          "萧族长"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧族长"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧战",
+          "萧叔叔"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧族长"
+        ],
+        "otherMatchedNames": [
+          "嫣然",
+          "葛叶"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧族长"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然",
+          "葛叶"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧族长"
+        ],
+        "otherMatchedNames": [
+          "嫣然"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧战"
+        ],
+        "otherMatchedNames": [
+          "葛叶"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧战"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧族长"
+        ],
+        "otherMatchedNames": [
+          "葛叶"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "clothing",
+          "abilityVisuals",
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧战",
+          "萧族长"
+        ],
+        "otherMatchedNames": [
+          "炎儿"
+        ],
+        "fields": [
+          "statusMarkers",
+          "abilityVisuals",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "萧族长"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧战"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧战"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然",
+          "葛叶"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.8,
+    "needsReview": false,
+    "visualFields": {
+      "appearance": "便是萧战与三位脸色淡漠的老者; 望着萧战那阴沉至极的脸色; 最后竟然隐隐约约的在脸庞处汇聚成了一个虚幻的狮头; 轻咬了咬樱唇; 萧战脸庞淡漠; 恭身对着脸色漠然的萧战行了一礼",
+      "clothing": "淡淡的青色斗气",
+      "body": "",
+      "temperament": "威严、慈爱、愤怒",
+      "signatureItems": "",
+      "abilityVisuals": "淡淡的青色斗气；萧战身体上的斗气缓缓的收敛；日后也是斗气大陆的风云人物",
+      "statusMarkers": "他们是族中的长老; 权利不比族长小; 萧战以及三位长老; 微笑道：“萧族长; 萧族长; 这位小姐……”闻言"
+    },
+    "visualDetails": {
+      "bodyBuild": "身形魁梧健壮的中年男子",
+      "faceShape": "面容刚毅，不怒自威",
+      "temperament": "威严中带着对儿子的深沉慈爱，愤怒时气势惊人",
+      "eyes": "目光如炬，威严逼人",
+      "clothingStyle": "华贵衣衫"
+    },
+    "inferredFields": [],
+    "summarizedFields": [
+      "temperament"
+    ],
+    "enhancedDescription": "萧战身形魁梧健壮，是一位不怒自威的中年男子，面容刚毅，眉宇间透着久居上位者的威严气势。脸庞常作淡漠之色，然而谈及爱子时又可见温和笑意浮现。当愤怒之际，脸色阴沉至极，周身青色斗气缭绕翻涌，最后隐隐约约在脸庞处汇聚成一个虚幻的狮头，威风凛凛，震慑人心。身着华贵衣衫，举手投足间尽显一族之长的气度。",
+    "finalDescription": "萧战身形魁梧健壮，是一位不怒自威的中年男子，面容刚毅，眉宇间透着久居上位者的威严气势。脸庞常作淡漠之色，然而谈及爱子时又可见温和笑意浮现。当愤怒之际，脸色阴沉至极，周身青色斗气缭绕翻涌，最后隐隐约约在脸庞处汇聚成一个虚幻的狮头，威风凛凛，震慑人心。身着华贵衣衫，举手投足间尽显一族之长的气度。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "llm"
+  },
+  {
+    "entityType": "character",
+    "name": "药老",
+    "aliases": [],
+    "missingFields": [
+      "clothing",
+      "body"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "药老"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "药老"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "药老"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "药老"
+        ],
+        "fields": [
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "药老"
+        ],
+        "fields": [
+          "abilityVisuals"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "药老"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "药老"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "药老"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "药老"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.8,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "药老脸庞笑容缓缓收敛; 药老脸庞一抖; 盯着药老戏谑的脸庞; 瞧着药老认真的面孔; 药老脸色凝重的道",
+      "clothing": "月白衣袍",
+      "body": "",
+      "temperament": "略微沉默",
+      "signatureItems": "我先回戒指了",
+      "abilityVisuals": "才能显出我这功法的独特啊",
+      "statusMarkers": "还是等你成为一名斗者之时"
+    },
+    "visualDetails": {
+      "bodyBuild": "身形虚幻飘渺的老者",
+      "faceShape": "苍老的面容",
+      "temperament": "表情随和，时而戏谑，时而凝重认真",
+      "clothingStyle": "月白衣袍，胸口有标志"
+    },
+    "inferredFields": [
+      "clothing"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "虚幻飘渺的老者身形，身着月白衣袍，胸口处绣有某种标志，透着不凡的身份。苍老的面容上常挂着随和的神色，时而又浮现戏谑的笑意，让人难以捉摸。神情凝重时脸庞一肃，显得极为认真；沉默时周身气息幽深，仿佛随时会消散于虚无之中。老者寄居于萧炎的黑色古朴戒指内，每逢现身便凭空凝聚出虚幻身形，飘然若仙。",
+    "finalDescription": "虚幻飘渺的老者身形，身着月白衣袍，胸口处绣有某种标志，透着不凡的身份。苍老的面容上常挂着随和的神色，时而又浮现戏谑的笑意，让人难以捉摸。神情凝重时脸庞一肃，显得极为认真；沉默时周身气息幽深，仿佛随时会消散于虚无之中。老者寄居于萧炎的黑色古朴戒指内，每逢现身便凭空凝聚出虚幻身形，飘然若仙。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "character",
+    "name": "葛叶",
+    "aliases": [
+      "葛叶先生"
+    ],
+    "missingFields": [
+      "clothing",
+      "body",
+      "abilityVisuals"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "葛叶"
+        ],
+        "otherMatchedNames": [
+          "萧族长",
+          "嫣然"
+        ],
+        "fields": [
+          "statusMarkers",
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "葛叶"
+        ],
+        "otherMatchedNames": [
+          "萧族长",
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "葛叶"
+        ],
+        "otherMatchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "葛叶"
+        ],
+        "otherMatchedNames": [
+          "萧战",
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "葛叶"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "葛叶"
+        ],
+        "fields": [
+          "statusMarkers",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "葛叶"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "葛叶"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "葛叶"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "appearance",
+          "temperament"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.7,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "脸庞上的表情；咳……”葛叶脸色忽然出现了一抹尴尬；葛叶脸庞也顿时凝重了起来；惊恐的神色顷刻间覆盖了那苍老的面孔",
+      "clothing": "月白衣袍，胸口绣银色浅月和七颗金星",
+      "body": "",
+      "temperament": "一双双炽热的目光；惊恐的神色顷刻间覆盖了那苍老的面孔",
+      "signatureItems": "葛叶伸手抹了抹手指上的一枚戒指；将之收进了戒指内",
+      "abilityVisuals": "施展青木剑诀时青色斗气汇聚成凌厉剑气",
+      "statusMarkers": "还是宗主大人亲自开口……”葛叶轻笑了一声; 在提到宗主二字时; 上方的三位长老也是被葛叶的话震了震; 听着三位长老的惊声; 望着三位长老失态的模样"
+    },
+    "visualDetails": {
+      "bodyBuild": "身形精瘦的老者",
+      "faceShape": "苍老面容，鹰爪般锐利的双手",
+      "temperament": "精明干练，恭敬中带着几分紧张，惊恐时神色大变",
+      "clothingStyle": "月白衣袍，胸口绣银色浅月与七星金星"
+    },
+    "inferredFields": [
+      "clothing",
+      "abilityVisuals"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "身形精瘦的白袍老者，苍老的面容上刻着岁月的痕迹，一双鹰爪般的双手锐利而有力。老者身着月白衣袍，胸口处绣有银色浅月和七颗金星，彰显其七星大斗师的尊崇实力。面庞精明干练，在提到宗主时神色便显郑重。当施展云岚宗高深功法青木剑诀时，鹰爪中青色斗气汇聚而起，化作细小而凌厉的剑气，寒光闪烁，威力惊人。见萧薰儿眸中金色火焰后，惊恐的神色顷刻间覆盖了那苍老的面孔，令其仓皇逃离。",
+    "finalDescription": "身形精瘦的白袍老者，苍老的面容上刻着岁月的痕迹，一双鹰爪般的双手锐利而有力。老者身着月白衣袍，胸口处绣有银色浅月和七颗金星，彰显其七星大斗师的尊崇实力。面庞精明干练，在提到宗主时神色便显郑重。当施展云岚宗高深功法青木剑诀时，鹰爪中青色斗气汇聚而起，化作细小而凌厉的剑气，寒光闪烁，威力惊人。见萧薰儿眸中金色火焰后，惊恐的神色顷刻间覆盖了那苍老的面孔，令其仓皇逃离。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "character",
+    "name": "古河",
+    "aliases": [
+      "丹王古河",
+      "古河大人"
+    ],
+    "missingFields": [
+      "appearance",
+      "clothing",
+      "body",
+      "temperament",
+      "signatureItems",
+      "abilityVisuals"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "古河",
+          "古河大人"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "古河"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "古河",
+          "丹王古河"
+        ],
+        "otherMatchedNames": [
+          "纳兰嫣然",
+          "嫣然"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.32,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "",
+      "clothing": "",
+      "body": "",
+      "temperament": "",
+      "signatureItems": "",
+      "abilityVisuals": "",
+      "statusMarkers": "这是本宗名誉长老古河大人亲自所炼；早已晋入斗王之阶；便是一名六品的炼药师"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "云岚宗名誉长老，六品炼药师，在加玛帝国炼药界堪称第一人，一手炼药术神奇莫测，本身实力已晋入斗王之列，名列加玛帝国十大强者之一; 亲手炼制聚气散作为退婚赔礼",
+    "finalDescription": "云岚宗名誉长老，六品炼药师，在加玛帝国炼药界堪称第一人，一手炼药术神奇莫测，本身实力已晋入斗王之列，名列加玛帝国十大强者之一; 亲手炼制聚气散作为退婚赔礼",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "character",
+    "name": "萧媚",
+    "aliases": [],
+    "missingFields": [
+      "body",
+      "signatureItems",
+      "abilityVisuals"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "萧媚"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "萧媚"
+        ],
+        "fields": [
+          "clothing",
+          "temperament"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "萧媚"
+        ],
+        "fields": [
+          "statusMarkers",
+          "appearance"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.63,
+    "needsReview": false,
+    "visualFields": {
+      "appearance": "粉嫩娇舌轻轻的添了添红唇；盯着玉匣子的眸子眨也不眨……",
+      "clothing": "这名紫裙少女",
+      "body": "",
+      "temperament": "论起美貌与气质来",
+      "signatureItems": "",
+      "abilityVisuals": "",
+      "statusMarkers": "一跃成为家族百年之内最年轻的斗者；坐在父亲身旁的萧媚"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家年轻一辈少女，十四岁左右，清纯与妩媚并存，斗之气七段高级，家族种子级别人物; 最初与萧炎关系尚可，但见萧炎沦为废物后态度冷淡疏远",
+    "finalDescription": "萧家年轻一辈少女，十四岁左右，清纯与妩媚并存，斗之气七段高级，家族种子级别人物; 最初与萧炎关系尚可，但见萧炎沦为废物后态度冷淡疏远",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "character",
+    "name": "云韵",
+    "aliases": [
+      "云韵大人",
+      "云岚宗宗主"
+    ],
+    "missingFields": [
+      "appearance",
+      "clothing",
+      "body",
+      "temperament",
+      "signatureItems",
+      "abilityVisuals"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "云韵",
+          "云岚宗宗主"
+        ],
+        "otherMatchedNames": [
+          "萧战"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "云岚宗宗主"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.25,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "",
+      "clothing": "",
+      "body": "",
+      "temperament": "",
+      "signatureItems": "",
+      "abilityVisuals": "",
+      "statusMarkers": "云岚宗宗主云韵可是加玛帝国的大人物；是我的老师；云岚宗宗主"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "云岚宗宗主，加玛帝国的大人物，对纳兰嫣然极为宠爱，收其为亲传弟子并当做下一任宗主培养; 亲自同意纳兰嫣然前往萧家退婚",
+    "finalDescription": "云岚宗宗主，加玛帝国的大人物，对纳兰嫣然极为宠爱，收其为亲传弟子并当做下一任宗主培养; 亲自同意纳兰嫣然前往萧家退婚",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "character",
+    "name": "纳兰桀",
+    "aliases": [
+      "纳兰老爷子"
+    ],
+    "missingFields": [
+      "appearance",
+      "clothing",
+      "body",
+      "temperament",
+      "signatureItems",
+      "abilityVisuals",
+      "statusMarkers"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "",
+      "clothing": "",
+      "body": "",
+      "temperament": "",
+      "signatureItems": "",
+      "abilityVisuals": "",
+      "statusMarkers": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "加玛帝国狮心元帅，纳兰嫣然的爷爷，与萧炎的爷爷是生死好友，定下了萧炎与纳兰嫣然的指腹为婚; 性子桀骜，极度在乎承诺，即使萧炎名声极差也未曾派人悔婚",
+    "finalDescription": "加玛帝国狮心元帅，纳兰嫣然的爷爷，与萧炎的爷爷是生死好友，定下了萧炎与纳兰嫣然的指腹为婚; 性子桀骜，极度在乎承诺，即使萧炎名声极差也未曾派人悔婚",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "character",
+    "name": "墨管家",
+    "aliases": [
+      "青衫老者"
+    ],
+    "missingFields": [
+      "clothing",
+      "body",
+      "temperament",
+      "signatureItems",
+      "abilityVisuals"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "青衫老者"
+        ],
+        "fields": [
+          "appearance",
+          "statusMarkers"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "望着少年稚嫩的脸庞",
+      "clothing": "",
+      "body": "",
+      "temperament": "",
+      "signatureItems": "",
+      "abilityVisuals": "",
+      "statusMarkers": "以三少爷以前的天赋；恐怕早该成为一名出色的斗者了吧"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家老管家，青衫老者，负责照顾萧炎起居，对萧炎很是和善，对他的遭遇深感惋惜",
+    "finalDescription": "萧家老管家，青衫老者，负责照顾萧炎起居，对萧炎很是和善，对他的遭遇深感惋惜",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "character",
+    "name": "二长老",
+    "aliases": [
+      "黄袍老者"
+    ],
+    "missingFields": [
+      "appearance",
+      "clothing",
+      "body",
+      "temperament",
+      "signatureItems",
+      "abilityVisuals"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "二长老"
+        ],
+        "otherMatchedNames": [
+          "萧炎",
+          "萧战"
+        ],
+        "fields": [
+          "statusMarkers"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.17,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "",
+      "clothing": "",
+      "body": "",
+      "temperament": "",
+      "signatureItems": "",
+      "abilityVisuals": "",
+      "statusMarkers": "对着身旁的老者皱眉道：“二长老"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家三位长老之一，黄袍老者，与萧战关系不佳，在纳兰嫣然退婚时对萧炎百般刁难",
+    "finalDescription": "萧家三位长老之一，黄袍老者，与萧战关系不佳，在纳兰嫣然退婚时对萧炎百般刁难",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "character",
+    "name": "三长老",
+    "aliases": [],
+    "missingFields": [
+      "appearance",
+      "clothing",
+      "body",
+      "temperament",
+      "signatureItems"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "三长老"
+        ],
+        "fields": [
+          "statusMarkers",
+          "abilityVisuals"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "",
+      "clothing": "",
+      "body": "",
+      "temperament": "",
+      "signatureItems": "",
+      "abilityVisuals": "斗气缓缓附体",
+      "statusMarkers": "三位长老一滞；脾气暴躁的三长老"
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家三位长老之一，脾气暴躁，在萧炎阻拦退婚时试图对其出手",
+    "finalDescription": "萧家三位长老之一，脾气暴躁，在萧炎阻拦退婚时试图对其出手",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  },
+  {
+    "entityType": "character",
+    "name": "云岚宗青年",
+    "aliases": [
+      "英俊青年"
+    ],
+    "missingFields": [
+      "appearance",
+      "clothing",
+      "body",
+      "temperament",
+      "abilityVisuals",
+      "statusMarkers"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "英俊青年"
+        ],
+        "otherMatchedNames": [
+          "萧炎"
+        ],
+        "fields": [
+          "signatureItems"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.17,
+    "needsReview": true,
+    "visualFields": {
+      "appearance": "",
+      "clothing": "",
+      "body": "",
+      "temperament": "",
+      "signatureItems": "豁然的拔出长剑",
+      "abilityVisuals": "",
+      "statusMarkers": ""
+    },
+    "visualDetails": {},
+    "inferredFields": [],
+    "summarizedFields": [],
+    "enhancedDescription": "跟随葛叶和纳兰嫣然同来的年轻男子，二十岁左右，英俊挺拔，五星斗者，对纳兰嫣然似有爱慕之意，纳兰嫣然对他却不以为意; 当萧炎愤怒时曾拔剑指向萧炎",
+    "finalDescription": "跟随葛叶和纳兰嫣然同来的年轻男子，二十岁左右，英俊挺拔，五星斗者，对纳兰嫣然似有爱慕之意，纳兰嫣然对他却不以为意; 当萧炎愤怒时曾拔剑指向萧炎",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "source_only",
+    "descriptionSource": "source"
+  }
+]

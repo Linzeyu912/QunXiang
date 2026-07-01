@@ -1,0 +1,1995 @@
+{
+  "storyId": "story-150-202606290629-85-96-8",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "prop",
+      "assetId": "绝楚手按剑",
+      "assetName": "绝楚手按剑",
+      "prompt": "绝楚手按剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：绝楚手按剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”王绝楚手按剑柄，盯着贾天龙，寒声道。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "绝楚手按剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "有了会飞剑",
+      "assetName": "有了会飞剑",
+      "prompt": "有了会飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：有了会飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "如今他这边有了会飞剑之术的修仙者作为杀手锏，再加上以有心算无心，他从死契斗中胜出的机会，绝对有九成以上的把握。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "有了会飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "此人的飞剑",
+      "assetName": "此人的飞剑",
+      "prompt": "此人的飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：此人的飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "至于剩下的人选，则全由他身边擅长配合的铁卫组成，当然金光上人肯定也要上场，他还全指望此人的飞剑之术大发神威呢！"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "此人的飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "长剑",
+      "assetName": "长剑",
+      "prompt": "长剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：长剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这三个人，一位儒衫飘飘，满脸的书卷之气，一副书生的打扮；一位身材魁梧高大，袒胸露怀，一脸钢针般的络腮胡子，显得彪悍无比；最后一人则是位身穿灰衣，背负长剑的冷脸之人。",
+        "而手中的长剑，前端的三寸长剑尖不翼而飞，已变成凸平。",
+        "他紧紧握住腰间的长剑，用兴奋的眼神望着，正用不雅的姿势蹲在那里，在地上划拉着什么的韩立，脸上浮现出了狂热的表情。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "长剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "我的飞剑",
+      "assetName": "我的飞剑",
+      "prompt": "我的飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：我的飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“几个凡夫俗子而已，我的飞剑一出，他们的小命就算完了！"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "我的飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "上人的飞剑",
+      "assetName": "上人的飞剑",
+      "prompt": "上人的飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：上人的飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "七玄门这边的闹剧，自然被贾天龙看得一清二楚，他虽然对对面又添了两个高手，而感到有些意外，但也没有怎么放在心上，毕竟他相信血肉之躯的凡人，是无法抵挡金光上人的飞剑之术。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "上人的飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "让一位持刀",
+      "assetName": "让一位持刀",
+      "prompt": "让一位持刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：让一位持刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "王门主显然和韩立有同样的想法，他并没有让其他人一拥而上，而是让一位持刀护法出去迎战此人，看来是想先摸清此人的底细，再另做打算，以免造成意外的人员损失。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "让一位持刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "握刀",
+      "assetName": "握刀",
+      "prompt": "握刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：握刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这名被派出来护法，是一名三十来岁的壮汉，一脸彪悍之色，握刀的那只手掌，青筋高高凸起，一看就知是位擅长近战的刀客，他听闻怪笑后神情仍沉稳不乱，显然应战的经验也很丰富。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "握刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "长近战的刀",
+      "assetName": "长近战的刀",
+      "prompt": "长近战的刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：长近战的刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这名被派出来护法，是一名三十来岁的壮汉，一脸彪悍之色，握刀的那只手掌，青筋高高凸起，一看就知是位擅长近战的刀客，他听闻怪笑后神情仍沉稳不乱，显然应战的经验也很丰富。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "长近战的刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "手中的钢刀",
+      "assetName": "手中的钢刀",
+      "prompt": "手中的钢刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：手中的钢刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "于是，他想都没想，把身子猛地往前一窜，几个箭步就到了金光上人的身前，他抡起手中的钢刀，寒光一闪，劈头就是一刀，刀势迅猛沉重，看来是使足了力气。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "手中的钢刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "头就是一刀",
+      "assetName": "头就是一刀",
+      "prompt": "头就是一刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：头就是一刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "于是，他想都没想，把身子猛地往前一窜，几个箭步就到了金光上人的身前，他抡起手中的钢刀，寒光一闪，劈头就是一刀，刀势迅猛沉重，看来是使足了力气。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "头就是一刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "眼看刀",
+      "assetName": "眼看刀",
+      "prompt": "眼看刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：眼看刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "眼看刀刃就落到了金光上人的头上，咒语却已完成了，他在钢刀及身之前，猛然把符纸往身上一拍，顿时一道耀眼刺目的金色光芒，从他手拍之处亮了起来。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "眼看刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "他在钢刀",
+      "assetName": "他在钢刀",
+      "prompt": "他在钢刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：他在钢刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "眼看刀刃就落到了金光上人的头上，咒语却已完成了，他在钢刀及身之前，猛然把符纸往身上一拍，顿时一道耀眼刺目的金色光芒，从他手拍之处亮了起来。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "他在钢刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "那钢刀",
+      "assetName": "那钢刀",
+      "prompt": "那钢刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：那钢刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这刺目之极的金芒，晃的壮汉的双眼瞧不清事物，但壮汉心中却没有慌乱，那钢刀还是狠狠地的砍了下去。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "那钢刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "横刀",
+      "assetName": "横刀",
+      "prompt": "横刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：横刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他脚尖一点地，身子嗖嗖的往后窜出了好几丈远，才停下脚步，横刀严阵以待。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "横刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "刚才那一刀",
+      "assetName": "刚才那一刀",
+      "prompt": "刚才那一刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：刚才那一刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "只见在离他数丈远的地方，那个侏儒站在那里纹丝没动，可是浑身上下却发出了一层寸许长的金芒，这金芒犹如一个厚厚的盔甲，把侏儒罩在其内，给保护的风雨不透，看来刚才那一刀，只是劈在了金罩上，并没有真的砍到侏儒上。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "刚才那一刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "让那刀",
+      "assetName": "让那刀",
+      "prompt": "让那刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：让那刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这金光也不知是何物，竟坚固的如同钢铁一般，让那刀劳而无功。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "让那刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "他手握钢刀",
+      "assetName": "他手握钢刀",
+      "prompt": "他手握钢刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：他手握钢刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他手握钢刀，心中一片茫然，不知该进还是该退。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "他手握钢刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "称得上是刀",
+      "assetName": "称得上是刀",
+      "prompt": "称得上是刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：称得上是刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他一方面是因为金光上人的白痴行为而无语，另一方面则是为王绝楚这位师叔的武功而震惊，他以前可亲自测试过金光上人的金罩威力，那可真称得上是刀枪不入，水火不浸，犹如金刚般坚硬的防护。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "称得上是刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "的拿手飞剑",
+      "assetName": "的拿手飞剑",
+      "prompt": "的拿手飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：的拿手飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "免得此人连自己的拿手飞剑术都没有使出，就这样稀里糊涂的一命呜呼了。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "的拿手飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "飞剑",
+      "assetName": "飞剑",
+      "prompt": "飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "如今他这边有了会飞剑之术的修仙者作为杀手锏，再加上以有心算无心，他从死契斗中胜出的机会，绝对有九成以上的把握。",
+        "至于剩下的人选，则全由他身边擅长配合的铁卫组成，当然金光上人肯定也要上场，他还全指望此人的飞剑之术大发神威呢！",
+        "“几个凡夫俗子而已，我的飞剑一出，他们的小命就算完了！"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "事中的飞剑",
+      "assetName": "事中的飞剑",
+      "prompt": "事中的飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：事中的飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这些人虽然不知晓修仙者的存在，但各种传奇故事中的飞剑传说，还是都听说不少。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "事中的飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "使用的飞剑",
+      "assetName": "使用的飞剑",
+      "prompt": "使用的飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：使用的飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这道灰芒，跟传说中的剑仙使用的飞剑，是何其的相似，简直是一模一样。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "使用的飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "毕竟剑",
+      "assetName": "毕竟剑",
+      "prompt": "毕竟剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：毕竟剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "大部分的人，此刻看向金光上人的目光，充满了敬畏之色，毕竟剑仙这个名头，还是能赫住不少的凡人。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "毕竟剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "方因为有剑",
+      "assetName": "方因为有剑",
+      "prompt": "方因为有剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：方因为有剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "如果说在场的人中，贾天龙一方因为有剑仙相助，士气高涨，七玄门则因这个意外陷入了彷徨之中，斗志消溃不少。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "方因为有剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "是否是飞剑",
+      "assetName": "是否是飞剑",
+      "prompt": "是否是飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：是否是飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "因为他发现，这金光上人，所使用的驱动灰光的口诀和手势，和自己所学的“驱物术”完全一样，虽然不知道那灰芒是否是飞剑，但驱物术所驱使的正是此物，这绝对错不了。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "是否是飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "儒是什么剑",
+      "assetName": "儒是什么剑",
+      "prompt": "儒是什么剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：儒是什么剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "因而对金光上人痛恨不已，也不理会侏儒是什么剑仙之流，一心只想杀掉对方，替那位汉子报仇雪恨。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "儒是什么剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "见疑似飞剑",
+      "assetName": "见疑似飞剑",
+      "prompt": "见疑似飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：见疑似飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "对面二人中的儒生，眼见疑似飞剑的灰光飞了过来。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "见疑似飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "是一些飞刀",
+      "assetName": "是一些飞刀",
+      "prompt": "是一些飞刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：是一些飞刀 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "但打在金罩上被反弹回来的寒芒，则完整无损，都是一些飞刀、菩提子、铁莲子、金钱镖等各式各样的暗器，五花八门，甚至还有一些叫不住名称的陌生东西。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "是一些飞刀 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "了背后宝剑",
+      "assetName": "了背后宝剑",
+      "prompt": "了背后宝剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：了背后宝剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这时人们才发现，原本和儒生一起奔出的灰衣人，不知何时拔出了背后宝剑，正一步一个脚印的向灰光走去，而他所持的宝剑剑尖之上，竟冒出了二寸多长的白芒，那白芒伸缩不定，寒气逼人。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "了背后宝剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "所持的宝剑",
+      "assetName": "所持的宝剑",
+      "prompt": "所持的宝剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：所持的宝剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "这时人们才发现，原本和儒生一起奔出的灰衣人，不知何时拔出了背后宝剑，正一步一个脚印的向灰光走去，而他所持的宝剑剑尖之上，竟冒出了二寸多长的白芒，那白芒伸缩不定，寒气逼人。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "所持的宝剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "令所有使剑",
+      "assetName": "令所有使剑",
+      "prompt": "令所有使剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：令所有使剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“剑芒”，不知是谁，首先喊出了这令所有使剑之人，都梦寐以求的无上剑技名称。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "令所有使剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "求的无上剑",
+      "assetName": "求的无上剑",
+      "prompt": "求的无上剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：求的无上剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“剑芒”，不知是谁，首先喊出了这令所有使剑之人，都梦寐以求的无上剑技名称。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "求的无上剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "如果说飞剑",
+      "assetName": "如果说飞剑",
+      "prompt": "如果说飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：如果说飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "如果说飞剑只是传闻中的传说，那么剑芒则是江湖中的神话，是所有使剑者的向往。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "如果说飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "那么剑",
+      "assetName": "那么剑",
+      "prompt": "那么剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：那么剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "如果说飞剑只是传闻中的传说，那么剑芒则是江湖中的神话，是所有使剑者的向往。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "那么剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "是所有使剑",
+      "assetName": "是所有使剑",
+      "prompt": "是所有使剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：是所有使剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "如果说飞剑只是传闻中的传说，那么剑芒则是江湖中的神话，是所有使剑者的向往。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "是所有使剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "不但飞剑",
+      "assetName": "不但飞剑",
+      "prompt": "不但飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：不但飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "现在，不但飞剑和剑芒接连出现，而且还要马上展开对决，这怎能不让在场的人热血沸腾，大有不枉此生之感！"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "不但飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "和剑",
+      "assetName": "和剑",
+      "prompt": "和剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：和剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "现在，不但飞剑和剑芒接连出现，而且还要马上展开对决，这怎能不让在场的人热血沸腾，大有不枉此生之感！"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "和剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "到能使出剑",
+      "assetName": "到能使出剑",
+      "prompt": "到能使出剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：到能使出剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "但万万没有想到，这高手会高到能使出剑芒的程度。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "到能使出剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "位能使出剑",
+      "assetName": "位能使出剑",
+      "prompt": "位能使出剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：位能使出剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他此次若没有请来金光上人这位修仙者出手，恐怕光是这位能使出剑芒的灰衣人一人，就能杀光他这边的所有人。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "位能使出剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "人双手持剑",
+      "assetName": "人双手持剑",
+      "prompt": "人双手持剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：人双手持剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "灰衣人双手持剑，面无惧色的腾空跃起。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "人双手持剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "他挥舞着剑",
+      "assetName": "他挥舞着剑",
+      "prompt": "他挥舞着剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：他挥舞着剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他挥舞着剑芒，冲着灰光狠狠的劈下。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "他挥舞着剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "当场收走剑",
+      "assetName": "当场收走剑",
+      "prompt": "当场收走剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：当场收走剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他虽然知道自己这个好友有些与众不同，但能够当场收走剑仙之流的仙家飞剑的事，这还是让他犹如白曰做梦一般，晕晕乎乎的。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "当场收走剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "的仙家飞剑",
+      "assetName": "的仙家飞剑",
+      "prompt": "的仙家飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：的仙家飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他虽然知道自己这个好友有些与众不同，但能够当场收走剑仙之流的仙家飞剑的事，这还是让他犹如白曰做梦一般，晕晕乎乎的。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "的仙家飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "他从眨眼剑",
+      "assetName": "他从眨眼剑",
+      "prompt": "他从眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：他从眨眼剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "因为他深知，心理上如果占据了上风，那么在实际的交锋中也会拥有不少的优势，会凭空增添几分的胜算，这是他从眨眼剑谱中学到的诀窍。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "他从眨眼剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "把灰色小剑",
+      "assetName": "把灰色小剑",
+      "prompt": "把灰色小剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：把灰色小剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "竟然是一道符箓，而且还是一张画着一把灰色小剑的奇特符箓。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "把灰色小剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "的灰色小剑",
+      "assetName": "的灰色小剑",
+      "prompt": "的灰色小剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：的灰色小剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "那符纸上的灰色小剑，被刻画的栩栩如生，如同真的相仿，并且没有法力催动下，小剑就自行散发着淡淡的流光，好像真是一把绝世利剑一样，寒气逼人。",
+        "韩立在使用符箓几次后就发觉，这符纸上所画的灰色小剑，其散发的寒光正随着符箓使用的次数增加而慢慢的变弱，似乎其寿命正在渐渐缩短。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "的灰色小剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "小剑",
+      "assetName": "小剑",
+      "prompt": "小剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：小剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "竟然是一道符箓，而且还是一张画着一把灰色小剑的奇特符箓。",
+        "那符纸上的灰色小剑，被刻画的栩栩如生，如同真的相仿，并且没有法力催动下，小剑就自行散发着淡淡的流光，好像真是一把绝世利剑一样，寒气逼人。",
+        "”韩立似乎很感动，低头想了想后，伸出手来，从怀里掏出了那张画着小剑的符箓。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "小剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "把绝世利剑",
+      "assetName": "把绝世利剑",
+      "prompt": "把绝世利剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：把绝世利剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "那符纸上的灰色小剑，被刻画的栩栩如生，如同真的相仿，并且没有法力催动下，小剑就自行散发着淡淡的流光，好像真是一把绝世利剑一样，寒气逼人。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "把绝世利剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "是什么飞剑",
+      "assetName": "是什么飞剑",
+      "prompt": "是什么飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：是什么飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立看到眼里，心里有些失望，这明显并不是什么飞剑之类的法宝，虽说古怪了一些，但还是一道符纸。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "是什么飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "法宝",
+      "assetName": "法宝",
+      "prompt": "法宝，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：法宝 functions as a other in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立看到眼里，心里有些失望，这明显并不是什么飞剑之类的法宝，虽说古怪了一些，但还是一道符纸。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "other",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "法宝 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "张画着小剑",
+      "assetName": "张画着小剑",
+      "prompt": "张画着小剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：张画着小剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”韩立似乎很感动，低头想了想后，伸出手来，从怀里掏出了那张画着小剑的符箓。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "张画着小剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "令牌",
+      "assetName": "令牌",
+      "prompt": "令牌，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：token；物品描述：令牌 functions as a token in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "东西不多，一共有一道符、一块令牌和一本书。",
+        "令牌则是一块漆黑的三角形牌子，一面印有“升仙”两个金色的古篆，另一面则有一个银色的“令”字，整个牌子看起来不像金属，却又沉甸甸的，份量不轻，不知有何用途。",
+        "而那个三角形的令牌和那本秦氏族谱，韩立在休息时也做了研究，可惜没有什么收获。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "token",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "令牌 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "会剑",
+      "assetName": "会剑",
+      "prompt": "会剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：会剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "在故事中，这场大战一开始是，会剑芒的绝世剑客和会驾驱飞剑的剑仙对决高下。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "会剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "芒的绝世剑",
+      "assetName": "芒的绝世剑",
+      "prompt": "芒的绝世剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：芒的绝世剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "在故事中，这场大战一开始是，会剑芒的绝世剑客和会驾驱飞剑的剑仙对决高下。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "芒的绝世剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "会驾驱飞剑",
+      "assetName": "会驾驱飞剑",
+      "prompt": "会驾驱飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：会驾驱飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "在故事中，这场大战一开始是，会剑芒的绝世剑客和会驾驱飞剑的剑仙对决高下。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "会驾驱飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "结果剑",
+      "assetName": "结果剑",
+      "prompt": "结果剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：结果剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "结果剑仙的飞剑神莫测，比剑客的剑芒技高一筹，大败绝世剑客而胜。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "结果剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "仙的飞剑",
+      "assetName": "仙的飞剑",
+      "prompt": "仙的飞剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：仙的飞剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "结果剑仙的飞剑神莫测，比剑客的剑芒技高一筹，大败绝世剑客而胜。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "仙的飞剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "大败绝世剑",
+      "assetName": "大败绝世剑",
+      "prompt": "大败绝世剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：大败绝世剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "结果剑仙的飞剑神莫测，比剑客的剑芒技高一筹，大败绝世剑客而胜。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "大败绝世剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "道画着小剑",
+      "assetName": "道画着小剑",
+      "prompt": "道画着小剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：道画着小剑 functions as a weapon in \"死契血斗 - 缺陷\", connected to: 金罩必须应对死契血斗带来的处境变化。；持有者/关联人物：金罩；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "在此之后的数天内，韩立用那道画着小剑的符箓，开始了驱物术的练习。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "propType": "weapon",
+        "ownerOrHolder": "金罩",
+        "storyFunction": "道画着小剑 supports, reveals, or complicates the story conflict: 金罩必须应对死契血斗带来的处境变化。"
+      }
+    }
+  ]
+}

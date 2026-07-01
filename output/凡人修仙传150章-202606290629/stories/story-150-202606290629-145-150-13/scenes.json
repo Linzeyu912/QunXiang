@@ -1,0 +1,37 @@
+{
+  "storyId": "story-150-202606290629-145-150-13",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "scenes": [
+    {
+      "id": "story-150-202606290629-145-150-13-scene-1",
+      "name": "不速之客 - 悔诺 - 未指定场景",
+      "location": "未指定场景",
+      "sourceRange": "chapters 145-150",
+      "summary": "王师叔在“不速之客 - 悔诺”中经历围绕“失败”发生关键变化、不速之客、成交。",
+      "conflictBeat": "围绕“失败”发生关键变化",
+      "involvedCharacters": [
+        "王师叔",
+        "韩师侄",
+        "叶师叔"
+      ],
+      "confidence": 0.55,
+      "assetStatus": "candidate",
+      "description": "A story scene for \"不速之客 - 悔诺\" with insufficient location detail.",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "未指定场景, cinematic scene, conflict beat: 王师叔必须应对围绕“失败”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "王师叔在“不速之客 - 悔诺”中经历围绕“失败”发生关键变化、不速之客、成交。"
+      ],
+      "sourceChapters": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sourceRangeHint": "chapters 145-150"
+    }
+  ]
+}

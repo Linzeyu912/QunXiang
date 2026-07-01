@@ -1,0 +1,38 @@
+{
+  "id": "story-150-202606290629-73-84-7",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 73,
+  "endChapter": 84,
+  "title": "厉飞雨的心思 - 地动山摇",
+  "summary": "王绝楚在“厉飞雨的心思 - 地动山摇”中经历围绕“失败”发生关键变化、围绕“戒指”发生关键变化、厉飞雨的心思。",
+  "coreConflict": "王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+  "trigger": "围绕“失败”发生关键变化",
+  "turningPoints": [
+    "围绕“失败”发生关键变化",
+    "围绕“戒指”发生关键变化",
+    "厉飞雨的心思",
+    "御风决",
+    "法武并用",
+    "谈判与火起",
+    "张养身的药",
+    "疗伤的灵药"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "王绝楚"
+  ],
+  "supportingCharacters": [
+    "金光",
+    "韩立淡",
+    "韩立此"
+  ],
+  "locations": [
+    "忽然山",
+    "尽管山"
+  ],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-73-84"
+  ],
+  "approved": true
+}

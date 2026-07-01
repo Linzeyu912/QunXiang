@@ -1,0 +1,208 @@
+{
+  "storyId": "story-150-202606290629-49-60-5",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "characters": [
+    {
+      "name": "余子童",
+      "aliases": [],
+      "roleInStory": "protagonist",
+      "motivation": "余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "余子童 is connected to the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 49,
+      "lastMentionChapter": 60,
+      "keyActions": [
+        "“余子童，我只是想最后提醒你一次，假使我出了意外的话，你好不到哪里去。",
+        "墨大夫苦心积虑的对此人说这些废话，只是在害怕这个叫余子童的人，在传功法时做了什么手脚，让他施术出错，祸至自身。",
+        "”余子童没有丝毫停顿，斩钉截铁的又发下了一番毒誓，看来他也很清楚墨大夫的顾虑。"
+      ],
+      "confidence": 0.9,
+      "assetStatus": "confirmed",
+      "description": "余子童 appears in \"套中套 - 试毒\" as a protagonist tied to the conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "- 面部/五官：便脸色一沉\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+      "needsAppearanceRepair": false,
+      "visualPrompt": "余子童，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：- 面部/五官：便脸色一沉\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“余子童，我只是想最后提醒你一次，假使我出了意外的话，你好不到哪里去。",
+        "墨大夫苦心积虑的对此人说这些废话，只是在害怕这个叫余子童的人，在传功法时做了什么手脚，让他施术出错，祸至自身。",
+        "”余子童没有丝毫停顿，斩钉截铁的又发下了一番毒誓，看来他也很清楚墨大夫的顾虑。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "韩立吃",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立吃 is connected to the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 49,
+      "lastMentionChapter": 60,
+      "keyActions": [
+        "今天让韩立吃惊的事太多了，可都没有像现在所看到的事情，那么的扉人所思，让他如此的忘形。",
+        "墨大夫口吐脏话，让韩立吃惊不小，要是在以前，这没有什么大不了的。",
+        "韩立吃了一惊，浑身上下立刻绷紧肌肉，虚弱的感觉被丢到了九霄云外，他心里的第一个念头，就是要抢先出手，先下手为强。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立吃 appears in \"套中套 - 试毒\" as a supporting tied to the conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立吃，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "今天让韩立吃惊的事太多了，可都没有像现在所看到的事情，那么的扉人所思，让他如此的忘形。",
+        "墨大夫口吐脏话，让韩立吃惊不小，要是在以前，这没有什么大不了的。",
+        "韩立吃了一惊，浑身上下立刻绷紧肌肉，虚弱的感觉被丢到了九霄云外，他心里的第一个念头，就是要抢先出手，先下手为强。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "方也",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "方也 is connected to the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 49,
+      "lastMentionChapter": 60,
+      "keyActions": [
+        "“你老别忘了，当初你的医书可是完全对我敞开的，这配方也是夹带在一本冷僻的药书之中，不是我看得仔细，恐怕还真的就错过了。",
+        "最后一点，则夺舍成功后的墨大夫，有了充足缓冲时间后，就要帮对方也寻觅一个合适的肉身，并协助其夺舍。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "方也 appears in \"套中套 - 试毒\" as a supporting tied to the conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "方也，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "“你老别忘了，当初你的医书可是完全对我敞开的，这配方也是夹带在一本冷僻的药书之中，不是我看得仔细，恐怕还真的就错过了。",
+        "最后一点，则夺舍成功后的墨大夫，有了充足缓冲时间后，就要帮对方也寻觅一个合适的肉身，并协助其夺舍。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "方话",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "方话 is connected to the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 49,
+      "lastMentionChapter": 60,
+      "keyActions": [
+        "”韩立不是女人，自然不会因对方俊美过人，而对眼前之人客气，何况对方话里没有丝毫放过他的意思，那就更没必要给对方好脸色看了。",
+        "去掉对方话中可能的虚假部分，韩立对事情的经过，有了大概的了解。"
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "方话 appears in \"套中套 - 试毒\" as a supporting tied to the conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "方话，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "”韩立不是女人，自然不会因对方俊美过人，而对眼前之人客气，何况对方话里没有丝毫放过他的意思，那就更没必要给对方好脸色看了。",
+        "去掉对方话中可能的虚假部分，韩立对事情的经过，有了大概的了解。"
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    },
+    {
+      "name": "韩立点",
+      "aliases": [],
+      "roleInStory": "supporting",
+      "motivation": "Supports or complicates the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "conflictRelation": "韩立点 is connected to the story conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "firstMentionChapter": 49,
+      "lastMentionChapter": 60,
+      "keyActions": [
+        "余子童在解释完了最后一句话后，见韩立点点头，看来是相信了他所说的话，心中不禁一喜，元神所化的光球，也似乎更亮了几分，他期切的问道："
+      ],
+      "confidence": 0.78,
+      "assetStatus": "confirmed",
+      "description": "韩立点 appears in \"套中套 - 试毒\" as a supporting tied to the conflict: 余子童必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "appearanceDescription": "",
+      "needsAppearanceRepair": true,
+      "visualPrompt": "韩立点，人物造型参考，角色设定拆解；正面全身、侧面全身、背面全身、面部近景，同一人物身份保持一致；外貌描写：外貌未被原文确认；优先呈现服装配色、面部五官、发型、体态身形、神情气质、饰物特征；仅使用原文支持的外貌细节，未确认维度保持空白或标注待补充",
+      "evidenceSnippets": [
+        "余子童在解释完了最后一句话后，见韩立点点头，看来是相信了他所说的话，心中不禁一喜，元神所化的光球，也似乎更亮了几分，他期切的问道："
+      ],
+      "sourceChapters": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceRangeHint": "chapters 49-60"
+    }
+  ]
+}

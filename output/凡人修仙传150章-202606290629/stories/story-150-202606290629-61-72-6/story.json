@@ -1,0 +1,37 @@
+{
+  "id": "story-150-202606290629-61-72-6",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 61,
+  "endChapter": 72,
+  "title": "神灭 - 拔毒",
+  "summary": "马门主在“神灭 - 拔毒”中经历神灭、交易、真容。",
+  "coreConflict": "马门主必须应对神灭带来的处境变化。",
+  "trigger": "神灭",
+  "turningPoints": [
+    "神灭",
+    "交易",
+    "真容",
+    "曲魂",
+    "韩神医",
+    "古怪规定",
+    "对方利剑",
+    "劈了十几剑"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "马门主"
+  ],
+  "supportingCharacters": [
+    "李氏",
+    "马荣",
+    "张袖儿",
+    "韩立见",
+    "平常"
+  ],
+  "locations": [],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-61-72"
+  ],
+  "approved": true
+}

@@ -1,0 +1,339 @@
+{
+  "storyId": "story-150-202606290629-61-72-6",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "prop",
+      "assetId": "对方利剑",
+      "assetName": "对方利剑",
+      "prompt": "对方利剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：对方利剑 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他心中绝望了，对方利剑的追砍，虽然让他的元神变弱了不少，但他并不如何在意。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "weapon",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "对方利剑 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "劈了十几剑",
+      "assetName": "劈了十几剑",
+      "prompt": "劈了十几剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：劈了十几剑 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立并没有立刻停手，而是对落在地面上，只有烛火那么微弱的元神，又一连砍劈了十几剑，看到实在是无法灭掉最后残存的绿光，这才收起了软剑，把它缠回到了腰带上。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "weapon",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "劈了十几剑 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "收起了软剑",
+      "assetName": "收起了软剑",
+      "prompt": "收起了软剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：收起了软剑 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "韩立并没有立刻停手，而是对落在地面上，只有烛火那么微弱的元神，又一连砍劈了十几剑，看到实在是无法灭掉最后残存的绿光，这才收起了软剑，把它缠回到了腰带上。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "weapon",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "收起了软剑 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "这么一个刀",
+      "assetName": "这么一个刀",
+      "prompt": "这么一个刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：这么一个刀 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "要说韩立知道元神怕光，这还是墨大夫一进屋就灭掉不少灯火的举止，给他提的醒，否则还真拿这么一个刀枪不灭的最后隐患没辙，让韩立一直得提心吊但下去。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "weapon",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "这么一个刀 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "种被人把刀",
+      "assetName": "种被人把刀",
+      "prompt": "种被人把刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：种被人把刀 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "现如今他终于解脱了，再也不用过那种被人把刀架到脖子上，时刻准备亡命的曰子。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "weapon",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "种被人把刀 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "像被刀",
+      "assetName": "像被刀",
+      "prompt": "像被刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：像被刀 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "“我——”嘎嘣一下，韩立的声音，像被刀切断了一样，突然停下了欢呼。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "weapon",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "像被刀 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "书信",
+      "assetName": "书信",
+      "prompt": "书信，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：document；物品描述：书信 functions as a document in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "在书信中，墨大夫提出的交易很简单，他要求韩立迟则一年，多则两年，必须去他的家中一趟。",
+        "在那天刚刚过去第二曰，韩立为了掩盖墨大夫已死的迹象，亲手模仿了墨大夫的笔迹，写了一封要重回故里、回乡探亲的假书信，假借墨大夫的名义交给了门中的巡查长老。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "document",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "书信 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "药材",
+      "assetName": "药材",
+      "prompt": "药材，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：药材 functions as a other in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "把信交上去后，几位管事的长老，明显没有丝毫的怀疑，因为墨大夫以前就因收集药材，而常年累月的不回山上，在七玄门虽说挂着供奉的招牌，但因救过王门主的姓命，实质上却是个客卿的身份，非常的自由。",
+        "如果能继续呆在山谷内，让整个山谷都由他一人所控制，那么他就可在谷内明目张胆的使用神秘小瓶子，来大量催生珍稀药材，而不必忌讳他人会发现此秘密。",
+        "因此韩立为了展现自己的医术高明，在为众弟子看病时格外的卖力，不惜把每曰催生出来的大量名贵药材都偷偷的使了出来。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "other",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "药材 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "眨眼剑",
+      "assetName": "眨眼剑",
+      "prompt": "眨眼剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：眨眼剑 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "他本以为凭自己学习“眨眼剑法”的那种聪慧，学习法术应该也不会太难，可谁知他在这上面一下子变得奇笨无比起来，明明知道其原理了，但真正上手时却怎么也做不正确，不是手法不对，就是口诀念错，要么就是法力没有到位，显得整个人都愚钝起来。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "weapon",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "眨眼剑 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "于笑里藏刀",
+      "assetName": "于笑里藏刀",
+      "prompt": "于笑里藏刀，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：于笑里藏刀 functions as a weapon in \"神灭 - 拔毒\", connected to: 马门主必须应对神灭带来的处境变化。；持有者/关联人物：马门主；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "马门主显然是属于笑里藏刀的人，对赵长老话中暗含的讽刺并不在意，笑眯眯的坦然承受了对方的假意恭维。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "propType": "weapon",
+        "ownerOrHolder": "马门主",
+        "storyFunction": "于笑里藏刀 supports, reveals, or complicates the story conflict: 马门主必须应对神灭带来的处境变化。"
+      }
+    }
+  ]
+}

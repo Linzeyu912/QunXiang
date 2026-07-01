@@ -1,0 +1,318 @@
+{
+  "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+  "bookId": "c462306b-1ac8-4ea4-89e7-86cfdea3a91d",
+  "characterPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 服装/配色：佩戴一枚黑色戒指、手中持有黑色古戒\n- 面部/五官：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 神情/气质：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 饰物/随身特征：佩戴一枚黑色戒指、戒指很是古朴、手指轻轻的抚摸着戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "脸庞狰狞，",
+        "脸庞再次回复了平日的落寞，",
+        "手指上有一颗黑色戒指，",
+        "戒指很是古朴，",
+        "手指轻轻的抚摸着戒指，",
+        "手指中的黑色古戒，"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 服装/配色：佩戴一枚黑色戒指、手中持有黑色古戒\n- 面部/五官：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 神情/气质：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 饰物/随身特征：佩戴一枚黑色戒指、戒指很是古朴、手指轻轻的抚摸着戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧战",
+      "assetName": "萧战",
+      "prompt": "萧战，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气，他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！",
+        "”大步上前，萧战笑道。",
+        "“唉……”望着萧炎那依旧有些稚嫩的清秀脸庞，萧战叹了一口气，沉默了片刻，忽然道：“炎儿，你十五岁了吧？"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ],
+  "scenePrompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606291344-2-2-worldbuilding-scene-1",
+      "assetName": "掉落山",
+      "prompt": "掉落山，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：掉落山 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；冲突氛围：斗气大陆修炼体系；可保留人物比例参考：萧炎、萧战；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "由于地域的辽阔，也有很多不为人知的无名隐士，在生命走到尽头之后，性子孤僻的他们，或许会将平生所创功法隐于某处，等待有缘人取之，在斗气大陆上，流传一句话：如果某日，你摔落悬崖，掉落山洞，不要惊慌，往前走两步，或许，你，将成为强者！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "location": "掉落山",
+        "conflictBeat": "斗气大陆修炼体系",
+        "involvedCharacters": [
+          "萧炎",
+          "萧战"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606291344-2-2-worldbuilding-scene-2",
+      "assetName": "斗气阁",
+      "prompt": "斗气阁，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：斗气阁 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；冲突氛围：斗气功法等级；可保留人物比例参考：萧炎、萧战；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”手掌微微一紧，萧炎平静的回道，成年仪式代表什么，他自然非常清楚，只要度过了成年仪式，那么没有修炼潜力的他，便将会被取消进入斗气阁寻找斗气功法的资格，从而被分配到家族的各处产业之中，为家族打理一些普通事物，这是家族的族规，就算他的父亲是族长，那也不可能改变！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "location": "斗气阁",
+        "conflictBeat": "斗气功法等级",
+        "involvedCharacters": [
+          "萧炎",
+          "萧战"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606291344-2-2-worldbuilding-scene-3",
+      "assetName": "斗气大陆",
+      "prompt": "斗气大陆，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：斗气大陆 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；冲突氛围：斗技等级；可保留人物比例参考：萧炎、萧战；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "第2章 斗气大陆",
+        "第2章 斗气大陆",
+        "大陆名为斗气大陆，大陆上并没有小说中常见的各系魔法，而斗气，才是大陆的唯一主调！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "location": "斗气大陆",
+        "conflictBeat": "斗技等级",
+        "involvedCharacters": [
+          "萧炎",
+          "萧战"
+        ]
+      }
+    }
+  ],
+  "propPrompts": [
+    {
+      "assetType": "prop",
+      "assetId": "戒指",
+      "assetName": "戒指",
+      "prompt": "戒指，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：戒指 functions as a other in \"斗气大陆设定\", connected to: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "黯然的叹了口气，萧炎抬起手掌，手指上有一颗黑色戒指，戒指很是古朴，不知是何材料所铸，其上还绘有些模糊的纹路，这是母亲临死前送给他的唯一礼物，从四岁开始，他已经佩戴了十年，母亲的遗物，让得萧炎对它也是有着一份眷恋，手指轻轻的抚摸着戒指，萧炎苦笑道：“这几年，还真是辜负母亲的期望了……”",
+        "”抚摸着手指上的古朴戒指，萧炎抬头喃喃道。"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。"
+      }
+    }
+  ],
+  "allPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 服装/配色：佩戴一枚黑色戒指、手中持有黑色古戒\n- 面部/五官：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 神情/气质：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 饰物/随身特征：佩戴一枚黑色戒指、戒指很是古朴、手指轻轻的抚摸着戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "脸庞狰狞，",
+        "脸庞再次回复了平日的落寞，",
+        "手指上有一颗黑色戒指，",
+        "戒指很是古朴，",
+        "手指轻轻的抚摸着戒指，",
+        "手指中的黑色古戒，"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 服装/配色：佩戴一枚黑色戒指、手中持有黑色古戒\n- 面部/五官：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 神情/气质：脸庞带有怒意、脸庞再次沉静中略带落寞\n- 饰物/随身特征：佩戴一枚黑色戒指、戒指很是古朴、手指轻轻的抚摸着戒指\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧战",
+      "assetName": "萧战",
+      "prompt": "萧战，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气，他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！",
+        "”大步上前，萧战笑道。",
+        "“唉……”望着萧炎那依旧有些稚嫩的清秀脸庞，萧战叹了一口气，沉默了片刻，忽然道：“炎儿，你十五岁了吧？"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606291344-2-2-worldbuilding-scene-1",
+      "assetName": "掉落山",
+      "prompt": "掉落山，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：掉落山 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；冲突氛围：斗气大陆修炼体系；可保留人物比例参考：萧炎、萧战；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "由于地域的辽阔，也有很多不为人知的无名隐士，在生命走到尽头之后，性子孤僻的他们，或许会将平生所创功法隐于某处，等待有缘人取之，在斗气大陆上，流传一句话：如果某日，你摔落悬崖，掉落山洞，不要惊慌，往前走两步，或许，你，将成为强者！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "location": "掉落山",
+        "conflictBeat": "斗气大陆修炼体系",
+        "involvedCharacters": [
+          "萧炎",
+          "萧战"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606291344-2-2-worldbuilding-scene-2",
+      "assetName": "斗气阁",
+      "prompt": "斗气阁，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：斗气阁 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；冲突氛围：斗气功法等级；可保留人物比例参考：萧炎、萧战；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”手掌微微一紧，萧炎平静的回道，成年仪式代表什么，他自然非常清楚，只要度过了成年仪式，那么没有修炼潜力的他，便将会被取消进入斗气阁寻找斗气功法的资格，从而被分配到家族的各处产业之中，为家族打理一些普通事物，这是家族的族规，就算他的父亲是族长，那也不可能改变！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "location": "斗气阁",
+        "conflictBeat": "斗气功法等级",
+        "involvedCharacters": [
+          "萧炎",
+          "萧战"
+        ]
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606291344-2-2-worldbuilding-scene-3",
+      "assetName": "斗气大陆",
+      "prompt": "斗气大陆，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：斗气大陆 scene in \"斗气大陆设定\", shaped by the conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；冲突氛围：斗技等级；可保留人物比例参考：萧炎、萧战；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "第2章 斗气大陆",
+        "第2章 斗气大陆",
+        "大陆名为斗气大陆，大陆上并没有小说中常见的各系魔法，而斗气，才是大陆的唯一主调！"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "location": "斗气大陆",
+        "conflictBeat": "斗技等级",
+        "involvedCharacters": [
+          "萧炎",
+          "萧战"
+        ]
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "戒指",
+      "assetName": "戒指",
+      "prompt": "戒指，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：戒指 functions as a other in \"斗气大陆设定\", connected to: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "黯然的叹了口气，萧炎抬起手掌，手指上有一颗黑色戒指，戒指很是古朴，不知是何材料所铸，其上还绘有些模糊的纹路，这是母亲临死前送给他的唯一礼物，从四岁开始，他已经佩戴了十年，母亲的遗物，让得萧炎对它也是有着一份眷恋，手指轻轻的抚摸着戒指，萧炎苦笑道：“这几年，还真是辜负母亲的期望了……”",
+        "”抚摸着手指上的古朴戒指，萧炎抬头喃喃道。"
+      ],
+      "sourceChapters": [
+        2
+      ],
+      "sourceRangeHint": "chapters 2-2",
+      "metadata": {
+        "storyId": "story-1-10-202606291344-2-2-worldbuilding",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 世界观设定为角色成长、势力差距和后续冲突提供规则背景。"
+      }
+    }
+  ]
+}

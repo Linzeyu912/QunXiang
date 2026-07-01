@@ -1,0 +1,59 @@
+{
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "status": "completed",
+  "officialResult": true,
+  "generatedAt": "2026-06-30T13:24:43.050Z",
+  "counts": {
+    "characters": 12,
+    "locations": 8,
+    "items": 11
+  },
+  "outputs": {
+    "finalSummary": "output/斗破苍穹-1-10-202606301319/final/run-summary.json",
+    "prescanIntermediate": ".intermediate/斗破苍穹-1-10-202606301319/prescan",
+    "entities": "output/斗破苍穹-1-10-202606301319/entities"
+  },
+  "entities": {
+    "characters": [
+      "萧炎",
+      "纳兰嫣然",
+      "萧薰儿",
+      "萧战",
+      "药老",
+      "葛叶",
+      "云韵",
+      "萧媚",
+      "古河",
+      "纳兰桀",
+      "墨管家",
+      "英俊青年"
+    ],
+    "locations": [
+      "后山",
+      "魔兽山脉",
+      "萧家",
+      "乌坦城",
+      "测验广场",
+      "云岚宗",
+      "加玛帝国",
+      "纳兰家"
+    ],
+    "items": [
+      "古玉盒子",
+      "聚气散",
+      "青木剑诀",
+      "黑色古戒",
+      "狂狮怒罡",
+      "木系一级魔核",
+      "紫叶兰草",
+      "洗骨花",
+      "黑色存金卡",
+      "五纹紫金卡",
+      "休证"
+    ]
+  },
+  "reviewer": {
+    "message": "Characters ready for human review",
+    "count": 12
+  }
+}

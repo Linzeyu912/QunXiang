@@ -1,0 +1,73 @@
+{
+  "id": "story-1-10-202606221108-2-2-worldbuilding",
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "arcId": "arc-1-10-202606221108-2-2-worldbuilding",
+  "arcType": "worldbuilding",
+  "goal": "建立后续剧情和视觉设计需要遵守的世界规则",
+  "startChapter": 2,
+  "endChapter": 2,
+  "title": "斗气大陆设定",
+  "summary": "本段建立“斗气大陆”相关规则：斗气大陆修炼体系、斗气功法等级、斗技等级。",
+  "coreConflict": "世界观设定为角色成长、势力差距和后续冲突提供规则背景。",
+  "trigger": "斗气大陆修炼体系",
+  "turningPoints": [
+    "斗气大陆修炼体系",
+    "斗气功法等级",
+    "斗技等级"
+  ],
+  "conflictStatus": "ongoing",
+  "events": [
+    {
+      "id": "event-1-10-202606221108-2-world-system",
+      "chapterIndex": 2,
+      "eventType": "worldbuilding",
+      "function": "setup",
+      "summary": "斗气大陆修炼体系",
+      "participants": [],
+      "trigger": "斗气大陆",
+      "consequence": "确立故事世界的力量规则和成长尺度。",
+      "confidence": 0.82,
+      "source": "heuristic"
+    },
+    {
+      "id": "event-1-10-202606221108-2-world-rank",
+      "chapterIndex": 2,
+      "eventType": "worldbuilding",
+      "function": "setup",
+      "summary": "斗气功法等级",
+      "participants": [],
+      "trigger": "斗气功法",
+      "consequence": "为后续功法、斗技和势力差距提供评价标准。",
+      "confidence": 0.82,
+      "source": "heuristic"
+    },
+    {
+      "id": "event-1-10-202606221108-2-world-skill",
+      "chapterIndex": 2,
+      "eventType": "worldbuilding",
+      "function": "setup",
+      "summary": "斗技等级",
+      "participants": [],
+      "trigger": "斗技",
+      "consequence": "补充战斗表现和招式强弱的规则。",
+      "confidence": 0.78,
+      "source": "heuristic"
+    }
+  ],
+  "mainCharacters": [
+    "萧炎"
+  ],
+  "supportingCharacters": [
+    "萧战"
+  ],
+  "locations": [
+    "掉落山",
+    "斗气阁",
+    "斗气大陆"
+  ],
+  "boundaryConfidence": 0.82,
+  "boundaryDecisionIds": [
+    "worldbuilding-2"
+  ],
+  "approved": true
+}

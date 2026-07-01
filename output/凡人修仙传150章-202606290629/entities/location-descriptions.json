@@ -1,0 +1,3603 @@
+[
+  {
+    "entityType": "location",
+    "name": "惊蛟会",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 105,
+        "chapterTitle": "惊信",
+        "matchedNames": [
+          "惊蛟会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "惊蛟会"
+        ],
+        "otherMatchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "血刃堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "长老会",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "供奉堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "汇源客栈",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "金狮镖局",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "曲陵城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "长风门",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "秦叶岭叶家",
+    "aliases": [
+      "叶家"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "石屋",
+    "aliases": [],
+    "missingFields": [
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "第三人",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 56,
+        "chapterTitle": "光球之战",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "身醒敌亡",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "神灭",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "layout",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "神灭",
+        "matchedNames": [
+          "石屋"
+        ],
+        "otherMatchedNames": [
+          "石门"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "落曰峰",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "贾天龙",
+        "matchedNames": [
+          "落曰峰"
+        ],
+        "otherMatchedNames": [
+          "七玄门",
+          "野狼帮"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "岚州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 106,
+        "chapterTitle": "蓝衣人",
+        "matchedNames": [
+          "岚州"
+        ],
+        "otherMatchedNames": [
+          "升仙大会"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "太南谷",
+    "aliases": [
+      "太南小会"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 128,
+        "chapterTitle": "太南小会",
+        "matchedNames": [
+          "太南谷",
+          "太南小会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "太南小会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 142,
+        "chapterTitle": "袭杀",
+        "matchedNames": [
+          "太南谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.46,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "苍狼岭",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "飞莲洞",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "菩露山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "天水寨",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "卧牛山青牛冠",
+    "aliases": [
+      "青牛冠",
+      "卧牛山"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "交易广场",
+    "aliases": [
+      "广场",
+      "大交易广场"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 128,
+        "chapterTitle": "太南小会",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "lighting",
+          "time",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "time",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 130,
+        "chapterTitle": "入伙",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 130,
+        "chapterTitle": "入伙",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 132,
+        "chapterTitle": "收获",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 132,
+        "chapterTitle": "收获",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "actionContext",
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "交易广场",
+          "广场",
+          "大交易广场"
+        ],
+        "fields": [
+          "time",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 142,
+        "chapterTitle": "袭杀",
+        "matchedNames": [
+          "广场"
+        ],
+        "otherMatchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "镜州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "背后交易",
+        "matchedNames": [
+          "镜州"
+        ],
+        "otherMatchedNames": [
+          "越国"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "青牛镇",
+    "aliases": [
+      "青牛城"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "石拓谷",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "云门涧",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "春香酒楼",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "青牛镇",
+        "matchedNames": [
+          "春香酒楼"
+        ],
+        "otherMatchedNames": [
+          "青牛镇",
+          "青牛客栈"
+        ],
+        "fields": [
+          "layout"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "独霸山庄",
+    "aliases": [
+      "毒霸山庄"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "姑雨山燕家",
+    "aliases": [
+      "燕家",
+      "第一修仙大族"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "燕家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "镜州城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "青牛街",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "青牛镇",
+        "matchedNames": [
+          "青牛街"
+        ],
+        "otherMatchedNames": [
+          "青牛镇",
+          "青牛客栈"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "青牛客栈",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "石乳洞",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "五色门",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "七玄门",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "炼骨崖",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "otherMatchedNames": [
+          "山崖",
+          "炼骨崖"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "江湖斗",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "法武并用",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "otherMatchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "谈判与火起",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "贾天龙",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "otherMatchedNames": [
+          "落曰峰"
+        ],
+        "fields": [
+          "time",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "金光罩",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "矛与盾",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "飞剑？",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "神手谷",
+    "aliases": [],
+    "missingFields": [
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "止痛药",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 27,
+        "chapterTitle": "配灵药",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "拷问",
+        "matchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "嘉元城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 101,
+        "chapterTitle": "钱财惹祸",
+        "matchedNames": [
+          "嘉元城"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 125,
+        "chapterTitle": "安排",
+        "matchedNames": [
+          "嘉元城"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "嘉元城"
+        ],
+        "otherMatchedNames": [
+          "墨府",
+          "太南山"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.46,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "野狼帮",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "法武并用",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "对策",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "time",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "贾天龙",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "落曰峰",
+          "铁枪会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 83,
+        "chapterTitle": "大陷阱",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "石殿"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "金光罩",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "剑符",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "秦叶岭叶家",
+          "叶家",
+          "秦叶岭"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "完胜",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "魔名赫起",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "otherMatchedNames": [
+          "七玄门"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "魔名赫起",
+        "matchedNames": [
+          "野狼帮"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "墨府",
+    "aliases": [
+      "墨府上下"
+    ],
+    "missingFields": [
+      "environment",
+      "atmosphere"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 106,
+        "chapterTitle": "蓝衣人",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 108,
+        "chapterTitle": "夜入墨府",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 108,
+        "chapterTitle": "夜入墨府",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 110,
+        "chapterTitle": "狐",
+        "matchedNames": [
+          "墨府",
+          "墨府上下"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 110,
+        "chapterTitle": "狐",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 110,
+        "chapterTitle": "狐",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 124,
+        "chapterTitle": "墨凤舞",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 124,
+        "chapterTitle": "墨凤舞",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 124,
+        "chapterTitle": "墨凤舞",
+        "matchedNames": [
+          "墨府"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "越国",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 100,
+        "chapterTitle": "嘉元城",
+        "matchedNames": [
+          "越国"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "越国"
+        ],
+        "otherMatchedNames": [
+          "升仙会",
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "百机堂",
+    "aliases": [
+      "百机堂大殿"
+    ],
+    "missingFields": [
+      "layout",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "百机堂"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "百机堂"
+        ],
+        "fields": [
+          "actionContext",
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.5,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "广贵城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "李长老院子",
+    "aliases": [
+      "李长老家"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "对策",
+        "matchedNames": [
+          "李长老家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "石室",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "石室"
+        ],
+        "otherMatchedNames": [
+          "住处"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "惊魂定",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "墨回谷",
+        "matchedNames": [
+          "石室"
+        ],
+        "otherMatchedNames": [
+          "神手谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "墨回谷",
+        "matchedNames": [
+          "石室"
+        ],
+        "otherMatchedNames": [
+          "谷口"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "云翅鸟",
+        "matchedNames": [
+          "石室"
+        ],
+        "fields": [
+          "time",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "石室"
+        ],
+        "otherMatchedNames": [
+          "石屋",
+          "石屋群"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "太南山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "太南山"
+        ],
+        "fields": [
+          "time",
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "太南寺",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "天雾台",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "香家酒楼",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 106,
+        "chapterTitle": "蓝衣人",
+        "matchedNames": [
+          "香家酒楼"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "百机堂内殿",
+    "aliases": [
+      "内殿",
+      "大殿后面屋内"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "传功石楼",
+    "aliases": [
+      "传功"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "韩立住处",
+    "aliases": [
+      "住处"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 41,
+        "chapterTitle": "留言夜出",
+        "matchedNames": [
+          "住处"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "金蚨岭",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "落沙坡",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "南陵街",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "青石岭百药园",
+    "aliases": [
+      "百药园",
+      "马师伯药园"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "玄坤山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "玄坤山"
+        ],
+        "fields": [
+          "time",
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "迎宾楼",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "越国北地",
+    "aliases": [
+      "北地"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "越国岚州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "西郊",
+    "aliases": [
+      "嘉元城西郊"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "彩霞山",
+    "aliases": [
+      "仙霞山",
+      "落凤山"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "七玄门",
+        "matchedNames": [
+          "彩霞山"
+        ],
+        "otherMatchedNames": [
+          "青牛镇",
+          "七玄门"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "背后交易",
+        "matchedNames": [
+          "彩霞山"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "背后交易",
+        "matchedNames": [
+          "彩霞山"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "彩霞山"
+        ],
+        "otherMatchedNames": [
+          "外刃堂"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "七绝堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "私下交易",
+        "matchedNames": [
+          "七绝堂"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "四平帮",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 122,
+        "chapterTitle": "毒杀",
+        "matchedNames": [
+          "四平帮"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "山崖",
+    "aliases": [
+      "崖下"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "炼骨崖",
+        "matchedNames": [
+          "崖下"
+        ],
+        "fields": [
+          "time",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "墨大夫",
+        "matchedNames": [
+          "山崖"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "山崖",
+          "崖下"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "山崖"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "太南会",
+    "aliases": [
+      "太南小会"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "太南小会"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 133,
+        "chapterTitle": "偷技",
+        "matchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 133,
+        "chapterTitle": "偷技",
+        "matchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "太南会"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "百锻堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "黄枫谷",
+    "aliases": [],
+    "missingFields": [
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 144,
+        "chapterTitle": "筑基丹之争",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 144,
+        "chapterTitle": "筑基丹之争",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "fields": [
+          "environment",
+          "actionContext",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 145,
+        "chapterTitle": "不速之客",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "fields": [
+          "environment",
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 145,
+        "chapterTitle": "不速之客",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "黄枫谷"
+        ],
+        "otherMatchedNames": [
+          "巨大石殿",
+          "石殿"
+        ],
+        "fields": [
+          "layout"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "药园",
+    "aliases": [
+      "药田",
+      "药田地里"
+    ],
+    "missingFields": [
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "心魔生",
+        "matchedNames": [
+          "药园"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "插柳成",
+        "matchedNames": [
+          "药园"
+        ],
+        "fields": [
+          "layout"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "秦叶岭",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "铁拳会",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "彩霞山脉",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "七玄殿",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "山边小村",
+    "aliases": [
+      "小村",
+      "村子",
+      "韩立出生的小村"
+    ],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "山边小村",
+        "matchedNames": [
+          "村子"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "小村"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "升仙大会",
+    "aliases": [
+      "升仙会",
+      "擂台赛"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 134,
+        "chapterTitle": "升仙大会",
+        "matchedNames": [
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 134,
+        "chapterTitle": "升仙大会",
+        "matchedNames": [
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "升仙会",
+          "擂台赛"
+        ],
+        "otherMatchedNames": [
+          "越国"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 135,
+        "chapterTitle": "惊闻",
+        "matchedNames": [
+          "升仙大会"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "升仙大会",
+          "擂台赛"
+        ],
+        "otherMatchedNames": [
+          "燕家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "升仙会"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "升仙会",
+          "擂台赛"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 145,
+        "chapterTitle": "不速之客",
+        "matchedNames": [
+          "升仙大会"
+        ],
+        "otherMatchedNames": [
+          "岚州"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "石门",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "第三人",
+        "matchedNames": [
+          "石门"
+        ],
+        "otherMatchedNames": [
+          "石屋"
+        ],
+        "fields": [
+          "environment",
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "神灭",
+        "matchedNames": [
+          "石门"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "潇湘院",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 121,
+        "chapterTitle": "潇湘院",
+        "matchedNames": [
+          "潇湘院"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "小水潭",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "私下交易",
+        "matchedNames": [
+          "小水潭"
+        ],
+        "fields": [
+          "layout"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "赤水峰",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "赤水峰"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "黑水巷",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "聚宝堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "李长老住处",
+    "aliases": [
+      "李宅"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "炼骨崖",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "死斗场",
+    "aliases": [
+      "决斗场"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 85,
+        "chapterTitle": "死契血斗",
+        "matchedNames": [
+          "决斗场"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "太岳山脉",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "太岳山脉"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "西城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "百莽山",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "七玄门",
+        "matchedNames": [
+          "百莽山"
+        ],
+        "otherMatchedNames": [
+          "镜州",
+          "彩霞山"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "毒龙帮",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "断水门",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 84,
+        "chapterTitle": "地动山摇",
+        "matchedNames": [
+          "断水门"
+        ],
+        "fields": [
+          "actionContext",
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "飞鸟堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "怪坡",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "金光观",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "巨大石殿",
+    "aliases": [
+      "石殿"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "枯崖山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "蓝月镇",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "练功石室",
+    "aliases": [
+      "练功静室",
+      "青石屋门"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "林师弟的屋子",
+    "aliases": [
+      "寒舍"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "落谷镇",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "落日峰",
+    "aliases": [
+      "主峰"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "墨府后院",
+    "aliases": [
+      "墨府后花园"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "清客院",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "神手谷谷口",
+    "aliases": [
+      "谷口"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "四海堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "修炼难",
+        "matchedNames": [
+          "四海堂"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "铁枪会",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "外刃堂",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "外刃堂"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "五领镇",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "新弟子居住区",
+    "aliases": [
+      "平屋群",
+      "空屋群"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "越州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "长平镇",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "主殿",
+    "aliases": [
+      "石殿"
+    ],
+    "missingFields": [
+      "environment",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "主殿"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "主殿"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "山沟",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "云翅鸟",
+        "matchedNames": [
+          "山沟"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 42,
+        "chapterTitle": "云翅鸟",
+        "matchedNames": [
+          "山沟"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "石屋群",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "建州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "天霸门",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "辛州",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "越州七玄门彩霞山",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  }
+]

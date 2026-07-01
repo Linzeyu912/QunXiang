@@ -1,0 +1,112 @@
+{
+  "storyId": "story-150-202606290629-85-96-8",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "character",
+      "assetId": "金罩",
+      "assetName": "金罩",
+      "prompt": "金罩，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 体态/身形：令侏儒身形不停的摇晃\n- 饰物/随身特征：忽然伸出两根手指在金罩上轻轻弹了一下\n- 发型：黑色短发，整洁利落\n- 年龄/身份视觉线索：青少年面孔，约15-18岁\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "忽然伸出两根手指在金罩上轻轻弹了一下，",
+        "令侏儒身形不停的摇晃，"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 体态/身形：令侏儒身形不停的摇晃\n- 饰物/随身特征：忽然伸出两根手指在金罩上轻轻弹了一下\n- 发型：黑色短发，整洁利落\n- 年龄/身份视觉线索：青少年面孔，约15-18岁",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "秦叶岭",
+      "assetName": "秦叶岭",
+      "prompt": "秦叶岭，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“我是秦叶岭叶家的弟子，来这里只是路过而已，只因和野狼帮帮主有几分旧情，所以耐不过对方的恳求，出手帮了一下。",
+        "说道自己是叶家的人时，这侏儒情不自禁的把胸膛挺了挺，似乎一下子有了依仗，说话间底气也足了几分，看来他对秦叶岭叶家的名气很有自信。",
+        "看到胆量在一瞬间仿佛大了不少的侏儒，韩立知道，这个秦叶岭叶家一定是个声名赫赫的修仙家族。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "方既然",
+      "assetName": "方既然",
+      "prompt": "方既然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "对面的金光上人，眼睁睁的看着韩立把他的宝物收入怀内，不禁怒火直冒，可是又没有勇气上前撕打，要知道对方既然能够轻易抹去他在符箓上的灵力，这就说明对方的法力起码是他的数倍深厚，他实在没有胆量与其争斗。",
+        "只是对方既然有这样一个大家族作为靠山，在一开始还如此惊慌失措，这说明此人不是对自己说谎，就是其在家族内也是个无足轻重的小卒，其生死根本无人问津。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ]
+}

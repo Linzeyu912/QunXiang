@@ -1,0 +1,764 @@
+[
+  {
+    "entityType": "location",
+    "name": "萧家后山",
+    "aliases": [
+      "山崖之颠",
+      "后山",
+      "山顶"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "后山"
+        ],
+        "otherMatchedNames": [
+          "魔兽山脉",
+          "险峻山峦",
+          "大厅",
+          "加玛帝国",
+          "帝国"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.469,
+    "visualFields": {
+      "environment": "悬崖边草地，对面是笼罩在雾气中的险峻山峦",
+      "layout": "山壁之上可坐",
+      "atmosphere": "萧炎常去修炼思考的僻静之处",
+      "lighting": "",
+      "time": "",
+      "actionContext": "萧炎坐在山壁之上，平静望着对面"
+    },
+    "visualDetails": {
+      "environment": "悬崖边缘的草地，地势较高",
+      "layout": "山顶平台，有山壁可倚坐",
+      "atmosphere": "僻静，适合独处思考",
+      "keyVisualAnchors": "对面笼罩在雾气中的险峻山峦、魔兽山脉"
+    },
+    "inferredFields": [
+      "environment",
+      "layout",
+      "atmosphere"
+    ],
+    "summarizedFields": [
+      "actionContext"
+    ],
+    "enhancedDescription": "萧家后山位于乌坦城外，是一片位于悬崖边缘的草地，地势较高。山顶有一处平台，崖边山壁可供人倚坐。此处视野开阔，可远眺对面笼罩在雾气之中的险峻山峦，那便是加玛帝国闻名的魔兽山脉。萧炎常在此处独坐修炼，四周僻静，氛围沉凝。",
+    "finalDescription": "萧家后山位于乌坦城外，是一片位于悬崖边缘的草地，地势较高。山顶有一处平台，崖边山壁可供人倚坐。此处视野开阔，可远眺对面笼罩在雾气之中的险峻山峦，那便是加玛帝国闻名的魔兽山脉。萧炎常在此处独坐修炼，四周僻静，氛围沉凝。",
+    "llmSupplement": "据原文补写布局为山顶平台，有山壁可坐",
+    "supplementDescription": "据原文补写布局为山顶平台，有山壁可坐",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "location",
+    "name": "乌坦城",
+    "aliases": [
+      "乌坦"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.425,
+    "visualFields": {
+      "environment": "加玛帝国东部大城市，背靠魔兽山脉，跻身大城市之列末座",
+      "layout": "城市布局，萧家府邸所在",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": "萧家所在城市"
+    },
+    "visualDetails": {
+      "environment": "加玛帝国东部大城市，背靠魔兽山脉",
+      "layout": "城市格局，内有萧家府邸",
+      "keyVisualAnchors": "萧家府邸、魔兽山脉"
+    },
+    "inferredFields": [
+      "environment",
+      "layout",
+      "actionContext"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "乌坦城是加玛帝国东部的大城市，因背靠魔兽山脉的地利之便，跻身帝国大城市之列，却仅居于末座。城内萧家与另外两大家族三足鼎立，府邸错落其间。",
+    "finalDescription": "乌坦城是加玛帝国东部的大城市，因背靠魔兽山脉的地利之便，跻身帝国大城市之列，却仅居于末座。城内萧家与另外两大家族三足鼎立，府邸错落其间。",
+    "llmSupplement": "据原文补写布局为城市格局，萧家居于其中",
+    "supplementDescription": "据原文补写布局为城市格局，萧家居于其中",
+    "completionStatus": "llm_inferred",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "location",
+    "name": "魔兽山脉",
+    "aliases": [
+      "险峻山峦"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "魔兽山脉"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "乌坦",
+          "加玛帝国",
+          "帝国"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.38749999999999996,
+    "visualFields": {
+      "environment": "加玛帝国闻名的险峻山峦，悬崖峭壁，常年笼罩在雾气之中",
+      "layout": "山峦连绵，地势险峻",
+      "atmosphere": "神秘危险，常有人寻宝",
+      "lighting": "",
+      "time": "",
+      "actionContext": "从萧家后山可远眺此处"
+    },
+    "visualDetails": {
+      "environment": "加玛帝国闻名的险峻山峦",
+      "layout": "山峦连绵起伏，悬崖峭壁",
+      "atmosphere": "神秘危险，雾气缭绕",
+      "keyVisualAnchors": "险峻山峦、悬崖峭壁、雾气"
+    },
+    "inferredFields": [
+      "layout",
+      "atmosphere",
+      "actionContext"
+    ],
+    "summarizedFields": [
+      "environment"
+    ],
+    "enhancedDescription": "魔兽山脉是加玛帝国闻名的险峻山峦，山峦连绵起伏，悬崖峭壁林立，常年笼罩在层层雾气之中。从萧家后山远眺，可见其巍峨雄壮的山影横亘天际。",
+    "finalDescription": "魔兽山脉是加玛帝国闻名的险峻山峦，山峦连绵起伏，悬崖峭壁林立，常年笼罩在层层雾气之中。从萧家后山远眺，可见其巍峨雄壮的山影横亘天际。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "location",
+    "name": "萧家大厅",
+    "aliases": [
+      "迎客大厅",
+      "大厅"
+    ],
+    "missingFields": [
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "迎客大厅",
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "后院"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "后山",
+          "魔兽山脉",
+          "险峻山峦",
+          "加玛帝国",
+          "帝国"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "斗气大陆",
+          "大陆",
+          "加玛帝国",
+          "帝国"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.35,
+    "visualFields": {
+      "environment": "宽敞肃穆的迎客大厅，人数不少，角落有位置",
+      "layout": "最上方设主座与三位长老席位，大厅可容数十人",
+      "atmosphere": "肃穆，气氛时而寂静时而紧张",
+      "lighting": "自然光从窗棂透入",
+      "time": "",
+      "actionContext": "接待云岚宗来客，纳兰嫣然当众提出解除婚约"
+    },
+    "visualDetails": {
+      "environment": "宽敞的迎客大厅",
+      "layout": "正上方设主座与三位长老席位，可容数十人聚集，角落处有人静坐",
+      "atmosphere": "肃穆，气氛紧张",
+      "lighting": "自然光透入，光线明亮",
+      "keyVisualAnchors": "主座与长老席位、萧薰儿静坐的角落"
+    },
+    "inferredFields": [
+      "lighting"
+    ],
+    "summarizedFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "actionContext"
+    ],
+    "enhancedDescription": "萧家迎客大厅宽敞肃穆，青砖铺地，可容纳数十人。正上方设有主座与三位长老的席位，几位老者端坐其间，神色淡漠。厅中光线从窗棂透入，照亮厅堂。大厅角落处，萧薰儿曾合拢书籍静坐。此处是萧家接待贵宾之所，气氛平日庄重，彼时却剑拔弩张。",
+    "finalDescription": "萧家迎客大厅宽敞肃穆，青砖铺地，可容纳数十人。正上方设有主座与三位长老的席位，几位老者端坐其间，神色淡漠。厅中光线从窗棂透入，照亮厅堂。大厅角落处，萧薰儿曾合拢书籍静坐。此处是萧家接待贵宾之所，气氛平日庄重，彼时却剑拔弩张。",
+    "llmSupplement": "据原文补写大厅铺地为青砖，光线从窗棂透入",
+    "supplementDescription": "据原文补写大厅铺地为青砖，光线从窗棂透入",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "location",
+    "name": "斗气大陆",
+    "aliases": [
+      "大陆"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "斗气大陆",
+          "大陆"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "斗气大陆",
+          "大陆"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.35,
+    "visualFields": {
+      "environment": "地域辽阔，万族林立",
+      "layout": "大陆之北有蛮族，大陆之南有魔兽家族",
+      "atmosphere": "",
+      "lighting": "更有那以诡异阴狠而著名的黑暗种族等等……",
+      "time": "如果萧炎此时拥有斗师实力",
+      "actionContext": ""
+    },
+    "visualDetails": {
+      "environment": "地域辽阔",
+      "layout": "万族分布各地",
+      "atmosphere": "万族争辉，强者为尊",
+      "keyVisualAnchors": "加玛帝国、蛮族、魔兽家族"
+    },
+    "inferredFields": [
+      "environment",
+      "layout"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "斗气大陆地域辽阔，万族林立。大陆之北有号称力大无穷、可与兽魂合体的蛮族，大陆之南有各种智商奇高的高级魔兽家族，更有以诡异阴狠著称的黑暗种族等众多势力。",
+    "finalDescription": "斗气大陆地域辽阔，万族林立。大陆之北有号称力大无穷、可与兽魂合体的蛮族，大陆之南有各种智商奇高的高级魔兽家族，更有以诡异阴狠著称的黑暗种族等众多势力。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "location",
+    "name": "萧家后院",
+    "aliases": [
+      "后院"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "tier": "supporting",
+    "importanceScore": 0.35,
+    "visualFields": {
+      "environment": "萧家庭院",
+      "layout": "从后院可通往萧家大厅",
+      "atmosphere": "萧炎居住之所",
+      "lighting": "",
+      "time": "",
+      "actionContext": "萧炎从此处前往大厅"
+    },
+    "visualDetails": {
+      "environment": "萧家庭院",
+      "layout": "与萧家大厅相连",
+      "atmosphere": "居所庭院，安静",
+      "keyVisualAnchors": "萧炎住处、通往大厅的路径"
+    },
+    "inferredFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "actionContext"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "萧家后院是萧炎所住之处，是一片安静的居所庭院。从此处可通往萧家大厅，老管家曾引萧炎穿过后院，来到肃穆的迎客大厅。",
+    "finalDescription": "萧家后院是萧炎所住之处，是一片安静的居所庭院。从此处可通往萧家大厅，老管家曾引萧炎穿过后院，来到肃穆的迎客大厅。",
+    "llmSupplement": "据萧炎住处和通往大厅的路径描述补写环境与布局",
+    "supplementDescription": "据萧炎住处和通往大厅的路径描述补写环境与布局",
+    "completionStatus": "llm_inferred",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "location",
+    "name": "测试广场",
+    "aliases": [
+      "广场",
+      "人头汹涌的广场"
+    ],
+    "missingFields": [
+      "layout",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "广场",
+          "人头汹涌的广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.306,
+    "visualFields": {
+      "environment": "人头汹涌的广场",
+      "layout": "设有测验魔石碑",
+      "atmosphere": "落寞，嘲讽气氛",
+      "lighting": "日光照耀",
+      "time": "",
+      "actionContext": "萧炎测试后落寞离去"
+    },
+    "visualDetails": {
+      "environment": "萧家测试广场",
+      "layout": "广场中央设有测验魔石碑",
+      "atmosphere": "嘲讽与落寞交织",
+      "lighting": "日光照耀",
+      "keyVisualAnchors": "测验魔石碑、围观人群"
+    },
+    "inferredFields": [
+      "layout",
+      "lighting",
+      "actionContext"
+    ],
+    "summarizedFields": [
+      "environment",
+      "atmosphere"
+    ],
+    "enhancedDescription": "萧家测试广场人头汹涌，日光之下众人聚集。广场中央矗立着一块漆黑的测验魔石碑，众多少年在此接受斗之气测试。当测验结果公布时，广场上便会响起一阵嘲讽的骚动。",
+    "finalDescription": "萧家测试广场人头汹涌，日光之下众人聚集。广场中央矗立着一块漆黑的测验魔石碑，众多少年在此接受斗之气测试。当测验结果公布时，广场上便会响起一阵嘲讽的骚动。",
+    "llmSupplement": "据原文补写照明为日光照耀",
+    "supplementDescription": "据原文补写照明为日光照耀",
+    "completionStatus": "llm_completed",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "location",
+    "name": "加玛帝国",
+    "aliases": [
+      "帝国"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.26849999999999996,
+    "visualFields": {
+      "environment": "斗气大陆上的帝国",
+      "layout": "乌坦城隶属于此",
+      "atmosphere": "",
+      "lighting": "",
+      "time": "",
+      "actionContext": ""
+    },
+    "visualDetails": {
+      "environment": "斗气大陆上的帝国",
+      "layout": "疆域之内有乌坦城等大城市",
+      "keyVisualAnchors": "乌坦城、云岚宗"
+    },
+    "inferredFields": [
+      "environment",
+      "layout"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "加玛帝国是斗气大陆上的一个强大帝国，疆域辽阔。其境内有乌坦城等大城市，背靠魔兽山脉。云岚宗便坐落于帝国之中。",
+    "finalDescription": "加玛帝国是斗气大陆上的一个强大帝国，疆域辽阔。其境内有乌坦城等大城市，背靠魔兽山脉。云岚宗便坐落于帝国之中。",
+    "llmSupplement": "",
+    "supplementDescription": "",
+    "completionStatus": "llm_inferred",
+    "descriptionSource": "mixed"
+  },
+  {
+    "entityType": "location",
+    "name": "药材店",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true,
+    "tier": "candidate",
+    "importanceScore": 0.23099999999999998,
+    "visualFields": {
+      "environment": "乌坦城内药材店铺",
+      "layout": "店内设有柜台与药材展示架",
+      "atmosphere": "",
+      "lighting": "室内光",
+      "time": "",
+      "actionContext": "萧炎在此购买药材，花费九百多枚金币"
+    },
+    "visualDetails": {
+      "environment": "乌坦城内的药材店铺",
+      "layout": "店内设有柜台与展示架",
+      "lighting": "室内正常光照",
+      "keyVisualAnchors": "药材柜台、展示架"
+    },
+    "inferredFields": [
+      "environment",
+      "layout",
+      "lighting",
+      "actionContext"
+    ],
+    "summarizedFields": [],
+    "enhancedDescription": "乌坦城内的一间药材店铺，室内设有药材柜台与展示架，陈列着紫叶兰草、洗骨花等炼药材料。萧炎曾在此花费九百多枚金币购买修炼所需的药材。",
+    "finalDescription": "乌坦城内的一间药材店铺，室内设有药材柜台与展示架，陈列着紫叶兰草、洗骨花等炼药材料。萧炎曾在此花费九百多枚金币购买修炼所需的药材。",
+    "llmSupplement": "据药材店铺常见格局补写店内布局与照明",
+    "supplementDescription": "据药材店铺常见格局补写店内布局与照明",
+    "completionStatus": "llm_inferred",
+    "descriptionSource": "mixed"
+  }
+]

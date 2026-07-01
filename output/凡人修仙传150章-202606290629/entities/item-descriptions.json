@@ -1,0 +1,7436 @@
+[
+  {
+    "entityType": "item",
+    "name": "无名口诀",
+    "aliases": [
+      "无名口决",
+      "口诀",
+      "口决",
+      "修炼口诀",
+      "功法"
+    ],
+    "missingFields": [
+      "colorShape",
+      "usage"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "修炼难",
+        "matchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "修炼难",
+        "matchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "入门弟子",
+        "matchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "入门弟子",
+        "matchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "入门弟子",
+        "matchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "入门弟子",
+        "matchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "无名口诀",
+          "口诀"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "口决"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 67,
+        "chapterTitle": "火弹术",
+        "matchedNames": [
+          "口诀"
+        ],
+        "otherMatchedNames": [
+          "眨眼剑法"
+        ],
+        "fields": [
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 127,
+        "chapterTitle": "灵根之说",
+        "matchedNames": [
+          "功法"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 129,
+        "chapterTitle": "青颜真人",
+        "matchedNames": [
+          "功法"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "功法"
+        ],
+        "otherMatchedNames": [
+          "长春功",
+          "灵石",
+          "低阶灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 144,
+        "chapterTitle": "筑基丹之争",
+        "matchedNames": [
+          "功法"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "功法"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "功法"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "法宝残片",
+    "aliases": [
+      "残片",
+      "那块布",
+      "半透明的布料状物品"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "法宝残片",
+          "残片"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "法宝残片",
+          "残片"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 141,
+        "chapterTitle": "升仙令",
+        "matchedNames": [
+          "残片"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.46,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "松纹道士符箓",
+    "aliases": [
+      "破禁符",
+      "黄符"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "金光罩",
+        "matchedNames": [
+          "黄符"
+        ],
+        "otherMatchedNames": [
+          "符纸",
+          "黄色符纸"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "驱物术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "七把银刃",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "银色法符",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "筑基丹",
+    "aliases": [
+      "升仙丸"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 134,
+        "chapterTitle": "升仙大会",
+        "matchedNames": [
+          "筑基丹"
+        ],
+        "otherMatchedNames": [
+          "功法"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "筑基丹"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "长生经",
+    "aliases": [
+      "三个黑字书皮的书"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "修炼难",
+        "matchedNames": [
+          "三个黑字书皮的书"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 65,
+        "chapterTitle": "韩神医",
+        "matchedNames": [
+          "长生经"
+        ],
+        "otherMatchedNames": [
+          "口诀",
+          "长春功"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "墨大夫遗书",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "抽髓丸",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "象甲功",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "otherMatchedNames": [
+          "伤药",
+          "外伤药"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "冰冻术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "传音术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "回风钵",
+    "aliases": [
+      "黄钵"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "流沙术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "匿身术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "匿身术"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "缠绕术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "吃金鼠",
+    "aliases": [
+      "银色小鼠",
+      "银鼠",
+      "一级妖兽吃金鼠"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "银色小鼠"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "地刺术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "遁形符",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "拂柳剑法",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "火花术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "升空术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "夺舍大法",
+    "aliases": [
+      "夺舍之法"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "七鬼噬魂大法",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "长春功",
+    "aliases": [
+      "长春气",
+      "长春功法决"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "定神符",
+    "aliases": [
+      "黄纸",
+      "黄符"
+    ],
+    "missingFields": [
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 54,
+        "chapterTitle": "定神符",
+        "matchedNames": [
+          "黄纸"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 54,
+        "chapterTitle": "定神符",
+        "matchedNames": [
+          "黄纸"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 54,
+        "chapterTitle": "定神符",
+        "matchedNames": [
+          "黄纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 54,
+        "chapterTitle": "定神符",
+        "matchedNames": [
+          "黄纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 54,
+        "chapterTitle": "定神符",
+        "matchedNames": [
+          "黄纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "第三人",
+        "matchedNames": [
+          "黄纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "法武并用",
+        "matchedNames": [
+          "黄纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "金光罩",
+        "matchedNames": [
+          "黄符"
+        ],
+        "otherMatchedNames": [
+          "符纸",
+          "黄色符纸"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "墨居仁遗书",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "七星草种子",
+    "aliases": [
+      "种子"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 138,
+        "chapterTitle": "制符之道",
+        "matchedNames": [
+          "种子"
+        ],
+        "otherMatchedNames": [
+          "黄龙丹",
+          "金髓丸"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "血箭阴魂咒",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "眨眼剑法",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "墨大夫外伤药",
+    "aliases": [
+      "伤药",
+      "墨大夫秘制的伤药",
+      "外伤药"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "千人醉",
+    "aliases": [
+      "迷药千人醉"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 116,
+        "chapterTitle": "翻脸",
+        "matchedNames": [
+          "千人醉",
+          "迷药千人醉"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "三角形令牌",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "提神养颜灵药",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "升仙令",
+    "aliases": [
+      "令牌",
+      "黄枫谷升仙令"
+    ],
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "令牌"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "烈火焚敌",
+        "matchedNames": [
+          "令牌"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "升仙令"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.69,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "小皮袋",
+    "aliases": [
+      "皮袋"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "小皮袋",
+          "皮袋"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "皮袋"
+        ],
+        "otherMatchedNames": [
+          "平安符"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "皮袋"
+        ],
+        "otherMatchedNames": [
+          "平安符",
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "皮袋"
+        ],
+        "otherMatchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "皮袋"
+        ],
+        "otherMatchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "皮袋"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "心魔生",
+        "matchedNames": [
+          "皮袋"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "心魔生",
+        "matchedNames": [
+          "小皮袋",
+          "皮袋"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "皮袋"
+        ],
+        "otherMatchedNames": [
+          "平安符"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "丹砂",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "丹砂"
+        ],
+        "otherMatchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "平安符",
+    "aliases": [
+      "野猪牙平安符"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "平安符"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "生死书",
+    "aliases": [
+      "死契文书",
+      "生死契",
+      "血红色文书"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 86,
+        "chapterTitle": "突变",
+        "matchedNames": [
+          "生死契"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "略显身手",
+        "matchedNames": [
+          "生死书"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "定神术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 138,
+        "chapterTitle": "制符之道",
+        "matchedNames": [
+          "定神术"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "飞天符",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "飞行符",
+    "aliases": [
+      "初级高阶灵符"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 141,
+        "chapterTitle": "升仙令",
+        "matchedNames": [
+          "飞行符"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "空白符纸",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "玄字小三角黑旗",
+    "aliases": [
+      "小三角黑旗",
+      "黑旗",
+      "七玄门黑旗"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "碧绿色药丸",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "韩立金罩符箓",
+    "aliases": [
+      "残旧符箓"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "基础咒决残本",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 132,
+        "chapterTitle": "收获",
+        "matchedNames": [
+          "基础咒决残本"
+        ],
+        "otherMatchedNames": [
+          "空白符纸",
+          "符纸"
+        ],
+        "fields": [
+          "condition"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "金刚符",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "金刚符"
+        ],
+        "otherMatchedNames": [
+          "符箓",
+          "灵石",
+          "低阶灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "金刚符"
+        ],
+        "otherMatchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "金刚经",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "青溪笔录",
+    "aliases": [
+      "小册子",
+      "书册"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "水咒符法基础",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "翠绿色液体",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "符宝",
+    "aliases": [
+      "符宝灰光",
+      "木匣内灰芒"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "黑索",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "引魂钟",
+    "aliases": [
+      "铜钟",
+      "黄铜小钟"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "画着小剑的符箓",
+    "aliases": [
+      "符箓",
+      "灰芒",
+      "灰光",
+      "灰色小剑"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "飞剑？",
+        "matchedNames": [
+          "灰芒"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "飞剑？",
+        "matchedNames": [
+          "灰光"
+        ],
+        "fields": [
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰芒"
+        ],
+        "fields": [
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰光"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰芒"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰芒",
+          "灰光"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "剑符",
+        "matchedNames": [
+          "灰芒"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "剑符",
+        "matchedNames": [
+          "符箓"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "烈火焚敌",
+        "matchedNames": [
+          "符箓"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "烈火焚敌",
+        "matchedNames": [
+          "符箓"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "缺陷",
+        "matchedNames": [
+          "符箓",
+          "灰色小剑"
+        ],
+        "otherMatchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "符箓"
+        ],
+        "otherMatchedNames": [
+          "空白符纸",
+          "符纸",
+          "灵石",
+          "低阶灵石"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "符箓"
+        ],
+        "otherMatchedNames": [
+          "金刚符"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "符箓"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "符箓"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "灰光"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "暖阳宝玉",
+    "aliases": [
+      "宝玉"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "otherMatchedNames": [
+          "尸虫丸",
+          "遗书",
+          "解药"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 104,
+        "chapterTitle": "情报",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 104,
+        "chapterTitle": "情报",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 105,
+        "chapterTitle": "惊信",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 110,
+        "chapterTitle": "狐",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "otherMatchedNames": [
+          "书信"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 116,
+        "chapterTitle": "翻脸",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 116,
+        "chapterTitle": "翻脸",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 117,
+        "chapterTitle": "言和",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 117,
+        "chapterTitle": "言和",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "otherMatchedNames": [
+          "解药"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "宝玉"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "黄龙丹",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "清灵散",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "火弹术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "烈火焚敌",
+        "matchedNames": [
+          "火弹术"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "金髓丸",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "尸虫丸",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "御风决",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "眨眼剑谱",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 36,
+        "chapterTitle": "吃惊",
+        "matchedNames": [
+          "眨眼剑谱"
+        ],
+        "fields": [
+          "usage",
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "神秘瓶子",
+    "aliases": [
+      "小瓶子",
+      "瓶子",
+      "绿色瓶子"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 120,
+        "chapterTitle": "定计夺帮",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "otherMatchedNames": [
+          "黄栗丸",
+          "云翅鸟"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "腐心丸",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "剑符",
+    "aliases": [
+      "灰光",
+      "灰芒"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "飞剑？",
+        "matchedNames": [
+          "灰芒"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "飞剑？",
+        "matchedNames": [
+          "灰光"
+        ],
+        "fields": [
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰芒"
+        ],
+        "fields": [
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰光"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰芒"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰光",
+          "灰芒"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "剑符",
+        "matchedNames": [
+          "灰芒"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "灰光"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "金罩符",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "天眼术",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 106,
+        "chapterTitle": "蓝衣人",
+        "matchedNames": [
+          "天眼术"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "天眼术"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "养精丹",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "养精丹"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "黑匣",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "止痛药",
+    "aliases": [
+      "秘药",
+      "成药",
+      "药粉",
+      "药包"
+    ],
+    "missingFields": [
+      "material",
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "秘药"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "惊魂定",
+        "matchedNames": [
+          "药包"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "惊魂定",
+        "matchedNames": [
+          "秘药"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "私下交易",
+        "matchedNames": [
+          "止痛药"
+        ],
+        "otherMatchedNames": [
+          "抽髓丸"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "清灵散",
+        "matchedNames": [
+          "药包"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "药粉"
+        ],
+        "otherMatchedNames": [
+          "龙形戒指"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "药粉"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "药粉"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "药粉"
+        ],
+        "otherMatchedNames": [
+          "龙形戒指"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "马车",
+    "aliases": [
+      "四轮篷车",
+      "篷车"
+    ],
+    "missingFields": [
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "青牛镇",
+        "matchedNames": [
+          "马车"
+        ],
+        "otherMatchedNames": [
+          "小三角黑旗",
+          "黑旗"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "马车"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "七鬼噬魂",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "千年三乌草",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "千年三乌草"
+        ],
+        "fields": [
+          "usage",
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "秦氏族谱",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "铁筒",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "止痛药",
+        "matchedNames": [
+          "铁筒"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "冲突起",
+        "matchedNames": [
+          "铁筒"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "冲突起",
+        "matchedNames": [
+          "铁筒"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 32,
+        "chapterTitle": "豪气生",
+        "matchedNames": [
+          "铁筒"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "银针",
+    "aliases": [],
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "银针"
+        ],
+        "fields": [
+          "material",
+          "ownership",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "止痛药",
+        "matchedNames": [
+          "银针"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.62,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "萦香丸",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "长刀",
+    "aliases": [],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 17,
+        "chapterTitle": "厉师兄（1）",
+        "matchedNames": [
+          "长刀"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "止痛药",
+        "matchedNames": [
+          "长刀"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "惊魂定",
+        "matchedNames": [
+          "长刀"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 37,
+        "chapterTitle": "三不练",
+        "matchedNames": [
+          "长刀"
+        ],
+        "fields": [
+          "colorShape",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "长刀"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "长刀"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "黑色木匣",
+    "aliases": [
+      "黝黑木匣",
+      "长条形木匣"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "小白玉瓶",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "小白玉瓶"
+        ],
+        "otherMatchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "纸条",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 41,
+        "chapterTitle": "留言夜出",
+        "matchedNames": [
+          "纸条"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 41,
+        "chapterTitle": "留言夜出",
+        "matchedNames": [
+          "纸条"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 50,
+        "chapterTitle": "缠香丝",
+        "matchedNames": [
+          "纸条"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 54,
+        "chapterTitle": "定神符",
+        "matchedNames": [
+          "纸条"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "纸条"
+        ],
+        "otherMatchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "纸条"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "罗烟步",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "神秘小瓶",
+    "aliases": [
+      "小瓶",
+      "瓶子"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 66,
+        "chapterTitle": "古怪规定",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "otherMatchedNames": [
+          "成药",
+          "绿液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "otherMatchedNames": [
+          "纸条"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 113,
+        "chapterTitle": "萦香丸",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 120,
+        "chapterTitle": "定计夺帮",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "otherMatchedNames": [
+          "黄栗丸",
+          "云翅鸟"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "传音符",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "金竺笔",
+    "aliases": [
+      "金睛毛笔"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 138,
+        "chapterTitle": "制符之道",
+        "matchedNames": [
+          "金竺笔"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "绿液",
+    "aliases": [],
+    "missingFields": [
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "绿液"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "绿液"
+        ],
+        "otherMatchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "usage",
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.5,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "五毒水",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "百里香",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "碧绿色液体",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "碧绿色液体"
+        ],
+        "otherMatchedNames": [
+          "瓶子"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "船型法器",
+    "aliases": [
+      "小船型的巨大法器"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "寒冰符",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "合气丹",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "护心镜",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "护心镜"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "黄木盒",
+    "aliases": [],
+    "missingFields": [
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "黄木盒"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "回春符",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "解毒丹",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "金符",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "缺陷",
+        "matchedNames": [
+          "金符"
+        ],
+        "otherMatchedNames": [
+          "口诀"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "金睛猿",
+    "aliases": [
+      "金睛猿颈毛"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "金睛猿",
+          "金睛猿颈毛"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "军用连珠弩",
+    "aliases": [
+      "硬弩"
+    ],
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 83,
+        "chapterTitle": "大陷阱",
+        "matchedNames": [
+          "硬弩"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "usage",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.54,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "狂蟒劲",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "敛息功",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "密室刺杀技",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "魔银手",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 52,
+        "chapterTitle": "七鬼噬魂",
+        "matchedNames": [
+          "魔银手"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "奇书",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "青玉色竹简",
+    "aliases": [
+      "竹简"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "竹简"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "青玉色竹简",
+          "竹简"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "竹简"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "竹简"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 149,
+        "chapterTitle": "杂务",
+        "matchedNames": [
+          "竹简"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "竹简"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "竹简"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "竹简"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "竹简"
+        ],
+        "otherMatchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "通音符",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "伪匿术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "笑魂散",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "血灵草",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 58,
+        "chapterTitle": "修仙者",
+        "matchedNames": [
+          "血灵草"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "腰牌",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "江湖斗",
+        "matchedNames": [
+          "腰牌"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "拷问",
+        "matchedNames": [
+          "腰牌"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.5,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "叶形法器",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "连珠弩",
+    "aliases": [
+      "连珠硬弩",
+      "军用弩",
+      "硬弩"
+    ],
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 83,
+        "chapterTitle": "大陷阱",
+        "matchedNames": [
+          "硬弩"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "usage",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.54,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "神秘小瓶子",
+    "aliases": [
+      "小瓶子",
+      "小瓶"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 66,
+        "chapterTitle": "古怪规定",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "otherMatchedNames": [
+          "成药",
+          "绿液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "otherMatchedNames": [
+          "纸条"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 113,
+        "chapterTitle": "萦香丸",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "符纸",
+    "aliases": [
+      "灵符纸",
+      "初级下阶符纸"
+    ],
+    "missingFields": [
+      "condition"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "法武并用",
+        "matchedNames": [
+          "符纸"
+        ],
+        "otherMatchedNames": [
+          "驱物术"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "金光罩",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "金光罩",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "矛与盾",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "矛与盾",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "矛与盾",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 89,
+        "chapterTitle": "矛与盾",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "剑符",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 92,
+        "chapterTitle": "剑符",
+        "matchedNames": [
+          "符纸"
+        ],
+        "otherMatchedNames": [
+          "驱物术",
+          "符箓"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 128,
+        "chapterTitle": "太南小会",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 128,
+        "chapterTitle": "太南小会",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "ownership",
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 130,
+        "chapterTitle": "入伙",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "符纸"
+        ],
+        "otherMatchedNames": [
+          "定神术"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 132,
+        "chapterTitle": "收获",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 132,
+        "chapterTitle": "收获",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 132,
+        "chapterTitle": "收获",
+        "matchedNames": [
+          "符纸"
+        ],
+        "otherMatchedNames": [
+          "飞行符"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "符纸",
+          "初级下阶符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "符纸"
+        ],
+        "otherMatchedNames": [
+          "定神术"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "符纸"
+        ],
+        "otherMatchedNames": [
+          "丹砂"
+        ],
+        "fields": [
+          "material",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "符纸"
+        ],
+        "otherMatchedNames": [
+          "种子"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 138,
+        "chapterTitle": "制符之道",
+        "matchedNames": [
+          "符纸"
+        ],
+        "otherMatchedNames": [
+          "丹砂",
+          "定神术"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 138,
+        "chapterTitle": "制符之道",
+        "matchedNames": [
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 138,
+        "chapterTitle": "制符之道",
+        "matchedNames": [
+          "符纸"
+        ],
+        "otherMatchedNames": [
+          "符箓"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "灵石",
+    "aliases": [
+      "低阶灵石",
+      "中阶灵石",
+      "高阶灵石",
+      "超阶灵石",
+      "金灵石",
+      "木灵石",
+      "水灵石",
+      "土灵石",
+      "火灵石",
+      "风灵石",
+      "雷灵石"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石",
+          "低阶灵石",
+          "中阶灵石",
+          "高阶灵石",
+          "超阶灵石",
+          "金灵石",
+          "木灵石",
+          "水灵石",
+          "土灵石",
+          "火灵石",
+          "风灵石",
+          "雷灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石",
+          "低阶灵石"
+        ],
+        "otherMatchedNames": [
+          "金刚符",
+          "符箓"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石",
+          "低阶灵石"
+        ],
+        "otherMatchedNames": [
+          "空白符纸",
+          "符箓",
+          "符纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石",
+          "低阶灵石"
+        ],
+        "otherMatchedNames": [
+          "飞天符"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 133,
+        "chapterTitle": "偷技",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "灵石",
+          "低阶灵石"
+        ],
+        "otherMatchedNames": [
+          "丹砂"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "灵石",
+          "低阶灵石"
+        ],
+        "otherMatchedNames": [
+          "功法",
+          "长春功"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "灵石"
+        ],
+        "otherMatchedNames": [
+          "法宝残片",
+          "残片"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "灵石",
+          "低阶灵石"
+        ],
+        "otherMatchedNames": [
+          "符箓"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 145,
+        "chapterTitle": "不速之客",
+        "matchedNames": [
+          "灵石",
+          "中阶灵石"
+        ],
+        "otherMatchedNames": [
+          "筑基丹"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 146,
+        "chapterTitle": "成交",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 146,
+        "chapterTitle": "成交",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "visualEffects",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "灵石"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.53,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "五行初级咒决大全",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "小剑符",
+    "aliases": [
+      "画有小剑的灵符"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "短剑",
+    "aliases": [
+      "带鞘短剑",
+      "利剑"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暗算与獠牙",
+        "matchedNames": [
+          "短剑",
+          "带鞘短剑"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暗算与獠牙",
+        "matchedNames": [
+          "短剑",
+          "利剑"
+        ],
+        "fields": [
+          "ownership",
+          "usage",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 46,
+        "chapterTitle": "破膛一剑",
+        "matchedNames": [
+          "短剑"
+        ],
+        "otherMatchedNames": [
+          "白色粉末",
+          "白烟",
+          "烟雾"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 46,
+        "chapterTitle": "破膛一剑",
+        "matchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "material",
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 47,
+        "chapterTitle": "魔银手对罗烟步",
+        "matchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 47,
+        "chapterTitle": "魔银手对罗烟步",
+        "matchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "ownership",
+          "visualEffects"
+        ]
+      },
+      {
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 49,
+        "chapterTitle": "套中套",
+        "matchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "试毒",
+        "matchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "利剑"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "白色长剑",
+    "aliases": [
+      "白色剑鞘长剑"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "缠香丝",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "风雷刀法",
+    "aliases": [
+      "奔雷刀法"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 17,
+        "chapterTitle": "厉师兄（1）",
+        "matchedNames": [
+          "奔雷刀法"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 18,
+        "chapterTitle": "厉师兄（2）",
+        "matchedNames": [
+          "风雷刀法"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "书信",
+    "aliases": [
+      "墨大夫的书信",
+      "明信",
+      "夫君的亲笔信"
+    ],
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 65,
+        "chapterTitle": "韩神医",
+        "matchedNames": [
+          "书信"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "书信"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "书信"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 110,
+        "chapterTitle": "狐",
+        "matchedNames": [
+          "书信"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 111,
+        "chapterTitle": "美妇",
+        "matchedNames": [
+          "书信"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "书信"
+        ],
+        "otherMatchedNames": [
+          "暗信"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "匕首",
+    "aliases": [
+      "带鞘短剑"
+    ],
+    "missingFields": [
+      "colorShape",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "匕首",
+          "带鞘短剑"
+        ],
+        "otherMatchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 63,
+        "chapterTitle": "真容",
+        "matchedNames": [
+          "匕首"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "大钟",
+    "aliases": [
+      "谷口大钟"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "金刚不坏功符纸",
+    "aliases": [
+      "金刚不坏功",
+      "黄色符纸"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "墨大夫亲笔信",
+    "aliases": [
+      "墨大夫信"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 108,
+        "chapterTitle": "夜入墨府",
+        "matchedNames": [
+          "墨大夫亲笔信"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "七毒水",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "青叶法器",
+    "aliases": [
+      "飞行法器"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "铁铃铛",
+    "aliases": [
+      "小巧铁铃"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "铁锥",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 50,
+        "chapterTitle": "缠香丝",
+        "matchedNames": [
+          "铁锥"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "铁锥"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "铁锥"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.46,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "纹龙戒",
+    "aliases": [
+      "龙纹戒指"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "龙纹戒指"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "玉带短剑",
+    "aliases": [
+      "利剑"
+    ],
+    "missingFields": [
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "利剑"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "暗信",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "暗信"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "白色粉末",
+    "aliases": [
+      "白烟",
+      "烟雾"
+    ],
+    "missingFields": [
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 46,
+        "chapterTitle": "破膛一剑",
+        "matchedNames": [
+          "白色粉末",
+          "白烟",
+          "烟雾"
+        ],
+        "otherMatchedNames": [
+          "短剑"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "缠丝手",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 35,
+        "chapterTitle": "偷秘籍",
+        "matchedNames": [
+          "缠丝手"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "毒沙",
+    "aliases": [
+      "蛇毒浸泡过的毒沙"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "疯癫十八打",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "黑色铁铃",
+    "aliases": [
+      "铁铃"
+    ],
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 43,
+        "chapterTitle": "万事具备",
+        "matchedNames": [
+          "铁铃"
+        ],
+        "fields": [
+          "ownership",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 43,
+        "chapterTitle": "万事具备",
+        "matchedNames": [
+          "铁铃"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 46,
+        "chapterTitle": "破膛一剑",
+        "matchedNames": [
+          "铁铃"
+        ],
+        "fields": [
+          "material",
+          "colorShape",
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.69,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "黄栗丸",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "黄丝衫",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "回旋镖",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "回旋镖"
+        ],
+        "fields": [
+          "condition"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "解药瓶",
+    "aliases": [
+      "小瓶"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 66,
+        "chapterTitle": "古怪规定",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "otherMatchedNames": [
+          "成药",
+          "绿液"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "otherMatchedNames": [
+          "纸条"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 113,
+        "chapterTitle": "萦香丸",
+        "matchedNames": [
+          "小瓶"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "金色腰牌",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "控物术",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "烈阳剑",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "龙形戒指",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "龙形戒指"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "轮形兵器",
+    "aliases": [
+      "小轮子兵器"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "墨大夫的医书",
+    "aliases": [
+      "医书",
+      "药书"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "青黑葫芦",
+    "aliases": [
+      "葫芦法器"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "葫芦法器"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "软剑",
+    "aliases": [
+      "利剑",
+      "雪亮软剑"
+    ],
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 18,
+        "chapterTitle": "厉师兄（2）",
+        "matchedNames": [
+          "软剑"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "江湖斗",
+        "matchedNames": [
+          "软剑"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "利剑"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 103,
+        "chapterTitle": "收服",
+        "matchedNames": [
+          "软剑",
+          "利剑"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "升仙令牌",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "天狐大法",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "通臂拳",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "土菇花",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "王门主令牌",
+    "aliases": [
+      "令牌"
+    ],
+    "missingFields": [
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "令牌"
+        ],
+        "fields": [
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "烈火焚敌",
+        "matchedNames": [
+          "令牌"
+        ],
+        "fields": [
+          "colorShape",
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.5,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "现形水",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "香囊",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "香囊"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "香囊"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "袖箭",
+    "aliases": [
+      "见血封喉的袖箭"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "完胜",
+        "matchedNames": [
+          "袖箭"
+        ],
+        "fields": [
+          "material",
+          "ownership"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "雪风剑法",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "遗书",
+    "aliases": [
+      "信纸"
+    ],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "信纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "遗书"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "信纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "信纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "信纸"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.42,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "曰常精炼工具",
+    "aliases": [
+      "精炼工具一套",
+      "日常工具"
+    ],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "云翅鸟",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "云翅鸟"
+        ],
+        "otherMatchedNames": [
+          "遗书"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "云翅鸟"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.27,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "正阳劲",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "银刃",
+    "aliases": [
+      "怪刃"
+    ],
+    "missingFields": [
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "银刃"
+        ],
+        "otherMatchedNames": [
+          "匕首"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "银刃",
+          "怪刃"
+        ],
+        "fields": [
+          "usage",
+          "material",
+          "visualEffects",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "怪刃"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "怪刃"
+        ],
+        "fields": [
+          "material"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "美男子",
+        "matchedNames": [
+          "怪刃"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      },
+      {
+        "chapterIndex": 53,
+        "chapterTitle": "美男子",
+        "matchedNames": [
+          "银刃"
+        ],
+        "fields": [
+          "visualEffects"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "卷轴",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "otherMatchedNames": [
+          "竹简"
+        ],
+        "fields": [
+          "ownership",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "卷轴"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "玉牌",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 150,
+        "chapterTitle": "悔诺",
+        "matchedNames": [
+          "玉牌"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "尖锥",
+    "aliases": [
+      "尖形兵器",
+      "锥子"
+    ],
+    "missingFields": [
+      "material",
+      "visualEffects"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 49,
+        "chapterTitle": "套中套",
+        "matchedNames": [
+          "尖形兵器",
+          "锥子"
+        ],
+        "fields": [
+          "ownership",
+          "colorShape",
+          "condition"
+        ]
+      },
+      {
+        "chapterIndex": 49,
+        "chapterTitle": "套中套",
+        "matchedNames": [
+          "尖锥",
+          "锥子"
+        ],
+        "fields": [
+          "colorShape",
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "尖锥"
+        ],
+        "fields": [
+          "usage",
+          "ownership"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "锥子"
+        ],
+        "fields": [
+          "usage"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "item",
+    "name": "解药",
+    "aliases": [],
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "尸虫丸",
+        "matchedNames": [
+          "解药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "尸虫丸",
+        "matchedNames": [
+          "解药"
+        ],
+        "fields": [
+          "usage"
+        ]
+      },
+      {
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "解药"
+        ],
+        "fields": [
+          "material"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.46,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "冷月刀",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "十倍储物袋",
+    "aliases": [
+      "黑色布袋",
+      "储物袋"
+    ],
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 148,
+        "chapterTitle": "灰衣老者",
+        "matchedNames": [
+          "黑色布袋"
+        ],
+        "fields": [
+          "colorShape"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "item",
+    "name": "咫尺天涯",
+    "aliases": [],
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  }
+]

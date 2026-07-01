@@ -1,0 +1,6059 @@
+[
+  {
+    "entityType": "location",
+    "name": "云岚宗",
+    "aliases": [
+      "云岚"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "云岚宗",
+          "云岚"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 24,
+        "chapterTitle": "钱由我出",
+        "matchedNames": [
+          "云岚宗",
+          "云岚"
+        ],
+        "fields": [
+          "time",
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "加玛帝国",
+    "aliases": [
+      "帝国"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "承喏",
+        "matchedNames": [
+          "帝国"
+        ],
+        "otherMatchedNames": [
+          "迦南学院",
+          "学院"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "萧家坊市",
+    "aliases": [
+      "坊市",
+      "萧家坊市街道",
+      "萧家所坊"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "坊市",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "坊市",
+        "matchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 10,
+        "chapterTitle": "坊市",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "乌坦"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "乌坦"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "layout",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "小坊主",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "小坊主",
+        "matchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "小坊主",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家",
+          "乌坦城",
+          "乌坦"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "坊市"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "加列家族",
+    "aliases": [
+      "加列家"
+    ],
+    "missingFields": [
+      "layout",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "高价",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "高价",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "actionContext",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "otherMatchedNames": [
+          "萧家坊市",
+          "坊市",
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "小坊主",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "otherMatchedNames": [
+          "萧家",
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 84,
+        "chapterTitle": "接受",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "夜中相遇",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "otherMatchedNames": [
+          "特兰城"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "otherMatchedNames": [
+          "坊市",
+          "乌坦城",
+          "乌坦"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "otherMatchedNames": [
+          "特兰城"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "otherMatchedNames": [
+          "特兰城"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "乌坦城偏僻巷子",
+    "aliases": [
+      "偏僻巷子",
+      "巷子"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "巷子"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "乌坦城偏僻水沟",
+    "aliases": [
+      "水沟"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "萧家后山山洞",
+    "aliases": [
+      "峭壁之下山洞",
+      "隐蔽山洞"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "迦南学院招生广场",
+    "aliases": [
+      "广场"
+    ],
+    "missingFields": [
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "重要的日子",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "辱人者，人恒辱之",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 32,
+        "chapterTitle": "证实",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "城市",
+          "乌坦"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "layout",
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "otherMatchedNames": [
+          "斗篷"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "萧家峭壁",
+    "aliases": [
+      "峭壁"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "晋级斗者",
+        "matchedNames": [
+          "峭壁"
+        ],
+        "otherMatchedNames": [
+          "萧家",
+          "萧家后山",
+          "后山",
+          "魔兽山脉",
+          "山脉",
+          "魔兽山"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "萧家",
+    "aliases": [
+      "萧家家族",
+      "萧家大厅",
+      "萧家族地",
+      "萧家房间",
+      "萧家书房",
+      "萧家后院"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "萧家"
+        ],
+        "otherMatchedNames": [
+          "云岚宗",
+          "云岚"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 12,
+        "chapterTitle": "黑铁片",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 16,
+        "chapterTitle": "冲突",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 50,
+        "chapterTitle": "安心",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 61,
+        "chapterTitle": "打",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "萧家"
+        ],
+        "otherMatchedNames": [
+          "坊市",
+          "加列家族",
+          "加列家",
+          "城中"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "坦白",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "小坊主",
+        "matchedNames": [
+          "萧家"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "乌坦"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 87,
+        "chapterTitle": "落幕",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment",
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "lighting",
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "夜中相遇",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "夜中相遇",
+        "matchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "萧家"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "乌坦城",
+    "aliases": [
+      "城市",
+      "乌坦",
+      "乌坦城乌坦",
+      "城中",
+      "城内"
+    ],
+    "missingFields": [
+      "layout"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 19,
+        "chapterTitle": "拍卖",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "actionContext",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "争抢",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "争抢",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 52,
+        "chapterTitle": "第九段",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 54,
+        "chapterTitle": "不小心",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "otherMatchedNames": [
+          "大陆"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "otherMatchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "otherMatchedNames": [
+          "坊市",
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 81,
+        "chapterTitle": "坦白",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "小坊主",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "拍卖场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 82,
+        "chapterTitle": "小坊主",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "otherMatchedNames": [
+          "坊市"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦"
+        ],
+        "fields": [
+          "time",
+          "atmosphere",
+          "lighting",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "承喏",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "承喏",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "乌坦城",
+          "乌坦"
+        ],
+        "otherMatchedNames": [
+          "迦南学院",
+          "学院"
+        ],
+        "fields": [
+          "environment",
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.88,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "米特尔拍卖场",
+    "aliases": [
+      "拍卖场",
+      "米特拍卖场",
+      "米特尔拍卖行",
+      "拍卖行",
+      "米特尔"
+    ],
+    "missingFields": [
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "拍卖场"
+        ],
+        "fields": [
+          "time",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 59,
+        "chapterTitle": "药材到手",
+        "matchedNames": [
+          "拍卖场"
+        ],
+        "otherMatchedNames": [
+          "斗篷"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 69,
+        "chapterTitle": "探查",
+        "matchedNames": [
+          "拍卖场"
+        ],
+        "otherMatchedNames": [
+          "候客厅"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.77,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "迦南学院",
+    "aliases": [
+      "学院"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "威胁",
+        "matchedNames": [
+          "迦南学院",
+          "学院"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "萧家训练场",
+    "aliases": [
+      "训练场",
+      "青石训练场",
+      "广场"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 0,
+        "chapterTitle": "陨落的天才",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 14,
+        "chapterTitle": "修炼",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "萧宁",
+        "matchedNames": [
+          "训练场"
+        ],
+        "otherMatchedNames": [
+          "斗技堂"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "重要的日子",
+        "matchedNames": [
+          "训练场"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "重要的日子",
+        "matchedNames": [
+          "训练场"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 28,
+        "chapterTitle": "重要的日子",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "辱人者，人恒辱之",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "辱人者，人恒辱之",
+        "matchedNames": [
+          "训练场"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 29,
+        "chapterTitle": "辱人者，人恒辱之",
+        "matchedNames": [
+          "训练场"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "训练场"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 30,
+        "chapterTitle": "一星斗者",
+        "matchedNames": [
+          "训练场"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 31,
+        "chapterTitle": "挑战",
+        "matchedNames": [
+          "训练场"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 32,
+        "chapterTitle": "证实",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 34,
+        "chapterTitle": "罪恶感",
+        "matchedNames": [
+          "训练场"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 95,
+        "chapterTitle": "承喏",
+        "matchedNames": [
+          "训练场"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "城市",
+          "乌坦"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "layout",
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "广场"
+        ],
+        "otherMatchedNames": [
+          "斗篷"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "广场"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "萧家后山",
+    "aliases": [
+      "后山",
+      "山崖之颠",
+      "山巅小树林",
+      "后山苦修",
+      "后山山顶"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "后山"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "魔兽山脉",
+          "山脉",
+          "魔兽山",
+          "大厅"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 18,
+        "chapterTitle": "残酷训练",
+        "matchedNames": [
+          "后山",
+          "后山山顶"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 35,
+        "chapterTitle": "滑稽的突破",
+        "matchedNames": [
+          "后山"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 45,
+        "chapterTitle": "暴怒的萧炎",
+        "matchedNames": [
+          "后山"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 46,
+        "chapterTitle": "亵渎",
+        "matchedNames": [
+          "后山"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 96,
+        "chapterTitle": "雪妮",
+        "matchedNames": [
+          "后山"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "鉴宝室",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "一切待续",
+        "matchedNames": [
+          "鉴宝室"
+        ],
+        "otherMatchedNames": [
+          "拍卖场",
+          "一号拍卖场"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "特米尔拍卖场",
+    "aliases": [
+      "特米尔拍卖会场",
+      "特米尔家族拍卖会",
+      "特米尔家族的任何一家拍卖场"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "魔兽山脉",
+    "aliases": [
+      "山脉",
+      "魔兽山"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "魔兽山脉",
+          "山脉",
+          "魔兽山"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "萧家",
+          "乌坦城",
+          "城市",
+          "乌坦"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 64,
+        "chapterTitle": "晋级斗者",
+        "matchedNames": [
+          "魔兽山脉",
+          "山脉",
+          "魔兽山"
+        ],
+        "otherMatchedNames": [
+          "峭壁",
+          "萧家",
+          "萧家后山",
+          "后山"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "魔兽山脉",
+          "山脉",
+          "魔兽山"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家",
+          "乌坦城",
+          "城市",
+          "乌坦"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.34,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "萧家议事大厅",
+    "aliases": [
+      "会议厅",
+      "大厅"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "云岚宗",
+          "云岚"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "后山",
+          "魔兽山脉",
+          "山脉",
+          "魔兽山"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "斗气大陆",
+          "大陆"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "鉴宝室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "奥巴"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "苦修",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "苦修",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "翻身",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 35,
+        "chapterTitle": "滑稽的突破",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "拍卖场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔",
+          "奥巴"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "斗篷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "lighting",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "time",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "会议厅",
+          "大厅"
+        ],
+        "fields": [
+          "actionContext",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "奥巴家族",
+    "aliases": [
+      "奥巴"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "lighting",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "争抢",
+        "matchedNames": [
+          "奥巴"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 22,
+        "chapterTitle": "争抢",
+        "matchedNames": [
+          "奥巴家族",
+          "奥巴"
+        ],
+        "fields": [
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 57,
+        "chapterTitle": "高价",
+        "matchedNames": [
+          "奥巴"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.46,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "斗气阁",
+    "aliases": [],
+    "missingFields": [
+      "layout",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 47,
+        "chapterTitle": "斗气阁",
+        "matchedNames": [
+          "斗气阁"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 47,
+        "chapterTitle": "斗气阁",
+        "matchedNames": [
+          "斗气阁"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 49,
+        "chapterTitle": "帮？",
+        "matchedNames": [
+          "斗气阁"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 49,
+        "chapterTitle": "帮？",
+        "matchedNames": [
+          "斗气阁"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 50,
+        "chapterTitle": "安心",
+        "matchedNames": [
+          "斗气阁"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 50,
+        "chapterTitle": "安心",
+        "matchedNames": [
+          "斗气阁"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.65,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "迎客大厅",
+    "aliases": [
+      "大厅"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "迎客大厅",
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "云岚宗",
+          "云岚"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "后山",
+          "魔兽山脉",
+          "山脉",
+          "魔兽山"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "斗气大陆",
+          "大陆"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "鉴宝室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "奥巴"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "苦修",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "苦修",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "翻身",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 35,
+        "chapterTitle": "滑稽的突破",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "拍卖场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔",
+          "奥巴"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "斗篷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "lighting",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "time",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "会议厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "特兰城",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "一号拍卖室",
+    "aliases": [
+      "一号拍卖场"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "加列家族大厅",
+    "aliases": [
+      "大厅",
+      "加列家族后院"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "云岚宗",
+          "云岚"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "后山",
+          "魔兽山脉",
+          "山脉",
+          "魔兽山"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "斗气大陆",
+          "大陆"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "鉴宝室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "奥巴"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "苦修",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "苦修",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "翻身",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 35,
+        "chapterTitle": "滑稽的突破",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "拍卖场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔",
+          "奥巴"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "斗篷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "lighting",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "time",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "会议厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "候客厅",
+    "aliases": [],
+    "missingFields": [
+      "environment",
+      "layout",
+      "lighting",
+      "time"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "候客厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "城市"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.31,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "加列家族坊市",
+    "aliases": [
+      "加列坊市",
+      "加列家族小型坊市"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "绿色大帐篷",
+    "aliases": [
+      "帐篷",
+      "帐篷内部",
+      "斗篷"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 23,
+        "chapterTitle": "一切待续",
+        "matchedNames": [
+          "斗篷"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 59,
+        "chapterTitle": "药材到手",
+        "matchedNames": [
+          "斗篷"
+        ],
+        "otherMatchedNames": [
+          "候客厅"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 90,
+        "chapterTitle": "夜中相遇",
+        "matchedNames": [
+          "斗篷"
+        ],
+        "fields": [
+          "environment",
+          "time"
+        ]
+      },
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "刁难",
+        "matchedNames": [
+          "绿色大帐篷",
+          "帐篷"
+        ],
+        "otherMatchedNames": [
+          "迦南学院",
+          "学院"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 97,
+        "chapterTitle": "刁难",
+        "matchedNames": [
+          "帐篷"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 98,
+        "chapterTitle": "威胁",
+        "matchedNames": [
+          "帐篷"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "帐篷"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "帐篷"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "帐篷",
+          "帐篷内部"
+        ],
+        "fields": [
+          "layout",
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "帐篷"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "帐篷"
+        ],
+        "fields": [
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "帐篷"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 99,
+        "chapterTitle": "潜力值的分级",
+        "matchedNames": [
+          "帐篷"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "斗技堂",
+    "aliases": [
+      "萧家斗技堂"
+    ],
+    "missingFields": [
+      "layout",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "萧宁",
+        "matchedNames": [
+          "斗技堂"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 15,
+        "chapterTitle": "萧宁",
+        "matchedNames": [
+          "斗技堂"
+        ],
+        "fields": [
+          "atmosphere"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.38,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "萧家议事厅",
+    "aliases": [
+      "大厅",
+      "议事厅",
+      "萧家大厅"
+    ],
+    "missingFields": [],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 2,
+        "chapterTitle": "客人",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 3,
+        "chapterTitle": "云岚宗",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 4,
+        "chapterTitle": "聚气散",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 5,
+        "chapterTitle": "炼药师",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "云岚宗",
+          "云岚"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "atmosphere",
+          "actionContext",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 6,
+        "chapterTitle": "休！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "后山",
+          "魔兽山脉",
+          "山脉",
+          "魔兽山"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 7,
+        "chapterTitle": "神秘的老者",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 8,
+        "chapterTitle": "药老！",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加玛帝国",
+          "帝国",
+          "斗气大陆",
+          "大陆"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 20,
+        "chapterTitle": "二品炼药师谷尼",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "鉴宝室"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "奥巴"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "苦修",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 25,
+        "chapterTitle": "苦修",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 33,
+        "chapterTitle": "翻身",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 35,
+        "chapterTitle": "滑稽的突破",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 55,
+        "chapterTitle": "迦南学院",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "拍卖场"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "乌坦城",
+          "乌坦",
+          "城中"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 60,
+        "chapterTitle": "装",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "米特尔拍卖场",
+          "拍卖场",
+          "米特尔",
+          "奥巴"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 62,
+        "chapterTitle": "异火榜",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 70,
+        "chapterTitle": "萧家形势",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 71,
+        "chapterTitle": "初学炼药",
+        "matchedNames": [
+          "议事厅"
+        ],
+        "otherMatchedNames": [
+          "后山"
+        ],
+        "fields": [
+          "actionContext",
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 73,
+        "chapterTitle": "不请自来",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "斗篷"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 74,
+        "chapterTitle": "大手笔",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 75,
+        "chapterTitle": "合作",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 76,
+        "chapterTitle": "断其药路",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 77,
+        "chapterTitle": "炼啊炼的就突破了",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 78,
+        "chapterTitle": "萧家的反击",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "lighting",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "layout"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "time",
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "会议厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 80,
+        "chapterTitle": "察觉",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "atmosphere"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment",
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 88,
+        "chapterTitle": "月黑风高",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 91,
+        "chapterTitle": "抢",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "加列家族",
+          "加列家",
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 93,
+        "chapterTitle": "眼光挺差",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "大厅"
+        ],
+        "otherMatchedNames": [
+          "萧家"
+        ],
+        "fields": [
+          "environment"
+        ]
+      },
+      {
+        "chapterIndex": 94,
+        "chapterTitle": "加列家族的境地",
+        "matchedNames": [
+          "大厅"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 1,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "斗气大陆",
+    "aliases": [
+      "大陆"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 1,
+        "chapterTitle": "斗气大陆",
+        "matchedNames": [
+          "斗气大陆",
+          "大陆"
+        ],
+        "fields": [
+          "lighting"
+        ]
+      },
+      {
+        "chapterIndex": 13,
+        "chapterTitle": "吸掌",
+        "matchedNames": [
+          "斗气大陆",
+          "大陆"
+        ],
+        "fields": [
+          "actionContext"
+        ]
+      },
+      {
+        "chapterIndex": 21,
+        "chapterTitle": "风卷决",
+        "matchedNames": [
+          "斗气大陆",
+          "大陆"
+        ],
+        "fields": [
+          "time"
+        ]
+      }
+    ],
+    "sourceCoverage": "strong",
+    "confidence": 0.57,
+    "needsReview": false
+  },
+  {
+    "entityType": "location",
+    "name": "萧家大门",
+    "aliases": [
+      "萧家大门处"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "萧家后院花园",
+    "aliases": [
+      "后院花园"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "加玛帝国帝都",
+    "aliases": [
+      "帝都",
+      "帝都黑市"
+    ],
+    "missingFields": [
+      "environment",
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [],
+    "sourceCoverage": "none",
+    "confidence": 0,
+    "needsReview": true
+  },
+  {
+    "entityType": "location",
+    "name": "塔戈尔大沙漠",
+    "aliases": [
+      "塔戈尔沙漠",
+      "沙漠"
+    ],
+    "missingFields": [
+      "layout",
+      "atmosphere",
+      "lighting",
+      "time",
+      "actionContext"
+    ],
+    "evidenceSnippets": [
+      {
+        "chapterIndex": 79,
+        "chapterTitle": "炼药师柳席",
+        "matchedNames": [
+          "塔戈尔大沙漠",
+          "沙漠"
+        ],
+        "fields": [
+          "environment"
+        ]
+      }
+    ],
+    "sourceCoverage": "partial",
+    "confidence": 0.19,
+    "needsReview": true
+  }
+]

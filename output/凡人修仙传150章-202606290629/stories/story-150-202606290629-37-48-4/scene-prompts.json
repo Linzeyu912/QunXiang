@@ -1,0 +1,43 @@
+{
+  "storyId": "story-150-202606290629-37-48-4",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-37-48-4-scene-1",
+      "assetName": "以泰山",
+      "prompt": "以泰山，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：夜晚；场景描述：以泰山 scene in \"三不练 - 诈语\", shaped by the conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。；冲突氛围：围绕“失败”发生关键变化；可保留人物比例参考：施展、乐意；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "随后，他身形一晃，人已到了半空中，挥动起银色巨掌，整个人化作一股狂风，以泰山压顶之势，直向韩立扑来。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48",
+      "metadata": {
+        "storyId": "story-150-202606290629-37-48-4",
+        "location": "以泰山",
+        "timeHint": "夜晚",
+        "conflictBeat": "围绕“失败”发生关键变化",
+        "involvedCharacters": [
+          "施展",
+          "乐意"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,797 @@
+[
+  {
+    "name": "黑色古戒",
+    "aliases": [
+      "古朴漆黑戒指",
+      "漆黑戒指",
+      "戒指",
+      "黑色戒指",
+      "古朴戒指",
+      "古朴的黑色戒指"
+    ],
+    "description": "药老藏身的戒指，由萧炎母亲遗物，漆黑古朴，能容纳灵魂体，可释放药老力量保护或控制萧炎身体",
+    "confidence": 1,
+    "firstChapter": 3,
+    "lastChapter": 89,
+    "chapterAppearances": [
+      3,
+      8,
+      9,
+      14,
+      15,
+      18,
+      20,
+      21,
+      24,
+      25,
+      26,
+      27,
+      28,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      72,
+      89
+    ]
+  },
+  {
+    "name": "焚决",
+    "aliases": [
+      "黑色卷轴"
+    ],
+    "description": "药老传授给萧炎的诡异功法，起初仅为黄阶低级，但可通过吞噬异火不断进化，理论上可进化至天阶，但成功率极低（不到两成），需要以异火为原料进化",
+    "confidence": 1,
+    "firstChapter": 66,
+    "lastChapter": 68,
+    "chapterAppearances": [
+      66,
+      67,
+      68
+    ]
+  },
+  {
+    "name": "聚气散",
+    "aliases": [
+      "聚气散丹药",
+      "筑基灵丹",
+      "古河炼制的聚气散"
+    ],
+    "description": "帮助突破斗者级别的丹药，炼制需墨叶莲、蛇涎果、聚灵草、二级水属性魔核等材料，由药老炼制，品质上乘",
+    "confidence": 0.98,
+    "firstChapter": 5,
+    "lastChapter": 82,
+    "chapterAppearances": [
+      5,
+      6,
+      7,
+      53,
+      54,
+      60,
+      64,
+      65,
+      67,
+      70,
+      76,
+      77,
+      82
+    ]
+  },
+  {
+    "name": "筑基灵液",
+    "aliases": [
+      "灵液"
+    ],
+    "description": "米特尔拍卖场拍卖的丹药，对八段以下斗之气有奇效，萧炎曾借此一年内连跳几段斗之气",
+    "confidence": 0.98,
+    "firstChapter": 14,
+    "lastChapter": 63,
+    "chapterAppearances": [
+      14,
+      15,
+      19,
+      20,
+      21,
+      22,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      32,
+      36,
+      38,
+      46,
+      54,
+      55,
+      57,
+      58,
+      59,
+      60,
+      61,
+      63
+    ]
+  },
+  {
+    "name": "凝血散",
+    "aliases": [
+      "疗伤药"
+    ],
+    "description": "萧家坊市出售的疗伤药，由药老提供药方、萧炎亲手炼制1283余瓶，疗效远胜加列家族回春散，止血生骨效果显著",
+    "confidence": 0.98,
+    "firstChapter": 70,
+    "lastChapter": 83,
+    "chapterAppearances": [
+      70,
+      71,
+      73,
+      75,
+      76,
+      78,
+      79,
+      81,
+      82,
+      83
+    ]
+  },
+  {
+    "name": "回春散",
+    "aliases": [],
+    "description": "加列家族坊市出售的疗伤药，由柳席炼制，品质较低，廉价高产，但曾因加列家族暴利涨价引佣兵不满",
+    "confidence": 0.9,
+    "firstChapter": 69,
+    "lastChapter": 83,
+    "chapterAppearances": [
+      69,
+      70,
+      74,
+      75,
+      79,
+      80,
+      83
+    ]
+  },
+  {
+    "name": "纳戒",
+    "aliases": [
+      "淡红色纳戒"
+    ],
+    "description": "由纳石制造的储物戒指，萧炎从米特尔拍卖场获得，内部空间约三四平方米，可存放无生命气息物品",
+    "confidence": 0.95,
+    "firstChapter": 70,
+    "lastChapter": 89,
+    "chapterAppearances": [
+      70,
+      71,
+      72,
+      89
+    ]
+  },
+  {
+    "name": "墨叶莲",
+    "aliases": [
+      "五十年份的墨叶莲"
+    ],
+    "description": "炼制聚气散的主材之一，通体枯黄、五片叶子宛如黑墨，五片叶子代表五十年份",
+    "confidence": 0.9,
+    "firstChapter": 53,
+    "lastChapter": 64,
+    "chapterAppearances": [
+      53,
+      54,
+      60,
+      62,
+      64
+    ]
+  },
+  {
+    "name": "蛇涎果",
+    "aliases": [
+      "成熟的蛇涎果"
+    ],
+    "description": "炼制聚气散的材料，碧绿色圆形果实，生长于五阶蛇形魔兽巢穴之旁，属性阴寒，用来中和烈性药材",
+    "confidence": 0.9,
+    "firstChapter": 53,
+    "lastChapter": 64,
+    "chapterAppearances": [
+      53,
+      54,
+      60,
+      62,
+      64
+    ]
+  },
+  {
+    "name": "聚灵草",
+    "aliases": [
+      "二十年份左右的聚灵草"
+    ],
+    "description": "炼制聚气散的材料，与普通草叶相似但草枝顶尖有萤光，可蕴含纯净能量",
+    "confidence": 0.9,
+    "firstChapter": 53,
+    "lastChapter": 64,
+    "chapterAppearances": [
+      53,
+      54,
+      60,
+      62,
+      64
+    ]
+  },
+  {
+    "name": "二级水属性魔核",
+    "aliases": [
+      "水属性魔核"
+    ],
+    "description": "通体蔚蓝色的水属性魔核，用于炼制聚气散，提供水属性能量",
+    "confidence": 0.9,
+    "firstChapter": 62,
+    "lastChapter": 64,
+    "chapterAppearances": [
+      62,
+      64
+    ]
+  },
+  {
+    "name": "骨灵冷火",
+    "aliases": [],
+    "description": "异火榜排名第十一位的异火，药老所拥有的火种，呈森白色，百年方能在极寒极阴之地遇见，炼药时能提升丹药药力，对敌时同等级强者不敢硬碰",
+    "confidence": 1,
+    "firstChapter": 63,
+    "lastChapter": 64,
+    "chapterAppearances": [
+      63,
+      64
+    ]
+  },
+  {
+    "name": "陨落心炎",
+    "aliases": [],
+    "description": "异火榜排名第十四的异火，存在于迦南学院中，是萧炎修炼焚决的进化目标",
+    "confidence": 0.95,
+    "firstChapter": 68,
+    "lastChapter": 68,
+    "chapterAppearances": [
+      68
+    ]
+  },
+  {
+    "name": "炎火精药鼎",
+    "aliases": [
+      "暗红药鼎",
+      "药鼎",
+      "两口之鼎"
+    ],
+    "description": "由加玛帝国荷尔大师铸造的炼药鼎，由炎火精制造，鼎身刻有蛇头雕纹，鼎盖有冰银散热孔，鼎中有寒冰精透明镜面，对斗气火焰有增幅作用，可提高炼药成功率",
+    "confidence": 0.95,
+    "firstChapter": 70,
+    "lastChapter": 73,
+    "chapterAppearances": [
+      70,
+      72,
+      73
+    ]
+  },
+  {
+    "name": "异火榜",
+    "aliases": [],
+    "description": "斗气大陆炼药界编制的异火排名榜，共记录二十三种已知异火",
+    "confidence": 0.85,
+    "firstChapter": 63,
+    "lastChapter": 63,
+    "chapterAppearances": [
+      63
+    ]
+  },
+  {
+    "name": "蓄力丸",
+    "aliases": [],
+    "description": "柳席声称能炼制的丹药，服用后短时间内增加约一成的力量，加列家族欲借此拉回萧家竞争压力下的人气",
+    "confidence": 0.85,
+    "firstChapter": 89,
+    "lastChapter": 89,
+    "chapterAppearances": [
+      89
+    ]
+  },
+  {
+    "name": "蓝色玉卡",
+    "aliases": [],
+    "description": "萧炎（黑袍人）留给米特尔拍卖场的蓝色玉卡，内含金币，作为购买药鼎与药材的付款",
+    "confidence": 0.85,
+    "firstChapter": 70,
+    "lastChapter": 71,
+    "chapterAppearances": [
+      70,
+      71
+    ]
+  },
+  {
+    "name": "大黑斗篷",
+    "aliases": [
+      "漆黑大斗篷",
+      "黑袍",
+      "黑色斗篷"
+    ],
+    "description": "萧炎伪装成神秘炼药师时穿的臃肿黑色大斗篷，配合药老的灵魂包裹能隐藏身份气息",
+    "confidence": 0.9,
+    "firstChapter": 62,
+    "lastChapter": 89,
+    "chapterAppearances": [
+      62,
+      70,
+      71,
+      75,
+      76,
+      77,
+      78,
+      89
+    ]
+  },
+  {
+    "name": "吸掌",
+    "aliases": [
+      "吸掌斗技"
+    ],
+    "description": "萧炎修习的斗技，能在掌心中暴涌出强横吸力，吸扯目标靠近或控制对手",
+    "confidence": 0.95,
+    "firstChapter": 14,
+    "lastChapter": 87,
+    "chapterAppearances": [
+      14,
+      15,
+      17,
+      18,
+      28,
+      42,
+      46,
+      62,
+      85,
+      87
+    ]
+  },
+  {
+    "name": "八极崩",
+    "aliases": [
+      "八极崩斗技"
+    ],
+    "description": "萧炎修习的玄阶高级斗技，近身战斗技，攻击时将力量压缩后瞬间释放，能借反弹之力增强威力",
+    "confidence": 0.98,
+    "firstChapter": 18,
+    "lastChapter": 87,
+    "chapterAppearances": [
+      18,
+      19,
+      26,
+      33,
+      42,
+      43,
+      49,
+      50,
+      52,
+      68,
+      87
+    ]
+  },
+  {
+    "name": "狮山裂",
+    "aliases": [
+      "玄阶斗技狮山裂"
+    ],
+    "description": "萧战使用的斗技，拳头上能凝聚巨大红色狮子头进行攻击",
+    "confidence": 0.9,
+    "firstChapter": 40,
+    "lastChapter": 88,
+    "chapterAppearances": [
+      40,
+      44,
+      88
+    ]
+  },
+  {
+    "name": "风卷决",
+    "aliases": [
+      "风卷决功法"
+    ],
+    "description": "加列奥所修炼的风属性玄阶高阶功法，修炼后能催生风卷风刃，大幅提升攻击速度与威力",
+    "confidence": 0.95,
+    "firstChapter": 22,
+    "lastChapter": 86,
+    "chapterAppearances": [
+      22,
+      23,
+      86
+    ]
+  },
+  {
+    "name": "青风旋拳",
+    "aliases": [],
+    "description": "加列奥使用的玄阶低级斗技，拳头上凝聚青色斗气形成小漩涡进行攻击",
+    "confidence": 0.9,
+    "firstChapter": 87,
+    "lastChapter": 87,
+    "chapterAppearances": [
+      87
+    ]
+  },
+  {
+    "name": "金色火焰利刺",
+    "aliases": [
+      "金色火焰尖刺"
+    ],
+    "description": "薰儿使用神秘金色火焰凝聚的利刺状武器，可远程射杀对手，威力足以一击致命",
+    "confidence": 0.85,
+    "firstChapter": 90,
+    "lastChapter": 90,
+    "chapterAppearances": [
+      90
+    ]
+  },
+  {
+    "name": "火属性地阶低级功法",
+    "aliases": [
+      "红色卷轴"
+    ],
+    "description": "药老提供给萧炎作为备选的功法，为火属性地阶低级，相较焚决更稳定但无法进化",
+    "confidence": 0.85,
+    "firstChapter": 67,
+    "lastChapter": 67,
+    "chapterAppearances": [
+      67
+    ]
+  },
+  {
+    "name": "黑石碑",
+    "aliases": [
+      "黑石测验碑",
+      "测验碑",
+      "石碑"
+    ],
+    "description": "萧家用于测试斗之气等级的黑色石碑，置于训练场和高台之上，测试时强光乍放会显示出测试者的斗之气等级，是家族中检验年轻一辈实力的重要器具",
+    "confidence": 0.95,
+    "firstChapter": 31,
+    "lastChapter": 40,
+    "chapterAppearances": [
+      31,
+      32,
+      39,
+      40
+    ]
+  },
+  {
+    "name": "增气散",
+    "aliases": [
+      "增气散",
+      "绿色丹药"
+    ],
+    "description": "二品丹药，萧玉给萧宁的秘药，服用后能短时间内拥有斗者实力，但事后需卧床一个月，萧宁在成人仪式上违规服用此药后仍被萧炎击败",
+    "confidence": 0.9,
+    "firstChapter": 41,
+    "lastChapter": 43,
+    "chapterAppearances": [
+      41,
+      43
+    ]
+  },
+  {
+    "name": "古朴戒指",
+    "aliases": [
+      "黑色古戒",
+      "古朴的黑色戒指",
+      "戒指"
+    ],
+    "description": "萧炎佩戴的黑色古朴戒指，药老寄居其中，平日看似普通，是萧炎与药老沟通的媒介，萧炎常抚此戒心安",
+    "confidence": 0.95,
+    "firstChapter": 46,
+    "lastChapter": 53,
+    "chapterAppearances": [
+      46,
+      48,
+      51,
+      53
+    ]
+  },
+  {
+    "name": "水晶球",
+    "aliases": [
+      "透明的水晶球",
+      "属性测试水晶球"
+    ],
+    "description": "斗气阁门口用于测试斗气属性的器具，将手放在上面会显示对应的属性颜色，薰儿测试时水晶球化为火球并最终碎裂",
+    "confidence": 0.85,
+    "firstChapter": 48,
+    "lastChapter": 48,
+    "chapterAppearances": [
+      48
+    ]
+  },
+  {
+    "name": "魔核",
+    "aliases": [
+      "二级水属性魔核",
+      "水属性的二级魔核",
+      "魔晶",
+      "灵丹药雏形"
+    ],
+    "description": "炼制聚气散的药材之一，二级水属性魔核，价值两千金币以上，来自魔兽体内",
+    "confidence": 0.9,
+    "firstChapter": 11,
+    "lastChapter": 60,
+    "chapterAppearances": [
+      11,
+      12,
+      13,
+      14,
+      20,
+      53,
+      54,
+      60
+    ]
+  },
+  {
+    "name": "吹火掌",
+    "aliases": [
+      "吹火斗技"
+    ],
+    "description": "玄阶斗技，萧炎所掌握的斗技之一，施展时掌心喷出强横推力，虽名字难听但威力强大，可单独使用也可与吸掌配合形成反向之力夹击敌人",
+    "confidence": 0.9,
+    "firstChapter": 28,
+    "lastChapter": 46,
+    "chapterAppearances": [
+      28,
+      42,
+      46
+    ]
+  },
+  {
+    "name": "铁山拳",
+    "aliases": [
+      "铁山拳"
+    ],
+    "description": "黄阶高级斗技，萧宁掌握的斗技，需要斗之气七段以上方有资格修习，威力不俗，施展时能带出尖锐的破风劲气",
+    "confidence": 0.85,
+    "firstChapter": 42,
+    "lastChapter": 43,
+    "chapterAppearances": [
+      42,
+      43
+    ]
+  },
+  {
+    "name": "裂爪击",
+    "aliases": [
+      "裂爪击"
+    ],
+    "description": "黄阶中级斗技，萧宁在成人仪式上挑战萧炎时使用的招式，直取萧炎喉咙",
+    "confidence": 0.8,
+    "firstChapter": 42,
+    "lastChapter": 42,
+    "chapterAppearances": [
+      42
+    ]
+  },
+  {
+    "name": "劈山掌",
+    "aliases": [
+      "劈山掌"
+    ],
+    "description": "黄阶中级斗技，五段斗之气以上的族人才有资格学习，萧克曾使用此招攻击萧炎",
+    "confidence": 0.8,
+    "firstChapter": 33,
+    "lastChapter": 33,
+    "chapterAppearances": [
+      33
+    ]
+  },
+  {
+    "name": "碎石掌",
+    "aliases": [
+      "碎石掌斗技"
+    ],
+    "description": "黄阶低级斗技，只需三段斗之气就能学习，萧炎曾用此掌一掌击败萧克",
+    "confidence": 0.82,
+    "firstChapter": 15,
+    "lastChapter": 33,
+    "chapterAppearances": [
+      15,
+      16,
+      17,
+      33
+    ]
+  },
+  {
+    "name": "燕返击",
+    "aliases": [
+      "燕返击"
+    ],
+    "description": "玄阶高级斗技，薰儿所掌握，炼到高层次能够将对方的攻击反馈回去，薰儿目前只是初步境界只能反馈一层左右的力量",
+    "confidence": 0.85,
+    "firstChapter": 52,
+    "lastChapter": 52,
+    "chapterAppearances": [
+      52
+    ]
+  },
+  {
+    "name": "炼火焚",
+    "aliases": [
+      "炼火焚",
+      "黄阶高级功法炼火焚"
+    ],
+    "description": "黄阶高级火属性功法，萧炎在斗气阁通过父亲的关系取得的火属性功法，是火道房间中最顶尖的家族功法",
+    "confidence": 0.85,
+    "firstChapter": 49,
+    "lastChapter": 51,
+    "chapterAppearances": [
+      49,
+      51
+    ]
+  },
+  {
+    "name": "弄炎决",
+    "aliases": [
+      "弄炎决",
+      "玄阶高级弄炎决"
+    ],
+    "description": "玄阶高级火属性功法，薰儿拿出来想给萧炎的功法，价值数十万金币，但萧炎婉拒以保持自己的骄傲",
+    "confidence": 0.85,
+    "firstChapter": 49,
+    "lastChapter": 51,
+    "chapterAppearances": [
+      49,
+      51
+    ]
+  },
+  {
+    "name": "怒狮狂罡",
+    "aliases": [
+      "怒狮狂罡",
+      "玄阶中级怒狮狂罡"
+    ],
+    "description": "萧家族长萧战所修炼的玄阶中级功法，是家族中顶尖的功法，萧炎目前没有权限修炼",
+    "confidence": 0.8,
+    "firstChapter": 40,
+    "lastChapter": 45,
+    "chapterAppearances": [
+      40,
+      45
+    ]
+  },
+  {
+    "name": "玉卡",
+    "aliases": [
+      "绿色卡片",
+      "蓝色玉卡",
+      "玉卡"
+    ],
+    "description": "米特尔拍卖场用于存储金币的卡片，绿色卡片曾存有萧炎售卖筑基灵液所得，蓝色玉卡则存储着二十八万五千金币的拍卖所得",
+    "confidence": 0.75,
+    "firstChapter": 53,
+    "lastChapter": 60,
+    "chapterAppearances": [
+      53,
+      54,
+      60
+    ]
+  },
+  {
+    "name": "狂狮怒罡",
+    "aliases": [
+      "狂狮怒罡功法"
+    ],
+    "description": "玄阶中级风属性斗气功法，萧家最为顶层的功法，只有族长才有资格修炼，萧战曾在接待葛叶时催动此功法",
+    "confidence": 0.9,
+    "firstChapter": 2,
+    "lastChapter": 5,
+    "chapterAppearances": [
+      2,
+      5
+    ]
+  },
+  {
+    "name": "黑铁片",
+    "aliases": [
+      "黑色铁片",
+      "锈斑铁片"
+    ],
+    "description": "坊市摊贩所购看似破烂的铁片，实则由某炼药师制造，内存玄阶低级斗技吸掌，只有灵魂感知力过强者才能感应到，被萧炎低价购得",
+    "confidence": 0.88,
+    "firstChapter": 13,
+    "lastChapter": 15,
+    "chapterAppearances": [
+      13,
+      14,
+      15
+    ]
+  },
+  {
+    "name": "紫叶兰草",
+    "aliases": [
+      "紫叶兰"
+    ],
+    "description": "炼制筑基灵液所需的主材料药材之一，可在药材店购买，价格较高",
+    "confidence": 0.82,
+    "firstChapter": 14,
+    "lastChapter": 20,
+    "chapterAppearances": [
+      14,
+      20
+    ]
+  },
+  {
+    "name": "洗骨花",
+    "aliases": [
+      "洗骨花药材"
+    ],
+    "description": "炼制筑基灵液所需的主材料药材之一，可在药材店购买",
+    "confidence": 0.82,
+    "firstChapter": 14,
+    "lastChapter": 20,
+    "chapterAppearances": [
+      14,
+      20
+    ]
+  },
+  {
+    "name": "紫金卡",
+    "aliases": [
+      "五纹紫金卡",
+      "紫金卡片"
+    ],
+    "description": "斗气大陆上至少需要斗灵实力才有资格办理的尊贵金卡，由薰儿持有，可一闪现于指尖，五道不同颜色波纹",
+    "confidence": 0.88,
+    "firstChapter": 10,
+    "lastChapter": 10,
+    "chapterAppearances": [
+      10
+    ]
+  },
+  {
+    "name": "水晶卡",
+    "aliases": [
+      "特米尔贵宾卡",
+      "贴身水晶卡"
+    ],
+    "description": "特米尔家族拍卖会贵宾卡，持有者享受贵宾待遇，拍卖税率从百分之五降至百分之二，由雅妃赠送给神秘炼药师（萧炎/药老）",
+    "confidence": 0.88,
+    "firstChapter": 24,
+    "lastChapter": 24,
+    "chapterAppearances": [
+      24
+    ]
+  },
+  {
+    "name": "测验魔石碑",
+    "aliases": [
+      "魔石碑",
+      "黑石碑",
+      "测验黑石碑",
+      "测验石碑"
+    ],
+    "description": "萧家用于测试族中少年斗之气等级与天赋的漆黑石碑，价值不菲，测试时显示大字与光芒，每年成人仪式前进行测试",
+    "confidence": 0.95,
+    "firstChapter": 1,
+    "lastChapter": 30,
+    "chapterAppearances": [
+      1,
+      30
+    ]
+  },
+  {
+    "name": "木灵手链",
+    "aliases": [
+      "木灵之链"
+    ],
+    "description": "加列奥在坊市为讨好薰儿所购的淡蓝金色手链，链条由金蓝铁所铸，吊坠为磨成圆珠的一级木属性魔晶，可增幅斗之气回复，后被薰儿拒绝",
+    "confidence": 0.8,
+    "firstChapter": 12,
+    "lastChapter": 12,
+    "chapterAppearances": [
+      12
+    ]
+  }
+]

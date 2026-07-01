@@ -1,0 +1,346 @@
+{
+  "storyId": "story-100-202606230638-12-12-2",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "characterPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：稚嫩的小脸上、偏头望着脸色难看的加列奥、小脸上的那副无奈模样\n- 年龄/身份视觉线索：稚嫩的小脸上\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "稚嫩的小脸上，",
+        "偏头望着脸色难看的加列奥，",
+        "小脸上的那副无奈模样，"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：稚嫩的小脸上、偏头望着脸色难看的加列奥、小脸上的那副无奈模样\n- 年龄/身份视觉线索：稚嫩的小脸上\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧炎似",
+      "assetName": "萧炎似",
+      "prompt": "萧炎似，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "望着一脸挑衅的加列奥，萧炎似是有些无奈的叹了一口气，手掌摸了摸额头，片刻后，方才抬头，微微耸了耸肩，一脸的纯真与无辜：“加列奥少爷，我想问问，您今年多少岁了？"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰嫣然",
+      "assetName": "纳兰嫣然",
+      "prompt": "纳兰嫣然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“哦，对了……”脚步忽然一顿，加列奥似乎是想起了什么，转过头讥笑道：“萧炎小少爷，听说你们萧家，被纳兰家族的纳兰嫣然强行解除婚约了？"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰小姐",
+      "assetName": "纳兰小姐",
+      "prompt": "纳兰小姐，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "嘿嘿，其实也没什么，以你的修炼天赋，也的确配不上纳兰小姐，哈哈……”说完这些，加列奥这才大笑着离去。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "就在萧炎有些为自己的感应感到奇怪的时候，药老的声音，忽然的在心中响了起来。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    }
+  ],
+  "scenePrompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-100-202606230638-12-12-2-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"退婚冲突\" with insufficient location detail.；冲突氛围：纳兰嫣然要求解除婚约；可保留人物比例参考：萧炎、萧炎似、纳兰嫣然、纳兰小姐、药老；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎卷入“退婚冲突”：纳兰嫣然要求解除婚约、双方有些剑。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "location": "未指定场景",
+        "conflictBeat": "纳兰嫣然要求解除婚约",
+        "involvedCharacters": [
+          "萧炎",
+          "萧炎似",
+          "纳兰嫣然",
+          "纳兰小姐",
+          "药老"
+        ]
+      }
+    }
+  ],
+  "propPrompts": [
+    {
+      "assetType": "prop",
+      "assetId": "双方有些剑",
+      "assetName": "双方有些剑",
+      "prompt": "双方有些剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：双方有些剑 functions as a weapon in \"退婚冲突\", connected to: 纳兰嫣然要求解除婚约；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "佩恩带着大群护卫，快速的奔跑了过来，手掌一挥，手下护卫，顿时凶悍的将加列奥那群人反围了起来，一时之间，双方有些剑拔弩张。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "propType": "weapon",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "双方有些剑 supports, reveals, or complicates the story conflict: 纳兰嫣然要求解除婚约"
+      }
+    }
+  ],
+  "allPrompts": [
+    {
+      "assetType": "character",
+      "assetId": "萧炎",
+      "assetName": "萧炎",
+      "prompt": "萧炎，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：- 面部/五官：稚嫩的小脸上、偏头望着脸色难看的加列奥、小脸上的那副无奈模样\n- 年龄/身份视觉线索：稚嫩的小脸上\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "稚嫩的小脸上，",
+        "偏头望着脸色难看的加列奥，",
+        "小脸上的那副无奈模样，"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "protagonist",
+        "appearanceDescription": "- 面部/五官：稚嫩的小脸上、偏头望着脸色难看的加列奥、小脸上的那副无奈模样\n- 年龄/身份视觉线索：稚嫩的小脸上\n- 发型：黑色短发，整洁利落\n- 体态/身形：身形匀称，少年体态",
+        "needsAppearanceRepair": false,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "萧炎似",
+      "assetName": "萧炎似",
+      "prompt": "萧炎似，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "望着一脸挑衅的加列奥，萧炎似是有些无奈的叹了一口气，手掌摸了摸额头，片刻后，方才抬头，微微耸了耸肩，一脸的纯真与无辜：“加列奥少爷，我想问问，您今年多少岁了？"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰嫣然",
+      "assetName": "纳兰嫣然",
+      "prompt": "纳兰嫣然，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "“哦，对了……”脚步忽然一顿，加列奥似乎是想起了什么，转过头讥笑道：“萧炎小少爷，听说你们萧家，被纳兰家族的纳兰嫣然强行解除婚约了？"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "纳兰小姐",
+      "assetName": "纳兰小姐",
+      "prompt": "纳兰小姐，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "嘿嘿，其实也没什么，以你的修炼天赋，也的确配不上纳兰小姐，哈哈……”说完这些，加列奥这才大笑着离去。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "character",
+      "assetId": "药老",
+      "assetName": "药老",
+      "prompt": "药老，四视图角色设定图\n\n正面、侧面、背面、面部特写，同一人物身份保持一致\n\n角色设定拆解：服装/配色、面部/五官、发型、体态/身形、神情/气质、饰物/随身特征逐项呈现\n外貌描写：（原文未描述具体外貌）\n\n允许基于角色的年龄、性别、身份、故事背景合理补写原文未明确的视觉细节（如默认服装风格、发型、体态等），补写部分标注[AI补写]\n⚠ 外貌信息严重不足，以下维度需要重点补写\n\n全身角色参考，面部近景清晰，服饰轮廓清晰，干净中性背景\n无对白文字，无剧情场景，无夸张动作",
+      "negativePrompt": "对白文字, 剧情场景, 动作分镜, unsupported facial features, invented clothing, invented age, modern outfit, inconsistent identity",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": true,
+      "evidenceSnippets": [
+        "就在萧炎有些为自己的感应感到奇怪的时候，药老的声音，忽然的在心中响了起来。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "roleInStory": "supporting",
+        "appearanceDescription": "",
+        "needsAppearanceRepair": true,
+        "allowSupplement": true
+      }
+    },
+    {
+      "assetType": "scene",
+      "assetId": "story-100-202606230638-12-12-2-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"退婚冲突\" with insufficient location detail.；冲突氛围：纳兰嫣然要求解除婚约；可保留人物比例参考：萧炎、萧炎似、纳兰嫣然、纳兰小姐、药老；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "萧炎卷入“退婚冲突”：纳兰嫣然要求解除婚约、双方有些剑。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "location": "未指定场景",
+        "conflictBeat": "纳兰嫣然要求解除婚约",
+        "involvedCharacters": [
+          "萧炎",
+          "萧炎似",
+          "纳兰嫣然",
+          "纳兰小姐",
+          "药老"
+        ]
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "双方有些剑",
+      "assetName": "双方有些剑",
+      "prompt": "双方有些剑，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：weapon；物品描述：双方有些剑 functions as a weapon in \"退婚冲突\", connected to: 纳兰嫣然要求解除婚约；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "佩恩带着大群护卫，快速的奔跑了过来，手掌一挥，手下护卫，顿时凶悍的将加列奥那群人反围了起来，一时之间，双方有些剑拔弩张。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12",
+      "metadata": {
+        "storyId": "story-100-202606230638-12-12-2",
+        "propType": "weapon",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "双方有些剑 supports, reveals, or complicates the story conflict: 纳兰嫣然要求解除婚约"
+      }
+    }
+  ]
+}

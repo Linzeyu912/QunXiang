@@ -1,0 +1,34 @@
+{
+  "id": "story-150-202606290629-145-150-13",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "startChapter": 145,
+  "endChapter": 150,
+  "title": "不速之客 - 悔诺",
+  "summary": "王师叔在“不速之客 - 悔诺”中经历围绕“失败”发生关键变化、不速之客、成交。",
+  "coreConflict": "王师叔必须应对围绕“失败”发生关键变化带来的处境变化。",
+  "trigger": "围绕“失败”发生关键变化",
+  "turningPoints": [
+    "围绕“失败”发生关键变化",
+    "不速之客",
+    "成交",
+    "谷内详情",
+    "灰衣老者",
+    "杂务",
+    "烈阳剑",
+    "放弃筑基丹"
+  ],
+  "conflictStatus": "ongoing",
+  "mainCharacters": [
+    "王师叔"
+  ],
+  "supportingCharacters": [
+    "韩师侄",
+    "叶师叔"
+  ],
+  "locations": [],
+  "boundaryConfidence": 0.78,
+  "boundaryDecisionIds": [
+    "auto-145-150"
+  ],
+  "approved": true
+}

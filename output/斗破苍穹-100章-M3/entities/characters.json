@@ -1,0 +1,817 @@
+[
+  {
+    "name": "萧炎",
+    "aliases": [
+      "萧炎哥哥",
+      "萧炎小少爷",
+      "萧家小少爷",
+      "黑袍神秘人",
+      "炎儿",
+      "黑衫少年"
+    ],
+    "description": "主角，萧家三少爷，修炼天赋卓越，三年前功力倒退后重新崛起，已成功晋级斗者，身怀药老传授的焚决功法，炼药天赋出众，常扮成黑袍神秘炼药师帮助萧家",
+    "confidence": 1,
+    "firstChapter": 1,
+    "lastChapter": 90,
+    "chapterAppearances": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90
+    ],
+    "mentionCount": 2284
+  },
+  {
+    "name": "萧薰儿",
+    "aliases": [
+      "薰儿",
+      "萧熏儿",
+      "青衣少女",
+      "薰儿小姐",
+      "熏儿"
+    ],
+    "description": "在萧家寄住的青衣少女，与萧炎关系亲密，身份背景极为神秘恐怖，真实实力远在表面之上，可动用神秘秘法短暂提升至大斗师级别，深爱萧炎，不容他人侮辱",
+    "confidence": 0.98,
+    "firstChapter": 1,
+    "lastChapter": 90,
+    "chapterAppearances": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17,
+      25,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      41,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      55,
+      56,
+      57,
+      58,
+      59,
+      63,
+      67,
+      69,
+      75,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      90
+    ],
+    "mentionCount": 619
+  },
+  {
+    "name": "萧战",
+    "aliases": [
+      "萧族长",
+      "萧叔叔"
+    ],
+    "description": "萧家族长，萧炎的父亲，狮山裂斗技的使用者，实力强横，在坊市中为保护萧炎与加列毕对轰",
+    "confidence": 0.98,
+    "firstChapter": 3,
+    "lastChapter": 88,
+    "chapterAppearances": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      22,
+      23,
+      25,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      45,
+      48,
+      51,
+      55,
+      58,
+      59,
+      61,
+      74,
+      75,
+      78,
+      79,
+      81,
+      88
+    ],
+    "mentionCount": 366
+  },
+  {
+    "name": "药老",
+    "aliases": [
+      "神秘老师",
+      "神秘人"
+    ],
+    "description": "藏于古朴漆黑戒指中的强大灵魂体，萧炎的师傅，炼药宗师，拥有异火榜排名第十一位的骨灵冷火，能以灵魂状态控制萧炎身体战斗，实力可应对大斗师或斗灵级别强者",
+    "confidence": 1,
+    "firstChapter": 8,
+    "lastChapter": 90,
+    "chapterAppearances": [
+      8,
+      9,
+      14,
+      15,
+      18,
+      19,
+      20,
+      21,
+      24,
+      26,
+      27,
+      28,
+      46,
+      48,
+      49,
+      51,
+      53,
+      54,
+      60,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      70,
+      71,
+      72,
+      73,
+      76,
+      77,
+      89,
+      90
+    ],
+    "mentionCount": 318
+  },
+  {
+    "name": "纳兰嫣然",
+    "aliases": [
+      "嫣然",
+      "女人",
+      "冷傲的美丽脸颊"
+    ],
+    "description": "云岚宗宗主云韵的亲传弟子，狮心元帅纳兰桀的孙女，容貌美丽冷艳，实力为三星斗者，修炼天赋绝佳，与萧炎有指腹婚约却嫌弃萧炎是废物，主动上门退婚并提出三年之约",
+    "confidence": 0.97,
+    "firstChapter": 3,
+    "lastChapter": 68,
+    "chapterAppearances": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      35,
+      36,
+      53,
+      67,
+      68
+    ],
+    "mentionCount": 304
+  },
+  {
+    "name": "雅妃",
+    "aliases": [
+      "雅妃小姐",
+      "雅妃姐",
+      "红裙女人",
+      "首席拍卖师",
+      "米特尔拍卖场首席拍卖师"
+    ],
+    "description": "米特尔拍卖场首席拍卖师，妩媚成熟的红色旗袍女子，原与谷尼一同拒绝向加列家族提供药材，与黑袍神秘炼药师合作",
+    "confidence": 0.98,
+    "firstChapter": 21,
+    "lastChapter": 82,
+    "chapterAppearances": [
+      21,
+      22,
+      23,
+      24,
+      37,
+      38,
+      40,
+      42,
+      43,
+      44,
+      54,
+      57,
+      58,
+      59,
+      60,
+      61,
+      70,
+      71,
+      76,
+      77,
+      78,
+      81,
+      82
+    ],
+    "mentionCount": 290
+  },
+  {
+    "name": "萧玉",
+    "aliases": [
+      "长腿女人",
+      "刁蛮的女人"
+    ],
+    "description": "萧家年轻一辈女性，萧炎的表姐，性子泼辣，手持绿色长鞭，身材修长性感，曾因踢门进萧炎房间被其拍打臀部",
+    "confidence": 0.97,
+    "firstChapter": 37,
+    "lastChapter": 88,
+    "chapterAppearances": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      43,
+      44,
+      45,
+      46,
+      47,
+      55,
+      62,
+      63,
+      74,
+      75,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88
+    ],
+    "mentionCount": 283
+  },
+  {
+    "name": "萧宁",
+    "aliases": [],
+    "description": "大长老的孙子，萧玉的亲弟弟，喜欢薰儿，嫉妒萧炎，修炼实力在年轻一辈中仅次于薰儿，成人仪式上挑战萧炎时违规服用增气散后仍被萧炎一拳打飞",
+    "confidence": 0.95,
+    "firstChapter": 16,
+    "lastChapter": 87,
+    "chapterAppearances": [
+      16,
+      17,
+      30,
+      32,
+      33,
+      34,
+      35,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      45,
+      55,
+      56,
+      63,
+      74,
+      75,
+      84,
+      85,
+      87
+    ],
+    "mentionCount": 165
+  },
+  {
+    "name": "加列毕",
+    "aliases": [
+      "加列族长",
+      "加列家族的族长"
+    ],
+    "description": "加列家族族长，加列奥之父，乌坦城三大家族之一，与萧家对立，曾不顾身份亲自对萧炎下手，被萧战拦截",
+    "confidence": 0.98,
+    "firstChapter": 22,
+    "lastChapter": 89,
+    "chapterAppearances": [
+      22,
+      23,
+      58,
+      59,
+      61,
+      79,
+      80,
+      88,
+      89
+    ],
+    "mentionCount": 157
+  },
+  {
+    "name": "加列奥",
+    "aliases": [
+      "加列家族的少爷",
+      "加列奥少爷",
+      "英俊青年"
+    ],
+    "description": "加列家族成员，三星斗者，风属性玄阶高阶功法风卷决修炼者，被萧炎以八极崩打断右手，对萧炎心怀杀意",
+    "confidence": 0.97,
+    "firstChapter": 12,
+    "lastChapter": 88,
+    "chapterAppearances": [
+      12,
+      13,
+      56,
+      57,
+      58,
+      79,
+      80,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88
+    ],
+    "mentionCount": 144
+  },
+  {
+    "name": "柳席",
+    "aliases": [
+      "柳席先生"
+    ],
+    "description": "加列家族请来的一品炼药师，自视甚高，性格淫邪，炼制回春散助加列家族与萧家竞争，曾出言轻薄薰儿，被薰儿以金色火焰击杀",
+    "confidence": 0.98,
+    "firstChapter": 80,
+    "lastChapter": 90,
+    "chapterAppearances": [
+      80,
+      83,
+      84,
+      85,
+      86,
+      87,
+      89,
+      90
+    ],
+    "mentionCount": 121
+  },
+  {
+    "name": "谷尼",
+    "aliases": [
+      "谷尼叔叔"
+    ],
+    "description": "米特尔拍卖场首席炼药师，二品炼药师，曾为萧家炼制上百瓶疗伤药，对神秘黑袍炼药师恭敬有加",
+    "confidence": 0.97,
+    "firstChapter": 21,
+    "lastChapter": 78,
+    "chapterAppearances": [
+      21,
+      24,
+      54,
+      60,
+      61,
+      70,
+      71,
+      76,
+      77,
+      78
+    ],
+    "mentionCount": 83
+  },
+  {
+    "name": "萧媚",
+    "aliases": [],
+    "description": "萧家年轻一辈族人，长相清纯妩媚，修炼天赋中等，性格现实势利，在萧炎落魄时曾冷淡相对，天赋恢复后又主动示好，成人仪式上曾邀请萧炎同去斗技堂学习斗技",
+    "confidence": 0.92,
+    "firstChapter": 1,
+    "lastChapter": 78,
+    "chapterAppearances": [
+      1,
+      3,
+      5,
+      6,
+      16,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      50,
+      78
+    ],
+    "mentionCount": 80
+  },
+  {
+    "name": "二长老",
+    "aliases": [
+      "萧鹰"
+    ],
+    "description": "萧家二长老，实力为两星大斗师，成人仪式复测时负责监控检验，先前对萧炎不屑，在萧炎实力大进后收敛了许多态度",
+    "confidence": 0.9,
+    "firstChapter": 5,
+    "lastChapter": 81,
+    "chapterAppearances": [
+      5,
+      6,
+      7,
+      29,
+      30,
+      31,
+      32,
+      33,
+      39,
+      41,
+      42,
+      43,
+      44,
+      45,
+      61,
+      74,
+      75,
+      78,
+      79,
+      81
+    ],
+    "mentionCount": 59
+  },
+  {
+    "name": "古河",
+    "aliases": [
+      "丹王古河",
+      "丹王",
+      "古河大人",
+      "名誉长老"
+    ],
+    "description": "加玛帝国十大强者之一，斗王级别实力，云岚宗名誉长老，六品炼药师，号称加玛帝国炼药界第一人，炼制了聚气散赠给纳兰嫣然",
+    "confidence": 0.96,
+    "firstChapter": 6,
+    "lastChapter": 53,
+    "chapterAppearances": [
+      6,
+      9,
+      53
+    ],
+    "mentionCount": 28
+  },
+  {
+    "name": "奥巴帕",
+    "aliases": [],
+    "description": "奥巴家族族长，曾与萧战、加列毕争抢风卷决功法，在价格达到四十三万时退让",
+    "confidence": 0.88,
+    "firstChapter": 22,
+    "lastChapter": 61,
+    "chapterAppearances": [
+      22,
+      23,
+      58,
+      59,
+      61
+    ],
+    "mentionCount": 26
+  },
+  {
+    "name": "大长老",
+    "aliases": [
+      "萧家大长老"
+    ],
+    "description": "萧家三位长老之首，参与家族议事，对萧家疗伤药事业贡献重大",
+    "confidence": 0.9,
+    "firstChapter": 16,
+    "lastChapter": 81,
+    "chapterAppearances": [
+      16,
+      33,
+      38,
+      41,
+      43,
+      55,
+      61,
+      69,
+      74,
+      75,
+      78,
+      79,
+      81
+    ],
+    "mentionCount": 24
+  },
+  {
+    "name": "葛叶",
+    "aliases": [
+      "葛叶先生"
+    ],
+    "description": "云岚宗长老，七星大斗师实力，受云岚宗宗主云韵之命，携纳兰嫣然前往萧家解除婚约，代表云岚宗行事",
+    "confidence": 0.96,
+    "firstChapter": 3,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "mentionCount": 23
+  },
+  {
+    "name": "佩恩",
+    "aliases": [
+      "护卫队长"
+    ],
+    "description": "萧家坊市护卫队长，六星斗师（斗者）实力，由萧战亲自任命，对萧炎恭敬友善，在坊市为萧炎撑腰",
+    "confidence": 0.88,
+    "firstChapter": 11,
+    "lastChapter": 13,
+    "chapterAppearances": [
+      11,
+      13
+    ],
+    "mentionCount": 20
+  },
+  {
+    "name": "萧克",
+    "aliases": [],
+    "description": "大长老派系的人，平日经常跟在萧宁屁股后面，曾在萧炎落魄时给过他脸色看，成人仪式上第一个挑战萧炎却被一掌击败",
+    "confidence": 0.85,
+    "firstChapter": 32,
+    "lastChapter": 34,
+    "chapterAppearances": [
+      32,
+      33,
+      34
+    ],
+    "mentionCount": 19
+  },
+  {
+    "name": "云韵",
+    "aliases": [
+      "云岚宗宗主",
+      "宗主大人"
+    ],
+    "description": "云岚宗宗主，纳兰嫣然的老师，极其宠爱纳兰嫣然并视其为下任宗主培养，下令葛叶前往萧家解除纳兰嫣然与萧炎的婚约",
+    "confidence": 0.88,
+    "firstChapter": 4,
+    "lastChapter": 7,
+    "chapterAppearances": [
+      4,
+      5,
+      7
+    ],
+    "mentionCount": 17
+  },
+  {
+    "name": "测验员",
+    "aliases": [],
+    "description": "萧家负责斗之气测试的族人，亲眼见证了萧炎从天才到陨落再到崛起的过程",
+    "confidence": 0.7,
+    "firstChapter": 31,
+    "lastChapter": 32,
+    "chapterAppearances": [
+      31,
+      32
+    ],
+    "mentionCount": 15
+  },
+  {
+    "name": "加列库",
+    "aliases": [],
+    "description": "加列家族核心人员，掌握加列家族人气最火暴的一所坊市，性格贪婪",
+    "confidence": 0.85,
+    "firstChapter": 79,
+    "lastChapter": 79,
+    "chapterAppearances": [
+      79
+    ],
+    "mentionCount": 11
+  },
+  {
+    "name": "纳兰桀",
+    "aliases": [
+      "纳兰老爷子",
+      "狮心元帅"
+    ],
+    "description": "加玛帝国狮心元帅，纳兰嫣然的爷爷，性子桀骜极其重视承诺，是当年与萧炎爷爷定下萧炎与纳兰嫣然婚约之人",
+    "confidence": 0.9,
+    "firstChapter": 4,
+    "lastChapter": 5,
+    "chapterAppearances": [
+      4,
+      5
+    ],
+    "mentionCount": 8
+  },
+  {
+    "name": "测试员",
+    "aliases": [
+      "中年男子"
+    ],
+    "description": "萧家负责家族斗之气测试的中年男子，语气冷漠，每年的成人测试都主持测定工作",
+    "confidence": 0.85,
+    "firstChapter": 1,
+    "lastChapter": 30,
+    "chapterAppearances": [
+      1,
+      30
+    ],
+    "mentionCount": 6
+  },
+  {
+    "name": "三长老",
+    "aliases": [],
+    "description": "萧家三位长老之一，性格凶狠，曾提议暗杀加列家族的炼药师",
+    "confidence": 0.9,
+    "firstChapter": 5,
+    "lastChapter": 81,
+    "chapterAppearances": [
+      5,
+      6,
+      61,
+      69,
+      74,
+      75,
+      78,
+      79,
+      81
+    ],
+    "mentionCount": 5
+  },
+  {
+    "name": "克鲁",
+    "aliases": [],
+    "description": "乌坦城坊市中有名的小偷头目（金手指），消息灵通，曾为萧炎通报薰儿遇险的消息",
+    "confidence": 0.85,
+    "firstChapter": 83,
+    "lastChapter": 83,
+    "chapterAppearances": [
+      83
+    ],
+    "mentionCount": 5
+  },
+  {
+    "name": "墨管家",
+    "aliases": [
+      "青衫老者",
+      "老管家"
+    ],
+    "description": "萧家管家，苍老和善，对萧炎颇为惋惜，引萧炎至迎客大厅",
+    "confidence": 0.82,
+    "firstChapter": 3,
+    "lastChapter": 3,
+    "chapterAppearances": [
+      3
+    ],
+    "mentionCount": 5
+  },
+  {
+    "name": "萧旱",
+    "aliases": [
+      "冷面人"
+    ],
+    "description": "萧家斗气阁的管理者，性格冷漠强势，连萧战都不给面子，但对薰儿却恭敬有加，从中可见薰儿身份不凡",
+    "confidence": 0.8,
+    "firstChapter": 51,
+    "lastChapter": 51,
+    "chapterAppearances": [
+      51
+    ],
+    "mentionCount": 3
+  },
+  {
+    "name": "雪梨",
+    "aliases": [],
+    "description": "米特尔拍卖场的清秀侍女，被安排侍候神秘的炼药师（药老）",
+    "confidence": 0.7,
+    "firstChapter": 60,
+    "lastChapter": 60,
+    "chapterAppearances": [
+      60
+    ],
+    "mentionCount": 1
+  }
+]

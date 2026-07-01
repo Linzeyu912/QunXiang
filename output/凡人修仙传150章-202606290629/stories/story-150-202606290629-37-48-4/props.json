@@ -1,0 +1,1959 @@
+{
+  "storyId": "story-150-202606290629-37-48-4",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "props": [
+    {
+      "name": "土里的长刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "土里的长刀 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "他不再理会埋头苦读的韩立，自己跑回到水潭边缘，拔出插在泥土里的长刀，自顾自的耍了起来。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "土里的长刀 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "土里的长刀, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他不再理会埋头苦读的韩立，自己跑回到水潭边缘，拔出插在泥土里的长刀，自顾自的耍了起来。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "眨眼剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "时间过的飞快，一本本的“眨眼剑谱”也被韩立迅速的浏览了一遍。",
+        "“那眨眼剑法是什么意思，真的有这剑法吗？",
+        "“眨眼剑法还真是确实存在，只不过它是这些大杂烩的一部分，在这些书中只占了很小的一部分。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "眨眼剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "眨眼剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "时间过的飞快，一本本的“眨眼剑谱”也被韩立迅速的浏览了一遍。",
+        "“那眨眼剑法是什么意思，真的有这剑法吗？",
+        "“眨眼剑法还真是确实存在，只不过它是这些大杂烩的一部分，在这些书中只占了很小的一部分。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "不正在练刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "不正在练刀 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "你不正在练刀法吗？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "不正在练刀 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "不正在练刀, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "你不正在练刀法吗？"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "那眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "那眨眼剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "“那眨眼剑法是什么意思，真的有这剑法吗？"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "那眨眼剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "那眨眼剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“那眨眼剑法是什么意思，真的有这剑法吗？"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "这种剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "这种剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "“这种剑法据书上所说，是利用各种光线和人的视觉错误来克敌制胜，往往让人眨眼之间就失去姓命，所以才叫眨眼剑法。",
+        "“这种剑法有三不能练，真气略有小成者不能练；无大毅力者不能练；无天赋者不能练。",
+        "那就是这种剑技，过于庞大复杂的招式，过于繁琐细致的应用条件。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "这种剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "这种剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“这种剑法据书上所说，是利用各种光线和人的视觉错误来克敌制胜，往往让人眨眼之间就失去姓命，所以才叫眨眼剑法。",
+        "“这种剑法有三不能练，真气略有小成者不能练；无大毅力者不能练；无天赋者不能练。",
+        "那就是这种剑技，过于庞大复杂的招式，过于繁琐细致的应用条件。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "才叫眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "才叫眨眼剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "“这种剑法据书上所说，是利用各种光线和人的视觉错误来克敌制胜，往往让人眨眼之间就失去姓命，所以才叫眨眼剑法。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "才叫眨眼剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "才叫眨眼剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "“这种剑法据书上所说，是利用各种光线和人的视觉错误来克敌制胜，往往让人眨眼之间就失去姓命，所以才叫眨眼剑法。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "药材",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "药材 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "韩立若不是见到墨大夫送来的药物，都是上次下山时收集的名贵药材调配而成，还以为对方已放弃了对他的期盼，另有什么歹毒的诡计在准备着。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "药材 functions as a other in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "药材, prop type: other, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立若不是见到墨大夫送来的药物，都是上次下山时收集的名贵药材调配而成，还以为对方已放弃了对他的期盼，另有什么歹毒的诡计在准备着。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "还了他取剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "还了他取剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "如今，自己将这样一件大功劳，亲自送上门去，相必会让他雀跃不已，这也算是还了他取剑谱的大人情。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "还了他取剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "还了他取剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "如今，自己将这样一件大功劳，亲自送上门去，相必会让他雀跃不已，这也算是还了他取剑谱的大人情。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "与其说是剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "与其说是剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "在韩立看来，与其说是剑法，倒不如称之为剑技比较合适，它完全是一种综合天时、地利、人和等各种因素的刺杀秘术，是十分罕见的，剑出即死的纯粹杀人技。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "与其说是剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "与其说是剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "在韩立看来，与其说是剑法，倒不如称之为剑技比较合适，它完全是一种综合天时、地利、人和等各种因素的刺杀秘术，是十分罕见的，剑出即死的纯粹杀人技。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "如称之为剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "如称之为剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "在韩立看来，与其说是剑法，倒不如称之为剑技比较合适，它完全是一种综合天时、地利、人和等各种因素的刺杀秘术，是十分罕见的，剑出即死的纯粹杀人技。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "如称之为剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "如称之为剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "在韩立看来，与其说是剑法，倒不如称之为剑技比较合适，它完全是一种综合天时、地利、人和等各种因素的刺杀秘术，是十分罕见的，剑出即死的纯粹杀人技。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "练的诡秘剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "练的诡秘剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "在这些书中，描述了在不同的环境下，在不同的时分，利用自身苦练的诡秘剑技，对敌人一剑必杀的种种技巧。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "练的诡秘剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "练的诡秘剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "在这些书中，描述了在不同的环境下，在不同的时分，利用自身苦练的诡秘剑技，对敌人一剑必杀的种种技巧。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "对敌人一剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "对敌人一剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "在这些书中，描述了在不同的环境下，在不同的时分，利用自身苦练的诡秘剑技，对敌人一剑必杀的种种技巧。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "对敌人一剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "对敌人一剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "在这些书中，描述了在不同的环境下，在不同的时分，利用自身苦练的诡秘剑技，对敌人一剑必杀的种种技巧。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "教给学此剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "教给学此剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "它教给学此剑技的人，借用所处地势的一草一木，和各种光线强弱的角度不同，给对手造成视觉上错误，在一瞬间就抓住敌人的弱点，看穿对方的破绽，在刹那间击杀对手。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "教给学此剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "教给学此剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "它教给学此剑技的人，借用所处地势的一草一木，和各种光线强弱的角度不同，给对手造成视觉上错误，在一瞬间就抓住敌人的弱点，看穿对方的破绽，在刹那间击杀对手。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "悟贯通此剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "悟贯通此剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "这是一种非常讲究技巧姓的秘技，没有一点点天赋，是不可能领悟贯通此剑法的。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "悟贯通此剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "悟贯通此剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这是一种非常讲究技巧姓的秘技，没有一点点天赋，是不可能领悟贯通此剑法的。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "名的莫名剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "名的莫名剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "对他们来说，不修炼内功是个天大的忌讳，为了这不出名的莫名剑法，而放弃自身的真气修行，那可真是成了江湖的大笑柄。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "名的莫名剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "名的莫名剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "对他们来说，不修炼内功是个天大的忌讳，为了这不出名的莫名剑法，而放弃自身的真气修行，那可真是成了江湖的大笑柄。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "就是这种剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "就是这种剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "那就是这种剑技，过于庞大复杂的招式，过于繁琐细致的应用条件。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "就是这种剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "就是这种剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "那就是这种剑技，过于庞大复杂的招式，过于繁琐细致的应用条件。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "每本剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "每本剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "基本上，每本剑谱都代表了一招剑式，而每个剑招又会被拆分为上百的分剑式，每个分式还要讲究在不同的环境和不同的天时下，施展时的种种不同技巧等。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "每本剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "每本剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "基本上，每本剑谱都代表了一招剑式，而每个剑招又会被拆分为上百的分剑式，每个分式还要讲究在不同的环境和不同的天时下，施展时的种种不同技巧等。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "表了一招剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "表了一招剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "基本上，每本剑谱都代表了一招剑式，而每个剑招又会被拆分为上百的分剑式，每个分式还要讲究在不同的环境和不同的天时下，施展时的种种不同技巧等。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "表了一招剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "表了一招剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "基本上，每本剑谱都代表了一招剑式，而每个剑招又会被拆分为上百的分剑式，每个分式还要讲究在不同的环境和不同的天时下，施展时的种种不同技巧等。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "而每个剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "而每个剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "基本上，每本剑谱都代表了一招剑式，而每个剑招又会被拆分为上百的分剑式，每个分式还要讲究在不同的环境和不同的天时下，施展时的种种不同技巧等。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "而每个剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "而每个剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "基本上，每本剑谱都代表了一招剑式，而每个剑招又会被拆分为上百的分剑式，每个分式还要讲究在不同的环境和不同的天时下，施展时的种种不同技巧等。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "上百的分剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "上百的分剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "基本上，每本剑谱都代表了一招剑式，而每个剑招又会被拆分为上百的分剑式，每个分式还要讲究在不同的环境和不同的天时下，施展时的种种不同技巧等。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "上百的分剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "上百的分剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "基本上，每本剑谱都代表了一招剑式，而每个剑招又会被拆分为上百的分剑式，每个分式还要讲究在不同的环境和不同的天时下，施展时的种种不同技巧等。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "有心学此剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "有心学此剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "以上变态的修习条件，不知阻碍了多少有心学此剑法的弟子，让他们对创立此绝技的长老，在心中暗骂不已。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "有心学此剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "有心学此剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "以上变态的修习条件，不知阻碍了多少有心学此剑法的弟子，让他们对创立此绝技的长老，在心中暗骂不已。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "创立此剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "创立此剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "这些抱怨的人并不知道，创立此剑技的那位长老，其本身原有的高深功力，在其壮年时的一次江湖厮杀中，被对手无意中废掉，再也无法修习内家真气。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "创立此剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "创立此剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这些抱怨的人并不知道，创立此剑技的那位长老，其本身原有的高深功力，在其壮年时的一次江湖厮杀中，被对手无意中废掉，再也无法修习内家真气。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "这本眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "这本眨眼剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "这前所未有的武技创立，其过程的艰辛，远远超出了他的想像，但他也是一位有大毅力之能的人，在经他近半辈子的呕心沥血，历经前前后后数十年的漫长过程，这本眨眼剑谱终于出世了。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "这本眨眼剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "这本眨眼剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这前所未有的武技创立，其过程的艰辛，远远超出了他的想像，但他也是一位有大毅力之能的人，在经他近半辈子的呕心沥血，历经前前后后数十年的漫长过程，这本眨眼剑谱终于出世了。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "成的诡异剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "成的诡异剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "这名年已花甲的长老，又惊又怒，在此危急时刻，利用自己刚刚练成的诡异剑技，大发神威，一连击杀了众多的强敌，震慑住了剩下的众多高手，硬是让七玄门从重重包围之中，杀出了一条血路，冲了出去，为七玄门的延续立下了弥天大功。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "成的诡异剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "成的诡异剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "这名年已花甲的长老，又惊又怒，在此危急时刻，利用自己刚刚练成的诡异剑技，大发神威，一连击杀了众多的强敌，震慑住了剩下的众多高手，硬是让七玄门从重重包围之中，杀出了一条血路，冲了出去，为七玄门的延续立下了弥天大功。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "这门剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "这门剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "对他来说，这门剑技适合他修炼，有可能让他在墨大夫手中保住小命，这就行了。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "这门剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "这门剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "对他来说，这门剑技适合他修炼，有可能让他在墨大夫手中保住小命，这就行了。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "有的眨眼剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "有的眨眼剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "在接下来的曰子里，韩立把所有的眨眼剑谱都默记完毕，并从中挑选出数种对他目前有用的秘技，开始加以研究，想琢磨出一条速效的修炼途径。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "有的眨眼剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "有的眨眼剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "在接下来的曰子里，韩立把所有的眨眼剑谱都默记完毕，并从中挑选出数种对他目前有用的秘技，开始加以研究，想琢磨出一条速效的修炼途径。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "短剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "短剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "在他们那里，分别订做了几把式样不一的带鞘短剑，并要求秘密在上面做了一些小小的改动。",
+        "数曰后，韩立从铁匠那里得到了自己定做的物品，看到明晃晃的短剑和小巧精致的铁铃，他很是满意，对铁匠的手艺连声称赞不已，觉得自己的银子没白花。",
+        "韩立暗暗使自己维持着第四层的功力，见到墨大夫的这种表情，心里有些嘀咕，警觉心马上提到了最高级，左手悄悄的按向了腰间，那里有一柄订制的带鞘短剑"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "短剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "短剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "在他们那里，分别订做了几把式样不一的带鞘短剑，并要求秘密在上面做了一些小小的改动。",
+        "数曰后，韩立从铁匠那里得到了自己定做的物品，看到明晃晃的短剑和小巧精致的铁铃，他很是满意，对铁匠的手艺连声称赞不已，觉得自己的银子没白花。",
+        "韩立暗暗使自己维持着第四层的功力，见到墨大夫的这种表情，心里有些嘀咕，警觉心马上提到了最高级，左手悄悄的按向了腰间，那里有一柄订制的带鞘短剑"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "银子",
+      "aliases": [],
+      "propType": "money",
+      "storyFunction": "银子 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "数曰后，韩立从铁匠那里得到了自己定做的物品，看到明晃晃的短剑和小巧精致的铁铃，他很是满意，对铁匠的手艺连声称赞不已，觉得自己的银子没白花。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "银子 functions as a money in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "银子, prop type: money, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "数曰后，韩立从铁匠那里得到了自己定做的物品，看到明晃晃的短剑和小巧精致的铁铃，他很是满意，对铁匠的手艺连声称赞不已，觉得自己的银子没白花。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "号称比强弓",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "号称比强弓 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "有号称比强弓射出的利箭，飞得还要快的“云翅鸟”的监视，我看你能玩什么花样出来。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "号称比强弓 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "号称比强弓, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "有号称比强弓射出的利箭，飞得还要快的“云翅鸟”的监视，我看你能玩什么花样出来。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "比普通的刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "比普通的刀 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "对此，韩立“啧啧”称奇了好久，这药可比普通的刀伤药强的太多了，只是不知这药为什么起了个“养精丹”的名谓，在他看来叫“去疤”“止血”之类的更比较贴切些。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "比普通的刀 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "比普通的刀, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "对此，韩立“啧啧”称奇了好久，这药可比普通的刀伤药强的太多了，只是不知这药为什么起了个“养精丹”的名谓，在他看来叫“去疤”“止血”之类的更比较贴切些。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "丹药",
+      "aliases": [],
+      "propType": "other",
+      "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "但如果有灵丹药的话，那么不可能也就变成了可能，可以突破资质上的限制，更进上一层。",
+        "他从自己的袖中摸索出一个银瓶，从中倒出一个黑乎乎的丹药来，抛向了韩立。",
+        "韩立装作手忙脚乱的模样，险险才接助了丹药，放到鼻子下面闻了下，一股辛辣的气味冲了上来，他抬头望了一下墨大夫，对方正似笑非笑的看着他。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "丹药 functions as a other in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "丹药, prop type: other, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "但如果有灵丹药的话，那么不可能也就变成了可能，可以突破资质上的限制，更进上一层。",
+        "他从自己的袖中摸索出一个银瓶，从中倒出一个黑乎乎的丹药来，抛向了韩立。",
+        "韩立装作手忙脚乱的模样，险险才接助了丹药，放到鼻子下面闻了下，一股辛辣的气味冲了上来，他抬头望了一下墨大夫，对方正似笑非笑的看着他。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "放在剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "放在剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "韩立觉得两耳“轰”的一下，两眼发黑，天昏地暗，身体失去了平衡，然后站立不住，当场就萎顿在了地上，放在剑柄上的左手，也无力的滑落了开来。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "放在剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "放在剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立觉得两耳“轰”的一下，两眼发黑，天昏地暗，身体失去了平衡，然后站立不住，当场就萎顿在了地上，放在剑柄上的左手，也无力的滑落了开来。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "上好的利剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "上好的利剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "为了自己，也为了家中亲人的安危，韩立从腰间，缓缓的用左手拔出了短剑，这把剑只有一尺来长，青光闪闪，让人一看就觉得锋利无比，是一把上好的利剑。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "上好的利剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "上好的利剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "为了自己，也为了家中亲人的安危，韩立从腰间，缓缓的用左手拔出了短剑，这把剑只有一尺来长，青光闪闪，让人一看就觉得锋利无比，是一把上好的利剑。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "破膛一剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "破膛一剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "第46章 破膛一剑",
+        "第四十六章 破膛一剑"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "破膛一剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "破膛一剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "第46章 破膛一剑",
+        "第四十六章 破膛一剑"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "下左右开弓",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "下左右开弓 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "没有看见韩立的身影，墨大夫也不停手，四下左右开弓，一连十几下劈空掌，把屋内的烟雾，从大门处驱散的一干二净，房间内恢复了正常，除了少了韩立这个人外。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "下左右开弓 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "下左右开弓, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "没有看见韩立的身影，墨大夫也不停手，四下左右开弓，一连十几下劈空掌，把屋内的烟雾，从大门处驱散的一干二净，房间内恢复了正常，除了少了韩立这个人外。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "的让过此剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "的让过此剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "墨大夫大惊失色，慌忙之间急中生智，突然来了个铁板桥，整个身子像没了脊椎骨一般，从中间向后打了个对折，险险的让过此剑，让短剑紧贴着肚皮滑了过去，把腹部的衣衫都划开了一条细长的口子，差点给他来了个大开膛。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "的让过此剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "的让过此剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "墨大夫大惊失色，慌忙之间急中生智，突然来了个铁板桥，整个身子像没了脊椎骨一般，从中间向后打了个对折，险险的让过此剑，让短剑紧贴着肚皮滑了过去，把腹部的衣衫都划开了一条细长的口子，差点给他来了个大开膛。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "让过此剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "让过此剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "墨大夫大惊失色，慌忙之间急中生智，突然来了个铁板桥，整个身子像没了脊椎骨一般，从中间向后打了个对折，险险的让过此剑，让短剑紧贴着肚皮滑了过去，把腹部的衣衫都划开了一条细长的口子，差点给他来了个大开膛。",
+        "让过此剑后，墨大夫仍不敢松懈，脚底下像装了个弹簧一样，身子未动，整个人却自动向后滑开了几丈多远，这才敢仰起身来，又惊又怒的望向剑光飞起的地方。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "让过此剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "让过此剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "墨大夫大惊失色，慌忙之间急中生智，突然来了个铁板桥，整个身子像没了脊椎骨一般，从中间向后打了个对折，险险的让过此剑，让短剑紧贴着肚皮滑了过去，把腹部的衣衫都划开了一条细长的口子，差点给他来了个大开膛。",
+        "让过此剑后，墨大夫仍不敢松懈，脚底下像装了个弹簧一样，身子未动，整个人却自动向后滑开了几丈多远，这才敢仰起身来，又惊又怒的望向剑光飞起的地方。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "怒的望向剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "怒的望向剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "让过此剑后，墨大夫仍不敢松懈，脚底下像装了个弹簧一样，身子未动，整个人却自动向后滑开了几丈多远，这才敢仰起身来，又惊又怒的望向剑光飞起的地方。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "怒的望向剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "怒的望向剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "让过此剑后，墨大夫仍不敢松懈，脚底下像装了个弹簧一样，身子未动，整个人却自动向后滑开了几丈多远，这才敢仰起身来，又惊又怒的望向剑光飞起的地方。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "刚才那一剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "刚才那一剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "此时的他，身上换上了一身同地板完全一样的土黄色衣衫，左手提着那把差点建功的短剑，眼中正流露着懊恼的神色，看来对刚才那一剑，韩立心中很是感到可惜。",
+        "而墨大夫原来焦黄的面容，此刻却有些发青，他如今还被刚才那一剑的惊险，给弄的心中“砰砰”直跳，一个劲儿的后怕不已，他不是没有经历过风险的江湖新手，但离死神如此之近，在他的前半生中，也是绝无仅有的寥寥数次而已，更何况是被他一向轻视的韩立所为。",
+        "韩立脸色不由得大变，心中一阵骇然，知道对方恐怕拿出了真正的绝招，来对付自己，看来刚才那一剑给他的刺激不小。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "刚才那一剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "刚才那一剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "此时的他，身上换上了一身同地板完全一样的土黄色衣衫，左手提着那把差点建功的短剑，眼中正流露着懊恼的神色，看来对刚才那一剑，韩立心中很是感到可惜。",
+        "而墨大夫原来焦黄的面容，此刻却有些发青，他如今还被刚才那一剑的惊险，给弄的心中“砰砰”直跳，一个劲儿的后怕不已，他不是没有经历过风险的江湖新手，但离死神如此之近，在他的前半生中，也是绝无仅有的寥寥数次而已，更何况是被他一向轻视的韩立所为。",
+        "韩立脸色不由得大变，心中一阵骇然，知道对方恐怕拿出了真正的绝招，来对付自己，看来刚才那一剑给他的刺激不小。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "抓着剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "抓着剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "看到这里，韩立的心沉了下去，抓着剑柄的那只单手，情不自禁的出了不少细细的冷汗，使手心变得潮湿无比，他毕竟和人交手的经验太少，仅凭对方气势的大变和双手的邪异，他就觉得似乎连喘息都沉重了不少。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "抓着剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "抓着剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "看到这里，韩立的心沉了下去，抓着剑柄的那只单手，情不自禁的出了不少细细的冷汗，使手心变得潮湿无比，他毕竟和人交手的经验太少，仅凭对方气势的大变和双手的邪异，他就觉得似乎连喘息都沉重了不少。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "杀鸡用牛刀",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "杀鸡用牛刀 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "墨大夫有些不爽了，他虽然对韩立已刮目相看，但还是觉得对名十几岁的少年使出压箱绝活，实在是有些大材小用，有杀鸡用牛刀的感觉，因此，他更希望能看到韩立吓破胆、手足无措的模样，这才对得起他的一番发威。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "杀鸡用牛刀 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "杀鸡用牛刀, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "墨大夫有些不爽了，他虽然对韩立已刮目相看，但还是觉得对名十几岁的少年使出压箱绝活，实在是有些大材小用，有杀鸡用牛刀的感觉，因此，他更希望能看到韩立吓破胆、手足无措的模样，这才对得起他的一番发威。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "只见他握剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "只见他握剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "韩立自然不知其中的虚实，但就是知道了真像，他也不会用自己的血肉之躯，去测试对方手掌的硬度，只见他握剑的手腕轻轻一抖，手中的短剑突然横了过来，并被舞成了一个车小的银团，护住了自己的上半身。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "只见他握剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "只见他握剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立自然不知其中的虚实，但就是知道了真像，他也不会用自己的血肉之躯，去测试对方手掌的硬度，只见他握剑的手腕轻轻一抖，手中的短剑突然横了过来，并被舞成了一个车小的银团，护住了自己的上半身。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "后抢入到剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "后抢入到剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "墨大夫嘴角露出嘲讽之色，但两只手掌的去势不变，硬生生的先后抢入到剑光之中，没有一点想要避开的念头。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "后抢入到剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "后抢入到剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "墨大夫嘴角露出嘲讽之色，但两只手掌的去势不变，硬生生的先后抢入到剑光之中，没有一点想要避开的念头。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "法再去提剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "法再去提剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "韩立又低头望了一眼，还在微微颤抖的左手，这手已完全麻痹了，至今还没有知觉，根本无法再去提剑，看来自己故意苦练的左手剑，暂时是被废掉了，只能用余下的右手来战斗。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "法再去提剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "法再去提剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立又低头望了一眼，还在微微颤抖的左手，这手已完全麻痹了，至今还没有知觉，根本无法再去提剑，看来自己故意苦练的左手剑，暂时是被废掉了，只能用余下的右手来战斗。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "练的左手剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "练的左手剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "韩立又低头望了一眼，还在微微颤抖的左手，这手已完全麻痹了，至今还没有知觉，根本无法再去提剑，看来自己故意苦练的左手剑，暂时是被废掉了，只能用余下的右手来战斗。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "练的左手剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "练的左手剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立又低头望了一眼，还在微微颤抖的左手，这手已完全麻痹了，至今还没有知觉，根本无法再去提剑，看来自己故意苦练的左手剑，暂时是被废掉了，只能用余下的右手来战斗。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "把剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "把剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "为了自己，也为了家中亲人的安危，韩立从腰间，缓缓的用左手拔出了短剑，这把剑只有一尺来长，青光闪闪，让人一看就觉得锋利无比，是一把上好的利剑。",
+        "韩立沉吟了一下，从怀中另取出了一件武器，这同样是把半尺长的带鞘短剑，因为尺寸过短，说是短剑不如说是匕首还比较恰当一些，把剑抽出鞘后，看起来比普通的匕首宽厚了许多，也是明亮无比，很锋利的样子。",
+        "韩立把剑鞘仍在一旁，换成右手持剑，把手臂伸展开来，用剑尖斜指向对方，摆了个进攻的姿势。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "把剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "把剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "为了自己，也为了家中亲人的安危，韩立从腰间，缓缓的用左手拔出了短剑，这把剑只有一尺来长，青光闪闪，让人一看就觉得锋利无比，是一把上好的利剑。",
+        "韩立沉吟了一下，从怀中另取出了一件武器，这同样是把半尺长的带鞘短剑，因为尺寸过短，说是短剑不如说是匕首还比较恰当一些，把剑抽出鞘后，看起来比普通的匕首宽厚了许多，也是明亮无比，很锋利的样子。",
+        "韩立把剑鞘仍在一旁，换成右手持剑，把手臂伸展开来，用剑尖斜指向对方，摆了个进攻的姿势。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "韩立把剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "韩立把剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "韩立把剑鞘仍在一旁，换成右手持剑，把手臂伸展开来，用剑尖斜指向对方，摆了个进攻的姿势。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "韩立把剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "韩立把剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立把剑鞘仍在一旁，换成右手持剑，把手臂伸展开来，用剑尖斜指向对方，摆了个进攻的姿势。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "成右手持剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "成右手持剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "韩立把剑鞘仍在一旁，换成右手持剑，把手臂伸展开来，用剑尖斜指向对方，摆了个进攻的姿势。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "成右手持剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "成右手持剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立把剑鞘仍在一旁，换成右手持剑，把手臂伸展开来，用剑尖斜指向对方，摆了个进攻的姿势。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "用剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "用剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "韩立把剑鞘仍在一旁，换成右手持剑，把手臂伸展开来，用剑尖斜指向对方，摆了个进攻的姿势。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "用剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "用剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "韩立把剑鞘仍在一旁，换成右手持剑，把手臂伸展开来，用剑尖斜指向对方，摆了个进攻的姿势。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "抢入到了剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "抢入到了剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "眼见两只银手，即将抢入到了剑光之中，却忽从对面传来一声轻笑，这笑声畅快淋漓，似乎猎人见到猎物踏进陷阱时，所有的得意之笑。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "抢入到了剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "抢入到了剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "眼见两只银手，即将抢入到了剑光之中，却忽从对面传来一声轻笑，这笑声畅快淋漓，似乎猎人见到猎物踏进陷阱时，所有的得意之笑。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "发的绷紧弓",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "发的绷紧弓 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "听到话声，墨大夫不由自主的向短剑望去，只见对方不知什么时候，已停止了手上的舞动，而摆出了一个奇怪的姿势，上半身微微后仰，单手所持短剑平放于腰间，下半shen则是一个一触即发的绷紧弓步，整个人成了一副挽弓射箭的怪摸样。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "发的绷紧弓 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "发的绷紧弓, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "听到话声，墨大夫不由自主的向短剑望去，只见对方不知什么时候，已停止了手上的舞动，而摆出了一个奇怪的姿势，上半身微微后仰，单手所持短剑平放于腰间，下半shen则是一个一触即发的绷紧弓步，整个人成了一副挽弓射箭的怪摸样。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "了一副挽弓",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "了一副挽弓 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "听到话声，墨大夫不由自主的向短剑望去，只见对方不知什么时候，已停止了手上的舞动，而摆出了一个奇怪的姿势，上半身微微后仰，单手所持短剑平放于腰间，下半shen则是一个一触即发的绷紧弓步，整个人成了一副挽弓射箭的怪摸样。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "了一副挽弓 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "了一副挽弓, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "听到话声，墨大夫不由自主的向短剑望去，只见对方不知什么时候，已停止了手上的舞动，而摆出了一个奇怪的姿势，上半身微微后仰，单手所持短剑平放于腰间，下半shen则是一个一触即发的绷紧弓步，整个人成了一副挽弓射箭的怪摸样。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "如同被强弓",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "如同被强弓 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "想到这里，墨大夫心中有些好笑，不由得想开口嘲笑对方几句，却忽见韩立整个人王前一冲，如同被强弓射出一般，化为一只利箭，从对面弹射了过来，其来势之快，令墨大夫也不禁颜色一变。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "如同被强弓 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "如同被强弓, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "想到这里，墨大夫心中有些好笑，不由得想开口嘲笑对方几句，却忽见韩立整个人王前一冲，如同被强弓射出一般，化为一只利箭，从对面弹射了过来，其来势之快，令墨大夫也不禁颜色一变。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "看得出真剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "看得出真剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "他一眼就能看得出真剑刃的所在。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "看得出真剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "看得出真剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "他一眼就能看得出真剑刃的所在。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    },
+    {
+      "name": "认准了真剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "认准了真剑 supports, reveals, or complicates the story conflict: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "ownerOrHolder": "施展",
+      "firstAppearance": "chapters 37-48",
+      "keyMoments": [
+        "于是他瞪大了双目，认准了真剑的来处，同时双手招式不变，反而加快了几分去势，企图一招就击碎这把利刃，让对方只能空手就擒。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "认准了真剑 functions as a weapon in \"三不练 - 诈语\", connected to: 施展必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "认准了真剑, prop type: weapon, story function: 施展必须应对围绕“失败”发生关键变化带来的处境变化。, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "于是他瞪大了双目，认准了真剑的来处，同时双手招式不变，反而加快了几分去势，企图一招就击碎这把利刃，让对方只能空手就擒。"
+      ],
+      "sourceChapters": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceRangeHint": "chapters 37-48"
+    }
+  ]
+}

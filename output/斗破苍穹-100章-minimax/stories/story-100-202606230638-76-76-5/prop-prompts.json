@@ -1,0 +1,78 @@
+{
+  "storyId": "story-100-202606230638-76-76-5",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "prompts": [
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"资源争夺\", connected to: 萧炎所拿出聚气散；持有者/关联人物：药老；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "整洁的桌面之上，摆放着小小的玉盒，玉盒之中，一枚龙眼大小的淡青丹药，正安静的躺在其中，丹药表面圆润而富有光泽，浓郁的异香，从中飘散而出，让得人心旷神怡。",
+        "望着玉盒中的丹药，作为拍卖场的主事人，雅妃与谷尼脸庞上的欣喜，几乎难以掩饰。",
+        "”再次深看了几眼这枚淡青丹药，谷尼由衷赞叹道。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76",
+      "metadata": {
+        "storyId": "story-100-202606230638-76-76-5",
+        "propType": "other",
+        "ownerOrHolder": "药老",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 萧炎所拿出聚气散"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "聚气散",
+      "assetName": "聚气散",
+      "prompt": "聚气散，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：聚气散 functions as a other in \"资源争夺\", connected to: 萧炎所拿出聚气散；持有者/关联人物：药老；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "目光透过黑袍瞥了瞥有些失态的两人，萧炎暗暗的摇了摇头，心头戏谑道：“如果他们知道这枚聚气散不过是药老偷工减料炼制出来的，会是何种表情？",
+        "萧炎所拿出来的这枚聚气散，与他以前所服用的那枚品质明显不在同一个档次，然而即使是这般，这枚由药老随意炼制而出的聚气散，也给雅妃与谷尼带来了不少惊喜。",
+        "“老先生的炼药术，真是让人佩服，这枚聚气散的品质，恐怕都能与一些五品炼药师所炼制的聚气散相比了。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76",
+      "metadata": {
+        "storyId": "story-100-202606230638-76-76-5",
+        "propType": "other",
+        "ownerOrHolder": "药老",
+        "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 萧炎所拿出聚气散"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "药材",
+      "assetName": "药材",
+      "prompt": "药材，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：药材 functions as a other in \"资源争夺\", connected to: 萧炎所拿出聚气散；持有者/关联人物：药老；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "从怀中取出一卷纸张，萧炎将之递给雅妃，苍老的声音笑道：“麻烦帮我准备一下上面的一些药材。",
+        "“加列家族，在这里，购买了不少药材吧？",
+        "闻言，雅妃心头微紧，妩媚的俏脸微变，偷偷的与一旁的谷尼对视了一眼，沉默了一会，方才迟疑的道：“上次加列家族的确在拍卖会购买了将近十万金币的药材，而这些药材……也都具有一些止血疗伤的效果。"
+      ],
+      "sourceChapters": [
+        76
+      ],
+      "sourceRangeHint": "chapters 76-76",
+      "metadata": {
+        "storyId": "story-100-202606230638-76-76-5",
+        "propType": "other",
+        "ownerOrHolder": "药老",
+        "storyFunction": "药材 supports, reveals, or complicates the story conflict: 萧炎所拿出聚气散"
+      }
+    }
+  ]
+}

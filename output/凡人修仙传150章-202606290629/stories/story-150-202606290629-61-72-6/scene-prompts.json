@@ -1,0 +1,46 @@
+{
+  "storyId": "story-150-202606290629-61-72-6",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-61-72-6-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"神灭 - 拔毒\" with insufficient location detail.；冲突氛围：神灭；可保留人物比例参考：马门主、李氏、马荣、张袖儿、韩立见、平常；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "马门主在“神灭 - 拔毒”中经历神灭、交易、真容。"
+      ],
+      "sourceChapters": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "sourceRangeHint": "chapters 61-72",
+      "metadata": {
+        "storyId": "story-150-202606290629-61-72-6",
+        "location": "未指定场景",
+        "conflictBeat": "神灭",
+        "involvedCharacters": [
+          "马门主",
+          "李氏",
+          "马荣",
+          "张袖儿",
+          "韩立见",
+          "平常"
+        ]
+      }
+    }
+  ]
+}

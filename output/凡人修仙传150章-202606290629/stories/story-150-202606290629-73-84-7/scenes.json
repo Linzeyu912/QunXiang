@@ -1,0 +1,82 @@
+{
+  "storyId": "story-150-202606290629-73-84-7",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "scenes": [
+    {
+      "id": "story-150-202606290629-73-84-7-scene-1",
+      "name": "厉飞雨的心思 - 地动山摇 - 忽然山",
+      "location": "忽然山",
+      "sourceRange": "chapters 73-84",
+      "summary": "王绝楚在“厉飞雨的心思 - 地动山摇”中经历围绕“失败”发生关键变化、围绕“戒指”发生关键变化、厉飞雨的心思。",
+      "conflictBeat": "围绕“失败”发生关键变化",
+      "involvedCharacters": [
+        "王绝楚",
+        "金光",
+        "韩立淡",
+        "韩立此"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "忽然山 scene in \"厉飞雨的心思 - 地动山摇\", shaped by the conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "忽然山, cinematic scene, conflict beat: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "忽然山上某处响起了一声尖锐的警哨声。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    },
+    {
+      "id": "story-150-202606290629-73-84-7-scene-2",
+      "name": "厉飞雨的心思 - 地动山摇 - 尽管山",
+      "location": "尽管山",
+      "sourceRange": "chapters 73-84",
+      "summary": "王绝楚在“厉飞雨的心思 - 地动山摇”中经历围绕“失败”发生关键变化、围绕“戒指”发生关键变化、厉飞雨的心思。",
+      "conflictBeat": "围绕“戒指”发生关键变化",
+      "involvedCharacters": [
+        "王绝楚",
+        "金光",
+        "韩立淡",
+        "韩立此"
+      ],
+      "confidence": 0.82,
+      "assetStatus": "confirmed",
+      "description": "尽管山 scene in \"厉飞雨的心思 - 地动山摇\", shaped by the conflict: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "尽管山, cinematic scene, conflict beat: 王绝楚必须应对围绕“失败”发生关键变化带来的处境变化。, maintain continuity with story characters and props",
+      "evidenceSnippets": [
+        "”这时，突然传来了王绝楚嘲讽的话语，尽管山峰上如此的混乱，但仍清晰的传进了每个人的耳里，可见其功力的精纯。"
+      ],
+      "sourceChapters": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "sourceRangeHint": "chapters 73-84"
+    }
+  ]
+}

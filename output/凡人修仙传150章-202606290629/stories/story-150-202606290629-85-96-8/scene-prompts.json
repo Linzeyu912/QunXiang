@@ -1,0 +1,43 @@
+{
+  "storyId": "story-150-202606290629-85-96-8",
+  "bookId": "7705f29b-7a90-43cb-a1b9-83a45b2ae7ce",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-150-202606290629-85-96-8-scene-1",
+      "assetName": "假装关",
+      "prompt": "假装关，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：假装关 scene in \"死契血斗 - 缺陷\", shaped by the conflict: 金罩必须应对死契血斗带来的处境变化。；冲突氛围：死契血斗；可保留人物比例参考：金罩、秦叶岭、方既然；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”侏儒一听此话，吓了一跳，连忙做出假装关心对方的样子，急忙劝阻道。"
+      ],
+      "sourceChapters": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "sourceRangeHint": "chapters 85-96",
+      "metadata": {
+        "storyId": "story-150-202606290629-85-96-8",
+        "location": "假装关",
+        "conflictBeat": "死契血斗",
+        "involvedCharacters": [
+          "金罩",
+          "秦叶岭",
+          "方既然"
+        ]
+      }
+    }
+  ]
+}

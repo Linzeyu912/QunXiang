@@ -1,0 +1,49 @@
+{
+  "id": "story-100-202606230638-88-88-6",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "arcId": "arc-100-202606230638-88-88-6",
+  "arcType": "reveal",
+  "goal": "发现隐藏助力与修炼转机",
+  "startChapter": 88,
+  "endChapter": 88,
+  "title": "戒指秘密",
+  "summary": "萧炎卷入“戒指秘密”：药老从戒指中现身、上的漆黑戒指、柳席的炼药。",
+  "coreConflict": "药老从戒指中现身",
+  "trigger": "药老从戒指中现身",
+  "turningPoints": [
+    "药老从戒指中现身",
+    "上的漆黑戒指",
+    "柳席的炼药",
+    "只要那炼药"
+  ],
+  "conflictStatus": "ongoing",
+  "events": [
+    {
+      "id": "event-100-88-8",
+      "chapterIndex": 88,
+      "eventType": "reveal",
+      "function": "inciting",
+      "summary": "药老从戒指中现身",
+      "participants": [
+        "药老"
+      ],
+      "trigger": "药老",
+      "consequence": "隐藏助力浮出水面，修炼线开启。",
+      "confidence": 0.84,
+      "source": "regex"
+    }
+  ],
+  "mainCharacters": [
+    "萧炎"
+  ],
+  "supportingCharacters": [
+    "药老",
+    "萧战"
+  ],
+  "locations": [],
+  "boundaryConfidence": 0.84,
+  "boundaryDecisionIds": [
+    "arc-88-88"
+  ],
+  "approved": true
+}

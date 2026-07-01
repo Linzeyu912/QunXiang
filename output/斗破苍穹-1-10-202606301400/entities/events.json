@@ -1,0 +1,71 @@
+[
+  {
+    "text": "纳兰嫣然要求解除婚约",
+    "chapterIndex": 7,
+    "position": 892,
+    "source": "regex",
+    "confidence": 0.86,
+    "totalCount": 3,
+    "allChapters": [
+      4,
+      6,
+      7
+    ]
+  },
+  {
+    "text": "葛叶提出退婚请求",
+    "chapterIndex": 5,
+    "position": 55,
+    "source": "regex",
+    "confidence": 0.84,
+    "totalCount": 1,
+    "allChapters": [
+      5
+    ]
+  },
+  {
+    "text": "葛叶拿出聚气散",
+    "chapterIndex": 5,
+    "position": 1959,
+    "source": "regex",
+    "confidence": 0.84,
+    "totalCount": 1,
+    "allChapters": [
+      5
+    ]
+  },
+  {
+    "text": "萧炎拒绝解除婚约",
+    "chapterIndex": 7,
+    "position": 564,
+    "source": "regex",
+    "confidence": 0.86,
+    "totalCount": 2,
+    "allChapters": [
+      6,
+      7
+    ]
+  },
+  {
+    "text": "萧炎立下三年之约",
+    "chapterIndex": 7,
+    "position": 1060,
+    "source": "regex",
+    "confidence": 0.88,
+    "totalCount": 1,
+    "allChapters": [
+      7
+    ]
+  },
+  {
+    "text": "药老从戒指中现身",
+    "chapterIndex": 9,
+    "position": 3074,
+    "source": "regex",
+    "confidence": 0.84,
+    "totalCount": 1,
+    "allChapters": [
+      9
+    ]
+  }
+]

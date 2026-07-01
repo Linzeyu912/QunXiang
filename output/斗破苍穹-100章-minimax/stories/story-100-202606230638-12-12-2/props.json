@@ -1,0 +1,30 @@
+{
+  "storyId": "story-100-202606230638-12-12-2",
+  "bookId": "fe9dc283-69bb-413b-a66e-71ef8e2994c0",
+  "props": [
+    {
+      "name": "双方有些剑",
+      "aliases": [],
+      "propType": "weapon",
+      "storyFunction": "双方有些剑 supports, reveals, or complicates the story conflict: 纳兰嫣然要求解除婚约",
+      "ownerOrHolder": "萧炎",
+      "firstAppearance": "chapters 12-12",
+      "keyMoments": [
+        "佩恩带着大群护卫，快速的奔跑了过来，手掌一挥，手下护卫，顿时凶悍的将加列奥那群人反围了起来，一时之间，双方有些剑拔弩张。"
+      ],
+      "confidence": 0.8,
+      "assetStatus": "confirmed",
+      "description": "双方有些剑 functions as a weapon in \"退婚冲突\", connected to: 纳兰嫣然要求解除婚约",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "visualPrompt": "双方有些剑, prop type: weapon, story function: 纳兰嫣然要求解除婚约, preserve source-supported material and shape details",
+      "evidenceSnippets": [
+        "佩恩带着大群护卫，快速的奔跑了过来，手掌一挥，手下护卫，顿时凶悍的将加列奥那群人反围了起来，一时之间，双方有些剑拔弩张。"
+      ],
+      "sourceChapters": [
+        12
+      ],
+      "sourceRangeHint": "chapters 12-12"
+    }
+  ]
+}

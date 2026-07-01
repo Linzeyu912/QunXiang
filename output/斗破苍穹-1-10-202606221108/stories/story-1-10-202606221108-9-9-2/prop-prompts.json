@@ -1,0 +1,78 @@
+{
+  "storyId": "story-1-10-202606221108-9-9-2",
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "prompts": [
+    {
+      "assetType": "prop",
+      "assetId": "聚气散",
+      "assetName": "聚气散",
+      "prompt": "聚气散，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：聚气散 functions as a other in \"戒指秘密\", connected to: 药老从戒指中现身；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "斗气大陆，炼药师虽然稀少，不过由于尊贵的身份，所以也有着明确的等级制度，由低到高，分为一至九品，先前大厅中纳兰嫣然手中的聚气散的主人，丹王古河，便是一名六品的炼药师，在加玛帝国的炼药界中，堪称第一人。",
+        "“差不多吧，不过，以你现在脉络的坚韧程度，可禁受不起任何一种丹药能量的冲击，即使是最低级的聚气散，那也不行！",
+        "“最低级的聚气散……”手指颤了颤，萧炎有些想翻白眼，那在加玛帝国被抄成天价的奇药，到了自己这神秘老师口中，竟然成了最低级的东西，这两者间的差别，实在是让萧炎有些错愕。"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-9-9-2",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "聚气散 supports, reveals, or complicates the story conflict: 药老从戒指中现身"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "丹药",
+      "assetName": "丹药",
+      "prompt": "丹药，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：丹药 functions as a other in \"戒指秘密\", connected to: 药老从戒指中现身；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "比如吃丹药？",
+        "“差不多吧，不过，以你现在脉络的坚韧程度，可禁受不起任何一种丹药能量的冲击，即使是最低级的聚气散，那也不行！",
+        "“呵呵，丹药效力太猛，容易伤了脉络，所以我们必须采取更加温和的方式！"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-9-9-2",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "丹药 supports, reveals, or complicates the story conflict: 药老从戒指中现身"
+      }
+    },
+    {
+      "assetType": "prop",
+      "assetId": "戒指",
+      "assetName": "戒指",
+      "prompt": "戒指，多角度物品设定图；正面、侧面、顶部、底部或背面、细节特写；物品类型：other；物品描述：戒指 functions as a other in \"戒指秘密\", connected to: 药老从戒指中现身；持有者/关联人物：萧炎；中性背景，单独展示物品，比例清晰，适合后续建模/绘制参考；不添加原文未支持的材质、铭文、花纹、尺寸或损坏痕迹",
+      "negativePrompt": "unsupported material, invented inscription, wrong scale, unrelated ornament, inconsistent ownership, hand-held action scene",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "”药老微微一笑，道：“明日，你准备三支完整的紫叶兰草，年份越久越好，还有，两株洗骨花，这东西年份随意，哦，对了，还有一颗木系的一级魔核，这些都是低级材料，想必你能搞到……有人上来了，我先回戒指了！",
+        "”说完，药老也不顾嘴巴越来越大的萧炎，径直投进了黑色戒指之中，戒指微微一颤，准确的套在了萧炎手指上。",
+        "”萧炎捧着戒指，瞪着眼大骂道。"
+      ],
+      "sourceChapters": [
+        9
+      ],
+      "sourceRangeHint": "chapters 9-9",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-9-9-2",
+        "propType": "other",
+        "ownerOrHolder": "萧炎",
+        "storyFunction": "戒指 supports, reveals, or complicates the story conflict: 药老从戒指中现身"
+      }
+    }
+  ]
+}

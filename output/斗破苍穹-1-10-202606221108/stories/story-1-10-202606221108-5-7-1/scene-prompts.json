@@ -1,0 +1,40 @@
+{
+  "storyId": "story-1-10-202606221108-5-7-1",
+  "bookId": "1dcfda59-8c8e-497e-98ce-a3e1a27b115f",
+  "prompts": [
+    {
+      "assetType": "scene",
+      "assetId": "story-1-10-202606221108-5-7-1-scene-1",
+      "assetName": "未指定场景",
+      "prompt": "未指定场景，多方位场景设定图；入口视角、反向视角、俯视布局、关键细节特写；时间线索：原文未明确；场景描述：A story scene for \"退婚冲突\" with insufficient location detail.；冲突氛围：葛叶提出退婚请求；可保留人物比例参考：纳兰嫣然、萧炎、萧战、葛叶、纳兰侄女、纳兰小姐、云韵、古河、纳兰老爷；保持空间结构一致，干净环境参考，无对白文字，不添加原文未支持的建筑、天气或陈设",
+      "negativePrompt": "unsupported architecture, invented weather, unrelated props, inconsistent location, character close-up, unreadable text",
+      "descriptionQuality": "sufficient",
+      "needsDescriptionRepair": false,
+      "evidenceSnippets": [
+        "纳兰嫣然卷入“退婚冲突”：葛叶提出退婚请求、葛叶拿出聚气散、萧炎拒绝解除婚约。"
+      ],
+      "sourceChapters": [
+        5,
+        6,
+        7
+      ],
+      "sourceRangeHint": "chapters 5-7",
+      "metadata": {
+        "storyId": "story-1-10-202606221108-5-7-1",
+        "location": "未指定场景",
+        "conflictBeat": "葛叶提出退婚请求",
+        "involvedCharacters": [
+          "纳兰嫣然",
+          "萧炎",
+          "萧战",
+          "葛叶",
+          "纳兰侄女",
+          "纳兰小姐",
+          "云韵",
+          "古河",
+          "纳兰老爷"
+        ]
+      }
+    }
+  ]
+}
