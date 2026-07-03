@@ -23,6 +23,30 @@ export async function locationRoutes(fastify: FastifyInstance) {
     return { locations };
   });
 
+  // 批量改状态（审核通过/拒绝）。
+  fastify.post('/batch', async (request, reply) => {
+    const { ids, status } = request.body as { ids?: string[]; status?: string };
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return reply.status(400).send({ error: 'ids is required' });
+    }
+    if (status !== 'APPROVED' && status !== 'REJECTED') {
+      return reply.status(400).send({ error: 'status must be APPROVED or REJECTED' });
+    }
+
+    const updated: string[] = [];
+    const skipped: { id: string; reason: string }[] = [];
+    for (const id of ids) {
+      const location = await LocationRepository.findById(id);
+      if (!location) {
+        skipped.push({ id, reason: '不存在' });
+        continue;
+      }
+      await LocationRepository.updateStatus(id, status);
+      updated.push(id);
+    }
+    return { updated, skipped };
+  });
+
   // Update location (approve/reject/edit)
   fastify.patch('/:id', async (request, reply) => {
     try {

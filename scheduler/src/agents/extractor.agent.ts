@@ -1,4 +1,4 @@
-import type { AgentType, Character, Location, Item } from '@novel-agent/core';
+import type { AgentType, Character, Location, Item, Owner } from '@novel-agent/core';
 import { createExtractor } from '@novel-agent/extractors';
 import { BookRepository } from '@novel-agent/storage';
 import { parseTxtEnhanced } from '@novel-agent/import';
@@ -200,14 +200,16 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     // Locations: LLM-primary, enriched with prescan mention count/chapter coverage.
     locations = llmEntitiesWithPrescan(entityResult.locations, enhanced.prescanResult.location, 'location');
     // Items: LLM-primary, enriched with prescan.
-    items = llmEntitiesWithPrescan(entityResult.items, enhanced.prescanResult.item, 'item');
+    items = llmEntitiesWithPrescan(entityResult.items, enhanced.prescanResult.item, 'item').map((it) => ({ ...it, owners: [] as Owner[] }));
     console.log(`[Extractor] Locations (LLM): ${locations.length}; Items (LLM): ${items.length}`);
   } else {
     // No prescan: entities still come from LLM, with neutral importance.
-    const noPrescanMap = (ents: typeof entityResult.items, entityType: EntityType) =>
-      llmEntitiesWithPrescan(ents, [], entityType);
+    const noPrescanMap = (
+      ents: { name: string; aliases?: string[]; description?: string; confidence?: number; firstChapter?: number; lastChapter?: number; chapterAppearances?: number[] }[],
+      entityType: EntityType,
+    ) => llmEntitiesWithPrescan(ents, [], entityType);
     locations = noPrescanMap(entityResult.locations, 'location');
-    items = noPrescanMap(entityResult.items, 'item');
+    items = noPrescanMap(entityResult.items, 'item').map((it) => ({ ...it, owners: [] as Owner[] }));
   }
 
   const characterDescriptions = extractCharacterDescriptionPacks(characters, chapters);

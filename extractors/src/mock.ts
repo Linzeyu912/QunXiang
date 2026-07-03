@@ -14,6 +14,7 @@ const MOCK_CHARACTERS: Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedA
     mentionCount: 150,
     dialogueCount: 45,
     coCharacters: ['孙悟空', '猪八戒', '沙悟净', '白龙马'],
+    outfits: [],
   },
   {
     name: '孙悟空',
@@ -25,6 +26,7 @@ const MOCK_CHARACTERS: Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedA
     mentionCount: 300,
     dialogueCount: 120,
     coCharacters: ['唐僧', '猪八戒', '沙悟净', '白龙马'],
+    outfits: [],
   },
   {
     name: '猪八戒',
@@ -36,6 +38,7 @@ const MOCK_CHARACTERS: Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedA
     mentionCount: 180,
     dialogueCount: 65,
     coCharacters: ['唐僧', '孙悟空', '沙悟净'],
+    outfits: [],
   },
   {
     name: '沙悟净',
@@ -47,6 +50,7 @@ const MOCK_CHARACTERS: Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedA
     mentionCount: 90,
     dialogueCount: 25,
     coCharacters: ['唐僧', '孙悟空', '猪八戒'],
+    outfits: [],
   },
   {
     name: '白龙马',
@@ -58,6 +62,7 @@ const MOCK_CHARACTERS: Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedA
     mentionCount: 40,
     dialogueCount: 8,
     coCharacters: ['唐僧', '孙悟空'],
+    outfits: [],
   },
 ];
 

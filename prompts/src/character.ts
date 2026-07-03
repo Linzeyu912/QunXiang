@@ -19,6 +19,11 @@ export const CHARACTER_EXTRACTION_PROMPT = `你是一位从小说中提取实体
 - firstChapter: 该角色首次出现的章节索引（从 1 开始计数）
 - lastChapter: 该角色最后出现的章节索引
 - chapterAppearances: 该角色出现的章节索引数组
+- outfits: 该角色在原文中出现的所有显著服饰/装扮数组（不要只给一套）。每套为一个对象：
+  - description: 服饰描述（颜色/款式/材质/明显配饰，纯视觉，不要写动作或心理）
+  - scene: 场景/用途标签（如 "日常" "伪装炼药师" "战斗" "礼服" "测试"），可选
+  - firstChapter / lastChapter: 该套出现的章节区间（1 基索引）
+  同一套在不同章节反复出现时合并为一条，用章节区间覆盖。例如主角可同时有"日常青色劲装（全篇）"和"伪装时的大黑斗篷/黑袍（拍卖场，第20-75章）"。没有明确服饰描写的角色该字段为空数组。
 
 ⚠️ 别名收集（极重要）：同一角色的所有称呼/变体必须并入同一条记录、记入 aliases，绝不能作为独立角色产出。aliases 必须尽可能完整，包含以下三类：
 
@@ -39,6 +44,11 @@ export const CHARACTER_EXTRACTION_PROMPT = `你是一位从小说中提取实体
 - firstChapter: 首次出现章节索引（从 1 开始）
 - lastChapter: 最后出现章节索引
 - chapterAppearances: 出现的章节索引数组
+- owners: 该道具的持有者数组（"这是谁的"）。每条为一个对象：
+  - name: 持有者称呼（按原文，可能是本名也可能是称呼形式）
+  - firstChapter / lastChapter: 该持有者持有此物的章节区间（1 基索引），可选
+  - note: 持有契机/方式（如 "母亲遗物" "拍卖购得" "亲手炼制" "赠予"），可选
+  道具易主时产出多条（例如某戒指先是母亲遗物、后由主角佩戴）。无法判断归属时该字段为空数组。
 
 【地点场景 locations】
 提取故事中出现的重要地点：城市、城镇、建筑、标志性场所、秘境等。不要抓一次性的路名/街道。
@@ -54,7 +64,7 @@ export const CHARACTER_EXTRACTION_PROMPT = `你是一位从小说中提取实体
 description 必须输出完整句或完整短语，不能以半截句、连接词、数字残片结尾；如果某个信息无法完整表达，宁可去掉该残片，也不要输出未完成的句子。
 
 只返回 JSON 对象。示例：
-{"characters":[{"name":"萧炎","aliases":["萧炎哥","萧炎哥哥","炎儿","三少爷"],"description":"主角，萧家三少爷，曾为天才少年，功力倒退后重新崛起，身怀神秘黑色古戒","confidence":0.95,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3,4,5,6,7,8,9,10]}],"items":[{"name":"黑色古戒","aliases":["古朴戒指","戒指"],"description":"萧炎母亲遗物，内藏神秘灵魂体药老，曾吸取萧炎三年斗之气","confidence":0.9,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,8,9]}],"locations":[{"name":"乌坦城","aliases":["乌坦"],"description":"加玛帝国东部的一座城市，萧家所在地","confidence":0.85,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3]}]}`;
+{"characters":[{"name":"萧炎","aliases":["萧炎哥","萧炎哥哥","炎儿","三少爷"],"description":"主角，萧家三少爷，曾为天才少年，功力倒退后重新崛起，身怀神秘黑色古戒","confidence":0.95,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3,4,5,6,7,8,9,10],"outfits":[{"description":"青色劲装，袖口绣有暗纹","scene":"日常","firstChapter":1,"lastChapter":10},{"description":"宽大黑袍与大黑斗篷，遮掩面容","scene":"伪装炼药师/拍卖场","firstChapter":3,"lastChapter":8}]}],"items":[{"name":"黑色古戒","aliases":["古朴戒指","戒指"],"description":"萧炎母亲遗物，内藏神秘灵魂体药老，曾吸取萧炎三年斗之气","confidence":0.9,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,8,9],"owners":[{"name":"萧炎母亲","note":"遗物"},{"name":"萧炎","firstChapter":1,"lastChapter":10,"note":"佩戴于左手无名指"}]}],"locations":[{"name":"乌坦城","aliases":["乌坦"],"description":"加玛帝国东部的一座城市，萧家所在地","confidence":0.85,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3]}]}`;
 
 export const CHARACTER_BATCH_PROMPT = (bookTitle: string, batchNum: number, totalBatches: number): string =>
   `从书籍《${bookTitle}》中提取所有【人物角色】、【物品道具】和【地点场景】。这是第 ${batchNum} 批（共 ${totalBatches} 批）。按系统提示给出的 JSON 对象结构返回。`;

@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import type { LLMProvider, ProviderConfig } from './index.js';
-import { createOllamaProvider } from './providers/ollama.js';
 import { createCustomProvider } from './providers/custom.js';
 import { createMockProvider } from './providers/mock.js';
 import { LLMError, ProviderNotConfiguredError } from './errors.js';
@@ -12,7 +11,7 @@ import { saveConfigToDisk, loadConfigFromDisk } from './configStore.js';
  * Provider configuration schema
  */
 export const llmConfigSchema = z.object({
-  provider: z.enum(['openai', 'anthropic', 'ollama', 'custom']),
+  provider: z.enum(['openai', 'anthropic', 'custom']),
   apiKey: z.string().optional(),
   baseUrl: z.string().optional(),
   model: z.string().optional(),
@@ -25,11 +24,6 @@ export type LLMConfig = z.infer<typeof llmConfigSchema>;
  */
 export function createProvider(config: ProviderConfig): LLMProvider {
   switch (config.provider) {
-    case 'ollama':
-      return createOllamaProvider({
-        baseUrl: config.baseUrl,
-        model: config.model,
-      });
     case 'custom':
       return createCustomProvider({
         apiKey: config.apiKey,
@@ -51,7 +45,7 @@ export function createProvider(config: ProviderConfig): LLMProvider {
 
 /**
  * Runtime provider override (set via API, persists in memory until restart)
- * Priority: runtimeProviderOverride > LLM_PROVIDER env > Ollama auto-detect > LLM_MOCK_ENABLED > error
+ * Priority: runtimeProviderOverride > runtime API config > LLM_PROVIDER env > LLM_MOCK_ENABLED > error
  */
 let runtimeProviderOverride: 'llm' | 'mock' | 'auto' | undefined = undefined;
 
@@ -90,11 +84,6 @@ export function setRuntimeConfig(config: Partial<RuntimeLlmConfig>, persist: boo
   if (config.apiKey !== undefined) runtimeConfig.apiKey = config.apiKey || undefined; // '' → undefined (clear)
   if (config.baseUrl !== undefined) runtimeConfig.baseUrl = config.baseUrl;
   if (config.model !== undefined) runtimeConfig.model = config.model;
-
-  // When switching to ollama, clear apiKey
-  if (runtimeConfig.provider === 'ollama') {
-    runtimeConfig.apiKey = undefined;
-  }
 
   if (persist) {
     try {
@@ -151,9 +140,9 @@ export async function getRuntimeProviderName(): Promise<string> {
   if (runtimeProviderOverride === 'mock') {
     return 'mock';
   }
-  // 'llm' or undefined — resolve via env/auto-detect
+  // 'llm' or undefined — resolve via runtime/env provider config
   try {
-    const provider = await resolveProviderFromEnvOrAuto();
+    const provider = await resolveProvider();
     return provider.name;
   } catch {
     return 'none';
@@ -161,18 +150,13 @@ export async function getRuntimeProviderName(): Promise<string> {
 }
 
 /**
- * Internal: resolve provider from runtime config, environment variables, and auto-detection.
- * Priority: runtimeConfig > process.env > Ollama auto-detect > LLM_MOCK_ENABLED > error
+ * Internal: resolve provider from runtime config or environment variables.
+ * Priority: runtimeConfig > process.env > LLM_MOCK_ENABLED > error
  */
-async function resolveProviderFromEnvOrAuto(): Promise<LLMProvider> {
+async function resolveProvider(): Promise<LLMProvider> {
   // 1. Check runtime config first
   if (runtimeConfig) {
     switch (runtimeConfig.provider) {
-      case 'ollama':
-        return createOllamaProvider({
-          baseUrl: runtimeConfig.baseUrl,
-          model: runtimeConfig.model,
-        });
       case 'custom':
         return createCustomProvider({
           apiKey: runtimeConfig.apiKey,
@@ -185,12 +169,10 @@ async function resolveProviderFromEnvOrAuto(): Promise<LLMProvider> {
   }
 
   // 2. Check env vars
-  const envProvider = process.env.LLM_PROVIDER as 'openai' | 'anthropic' | 'ollama' | 'custom' | 'mock' | undefined;
+  const envProvider = process.env.LLM_PROVIDER as 'openai' | 'anthropic' | 'custom' | 'mock' | undefined;
 
   if (envProvider) {
     switch (envProvider) {
-      case 'ollama':
-        return createOllamaProvider();
       case 'custom':
         return createCustomProvider();
       case 'mock':
@@ -208,35 +190,29 @@ async function resolveProviderFromEnvOrAuto(): Promise<LLMProvider> {
     }
   }
 
-  // 3. Try Ollama (local, no API key needed)
-  const ollama = createOllamaProvider();
-  if (await ollama.isConfigured()) {
-    return ollama;
-  }
-
-  // 4. Try mock if explicitly enabled
+  // 3. Try mock if explicitly enabled
   if (process.env.LLM_MOCK_ENABLED === 'true') {
     return createMockProvider();
   }
 
   // No provider available - fail fast instead of silent fallback
-  throw new ProviderNotConfiguredError('ollama');
+  throw new ProviderNotConfiguredError('custom');
 }
 
 /**
  * Get default provider based on:
  * 1. Runtime override (set via API)
  * 2. LLM_PROVIDER environment variable
- * 3. Ollama availability (local, free)
- * 4. Error if no provider available (no silent fallback)
+ * 3. Explicit LLM_MOCK_ENABLED
+ * 4. Error if no API provider is configured
  */
 export async function getDefaultProvider(): Promise<LLMProvider> {
   // Runtime override takes highest priority
   if (runtimeProviderOverride === 'mock') {
     return createMockProvider();
   }
-  // 'llm' or undefined — use env/auto-detect
-  return resolveProviderFromEnvOrAuto();
+  // 'llm' or undefined — use runtime/env provider config
+  return resolveProvider();
 }
 
 /**
@@ -244,8 +220,7 @@ export async function getDefaultProvider(): Promise<LLMProvider> {
  */
 export async function isAnyProviderAvailable(): Promise<boolean> {
   try {
-    const ollama = createOllamaProvider();
-    return await ollama.isConfigured();
+    return await createCustomProvider().isConfigured();
   } catch {
     return false;
   }

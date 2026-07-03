@@ -1,19 +1,32 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
+    "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "strict": true,
-    "esModuleInterop": true,
+    "module": "ESNext",
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "types": ["react", "react-dom"]
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@novel-agent/core": ["../core/src"],
+      "@novel-agent/core/*": ["../core/src/*"],
+      "@novel-agent/schemas": ["../schemas/src"],
+      "@novel-agent/schemas/*": ["../schemas/src/*"],
+      "@novel-agent/story-arcs/types": ["../story-arcs/src/types.ts"]
+    }
   },
-  "include": ["src/**/*"]
+  "include": ["src"]
 }

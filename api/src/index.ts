@@ -1,10 +1,10 @@
 import 'dotenv/config';
-import Fastify from 'fastify';
+import Fastify, { type FastifyRequest } from 'fastify';
 import cors from '@fastify/cors';
 import multipart from '@fastify/multipart';
 import fastifyJwt from '@fastify/jwt';
 import { initializeDatabase } from '@novel-agent/storage';
-import { getDefaultProvider } from '@novel-agent/llm';
+import { getDefaultProvider, loadPersistedConfig } from '@novel-agent/llm';
 import { booksRoutes } from './routes/books.js';
 import { charactersRoutes } from './routes/characters.js';
 import { locationRoutes } from './routes/locations.js';
@@ -13,6 +13,9 @@ import { extractRoutes } from './routes/extract.js';
 import { exportRoutes } from './routes/export.js';
 import { authRoutes } from './routes/auth.js';
 import { healthRoutes } from './routes/health.js';
+import { storiesRoutes } from './routes/stories.js';
+import { directorRoutes } from './routes/director.js';
+import { artifactsRoutes } from './routes/artifacts.js';
 
 const fastify = Fastify({
   logger: true,
@@ -36,22 +39,27 @@ declare module '@fastify/jwt' {
 }
 
 async function start() {
+  // Load persisted runtime LLM config before checking provider status.
+  // The API should still start when no provider is configured so the web
+  // settings page can be used on a fresh deployment.
+  try {
+    loadPersistedConfig();
+  } catch (err) {
+    console.warn('Failed to load persisted LLM config:', err instanceof Error ? err.message : String(err));
+  }
+
   // Initialize database
   await initializeDatabase();
 
-  // Validate LLM provider is available (fail fast if not configured)
+  // Report LLM provider status without blocking server startup.
   try {
     const provider = await getDefaultProvider();
-    console.log(`LLM Provider: ${provider.name}`);
+    const configured = await provider.isConfigured();
+    console.log(`LLM Provider: ${provider.name}${configured ? '' : ' (not ready)'}`);
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error);
-    console.error('LLM provider not available:', msg);
-    console.error('');
-    console.error('To fix, set one of:');
-    console.error('  1. Run "ollama serve" (for local Ollama)');
-    console.error('  2. Set LLM_MOCK_ENABLED=true (for mock data only)');
-    console.error('  3. Set LLM_PROVIDER=custom with your own API key');
-    process.exit(1);
+    console.warn('LLM provider not available yet:', msg);
+    console.warn('Configure it in the web UI at /settings/llm, or set LLM_PROVIDER in api/.env.');
   }
 
   // Register plugins
@@ -59,6 +67,7 @@ async function start() {
 
   await fastify.register(cors, {
     origin: allowedOrigins.length > 0 ? allowedOrigins : process.env.NODE_ENV !== 'production',
+    allowedHeaders: ['Authorization', 'Content-Type'],
   });
   await fastify.register(multipart, {
     limits: {
@@ -73,25 +82,43 @@ async function start() {
   }
   await fastify.register(fastifyJwt, {
     secret: jwtSecret,
-    sign: { expiresIn: '15m' },
+    sign: { expiresIn: '7d' },
   });
 
-  // Register auth hook - verify JWT on all non-auth routes
-  fastify.addHook('onRequest', async (request, _reply) => {
-    // Skip auth for health check and auth routes
-    if (request.url === '/health' || request.url.startsWith('/health/llm') || request.url.startsWith('/auth')) {
+  // 从 Authorization 头或（SSE 场景）URL query 里取 token。
+  // EventSource 无法设置自定义请求头，因此 SSE 端点允许 ?access_token= 兜底。
+  function extractToken(request: FastifyRequest): string | null {
+    const auth = request.headers.authorization;
+    if (typeof auth === 'string' && auth.startsWith('Bearer ')) {
+      return auth.slice(7);
+    }
+    const qIdx = request.url.indexOf('?');
+    if (qIdx >= 0) {
+      const token = new URLSearchParams(request.url.slice(qIdx + 1)).get('access_token');
+      if (token) return token;
+    }
+    return null;
+  }
+
+  // 全局鉴权：仅 /auth/login、/auth/register、存活检查 /health 放行；
+  // /auth/me、/auth/refresh 仍需有效 token（由本钩子填充 request.user）。
+  fastify.addHook('onRequest', async (request, reply) => {
+    const pathNoQuery = request.url.split('?')[0];
+    if (
+      pathNoQuery === '/health' ||
+      pathNoQuery === '/auth/login' ||
+      pathNoQuery === '/auth/register'
+    ) {
       return;
     }
-
+    const token = extractToken(request);
+    if (!token) {
+      return reply.status(401).send({ error: '未登录' });
+    }
     try {
-      await request.jwtVerify();
+      request.user = fastify.jwt.verify(token);
     } catch {
-      // Set anonymous user for unauthenticated requests
-      request.user = {
-        userId: 'anonymous',
-        email: 'anonymous@example.com',
-        name: 'Anonymous',
-      };
+      return reply.status(401).send({ error: '登录已过期' });
     }
   });
 
@@ -102,6 +129,9 @@ async function start() {
   await fastify.register(locationRoutes, { prefix: '/locations' });
   await fastify.register(itemRoutes, { prefix: '/items' });
   await fastify.register(extractRoutes, { prefix: '/books' });
+  await fastify.register(storiesRoutes, { prefix: '/books' });
+  await fastify.register(directorRoutes, { prefix: '/books' });
+  await fastify.register(artifactsRoutes, { prefix: '/books' });
   await fastify.register(exportRoutes, { prefix: '/export' });
   await fastify.register(healthRoutes, { prefix: '/health' });
 
@@ -109,7 +139,9 @@ async function start() {
   fastify.get('/health', async () => ({ status: 'ok' }));
 
   // Start server
-  const address = await fastify.listen({ port: 3000 });
+  const port = Number(process.env.PORT ?? 3000);
+  const host = process.env.HOST;
+  const address = await fastify.listen({ port, host });
   console.log(`Server listening at ${address}`);
 }
 

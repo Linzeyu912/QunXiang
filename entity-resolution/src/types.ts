@@ -1,5 +1,12 @@
 // Re-export Character and Book types from core
 // Note: Using local type definitions due to stale build in core package
+export interface Outfit {
+  description: string;
+  scene?: string;
+  firstChapter?: number;
+  lastChapter?: number;
+}
+
 export interface Character {
   id: string;
   bookId: string;
@@ -17,6 +24,7 @@ export interface Character {
   mentionCount: number;
   dialogueCount: number;
   coCharacters: string[];
+  outfits: Outfit[];
 }
 
 export interface Book {

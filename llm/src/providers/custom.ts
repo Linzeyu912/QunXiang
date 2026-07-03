@@ -66,7 +66,13 @@ function jsonContentFromResponse(content: string): string {
  */
 export function createCustomProvider(config?: CustomConfig): LLMProvider {
   const apiKey = config?.apiKey || process.env.LLM_API_KEY || '';
-  const baseUrl = config?.baseUrl || process.env.LLM_BASE_URL || 'https://api.openai.com/v1';
+  const rawBaseUrl = config?.baseUrl || process.env.LLM_BASE_URL || 'https://api.openai.com/v1';
+  // 用户在 UI/env 里通常只填到 /v1（如 .env.example）。OpenAI 兼容的聊天端点
+  // 是 /chat/completions，这里自动补全：已带 /chat/completions 则原样使用，
+  // 否则拼上。这样无论用户填 https://api.deepseek.com/v1 还是完整路径都能工作。
+  const baseUrl = rawBaseUrl.endsWith('/chat/completions')
+    ? rawBaseUrl
+    : `${rawBaseUrl.replace(/\/$/, '')}/chat/completions`;
   const model = config?.model || process.env.LLM_MODEL || 'gpt-4o';
   // Support LLM_TIMEOUT env var (in milliseconds)
   const envTimeout = parseInt(process.env.LLM_TIMEOUT || '', 10);

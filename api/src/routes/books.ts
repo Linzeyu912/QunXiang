@@ -2,16 +2,16 @@ import type { FastifyInstance, FastifyRequest } from 'fastify';
 import { BookRepository, UserRepository } from '@novel-agent/storage';
 import { parseTxt } from '@novel-agent/import';
 import { decodeText } from '@novel-agent/import';
-import { writeFile, rename, unlink, readFile } from 'fs/promises';
-import { resolve } from 'path';
+import { writeFile, rename, unlink, readFile, mkdir, rm } from 'fs/promises';
+import { join, resolve } from 'path';
 import crypto from 'crypto';
 
 const UPLOAD_DIR = resolve(process.cwd(), '..', 'storage', 'uploads');
 
 function getEffectiveUserId(request: FastifyRequest): string {
-  const xUserId = request.headers['x-user-id'];
-  if (typeof xUserId === 'string' && xUserId) return xUserId;
-  return request.user!.userId;
+  // 鉴权已由全局 onRequest 钩子强制，request.user 即权威身份。
+  // 不再接受客户端的 x-user-id 头，避免身份伪造。
+  return request.user.userId;
 }
 
 export async function booksRoutes(fastify: FastifyInstance) {
@@ -40,6 +40,7 @@ export async function booksRoutes(fastify: FastifyInstance) {
       const { title } = parseTxt(content, filename);
 
       // Write file to disk (temp path first)
+      await mkdir(UPLOAD_DIR, { recursive: true });
       const bookId = crypto.randomUUID();
       tempPath = resolve(UPLOAD_DIR, `.tmp-${bookId}.txt`);
       const finalPath = resolve(UPLOAD_DIR, `${bookId}.txt`);
@@ -120,6 +121,9 @@ export async function booksRoutes(fastify: FastifyInstance) {
       }
 
       await BookRepository.delete(id);
+      // 级联清理故事管线产物（切分/资产/剧本，目录名即 bookId）
+      await rm(join('output', id), { recursive: true, force: true });
+      await rm(join('.intermediate', 'story', id), { recursive: true, force: true });
       return { success: true };
     } catch (err) {
       request.log.error(err);

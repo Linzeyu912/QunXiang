@@ -23,7 +23,7 @@ export type LLMErrorCode =
   | 'UNKNOWN';
 
 /**
- * Thrown when provider is not configured (no API key, Ollama not running, etc.)
+ * Thrown when provider is not configured (for example no API key)
  */
 export class ProviderNotConfiguredError extends LLMError {
   constructor(provider: string) {
@@ -133,7 +133,7 @@ export function mapProviderError(error: unknown, provider: string): LLMError {
     // Model not found or not downloaded
     if (message.includes('model') && (message.includes('not found') || message.includes('does not exist') || message.includes('not exist'))) {
       return new LLMError(
-        `Model not found for ${provider}. Download with: ollama pull <model>`,
+        `Model not found for ${provider}. Check LLM_MODEL.`,
         provider,
         'MODEL_NOT_FOUND',
         true

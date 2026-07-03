@@ -24,7 +24,7 @@ export const prisma = new PrismaClient({
       url: getDatabaseUrl(),
     },
   },
-  log: isProduction ? ['error'] : ['query', 'error'],
+  log: isProduction ? ['error'] : ['warn', 'error'],
 });
 
 export async function initializeDatabase() {
