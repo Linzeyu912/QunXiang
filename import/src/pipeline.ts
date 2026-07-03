@@ -54,6 +54,44 @@ export interface EnhancedParseResult extends ParseResult {
   }>;
 }
 
+export interface ChapterOutlineResult {
+  title: string;
+  chapterMode: string;
+  isFallback: boolean;
+  removedNoiseLines: number;
+  /** 疑似噪声行明细（保守模式实际移除 confidence >= 0.8 的行），最多 200 条 */
+  suspectLines: Array<{ lineNum: number; content: string; category: string; confidence: number; removed: boolean }>;
+  chapters: Array<{ index: number; title?: string; wordCount: number }>;
+}
+
+/**
+ * 轻量章节大纲：只走真实管线的前两步（预处理 + 结构化切章），
+ * 不做实体预扫描、不写任何文件。供前端章节视图按需解析。
+ */
+export function parseChapterOutline(content: string, filename: string): ChapterOutlineResult {
+  const title = filename.replace(/\.txt$/i, '');
+  const { text, report } = preprocess(content.trim(), {});
+  const structure = splitChaptersStructured(text, {});
+  return {
+    title,
+    chapterMode: structure.matchedMode,
+    isFallback: structure.isFallback,
+    removedNoiseLines: report.filter?.removedCount ?? 0,
+    suspectLines: (report.filter?.suspectLines ?? []).slice(0, 200).map((l) => ({
+      lineNum: l.lineNum,
+      content: l.content,
+      category: l.category,
+      confidence: l.confidence,
+      removed: l.confidence >= 0.8,
+    })),
+    chapters: structure.flatList.map((ch) => ({
+      index: ch.index,
+      title: ch.title,
+      wordCount: ch.wordCount,
+    })),
+  };
+}
+
 /**
  * Enhanced TXT parser with full preprocessing pipeline.
  *

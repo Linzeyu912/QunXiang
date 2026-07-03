@@ -4,7 +4,7 @@ import type { z } from 'zod';
  * LLM Provider interface - all providers must implement this
  */
 export interface LLMProvider {
-  /** Provider name (e.g., 'ollama', 'custom') */
+  /** Provider name (e.g., 'custom' or 'mock') */
   name: string;
 
   /** Check if provider is configured and available */
@@ -24,7 +24,7 @@ export interface LLMProvider {
  * Provider configuration options
  */
 export interface ProviderConfig {
-  provider: 'openai' | 'anthropic' | 'ollama' | 'custom';
+  provider: 'openai' | 'anthropic' | 'custom';
   apiKey?: string;
   baseUrl?: string;
   model?: string;

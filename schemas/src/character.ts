@@ -1,5 +1,17 @@
 import { z } from 'zod';
 
+/**
+ * 一套显著服饰/装扮。一个角色在不同场景/章节可有多套。
+ * scene: 场景/用途标签（如 "日常" "伪装炼药师" "战斗" "礼服"）。
+ * firstChapter/lastChapter: 该套出现的章节区间（1 基）。
+ */
+export const outfitSchema = z.object({
+  description: z.string().min(1),
+  scene: z.string().optional(),
+  firstChapter: z.number().optional(),
+  lastChapter: z.number().optional(),
+});
+
 export const characterSchema = z.object({
   name: z.string().min(1),
   aliases: z.array(z.string()).default([]),
@@ -14,6 +26,9 @@ export const characterSchema = z.object({
   mentionCount: z.number().default(0),
   dialogueCount: z.number().default(0),
   coCharacters: z.array(z.string()).default([]),
+
+  // 该角色的所有显著服饰套系（提取阶段结构化抓取，带章节区间）
+  outfits: z.array(outfitSchema).default([]),
 });
 
 export const characterCreateSchema = characterSchema.extend({

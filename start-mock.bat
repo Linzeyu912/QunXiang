@@ -1,6 +1,9 @@
 @echo off
 chcp 65001 >nul 2>&1
 setlocal enabledelayedexpansion
+set "ROOT=%~dp0"
+set "DB_WIN=%ROOT%storage\prisma\dev.db"
+set "DB_URL=!DB_WIN:\=/!"
 
 echo ========================================
 echo   Novel Agent - Mock Mode Startup
@@ -83,23 +86,37 @@ echo PORT=3000
 echo NODE_ENV=development
 echo JWT_SECRET=%JWT_SECRET%
 echo JWT_EXPIRES_IN=24h
-echo MOCK_MODE=true
-echo DATABASE_PATH=./data/novel-agent.db
-echo UPLOAD_DIR=./uploads
-echo MAX_FILE_SIZE=10485760
-echo CORS_ORIGIN=http://localhost:5173
-echo LOG_LEVEL=debug) > "%API_DIR%.env"
+echo DATABASE_URL=file:!DB_URL!
+echo MAX_FILE_SIZE=52428800
+echo ALLOWED_ORIGINS=http://localhost:5173
+echo LOG_LEVEL=debug
+echo LLM_PROVIDER=mock
+echo KEY_VAULTS_SECRET=novel-agent-local-dev-key-change-before-production) > "%API_DIR%.env"
 
     echo       Created.
 ) else (
     echo       api/.env already exists, skipped.
+)
+if not exist "%~dp0storage\.env" (
+    (echo DATABASE_URL=file:!DB_URL!) > "%~dp0storage\.env"
+)
+if not exist "%~dp0storage\prisma\dev.db" (
+    echo       Initializing SQLite database...
+    cd /d "%~dp0storage"
+    call pnpm exec prisma db push --schema=./prisma/schema.prisma --skip-generate --accept-data-loss
+    if errorlevel 1 (
+        echo [ERROR] Database initialization failed.
+        pause
+        exit /b 1
+    )
+    cd /d "%~dp0"
 )
 echo.
 
 :: [5/6] Start Mock API service
 echo [5/6] Starting Mock API service...
 cd /d "%~dp0api"
-start "Novel Agent API (Mock)" cmd /k pnpm dev:mock
+start "Novel Agent API (Mock)" cmd /k pnpm dev
 cd /d "%~dp0"
 echo       Mock API starting on http://localhost:3000
 echo.

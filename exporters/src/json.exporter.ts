@@ -1,15 +1,18 @@
-import type { Character, Book } from './types.js';
+import type { ExportEntity, Book, EntityKind } from './types.js';
+import { KIND_LABEL, KIND_PLURAL_KEY } from './types.js';
 import { BaseExporter } from './base.js';
 
 export class JsonExporter extends BaseExporter {
-  export(characters: Character[], book: Book): string {
+  export(entities: ExportEntity[], book: Book, kind: EntityKind): string {
     const data = {
       book: {
         id: book.id,
         title: book.title,
         status: book.status,
       },
-      characters,
+      kind,
+      kindLabel: KIND_LABEL[kind],
+      [KIND_PLURAL_KEY[kind]]: entities,
       exportedAt: new Date().toISOString(),
     };
 

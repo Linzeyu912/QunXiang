@@ -235,6 +235,7 @@ function withCharacterDefaults(character: CharacterEntity): CharacterEntity {
     mentionCount: character.mentionCount ?? 0,
     dialogueCount: character.dialogueCount ?? 0,
     coCharacters: Array.isArray(character.coCharacters) ? character.coCharacters : [],
+    outfits: Array.isArray(character.outfits) ? character.outfits : [],
   };
 }
 

@@ -25,11 +25,11 @@ export function createMockProvider(): LLMProvider {
         throw new ProviderNotConfiguredError('mock');
       }
       const mockCharacters = [
-        { name: '唐僧', aliases: ['玄奘', '金蝉子', '唐三藏'], description: '取经团队领袖，原金蝉子转世', confidence: 0.95 },
-        { name: '孙悟空', aliases: ['齐天大圣', '美猴王', '猴哥'], description: '取经团队核心战力，大闹天宫后被压五指山', confidence: 0.93 },
-        { name: '猪八戒', aliases: ['猪悟能', '天蓬元帅'], description: '取经团队成员，因调戏嫦娥被贬下凡', confidence: 0.91 },
-        { name: '沙悟净', aliases: ['沙僧', '卷帘大将'], description: '取经团队成员，原天宫卷帘大将', confidence: 0.88 },
-        { name: '白龙马', aliases: ['小白龙'], description: '取经团队脚力，西海龙王三太子所化', confidence: 0.85 },
+        { name: '唐僧', aliases: ['玄奘', '金蝉子', '唐三藏'], description: '取经团队领袖，原金蝉子转世', confidence: 0.95, chapterAppearances: [1, 2, 3] },
+        { name: '孙悟空', aliases: ['齐天大圣', '美猴王', '猴哥'], description: '取经团队核心战力，大闹天宫后被压五指山', confidence: 0.93, chapterAppearances: [1, 2, 3] },
+        { name: '猪八戒', aliases: ['猪悟能', '天蓬元帅'], description: '取经团队成员，因调戏嫦娥被贬下凡', confidence: 0.91, chapterAppearances: [2, 3] },
+        { name: '沙悟净', aliases: ['沙僧', '卷帘大将'], description: '取经团队成员，原天宫卷帘大将', confidence: 0.88, chapterAppearances: [2, 3] },
+        { name: '白龙马', aliases: ['小白龙'], description: '取经团队脚力，西海龙王三太子所化', confidence: 0.85, chapterAppearances: [3] },
       ];
       const mockItems = [
         { name: '金箍棒', aliases: ['如意金箍棒'], description: '孙悟空的兵器，原东海龙宫定海神针', confidence: 0.9 },

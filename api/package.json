@@ -20,6 +20,7 @@
     "@novel-agent/scheduler": "workspace:*",
     "@novel-agent/schemas": "workspace:*",
     "@novel-agent/storage": "workspace:*",
+    "@novel-agent/story-arcs": "workspace:*",
     "dotenv": "^17.4.2",
     "fastify": "^4.26.0",
     "zod": "^3.25.76"

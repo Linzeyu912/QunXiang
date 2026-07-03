@@ -195,6 +195,7 @@ export class TaskDispatcher {
               mentionCount: c.mentionCount ?? 0,
               dialogueCount: c.dialogueCount ?? 0,
               coCharacters: c.coCharacters ?? [],
+              outfits: Array.isArray(c.outfits) ? c.outfits : [],
               tier: c.tier || 'candidate',
               importanceScore: c.importanceScore ?? 0,
               storyScore: c.storyScore ?? 0,
@@ -258,6 +259,7 @@ export class TaskDispatcher {
                 firstChapter: i.firstChapter ?? undefined,
                 lastChapter: i.lastChapter ?? undefined,
                 chapterAppearances: i.chapterAppearances ?? [],
+                owners: Array.isArray(i.owners) ? i.owners : [],
               }))
             );
             console.log(`[Dispatcher] Persisted ${entityItems.length} items`);

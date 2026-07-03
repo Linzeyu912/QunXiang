@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { Character } from '@novel-agent/core';
+import type { Character, Outfit } from '@novel-agent/core';
 import type { PrismaClient } from '@prisma/client';
 
 export interface CharacterRepository {
@@ -16,6 +16,7 @@ export interface CharacterRepository {
     mentionCount?: number;
     dialogueCount?: number;
     coCharacters?: string[];
+    outfits?: Outfit[];
   }): Promise<Character>;
   createMany(characters: Array<{
     bookId: string;
@@ -30,6 +31,7 @@ export interface CharacterRepository {
     mentionCount?: number;
     dialogueCount?: number;
     coCharacters?: string[];
+    outfits?: Outfit[];
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Character[]>;
   findById(id: string): Promise<Character | null>;
@@ -45,6 +47,7 @@ function parseCharacter(dbChar: Record<string, unknown>): Character {
     aliases: JSON.parse((dbChar.aliases as string) || '[]'),
     chapterAppearances: JSON.parse((dbChar.chapterAppearances as string) || '[]'),
     coCharacters: JSON.parse((dbChar.coCharacters as string) || '[]'),
+    outfits: JSON.parse((dbChar.outfits as string) || '[]'),
   } as unknown as Character;
 }
 
@@ -63,6 +66,7 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       mentionCount?: number;
       dialogueCount?: number;
       coCharacters?: string[];
+      outfits?: Outfit[];
     }): Promise<Character> {
       const created = await db.character.create({
         data: {
@@ -78,6 +82,7 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
           mentionCount: data.mentionCount || 0,
           dialogueCount: data.dialogueCount || 0,
           coCharacters: JSON.stringify(data.coCharacters || []),
+          outfits: JSON.stringify(data.outfits || []),
         },
       });
       return parseCharacter(created);
@@ -96,6 +101,7 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       mentionCount?: number;
       dialogueCount?: number;
       coCharacters?: string[];
+      outfits?: Outfit[];
     }>): Promise<number> {
       const result = await db.character.createMany({
         data: characters.map(c => ({
@@ -111,6 +117,7 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
           mentionCount: c.mentionCount || 0,
           dialogueCount: c.dialogueCount || 0,
           coCharacters: JSON.stringify(c.coCharacters || []),
+          outfits: JSON.stringify(c.outfits || []),
         })),
       });
       return result.count;
@@ -148,6 +155,9 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       }
       if (data.coCharacters) {
         updateData.coCharacters = JSON.stringify(data.coCharacters);
+      }
+      if (data.outfits) {
+        updateData.outfits = JSON.stringify(data.outfits);
       }
       const updated = await db.character.update({
         where: { id },

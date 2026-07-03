@@ -7,7 +7,7 @@ import { encrypt, decrypt } from './keyVault.js';
  * Runtime LLM configuration (stored in memory + optionally persisted to encrypted file)
  */
 export interface RuntimeLlmConfig {
-  provider: 'ollama' | 'custom' | 'mock';
+  provider: 'custom' | 'mock';
   apiKey?: string;
   baseUrl?: string;
   model?: string;
@@ -15,7 +15,7 @@ export interface RuntimeLlmConfig {
 
 /** Internal persisted format — includes encrypted apiKey */
 interface PersistedConfig {
-  provider: 'ollama' | 'custom' | 'mock';
+  provider: 'custom' | 'mock';
   encryptedApiKey?: string; // AES-256-GCM encrypted
   baseUrl?: string;
   model?: string;
@@ -29,15 +29,25 @@ const CONFIG_FILENAME = '.novel-agent-config.encrypted';
  */
 function getProjectRoot(): string {
   let dir = process.cwd();
+  let nearestPackageJson: string | null = null;
   for (let i = 0; i < 10; i++) {
-    if (existsSync(join(dir, 'package.json'))) {
+    if (existsSync(join(dir, 'pnpm-workspace.yaml'))) {
       return dir;
+    }
+    if (existsSync(join(dir, 'package.json'))) {
+      nearestPackageJson ??= dir;
+      try {
+        const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8')) as { workspaces?: unknown };
+        if (pkg.workspaces) return dir;
+      } catch {
+        // Keep walking; malformed package metadata should not prevent fallback.
+      }
     }
     const parent = resolve(dir, '..');
     if (parent === dir) break; // reached root
     dir = parent;
   }
-  return process.cwd();
+  return nearestPackageJson ?? process.cwd();
 }
 
 /**
@@ -119,7 +129,11 @@ export function loadConfigFromDisk(): RuntimeLlmConfig | null {
     const secret = getMasterSecret();
     const encrypted = readFileSync(configPath, 'utf8').trim();
     const jsonStr = decrypt(encrypted, secret);
-    const persisted: PersistedConfig = JSON.parse(jsonStr);
+    const persisted = JSON.parse(jsonStr) as Partial<PersistedConfig> & { provider?: string };
+
+    if (persisted.provider !== 'custom' && persisted.provider !== 'mock') {
+      return null;
+    }
 
     const result: RuntimeLlmConfig = {
       provider: persisted.provider,

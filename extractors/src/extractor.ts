@@ -1,4 +1,4 @@
-import type { Character } from '@novel-agent/core';
+import type { Character, Outfit, Owner } from '@novel-agent/core';
 import { cleanEntityDescription, mergeEntityDescriptions } from '@novel-agent/core';
 import type { LLMProvider } from '@novel-agent/llm';
 import {
@@ -88,6 +88,65 @@ function unique<T>(values: Array<T | null | undefined>): T[] {
   return [...new Set(values.filter((v): v is T => v != null))];
 }
 
+function minDefined(a: number | undefined, b: number | undefined): number | undefined {
+  if (a == null) return b;
+  if (b == null) return a;
+  return Math.min(a, b);
+}
+
+function maxDefined(a: number | undefined, b: number | undefined): number | undefined {
+  if (a == null) return b;
+  if (b == null) return a;
+  return Math.max(a, b);
+}
+
+/**
+ * Merge two outfits lists (cross-batch / cross-alias). Two outfits are treated
+ * as the same set when their normalized scene labels match, or one description
+ * contains the other. On match: union the chapter range and keep the longer
+ * description. Otherwise append.
+ */
+function mergeOutfits(a?: Outfit[] | null, b?: Outfit[] | null): Outfit[] {
+  const acc: Outfit[] = (a || []).map((o) => ({ ...o }));
+  for (const o of b || []) {
+    const oScene = o.scene ? norm(o.scene) : '';
+    const oDesc = norm(o.description);
+    const match = acc.find((x) => {
+      const xScene = x.scene ? norm(x.scene) : '';
+      if (oScene && xScene && oScene === xScene) return true;
+      const xDesc = norm(x.description);
+      return Boolean(xDesc && oDesc && (xDesc.includes(oDesc) || oDesc.includes(xDesc)));
+    });
+    if (match) {
+      if ((o.description || '').length > (match.description || '').length) match.description = o.description;
+      if (!match.scene && o.scene) match.scene = o.scene;
+      match.firstChapter = minDefined(match.firstChapter, o.firstChapter);
+      match.lastChapter = maxDefined(match.lastChapter, o.lastChapter);
+    } else {
+      acc.push({ ...o });
+    }
+  }
+  return acc;
+}
+
+/** Merge two owner lists (cross-batch) by normalized owner name, unioning chapter ranges. */
+function mergeOwners(a?: Owner[] | null, b?: Owner[] | null): Owner[] {
+  const acc: Owner[] = (a || []).map((o) => ({ ...o }));
+  for (const o of b || []) {
+    const key = norm(o.name);
+    const match = acc.find((x) => norm(x.name) === key);
+    if (match) {
+      if (!match.canonicalName && o.canonicalName) match.canonicalName = o.canonicalName;
+      if (!match.note && o.note) match.note = o.note;
+      match.firstChapter = minDefined(match.firstChapter, o.firstChapter);
+      match.lastChapter = maxDefined(match.lastChapter, o.lastChapter);
+    } else {
+      acc.push({ ...o });
+    }
+  }
+  return acc;
+}
+
 async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, label: string): Promise<T> {
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
   try {
@@ -140,6 +199,7 @@ function mergeCharacter(a: CharacterCandidate, b: CharacterCandidate): Character
     firstChapter: chapters.length ? chapters[0] : base.firstChapter,
     lastChapter: chapters.length ? chapters[chapters.length - 1] : base.lastChapter,
     chapterAppearances: chapters,
+    outfits: mergeOutfits(base.outfits, other.outfits),
   };
 }
 
@@ -165,6 +225,7 @@ function dedupItems(items: ItemInputOutput[]): ItemInputOutput[] {
         firstChapter: chapters.length ? chapters[0] : existing.firstChapter,
         lastChapter: chapters.length ? chapters[chapters.length - 1] : existing.lastChapter,
         chapterAppearances: chapters,
+        owners: mergeOwners(existing.owners, item.owners),
       });
     }
   }
@@ -401,6 +462,7 @@ export function createExtractor() {
         mentionCount: 0,
         dialogueCount: 0,
         coCharacters: [],
+        outfits: c.outfits ?? [],
       };
       const dup = findDuplicateCharacter(candidate, charMap);
       if (dup) {

@@ -165,6 +165,10 @@ const FALLBACK_ENTITY_DESCRIPTION_PARTS = Number(process.env.VISUAL_DESCRIPTION_
 const SUPPLEMENT_SECONDARY = ['1', 'true', 'yes'].includes(
   String(process.env.VISUAL_DESCRIPTION_SUPPLEMENT_SECONDARY || '').toLocaleLowerCase()
 );
+// Max concurrent LLM calls during visual-description completion (mirrors
+// EXTRACTOR_MAX_CONCURRENT_BATCHES). Groups are independent, so raising this
+// cuts wall-clock without changing results — only limited by API rate limits.
+const MAX_CONCURRENT_GROUPS = Math.max(1, Number(process.env.VISUAL_DESCRIPTION_MAX_CONCURRENT || 4));
 
 const VISUAL_DESCRIPTION_SYSTEM_PROMPT = `你是小说实体视觉描述补全 agent。
 任务：根据已提取的原文证据，为人物、道具、场景生成可用于后续生图提示词的视觉描述资料。
@@ -515,13 +519,18 @@ function sampleFieldsForPrompt<Field extends string>(
 
 function groupInputs(inputs: AnyCompletionInput[]): AnyCompletionInput[][] {
   const maxChars = Number(process.env.VISUAL_DESCRIPTION_MAX_CHARS || 22000);
+  // Hard cap on entities per call — the PRIMARY quality lever. Smaller groups
+  // keep per-entity attention high and avoid output truncation / field mixing,
+  // which the char budget alone can't prevent for small-payload entities
+  // (配角/物品/地点 体积小，纯字符预算会把它们塞到 15+ 一组).
+  const maxEntities = Math.max(1, Number(process.env.VISUAL_DESCRIPTION_MAX_ENTITIES_PER_GROUP || 6));
   const groups: AnyCompletionInput[][] = [];
   let current: AnyCompletionInput[] = [];
   let currentChars = 0;
 
   for (const input of inputs) {
     const estimated = JSON.stringify(promptEntity(input)).length + 160;
-    if (current.length > 0 && currentChars + estimated > maxChars) {
+    if (current.length > 0 && (currentChars + estimated > maxChars || current.length >= maxEntities)) {
       groups.push(current);
       current = [];
       currentChars = 0;
@@ -888,21 +897,46 @@ export async function executeVisualDescription(payload: unknown): Promise<Visual
   if (llmInputs.length > 0) {
     const provider = await getDefaultProvider();
     const groups = groupInputs(llmInputs);
-    for (const [index, group] of groups.entries()) {
-      console.log(`[VisualDescription] Processing group ${index + 1}/${groups.length} (${group.length} entities)`);
-      try {
-        const result = await provider.chatExtract(
-          VISUAL_DESCRIPTION_SYSTEM_PROMPT,
-          buildUserPrompt(group),
-          completionSchema
-        );
-        for (const [key, value] of completionMap(result)) {
+    const total = groups.length;
+
+    // One LLM call per group; returns its completion entries. Throws on
+    // failure so Promise.allSettled captures it and we fall back to source-only.
+    const processGroup = async (
+      index: number,
+      group: AnyCompletionInput[]
+    ): Promise<Array<[string, CompletionEntity]>> => {
+      console.log(`[VisualDescription] Processing group ${index + 1}/${total} (${group.length} entities)`);
+      const result = await provider.chatExtract(
+        VISUAL_DESCRIPTION_SYSTEM_PROMPT,
+        buildUserPrompt(group),
+        completionSchema
+      );
+      const entries = [...completionMap(result)];
+      console.log(`[VisualDescription] Group ${index + 1}/${total} completed`);
+      return entries;
+    };
+
+    // Run groups with a concurrency cap (same pattern as extractor batching):
+    // ceil(total / MAX_CONCURRENT_GROUPS) rounds instead of `total` serial ones.
+    const settled: Array<PromiseSettledResult<Array<[string, CompletionEntity]>>> = [];
+    for (let i = 0; i < groups.length; i += MAX_CONCURRENT_GROUPS) {
+      const slice = groups.slice(i, i + MAX_CONCURRENT_GROUPS);
+      const sliceResults = await Promise.allSettled(
+        slice.map((group, j) => processGroup(i + j, group))
+      );
+      settled.push(...sliceResults);
+    }
+
+    for (let index = 0; index < settled.length; index += 1) {
+      const result = settled[index];
+      if (result.status === 'fulfilled') {
+        for (const [key, value] of result.value) {
           completions.set(key, value);
         }
-        console.log(`[VisualDescription] Group ${index + 1}/${groups.length} completed`);
-      } catch (error) {
+      } else {
+        const group = groups[index];
         console.warn(
-          `[VisualDescription] LLM completion group failed, using source-only descriptions for ${group.length} entities: ${error instanceof Error ? error.message : String(error)}`
+          `[VisualDescription] LLM completion group ${index + 1}/${total} failed, using source-only descriptions for ${group.length} entities: ${result.reason instanceof Error ? result.reason.message : String(result.reason)}`
         );
       }
     }

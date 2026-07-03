@@ -9,10 +9,12 @@ describe('EXTRACTION_PIPELINE', () => {
       'entity-resolution',
       'description-fusion',
       'visual-description',
+      'prompt-generation',
       'reviewer',
     ]);
     expect(getNextAgent('entity-resolution')).toBe('description-fusion');
     expect(getNextAgent('description-fusion')).toBe('visual-description');
-    expect(getNextAgent('visual-description')).toBe('reviewer');
+    expect(getNextAgent('visual-description')).toBe('prompt-generation');
+    expect(getNextAgent('prompt-generation')).toBe('reviewer');
   });
 });

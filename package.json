@@ -15,14 +15,19 @@
     "llm",
     "api",
     "web",
-    "export",
-    "prompts"
+    "exporters",
+    "prompts",
+    "preprocess",
+    "entity-prescan"
   ],
   "scripts": {
     "dev": "pnpm --parallel -r dev",
+    "dev:api": "pnpm --filter @novel-agent/api dev",
+    "dev:web": "pnpm --filter @novel-agent/web dev",
     "build": "pnpm -r build",
-    "test": "cd storage && DATABASE_URL=file:./prisma/test.db pnpm prisma db push --schema=./prisma/schema.prisma --force-reset --skip-generate && cd .. && vitest run",
-    "test:watch": "cd storage && DATABASE_URL=file:./prisma/test.db pnpm prisma db push --schema=./prisma/schema.prisma --force-reset --skip-generate && cd .. && vitest"
+    "db:push": "cd storage && pnpm exec prisma db push --schema=./prisma/schema.prisma --skip-generate --accept-data-loss",
+    "test": "node scripts/test.mjs",
+    "test:watch": "node scripts/test.mjs --watch"
   },
   "devDependencies": {
     "dotenv": "^17.4.2",

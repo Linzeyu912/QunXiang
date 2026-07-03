@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { Item } from '@novel-agent/core';
+import type { Item, Owner } from '@novel-agent/core';
 import type { PrismaClient } from '@prisma/client';
 
 export interface ItemRepository {
@@ -21,6 +21,7 @@ export interface ItemRepository {
     firstChapter?: number;
     lastChapter?: number;
     chapterAppearances?: number[];
+    owners?: Owner[];
   }): Promise<Item>;
   createMany(items: Array<{
     bookId: string;
@@ -40,6 +41,7 @@ export interface ItemRepository {
     firstChapter?: number;
     lastChapter?: number;
     chapterAppearances?: number[];
+    owners?: Owner[];
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Item[]>;
   findById(id: string): Promise<Item | null>;
@@ -55,6 +57,7 @@ function parseItem(dbItem: Record<string, unknown>): Item {
     ...dbItem,
     aliases: JSON.parse((dbItem.aliases as string) || '[]'),
     chapterAppearances: JSON.parse((dbItem.chapterAppearances as string) || '[]'),
+    owners: JSON.parse((dbItem.owners as string) || '[]'),
     tier: (dbItem.tier as string) || 'candidate',
   } as unknown as Item;
 }
@@ -81,6 +84,7 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
           firstChapter: data.firstChapter,
           lastChapter: data.lastChapter,
           chapterAppearances: JSON.stringify(data.chapterAppearances || []),
+          owners: JSON.stringify(data.owners || []),
         },
       });
       return parseItem(created);
@@ -106,6 +110,7 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
           firstChapter: i.firstChapter,
           lastChapter: i.lastChapter,
           chapterAppearances: JSON.stringify(i.chapterAppearances || []),
+          owners: JSON.stringify(i.owners || []),
         })),
       });
       return result.count;
@@ -148,6 +153,9 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
       }
       if (data.chapterAppearances) {
         updateData.chapterAppearances = JSON.stringify(data.chapterAppearances);
+      }
+      if (data.owners) {
+        updateData.owners = JSON.stringify(data.owners);
       }
       const updated = await db.item.update({
         where: { id },

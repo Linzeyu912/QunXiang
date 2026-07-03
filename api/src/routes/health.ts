@@ -93,7 +93,7 @@ export async function healthRoutes(fastify: FastifyInstance) {
   // Configure LLM provider (API Key, Base URL, Model)
   fastify.patch('/llm/config', async (request, reply) => {
     const body = request.body as {
-      provider?: 'ollama' | 'custom' | 'mock';
+      provider?: 'custom';
       apiKey?: string;
       baseUrl?: string;
       model?: string;
@@ -101,13 +101,13 @@ export async function healthRoutes(fastify: FastifyInstance) {
 
     if (!body || !body.provider) {
       return reply.status(400).send({
-        error: 'Missing required field: provider (ollama | custom | mock)',
+        error: 'Missing required field: provider (custom)',
       });
     }
 
-    if (!['ollama', 'custom', 'mock'].includes(body.provider)) {
+    if (body.provider !== 'custom') {
       return reply.status(400).send({
-        error: 'Invalid provider. Must be "ollama", "custom", or "mock".',
+        error: 'Invalid provider. Must be "custom".',
       });
     }
 
@@ -121,12 +121,7 @@ export async function healthRoutes(fastify: FastifyInstance) {
 
       setRuntimeConfig(config, true);
 
-      // Also set runtime provider mode accordingly
-      if (body.provider === 'mock') {
-        setRuntimeProvider('mock');
-      } else {
-        setRuntimeProvider('llm');
-      }
+      setRuntimeProvider('llm');
 
       const providerName = await getRuntimeProviderName();
       const provider = await getDefaultProvider();
@@ -160,15 +155,6 @@ export async function healthRoutes(fastify: FastifyInstance) {
         return {
           success: false,
           message: 'Provider 未配置。请检查 API Key 和设置。',
-          timestamp: new Date().toISOString(),
-        };
-      }
-
-      // Ollama: just check health
-      if (provider.name === 'ollama') {
-        return {
-          success: true,
-          message: 'Ollama 正在运行。',
           timestamp: new Date().toISOString(),
         };
       }

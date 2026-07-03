@@ -8,10 +8,11 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String
-  createdAt DateTime @default(now())
+  id           String   @id @default(uuid())
+  email        String   @unique
+  name         String
+  passwordHash String?
+  createdAt    DateTime @default(now())
 
   books    Book[]
   reviews  CharacterReview[]
@@ -56,6 +57,7 @@ model Character {
   mentionCount      Int      @default(0)
   dialogueCount     Int      @default(0)
   coCharacters     String   @default("[]")
+  outfits           String   @default("[]")
 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -119,6 +121,7 @@ model Item {
   firstChapter       Int?
   lastChapter        Int?
   chapterAppearances String   @default("[]")
+  owners             String   @default("[]")
 
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt

@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { resolve } from './resolver.js';
-import type { Character } from './types.js';
+import type { Character, Outfit } from './types.js';
 
 type CharacterInput = Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>;
 
-function makeChar(name: string, aliases: string[] = [], confidence = 0.9): CharacterInput {
+function makeChar(name: string, aliases: string[] = [], confidence = 0.9, outfits: Outfit[] = []): CharacterInput {
   return {
     name,
     aliases,
@@ -15,6 +15,7 @@ function makeChar(name: string, aliases: string[] = [], confidence = 0.9): Chara
     mentionCount: 0,
     dialogueCount: 0,
     coCharacters: [],
+    outfits,
   };
 }
 
@@ -93,5 +94,36 @@ describe('resolve', () => {
     expect(result.characters[0].name).toBe('萧熏儿');
     expect(result.characters[0].aliases).toContain('薰儿');
     expect(result.characters[0].aliases).toContain('熏儿');
+  });
+
+  it('preserves structured outfits through resolution', () => {
+    const outfits: Outfit[] = [
+      { description: '青色劲装', scene: '日常', firstChapter: 1, lastChapter: 50 },
+      { description: '宽大黑袍', scene: '伪装炼药师', firstChapter: 20, lastChapter: 75 },
+    ];
+    const result = resolve([makeChar('萧炎', ['炎儿'], 0.95, outfits)]);
+    expect(result.characters).toHaveLength(1);
+    expect(result.characters[0].outfits).toEqual(outfits);
+  });
+
+  it('unions outfits (by scene/description) when merging duplicate characters across alias forms', () => {
+    const result = resolve([
+      makeChar('萧炎', ['炎儿'], 0.95, [
+        { description: '青色劲装', scene: '日常', firstChapter: 1, lastChapter: 50 },
+      ]),
+      makeChar('萧炎哥', [], 0.8, [
+        { description: '青色劲装', scene: '日常', firstChapter: 30, lastChapter: 100 },
+        { description: '宽大黑袍', scene: '伪装炼药师', firstChapter: 20, lastChapter: 40 },
+      ]),
+    ]);
+
+    expect(result.characters).toHaveLength(1);
+    const outfits = result.characters[0].outfits;
+    // '青色劲装' merged by scene → chapter range unioned to 1-100; '宽大黑袍' appended.
+    expect(outfits).toHaveLength(2);
+    const everyday = outfits.find((o) => o.scene === '日常')!;
+    expect(everyday.firstChapter).toBe(1);
+    expect(everyday.lastChapter).toBe(100);
+    expect(outfits.some((o) => o.description === '宽大黑袍')).toBe(true);
   });
 });

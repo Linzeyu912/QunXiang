@@ -88,6 +88,7 @@ export function resolve(characters: CharacterInput[]): ResolutionResult {
         mentionCount: char.mentionCount,
         dialogueCount: char.dialogueCount,
         coCharacters: char.coCharacters,
+        outfits: char.outfits,
         tier: (char as any).tier,
         importanceScore: (char as any).importanceScore,
         storyScore: (char as any).storyScore,

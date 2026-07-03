@@ -1,5 +1,18 @@
 import { z } from 'zod';
 
+/**
+ * 道具持有者。道具可易主（如 黑色古戒：母亲遗物 → 萧炎）。
+ * name: 持有者称呼（按原文）；canonicalName: 经角色消解后的规范名（后端回填）。
+ * firstChapter/lastChapter: 持有章节区间；note: 契机（如 "母亲遗物" "拍卖购得"）。
+ */
+export const ownerSchema = z.object({
+  name: z.string().min(1),
+  canonicalName: z.string().optional(),
+  firstChapter: z.number().optional(),
+  lastChapter: z.number().optional(),
+  note: z.string().optional(),
+});
+
 export const itemSchema = z.object({
   name: z.string().min(1),
   aliases: z.array(z.string()).default([]),
@@ -19,6 +32,9 @@ export const itemSchema = z.object({
   firstChapter: z.number().optional(),
   lastChapter: z.number().optional(),
   chapterAppearances: z.array(z.number()).default([]),
+
+  // 该道具的持有者（提取阶段结构化抓取，带章节区间；道具可易主）
+  owners: z.array(ownerSchema).default([]),
 });
 
 export const itemCreateSchema = itemSchema.extend({

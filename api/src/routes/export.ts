@@ -1,18 +1,28 @@
 import type { FastifyInstance } from 'fastify';
-import { CharacterRepository, BookRepository } from '@novel-agent/storage';
-import { exportCharacters, type ExportFormat, type Book as ExporterBook } from '@novel-agent/exporters';
+import {
+  BookRepository,
+  CharacterRepository,
+  LocationRepository,
+  ItemRepository,
+} from '@novel-agent/storage';
+import { exportEntities, type ExportFormat, type ExportEntity, type EntityKind, type Book as ExporterBook } from '@novel-agent/exporters';
+
+const VALID_TYPES: EntityKind[] = ['character', 'location', 'item'];
 
 export async function exportRoutes(fastify: FastifyInstance) {
-  // Export characters for a book in specified format
   fastify.get<{
     Params: { bookId: string };
-    Querystring: { format?: ExportFormat };
+    Querystring: { format?: ExportFormat; type?: string };
   }>('/:bookId', async (request, reply) => {
     const { bookId } = request.params;
-    const { format = 'json' } = request.query;
+    const format = (request.query.format ?? 'json') as ExportFormat;
+    const type = (request.query.type ?? 'character') as EntityKind;
 
     if (!['json', 'markdown', 'csv'].includes(format)) {
       return reply.status(400).send({ error: 'Invalid format. Must be json, markdown, or csv' });
+    }
+    if (!VALID_TYPES.includes(type)) {
+      return reply.status(400).send({ error: 'Invalid type. Must be character, location, or item' });
     }
 
     const book = await BookRepository.findById(bookId);
@@ -20,12 +30,21 @@ export async function exportRoutes(fastify: FastifyInstance) {
       return reply.status(404).send({ error: 'Book not found' });
     }
 
-    const characters = await CharacterRepository.findByBookId(bookId);
+    let entities: ExportEntity[];
+    if (type === 'character') {
+      entities = (await CharacterRepository.findByBookId(bookId)) as unknown as ExportEntity[];
+    } else if (type === 'location') {
+      entities = (await LocationRepository.findByBookId(bookId)) as unknown as ExportEntity[];
+    } else {
+      entities = (await ItemRepository.findByBookId(bookId)) as unknown as ExportEntity[];
+    }
 
-    const content = exportCharacters(characters, book as unknown as ExporterBook, format);
+    const content = exportEntities(entities, book as unknown as ExporterBook, type, format);
 
-    const contentType = format === 'json' ? 'application/json' : format === 'csv' ? 'text/csv' : 'text/markdown';
-    const filename = `${book.title.replace(/[^a-zA-Z0-9]/g, '_')}_characters.${format}`;
+    const contentType =
+      format === 'json' ? 'application/json' : format === 'csv' ? 'text/csv' : 'text/markdown';
+    const kindFile = type === 'character' ? 'characters' : type === 'location' ? 'locations' : 'items';
+    const filename = `${book.title.replace(/[^a-zA-Z0-9]/g, '_')}_${kindFile}.${format}`;
 
     reply.header('Content-Type', contentType);
     reply.header('Content-Disposition', `attachment; filename="${filename}"`);

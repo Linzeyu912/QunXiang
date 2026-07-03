@@ -12,11 +12,12 @@ const dispatcher = new TaskDispatcher(taskQueue);
 dispatcher.startWorker(1000);
 
 const PIPELINE_STAGES: { id: AgentType; name: string; weight: number }[] = [
-  { id: 'extractor', name: '角色提取', weight: 30 },
-  { id: 'validator', name: '置信度校验', weight: 12 },
-  { id: 'entity-resolution', name: '实体消解', weight: 18 },
+  { id: 'extractor', name: '角色提取', weight: 25 },
+  { id: 'validator', name: '置信度校验', weight: 10 },
+  { id: 'entity-resolution', name: '实体消解', weight: 15 },
   { id: 'description-fusion', name: '简介融合', weight: 15 },
   { id: 'visual-description', name: '视觉描述补全', weight: 15 },
+  { id: 'prompt-generation', name: '提示词生成', weight: 10 },
   { id: 'reviewer', name: '审核入库', weight: 10 },
 ];
 

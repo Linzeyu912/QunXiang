@@ -1,5 +1,4 @@
-import type { Character, Book } from './types.js';
-import type { Exporter } from './types.js';
+import type { ExportEntity, Book, EntityKind, Exporter } from './types.js';
 
 export abstract class BaseExporter implements Exporter {
   protected book: Book;
@@ -8,5 +7,5 @@ export abstract class BaseExporter implements Exporter {
     this.book = book;
   }
 
-  abstract export(characters: Character[], book: Book): string;
+  abstract export(entities: ExportEntity[], book: Book, kind: EntityKind): string;
 }
