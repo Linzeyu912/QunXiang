@@ -30,7 +30,9 @@ function loadToken(): string | null {
 export const useAuthStore = create<AuthState>((set) => ({
   token: loadToken(),
   user: null,
-  bootstrapping: !!loadToken(),
+  // 初始化阶段一律处于 bootstrapping：无 token 时也要先尝试自动登录（见 App.tsx），
+  // 成功/失败后再置 false，避免 RequireAuth 在自动登录完成前就抢跳 /login。
+  bootstrapping: true,
   setAuth: (token, user) => {
     try {
       localStorage.setItem(TOKEN_KEY, token);

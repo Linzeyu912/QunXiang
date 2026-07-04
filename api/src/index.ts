@@ -14,6 +14,7 @@ import { extractRoutes } from './routes/extract.js';
 import { exportRoutes } from './routes/export.js';
 import { authRoutes } from './routes/auth.js';
 import { healthRoutes } from './routes/health.js';
+import { ensureDefaultUser } from './lib/defaultUser.js';
 import { storiesRoutes } from './routes/stories.js';
 import { directorRoutes } from './routes/director.js';
 import { artifactsRoutes } from './routes/artifacts.js';
@@ -51,6 +52,14 @@ async function start() {
 
   // Initialize database
   await initializeDatabase();
+
+  // 确保默认本地用户存在，前端开机即可静默自动登录（见前端 App.tsx）。
+  // 失败仅告警不阻塞启动，便于默认账号机制出问题时仍能手动登录。
+  try {
+    await ensureDefaultUser();
+  } catch (err) {
+    console.warn('Failed to ensure default user:', err instanceof Error ? err.message : String(err));
+  }
 
   // Report LLM provider status without blocking server startup.
   try {
