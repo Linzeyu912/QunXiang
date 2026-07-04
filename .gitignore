@@ -17,6 +17,7 @@ logs/
 *.db-journal
 prisma/dev.db
 prisma/dev.db-journal
+*.db.bak*
 
 # Environment files
 .env

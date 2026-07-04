@@ -59,6 +59,10 @@ export interface ChapterOutlineResult {
   chapterMode: string;
   isFallback: boolean;
   removedNoiseLines: number;
+  /** 疑似噪声行总数（未截断），用于前端显示"共 N 条" */
+  suspectLinesTotal: number;
+  /** 各噪声类别的真实总数（未截断），用于前端分类小计 */
+  byCategory: Record<string, number>;
   /** 疑似噪声行明细（保守模式实际移除 confidence >= 0.8 的行），最多 200 条 */
   suspectLines: Array<{ lineNum: number; content: string; category: string; confidence: number; removed: boolean }>;
   chapters: Array<{ index: number; title?: string; wordCount: number }>;
@@ -72,12 +76,15 @@ export function parseChapterOutline(content: string, filename: string): ChapterO
   const title = filename.replace(/\.txt$/i, '');
   const { text, report } = preprocess(content.trim(), {});
   const structure = splitChaptersStructured(text, {});
+  const allSuspect = report.filter?.suspectLines ?? [];
   return {
     title,
     chapterMode: structure.matchedMode,
     isFallback: structure.isFallback,
     removedNoiseLines: report.filter?.removedCount ?? 0,
-    suspectLines: (report.filter?.suspectLines ?? []).slice(0, 200).map((l) => ({
+    suspectLinesTotal: allSuspect.length,
+    byCategory: { ...(report.filter?.byCategory ?? {}) },
+    suspectLines: allSuspect.slice(0, 200).map((l) => ({
       lineNum: l.lineNum,
       content: l.content,
       category: l.category,

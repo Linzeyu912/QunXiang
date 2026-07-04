@@ -26,9 +26,13 @@ function escapeRegex(str: string): string {
 const URL_RE = /(?:https?:\/\/|www\.)\S+|\S+\.(?:com|cn|net|org|cc|me|io|xyz|top|vip|club)\b/gi;
 
 // ── Promo keywords ──
+// 注意：“关注”不作为裸关键词。它是正文里极常见的叙事词
+// （“关注着”“表示过多的关注”“被这般关注”），裸匹配会把大段正文误判成推广。
+// 真正的推广性“关注”几乎都会和下面的“公众号 / 微信 / 书友群 …”同时出现，已被覆盖；
+// 漏掉的只有“求关注 / 点个关注”这种极少数不带任何平台词的纯号召，可接受。
 const PROMO_KEYWORDS = [
   '公众号', '微信', 'QQ群', 'qq群', 'QQ 群', '书友群', '读者群',
-  '关注', '订阅', '下载APP', '下载 APP', '扫码', '二维码',
+  '订阅', '下载APP', '下载 APP', '扫码', '二维码',
   '加群', '入群', '微信号', '公号', '百度搜索',
   '最新章节', '全文阅读', '继续阅读',
 ];
@@ -184,6 +188,7 @@ function detectMeta(lines: string[]): SuspectLine[] {
   const results: SuspectLine[] = [];
 
   let inAuthorNote = false;
+  let authorNoteStart = -1; // 记录留言块起始行，用于限制最多吃 30 行
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line) continue;
@@ -191,16 +196,17 @@ function detectMeta(lines: string[]): SuspectLine[] {
     // Author note block detection
     if (!inAuthorNote && AUTHOR_NOTE_START.test(line) && line.length < 80) {
       inAuthorNote = true;
+      authorNoteStart = i;
       results.push({ lineNum: i + 1, content: line.slice(0, 100), category: 'meta', confidence: 0.9 });
       continue;
     }
     if (inAuthorNote) {
       results.push({ lineNum: i + 1, content: line.slice(0, 100), category: 'meta', confidence: 0.7 });
-      if (AUTHOR_NOTE_END.test(line)) {
+      // 结束条件：遇到结束标记，或已超过起始行 30 行
+      //（原来比的是 results 最后一行的 lineNum，恒为当前行，这条永不触发 → 没有结束标记时会把整本书正文吞掉）
+      if (AUTHOR_NOTE_END.test(line) || i - authorNoteStart >= 30) {
         inAuthorNote = false;
-      } else if (i - results[results.length - 1]?.lineNum > 30) {
-        // Safety: don't consume more than 30 lines for author note
-        inAuthorNote = false;
+        authorNoteStart = -1;
       }
       continue;
     }

@@ -6,6 +6,7 @@ import { useEntities, useUpdateEntity, useBatchUpdateStatus } from '@/api/entiti
 import { matchArtifacts, useExtractionArtifacts } from '@/api/artifacts';
 import { EntityListPanel } from '@/components/review/EntityListPanel';
 import { EntityDetailPanel } from '@/components/review/EntityDetailPanel';
+import { TierLegend } from '@/components/StatusBadge';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { parseAliases } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -244,8 +245,12 @@ export function EntityReviewPage({ type }: Props) {
         </div>
       </div>
 
-      <div className="grid h-[calc(100vh-16rem)] grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] overflow-hidden rounded-lg border bg-card">
-        <div className="border-r">
+      {type !== 'character' && (
+        <TierLegend className="rounded-lg border bg-muted/30 px-3 py-2" />
+      )}
+
+      <div className="grid h-[calc(100vh-16rem)] grid-rows-1 grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] overflow-hidden rounded-lg border bg-card">
+        <div className="min-h-0 overflow-hidden border-r">
           {query.isLoading ? (
             <p className="p-6 text-sm text-muted-foreground">加载中…</p>
           ) : (
@@ -258,7 +263,7 @@ export function EntityReviewPage({ type }: Props) {
             />
           )}
         </div>
-        <div>
+        <div className="min-h-0 overflow-hidden">
           {selected ? (
             <EntityDetailPanel
               entity={selected}

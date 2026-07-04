@@ -79,6 +79,10 @@ if not exist "storage\prisma\dev.db" (
 ) else (
     echo   Database exists
 )
+echo   Generating Prisma client...
+pushd storage
+call pnpm exec prisma generate --schema=./prisma/schema.prisma
+popd
 echo.
 
 echo ========================================

@@ -1,28 +1,20 @@
-import type { FastifyInstance, FastifyRequest } from 'fastify';
-import { BookRepository, UserRepository } from '@novel-agent/storage';
+import type { FastifyInstance } from 'fastify';
+import { BookRepository } from '@novel-agent/storage';
 import { parseTxt } from '@novel-agent/import';
 import { decodeText } from '@novel-agent/import';
 import { writeFile, rename, unlink, readFile, mkdir, rm } from 'fs/promises';
 import { join, resolve } from 'path';
 import crypto from 'crypto';
+import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 
 const UPLOAD_DIR = resolve(process.cwd(), '..', 'storage', 'uploads');
-
-function getEffectiveUserId(request: FastifyRequest): string {
-  // 鉴权已由全局 onRequest 钩子强制，request.user 即权威身份。
-  // 不再接受客户端的 x-user-id 头，避免身份伪造。
-  return request.user.userId;
-}
 
 export async function booksRoutes(fastify: FastifyInstance) {
   // Upload book
   fastify.post('/', async (request, reply) => {
     let tempPath = '';
     try {
-      const effectiveUserId = getEffectiveUserId(request);
-
-      // Ensure user exists (get the actual User record with UUID)
-      const user = await UserRepository.findOrCreate({ email: `${effectiveUserId}@example.com`, name: effectiveUserId });
+      const userId = request.user.userId;
 
       // Get file from multipart
       const data = await request.file();
@@ -46,13 +38,13 @@ export async function booksRoutes(fastify: FastifyInstance) {
       const finalPath = resolve(UPLOAD_DIR, `${bookId}.txt`);
       await writeFile(tempPath, buffer);
 
-      // Create book record in DB (use user.id UUID for foreign key)
+      // Create book record in DB (userId 直接用真实 user.id，H1 后已无影子用户)
       const book = await BookRepository.create({
         title,
         filePath: finalPath,
         fileSize: buffer.length,
         mimeType: 'text/plain',
-        userId: user.id,
+        userId,
       });
 
       // Atomic rename after DB success
@@ -64,26 +56,21 @@ export async function booksRoutes(fastify: FastifyInstance) {
       if (tempPath) {
         await unlink(tempPath).catch(() => {});
       }
-      const message = err instanceof Error ? err.message : 'Upload failed';
-      return reply.status(500).send({ error: message });
+      return reply.status(500).send({ error: '上传失败，请查看服务端日志' });
     }
   });
 
   // List books
   fastify.get('/', async (request) => {
-    const effectiveUserId = getEffectiveUserId(request);
-    const user = await UserRepository.findByEmail(`${effectiveUserId}@example.com`);
-    if (!user) {
-      return { books: [] };
-    }
-    const books = await BookRepository.findAll(user.id);
+    const books = await BookRepository.findAll(request.user.userId);
     return { books };
   });
 
   // Get single book
   fastify.get('/:id', async (request, reply) => {
     const { id } = request.params as { id: string };
-    const book = await BookRepository.findById(id);
+    const ownerId = await resolveOwnerId(request);
+    const book = await loadOwnedBook(id, ownerId);
 
     if (!book) {
       return reply.status(404).send({ error: 'Book not found' });
@@ -96,7 +83,8 @@ export async function booksRoutes(fastify: FastifyInstance) {
   fastify.get('/:id/content', async (request, reply) => {
     try {
       const { id } = request.params as { id: string };
-      const book = await BookRepository.findById(id);
+      const ownerId = await resolveOwnerId(request);
+      const book = await loadOwnedBook(id, ownerId);
 
       if (!book) {
         return reply.status(404).send({ error: 'Book not found' });
@@ -114,7 +102,8 @@ export async function booksRoutes(fastify: FastifyInstance) {
   fastify.delete('/:id', async (request, reply) => {
     try {
       const { id } = request.params as { id: string };
-      const book = await BookRepository.findById(id);
+      const ownerId = await resolveOwnerId(request);
+      const book = await loadOwnedBook(id, ownerId);
 
       if (!book) {
         return reply.status(404).send({ error: 'Book not found' });

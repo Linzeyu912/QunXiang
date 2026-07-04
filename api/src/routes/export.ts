@@ -1,11 +1,11 @@
 import type { FastifyInstance } from 'fastify';
 import {
-  BookRepository,
   CharacterRepository,
   LocationRepository,
   ItemRepository,
 } from '@novel-agent/storage';
 import { exportEntities, type ExportFormat, type ExportEntity, type EntityKind, type Book as ExporterBook } from '@novel-agent/exporters';
+import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 
 const VALID_TYPES: EntityKind[] = ['character', 'location', 'item'];
 
@@ -25,7 +25,8 @@ export async function exportRoutes(fastify: FastifyInstance) {
       return reply.status(400).send({ error: 'Invalid type. Must be character, location, or item' });
     }
 
-    const book = await BookRepository.findById(bookId);
+    const ownerId = await resolveOwnerId(request);
+    const book = await loadOwnedBook(bookId, ownerId);
     if (!book) {
       return reply.status(404).send({ error: 'Book not found' });
     }

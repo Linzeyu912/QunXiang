@@ -167,6 +167,8 @@ export interface ChapterOutlineResponse {
   chapterMode: string;
   isFallback: boolean;
   removedNoiseLines: number;
+  suspectLinesTotal: number;
+  byCategory: Record<string, number>;
   suspectLines: ChapterNoiseLine[];
   chapters: Array<{ index: number; title?: string; wordCount: number }>;
 }
