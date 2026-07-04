@@ -1,11 +1,7 @@
-import type { FastifyInstance, FastifyRequest } from 'fastify';
-import { CharacterRepository, ReviewRepository, UserRepository } from '@novel-agent/storage';
+import type { FastifyInstance } from 'fastify';
+import { CharacterRepository, ReviewRepository } from '@novel-agent/storage';
 import { characterUpdateSchema } from '@novel-agent/schemas';
-
-function getEffectiveUserId(request: FastifyRequest): string {
-  // 鉴权已由全局 onRequest 钩子强制，request.user 即权威身份。
-  return request.user.userId;
-}
+import { ownsBook, resolveOwnerId } from '../lib/authz.js';
 
 export async function charactersRoutes(fastify: FastifyInstance) {
   // Get characters (optionally filtered by status)
@@ -14,6 +10,12 @@ export async function charactersRoutes(fastify: FastifyInstance) {
 
     if (!bookId) {
       return reply.status(400).send({ error: 'bookId is required' });
+    }
+
+    // 越权防护：不是当前用户名下的书，返回空列表（不泄露存在性）
+    const ownerId = await resolveOwnerId(request);
+    if (!(await ownsBook(bookId, ownerId))) {
+      return { characters: [] };
     }
 
     let characters;
@@ -37,23 +39,21 @@ export async function charactersRoutes(fastify: FastifyInstance) {
     }
 
     try {
-      const effectiveUserId = getEffectiveUserId(request);
-      const user = await UserRepository.findOrCreate({
-        email: `${effectiveUserId}@example.com`,
-        name: effectiveUserId,
-      });
+      const userId = request.user.userId;
+      const ownerId = await resolveOwnerId(request);
 
       const updated: string[] = [];
       const skipped: { id: string; reason: string }[] = [];
       for (const id of ids) {
         const character = await CharacterRepository.findById(id);
-        if (!character) {
+        if (!character || !(await ownsBook(character.bookId, ownerId))) {
+          // 不存在或不属于当前用户，统一按"不存在"跳过，避免泄露
           skipped.push({ id, reason: '不存在' });
           continue;
         }
         await ReviewRepository.create({
           characterId: id,
-          userId: user.id,
+          userId,
           action: status,
           previousValue: character.status,
           newValue: status,
@@ -74,17 +74,14 @@ export async function charactersRoutes(fastify: FastifyInstance) {
     try {
       const { id } = request.params as { id: string };
 
-      // Resolve to a real User UUID (same pattern as books.ts)
-      const effectiveUserId = getEffectiveUserId(request);
-      const user = await UserRepository.findOrCreate({
-        email: `${effectiveUserId}@example.com`,
-        name: effectiveUserId,
-      });
-
       const body = characterUpdateSchema.parse(request.body);
 
       const character = await CharacterRepository.findById(id);
       if (!character) {
+        return reply.status(404).send({ error: 'Character not found' });
+      }
+      const ownerId = await resolveOwnerId(request);
+      if (!(await ownsBook(character.bookId, ownerId))) {
         return reply.status(404).send({ error: 'Character not found' });
       }
 
@@ -96,7 +93,7 @@ export async function charactersRoutes(fastify: FastifyInstance) {
       if (isReviewAction(body.status)) {
         await ReviewRepository.create({
           characterId: id,
-          userId: user.id, // Use real UUID, not raw header string
+          userId: request.user.userId,
           action: body.status,
           previousValue: character.status,
           newValue: body.status,
@@ -117,6 +114,14 @@ export async function charactersRoutes(fastify: FastifyInstance) {
   // Get character reviews
   fastify.get('/:id/reviews', async (request, reply) => {
     const { id } = request.params as { id: string };
+    const character = await CharacterRepository.findById(id);
+    if (!character) {
+      return reply.status(404).send({ error: 'Character not found' });
+    }
+    const ownerId = await resolveOwnerId(request);
+    if (!(await ownsBook(character.bookId, ownerId))) {
+      return reply.status(404).send({ error: 'Character not found' });
+    }
     const reviews = await ReviewRepository.findByCharacterId(id);
     return { reviews };
   });

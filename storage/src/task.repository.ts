@@ -13,6 +13,8 @@ export interface TaskRepository {
   updateStatus(id: string, status: string, result?: unknown, error?: string): Promise<Task>;
   findPending(agentType: AgentType): Promise<Task[]>;
   findByBookId(bookId: string): Promise<Task[]>;
+  /** 删除该书全部任务记录——重新提取前清掉上一轮遗留，避免 getExtractionStages 读到旧状态。 */
+  deleteByBookId(bookId: string): Promise<void>;
   findAllPending(agentType: AgentType): Promise<Task[]>;
   markAsDeadLetter(taskId: string, error: string, retryCount: number): Promise<Task>;
   findStuckTasks(thresholdMs: number): Promise<Task[]>;
@@ -105,6 +107,10 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
         ...t,
         payload: JSON.parse(t.payload || '{}'),
       })) as Task[];
+    },
+
+    async deleteByBookId(bookId: string): Promise<void> {
+      await db.task.deleteMany({ where: { bookId } });
     },
 
     async findAllPending(agentType: AgentType): Promise<Task[]> {

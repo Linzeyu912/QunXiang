@@ -3,6 +3,7 @@ import Fastify, { type FastifyRequest } from 'fastify';
 import cors from '@fastify/cors';
 import multipart from '@fastify/multipart';
 import fastifyJwt from '@fastify/jwt';
+import rateLimit from '@fastify/rate-limit';
 import { initializeDatabase } from '@novel-agent/storage';
 import { getDefaultProvider, loadPersistedConfig } from '@novel-agent/llm';
 import { booksRoutes } from './routes/books.js';
@@ -74,6 +75,8 @@ async function start() {
       fileSize: 50 * 1024 * 1024, // 50MB
     },
   });
+  // 限流：默认 global=false，只对显式声明 config.rateLimit 的路由生效（见 /auth/login、/auth/register）。
+  await fastify.register(rateLimit, { global: false });
 
   // Register JWT plugin
   const jwtSecret = process.env.JWT_SECRET;

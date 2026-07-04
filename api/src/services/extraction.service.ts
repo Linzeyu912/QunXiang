@@ -1,9 +1,10 @@
-import { BookRepository, UserRepository, TaskRepository } from '@novel-agent/storage';
+import { BookRepository, TaskRepository } from '@novel-agent/storage';
 import { TaskDispatcher, DatabaseTaskQueue, eventBus } from '@novel-agent/scheduler';
 import type { PipelineEvent } from '@novel-agent/scheduler';
 import { CharacterRepository } from '@novel-agent/storage';
 import { getDefaultProvider } from '@novel-agent/llm';
 import type { AgentType } from '@novel-agent/core';
+import { ConflictError } from '../lib/errors.js';
 
 const taskQueue = new DatabaseTaskQueue();
 const dispatcher = new TaskDispatcher(taskQueue);
@@ -22,12 +23,21 @@ const PIPELINE_STAGES: { id: AgentType; name: string; weight: number }[] = [
 ];
 
 export async function startExtraction(bookId: string, userId: string) {
-  try {
-    // Ensure user exists
-    await UserRepository.findOrCreate({ email: `${userId}@example.com`, name: userId });
+  // 幂等：该书已有 pending/running 任务 → 本次运行仍在进行，拒绝重复触发。
+  // （孤儿 running 任务由 dispatcher 启动时的 recoverInterruptedTasks 回收，
+  // 因此运行期出现的 running/running 即视为真实进行中。）
+  const existing = await TaskRepository.findByBookId(bookId);
+  if (existing.some((t) => t.status === 'pending' || t.status === 'running')) {
+    throw new ConflictError('该书正在提取中，请等待当前运行结束');
+  }
 
+  try {
     // Update book status
     await BookRepository.updateStatus(bookId, 'EXTRACTING');
+
+    // 清掉上一轮的遗留任务，确保 getExtractionStages / 进度反映的是本次运行，
+    // 而不是上一次 completed/failed 的历史任务（否则重跑会瞬间显示"已完成"）。
+    await TaskRepository.deleteByBookId(bookId);
 
     // Validate provider is available (will throw if not configured)
     const provider = await getDefaultProvider();
@@ -92,7 +102,6 @@ export async function getExtractionStages(bookId: string): Promise<ExtractionSta
   const tasks = await TaskRepository.findByBookId(bookId);
 
   let overallProgress = 0;
-  let isRunning = false;
   let isComplete = false;
   let isFailed = false;
 
@@ -104,7 +113,6 @@ export async function getExtractionStages(bookId: string): Promise<ExtractionSta
       overallProgress += stage.weight;
     } else if (status === 'running') {
       overallProgress += stage.weight * 0.5;
-      isRunning = true;
     } else if (status === 'failed') {
       isFailed = true;
     }
@@ -126,10 +134,15 @@ export async function getExtractionStages(bookId: string): Promise<ExtractionSta
     overallProgress = 100;
   }
 
+  // 仅当存在 pending/running 任务且未到终态时才算"运行中"。
+  // 旧逻辑 `!isComplete && !isFailed` 会让一本从未开始的书（无任务）也被判为运行中，
+  // 导致前端对它挂一条永不停的 SSE 心跳。
+  const hasActiveTask = tasks.some((t) => t.status === 'pending' || t.status === 'running');
+
   return {
     bookId,
     overallProgress: Math.round(overallProgress),
-    isRunning: isRunning || (!isComplete && !isFailed),
+    isRunning: hasActiveTask && !isComplete && !isFailed,
     isComplete,
     isFailed,
     stages,
@@ -152,17 +165,18 @@ export async function* createExtractionStream(
     return;
   }
 
-  // Subscribe to pipeline events for this bookId using a promise queue pattern
+  // 订阅该 bookId 的管线事件。用具名 handler + eventBus.off 精确退订——
+  // 不要用 removeAllListeners（会拆掉其它 SSE 客户端的监听）。
   const eventQueue: PipelineEvent[] = [];
   let resolveWaiter: (() => void) | null = null;
-
-  const unsub = eventBus.on.bind(eventBus, bookId, (event) => {
+  const handler = (event: PipelineEvent) => {
     eventQueue.push(event);
     if (resolveWaiter) {
       resolveWaiter();
       resolveWaiter = null;
     }
-  });
+  };
+  eventBus.on(bookId, handler);
 
   try {
     while (true) {
@@ -204,6 +218,6 @@ export async function* createExtractionStream(
       }
     }
   } finally {
-    eventBus.removeAllListeners(`pipeline:${bookId}`);
+    eventBus.off(bookId, handler);
   }
 }

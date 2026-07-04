@@ -23,15 +23,29 @@ import {
   type AssetType,
   type BoundaryDecision,
 } from '../services/story.service.js';
+import { ownsBook, resolveOwnerId } from '../lib/authz.js';
 
 function sendError(reply: FastifyReply, err: unknown) {
   if (err instanceof NotFoundError) return reply.status(404).send({ error: err.message });
   if (err instanceof ConflictError) return reply.status(409).send({ error: err.message });
   if (err instanceof BadRequestError) return reply.status(400).send({ error: err.message });
-  return reply.status(500).send({ error: err instanceof Error ? err.message : String(err) });
+  reply.log.error(err);
+  return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
 }
 
 export async function storiesRoutes(fastify: FastifyInstance) {
+  // 所有路由都以 :id 作为 bookId，统一在 preHandler 里校验归属。
+  // preHandler 在路由 handler（含 SSE 的 writeHead）之前执行，未通过直接 404，
+  // 避免无权连接进入 SSE 流。
+  fastify.addHook('preHandler', async (request, reply) => {
+    const { id } = request.params as { id?: string };
+    if (!id) return;
+    const ownerId = await resolveOwnerId(request);
+    if (!(await ownsBook(id, ownerId))) {
+      return reply.status(404).send({ error: 'Book not found' });
+    }
+  });
+
   // ---- 切分（异步 + SSE） ----
 
   fastify.post('/:id/stories/segment', async (request, reply) => {

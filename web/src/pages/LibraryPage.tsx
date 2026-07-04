@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { AlertCircle, FileText, Loader2, MoreVertical, Play, Settings, Trash2, Upload } from 'lucide-react';
+import { AlertCircle, CheckCircle2, FileText, Loader2, MoreVertical, Play, Settings, Trash2, Upload } from 'lucide-react';
 import { useBooks, useDeleteBook, useUploadBook } from '@/api/books';
 import { useStartExtraction } from '@/api/extraction';
 import { useLlmStatus } from '@/api/llm';
@@ -105,6 +105,8 @@ function BookRow({ book }: { book: Book }) {
 
   const extractionGate = getExtractionStartGate(llm.data, llm.isLoading);
   const isRunning = book.status === 'EXTRACTING';
+  // 已成功提取过的书禁止在列表里重复触发；如需重新提取，去该书「管道」页二次确认。
+  const isExtracted = book.status === 'EXTRACTED';
 
   const handleStart = async () => {
     if (!extractionGate.canStart) {
@@ -160,18 +162,32 @@ function BookRow({ book }: { book: Book }) {
           variant="outline"
           size="sm"
           onClick={handleStart}
-          disabled={isRunning || start.isPending || !extractionGate.canStart}
-          title={!extractionGate.canStart ? extractionGate.description : undefined}
+          disabled={isRunning || isExtracted || start.isPending || !extractionGate.canStart}
+          title={
+            isExtracted
+              ? '已提取完成；如需重新提取，请打开该书「管道」页'
+              : !extractionGate.canStart
+                ? extractionGate.description
+                : undefined
+          }
           className="gap-1"
         >
           {isRunning || start.isPending ? (
             <Loader2 className="h-3.5 w-3.5 animate-spin" />
+          ) : isExtracted ? (
+            <CheckCircle2 className="h-3.5 w-3.5" />
           ) : extractionGate.canStart ? (
             <Play className="h-3.5 w-3.5" />
           ) : (
             <AlertCircle className="h-3.5 w-3.5" />
           )}
-          {isRunning ? '进行中' : extractionGate.canStart ? '提取' : extractionGate.buttonLabel}
+          {isRunning
+            ? '进行中'
+            : isExtracted
+              ? '已提取'
+              : extractionGate.canStart
+                ? '提取'
+                : extractionGate.buttonLabel}
         </Button>
         <AlertDialog>
           <AlertDialogTrigger asChild>

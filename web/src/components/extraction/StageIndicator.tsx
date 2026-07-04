@@ -1,4 +1,4 @@
-import { CheckCircle, Loader2, Circle, XCircle, AlertCircle } from 'lucide-react';
+import { CheckCircle, Loader2, Circle, XCircle } from 'lucide-react';
 
 export interface Stage {
   id: string;

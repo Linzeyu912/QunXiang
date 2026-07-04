@@ -17,7 +17,10 @@ function signToken(fastify: FastifyInstance, user: { id: string; email: string; 
 }
 
 export async function authRoutes(fastify: FastifyInstance) {
-  fastify.post('/register', async (request, reply) => {
+  fastify.post(
+    '/register',
+    { config: { rateLimit: { max: 5, timeWindow: '1 minute' } } },
+    async (request, reply) => {
     const { email, password, name } = request.body as {
       email?: string;
       password?: string;
@@ -36,17 +39,21 @@ export async function authRoutes(fastify: FastifyInstance) {
       return reply.status(409).send({ error: '该邮箱已注册' });
     }
 
+    const passwordHash = await hashPassword(password);
     const user = await UserRepository.create({
       email,
       name,
-      passwordHash: hashPassword(password),
+      passwordHash,
     });
 
     const token = signToken(fastify, user);
     return { token, user: toPublicUser(user) };
   });
 
-  fastify.post('/login', async (request, reply) => {
+  fastify.post(
+    '/login',
+    { config: { rateLimit: { max: 10, timeWindow: '1 minute' } } },
+    async (request, reply) => {
     const { email, password } = request.body as { email?: string; password?: string };
 
     if (!email || !password) {
@@ -55,7 +62,7 @@ export async function authRoutes(fastify: FastifyInstance) {
 
     const user = await UserRepository.findByEmail(email);
     // 统一返回模糊错误，避免枚举已注册邮箱
-    if (!user || !verifyPassword(password, user.passwordHash)) {
+    if (!user || !(await verifyPassword(password, user.passwordHash))) {
       return reply.status(401).send({ error: '邮箱或密码错误' });
     }
 

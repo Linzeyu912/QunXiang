@@ -10,6 +10,17 @@ import { formatDate } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { StageCard } from '@/components/pipeline/StageCard';
 import { getExtractionStartGate, type ExtractionStartGate } from '@/lib/extractionGate';
 import type { PrescanEntityType, PrescanMentionFile } from '@/types';
@@ -43,7 +54,7 @@ export function PipelinePage() {
     if (stages.isLoading || llm.isLoading) return;
 
     autoStartedRef.current = true;
-    if (!stages.data?.isRunning) {
+    if (!stages.data?.isRunning && !stages.data?.isComplete) {
       void handleStart();
     }
     const next = new URLSearchParams(sp);
@@ -138,12 +149,37 @@ export function PipelinePage() {
 
       {data?.isComplete && (
         <Card className="border-emerald-300 bg-emerald-50/40 p-6 dark:border-emerald-500/40 dark:bg-emerald-500/10">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">提取完成</p>
               <p className="text-xs text-emerald-700/80 dark:text-emerald-400/80">可以开始审核角色/场景/道具</p>
             </div>
-            <Button onClick={() => navigate(`/books/${bookId}/characters`)}>开始审核 →</Button>
+            <div className="flex items-center gap-2">
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    disabled={start.isPending || !extractionGate.canStart}
+                    title="重新运行完整管道，生成新一轮产物并设为当前生效运行"
+                  >
+                    重新提取
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>重新提取？</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      将重新运行完整管道，生成新一轮的实体与产物，并设为当前生效运行，覆盖实体审核页和导出所读取的数据。原有的审核状态可能无法对应到新实体，请确认后再继续。
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>取消</AlertDialogCancel>
+                    <AlertDialogAction onClick={handleStart}>确认重新提取</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+              <Button onClick={() => navigate(`/books/${bookId}/characters`)}>开始审核 →</Button>
+            </div>
           </div>
         </Card>
       )}

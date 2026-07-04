@@ -1,6 +1,7 @@
 import type { FastifyInstance, FastifyRequest } from 'fastify';
 import { ItemRepository } from '@novel-agent/storage';
 import { itemUpdateSchema } from '@novel-agent/schemas';
+import { ownsBook, resolveOwnerId } from '../lib/authz.js';
 
 export async function itemRoutes(fastify: FastifyInstance) {
   // Get items (optionally filtered by status or tier)
@@ -9,6 +10,11 @@ export async function itemRoutes(fastify: FastifyInstance) {
 
     if (!bookId) {
       return reply.status(400).send({ error: 'bookId is required' });
+    }
+
+    const ownerId = await resolveOwnerId(request);
+    if (!(await ownsBook(bookId, ownerId))) {
+      return { items: [] };
     }
 
     let items;
@@ -33,11 +39,12 @@ export async function itemRoutes(fastify: FastifyInstance) {
       return reply.status(400).send({ error: 'status must be APPROVED or REJECTED' });
     }
 
+    const ownerId = await resolveOwnerId(request);
     const updated: string[] = [];
     const skipped: { id: string; reason: string }[] = [];
     for (const id of ids) {
       const item = await ItemRepository.findById(id);
-      if (!item) {
+      if (!item || !(await ownsBook(item.bookId, ownerId))) {
         skipped.push({ id, reason: '不存在' });
         continue;
       }
@@ -55,6 +62,10 @@ export async function itemRoutes(fastify: FastifyInstance) {
 
       const item = await ItemRepository.findById(id);
       if (!item) {
+        return reply.status(404).send({ error: 'Item not found' });
+      }
+      const ownerId = await resolveOwnerId(request);
+      if (!(await ownsBook(item.bookId, ownerId))) {
         return reply.status(404).send({ error: 'Item not found' });
       }
 

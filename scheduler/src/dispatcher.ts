@@ -10,7 +10,7 @@ import {
   executePromptGeneration,
   executeReviewer,
 } from './agents/index.js';
-import { CharacterRepository, LocationRepository, ItemRepository, BookRepository } from '@novel-agent/storage';
+import { CharacterRepository, LocationRepository, ItemRepository, BookRepository, TaskRepository } from '@novel-agent/storage';
 import { eventBus, type PipelineEvent } from './event-bus.js';
 import { writePipelineFinalSummary } from './pipeline-summary.js';
 
@@ -24,6 +24,23 @@ interface RetryResult<T> {
   result?: T;
   error?: string;
   attempts: number;
+}
+
+function errorMessage(err: unknown): string {
+  return err instanceof Error ? err.message : String(err);
+}
+
+/**
+ * 判断错误是否值得重试。配置/鉴权/参数类的永久错误重试也没用，直接失败，
+ * 避免在 API key 未配、401、403 等情况下白烧 4 次 LLM 调用。
+ * 其余（网络/超时/上游 5xx/偶发解析）保持重试。
+ */
+function isRetryableError(err: unknown): boolean {
+  const msg = errorMessage(err).toLowerCase();
+  if (/not configured|api[\s_-]?key|unauthorized|forbidden|\b401\b|\b403\b|invalid api key/.test(msg)) {
+    return false;
+  }
+  return true;
 }
 
 async function withRetry<T>(
@@ -40,20 +57,21 @@ async function withRetry<T>(
       return { result, attempts };
     } catch (error) {
       lastError = error;
+      if (!isRetryableError(error)) {
+        // 永久错误，立即失败，不再重试
+        return { error: errorMessage(error), attempts };
+      }
       if (attempts <= config.maxRetries) {
         const delay = Math.min(
           config.baseDelayMs * Math.pow(2, attempts - 1),
           config.maxDelayMs
         );
-        await new Promise(resolve => setTimeout(resolve, delay));
+        await new Promise((resolve) => setTimeout(resolve, delay));
       }
     }
   }
 
-  return {
-    error: lastError instanceof Error ? lastError.message : String(lastError),
-    attempts,
-  };
+  return { error: errorMessage(lastError), attempts };
 }
 
 export class TaskDispatcher {
@@ -97,6 +115,10 @@ export class TaskDispatcher {
   /** Start a background worker that polls for pending extractor tasks */
   startWorker(intervalMs = 1000) {
     if (this.workerTimer) return;
+    // 启动前回收上一进程遗留的 running 任务（不阻塞启动）
+    void this.recoverInterruptedTasks().catch((err) =>
+      console.error('[Dispatcher] startup recovery failed:', err),
+    );
     this.workerTimer = setInterval(async () => {
       if (this.isProcessing) return;
       this.isProcessing = true;
@@ -106,6 +128,38 @@ export class TaskDispatcher {
         this.isProcessing = false;
       }
     }, intervalMs);
+  }
+
+  /**
+   * 服务重启后，所有残留的 'running' 任务都是上一进程崩溃/被杀留下的孤儿
+   *（单 worker 串行，正常运行不会久留 running）。把它们标失败，并按剩余任务
+   * 重新推断每本受影响书的真实状态：reviewer 完成过 → EXTRACTED，否则 FAILED。
+   * 用户随后可在前端干净地重新触发（startExtraction 的 deleteByBookId 会清掉这些任务）。
+   */
+  async recoverInterruptedTasks(): Promise<void> {
+    const stuck = await this.queue.findStuckTasks(0);
+    if (stuck.length === 0) return;
+    const books = new Set<string>();
+    for (const t of stuck) {
+      try {
+        await this.queue.fail(t.id, 'Interrupted by server restart');
+        books.add(t.bookId);
+        console.log(`[Dispatcher] recovered orphan task ${t.id} (book ${t.bookId}, ${t.agentType})`);
+      } catch (err) {
+        console.error(`[Dispatcher] failed to recover task ${t.id}:`, err);
+      }
+    }
+    for (const bookId of books) {
+      try {
+        const tasks = await TaskRepository.findByBookId(bookId);
+        const reviewerDone = tasks.some((t) => t.agentType === 'reviewer' && t.status === 'completed');
+        const status = reviewerDone ? 'EXTRACTED' : 'FAILED';
+        await BookRepository.updateStatus(bookId, status);
+        console.log(`[Dispatcher] book ${bookId} status → ${status} after recovery`);
+      } catch (err) {
+        console.error(`[Dispatcher] failed to re-derive status for book ${bookId}:`, err);
+      }
+    }
   }
 
   /** Stop the background worker */
@@ -178,6 +232,11 @@ export class TaskDispatcher {
       const nextAgent = getNextAgent(agentType);
       if (nextAgent === 'reviewer' && result && typeof result === 'object' && 'characters' in result) {
         const bookId = (task.payload as { bookId?: string }).bookId || task.bookId;
+        // 重新提取：先把上一轮的旧实体清掉，再 createMany 新结果，避免重复入库。
+        // 放在 reviewer 入库前（而非管线起点）清，是为了让提取中途失败时旧实体仍可用。
+        await CharacterRepository.deleteByBookId(bookId);
+        await LocationRepository.deleteByBookId(bookId);
+        await ItemRepository.deleteByBookId(bookId);
         const chars = (result as { characters: any[] }).characters;
         if (chars.length > 0) {
           await CharacterRepository.createMany(

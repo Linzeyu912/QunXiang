@@ -87,7 +87,14 @@ export function ChaptersPage() {
         </div>
       </div>
 
-      {outline.suspectLines.length > 0 && <NoiseLinesPanel lines={outline.suspectLines} />}
+      {outline.suspectLines.length > 0 && (
+        <NoiseLinesPanel
+          lines={outline.suspectLines}
+          totalSuspect={outline.suspectLinesTotal}
+          totalRemoved={outline.removedNoiseLines}
+          byCategory={outline.byCategory}
+        />
+      )}
 
       <div className="overflow-hidden rounded-lg border bg-card">
         <div className="grid grid-cols-[3.5rem_minmax(0,1fr)_minmax(8rem,20%)_5rem] items-center gap-2 border-b bg-muted/40 px-4 py-2 text-xs font-medium text-muted-foreground">
@@ -153,25 +160,33 @@ export function ChaptersPage() {
   );
 }
 
-function NoiseLinesPanel({ lines }: { lines: ChapterNoiseLine[] }) {
-  const removedCount = lines.filter((line) => line.removed).length;
-  const retainedCount = lines.length - removedCount;
-  const byCategory = lines.reduce<Partial<Record<NoiseCategory, number>>>((acc, line) => {
-    acc[line.category] = (acc[line.category] ?? 0) + 1;
-    return acc;
-  }, {});
+function NoiseLinesPanel({
+  lines,
+  totalSuspect,
+  totalRemoved,
+  byCategory,
+}: {
+  lines: ChapterNoiseLine[];
+  totalSuspect: number;
+  totalRemoved: number;
+  byCategory: Record<string, number>;
+}) {
+  const retainedTotal = totalSuspect - totalRemoved;
+  const capped = totalSuspect > lines.length;
+  const categoryEntries = Object.entries(byCategory).filter(([, n]) => n > 0);
 
   return (
-    <details className="overflow-hidden rounded-lg border bg-card" open={removedCount > 0}>
+    <details className="overflow-hidden rounded-lg border bg-card" open={totalRemoved > 0}>
       <summary className="flex cursor-pointer flex-wrap items-center gap-2 border-b bg-muted/30 px-4 py-2 text-sm font-medium">
         <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400" />
         噪声过滤明细
-        <Badge variant="warning">{removedCount} 行已移除</Badge>
-        {retainedCount > 0 && <Badge variant="muted">{retainedCount} 行仅标记</Badge>}
+        <Badge variant="warning">{totalRemoved} 行已移除</Badge>
+        {retainedTotal > 0 && <Badge variant="muted">{retainedTotal} 行仅标记</Badge>}
         <span className="text-xs font-normal text-muted-foreground">
-          {Object.entries(byCategory)
+          {categoryEntries
             .map(([category, count]) => `${NOISE_LABEL[category as NoiseCategory]} ${count}`)
             .join(' · ')}
+          {capped && ` · 明细仅显示前 ${lines.length} / 共 ${totalSuspect} 条`}
         </span>
       </summary>
       <div className="overflow-x-auto">

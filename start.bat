@@ -131,6 +131,10 @@ if not exist "%~dp0storage\prisma\dev.db" (
 ) else (
     echo       Database exists.
 )
+echo       Generating Prisma client...
+cd /d "%~dp0storage"
+cmd /c pnpm exec prisma generate --schema=./prisma/schema.prisma
+cd /d "%~dp0"
 echo.
 
 :: [5/6] Start API service

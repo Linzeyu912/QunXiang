@@ -109,7 +109,7 @@ export function EntityDetailPanel({ entity, type, bookId, onJumpToName }: Props)
         </div>
       </div>
 
-      <div className="flex-1 overflow-auto p-4">
+      <div className="min-h-0 flex-1 overflow-auto p-4">
         <div className="space-y-6">
           <ConfidenceBar value={entity.confidence} />
 
