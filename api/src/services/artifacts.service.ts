@@ -1,7 +1,7 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
 import { isAbsolute, join, resolve } from 'node:path';
-import { BookRepository } from '@novel-agent/storage';
-import { parseChapterOutline, type ChapterOutlineResult } from '@novel-agent/import';
+import { BookRepository, NoiseOverrideRepository } from '@novel-agent/storage';
+import { parseChapterOutline, getChapterCleanedContent, type ChapterOutlineResult, type ChapterContentResult } from '@novel-agent/import';
 
 // 提取管线（description-fusion / visual-description / prompt-generation）把
 // 富产物写在时间戳运行目录 output/{bookSlug}-{ts}/entities/ 下，DB 只存扁平
@@ -315,13 +315,61 @@ export async function getChapterOutline(bookId: string): Promise<ChapterOutlineR
   const fileStat = await stat(book.filePath).catch(() => null);
   if (!fileStat) return null;
 
-  const cached = chapterCache.get(bookId);
-  if (cached && cached.mtimeMs === fileStat.mtimeMs) return cached.outline;
+  const keepLines = await NoiseOverrideRepository.listKeepLineNums(bookId);
+  // 缓存 key 含 overrides 数量：找回/取消找回后数量变化即失效；数量未变但内容变（极少）时
+  // 由 restore/unrestore 主动 delete 兜底。
+  const cacheKey = `${bookId}:${fileStat.mtimeMs}:${keepLines.size}`;
+  const cached = chapterCache.get(cacheKey);
+  if (cached) return cached.outline;
 
   const content = await readFile(book.filePath, 'utf-8');
-  const outline: ChapterOutlineResponse = { bookId, ...parseChapterOutline(content, book.title) };
-  chapterCache.set(bookId, { mtimeMs: fileStat.mtimeMs, outline });
+  const outline: ChapterOutlineResponse = {
+    bookId,
+    ...parseChapterOutline(content, book.title, keepLines),
+  };
+  chapterCache.set(cacheKey, { mtimeMs: fileStat.mtimeMs, outline });
   return outline;
+}
+
+/** 单章清洗后内容响应（前端正文阅读 + 噪声高亮）。 */
+export interface ChapterContentResponse extends ChapterContentResult {
+  bookId: string;
+}
+
+/** 读取单章正文（含被标记噪声行，供前端高亮阅读）。按章懒加载，不缓存。 */
+export async function getChapterContent(
+  bookId: string,
+  chapterIndex: number,
+): Promise<ChapterContentResponse | null> {
+  const book = await BookRepository.findById(bookId);
+  if (!book) return null;
+
+  const content = await readFile(book.filePath, 'utf-8').catch(() => null);
+  if (content === null) return null;
+
+  const keepLines = await NoiseOverrideRepository.listKeepLineNums(bookId);
+  const result = getChapterCleanedContent(content, book.title, chapterIndex, keepLines);
+  if (!result) return null;
+  return { bookId, ...result };
+}
+
+/** 找回（保留）某行噪声：写入覆盖标记，并失效该书的大纲缓存。 */
+export async function restoreNoiseLine(bookId: string, lineNum: number): Promise<void> {
+  await NoiseOverrideRepository.upsertKeep(bookId, lineNum);
+  invalidateChapterCache(bookId);
+}
+
+/** 取消找回：删除覆盖标记，并失效大纲缓存。 */
+export async function unrestoreNoiseLine(bookId: string, lineNum: number): Promise<void> {
+  await NoiseOverrideRepository.remove(bookId, lineNum);
+  invalidateChapterCache(bookId);
+}
+
+/** 失效某书的全部章节大纲缓存条目（找回/取消找回后调用）。 */
+function invalidateChapterCache(bookId: string): void {
+  for (const key of chapterCache.keys()) {
+    if (key.startsWith(`${bookId}:`)) chapterCache.delete(key);
+  }
 }
 
 export async function getPrescanArtifacts(bookId: string): Promise<PrescanArtifactsResponse> {

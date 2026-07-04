@@ -5,4 +5,5 @@ export * from './location.repository.js';
 export * from './item.repository.js';
 export * from './review.repository.js';
 export * from './task.repository.js';
+export * from './noise-override.repository.js';
 export * from './prisma.js';

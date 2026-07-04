@@ -271,11 +271,13 @@ export function detectNoise(text: string): FilterReport {
  * @param text Original text
  * @param report Report from detectNoise()
  * @param mode 'conservative' (confidence >= 0.8) or 'aggressive' (all)
+ * @param keepLines 行号集合（1-based），这些行即使命中阈值也保留不删（用于人工「找回」）
  */
 export function cleanText(
   text: string,
   report: FilterReport,
-  mode: 'conservative' | 'aggressive' = 'conservative'
+  mode: 'conservative' | 'aggressive' = 'conservative',
+  keepLines?: Set<number>
 ): string {
   if (report.suspectLines.length === 0) return text;
 
@@ -287,7 +289,17 @@ export function cleanText(
     }
   }
 
-  if (linesToRemove.size === 0) return text;
+  // 人工找回的行：从删除集合中剔除
+  if (keepLines && keepLines.size > 0) {
+    for (const ln of keepLines) linesToRemove.delete(ln);
+  }
+
+  if (linesToRemove.size === 0) {
+    const lines = text.split('\n');
+    report.removedCount = 0;
+    report.linesAfter = lines.length;
+    return text;
+  }
 
   const lines = text.split('\n');
   const cleaned = lines.filter((_, i) => !linesToRemove.has(i + 1));

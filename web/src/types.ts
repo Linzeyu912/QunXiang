@@ -181,6 +181,21 @@ export interface ChapterNoiseLine {
   category: NoiseCategory;
   confidence: number;
   removed: boolean;
+  /** 已被人工「找回」（从删除集合中排除） */
+  restored?: boolean;
+}
+
+/** 单章清洗后内容响应（正文 + 噪声行高亮标记）。 */
+export interface ChapterContentResponse {
+  bookId: string;
+  chapterIndex: number;
+  title?: string;
+  /** 该章正文（规范化后、未清洗，含被标记噪声行的完整文本） */
+  content: string;
+  /** 该章第 1 行对应的全文 1-based 行号 */
+  startLineNum: number;
+  /** 该章涉及的噪声行明细 */
+  noiseLines: ChapterNoiseLine[];
 }
 
 export interface ExtractionRunInfo {

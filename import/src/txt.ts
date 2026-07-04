@@ -68,7 +68,7 @@ export function parseTxt(content: string, filename: string): ParseResult {
 }
 
 // Re-export enhanced parsing from pipeline
-export { parseTxtEnhanced, parseChapterOutline, type ParseOptions, type EnhancedParseResult, type ChapterOutlineResult } from './pipeline.js';
+export { parseTxtEnhanced, parseChapterOutline, getChapterCleanedContent, type ParseOptions, type EnhancedParseResult, type ChapterOutlineResult, type ChapterContentResult } from './pipeline.js';
 export { detectNoise, cleanText, type SanitizeReport, type SuspectLine, type NoiseCategory } from './sanitizer.js';
 export { preprocess, normalize, type PreprocessReport, type PreprocessOptions } from '@novel-agent/preprocess';
 export { splitChapters, splitChaptersStructured, type ChapterInfo, type ChapterNode, type LineType, type StructuredResult } from './chapter-splitter.js';
