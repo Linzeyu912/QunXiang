@@ -1,7 +1,7 @@
 import { BookRepository, TaskRepository } from '@novel-agent/storage';
 import { TaskDispatcher, DatabaseTaskQueue, eventBus } from '@novel-agent/scheduler';
 import type { PipelineEvent } from '@novel-agent/scheduler';
-import { CharacterRepository } from '@novel-agent/storage';
+import { CharacterRepository, LocationRepository, ItemRepository } from '@novel-agent/storage';
 import { getDefaultProvider } from '@novel-agent/llm';
 import type { AgentType } from '@novel-agent/core';
 import { ConflictError } from '../lib/errors.js';
@@ -128,10 +128,25 @@ export async function getExtractionStages(bookId: string): Promise<ExtractionSta
     };
   });
 
+  // 防御性校验：reviewer 任务完成，不代表真的有实体入库。
+  // dispatcher 已对空结果判失败（主修复），这里是对历史数据/异常路径的二次保险——
+  // 若 reviewer 标完成但 DB 三类实体全空，则不判 isComplete，避免前端误报"已完成"
+  // 却在角色/场景页面看到空白（历史 bug）。
   const reviewerStage = stages.find((s) => s.id === 'reviewer');
   if (reviewerStage?.status === 'completed') {
-    isComplete = true;
-    overallProgress = 100;
+    const [chars, locs, items] = await Promise.all([
+      CharacterRepository.findByBookId(bookId),
+      LocationRepository.findByBookId(bookId),
+      ItemRepository.findByBookId(bookId),
+    ]);
+    if (chars.length === 0 && locs.length === 0 && items.length === 0) {
+      // reviewer 任务状态仍是 completed（来自任务表），但语义上没有产出，
+      // 在 stage 上标注原因，让前端 StageCard 能显示，且不进入 isComplete。
+      reviewerStage.message = '审核入库完成，但未提取到任何角色/场景/道具';
+    } else {
+      isComplete = true;
+      overallProgress = 100;
+    }
   }
 
   // 仅当存在 pending/running 任务且未到终态时才算"运行中"。

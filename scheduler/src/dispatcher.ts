@@ -13,6 +13,7 @@ import {
 import { CharacterRepository, LocationRepository, ItemRepository, BookRepository, TaskRepository } from '@novel-agent/storage';
 import { eventBus, type PipelineEvent } from './event-bus.js';
 import { writePipelineFinalSummary } from './pipeline-summary.js';
+import { summarizeExtractionResult, EMPTY_EXTRACTION_REASON } from './extraction-result-summary.js';
 
 const DEFAULT_RETRY_CONFIG = {
   maxRetries: 3,
@@ -232,12 +233,32 @@ export class TaskDispatcher {
       const nextAgent = getNextAgent(agentType);
       if (nextAgent === 'reviewer' && result && typeof result === 'object' && 'characters' in result) {
         const bookId = (task.payload as { bookId?: string }).bookId || task.bookId;
+        const { characters: chars, locations: locs, items: entityItems, totalCount } =
+          summarizeExtractionResult(result);
+
+        // 空结果守卫：三类实体全为空，几乎等价于配置/输入有问题（LLM 没返回、
+        // 全被幻觉过滤、批次全失败）。此时不应静默标完成，否则前端会看到"已完成"
+        // 但角色/场景页面为空（历史 bug）。判失败，保留旧实体不被清，让用户重试。
+        if (totalCount === 0) {
+          await this.queue.fail(task.id, EMPTY_EXTRACTION_REASON);
+          await this.finalizePipeline(task.bookId, 'failed');
+          eventBus.emit({
+            type: 'error',
+            bookId: task.bookId,
+            stageId: agentType,
+            message: EMPTY_EXTRACTION_REASON,
+            timestamp: Date.now(),
+          });
+          return undefined;
+        }
+
         // 重新提取：先把上一轮的旧实体清掉，再 createMany 新结果，避免重复入库。
         // 放在 reviewer 入库前（而非管线起点）清，是为了让提取中途失败时旧实体仍可用。
+        // 注意：必须先通过上面的空结果守卫再清，否则空结果会把旧实体清空后留白。
         await CharacterRepository.deleteByBookId(bookId);
         await LocationRepository.deleteByBookId(bookId);
         await ItemRepository.deleteByBookId(bookId);
-        const chars = (result as { characters: any[] }).characters;
+        // chars/locs/entityItems 已在上方统一解包并做过空结果守卫
         if (chars.length > 0) {
           await CharacterRepository.createMany(
             chars.map((c: any) => ({
@@ -267,62 +288,56 @@ export class TaskDispatcher {
         }
 
         // Persist locations
-        if ('locations' in result) {
-          const locs = (result as { locations: any[] }).locations;
-          if (locs.length > 0) {
-            await LocationRepository.createMany(
-              locs.map((l: any) => ({
-                bookId,
-                name: l.name,
-                aliases: Array.isArray(l.aliases) ? l.aliases : [],
-                description: l.description || undefined,
-                confidence: l.confidence || 0.7,
-                chapterRef: l.chapterRef || undefined,
-                importanceScore: l.importanceScore ?? 0,
-                tier: l.tier ?? 'candidate',
-                storyScore: l.storyScore ?? 0,
-                productionScore: l.productionScore ?? 0,
-                pillarCausal: l.pillarCausal ?? 0,
-                pillarUniqueness: l.pillarUniqueness ?? 0,
-                pillarTransition: l.pillarTransition ?? 0,
-                mentionCount: l.mentionCount ?? 0,
-                firstChapter: l.firstChapter ?? undefined,
-                lastChapter: l.lastChapter ?? undefined,
-                chapterAppearances: l.chapterAppearances ?? [],
-              }))
-            );
-            console.log(`[Dispatcher] Persisted ${locs.length} locations`);
-          }
+        if (locs.length > 0) {
+          await LocationRepository.createMany(
+            locs.map((l: any) => ({
+              bookId,
+              name: l.name,
+              aliases: Array.isArray(l.aliases) ? l.aliases : [],
+              description: l.description || undefined,
+              confidence: l.confidence || 0.7,
+              chapterRef: l.chapterRef || undefined,
+              importanceScore: l.importanceScore ?? 0,
+              tier: l.tier ?? 'candidate',
+              storyScore: l.storyScore ?? 0,
+              productionScore: l.productionScore ?? 0,
+              pillarCausal: l.pillarCausal ?? 0,
+              pillarUniqueness: l.pillarUniqueness ?? 0,
+              pillarTransition: l.pillarTransition ?? 0,
+              mentionCount: l.mentionCount ?? 0,
+              firstChapter: l.firstChapter ?? undefined,
+              lastChapter: l.lastChapter ?? undefined,
+              chapterAppearances: l.chapterAppearances ?? [],
+            }))
+          );
+          console.log(`[Dispatcher] Persisted ${locs.length} locations`);
         }
 
         // Persist items
-        if ('items' in result) {
-          const entityItems = (result as { items: any[] }).items;
-          if (entityItems.length > 0) {
-            await ItemRepository.createMany(
-              entityItems.map((i: any) => ({
-                bookId,
-                name: i.name,
-                aliases: Array.isArray(i.aliases) ? i.aliases : [],
-                description: i.description || undefined,
-                confidence: i.confidence || 0.7,
-                chapterRef: i.chapterRef || undefined,
-                importanceScore: i.importanceScore ?? 0,
-                tier: i.tier ?? 'candidate',
-                storyScore: i.storyScore ?? 0,
-                productionScore: i.productionScore ?? 0,
-                pillarCausal: i.pillarCausal ?? 0,
-                pillarUniqueness: i.pillarUniqueness ?? 0,
-                pillarTransition: i.pillarTransition ?? 0,
-                mentionCount: i.mentionCount ?? 0,
-                firstChapter: i.firstChapter ?? undefined,
-                lastChapter: i.lastChapter ?? undefined,
-                chapterAppearances: i.chapterAppearances ?? [],
-                owners: Array.isArray(i.owners) ? i.owners : [],
-              }))
-            );
-            console.log(`[Dispatcher] Persisted ${entityItems.length} items`);
-          }
+        if (entityItems.length > 0) {
+          await ItemRepository.createMany(
+            entityItems.map((i: any) => ({
+              bookId,
+              name: i.name,
+              aliases: Array.isArray(i.aliases) ? i.aliases : [],
+              description: i.description || undefined,
+              confidence: i.confidence || 0.7,
+              chapterRef: i.chapterRef || undefined,
+              importanceScore: i.importanceScore ?? 0,
+              tier: i.tier ?? 'candidate',
+              storyScore: i.storyScore ?? 0,
+              productionScore: i.productionScore ?? 0,
+              pillarCausal: i.pillarCausal ?? 0,
+              pillarUniqueness: i.pillarUniqueness ?? 0,
+              pillarTransition: i.pillarTransition ?? 0,
+              mentionCount: i.mentionCount ?? 0,
+              firstChapter: i.firstChapter ?? undefined,
+              lastChapter: i.lastChapter ?? undefined,
+              chapterAppearances: i.chapterAppearances ?? [],
+              owners: Array.isArray(i.owners) ? i.owners : [],
+            }))
+          );
+          console.log(`[Dispatcher] Persisted ${entityItems.length} items`);
         }
       }
 
