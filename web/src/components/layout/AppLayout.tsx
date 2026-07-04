@@ -28,7 +28,7 @@ export function AppLayout() {
           aria-label="返回书库首页"
         >
           <BookOpen className="h-5 w-5 text-primary" />
-          <span>Novel Agent</span>
+          <span>QunXiang</span>
           <span className="rounded bg-muted px-1.5 py-0.5 text-xs font-normal text-muted-foreground">
             实体提取
           </span>

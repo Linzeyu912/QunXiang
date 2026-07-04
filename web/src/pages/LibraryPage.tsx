@@ -110,7 +110,7 @@ function BookRow({ book }: { book: Book }) {
 
   const handleStart = async () => {
     if (!extractionGate.canStart) {
-      toast.error(extractionGate.title ?? 'LLM Provider 未配置', {
+      toast.error(extractionGate.title ?? 'LLM 服务商未配置', {
         description: extractionGate.description,
         action: extractionGate.actionLabel
           ? { label: extractionGate.actionLabel, onClick: () => navigate('/settings/llm') }

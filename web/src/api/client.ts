@@ -54,7 +54,7 @@ export async function apiFetch<T = unknown>(path: string, options: ApiFetchOptio
   }
 
   if (!res.ok) {
-    let message = `Request failed: ${res.status}`;
+    let message = `请求失败：${res.status}`;
     try {
       const errBody = await res.json();
       if (errBody && typeof errBody === 'object' && 'error' in errBody) {

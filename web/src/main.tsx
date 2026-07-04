@@ -7,6 +7,7 @@ import { toast, Toaster } from 'sonner';
 import { App } from './App';
 import { ErrorFallback } from './components/ErrorFallback';
 import { ApiError } from './api/client';
+import { translateApiError } from './utils/errorTranslator';
 import './index.css';
 
 /**
@@ -32,7 +33,7 @@ const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error, query) => {
       if (!shouldReportError(error, query.queryKey)) return;
-      toast.error(`数据加载失败：${error instanceof Error ? error.message : '网络异常'}`);
+      toast.error(translateApiError(error));
     },
   }),
   defaultOptions: {

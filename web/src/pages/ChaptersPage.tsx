@@ -22,6 +22,13 @@ const NOISE_LABEL: Record<NoiseCategory, string> = {
   meta: '元信息',
 };
 
+const CHAPTER_MODE_LABEL: Record<string, string> = {
+  chapter_zh: '中文章节标记',
+  chapter_en: '英文章节标记',
+  heuristic: '启发式',
+  fixed: '固定长度',
+};
+
 /**
  * 章节结构视图：可视化提取管线第一步（预处理 + 结构化切章）的真实结果，
  * 并把最新运行提取到的叙事事件按章标注。
@@ -76,7 +83,7 @@ export function ChaptersPage() {
           {outline.isFallback ? (
             <Badge variant="warning">兜底切章（未识别到章节标记，按固定长度切分）</Badge>
           ) : (
-            <Badge variant="success">切章模式：{outline.chapterMode}</Badge>
+            <Badge variant="success">切章模式：{CHAPTER_MODE_LABEL[outline.chapterMode] ?? outline.chapterMode}</Badge>
           )}
           {(artifactsQ.data?.events.length ?? 0) > 0 && (
             <Badge variant="info">

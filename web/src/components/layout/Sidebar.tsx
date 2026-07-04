@@ -6,6 +6,7 @@ import {
   Settings,
   BookOpen,
 } from 'lucide-react';
+import { useAuthStore } from '@/store/authStore';
 
 const navItems = [
   { to: '/', icon: Upload, label: '上传' },
@@ -16,6 +17,7 @@ const navItems = [
 
 export default function Sidebar() {
   const location = useLocation();
+  const user = useAuthStore((s) => s.user);
 
   return (
     <aside className="fixed left-0 top-0 h-full w-64 bg-white border-r border-gray-200 flex flex-col z-40">
@@ -25,7 +27,7 @@ export default function Sidebar() {
             <BookOpen className="w-4.5 h-4.5 text-white" size={18} />
           </div>
           <span className="text-lg font-semibold text-[#0F172A] tracking-tight">
-            Novel Agent
+            QunXiang
           </span>
         </div>
       </div>
@@ -57,11 +59,11 @@ export default function Sidebar() {
       <div className="px-5 py-4 border-t border-gray-100">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center text-white text-xs font-semibold">
-            U
+            {(user?.name ?? '?').slice(0, 1).toUpperCase()}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-[#0F172A] truncate">Demo User</p>
-            <p className="text-xs text-[#94A3B8] truncate">demo-user</p>
+            <p className="text-sm font-medium text-[#0F172A] truncate">{user?.name ?? '未登录'}</p>
+            <p className="text-xs text-[#94A3B8] truncate">{user?.email ?? ''}</p>
           </div>
         </div>
       </div>
