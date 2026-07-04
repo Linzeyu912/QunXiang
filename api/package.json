@@ -13,7 +13,7 @@
     "@fastify/cors": "^8.5.0",
     "@fastify/jwt": "^8.0.1",
     "@fastify/multipart": "^8.1.0",
-    "@fastify/rate-limit": "^11.1.0",
+    "@fastify/rate-limit": "^9.1.0",
     "@novel-agent/core": "workspace:*",
     "@novel-agent/exporters": "workspace:*",
     "@novel-agent/extractors": "workspace:*",

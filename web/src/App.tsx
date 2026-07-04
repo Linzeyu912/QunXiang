@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AppLayout } from './components/layout/AppLayout';
 import { LibraryPage } from './pages/LibraryPage';
@@ -17,13 +17,13 @@ import { EpisodesPage } from './pages/story/EpisodesPage';
 import { DirectorPage } from './pages/story/DirectorPage';
 import { AuthPage } from './pages/AuthPage';
 import { useAuthStore } from './store/authStore';
-import { useBootstrapUser } from './api/auth';
+import { useBootstrapUser, loginDefaultUser } from './api/auth';
 
 /**
  * 未登录拦截：
- * - bootstrapping：有 token 但尚未用 /auth/me 校验（页面刚刷新），等校验完成再决定，
- *   避免用过期 token 渲染页面后才发现要跳登录。
- * - 无 token：重定向到 /login。
+ * - bootstrapping：启动期等待登录态确定——有 token 时等 /auth/me 校验，无 token 时等
+ *   默认账号自动登录尝试完成。期间不抢跳，避免误把正常用户弹回 /login。
+ * - 退出 bootstrapping 后仍无 token（自动登录也失败）：重定向到 /login 手动登录兜底。
  */
 function RequireAuth({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -41,7 +41,10 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
 export function App() {
   const token = useAuthStore((s) => s.token);
   const user = useAuthStore((s) => s.user);
+  const setAuth = useAuthStore((s) => s.setAuth);
+  const setBootstrapping = useAuthStore((s) => s.setBootstrapping);
   const bootstrap = useBootstrapUser();
+  const autoLoginTried = useRef(false);
 
   // 顶层负责用 token 换取/校验用户对象，独立于受保护路由的挂载。
   useEffect(() => {
@@ -50,6 +53,17 @@ export function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
+
+  // 无 token：用默认本地账号静默自动登录，免去每次开机手输账号密码。
+  // 成功 → setAuth（同时退出 bootstrapping，正常进书库）；
+  // 失败 → 仅退出 bootstrapping，落到登录页（手动登录兜底）。
+  useEffect(() => {
+    if (token || autoLoginTried.current) return;
+    autoLoginTried.current = true;
+    loginDefaultUser()
+      .then((data) => setAuth(data.token, data.user))
+      .catch(() => setBootstrapping(false));
+  }, [token, setAuth, setBootstrapping]);
 
   return (
     <Routes>

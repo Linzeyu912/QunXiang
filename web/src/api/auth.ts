@@ -2,6 +2,12 @@ import { useMutation } from '@tanstack/react-query';
 import { apiFetch } from './client';
 import { useAuthStore, type AuthUser } from '@/store/authStore';
 
+/** 默认本地账号（与后端 api/src/lib/defaultUser.ts 的 DEFAULT_USER 对应）。 */
+export const DEFAULT_CREDENTIALS = {
+  email: 'test@example.com',
+  password: 'example',
+} as const;
+
 export function useLogin() {
   const setAuth = useAuthStore((s) => s.setAuth);
   return useMutation({
@@ -28,5 +34,16 @@ export function useBootstrapUser() {
     mutationFn: () => apiFetch<{ user: AuthUser }>('/auth/me'),
     onSuccess: (data) => setUser(data.user),
     onError: () => logout(),
+  });
+}
+
+/**
+ * 无 token 时用默认账号静默登录，供 App 启动 effect 直接 await。
+ * 不挂在 hook 上，避免和组件重渲染耦合。失败时抛出，由调用方决定落点（登录页兜底）。
+ */
+export async function loginDefaultUser(): Promise<{ token: string; user: AuthUser }> {
+  return apiFetch<{ token: string; user: AuthUser }>('/auth/login', {
+    method: 'POST',
+    body: DEFAULT_CREDENTIALS,
   });
 }
