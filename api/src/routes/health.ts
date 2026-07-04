@@ -111,6 +111,41 @@ export async function healthRoutes(fastify: FastifyInstance) {
       });
     }
 
+    // 基本合理性校验：拦截浏览器自动填充串进来的注册账号/密码。
+    // 注册邮箱常被 autofill 填进"模型名"框、注册密码填进 API Key 框，
+    // 这些值格式明显异常，在此挡住并给前端明确错误，避免错误配置被静默存盘。
+    const emailLike = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (body.model !== undefined && body.model.trim() !== '') {
+      if (emailLike.test(body.model.trim())) {
+        return reply.status(400).send({
+          error: '模型名称看起来像邮箱地址，请检查是否被浏览器自动填充了注册账号。',
+        });
+      }
+      if (body.model.length > 128) {
+        return reply.status(400).send({ error: '模型名称过长（上限 128 字符）。' });
+      }
+    }
+
+    if (body.apiKey !== undefined && body.apiKey.trim() !== '') {
+      // API Key 不应是邮箱形态，也不应含空白（合法 key 不会带空格/换行）。
+      if (emailLike.test(body.apiKey.trim())) {
+        return reply.status(400).send({
+          error: 'API Key 看起来像邮箱地址，请检查是否被浏览器自动填充了注册账号。',
+        });
+      }
+      if (/\s/.test(body.apiKey)) {
+        return reply.status(400).send({ error: 'API Key 不应包含空白字符。' });
+      }
+    }
+
+    if (body.baseUrl !== undefined && body.baseUrl.trim() !== '') {
+      const url = body.baseUrl.trim();
+      if (!/^https?:\/\//i.test(url)) {
+        return reply.status(400).send({ error: 'Base URL 必须以 http:// 或 https:// 开头。' });
+      }
+    }
+
     try {
       const config: Partial<RuntimeLlmConfig> = {
         provider: body.provider,

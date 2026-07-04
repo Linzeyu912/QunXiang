@@ -99,6 +99,8 @@ export function LlmSettingsPage() {
           <div className="space-y-1.5">
             <Label>Base URL</Label>
             <Input
+              name="llm-base-url"
+              autoComplete="off"
               placeholder="https://api.openai.com/v1/chat/completions"
               value={baseUrl}
               onChange={(e) => setBaseUrl(e.target.value)}
@@ -110,6 +112,8 @@ export function LlmSettingsPage() {
           <div className="space-y-1.5">
             <Label>模型名称</Label>
             <Input
+              name="llm-model"
+              autoComplete="off"
               placeholder="gpt-4o-mini"
               value={model}
               onChange={(e) => setModel(e.target.value)}
@@ -119,6 +123,8 @@ export function LlmSettingsPage() {
             <Label>API Key</Label>
             <Input
               type="password"
+              name="llm-api-key"
+              autoComplete="off"
               placeholder={status?.keyHint ? `留空则保留当前值（${status.keyHint}）` : 'sk-xxx'}
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
