@@ -19,7 +19,7 @@ export async function fetchExportPreview(
   if (token) headers['Authorization'] = `Bearer ${token}`;
   const res = await fetch(getExportUrl(bookId, format, type), { headers });
   if (!res.ok) {
-    throw new Error(`Export failed: ${res.status}`);
+    throw new Error(`导出失败：${res.status}`);
   }
   return res.text();
 }

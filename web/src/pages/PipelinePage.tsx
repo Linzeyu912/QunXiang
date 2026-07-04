@@ -33,6 +33,27 @@ const PRESCAN_LABEL: Record<PrescanEntityType, string> = {
   event: '事件',
 };
 
+/** 重要性分层与分流的英文 key → 中文，用于翻译后端 importance.txt 产物。 */
+const TIER_LABEL: Record<string, string> = {
+  core: '核心',
+  supporting: '辅助',
+  candidate: '候选',
+  archived: '归档',
+};
+const ROUTE_LABEL: Record<string, string> = {
+  main: '主线',
+  staging: '暂存',
+  archive: '归档',
+};
+
+/** 把后端 summary 字符串里的英文 key（如 core/supporting/main/staging）替换为中文。 */
+function localizeSummary(summary: string | undefined): string | undefined {
+  if (!summary) return summary;
+  return summary.replace(/\b(core|supporting|candidate|archived|main|staging|archive)\b/g, (m) => {
+    return TIER_LABEL[m] ?? ROUTE_LABEL[m] ?? m;
+  });
+}
+
 export function PipelinePage() {
   const { bookId = '' } = useParams();
   const navigate = useNavigate();
@@ -66,7 +87,7 @@ export function PipelinePage() {
 
   async function handleStart() {
     if (!extractionGate.canStart) {
-      toast.error(extractionGate.title ?? 'LLM Provider 未配置', {
+      toast.error(extractionGate.title ?? 'LLM 服务商未配置', {
         description: extractionGate.description,
         action: extractionGate.actionLabel
           ? { label: extractionGate.actionLabel, onClick: () => navigate('/settings/llm') }
@@ -276,14 +297,16 @@ function PrescanArtifactsCard({ bookId }: { bookId: string }) {
                         <span className="truncate">{row.text}</span>
                         <span className="font-mono text-muted-foreground">{row.importance.toFixed(3)}</span>
                         <Badge variant={row.route === 'main' ? 'success' : row.route === 'staging' ? 'info' : 'muted'}>
-                          {row.tier}
+                          {TIER_LABEL[row.tier] ?? row.tier}
                         </Badge>
                       </div>
                     ))}
                   </div>
                   {(section.tierSummary || section.routeSummary) && (
                     <p className="mt-2 text-[11px] text-muted-foreground">
-                      {[section.tierSummary, section.routeSummary].filter(Boolean).join(' · ')}
+                      {[localizeSummary(section.tierSummary), localizeSummary(section.routeSummary)]
+                        .filter(Boolean)
+                        .join(' · ')}
                     </p>
                   )}
                 </div>

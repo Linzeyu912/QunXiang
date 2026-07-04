@@ -367,7 +367,7 @@ function FrameCard({ frame }: { frame: StoryboardFramePrompt }) {
     <div className="space-y-2 rounded-lg border bg-card p-3">
       <div className="flex flex-wrap items-center gap-2">
         <Badge variant="default">帧 {frame.frameNo}</Badge>
-        <Badge variant="outline">{SHOT_LABEL[frame.shotType] ?? frame.shotType}</Badge>
+        <Badge variant="outline">{SHOT_LABEL[frame.shotType] ?? '其他镜头'}</Badge>
         <span className="text-xs text-muted-foreground">场 {frame.sceneNo} · {frame.location}</span>
       </div>
       <p className="text-sm">{frame.narrativeBeat}</p>

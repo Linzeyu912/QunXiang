@@ -55,6 +55,12 @@ const PROP_TYPE_LABEL: Record<string, string> = {
   other: '其他',
 };
 
+const DESCRIPTION_QUALITY_LABEL: Record<string, string> = {
+  sufficient: '充分',
+  thin: '稀薄',
+  missing: '缺失',
+};
+
 export function StoryAssetsPage() {
   const { bookId = '', storyId = '' } = useParams();
   const storyQ = useStoryDetail(bookId, storyId);
@@ -356,7 +362,7 @@ function AssetDetail({
       )}
 
       <EditableTextBlock
-        label={`描述（quality: ${asset.descriptionQuality}）`}
+        label={`描述（质量：${DESCRIPTION_QUALITY_LABEL[asset.descriptionQuality] ?? asset.descriptionQuality}）`}
         value={asset.description}
         needsRepair={asset.needsDescriptionRepair}
         saving={patchM.isPending}
@@ -374,7 +380,7 @@ function AssetDetail({
       )}
 
       <EditableTextBlock
-        label="视觉提示词（visualPrompt）"
+        label="视觉提示词"
         value={asset.visualPrompt}
         saving={patchM.isPending}
         onSave={(next) => save({ visualPrompt: next })}

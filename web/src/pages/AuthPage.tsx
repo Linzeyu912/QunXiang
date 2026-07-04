@@ -63,7 +63,7 @@ export function AuthPage() {
         <div className="flex flex-col items-center gap-2 text-center">
           <BookOpen className="h-8 w-8 text-primary" />
           <div>
-            <h1 className="text-xl font-semibold">Novel Agent</h1>
+            <h1 className="text-xl font-semibold">QunXiang</h1>
             <p className="text-xs text-muted-foreground">小说实体提取与故事链路工作台</p>
           </div>
         </div>
@@ -105,7 +105,7 @@ export function AuthPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
+                  placeholder="请输入邮箱"
                   autoComplete="email"
                   required
                 />

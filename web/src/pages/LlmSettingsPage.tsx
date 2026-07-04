@@ -54,7 +54,7 @@ export function LlmSettingsPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">LLM Provider 设置</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">LLM 服务商设置</h1>
         <p className="text-sm text-muted-foreground">配置提取管道使用的语言模型</p>
       </div>
 
@@ -74,10 +74,10 @@ export function LlmSettingsPage() {
           )}
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-3 text-sm">
-          <StatusRow label="Provider">{status?.provider ?? '-'}</StatusRow>
+          <StatusRow label="服务商">{status?.provider ?? '-'}</StatusRow>
           <StatusRow label="模型">{status?.model || '-'}</StatusRow>
-          <StatusRow label="Base URL">{status?.baseUrl || '-'}</StatusRow>
-          <StatusRow label="API Key">{status?.keyHint || '未设置'}</StatusRow>
+          <StatusRow label="接口地址">{status?.baseUrl || '-'}</StatusRow>
+          <StatusRow label="API 密钥">{status?.keyHint || '未设置'}</StatusRow>
           {status?.error && (
             <p className="col-span-2 text-xs text-destructive">{status.error}</p>
           )}
@@ -90,14 +90,14 @@ export function LlmSettingsPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="rounded-md border bg-muted/30 p-3">
-            <p className="text-sm font-medium">Custom API</p>
+            <p className="text-sm font-medium">自定义 API</p>
             <p className="mt-0.5 text-xs text-muted-foreground">
-              使用兼容 OpenAI Chat Completions 协议的 LLM API。
+              使用兼容 OpenAI Chat Completions 协议的 LLM 接口。
             </p>
           </div>
 
           <div className="space-y-1.5">
-            <Label>Base URL</Label>
+            <Label>接口地址</Label>
             <Input
               name="llm-base-url"
               autoComplete="off"
@@ -120,7 +120,7 @@ export function LlmSettingsPage() {
             />
           </div>
           <div className="space-y-1.5">
-            <Label>API Key</Label>
+            <Label>API 密钥</Label>
             <Input
               type="password"
               name="llm-api-key"
