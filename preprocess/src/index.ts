@@ -13,6 +13,8 @@ export interface PreprocessOptions {
   skipNormalize?: boolean;
   /** Skip noise filtering step (default: false) */
   skipFilter?: boolean;
+  /** 人工「找回」的行号集合（1-based，规范化后文本），这些行保留不删 */
+  keepLines?: Set<number>;
 }
 
 export interface PreprocessReport {
@@ -29,7 +31,7 @@ export function preprocess(
   text: string,
   options: PreprocessOptions = {}
 ): { text: string; report: PreprocessReport } {
-  const { noiseMode = 'conservative', skipNormalize = false, skipFilter = false } = options;
+  const { noiseMode = 'conservative', skipNormalize = false, skipFilter = false, keepLines } = options;
 
   let processed = text;
   let normalizeReport = null;
@@ -43,7 +45,7 @@ export function preprocess(
 
   if (!skipFilter) {
     filterReport = detectNoise(processed);
-    processed = cleanText(processed, filterReport, noiseMode);
+    processed = cleanText(processed, filterReport, noiseMode, keepLines);
   }
 
   return {

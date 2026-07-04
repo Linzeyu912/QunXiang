@@ -1,4 +1,4 @@
-import { preprocess, type PreprocessReport } from '@novel-agent/preprocess';
+import { preprocess, normalize, detectNoise, type PreprocessReport, type FilterReport, type SuspectLine, type NoiseCategory } from '@novel-agent/preprocess';
 import { splitChapters, splitChaptersStructured, type ChapterInfo, type StructuredResult } from './chapter-splitter.js';
 import { type ParseResult } from './txt.js';
 import { prescanEntities, type PrescanResult } from '@novel-agent/entity-prescan';
@@ -64,17 +64,18 @@ export interface ChapterOutlineResult {
   /** 各噪声类别的真实总数（未截断），用于前端分类小计 */
   byCategory: Record<string, number>;
   /** 疑似噪声行明细（保守模式实际移除 confidence >= 0.8 的行），最多 200 条 */
-  suspectLines: Array<{ lineNum: number; content: string; category: string; confidence: number; removed: boolean }>;
+  suspectLines: Array<{ lineNum: number; content: string; category: string; confidence: number; removed: boolean; restored?: boolean }>;
   chapters: Array<{ index: number; title?: string; wordCount: number }>;
 }
 
 /**
  * 轻量章节大纲：只走真实管线的前两步（预处理 + 结构化切章），
  * 不做实体预扫描、不写任何文件。供前端章节视图按需解析。
+ * @param keepLines 人工「找回」的行号集合（规范化后 1-based），这些行保留不删。
  */
-export function parseChapterOutline(content: string, filename: string): ChapterOutlineResult {
+export function parseChapterOutline(content: string, filename: string, keepLines?: Set<number>): ChapterOutlineResult {
   const title = filename.replace(/\.txt$/i, '');
-  const { text, report } = preprocess(content.trim(), {});
+  const { text, report } = preprocess(content.trim(), keepLines ? { keepLines } : {});
   const structure = splitChaptersStructured(text, {});
   const allSuspect = report.filter?.suspectLines ?? [];
   return {
@@ -84,13 +85,18 @@ export function parseChapterOutline(content: string, filename: string): ChapterO
     removedNoiseLines: report.filter?.removedCount ?? 0,
     suspectLinesTotal: allSuspect.length,
     byCategory: { ...(report.filter?.byCategory ?? {}) },
-    suspectLines: allSuspect.slice(0, 200).map((l) => ({
-      lineNum: l.lineNum,
-      content: l.content,
-      category: l.category,
-      confidence: l.confidence,
-      removed: l.confidence >= 0.8,
-    })),
+    suspectLines: allSuspect.slice(0, 200).map((l) => {
+      const wouldRemove = l.confidence >= 0.8;
+      const restored = wouldRemove && keepLines?.has(l.lineNum) === true;
+      return {
+        lineNum: l.lineNum,
+        content: l.content,
+        category: l.category,
+        confidence: l.confidence,
+        removed: wouldRemove && !restored,
+        restored,
+      };
+    }),
     chapters: structure.flatList.map((ch) => ({
       index: ch.index,
       title: ch.title,
@@ -187,5 +193,95 @@ export async function parseTxtEnhanced(
     prescanResult,
     chapterMode: structure.matchedMode,
     isFallback: structure.isFallback,
+  };
+}
+
+/** 单章清洗后内容（含被删/被找回的噪声行标记，供前端高亮阅读）。 */
+export interface ChapterContentResult {
+  chapterIndex: number;
+  title?: string;
+  /** 该章正文（规范化后、未清洗，即含被标记噪声行的完整文本） */
+  content: string;
+  /** 该章第 1 行对应的全文 1-based 行号（用于把章内行号映射到 noiseLines.lineNum） */
+  startLineNum: number;
+  /** 该章涉及的噪声行明细，lineNum 为规范化后文本 1-based 行号 */
+  noiseLines: Array<{ lineNum: number; content: string; category: string; confidence: number; removed: boolean; restored?: boolean }>;
+}
+
+/**
+ * 读取单章清洗后的可读内容，用于章节页「正文阅读 + 噪声高亮 + 找回」。
+ *
+ * 实现要点：
+ * - 在规范化后、**未清洗**的文本上切章（行号与 detectNoise 返回的 lineNum 对齐，可精确高亮）。
+ * - 章节正文 = 该章行号范围内的所有行（含噪声行，前端据此高亮）。
+ * - noiseLines 只返回落在该章行号范围内的 suspect 行。
+ * @param chapterIndex 0-based 章节序号（与大纲 chapters[].index 对齐）
+ * @param keepLines 人工「找回」的行号集合
+ */
+export function getChapterCleanedContent(
+  content: string,
+  filename: string,
+  chapterIndex: number,
+  keepLines?: Set<number>,
+): ChapterContentResult | null {
+  // 仅规范化、不清洗：行号与 detectNoise 一致
+  const norm = normalize(content.trim());
+  const normalizedText = norm.text;
+
+  const report = detectNoise(normalizedText);
+  const allSuspect = report.suspectLines;
+
+  // 在规范化后未清洗文本上切章，拿到每章行号范围
+  const structure = splitChapters(normalizedText);
+  const chapters = structure.chapters;
+  if (chapterIndex < 0 || chapterIndex >= chapters.length) return null;
+
+  // splitChapters 用 lines.slice 切，需要重建每章的行号范围。
+  // 重新遍历 lines，按章节 content 匹配定位起止行号。
+  const lines = normalizedText.split('\n');
+  const target = chapters[chapterIndex];
+  // 用 content 的首行匹配定位起始行号（与 chapter-splitter 内部逻辑一致）
+  const firstLine = target.content.split('\n')[0];
+  let startLine = 0;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i] === firstLine || lines[i].trim() === firstLine.trim()) {
+      startLine = i;
+      break;
+    }
+  }
+  // 下一章的起始行号即本章结束
+  let endLine = lines.length;
+  if (chapterIndex + 1 < chapters.length) {
+    const nextFirst = chapters[chapterIndex + 1].content.split('\n')[0];
+    for (let i = startLine + 1; i < lines.length; i++) {
+      if (lines[i] === nextFirst || lines[i].trim() === nextFirst.trim()) {
+        endLine = i;
+        break;
+      }
+    }
+  }
+
+  // 该章行号范围 [startLine+1, endLine]（1-based）
+  const noiseLines = allSuspect
+    .filter((s) => s.lineNum >= startLine + 1 && s.lineNum <= endLine)
+    .map((s) => {
+      const wouldRemove = s.confidence >= 0.8;
+      const restored = wouldRemove && keepLines?.has(s.lineNum) === true;
+      return {
+        lineNum: s.lineNum,
+        content: s.content,
+        category: s.category,
+        confidence: s.confidence,
+        removed: wouldRemove && !restored,
+        restored,
+      };
+    });
+
+  return {
+    chapterIndex,
+    title: target.title,
+    content: target.content,
+    startLineNum: startLine + 1,
+    noiseLines,
   };
 }
