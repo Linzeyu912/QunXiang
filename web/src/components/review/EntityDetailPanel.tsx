@@ -33,6 +33,14 @@ export function EntityDetailPanel({ entity, type, bookId, onJumpToName }: Props)
   const artifactsQ = useExtractionArtifacts(bookId);
   const artifacts = matchArtifacts(artifactsQ.data, type, entity.name, parseAliases(entity.aliases));
 
+  // 产物查询状态：把 react-query 的加载/数据态映射成 EntityArtifactsSection 能理解的
+  // 三态，让用户能区分"未提取"（no-run）/ "加载中"（loading）/ "就绪但无匹配"（ready）。
+  const artifactsState: 'loading' | 'no-run' | 'ready' = artifactsQ.isLoading
+    ? 'loading'
+    : artifactsQ.data && artifactsQ.data.available
+      ? 'ready'
+      : 'no-run';
+
   useEffect(() => {
     setName(entity.name);
     setAliasesText(parseAliases(entity.aliases).join('，'));
@@ -218,7 +226,7 @@ export function EntityDetailPanel({ entity, type, bookId, onJumpToName }: Props)
             />
           )}
 
-          <EntityArtifactsSection artifacts={artifacts} />
+          <EntityArtifactsSection artifacts={artifacts} state={artifactsState} />
 
           {type === 'character' && <ReviewHistorySection characterId={entity.id} />}
         </div>

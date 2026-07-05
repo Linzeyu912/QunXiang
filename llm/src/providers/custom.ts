@@ -131,11 +131,32 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
 
         if (!response.ok) {
           const errorText = await response.text();
+          // 按 HTTP status 映射到具体 code，让上层（测试连接、提取管线）能给出
+          // 精确提示。原始 body 片段截断保留，方便用户判断是 base url / key /
+          // 模型名哪一项填错（如 minimax 404 通常是 base url 拼错或模型名不存在）。
+          const status = response.status;
+          const snippet = errorText.slice(0, 300);
+          if (status === 401 || status === 403) {
+            throw new LLMError(
+              `认证失败（HTTP ${status}）。请检查 API Key 是否正确、是否与所选服务商匹配。服务端返回：${snippet}`,
+              'custom', 'AUTH_ERROR', false,
+            );
+          }
+          if (status === 404) {
+            throw new LLMError(
+              `接口或模型不存在（HTTP 404）。请检查 Base URL 末尾是否为 /v1（不要带 /chat/completions 以外的路径），以及模型名称是否正确。服务端返回：${snippet}`,
+              'custom', 'MODEL_NOT_FOUND', false,
+            );
+          }
+          if (status === 429) {
+            throw new LLMError(
+              `请求被限流（HTTP 429），稍后重试。服务端返回：${snippet}`,
+              'custom', 'RATE_LIMIT', true,
+            );
+          }
           throw new LLMError(
-            `Custom LLM API error ${response.status}: ${errorText}`,
-            'custom',
-            'UNKNOWN',
-            false
+            `LLM 接口返回 HTTP ${status}：${snippet}`,
+            'custom', 'UNKNOWN', false,
           );
         }
 
@@ -163,6 +184,14 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
 
         return schema.parse(parsed);
       } catch (error) {
+        // AbortController 触发的超时：fetch 抛 AbortError（name==='AbortError'），
+        // 单独映射为 TIMEOUT，避免被 mapProviderError 当成普通网络错误。
+        if (error instanceof Error && error.name === 'AbortError') {
+          throw new LLMError(
+            `请求超时（${Math.round(timeout / 1000)}s）。可能是网络不可达，或 Base URL 指向了错误的地址。`,
+            'custom', 'TIMEOUT', true,
+          );
+        }
         if (error instanceof LLMError) {
           throw error;
         }

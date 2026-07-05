@@ -126,6 +126,12 @@ export function AuthPage() {
                 {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 {mode === 'login' ? '登录' : '注册并登录'}
               </Button>
+              {mode === 'login' && (
+                <p className="pt-1 text-center text-xs text-muted-foreground">
+                  本地默认账号：<code className="rounded bg-muted px-1">test@example.com</code> /{' '}
+                  <code className="rounded bg-muted px-1">example</code>
+                </p>
+              )}
             </form>
           </CardContent>
         </Card>

@@ -66,17 +66,74 @@ function FieldGrid({ fields }: { fields: Record<string, string> }) {
   );
 }
 
+/** 产物查询状态：用于在产物缺失/加载时给出明确提示，而非整节静默消失。 */
+export type ArtifactsQueryState = 'loading' | 'no-run' | 'ready';
+
 /**
  * 提取管线富产物展示：视觉设定（visual-description）、结构化描述字段与证据
  * （description-fusion）、生成提示词（prompt-generation）。
- * 产物缺失时整节不渲染，不影响原有面板。
+ *
+ * 状态说明（避免用户困惑"为什么看不到提示词"）：
+ * - loading：产物接口请求中 → 显示"加载产物中…"
+ * - no-run：该书还没有任何完成的提取运行 → 显示"尚未生成产物，请先完成提取"
+ * - ready：有运行，但当前实体未匹配到产物 → 显示"该实体暂无生成提示词"
+ * - ready 且 artifacts 存在：正常渲染视觉设定 / 结构化描述 / 提示词。
  */
-export function EntityArtifactsSection({ artifacts }: { artifacts: EntityArtifacts | undefined }) {
-  if (!artifacts) return null;
+export function EntityArtifactsSection({
+  artifacts,
+  state = 'ready',
+}: {
+  artifacts: EntityArtifacts | undefined;
+  state?: ArtifactsQueryState;
+}) {
+  // 加载中：永远显示一条提示，让用户知道产物正在读取。
+  if (state === 'loading') {
+    return (
+      <>
+        <Separator />
+        <div className="text-sm text-muted-foreground">加载提取产物中…</div>
+      </>
+    );
+  }
+
+  // 该书还没有完成的提取运行：明确告知用户去跑提取，而不是什么都不显示。
+  if (state === 'no-run') {
+    return (
+      <>
+        <Separator />
+        <div className="rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
+          本书尚未生成提取产物（视觉设定 / 结构化描述 / 生成提示词）。
+          请先在「管道」页完成一次提取。
+        </div>
+      </>
+    );
+  }
+
+  // ready 态但当前实体没有匹配到任何产物：提示该实体暂无产物，而非整节消失。
+  if (!artifacts) {
+    return (
+      <>
+        <Separator />
+        <div className="rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
+          该实体暂无生成提示词（可能在本次提取中被判定为低置信度或未参与提示词生成）。
+        </div>
+      </>
+    );
+  }
+
   const fused = artifacts.visual ?? artifacts.description;
   const visual = artifacts.visual;
   const prompt = artifacts.prompt;
-  if (!fused && !prompt) return null;
+  if (!fused && !prompt) {
+    return (
+      <>
+        <Separator />
+        <div className="rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
+          该实体暂无生成提示词。
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

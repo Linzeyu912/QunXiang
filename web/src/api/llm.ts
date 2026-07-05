@@ -46,6 +46,8 @@ export function useSetLlmConfig() {
 export interface LlmTestResult {
   success: boolean;
   message: string;
+  /** 原始错误片段（截断），用于在 UI 展示具体失败原因，便于排查 base url/key/model */
+  detail?: string;
   timestamp: string;
 }
 

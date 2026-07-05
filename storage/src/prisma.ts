@@ -1,5 +1,9 @@
 import { PrismaClient } from '@prisma/client';
 
+// 重新导出 Prisma 命名空间，供 api 包等消费方使用事务客户端类型
+// （Prisma.TransactionClient），避免每个包各自依赖 @prisma/client。
+export { Prisma } from '@prisma/client';
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 function getDatabaseUrl(): string {
