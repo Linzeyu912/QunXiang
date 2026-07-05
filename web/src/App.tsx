@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { toast } from 'sonner';
 import { AppLayout } from './components/layout/AppLayout';
 import { LibraryPage } from './pages/LibraryPage';
 import { BookLayout } from './pages/BookLayout';
@@ -56,13 +57,19 @@ export function App() {
 
   // 无 token：用默认本地账号静默自动登录，免去每次开机手输账号密码。
   // 成功 → setAuth（同时退出 bootstrapping，正常进书库）；
-  // 失败 → 仅退出 bootstrapping，落到登录页（手动登录兜底）。
+  // 失败 → 退出 bootstrapping 落到登录页（手动登录兜底），并提示默认账号凭据，
+  //        让用户知道下一步（换机后 ensureDefaultUser 可能改过密码，用户不知情）。
   useEffect(() => {
     if (token || autoLoginTried.current) return;
     autoLoginTried.current = true;
     loginDefaultUser()
       .then((data) => setAuth(data.token, data.user))
-      .catch(() => setBootstrapping(false));
+      .catch(() => {
+        setBootstrapping(false);
+        toast.info('自动登录失败，请手动登录。本地默认账号：test@example.com / example', {
+          duration: 8000,
+        });
+      });
   }, [token, setAuth, setBootstrapping]);
 
   return (

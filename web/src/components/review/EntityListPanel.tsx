@@ -32,8 +32,12 @@ export function EntityListPanel({ entities, type, selectedId, onSelect, artifact
     );
   }
 
+  // 滚动容器用 absolute inset-0 填满父级（父级 EntityReviewPage 已加 relative）。
+  // 这是 @tanstack/react-virtual 官方推荐的稳健写法：保证 virtualizer 读到的
+  // clientHeight 永远等于父格高度，不因 grid/flex 子项 min-height 撑开或窗口
+  // 缩放而塌陷为 0（塌陷时只会渲染首屏可见项，表现为"只看得到最上面"）。
   return (
-    <div ref={parentRef} className="h-full overflow-auto">
+    <div ref={parentRef} className="absolute inset-0 overflow-auto">
       <div style={{ height: virtualizer.getTotalSize(), position: 'relative' }}>
         {virtualizer.getVirtualItems().map((v) => {
           const entity = entities[v.index];

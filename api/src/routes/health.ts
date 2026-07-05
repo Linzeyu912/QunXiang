@@ -223,32 +223,59 @@ export async function healthRoutes(fastify: FastifyInstance) {
           timestamp: new Date().toISOString(),
         };
       } catch (chatErr) {
+        // custom provider 现在抛出带 code 的 LLMError，这里据此给出精确提示；
+        // 同时把原始报错片段放进 detail，让前端能展示具体原因（区分 base url /
+        // key / 模型名 / 网络 / 超时），而不是笼统的"测试失败"。
+        const { LLMError } = await import('@novel-agent/llm');
+        const code = chatErr instanceof LLMError ? chatErr.code : undefined;
         const msg = chatErr instanceof Error ? chatErr.message : String(chatErr);
-        if (msg.includes('401') || msg.includes('auth') || msg.includes('API key') || msg.includes('Authentication')) {
+        const detail = msg.slice(0, 400);
+
+        if (code === 'AUTH_ERROR' || /401|403|认证失败|unauthorized|api key/i.test(msg)) {
           return {
             success: false,
-            message: '认证失败，请检查 API Key。',
+            message: '认证失败（401/403）。请检查 API Key 是否正确、是否与所选服务商匹配。',
+            detail,
             timestamp: new Date().toISOString(),
           };
         }
-        if (msg.includes('404') || msg.includes('model')) {
+        if (code === 'MODEL_NOT_FOUND' || /404|模型不存在|model not found/i.test(msg)) {
           return {
             success: false,
-            message: '模型不存在，请检查模型名称。',
+            message: '接口或模型不存在（404）。请检查 Base URL（末尾通常为 /v1）与模型名称是否正确。',
+            detail,
             timestamp: new Date().toISOString(),
           };
         }
-        if (msg.includes('network') || msg.includes('fetch') || msg.includes('ECONNREFUSED') || msg.includes('abort')) {
+        if (code === 'TIMEOUT' || /超时|timeout|timed out|abort/i.test(msg)) {
           return {
             success: false,
-            message: `网络错误：${msg.substring(0, 100)}`,
+            message: '请求超时。可能是网络不可达，或 Base URL 指向了错误的地址。',
+            detail,
             timestamp: new Date().toISOString(),
           };
         }
-        // Other errors — connection works but something else failed
+        if (code === 'RATE_LIMIT' || /429|限流|rate limit/i.test(msg)) {
+          return {
+            success: false,
+            message: '请求被限流（429），稍后重试。',
+            detail,
+            timestamp: new Date().toISOString(),
+          };
+        }
+        if (code === 'NETWORK_ERROR' || /network|fetch|ECONNREFUSED|ENOTFOUND|getaddrinfo|DNS/i.test(msg)) {
+          return {
+            success: false,
+            message: '网络错误：无法连接到服务端。请检查 Base URL 是否可达、网络/代理设置。',
+            detail,
+            timestamp: new Date().toISOString(),
+          };
+        }
+        // 兜底：连接可能通了，但响应内容不符合预期（解析失败等）
         return {
           success: false,
-          message: `测试失败：${msg.substring(0, 150)}`,
+          message: '测试失败：连接正常，但响应不符合预期。可能是模型名错误或返回格式不兼容。',
+          detail,
           timestamp: new Date().toISOString(),
         };
       }

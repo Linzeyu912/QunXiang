@@ -99,31 +99,56 @@ QunXiang/
 - pnpm 9+（未安装可运行 `npm install -g pnpm`）
 - 一个 LLM Provider：首次启动默认未配置，需先在 `LLM 设置` 填 API Key；仅冒烟测试时可运行 `start-mock.bat` 使用内置 Mock 数据
 
-## 快速启动（Windows）
+## 首次安装 / 跨机器部署（重要）
 
-首次克隆后在仓库根目录运行：
+> 本项目所有**本地配置和数据都不进 git**（出于安全与版权考虑）：
+> `api/.env`（含 LLM API Key）、`storage/prisma/dev.db`（用户/书/实体数据）、
+> `.novel-agent-config.encrypted`（Web 端保存的 LLM 配置密文）、`output/`（提取产物，
+> 含小说原文片段）都被 `.gitignore` 排除。
+>
+> **这意味着把仓库 clone 到新机器后，这些都需要重新生成，不是"配置丢失"**。
+> 这是设计如此，不是 bug。下面是任一台新机器首次跑起来的标准流程。
+
+### Windows（推荐用脚本）
+
+首次克隆后在仓库根目录依次运行：
 
 ```bat
 setup.bat
 launch.bat
 ```
 
-- `setup.bat`：安装依赖、创建 `api/.env` 与 `storage/.env`、初始化 SQLite 数据库（默认不写入 API Key）
+- `setup.bat`：安装依赖（`pnpm install`）、创建 `api/.env` 与 `storage/.env`、初始化 SQLite 数据库（默认不写入 API Key）
 - `launch.bat`：同时启动 API（`http://localhost:3000`）与 Web（`http://localhost:5173`）
 
 也可以直接运行 `start.bat`，它会在缺少本地配置时补齐 env 和 SQLite，然后启动服务；只跑假数据用 `start-mock.bat`。
 
-## 手动启动（macOS / Linux）
+### macOS / Linux（手动）
 
 ```bash
 pnpm install
 cp api/.env.example api/.env
-pnpm db:push
-pnpm dev:api   # 后端
-pnpm dev:web   # 前端
+pnpm db:push        # 初始化/同步 SQLite 数据库结构
+pnpm dev:api        # 后端
+pnpm dev:web        # 前端（另开一个终端）
 ```
 
 打开 `http://localhost:5173`。
+
+### 从一台机器搬到另一台机器时的检查清单
+
+换台电脑部署时，以下内容**不会随 git 同步，必须在新机器重新配置**：
+
+| 内容 | 位置 | 新机器要做什么 |
+| --- | --- | --- |
+| 数据库 | `storage/prisma/dev.db` | `pnpm db:push` 重建空库；用户与书籍需重新创建/上传 |
+| LLM 配置 | `api/.env` + `.novel-agent-config.encrypted` | 在 Web `LLM 设置` 页重新填 API Key（详见下一节） |
+| 提取产物 | `output/`、`api/.intermediate/` | 重新上传书 + 跑一次提取后自动生成 |
+| 上传原文 | `storage/uploads/` | 重新上传 TXT |
+
+> 默认本地账号 `test@example.com / example`：API 启动时会自动确保这个账号存在（空库则创建；
+> 非空库会把"持书用户"改造成默认账号并重置密码为 `example`）。前端开机尝试用此账号自动登录，
+> 失败时登录页会显示该提示，可直接手动登录。换机后请用这套凭据登录。
 
 ## 配置 LLM
 
@@ -131,6 +156,19 @@ pnpm dev:web   # 前端
 
 - `Mock`：内置假数据，不需要 API Key，仅用于部署冒烟测试
 - `Custom API`：填写 API Key、模型名、Base URL（可以是 `/v1` 根地址，也可以是完整 `/chat/completions` 地址）
+
+设置页内「常见服务商填写示例」可一键填入以下配置：
+
+| 服务商 | 接口地址（Base URL） | 模型名示例 |
+| --- | --- | --- |
+| MiniMax（国内） | `https://api.minimaxi.com/v1` | `MiniMax-M2` |
+| MiniMax（国际） | `https://api.minimax.io/v1` | `MiniMax-M2` |
+| DeepSeek | `https://api.deepseek.com/v1` | `deepseek-chat` |
+| OpenAI | `https://api.openai.com/v1` | `gpt-4o-mini` |
+
+> 注意：MiniMax 国内站与国际站的 API Key 不通用；接口地址填到 `/v1` 即可，后端会自动补全 `/chat/completions`。
+
+填好后点「测试连接」验证；失败时会显示具体原因（认证失败 / 接口或模型不存在 / 网络错误 / 超时），便于定位是 Key、模型名还是 Base URL 的问题。
 
 也可以直接在 `api/.env` 配置，修改后重启 API：
 
@@ -143,27 +181,37 @@ LLM_MODEL=gpt-4o
 
 ## 使用流程
 
-1. 首次访问进入登录页，点「注册」创建账户（邮箱 + 密码，密码本地 scrypt 哈希存储），登录后进入 `书库`。
+1. 首次访问会自动尝试用本地默认账号登录；失败时进入登录页，可用 `test@example.com / example` 登录，或点「注册」创建新账户（密码本地 scrypt 哈希存储）。
 2. 在 `书库` 上传一本 TXT 小说。
 3. 打开书籍详情，先看 `章节` Tab：确认切章模式、章节字数、噪声过滤明细和叙事事件标注。
 4. 先到 `LLM 设置` 配好 Provider；未就绪时 `管道` Tab 和书库列表里的提取按钮会禁用。
 5. 进入 `管道` Tab，点击开始提取；运行历史、预扫描中间产物和结果概览会保留在页面上。
 6. 提取完成后进入 `角色` / `场景` / `道具` Tab 审核实体（支持 J/K/A/R 快捷键、批量通过）。
-7. 在实体详情里查看结构化描述、视觉设定、提示词、证据、共现角色和审核历史。
+7. 在实体详情里查看结构化描述、视觉设定、提示词、证据、共现角色和审核历史。**未完成提取时详情页会明确提示「尚未生成产物」，而非空白。**
 8. 进入 `导出` Tab 选择实体类型与格式，下载 JSON / Markdown / CSV。
 9. 需要故事级资产时，进入 `故事` / `导演` / `剧集` 等 Tab 继续做切分、资产和分镜流程。
 
 > 数据按账户隔离：每个用户只能看到自己上传的书。启用鉴权前的 anonymous 数据在启用鉴权后不再可见，需要重新上传。
 
+## 常见问题
+
+- **换台电脑后 LLM 调用失败 / 看不到提示词**：LLM Key 与提取产物都只存在本机（不进 git）。新机器需在 `LLM 设置` 重新填 Key，并重新上传书、跑一次提取，提示词等产物才会出现。
+- **默认账号 `test@example.com` 登不上**：API 启动时会自动确保该账号存在并把密码重置为 `example`；若库中已有持书用户，该用户会被改造成默认账号。重启一次 API 后用 `test@example.com / example` 登录即可。
+- **实体列表只能看到最上面、无法滚动**：已修复。若仍出现，刷新页面一次即可。
+- **注册账号/密码被自动填进了 LLM 设置框**：浏览器自动填充导致。密钥框已改为显隐切换，若仍被填充，清除浏览器对该站点的已保存密码即可。
+- **LLM 测试连接报错**：点「测试连接」查看具体提示——`认证失败` 是 Key 错；`接口或模型不存在` 是 Base URL 或模型名错；`超时/网络错误` 检查地址可达性与代理设置。
+
 ## 重要目录
 
-- `api/.env`：API 运行配置
-- `storage/.env`：Prisma/SQLite 辅助配置
-- `storage/prisma/dev.db`：默认本地 SQLite 数据库
-- `storage/uploads/`：上传的 TXT 原文
-- `api/output/`：实体提取与故事链路最终产物
-- `api/.intermediate/`：预扫描等中间产物
-- `.novel-agent-config.encrypted`：从 Web UI 保存的 LLM 配置密文
+- `api/.env`：API 运行配置（LLM Key、JWT 密钥等，**不进 git**）
+- `storage/.env`：Prisma/SQLite 辅助配置（**不进 git**）
+- `storage/prisma/dev.db`：默认本地 SQLite 数据库（**不进 git**）
+- `storage/uploads/`：上传的 TXT 原文（**不进 git**）
+- `api/output/`：实体提取与故事链路最终产物（含原文片段，**不进 git**）
+- `api/.intermediate/`：预扫描等中间产物（**不进 git**）
+- `.novel-agent-config.encrypted`：从 Web UI 保存的 LLM 配置密文（**不进 git**）
+
+> 带「不进 git」标记的文件都不会随仓库同步，新机器部署时需按上文「跨机器部署」一节重新生成。
 
 ## 应用场景
 
