@@ -5,14 +5,19 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 // （本测试只关心 getExtractionStages 的 DB 校验逻辑，不涉及 LLM）。
 vi.mock('@novel-agent/llm', () => ({
   getDefaultProvider: vi.fn(),
+  getApiKeyCount: vi.fn(() => 1),
   LLM_PROVIDERS: {},
 }));
 
-// extraction.service.ts 顶层会 new TaskDispatcher 并 startWorker，scheduler 包
+// extraction.service.ts 顶层会 new TaskDispatcher 并 startWorkers，scheduler 包
 // 在 vitest 单跑时加载异常。mock 掉 scheduler，只保留 getExtractionStages 真实逻辑。
 vi.mock('@novel-agent/scheduler', () => ({
   TaskDispatcher: vi.fn().mockImplementation(() => ({
     startWorker: vi.fn(),
+    startWorkers: vi.fn(),
+    stopWorkers: vi.fn(),
+    stopWorker: vi.fn(),
+    getWorkerCount: vi.fn(() => 1),
     startExtraction: vi.fn(),
     getTaskStatus: vi.fn(),
     processNext: vi.fn(),

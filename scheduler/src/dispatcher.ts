@@ -77,8 +77,13 @@ async function withRetry<T>(
 
 export class TaskDispatcher {
   private agents = new Map<AgentType, (payload: unknown) => Promise<any>>();
-  private isProcessing = false;
-  private workerTimer: ReturnType<typeof setInterval> | null = null;
+  /**
+   * Worker 池：每个 worker 一个定时器 + busy 标志。
+   * 多 worker 让多本书可并行提取（worker 数 = min(key 数, 用户设定上限)）。
+   * 任务消费是并发安全的——queue.dequeue 是"取走即标记 running"的原子操作，
+   * 多个 worker 各自 dequeue 天然不会抢同一任务。
+   */
+  private workers: { timer: ReturnType<typeof setInterval> | null; busy: boolean }[] = [];
 
   private static readonly STAGE_NAMES: Record<AgentType, string> = {
     extractor: '角色提取',
@@ -113,22 +118,45 @@ export class TaskDispatcher {
     return { extractorTaskId };
   }
 
-  /** Start a background worker that polls for pending extractor tasks */
-  startWorker(intervalMs = 1000) {
-    if (this.workerTimer) return;
+  /**
+   * Start background workers that poll for pending extractor tasks.
+   *
+   * 多 worker 并发：count 个 worker 各自独立轮询队列，多本书可同时提取。
+   * 单 worker（count=1）退化为原有行为。调用前会先停掉旧 worker 池并回收
+   * 上一进程遗留的 running 任务，因此可安全地多次调用以动态调整并发度。
+   */
+  startWorkers(count = 1, intervalMs = 1000) {
+    this.stopWorkers();
     // 启动前回收上一进程遗留的 running 任务（不阻塞启动）
     void this.recoverInterruptedTasks().catch((err) =>
       console.error('[Dispatcher] startup recovery failed:', err),
     );
-    this.workerTimer = setInterval(async () => {
-      if (this.isProcessing) return;
-      this.isProcessing = true;
-      try {
-        await this.processNext('extractor');
-      } finally {
-        this.isProcessing = false;
-      }
-    }, intervalMs);
+    const n = Math.max(1, Math.floor(count));
+    for (let i = 0; i < n; i++) {
+      const workerIdx = i;
+      const worker = { timer: null as ReturnType<typeof setInterval> | null, busy: false };
+      worker.timer = setInterval(async () => {
+        if (worker.busy) return;
+        worker.busy = true;
+        try {
+          await this.processNext('extractor');
+        } finally {
+          worker.busy = false;
+        }
+      }, intervalMs);
+      this.workers.push(worker);
+    }
+    console.log(`[Dispatcher] 启动 ${n} 个 worker（间隔 ${intervalMs}ms）`);
+  }
+
+  /** 单 worker 兼容入口（等价于 startWorkers(1)）。 */
+  startWorker(intervalMs = 1000) {
+    this.startWorkers(1, intervalMs);
+  }
+
+  /** 当前 worker 数量（供上层判断是否需要调整并发度）。 */
+  getWorkerCount(): number {
+    return this.workers.length;
   }
 
   /**
@@ -163,12 +191,17 @@ export class TaskDispatcher {
     }
   }
 
-  /** Stop the background worker */
-  stopWorker() {
-    if (this.workerTimer) {
-      clearInterval(this.workerTimer);
-      this.workerTimer = null;
+  /** 停止全部 worker（动态调整并发度时先调它再 startWorkers(n)）。 */
+  stopWorkers() {
+    for (const w of this.workers) {
+      if (w.timer) clearInterval(w.timer);
     }
+    this.workers = [];
+  }
+
+  /** 单 worker 兼容入口别名。 */
+  stopWorker() {
+    this.stopWorkers();
   }
 
   async processNext(agentType: AgentType): Promise<string | undefined> {

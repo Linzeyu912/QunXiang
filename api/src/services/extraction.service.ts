@@ -2,15 +2,93 @@ import { BookRepository, TaskRepository } from '@novel-agent/storage';
 import { TaskDispatcher, DatabaseTaskQueue, eventBus } from '@novel-agent/scheduler';
 import type { PipelineEvent } from '@novel-agent/scheduler';
 import { CharacterRepository, LocationRepository, ItemRepository } from '@novel-agent/storage';
-import { getDefaultProvider } from '@novel-agent/llm';
+import { getDefaultProvider, getApiKeyCount } from '@novel-agent/llm';
 import type { AgentType } from '@novel-agent/core';
 import { ConflictError } from '../lib/errors.js';
 
 const taskQueue = new DatabaseTaskQueue();
 const dispatcher = new TaskDispatcher(taskQueue);
 
-// Start background worker to process extraction pipelines asynchronously
-dispatcher.startWorker(1000);
+/**
+ * 并发模式：
+ * - parallel-books：worker 数 = key 数，多本书并行；单本内部并发度保守（每 key ~2 路）。
+ * - single-book-speed：worker 数 = 1，全部 LLM 并发额度集中给当前这一本。
+ *
+ * 用户可在 LLM 设置页切换；切换会热重载 worker 数与单本内部并发度，无需重启 API。
+ */
+export type ConcurrencyMode = 'parallel-books' | 'single-book-speed';
+
+let concurrencyMode: ConcurrencyMode = 'parallel-books';
+
+/**
+ * 根据并发模式 + key 数计算应启动的 worker 数。
+ * parallel-books：min(key 数, 8)（8 是硬上限，避免起太多 worker 拖垮 SQLite/事件循环）。
+ * single-book-speed：恒为 1。
+ */
+export function computeWorkerCount(mode: ConcurrencyMode, keyCount: number): number {
+  if (mode === 'single-book-speed') return 1;
+  if (keyCount <= 0) return 1; // 未配置 key 时仍起 1 个（任务会因未配置直接失败，符合现状）
+  return Math.min(keyCount, 8);
+}
+
+/** 根据并发模式设置单本内部各 agent 的并发度（通过 env 注入，下次 createExtractor 生效）。 */
+function applyIntraBookConcurrency(mode: ConcurrencyMode): void {
+  if (mode === 'single-book-speed') {
+    // 拉满单本内部并发：把每 key 的 ~10 路额度尽量用上。
+    // 这里只设下限，若用户已显式设了更高的值则保留。
+    const want = (k: string, v: number) => {
+      const cur = parseInt(process.env[k] || '', 10);
+      if (!Number.isFinite(cur) || cur < v) process.env[k] = String(v);
+    };
+    want('EXTRACTOR_MAX_CONCURRENT_BATCHES', 8);
+    want('VISUAL_DESCRIPTION_MAX_CONCURRENT', 8);
+  } else {
+    // parallel-books：保守并发，避免单本占用过多额度导致并行多本时互相 429。
+    process.env.EXTRACTOR_MAX_CONCURRENT_BATCHES = String(Math.max(2, Math.min(4, getApiKeyCount() * 2 || 2)));
+    process.env.VISUAL_DESCRIPTION_MAX_CONCURRENT = String(Math.max(2, Math.min(4, getApiKeyCount() * 2 || 2)));
+  }
+}
+
+/**
+ * 应用当前并发配置：按模式设单本内部并发度，再启动对应数量的 worker。
+ * 幂等：startWorkers 内部会先 stopWorkers 再起，可重复调用。
+ */
+export function applyConcurrency(): void {
+  applyIntraBookConcurrency(concurrencyMode);
+  const keyCount = getApiKeyCount();
+  const workerCount = computeWorkerCount(concurrencyMode, keyCount);
+  dispatcher.startWorkers(workerCount, 1000);
+}
+
+/** 用户切换并发模式时热重载：更新模式 + 重新应用。返回新的状态快照。 */
+export function reconfigureWorkers(mode: ConcurrencyMode): {
+  mode: ConcurrencyMode;
+  keyCount: number;
+  workers: number;
+} {
+  concurrencyMode = mode;
+  applyConcurrency();
+  return getConcurrencyStatus();
+}
+
+/** 当前并发状态快照（供 status 端点返回给前端展示）。 */
+export function getConcurrencyStatus(): {
+  mode: ConcurrencyMode;
+  keyCount: number;
+  workers: number;
+  recommended: number;
+} {
+  const keyCount = getApiKeyCount();
+  return {
+    mode: concurrencyMode,
+    keyCount,
+    workers: dispatcher.getWorkerCount(),
+    recommended: computeWorkerCount('parallel-books', keyCount),
+  };
+}
+
+// 启动时应用一次并发配置（默认 parallel-books，worker 数随 key 数）
+applyConcurrency();
 
 const PIPELINE_STAGES: { id: AgentType; name: string; weight: number }[] = [
   { id: 'extractor', name: '角色提取', weight: 25 },

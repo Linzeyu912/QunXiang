@@ -53,7 +53,8 @@ export interface ExtractionResult<T> {
   };
 }
 
-export { createProvider, getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getRuntimeConfig, getMaskedConfig, loadPersistedConfig } from './factory.js';
+export { createProvider, getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig } from './factory.js';
 export { LLMError, ProviderNotConfiguredError } from './errors.js';
 export { maskApiKey } from './keyVault.js';
+export { normalizeApiKeys } from './configStore.js';
 export type { RuntimeLlmConfig } from './configStore.js';
