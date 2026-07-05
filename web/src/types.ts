@@ -257,13 +257,27 @@ export interface PrescanArtifactsResponse {
   importance?: PrescanImportanceReport;
 }
 
+export type ConcurrencyMode = 'parallel-books' | 'single-book-speed';
+
+export interface ConcurrencyStatus {
+  mode: ConcurrencyMode;
+  keyCount: number;
+  workers: number;
+  recommended: number;
+}
+
 export interface LlmStatus {
   provider: string;
   configured: boolean;
   canExtract: boolean;
   keyHint: string;
+  /** 多 key 的 mask 列表（每个 key 一个） */
+  keyHints?: string[];
+  /** 当前配置的 key 数量 */
+  keyCount?: number;
   baseUrl: string;
   model: string;
+  concurrency?: ConcurrencyStatus;
   timestamp: string;
   error?: string;
 }

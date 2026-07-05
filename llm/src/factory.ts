@@ -5,7 +5,7 @@ import { createMockProvider } from './providers/mock.js';
 import { LLMError, ProviderNotConfiguredError } from './errors.js';
 import { maskApiKey } from './keyVault.js';
 import type { RuntimeLlmConfig } from './configStore.js';
-import { saveConfigToDisk, loadConfigFromDisk } from './configStore.js';
+import { saveConfigToDisk, loadConfigFromDisk, normalizeApiKeys } from './configStore.js';
 
 /**
  * Provider configuration schema
@@ -82,6 +82,12 @@ export function setRuntimeConfig(config: Partial<RuntimeLlmConfig>, persist: boo
   // Shallow merge
   if (config.provider !== undefined) runtimeConfig.provider = config.provider;
   if (config.apiKey !== undefined) runtimeConfig.apiKey = config.apiKey || undefined; // '' → undefined (clear)
+  // 多 key：传入 apiKeys 数组时整体替换。空数组表示清空所有 key。
+  if (config.apiKeys !== undefined) {
+    runtimeConfig.apiKeys = config.apiKeys.filter((k) => k && k.trim()).map((k) => k.trim());
+    // 同步单 key 字段，保持向后兼容（取第一个）
+    runtimeConfig.apiKey = runtimeConfig.apiKeys[0];
+  }
   if (config.baseUrl !== undefined) runtimeConfig.baseUrl = config.baseUrl;
   if (config.model !== undefined) runtimeConfig.model = config.model;
 
@@ -102,14 +108,36 @@ export function getRuntimeConfig(): RuntimeLlmConfig | undefined {
 }
 
 /**
+ * 解析当前生效的 key 数量（runtimeConfig 优先，退回 env）。
+ * 供调度器按 key 数自动设置 worker 并发度。
+ */
+export function getApiKeyCount(): number {
+  if (runtimeConfig) {
+    const keys = normalizeApiKeys(runtimeConfig);
+    if (keys.length > 0) return keys.length;
+  }
+  // env 兜底
+  if (process.env.LLM_API_KEYS) {
+    const n = process.env.LLM_API_KEYS.split(',').map((s) => s.trim()).filter(Boolean).length;
+    if (n > 0) return n;
+  }
+  if (process.env.LLM_API_KEY) return 1;
+  return 0;
+}
+
+/**
  * Get masked runtime config (safe to send to frontend).
  * Returns undefined if no runtimeConfig is set.
+ *
+ * keyHint 保留（第一个 key 的 mask，向后兼容）；新增 keyHints（全部 key 的 mask 数组）。
  */
-export function getMaskedConfig(): { provider: string; keyHint: string; baseUrl: string; model: string } | undefined {
+export function getMaskedConfig(): { provider: string; keyHint: string; keyHints: string[]; baseUrl: string; model: string } | undefined {
   if (!runtimeConfig) return undefined;
+  const keys = normalizeApiKeys(runtimeConfig);
   return {
     provider: runtimeConfig.provider,
-    keyHint: runtimeConfig.apiKey ? maskApiKey(runtimeConfig.apiKey) : '',
+    keyHint: keys[0] ? maskApiKey(keys[0]) : '',
+    keyHints: keys.map((k) => maskApiKey(k)),
     baseUrl: runtimeConfig.baseUrl || '',
     model: runtimeConfig.model || '',
   };
@@ -157,12 +185,15 @@ async function resolveProvider(): Promise<LLMProvider> {
   // 1. Check runtime config first
   if (runtimeConfig) {
     switch (runtimeConfig.provider) {
-      case 'custom':
+      case 'custom': {
+        // 多 key：用 normalizeApiKeys 合并 apiKeys/apiKey，传给 provider 轮询
+        const keys = normalizeApiKeys(runtimeConfig);
         return createCustomProvider({
-          apiKey: runtimeConfig.apiKey,
+          apiKeys: keys,
           baseUrl: runtimeConfig.baseUrl,
           model: runtimeConfig.model,
         });
+      }
       case 'mock':
         return createMockProvider();
     }

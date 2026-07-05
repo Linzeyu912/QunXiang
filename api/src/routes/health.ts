@@ -1,6 +1,7 @@
 import type { FastifyInstance } from 'fastify';
-import { getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getMaskedConfig, loadPersistedConfig } from '@novel-agent/llm';
+import { getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig } from '@novel-agent/llm';
 import type { RuntimeLlmConfig } from '@novel-agent/llm';
+import { reconfigureWorkers, getConcurrencyStatus, type ConcurrencyMode } from '../services/extraction.service.js';
 
 /**
  * Health check endpoints for the API
@@ -25,14 +26,18 @@ export async function healthRoutes(fastify: FastifyInstance) {
       const provider = await getDefaultProvider();
       const isConfigured = await provider.isConfigured();
       const maskedConfig = getMaskedConfig();
+      const concurrency = getConcurrencyStatus();
 
       return {
         provider: providerName,
         configured: isConfigured,
         canExtract: isConfigured,
         keyHint: maskedConfig?.keyHint || '',
+        keyHints: maskedConfig?.keyHints || [],
+        keyCount: getApiKeyCount(),
         baseUrl: maskedConfig?.baseUrl || '',
         model: maskedConfig?.model || '',
+        concurrency,
         timestamp: new Date().toISOString(),
       };
     } catch (error) {
@@ -41,8 +46,11 @@ export async function healthRoutes(fastify: FastifyInstance) {
         configured: false,
         canExtract: false,
         keyHint: '',
+        keyHints: [],
+        keyCount: 0,
         baseUrl: '',
         model: '',
+        concurrency: { mode: 'parallel-books', keyCount: 0, workers: 0, recommended: 1 },
         error: error instanceof Error ? error.message : String(error),
         timestamp: new Date().toISOString(),
       });
@@ -90,11 +98,12 @@ export async function healthRoutes(fastify: FastifyInstance) {
     }
   });
 
-  // Configure LLM provider (API Key, Base URL, Model)
+  // Configure LLM provider (API Key, Base URL, Model) — 支持多 key
   fastify.patch('/llm/config', async (request, reply) => {
     const body = request.body as {
       provider?: 'custom';
       apiKey?: string;
+      apiKeys?: string[];
       baseUrl?: string;
       model?: string;
     } | undefined;
@@ -111,12 +120,30 @@ export async function healthRoutes(fastify: FastifyInstance) {
       });
     }
 
+    // 合并校验目标：若有 apiKeys 数组则校验每个；否则退回 apiKey 单值校验。
+    const keysToCheck = Array.isArray(body.apiKeys)
+      ? body.apiKeys
+      : body.apiKey !== undefined
+        ? [body.apiKey]
+        : [];
+
     // 基本合理性校验：拦截浏览器自动填充串进来的注册账号/密码。
-    // 注册邮箱常被 autofill 填进"模型名"框、注册密码填进 API Key 框，
-    // 这些值格式明显异常，在此挡住并给前端明确错误，避免错误配置被静默存盘。
     const emailLike = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    for (const raw of keysToCheck) {
+      const k = (raw || '').trim();
+      if (!k) continue; // 空串=清除该项，允许
+      if (emailLike.test(k)) {
+        return reply.status(400).send({
+          error: 'API Key 看起来像邮箱地址，请检查是否被浏览器自动填充了注册账号。',
+        });
+      }
+      if (/\s/.test(k)) {
+        return reply.status(400).send({ error: 'API Key 不应包含空白字符。' });
+      }
+    }
 
     if (body.model !== undefined && body.model.trim() !== '') {
+      const emailLike = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (emailLike.test(body.model.trim())) {
         return reply.status(400).send({
           error: '模型名称看起来像邮箱地址，请检查是否被浏览器自动填充了注册账号。',
@@ -124,18 +151,6 @@ export async function healthRoutes(fastify: FastifyInstance) {
       }
       if (body.model.length > 128) {
         return reply.status(400).send({ error: '模型名称过长（上限 128 字符）。' });
-      }
-    }
-
-    if (body.apiKey !== undefined && body.apiKey.trim() !== '') {
-      // API Key 不应是邮箱形态，也不应含空白（合法 key 不会带空格/换行）。
-      if (emailLike.test(body.apiKey.trim())) {
-        return reply.status(400).send({
-          error: 'API Key 看起来像邮箱地址，请检查是否被浏览器自动填充了注册账号。',
-        });
-      }
-      if (/\s/.test(body.apiKey)) {
-        return reply.status(400).send({ error: 'API Key 不应包含空白字符。' });
       }
     }
 
@@ -150,13 +165,18 @@ export async function healthRoutes(fastify: FastifyInstance) {
       const config: Partial<RuntimeLlmConfig> = {
         provider: body.provider,
       };
-      if (body.apiKey !== undefined) config.apiKey = body.apiKey;
+      // 多 key：传 apiKeys 数组（factory 内会整体替换）；未传则不动现有 key。
+      if (body.apiKeys !== undefined) config.apiKeys = body.apiKeys;
+      else if (body.apiKey !== undefined) config.apiKey = body.apiKey;
       if (body.baseUrl !== undefined) config.baseUrl = body.baseUrl;
       if (body.model !== undefined) config.model = body.model;
 
       setRuntimeConfig(config, true);
 
       setRuntimeProvider('llm');
+
+      // key 数变化后，按当前并发模式重新应用 worker 数（热重载，无需重启）
+      const concurrency = reconfigureWorkers(getConcurrencyStatus().mode);
 
       const providerName = await getRuntimeProviderName();
       const provider = await getDefaultProvider();
@@ -168,10 +188,33 @@ export async function healthRoutes(fastify: FastifyInstance) {
         configured: isConfigured,
         canExtract: isConfigured,
         keyHint: maskedConfig?.keyHint || '',
+        keyHints: maskedConfig?.keyHints || [],
+        keyCount: getApiKeyCount(),
         baseUrl: maskedConfig?.baseUrl || '',
         model: maskedConfig?.model || '',
+        concurrency,
         timestamp: new Date().toISOString(),
       };
+    } catch (error) {
+      return reply.status(500).send({
+        error: error instanceof Error ? error.message : String(error),
+        timestamp: new Date().toISOString(),
+      });
+    }
+  });
+
+  // 切换并发模式（优先并行本数 / 优先单本速度），热重载 worker 数，无需重启 API
+  fastify.patch('/llm/concurrency', async (request, reply) => {
+    const body = request.body as { mode?: string } | undefined;
+    const mode = body?.mode;
+    if (mode !== 'parallel-books' && mode !== 'single-book-speed') {
+      return reply.status(400).send({
+        error: 'mode 必须是 "parallel-books" 或 "single-book-speed"。',
+      });
+    }
+    try {
+      const status = reconfigureWorkers(mode as ConcurrencyMode);
+      return { ...status, timestamp: new Date().toISOString() };
     } catch (error) {
       return reply.status(500).send({
         error: error instanceof Error ? error.message : String(error),

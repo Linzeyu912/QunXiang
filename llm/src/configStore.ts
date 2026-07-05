@@ -5,20 +5,50 @@ import { encrypt, decrypt } from './keyVault.js';
 
 /**
  * Runtime LLM configuration (stored in memory + optionally persisted to encrypted file)
+ *
+ * 多 key 支持：apiKeys（数组）优先于 apiKey（单值，向后兼容）。
+ * 调用方读取时应统一用 normalizeApiKeys(config) 合并两者。
  */
 export interface RuntimeLlmConfig {
   provider: 'custom' | 'mock';
   apiKey?: string;
+  /** 多 key：同一厂家的多个 API Key，轮询使用以提升并发额度。优先于 apiKey。 */
+  apiKeys?: string[];
   baseUrl?: string;
   model?: string;
 }
 
-/** Internal persisted format — includes encrypted apiKey */
+/** Internal persisted format — includes encrypted apiKeys */
 interface PersistedConfig {
   provider: 'custom' | 'mock';
-  encryptedApiKey?: string; // AES-256-GCM encrypted
+  encryptedApiKey?: string; // AES-256-GCM encrypted（单 key，向后兼容）
+  encryptedApiKeys?: string[]; // AES-256-GCM encrypted（多 key）
   baseUrl?: string;
   model?: string;
+}
+
+/**
+ * 把 config 里的 apiKey / apiKeys 合并成规范化的非空 key 数组。
+ * apiKeys 优先；否则退回 apiKey 单值；都没有则返回空数组。
+ * 去重（按精确字符串）并过滤空串。
+ */
+export function normalizeApiKeys(config: Pick<RuntimeLlmConfig, 'apiKey' | 'apiKeys'> | undefined): string[] {
+  if (!config) return [];
+  const raw = config.apiKeys && config.apiKeys.length > 0
+    ? config.apiKeys
+    : config.apiKey
+      ? [config.apiKey]
+      : [];
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const k of raw) {
+    const trimmed = (k || '').trim();
+    if (trimmed && !seen.has(trimmed)) {
+      seen.add(trimmed);
+      out.push(trimmed);
+    }
+  }
+  return out;
 }
 
 const CONFIG_FILENAME = '.novel-agent-config.encrypted';
@@ -98,6 +128,10 @@ function getConfigPath(): string {
 
 /**
  * Save runtime config to encrypted file
+ *
+ * 多 key 持久化策略：
+ * - 若有 apiKeys 数组（长度 > 0）：逐个加密后存入 encryptedApiKeys，不再存 encryptedApiKey。
+ * - 否则退回单 key 路径（encryptedApiKey），保持与旧配置文件兼容。
  */
 export function saveConfigToDisk(config: RuntimeLlmConfig): void {
   const secret = getMasterSecret();
@@ -107,8 +141,14 @@ export function saveConfigToDisk(config: RuntimeLlmConfig): void {
     model: config.model,
   };
 
-  if (config.apiKey) {
-    persisted.encryptedApiKey = encrypt(config.apiKey, secret);
+  const keys = normalizeApiKeys(config);
+  if (keys.length > 1) {
+    // 多 key：只存数组，避免与单 key 字段重复
+    persisted.encryptedApiKeys = keys.map((k) => encrypt(k, secret));
+  } else if (keys.length === 1) {
+    // 单 key：仍写 encryptedApiKey（旧读取路径兼容），同时写数组便于升级
+    persisted.encryptedApiKey = encrypt(keys[0], secret);
+    persisted.encryptedApiKeys = [persisted.encryptedApiKey];
   }
 
   const configPath = getConfigPath();
@@ -120,6 +160,8 @@ export function saveConfigToDisk(config: RuntimeLlmConfig): void {
 /**
  * Load runtime config from encrypted file.
  * Returns null if no config file exists or decryption fails.
+ *
+ * 读取时同时兼容旧的单 key 文件（encryptedApiKey）和新的多 key 文件（encryptedApiKeys）。
  */
 export function loadConfigFromDisk(): RuntimeLlmConfig | null {
   const configPath = getConfigPath();
@@ -141,7 +183,17 @@ export function loadConfigFromDisk(): RuntimeLlmConfig | null {
       model: persisted.model,
     };
 
-    if (persisted.encryptedApiKey) {
+    if (Array.isArray(persisted.encryptedApiKeys) && persisted.encryptedApiKeys.length > 0) {
+      // 多 key 文件：解密数组，过滤解密失败/空值
+      result.apiKeys = persisted.encryptedApiKeys
+        .map((c) => {
+          try { return decrypt(c, secret); } catch { return ''; }
+        })
+        .filter((k): k is string => Boolean(k));
+      // 兼容：单 key 时同步写回 apiKey 字段
+      if (result.apiKeys.length === 1) result.apiKey = result.apiKeys[0];
+    } else if (persisted.encryptedApiKey) {
+      // 旧的单 key 文件
       result.apiKey = decrypt(persisted.encryptedApiKey, secret);
     }
 
