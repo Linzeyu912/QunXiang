@@ -140,14 +140,28 @@ function normalizeAliasKey(value: string): string {
   return normalizeName(value).replace(/薰/g, '熏');
 }
 
-function sanitizeEntityAliases<T extends { name: string; aliases?: string[] }>(entities: T[]): T[] {
-  const primaryNames = new Set(entities.map((entity) => normalizeAliasKey(entity.name)));
+function sanitizeEntityAliases<T extends { name: string; aliases?: string[] }>(
+  entities: T[],
+  // 可选：合并前的所有实体 name（归一化 key 集合）。提供时，collide 检测用它——
+  // 这样能识别「别名等于某个已被合并掉的实体 name」并移除（避免与同类实体 name 冲突）。
+  // 不提供时退化为用合并后的 primaryNames。
+  preMergeNameKeys?: Set<string>,
+): T[] {
+  const collideNames = preMergeNameKeys ?? new Set(entities.map((entity) => normalizeAliasKey(entity.name)));
   return entities.map((entity) => {
+    // 当前实体自身 name 的归一化 key——别名归一化后等于它时，是「自身异体字别名」，
+    // 应保留（如 canonical「萧薰儿」的别名「萧熏儿」），不算与其它实体冲突。
+    const selfKey = normalizeAliasKey(entity.name);
     const aliases = [...new Set(entity.aliases || [])].filter((alias) => {
       const cleanAlias = cleanEntityDescription(alias);
       if (!cleanAlias || cleanAlias.length < 2 || GENERIC_ALIASES.has(cleanAlias)) return false;
+      // 字面等于自身 name（trim+lowercase）→ 过滤（如别名就是「萧薰儿」本身）
+      if (normalizeName(cleanAlias) === normalizeName(entity.name)) return false;
       const normalizedAlias = normalizeAliasKey(cleanAlias);
-      return normalizedAlias !== normalizeAliasKey(entity.name) && !primaryNames.has(normalizedAlias);
+      // 与自身归一化 key 相同 → 是自身异体字别名，保留；
+      // 与其它实体 name（合并前全集）归一化相同 → 冲突，过滤。
+      if (normalizedAlias === selfKey) return true;
+      return !collideNames.has(normalizedAlias);
     });
     return { ...entity, aliases };
   });
@@ -249,9 +263,23 @@ function deduplicateCharacters(characters: CharacterEntity[]): CharacterEntity[]
 
 export async function executeDescriptionFusion(payload: unknown): Promise<DescriptionFusionResult> {
   const source = payload as DescriptionFusionPayload;
-  const characters = sanitizeEntityAliases(deduplicateCharacters(source.characters || []));
-  const items = sanitizeEntityAliases(deduplicateEntities(source.items || []));
-  const locations = sanitizeEntityAliases(deduplicateEntities(source.locations || []));
+  // 合并前收集各类实体的 name 全集（归一化 key），供 sanitizeEntityAliases 做 collide 检测——
+  // 这样「别名等于某个被合并掉的实体 name」能被识别并移除（避免与同类实体 name 冲突），
+  // 同时不影响与 canonical 成异体字关系的别名（如萧熏儿对萧薰儿）。
+  const preMergeKeys = (entities: { name: string }[]) =>
+    new Set(entities.map((e) => normalizeAliasKey(e.name)));
+  const characters = sanitizeEntityAliases(
+    deduplicateCharacters(source.characters || []),
+    preMergeKeys(source.characters || []),
+  );
+  const items = sanitizeEntityAliases(
+    deduplicateEntities(source.items || []),
+    preMergeKeys(source.items || []),
+  );
+  const locations = sanitizeEntityAliases(
+    deduplicateEntities(source.locations || []),
+    preMergeKeys(source.locations || []),
+  );
 
   const inputs = [
     ...collectFusionInputs('characters', characters),

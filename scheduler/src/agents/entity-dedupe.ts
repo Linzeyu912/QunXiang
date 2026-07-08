@@ -32,10 +32,15 @@ function isAliasMatchGeneric(a: EntityLike, b: EntityLike): boolean {
 }
 
 function mergeEntities<T extends EntityLike>(existing: T, incoming: T): T {
+  // 被吞并方（incoming）的 name 纳入 aliases 的条件：与 existing.name 是异体字关系
+  //（isSameChineseName，如萧熏儿/萧薰儿）——这种是同一实体的不同写法，应保留为别名。
+  // 若是两个完全不同的名字（如太南谷/神手谷，仅靠 alias 匹配合并），不纳入——
+  // 否则 incoming.name 作为别名保留会与「另一同类实体的 name collide」（用户期望移除）。
+  const keepIncomingName = incoming.name !== existing.name && isSameChineseName(incoming.name, existing.name);
   const mergedAliases = [
     ...(existing.aliases || []),
     ...(incoming.aliases || []),
-    incoming.name !== existing.name ? incoming.name : undefined,
+    keepIncomingName ? incoming.name : undefined,
   ].filter((value): value is string => Boolean(value));
 
   const dedupAliases = [...new Set(mergedAliases.map(normalizeKey))]
@@ -49,6 +54,10 @@ function mergeEntities<T extends EntityLike>(existing: T, incoming: T): T {
   return {
     ...existing,
     ...incoming,
+    // 合并后保留 existing（canonical）的 name——incoming 是被吞并方，
+    // 其 name 已纳入 aliases（见上方 mergedAliases）。若让 incoming.name 覆盖，
+    // canonical 实体会"改名"，导致下游 find(name === 原 canonical) 找不到。
+    name: existing.name,
     aliases: dedupAliases,
   };
 }
