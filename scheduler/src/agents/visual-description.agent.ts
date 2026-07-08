@@ -470,12 +470,15 @@ function collectCompletionInputs<EntityType extends string, Field extends string
 }
 
 function needsLlmCompletion(input: AnyCompletionInput): boolean {
+  // source 字段过长需要概括时，无论主次实体都触发 LLM 做概括
   if (needsSourceSummary(input)) return true;
   // Major entities always get LLM completion — they need visualDetails for prompt generation
   if (input.priorityHint === 'major') return true;
-  // Secondary entities get LLM only when enabled or fields are missing
-  if (SUPPLEMENT_SECONDARY) return true;
-  return input.sourcePack.missingFields.length > 0;
+  // Secondary entities: 默认不补全缺失的视觉字段（次要实体不值得为它消耗 LLM 调用），
+  // 只有显式开启 VISUAL_DESCRIPTION_SUPPLEMENT_SECONDARY 时才补全。
+  // （旧逻辑 "return missingFields.length > 0" 会让任何缺字段的次要实体都触发 LLM，
+  // 与「默认不推断次要实体」的设计意图相悖。）
+  return SUPPLEMENT_SECONDARY;
 }
 
 function needsSourceSummary(input: AnyCompletionInput): boolean {
@@ -654,11 +657,14 @@ function safeLlmFields<Field extends string>(
     const llmValue = cleanText(llm?.visualFields?.[field] || '');
     if (sourcePack.fields[field]) {
       const sourceValue = sourcePack.fields[field];
-      if (llmValue) {
-        // LLM returned a cleaned version — prefer it over raw source text
+      // source 有值时：只有当 source 字段过长需要概括、且 LLM 返回了概括值，
+      // 才采用 LLM 的概括（标 summarized）。否则保留 source 原值——
+      // LLM 不应覆盖原文已有的、清晰准确的短描述（如把"黑袍"改成"白袍"是错误）。
+      if (llmValue && shouldSummarizeSourceField(sourceValue)) {
         visualFields[field] = llmValue;
         summarizedFields.push(field);
       } else if (shouldSummarizeSourceField(sourceValue)) {
+        // source 过长但 LLM 没返回概括：本地截断
         visualFields[field] = sampleDescriptionForPrompt(
           sourceValue,
           SOURCE_FIELD_SUMMARY_CHARS,

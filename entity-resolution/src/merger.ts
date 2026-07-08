@@ -47,21 +47,24 @@ function mergeOutfits(a?: Outfit[] | null, b?: Outfit[] | null): Outfit[] {
 export function mergeCharacters(primary: CharacterInput, secondary: CharacterInput) {
   return {
     name: primary.name,
-    aliases: [...new Set([...primary.aliases, ...secondary.aliases])],
+    // 合并别名时，把被吞并方（secondary）的 name 也纳入——
+    // 否则 secondary 的名字会彻底丢失（它不再是独立实体，但应作为别名保留以便回溯）。
+    // primary.name 自身不进 aliases（由 sanitizeEntityAliases 负责清理）。
+    aliases: [...new Set([
+      ...primary.aliases,
+      ...secondary.aliases,
+      ...(secondary.name && secondary.name !== primary.name ? [secondary.name] : []),
+    ])],
     description: [primary.description, secondary.description]
       .filter(Boolean)
       .join('; '),
     confidence: Math.max(primary.confidence, secondary.confidence),
     status: primary.status,
     chapterRef: primary.chapterRef ?? secondary.chapterRef,
-    firstChapter: Math.min(
-      primary.firstChapter ?? Infinity,
-      secondary.firstChapter ?? Infinity
-    ),
-    lastChapter: Math.max(
-      primary.lastChapter ?? 0,
-      secondary.lastChapter ?? 0
-    ),
+    // 用 minDefined/maxDefined：两者都 undefined 时保持 undefined，
+    // 不再产生 Infinity（firstChapter）或 0（lastChapter）污染下游章节范围显示。
+    firstChapter: minDefined(primary.firstChapter, secondary.firstChapter),
+    lastChapter: maxDefined(primary.lastChapter, secondary.lastChapter),
     chapterAppearances: [
       ...new Set([...primary.chapterAppearances, ...secondary.chapterAppearances]),
     ].sort((a, b) => a - b),

@@ -35,10 +35,19 @@ function errorMessage(err: unknown): string {
  * 判断错误是否值得重试。配置/鉴权/参数类的永久错误重试也没用，直接失败，
  * 避免在 API key 未配、401、403 等情况下白烧 4 次 LLM 调用。
  * 其余（网络/超时/上游 5xx/偶发解析）保持重试。
+ *
+ * 注意：JSON 解析失败（VALIDATION_ERROR）也判为不可重试——这类错误通常是
+ * prompt 格式或模型输出问题，重试基本无效，却会被 extractor 内层批次重试 +
+ * dispatcher 外层重试 + recoverFailedBatch 三层叠加放大，白烧几十次调用。
  */
 function isRetryableError(err: unknown): boolean {
   const msg = errorMessage(err).toLowerCase();
+  // 配置/鉴权/参数类永久错误
   if (/not configured|api[\s_-]?key|unauthorized|forbidden|\b401\b|\b403\b|invalid api key/.test(msg)) {
+    return false;
+  }
+  // JSON 解析 / 校验失败：重试基本无效（prompt 或模型输出问题）
+  if (/validation_error|failed to parse.*json|parse llm response as json|empty response from/.test(msg)) {
     return false;
   }
   return true;

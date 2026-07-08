@@ -20,7 +20,7 @@ describe('getExtractionStartGate', () => {
 
     expect(gate.canStart).toBe(false);
     expect(gate.reason).toBe('llm-not-configured');
-    expect(gate.title).toBe('先配置 LLM Provider');
+    expect(gate.title).toBe('先配置 LLM 服务商');
     expect(gate.actionLabel).toBe('去设置');
   });
 
