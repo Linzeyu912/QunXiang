@@ -20,7 +20,16 @@ import { directorRoutes } from './routes/director.js';
 import { artifactsRoutes } from './routes/artifacts.js';
 
 const fastify = Fastify({
-  logger: true,
+  // SSE 端点为支持 EventSource 会把 JWT 放进 ?access_token= query（见 extractToken），
+  // 默认 logger 会把完整 req.url 记进日志/控制台，导致长期有效的 JWT 落盘。
+  // 用 redact 脱敏 url 与 authorization 头，避免 token 泄露到日志。
+  logger: {
+    level: process.env.LOG_LEVEL || 'info',
+    redact: {
+      paths: ['req.url', 'req.headers.authorization', 'req.headers.cookie'],
+      censor: '[REDACTED]',
+    },
+  },
 });
 
 declare module 'fastify' {

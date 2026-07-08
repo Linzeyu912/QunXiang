@@ -48,7 +48,10 @@ export async function storiesRoutes(fastify: FastifyInstance) {
 
   // ---- 切分（异步 + SSE） ----
 
-  fastify.post('/:id/stories/segment', async (request, reply) => {
+  // 限流：切分会触发 LLM 调用与磁盘写入，防止恶意刷爆。
+  fastify.post('/:id/stories/segment', {
+    config: { rateLimit: { max: 5, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
     const { id } = request.params as { id: string };
     const body = (request.body ?? {}) as { maxChaptersPerSegment?: number; autoApprove?: boolean };
     try {

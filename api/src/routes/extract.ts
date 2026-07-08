@@ -5,7 +5,10 @@ import { ConflictError } from '../lib/errors.js';
 
 export async function extractRoutes(fastify: FastifyInstance) {
   // Trigger extraction
-  fastify.post('/:id/extract', async (request, reply) => {
+  // 限流：每次提取会清空历史任务并触发 LLM 调用（计费），防止恶意刷爆。
+  fastify.post('/:id/extract', {
+    config: { rateLimit: { max: 5, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
@@ -38,7 +41,9 @@ export async function extractRoutes(fastify: FastifyInstance) {
       return reply.status(400).send({ error: 'taskId is required' });
     }
 
-    const status = await pollExtractionStatus(taskId);
+    // 传 bookId 给 service，断言该 task 确实属于路径里的 book（堵 IDOR：
+    // 否则用户可用自己名下的 bookId 过 ownsBook 校验，换上别人的 taskId 读到他人进度/结果）
+    const status = await pollExtractionStatus(taskId, id);
     return status;
   });
 

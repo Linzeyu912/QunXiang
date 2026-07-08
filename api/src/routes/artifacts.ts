@@ -21,7 +21,8 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     try {
       return await getExtractionArtifacts(id);
     } catch (err) {
-      return reply.status(500).send({ error: err instanceof Error ? err.message : String(err) });
+      request.log.error(err);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 
@@ -35,7 +36,8 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     try {
       return await listExtractionRuns(id);
     } catch (err) {
-      return reply.status(500).send({ error: err instanceof Error ? err.message : String(err) });
+      request.log.error(err);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 
@@ -49,7 +51,8 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     try {
       return await getPrescanArtifacts(id);
     } catch (err) {
-      return reply.status(500).send({ error: err instanceof Error ? err.message : String(err) });
+      request.log.error(err);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 
@@ -65,7 +68,8 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
       if (!outline) return reply.status(404).send({ error: 'Book or file not found' });
       return outline;
     } catch (err) {
-      return reply.status(500).send({ error: err instanceof Error ? err.message : String(err) });
+      request.log.error(err);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 
@@ -85,7 +89,8 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
       if (!content) return reply.status(404).send({ error: 'Book or chapter not found' });
       return content;
     } catch (err) {
-      return reply.status(500).send({ error: err instanceof Error ? err.message : String(err) });
+      request.log.error(err);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 
@@ -104,7 +109,8 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
       await restoreNoiseLine(id, lineNum);
       return { ok: true };
     } catch (err) {
-      return reply.status(500).send({ error: err instanceof Error ? err.message : String(err) });
+      request.log.error(err);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 
@@ -123,7 +129,8 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
       await unrestoreNoiseLine(id, lineNum);
       return { ok: true };
     } catch (err) {
-      return reply.status(500).send({ error: err instanceof Error ? err.message : String(err) });
+      request.log.error(err);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 }

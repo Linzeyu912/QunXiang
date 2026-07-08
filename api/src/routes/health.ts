@@ -196,8 +196,9 @@ export async function healthRoutes(fastify: FastifyInstance) {
         timestamp: new Date().toISOString(),
       };
     } catch (error) {
+      request.log.error(error);
       return reply.status(500).send({
-        error: error instanceof Error ? error.message : String(error),
+        error: '内部错误，请查看服务端日志',
         timestamp: new Date().toISOString(),
       });
     }
@@ -216,15 +217,19 @@ export async function healthRoutes(fastify: FastifyInstance) {
       const status = reconfigureWorkers(mode as ConcurrencyMode);
       return { ...status, timestamp: new Date().toISOString() };
     } catch (error) {
+      request.log.error(error);
       return reply.status(500).send({
-        error: error instanceof Error ? error.message : String(error),
+        error: '内部错误，请查看服务端日志',
         timestamp: new Date().toISOString(),
       });
     }
   });
 
   // Test LLM connection
-  fastify.post('/llm/test', async (request, reply) => {
+  // 限流：测试连接会真实调用外部 LLM（消耗用户 API 配额/计费），严格限制频率。
+  fastify.post('/llm/test', {
+    config: { rateLimit: { max: 3, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
     try {
       const provider = await getDefaultProvider();
       const isConfigured = await provider.isConfigured();
@@ -323,6 +328,8 @@ export async function healthRoutes(fastify: FastifyInstance) {
         };
       }
     } catch (error) {
+      // 测试连接的错误信息保留给用户诊断（如认证失败/模型不存在），但记录完整日志便于排查
+      request.log.error(error);
       return reply.status(500).send({
         success: false,
         message: error instanceof Error ? error.message : String(error),

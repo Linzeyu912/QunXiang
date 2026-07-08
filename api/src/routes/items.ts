@@ -1,5 +1,5 @@
 import type { FastifyInstance, FastifyRequest } from 'fastify';
-import { ItemRepository } from '@novel-agent/storage';
+import { ItemRepository, prisma } from '@novel-agent/storage';
 import { itemUpdateSchema } from '@novel-agent/schemas';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
 
@@ -40,16 +40,31 @@ export async function itemRoutes(fastify: FastifyInstance) {
     }
 
     const ownerId = await resolveOwnerId(request);
+    // 一次 findMany 取回所有实体（替代逐条 findById 的 N+1），批量校验归属后 updateMany。
+    const items = await prisma.item.findMany({
+      where: { id: { in: ids } },
+      select: { id: true, bookId: true },
+    });
     const updated: string[] = [];
     const skipped: { id: string; reason: string }[] = [];
-    for (const id of ids) {
-      const item = await ItemRepository.findById(id);
-      if (!item || !(await ownsBook(item.bookId, ownerId))) {
-        skipped.push({ id, reason: '不存在' });
+    const validIds: string[] = [];
+    for (const item of items) {
+      if (!(await ownsBook(item.bookId, ownerId))) {
+        skipped.push({ id: item.id, reason: '不存在' });
         continue;
       }
-      await ItemRepository.updateStatus(id, status);
-      updated.push(id);
+      validIds.push(item.id);
+      updated.push(item.id);
+    }
+    const foundIds = new Set(items.map((i) => i.id));
+    for (const id of ids) {
+      if (!foundIds.has(id)) skipped.push({ id, reason: '不存在' });
+    }
+    if (validIds.length > 0) {
+      await prisma.item.updateMany({
+        where: { id: { in: validIds } },
+        data: { status },
+      });
     }
     return { updated, skipped };
   });
@@ -73,8 +88,7 @@ export async function itemRoutes(fastify: FastifyInstance) {
       return { item: updated };
     } catch (err) {
       request.log.error(err);
-      const message = err instanceof Error ? err.message : 'Update failed';
-      return reply.status(500).send({ error: message });
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 }

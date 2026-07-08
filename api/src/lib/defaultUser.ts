@@ -40,6 +40,30 @@ export async function ensureDefaultUser(): Promise<void> {
     return;
   }
 
+  // 非空库：默认（不设 ENABLE_DEFAULT_USER_TAKEOVER）只在 test@example.com 已存在时
+  // 刷新其密码，**不夺权任何其他真实用户**——多用户实例重启时把某持书用户改造成
+  // 公开默认账号是危险的（他人凭公开密码即可登录）。
+  // 仅当显式设置 ENABLE_DEFAULT_USER_TAKEOVER=true 时，才启用旧的"挑持书用户改造"
+  // 行为（用于单机迁移场景：把数据带过来的那个用户接管为默认账号）。
+  const allowTakeover = process.env.ENABLE_DEFAULT_USER_TAKEOVER === 'true';
+
+  const existingDefault = await UserRepository.findByEmail(DEFAULT_USER.email);
+  if (existingDefault) {
+    // 默认账号已存在，刷新密码/名称即可，不动其他用户。
+    console.log(`[defaultUser] 默认账号已存在，刷新密码 (id=${existingDefault.id})`);
+    await prisma.user.update({
+      where: { id: existingDefault.id },
+      data: { name: DEFAULT_USER.name, passwordHash },
+    });
+    return;
+  }
+
+  if (!allowTakeover) {
+    // 默认账号不存在且不允许夺权：静默跳过（不强制创建，避免在多用户库里插入公开账号）。
+    console.log('[defaultUser] 非空库且无默认账号，未启用 ENABLE_DEFAULT_USER_TAKEOVER，跳过（不创建默认账号）');
+    return;
+  }
+
   // 挑改造目标：优先持书用户（保数据），否则退回第一个用户。
   const bookOwners = await prisma.user.findMany({
     where: { books: { some: {} } },
@@ -51,9 +75,7 @@ export async function ensureDefaultUser(): Promise<void> {
     return;
   }
 
-  // 是否已存在占用默认邮箱的账号（可能与 target 不同）。
-  const existingDefault = await UserRepository.findByEmail(DEFAULT_USER.email);
-
+  // 走到这里说明 allowTakeover===true 且默认账号不存在（事务外已校验 existingDefault 为 null）。
   await prisma.$transaction(async (tx) => {
     // 情况一：target 本身就是默认邮箱账号 → 直接刷新密码/名称即可。
     if (target.email === DEFAULT_USER.email) {
@@ -64,24 +86,6 @@ export async function ensureDefaultUser(): Promise<void> {
       });
       await deleteStrayUsers(tx, target.id);
       return;
-    }
-
-    // 情况二：target 不是默认邮箱，但存在一个占用了默认邮箱的其它账号。
-    if (existingDefault) {
-      const occupierOwnsBooks = await tx.book.count({ where: { userId: existingDefault.id } });
-      if (occupierOwnsBooks > 0) {
-        // 占用者持书，它才是真正该保留的默认账号——刷新它的密码，target 视作空壳清理。
-        console.log(`[defaultUser] 默认邮箱已被持书用户占用，刷新其密码 (id=${existingDefault.id})`);
-        await tx.user.update({
-          where: { id: existingDefault.id },
-          data: { name: DEFAULT_USER.name, passwordHash },
-        });
-        await deleteStrayUsers(tx, existingDefault.id);
-        return;
-      }
-      // 占用者是空壳，删除以释放默认邮箱，避免唯一约束冲突。
-      console.log(`[defaultUser] 删除占用默认邮箱的空壳账号 (id=${existingDefault.id})`);
-      await tx.user.delete({ where: { id: existingDefault.id } });
     }
 
     // 删除所有非 target 的空壳账号。

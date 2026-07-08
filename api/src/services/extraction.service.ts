@@ -130,26 +130,33 @@ export async function startExtraction(bookId: string, userId: string) {
   }
 }
 
-export async function pollExtractionStatus(taskId: string) {
+export async function pollExtractionStatus(taskId: string, bookId?: string) {
   const task = await dispatcher.getTaskStatus(taskId);
   if (!task) {
     return { status: 'not_found' };
   }
 
-  const bookId = task.bookId;
+  // 越权防护：调用方传入路径里的 bookId 时，校验该 task 确实属于这本书。
+  // 否则用户可用自己名下的 bookId 过 ownsBook 校验，换上别人的 taskId
+  // 读到他人提取进度/结果/角色列表。不匹配按 not_found 处理（不泄露存在性）。
+  if (bookId && task.bookId !== bookId) {
+    return { status: 'not_found' };
+  }
+
+  const taskBookId = task.bookId;
 
   // If extraction failed, update book status
   if (task.status === 'failed') {
-    await BookRepository.updateStatus(bookId, 'FAILED');
+    await BookRepository.updateStatus(taskBookId, 'FAILED');
     return { status: 'failed', task };
   }
 
   // If extraction is complete (passed through all pipeline stages), fetch characters
   if (task.agentType === 'reviewer' && task.status === 'completed') {
-    const characters = await CharacterRepository.findByBookId(bookId);
+    const characters = await CharacterRepository.findByBookId(taskBookId);
 
     // Update book status
-    await BookRepository.updateStatus(bookId, 'EXTRACTED');
+    await BookRepository.updateStatus(taskBookId, 'EXTRACTED');
 
     return { status: 'completed', task, characters };
   }
@@ -280,22 +287,24 @@ export async function* createExtractionStream(
           resolve(eventQueue.shift()!);
           return;
         }
-        // Otherwise wait for new event or heartbeat
-        resolveWaiter = () => {
-          if (eventQueue.length > 0) {
-            resolve(eventQueue.shift()!);
-          } else {
-            // Event was consumed by another check; re-wait will happen next loop iteration
-            // This shouldn't happen normally but handle gracefully
-            resolve('heartbeat');
-          }
-        };
-        setTimeout(() => {
+        // 心跳定时器：必须保存 id 并在 resolve 前 clear，
+        // 否则长连接（前端持续开着页面）会堆积大量已触发但未清理的定时器引用。
+        const heartbeatTimer = setTimeout(() => {
           if (resolveWaiter) {
             resolveWaiter = null;
+            clearTimeout(heartbeatTimer);
             resolve('heartbeat');
           }
         }, 15000);
+        // Otherwise wait for new event or heartbeat
+        resolveWaiter = () => {
+          clearTimeout(heartbeatTimer);
+          if (eventQueue.length > 0) {
+            resolve(eventQueue.shift()!);
+          } else {
+            resolve('heartbeat');
+          }
+        };
       });
 
       if (result === 'heartbeat') {
