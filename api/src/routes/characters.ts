@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { CharacterRepository, ReviewRepository } from '@novel-agent/storage';
+import { CharacterRepository, ReviewRepository, prisma } from '@novel-agent/storage';
 import { characterUpdateSchema } from '@novel-agent/schemas';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
 
@@ -42,30 +42,55 @@ export async function charactersRoutes(fastify: FastifyInstance) {
       const userId = request.user.userId;
       const ownerId = await resolveOwnerId(request);
 
+      // 一次 findMany 取回所有实体（替代逐条 findById 的 N+1 查询），
+      // 再批量校验归属。整个审核写入用事务包裹，中途失败则全部回滚（原子性）。
+      const characters = await prisma.character.findMany({
+        where: { id: { in: ids } },
+        select: { id: true, bookId: true, status: true },
+      });
+      const charById = new Map(characters.map((c) => [c.id, c]));
+
       const updated: string[] = [];
       const skipped: { id: string; reason: string }[] = [];
+      const toUpdate: { id: string; previousValue: string }[] = [];
+
       for (const id of ids) {
-        const character = await CharacterRepository.findById(id);
-        if (!character || !(await ownsBook(character.bookId, ownerId))) {
-          // 不存在或不属于当前用户，统一按"不存在"跳过，避免泄露
+        const character = charById.get(id);
+        if (!character) {
           skipped.push({ id, reason: '不存在' });
           continue;
         }
-        await ReviewRepository.create({
-          characterId: id,
-          userId,
-          action: status,
-          previousValue: character.status,
-          newValue: status,
+        // 归属校验：批量查一次所有相关 book 的 owner
+        if (!(await ownsBook(character.bookId, ownerId))) {
+          skipped.push({ id, reason: '不存在' }); // 统一按不存在跳过，避免泄露
+          continue;
+        }
+        toUpdate.push({ id, previousValue: character.status });
+      }
+
+      // 事务：Review 记录 + 状态更新要么全成功要么全回滚
+      if (toUpdate.length > 0) {
+        await prisma.$transaction(async (tx) => {
+          await tx.characterReview.createMany({
+            data: toUpdate.map((c) => ({
+              characterId: c.id,
+              userId,
+              action: status,
+              previousValue: c.previousValue,
+              newValue: status,
+            })),
+          });
+          await tx.character.updateMany({
+            where: { id: { in: toUpdate.map((c) => c.id) } },
+            data: { status },
+          });
         });
-        await CharacterRepository.updateStatus(id, status);
-        updated.push(id);
+        for (const c of toUpdate) updated.push(c.id);
       }
       return { updated, skipped };
     } catch (err) {
       request.log.error(err);
-      const message = err instanceof Error ? err.message : 'Batch update failed';
-      return reply.status(500).send({ error: message });
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 
@@ -106,8 +131,7 @@ export async function charactersRoutes(fastify: FastifyInstance) {
       return { character: updated };
     } catch (err) {
       request.log.error(err);
-      const message = err instanceof Error ? err.message : 'Update failed';
-      return reply.status(500).send({ error: message });
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 

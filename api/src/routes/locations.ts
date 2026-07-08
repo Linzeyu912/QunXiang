@@ -1,5 +1,5 @@
 import type { FastifyInstance, FastifyRequest } from 'fastify';
-import { LocationRepository } from '@novel-agent/storage';
+import { LocationRepository, prisma } from '@novel-agent/storage';
 import { locationUpdateSchema } from '@novel-agent/schemas';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
 
@@ -40,16 +40,32 @@ export async function locationRoutes(fastify: FastifyInstance) {
     }
 
     const ownerId = await resolveOwnerId(request);
+    // 一次 findMany 取回所有实体（替代逐条 findById 的 N+1），批量校验归属后 updateMany。
+    const locations = await prisma.location.findMany({
+      where: { id: { in: ids } },
+      select: { id: true, bookId: true },
+    });
     const updated: string[] = [];
     const skipped: { id: string; reason: string }[] = [];
-    for (const id of ids) {
-      const location = await LocationRepository.findById(id);
-      if (!location || !(await ownsBook(location.bookId, ownerId))) {
-        skipped.push({ id, reason: '不存在' });
+    const validIds: string[] = [];
+    for (const loc of locations) {
+      if (!(await ownsBook(loc.bookId, ownerId))) {
+        skipped.push({ id: loc.id, reason: '不存在' });
         continue;
       }
-      await LocationRepository.updateStatus(id, status);
-      updated.push(id);
+      validIds.push(loc.id);
+      updated.push(loc.id);
+    }
+    // ids 中不在 DB 的（不存在/无权）记为 skipped
+    const foundIds = new Set(locations.map((l) => l.id));
+    for (const id of ids) {
+      if (!foundIds.has(id)) skipped.push({ id, reason: '不存在' });
+    }
+    if (validIds.length > 0) {
+      await prisma.location.updateMany({
+        where: { id: { in: validIds } },
+        data: { status },
+      });
     }
     return { updated, skipped };
   });
@@ -73,8 +89,7 @@ export async function locationRoutes(fastify: FastifyInstance) {
       return { location: updated };
     } catch (err) {
       request.log.error(err);
-      const message = err instanceof Error ? err.message : 'Update failed';
-      return reply.status(500).send({ error: message });
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
     }
   });
 }
