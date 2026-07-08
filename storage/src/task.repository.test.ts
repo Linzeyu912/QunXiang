@@ -135,6 +135,63 @@ describe('TaskRepository', () => {
     });
   });
 
+  describe('claimNext（原子抢占）', () => {
+    it('无 pending 任务时返回 null', async () => {
+      const claimed = await taskRepo.claimNext('extractor');
+      expect(claimed).toBeNull();
+    });
+
+    it('抢占一条 pending 任务并标记为 running', async () => {
+      const created = await taskRepo.create({ bookId: testBook.id, agentType: 'extractor', payload: { x: 1 } });
+      const claimed = await taskRepo.claimNext('extractor');
+
+      expect(claimed).not.toBeNull();
+      expect(claimed?.id).toBe(created.id);
+      expect(claimed?.status).toBe('running');
+      expect(claimed?.payload).toEqual({ x: 1 });
+    });
+
+    it('按 createdAt 升序抢占最老的任务', async () => {
+      const t1 = await taskRepo.create({ bookId: testBook.id, agentType: 'extractor', payload: { n: 1 } });
+      // 确保 createdAt 不同（SQLite 精度可能只到秒，加微小延迟）
+      await new Promise((r) => setTimeout(r, 1100));
+      const t2 = await taskRepo.create({ bookId: testBook.id, agentType: 'extractor', payload: { n: 2 } });
+
+      const claimed = await taskRepo.claimNext('extractor');
+      expect(claimed?.id).toBe(t1.id);
+      expect(claimed?.id).not.toBe(t2.id);
+    });
+
+    it('并发抢占：两个 claimNext 不会同时拿到同一条任务（核心竞态修复）', async () => {
+      // 只放一条 pending 任务。两个并发 claimNext 必须只有一个拿到非 null。
+      // 修改前（findPending+updateStatus 两步非原子）：两者都可能拿到同一条。
+      await taskRepo.create({ bookId: testBook.id, agentType: 'extractor', payload: {} });
+
+      const [a, b] = await Promise.all([
+        taskRepo.claimNext('extractor'),
+        taskRepo.claimNext('extractor'),
+      ]);
+
+      const claimed = [a, b].filter((t) => t !== null);
+      expect(claimed).toHaveLength(1); // 只有一个抢到
+    });
+
+    it('抢占后再 claimNext 拿到下一条（不会重复拿已 running 的）', async () => {
+      await taskRepo.create({ bookId: testBook.id, agentType: 'extractor', payload: { n: 1 } });
+      await new Promise((r) => setTimeout(r, 1100));
+      await taskRepo.create({ bookId: testBook.id, agentType: 'extractor', payload: { n: 2 } });
+
+      const first = await taskRepo.claimNext('extractor');
+      const second = await taskRepo.claimNext('extractor');
+
+      expect(first?.payload).toEqual({ n: 1 });
+      expect(second?.payload).toEqual({ n: 2 });
+      expect(first?.id).not.toBe(second?.id);
+      const third = await taskRepo.claimNext('extractor');
+      expect(third).toBeNull();
+    });
+  });
+
   describe('findByBookId', () => {
     it('should find all tasks for a book', async () => {
       await taskRepo.create({ bookId: testBook.id, agentType: 'extractor', payload: {} });
