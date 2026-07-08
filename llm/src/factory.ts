@@ -56,6 +56,26 @@ let runtimeProviderOverride: 'llm' | 'mock' | 'auto' | undefined = undefined;
 let runtimeConfig: RuntimeLlmConfig | undefined = undefined;
 
 /**
+ * 单例缓存：custom provider 持有 keyCursor/keyHealth 等闭包状态，
+ * 必须 cross-call 复用同一个实例才能让多 key 轮询与健康摘除生效。
+ * resolveProvider 每次都 new createCustomProvider() 会导致状态丢失
+ *（游标永远从 0 开始、失败计数永远清零）——多 key 形同虚设。
+ *
+ * 用 Promise 缓存而非实例缓存：多 worker 并发首次调用 getDefaultProvider 时，
+ * 同步赋值 in-flight Promise 可避免重复构建。
+ */
+let cachedCustomProviderPromise: Promise<LLMProvider> | undefined;
+/** 缓存对应的配置指纹，配置变化即视为缓存失效 */
+let cachedProviderKey: string | undefined;
+
+/** 使缓存的 custom provider 失效；下次 getDefaultProvider 会用最新配置重建。 */
+function invalidateProviderCache(): void {
+  cachedCustomProviderPromise = undefined;
+  cachedProviderKey = undefined;
+}
+
+
+/**
  * Set runtime provider override.
  * - 'llm': use the LLM provider configured via environment variables
  * - 'mock': force mock mode
@@ -67,6 +87,8 @@ export function setRuntimeProvider(mode: 'llm' | 'mock' | 'auto'): void {
   } else {
     runtimeProviderOverride = mode;
   }
+  // 切换 provider 模式（mock↔llm）后，缓存的 custom provider 不再适用，需重建
+  invalidateProviderCache();
 }
 
 /**
@@ -98,6 +120,10 @@ export function setRuntimeConfig(config: Partial<RuntimeLlmConfig>, persist: boo
       console.warn('[factory] Failed to persist config:', err instanceof Error ? err.message : String(err));
     }
   }
+
+  // 配置已变更（key/baseUrl/model 任一改变），缓存的 provider 用的是旧配置，必须失效。
+  // 这是运行期改配置的唯一入口，保证下次 getDefaultProvider 用新配置重建。
+  invalidateProviderCache();
 }
 
 /**
@@ -178,6 +204,27 @@ export async function getRuntimeProviderName(): Promise<string> {
 }
 
 /**
+ * 获取（或按需创建并缓存）custom provider 单例。
+ * 同一配置指纹命中缓存 → 返回同一实例，使 custom.ts 内的 keyCursor/keyHealth
+ * 跨调用保留；指纹变化或缓存被 invalidateProviderCache 清空则重建。
+ *
+ * 用 in-flight Promise 缓存：多 worker 并发首次调用时，Promise 工厂同步赋值，
+ * 后续调用 await 同一个 Promise，避免重复构建。
+ */
+function getOrCreateCustomProvider(
+  key: string,
+  factory: () => LLMProvider
+): Promise<LLMProvider> {
+  if (cachedProviderKey === key && cachedCustomProviderPromise) {
+    return cachedCustomProviderPromise;
+  }
+  // 同步赋值 Promise（createCustomProvider 是同步工厂，包成 resolved Promise）
+  cachedProviderKey = key;
+  cachedCustomProviderPromise = Promise.resolve(factory());
+  return cachedCustomProviderPromise;
+}
+
+/**
  * Internal: resolve provider from runtime config or environment variables.
  * Priority: runtimeConfig > process.env > LLM_MOCK_ENABLED > error
  */
@@ -188,11 +235,16 @@ async function resolveProvider(): Promise<LLMProvider> {
       case 'custom': {
         // 多 key：用 normalizeApiKeys 合并 apiKeys/apiKey，传给 provider 轮询
         const keys = normalizeApiKeys(runtimeConfig);
-        return createCustomProvider({
-          apiKeys: keys,
-          baseUrl: runtimeConfig.baseUrl,
-          model: runtimeConfig.model,
-        });
+        // 指纹：keys+baseUrl+model。setRuntimeConfig 已会 invalidate，这里指纹主要用于
+        // 防御（如直接改了 runtimeConfig 对象的极端情况）。
+        const fingerprint = JSON.stringify({ keys, baseUrl: runtimeConfig.baseUrl, model: runtimeConfig.model });
+        return getOrCreateCustomProvider(fingerprint, () =>
+          createCustomProvider({
+            apiKeys: keys,
+            baseUrl: runtimeConfig!.baseUrl,
+            model: runtimeConfig!.model,
+          })
+        );
       }
       case 'mock':
         return createMockProvider();
@@ -205,7 +257,8 @@ async function resolveProvider(): Promise<LLMProvider> {
   if (envProvider) {
     switch (envProvider) {
       case 'custom':
-        return createCustomProvider();
+        // env 运行期不变，用固定指纹；首次构建后常驻（直到 setter 失效）
+        return getOrCreateCustomProvider('env-custom', () => createCustomProvider());
       case 'mock':
         return createMockProvider();
       case 'openai':
