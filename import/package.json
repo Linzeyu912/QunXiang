@@ -5,7 +5,8 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
+    "@novel-agent/entity-prescan": "workspace:*",
     "@novel-agent/preprocess": "workspace:*",
-    "@novel-agent/entity-prescan": "workspace:*"
+    "iconv-lite": "^0.7.3"
   }
 }

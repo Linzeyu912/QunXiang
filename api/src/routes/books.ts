@@ -32,17 +32,21 @@ export async function booksRoutes(fastify: FastifyInstance) {
       const { title } = parseTxt(content, filename);
 
       // Write file to disk (temp path first)
+      // 注意：写盘的是已解码为 UTF-8 的 content，而非原始 buffer。
+      // 这样下游所有读取处（extractor.agent / artifacts / story 等）用
+      // readFile(path, 'utf-8') 都能拿到正确文本，无需各自再 decodeText。
+      // 国内小说 TXT 常见 GBK/GB18030 编码，若写原始 buffer 则抽取阶段必然乱码。
       await mkdir(UPLOAD_DIR, { recursive: true });
       const bookId = crypto.randomUUID();
       tempPath = resolve(UPLOAD_DIR, `.tmp-${bookId}.txt`);
       const finalPath = resolve(UPLOAD_DIR, `${bookId}.txt`);
-      await writeFile(tempPath, buffer);
+      await writeFile(tempPath, content, 'utf-8');
 
       // Create book record in DB (userId 直接用真实 user.id，H1 后已无影子用户)
       const book = await BookRepository.create({
         title,
         filePath: finalPath,
-        fileSize: buffer.length,
+        fileSize: Buffer.byteLength(content, 'utf-8'),
         mimeType: 'text/plain',
         userId,
       });
