@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { apiFetch } from './client';
+import { apiFetch, ApiError } from './client';
 import { useAuthStore, type AuthUser } from '@/store/authStore';
 
 /** 默认本地账号（与后端 api/src/lib/defaultUser.ts 的 DEFAULT_USER 对应）。 */
@@ -33,7 +33,13 @@ export function useBootstrapUser() {
   return useMutation({
     mutationFn: () => apiFetch<{ user: AuthUser }>('/auth/me'),
     onSuccess: (data) => setUser(data.user),
-    onError: () => logout(),
+    // 仅在 token 真正失效（401/403）时登出；网络抖动、5xx、超时等瞬态错误
+    // 不应踢掉已登录用户，否则用户会因偶发网络问题丢失工作现场。
+    onError: (error) => {
+      if (error instanceof ApiError && (error.status === 401 || error.status === 403)) {
+        logout();
+      }
+    },
   });
 }
 

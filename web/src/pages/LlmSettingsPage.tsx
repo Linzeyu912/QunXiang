@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { CheckCircle2, ChevronDown, ChevronRight, Eye, EyeOff, Loader2, Plus, Trash2, XCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -25,16 +25,25 @@ export function LlmSettingsPage() {
 
   // 后端 keyHints 表示已保存的 key。初始化编辑区：若已有 key，展示 mask 行 + 一个空行；
   // 否则只留一个空行。
+  // 用 initialized ref 防止 status 引用变化（窗口 focus refetch、保存后 setQueryData 等）
+  // 覆盖用户正在编辑的 baseUrl/model/key——只在首次加载时填充表单。
+  const initialized = useRef(false);
+  const keyCount = status?.keyHints?.length ?? 0;
   useEffect(() => {
     if (!status) return;
-    setBaseUrl(status.baseUrl || '');
-    setModel(status.model || '');
+    if (!initialized.current) {
+      setBaseUrl(status.baseUrl || '');
+      setModel(status.model || '');
+      initialized.current = true;
+    }
     const saved = status.keyHints && status.keyHints.length > 0 ? status.keyHints : [];
     if (saved.length > 0) {
       // 用占位符代表"已保存的 key 不变"：空字符串输入框 + 旁注 mask
       setApiKeys(['']);
     }
-  }, [status]);
+    // 依赖收窄为 keyCount（只在 key 数量变化时重置 key 编辑区），不再依赖整个 status 对象
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [keyCount]);
 
   const updateKey = (i: number, v: string) => {
     setApiKeys((prev) => prev.map((k, idx) => (idx === i ? v : k)));

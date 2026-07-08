@@ -124,16 +124,30 @@ export function useExtractionStream(bookId: string | undefined, enabled: boolean
       }
     };
 
-    es.onmessage = (e) => applyEvent(e);
+    es.onmessage = (e) => {
+      failures = 0; // 收到帧说明连接正常，重置失败计数
+      applyEvent(e);
+    };
     const namedEvents = ['stage-started', 'stage-completed', 'stage-failed', 'completed', 'error'];
     const handlers = namedEvents.map((name) => {
-      const h = (e: MessageEvent) => applyEvent(e, name);
+      const h = (e: MessageEvent) => {
+        failures = 0;
+        applyEvent(e, name);
+      };
       es.addEventListener(name, h as EventListener);
       return { name, h };
     });
+    // 限制重连次数：后端持续 4xx（任务结束/token 失效）或网络断开时，
+    // EventSource 默认会无限自动重连，每次都 401/404 再断，刷日志且无效。
+    // 超过阈值后显式 close，改由 useExtractionStages 的轮询兜底。
+    let failures = 0;
+    const MAX_FAILURES = 8;
     es.onerror = () => {
-      // 让 EventSource 自动重连；重连回来时主动拉一次快照做对齐
+      failures++;
       qc.invalidateQueries({ queryKey: key });
+      if (failures >= MAX_FAILURES) {
+        es.close();
+      }
     };
 
     return () => {

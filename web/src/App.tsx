@@ -66,8 +66,10 @@ export function App() {
       .then((data) => setAuth(data.token, data.user))
       .catch(() => {
         setBootstrapping(false);
-        toast.info('自动登录失败，请手动登录。本地默认账号：test@example.com / example', {
-          duration: 8000,
+        // 不在前端 toast 明文默认凭据（会进客户端 bundle）。仅提示手动登录，
+        // 默认账号说明见 README「跨机器部署」一节。
+        toast.info('自动登录失败，请手动登录。默认账号说明见 README。', {
+          duration: 6000,
         });
       });
   }, [token, setAuth, setBootstrapping]);

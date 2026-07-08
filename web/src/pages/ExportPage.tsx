@@ -14,7 +14,8 @@ import {
 } from '@/components/ui/select';
 import { fetchExportPreview, getExportUrl, type ExportFormat, type ExportType } from '@/api/export';
 import { useExtractionArtifacts } from '@/api/artifacts';
-import { downloadJson, downloadText } from '@/components/story/PromptCopyBlock';
+import { downloadBlob, downloadJson, downloadText } from '@/components/story/PromptCopyBlock';
+import { getToken } from '@/store/authStore';
 
 const FORMATS: { value: ExportFormat; label: string }[] = [
   { value: 'json', label: 'JSON' },
@@ -48,9 +49,26 @@ export function ExportPage() {
     }
   };
 
-  const download = () => {
-    // 后端已返回 Content-Disposition: attachment
-    window.location.href = getExportUrl(bookId, format, type);
+  // 用 fetch 带 Authorization 头下载（window.location.href 导航无法带 Auth 头，
+  // 生产环境无 cookie 会话时会 401）。拿到 Blob 后用 downloadBlob 触发保存。
+  const download = async () => {
+    try {
+      const token = getToken();
+      const res = await fetch(getExportUrl(bookId, format, type), {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      if (!res.ok) {
+        throw new Error(`导出失败（HTTP ${res.status}）`);
+      }
+      const blob = await res.blob();
+      // 从 Content-Disposition 取文件名，取不到则按 type.format 兜底
+      const dispo = res.headers.get('content-disposition') || '';
+      const match = dispo.match(/filename="?([^";]+)"?/i);
+      const filename = match?.[1] || `${type}-${bookId}.${format === 'markdown' ? 'md' : format}`;
+      downloadBlob(blob, filename);
+    } catch (e) {
+      toast.error(`导出失败：${(e as Error).message}`);
+    }
   };
 
   const onTypeChange = (v: string) => {

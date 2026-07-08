@@ -24,11 +24,13 @@ const badgeVariants = cva(
 );
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof badgeVariants> {}
 
 export function Badge({ className, variant, ...props }: BadgeProps) {
-  return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
+  // 用 <span> 而非 <div>：Badge 常出现在 <button>（实体/故事列表行）内部，
+  // HTML 规范禁止 div 嵌套在 button 内，浏览器会强制重排导致样式/事件错位。
+  return <span className={cn(badgeVariants({ variant }), className)} {...props} />;
 }
 
 export { badgeVariants };

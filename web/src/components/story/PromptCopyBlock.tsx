@@ -54,7 +54,7 @@ export function downloadText(text: string, filename: string, mime = 'text/markdo
   downloadBlob(new Blob([text], { type: `${mime};charset=utf-8` }), filename);
 }
 
-function downloadBlob(blob: Blob, filename: string) {
+export function downloadBlob(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
