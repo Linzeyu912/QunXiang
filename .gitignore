@@ -7,6 +7,13 @@ dist/
 build/
 *.tsbuildinfo
 
+# 不要把各包 src 下的 tsc 编译产物提交进来
+# （各包 main 指向 src 源码、走 tsx 即时编译，无需 .js/.d.ts/.map）
+**/src/**/*.js
+**/src/**/*.d.ts
+**/src/**/*.js.map
+**/src/**/*.d.ts.map
+
 # Logs
 *.log
 pnpm-debug.log*
@@ -59,3 +66,6 @@ output/
 # Intermediate prescan output (backend-only, not user-facing)
 .intermediate/
 
+
+# IDE session files
+.zcode/

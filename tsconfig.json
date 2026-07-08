@@ -9,9 +9,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
+    "noEmit": true,
     "paths": {
       "@novel-agent/core": ["./core/src"],
       "@novel-agent/core/*": ["./core/src/*"],
@@ -27,7 +25,6 @@
       "@novel-agent/entity-resolution": ["./entity-resolution/src"],
       "@novel-agent/scheduler": ["./scheduler/src"],
       "@novel-agent/scheduler/*": ["./scheduler/src/*"],
-      "@novel-agent/agent": ["./agent/src"],
       "@novel-agent/story-arcs": ["./story-arcs/src"],
       "@novel-agent/exporters": ["./exporters/src"],
       "@novel-agent/prompts": ["./prompts/src"],

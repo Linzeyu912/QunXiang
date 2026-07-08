@@ -18,27 +18,6 @@ importers:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@20.19.43)
 
-  agent:
-    dependencies:
-      '@novel-agent/core':
-        specifier: workspace:*
-        version: link:../core
-      '@novel-agent/extractors':
-        specifier: workspace:*
-        version: link:../extractors
-      '@novel-agent/import':
-        specifier: workspace:*
-        version: link:../import
-      '@novel-agent/scheduler':
-        specifier: workspace:*
-        version: link:../scheduler
-      '@novel-agent/storage':
-        specifier: workspace:*
-        version: link:../storage
-      '@novel-agent/validators':
-        specifier: workspace:*
-        version: link:../validators
-
   api:
     dependencies:
       '@fastify/cors':
@@ -149,6 +128,9 @@ importers:
       '@novel-agent/preprocess':
         specifier: workspace:*
         version: link:../preprocess
+      iconv-lite:
+        specifier: ^0.7.3
+        version: 0.7.3
 
   llm:
     dependencies:
@@ -2043,6 +2025,10 @@ packages:
   hasown@2.0.4:
     resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
     engines: {node: '>= 0.4'}
+
+  iconv-lite@0.7.3:
+    resolution: {integrity: sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==}
+    engines: {node: '>=0.10.0'}
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -4425,6 +4411,10 @@ snapshots:
   hasown@2.0.4:
     dependencies:
       function-bind: 1.1.2
+
+  iconv-lite@0.7.3:
+    dependencies:
+      safer-buffer: 2.1.2
 
   ieee754@1.2.1: {}
 
