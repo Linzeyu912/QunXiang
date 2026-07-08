@@ -1,9 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import { resolve } from 'node:path';
 
-// Use absolute path for test database - must match where prisma db push creates it
-// Prisma creates at: storage/prisma/prisma/test.db (relative to project root)
-const TEST_DB_PATH = resolve(process.cwd(), 'storage/prisma/prisma/test.db')
+// 测试库路径必须与 scripts/test.mjs 里 prisma db push 创建的位置一致，
+// 否则 storage 测试会因 "Unable to open the database file" 全部失败。
+// test.mjs 在 cwd=storage 下用 --schema=./prisma/schema.prisma + DATABASE_URL
+// 指向 <root>/storage/prisma/test.db，所以这里也用单层 prisma/test.db。
+const TEST_DB_PATH = resolve(process.cwd(), 'storage/prisma/test.db')
 const TEST_DB_URL = `file:${TEST_DB_PATH}`
 
 export const testPrisma = new PrismaClient({

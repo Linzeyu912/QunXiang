@@ -18,19 +18,10 @@ export class DatabaseTaskQueue implements TaskQueue {
   }
 
   async dequeue(agentType: AgentType): Promise<Task | null> {
-    // Get oldest pending task (FIFO)
-    const pending = await TaskRepository.findPending(agentType);
-    if (pending.length === 0) {
-      return null;
-    }
-
-    const task = pending[0];
-
-    // Mark as running
-    await TaskRepository.updateStatus(task.id, 'running');
-    task.status = 'running';
-
-    return task;
+    // 原子抢占：claimNext 用带 status:'pending' 条件的 updateMany，
+    // 保证多 worker 并发时只有一个抢到同一任务（修复旧 findPending+updateStatus
+    // 两步非原子竞态——两个 worker 会读到同一条 pending 并各自标 running）。
+    return TaskRepository.claimNext(agentType);
   }
 
   async complete(taskId: string, result: unknown): Promise<void> {
