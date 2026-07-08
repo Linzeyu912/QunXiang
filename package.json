@@ -10,7 +10,6 @@
     "validators",
     "entity-resolution",
     "scheduler",
-    "agent",
     "story-arcs",
     "llm",
     "api",
