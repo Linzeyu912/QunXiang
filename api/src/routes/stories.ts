@@ -24,6 +24,7 @@ import {
   type BoundaryDecision,
 } from '../services/story.service.js';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
+import { sendBookNotFound } from '../lib/api-errors.js';
 
 function sendError(reply: FastifyReply, err: unknown) {
   if (err instanceof NotFoundError) return reply.status(404).send({ error: err.message });
@@ -42,7 +43,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
     if (!id) return;
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
   });
 
@@ -55,11 +56,11 @@ export async function storiesRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const body = (request.body ?? {}) as { maxChaptersPerSegment?: number; autoApprove?: boolean };
     try {
-      const { taskId, existing } = await startSegmentation(id, {
+      const { taskId, existing } = await startSegmentation(id, request.user.userId, {
         maxChaptersPerSegment: body.maxChaptersPerSegment,
         autoApprove: body.autoApprove,
       });
-      return { taskId, message: existing ? 'Segmentation already running' : 'Segmentation started' };
+      return { taskId, message: existing ? '故事切分正在进行' : '已开始故事切分' };
     } catch (err) {
       return sendError(reply, err);
     }
@@ -67,9 +68,9 @@ export async function storiesRoutes(fastify: FastifyInstance) {
 
   fastify.get('/:id/stories/segment/status', async (request, reply) => {
     const { taskId } = request.query as { taskId?: string };
-    if (!taskId) return reply.status(400).send({ error: 'taskId is required' });
-    const task = getSegmentationStatus(taskId);
-    if (!task) return reply.status(404).send({ error: 'Task not found' });
+    if (!taskId) return reply.status(400).send({ error: '缺少 taskId 参数' });
+    const task = await getSegmentationStatus(taskId, request.user.userId);
+    if (!task) return reply.status(404).send({ error: '任务不存在' });
     return task;
   });
 
@@ -82,12 +83,13 @@ export async function storiesRoutes(fastify: FastifyInstance) {
       'X-Accel-Buffering': 'no',
     });
     try {
-      for await (const chunk of createStoryStream(bookId)) {
+      for await (const chunk of createStoryStream(bookId, request.user.userId)) {
         reply.raw.write(chunk);
       }
     } catch (err) {
+      reply.log.error(err);
       reply.raw.write(
-        `event: error\ndata: ${JSON.stringify({ message: String(err), timestamp: Date.now() })}\n\n`,
+        `event: error\ndata: ${JSON.stringify({ message: '故事进度流发生错误', timestamp: Date.now() })}\n\n`,
       );
     }
     reply.raw.end();
@@ -99,7 +101,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
   fastify.get('/:id/stories', async (request, reply) => {
     const { id } = request.params as { id: string };
     try {
-      return await listStories(id);
+      return await listStories(id, request.user.userId);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -110,7 +112,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const { status } = request.query as { status?: 'pending' | 'resolved' };
     try {
-      return await listBoundaryReviews(id, status);
+      return await listBoundaryReviews(id, request.user.userId, status);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -120,10 +122,10 @@ export async function storiesRoutes(fastify: FastifyInstance) {
     const { id, reviewId } = request.params as { id: string; reviewId: string };
     const { decision } = request.body as { decision: BoundaryDecision };
     if (decision !== 'confirm' && decision !== 'merge_with_previous') {
-      return reply.status(400).send({ error: 'decision must be confirm or merge_with_previous' });
+      return reply.status(400).send({ error: '裁决类型必须为确认或与上一段合并' });
     }
     try {
-      return await resolveBoundaryReview(id, reviewId, decision);
+      return await resolveBoundaryReview(id, request.user.userId, reviewId, decision);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -133,10 +135,10 @@ export async function storiesRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const { storyIds, approved } = request.body as { storyIds: string[]; approved: boolean };
     if (!Array.isArray(storyIds) || storyIds.length === 0) {
-      return reply.status(400).send({ error: 'storyIds is required' });
+      return reply.status(400).send({ error: '缺少故事段编号' });
     }
     try {
-      return await approveStoriesBatch(id, storyIds, approved !== false);
+      return await approveStoriesBatch(id, request.user.userId, storyIds, approved !== false);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -146,7 +148,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
     const { id, storyId } = request.params as { id: string; storyId: string };
     const { includeSource } = request.query as { includeSource?: string };
     try {
-      return await getStory(id, storyId, includeSource === 'true');
+      return await getStory(id, request.user.userId, storyId, includeSource === 'true');
     } catch (err) {
       return sendError(reply, err);
     }
@@ -156,7 +158,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
     const { id, storyId } = request.params as { id: string; storyId: string };
     const { approved } = request.body as { approved: boolean };
     try {
-      return await approveStory(id, storyId, approved !== false);
+      return await approveStory(id, request.user.userId, storyId, approved !== false);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -167,7 +169,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
   fastify.post('/:id/stories/:storyId/assets/extract', async (request, reply) => {
     const { id, storyId } = request.params as { id: string; storyId: string };
     try {
-      return await extractAssets(id, storyId);
+      return await extractAssets(id, request.user.userId, storyId);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -176,7 +178,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
   fastify.get('/:id/stories/:storyId/assets', async (request, reply) => {
     const { id, storyId } = request.params as { id: string; storyId: string };
     try {
-      return await getAssetPack(id, storyId);
+      return await getAssetPack(id, request.user.userId, storyId);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -185,7 +187,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
   fastify.get('/:id/stories/:storyId/asset-prompts', async (request, reply) => {
     const { id, storyId } = request.params as { id: string; storyId: string };
     try {
-      return await getAssetPrompts(id, storyId);
+      return await getAssetPrompts(id, request.user.userId, storyId);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -199,11 +201,12 @@ export async function storiesRoutes(fastify: FastifyInstance) {
       assetName: string;
     };
     if (assetType !== 'character' && assetType !== 'scene' && assetType !== 'prop') {
-      return reply.status(400).send({ error: 'assetType must be character, scene or prop' });
+      return reply.status(400).send({ error: '资产类型必须为角色、场景或道具' });
     }
     try {
       return await patchAsset(
         id,
+        request.user.userId,
         storyId,
         assetType as AssetType,
         decodeURIComponent(assetName),
@@ -219,7 +222,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
   fastify.get('/:id/stories/:storyId/episodes', async (request, reply) => {
     const { id, storyId } = request.params as { id: string; storyId: string };
     try {
-      return await getEpisodes(id, storyId);
+      return await getEpisodes(id, request.user.userId, storyId);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -232,7 +235,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
       episodeNo: string;
     };
     try {
-      return await getStoryboardPack(id, storyId, Number(episodeNo));
+      return await getStoryboardPack(id, request.user.userId, storyId, Number(episodeNo));
     } catch (err) {
       return sendError(reply, err);
     }
@@ -245,7 +248,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
       episodeNo: string;
     };
     try {
-      return await getVideoPromptPack(id, storyId, Number(episodeNo));
+      return await getVideoPromptPack(id, request.user.userId, storyId, Number(episodeNo));
     } catch (err) {
       return sendError(reply, err);
     }

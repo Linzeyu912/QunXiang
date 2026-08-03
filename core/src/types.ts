@@ -7,6 +7,8 @@ export interface Book {
   mimeType: string;
   status: 'UPLOADED' | 'EXTRACTING' | 'EXTRACTED' | 'FAILED';
   userId: string;
+  sourceObjectKey?: string | null;
+  currentSnapshotId?: string | null;
   createdAt: Date;
   updatedAt?: Date;
 }
@@ -113,8 +115,11 @@ export interface Item {
 export interface User {
   id: string;
   email: string;
+  emailNormalized: string;
   name: string;
-  passwordHash?: string | null;
+  passwordHash: string;
+  status: 'ACTIVE' | 'DISABLED';
+  shareCodeHash: string;
   createdAt: Date;
 }
 

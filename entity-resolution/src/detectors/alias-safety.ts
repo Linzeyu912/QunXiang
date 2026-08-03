@@ -4,6 +4,57 @@ import { normalizeName } from './same-name.js';
 
 type CharacterInput = Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>;
 
+const BARE_KINSHIP_TERMS = [
+  '父亲',
+  '母亲',
+  '爸爸',
+  '妈妈',
+  '爹',
+  '娘',
+  '爷爷',
+  '奶奶',
+  '外公',
+  '外婆',
+  '哥哥',
+  '姐姐',
+  '弟弟',
+  '妹妹',
+  '哥',
+  '姐',
+  '弟',
+  '妹',
+  '叔叔',
+  '叔',
+  '婶婶',
+  '婶',
+  '伯父',
+  '伯伯',
+  '大伯',
+  '二叔',
+  '舅舅',
+  '姑姑',
+  '姑妈',
+  '姑父',
+  '阿姨',
+  '姨',
+  '姨妈',
+  '姨父',
+  '嫂子',
+  '堂哥',
+  '堂姐',
+  '堂弟',
+  '堂妹',
+  '表哥',
+  '表姐',
+  '表弟',
+  '表妹',
+] as const;
+
+const BARE_KINSHIP_ALIASES = new Set<string>(BARE_KINSHIP_TERMS);
+const NUMBERED_TITLE_RE = /^[大二三四五六七八九十]+长老$/u;
+const SCOPED_NUMBERED_TITLE_RE = /^[\u4e00-\u9fff]{1,10}[家族宗门阁派宫府院帮会教](?:族|门|院)?[大二三四五六七八九十]+长老$/u;
+const ORG_SCOPE_RE = /[\u4e00-\u9fff]{1,10}(?:家族|宗门|学院|家|族|宗|门|阁|派|宫|府|院|帮|会|教)/gu;
+
 const GENERIC_CHARACTER_ALIASES = new Set([
   // Pronouns — these refer to no one specifically
   '他',
@@ -80,10 +131,28 @@ const GENERIC_CHARACTER_ALIASES = new Set([
   '妹',
   '叔叔',
   '叔',
+  '婶婶',
+  '婶',
   '伯父',
   '伯伯',
   '大伯',
   '二叔',
+  '舅舅',
+  '姑姑',
+  '姑妈',
+  '姑父',
+  '阿姨',
+  '姨妈',
+  '姨父',
+  '嫂子',
+  '堂哥',
+  '堂姐',
+  '堂弟',
+  '堂妹',
+  '表哥',
+  '表姐',
+  '表弟',
+  '表妹',
   '侄子',
   '侄女',
   '少年',
@@ -294,6 +363,190 @@ export function isGenericCharacterAlias(alias: string): boolean {
   return false;
 }
 
+function isBareKinshipAlias(name: string): boolean {
+  return BARE_KINSHIP_ALIASES.has(stripDemonstrative(name.trim()));
+}
+
+function isBareNumberedTitle(name: string): boolean {
+  const normalized = name.trim();
+  return NUMBERED_TITLE_RE.test(normalized) && !SCOPED_NUMBERED_TITLE_RE.test(normalized);
+}
+
+function isScopedNumberedTitle(name: string): boolean {
+  return SCOPED_NUMBERED_TITLE_RE.test(name.trim());
+}
+
+function isScopedKinshipName(name: string): boolean {
+  const normalized = name.trim();
+  return BARE_KINSHIP_TERMS.some((term) =>
+    normalized.endsWith(`的${term}`) && normalized.length > term.length + 1
+  );
+}
+
+function compactOrganizationScope(rawScope: string): string {
+  let scope = rawScope
+    .trim()
+    .replace(/^(?:我们|咱们|他们|她们|你们|本|该|这个|那个|这些|那些|所有|几位|各位|在|现在|而|可|但|因为|所以)+/u, '');
+
+  const familySuffix = scope.endsWith('家族') ? '家族' : scope.endsWith('家') ? '家' : '';
+  if (familySuffix) {
+    const root = scope.slice(0, -familySuffix.length);
+    const compound = COMPOUND_SURNAMES.find((surname) => root.endsWith(surname));
+    if (compound) return `${compound}${familySuffix}`;
+    const last = root.at(-1);
+    if (last && COMMON_SURNAMES.has(last)) return `${last}${familySuffix}`;
+  }
+
+  return scope.length > 8 ? scope.slice(-8) : scope;
+}
+
+function sourceOccurrences(sourceText: string | undefined, value: string): number[] {
+  const positions: number[] = [];
+  if (!sourceText || !value) return positions;
+
+  let index = sourceText.indexOf(value);
+  while (index !== -1) {
+    positions.push(index);
+    index = sourceText.indexOf(value, index + value.length);
+  }
+  return positions;
+}
+
+function inferScopedNumberedTitle(name: string, sourceText: string | undefined): string | undefined {
+  const normalized = name.trim();
+  if (!sourceText || !isBareNumberedTitle(normalized)) return undefined;
+
+  let bestScope: string | undefined;
+  let bestScore = Number.NEGATIVE_INFINITY;
+
+  for (const titleIndex of sourceOccurrences(sourceText, normalized)) {
+    const start = Math.max(0, titleIndex - 140);
+    const end = Math.min(sourceText.length, titleIndex + normalized.length + 140);
+    const window = sourceText.slice(start, end);
+
+    for (const match of window.matchAll(ORG_SCOPE_RE)) {
+      const scope = compactOrganizationScope(match[0]);
+      if (!scope || scope.length < 2) continue;
+
+      const absoluteIndex = start + (match.index ?? 0);
+      const distance = Math.abs(titleIndex - absoluteIndex);
+      const score = countOccurrences(sourceText, scope) * 20 - distance;
+      if (score > bestScore) {
+        bestScore = score;
+        bestScope = scope;
+      }
+    }
+  }
+
+  return bestScope ? `${bestScope}${normalized}` : undefined;
+}
+
+function scoreKnownNameForKinship(sourceText: string, knownName: string, relation: string): number {
+  const occurrences = countOccurrences(sourceText, knownName);
+  if (occurrences === 0) return Number.NEGATIVE_INFINITY;
+
+  let score = occurrences * 20;
+  if (sourceText.includes(`${knownName}${relation}`)) score += 300;
+  if (sourceText.includes(`${knownName}的${relation}`)) score += 260;
+
+  for (const relationIndex of sourceOccurrences(sourceText, relation)) {
+    for (const nameIndex of sourceOccurrences(sourceText, knownName)) {
+      const distance = Math.abs(relationIndex - nameIndex);
+      if (distance > 160) continue;
+      score += nameIndex < relationIndex
+        ? 220 - distance
+        : Math.max(0, 40 - Math.floor(distance / 2));
+    }
+  }
+
+  return score;
+}
+
+function fallbackKnownCharacterNames(sourceText: string): string[] {
+  const names: string[] = [];
+  for (let i = 0; i < sourceText.length; i++) {
+    for (const length of [3, 2]) {
+      const candidate = sourceText.slice(i, i + length);
+      if (candidate.length !== length) continue;
+      if (/^(和|与|及|在|有|是|这|那|他|她)/u.test(candidate)) continue;
+      if (/[和与及在是有觉想说看拿走]$/u.test(candidate)) continue;
+      if (candidate.includes('觉得')) continue;
+      if (BARE_KINSHIP_TERMS.some((term) => candidate.includes(term))) continue;
+      if (isLikelyProperChineseName(candidate)) names.push(candidate);
+    }
+  }
+  return [...new Set(names)];
+}
+
+function inferScopedKinshipName(
+  name: string,
+  sourceText: string | undefined,
+  knownCharacterNames: string[] = []
+): string | undefined {
+  if (!sourceText || !isBareKinshipAlias(name)) return undefined;
+  const relation = stripDemonstrative(name.trim());
+  const candidateNames = [...new Set([
+    ...knownCharacterNames,
+    ...fallbackKnownCharacterNames(sourceText),
+  ])];
+
+  for (const knownName of candidateNames) {
+    const cleanName = knownName.trim();
+    if (!cleanName) continue;
+    if (sourceText.includes(`${cleanName}${relation}`)) return `${cleanName}的${relation}`;
+    if (sourceText.includes(`${cleanName}的${relation}`)) return `${cleanName}的${relation}`;
+  }
+
+  let bestName: string | undefined;
+  let bestScore = Number.NEGATIVE_INFINITY;
+  const explicitKnownNames = new Set(knownCharacterNames.map((knownName) => knownName.trim()).filter(Boolean));
+  for (const knownName of candidateNames) {
+    const cleanName = knownName.trim();
+    if (!cleanName || cleanName === relation || isGenericCharacterAlias(cleanName)) continue;
+    if (candidateNames.some((otherName) =>
+      otherName !== cleanName
+      && otherName.length > cleanName.length
+      && otherName.includes(cleanName)
+    )) {
+      continue;
+    }
+    const score = scoreKnownNameForKinship(sourceText, cleanName, relation)
+      + (explicitKnownNames.has(cleanName) ? 1000 : 0);
+    if (score > bestScore) {
+      bestScore = score;
+      bestName = cleanName;
+    }
+  }
+
+  return bestName && bestScore > Number.NEGATIVE_INFINITY
+    ? `${bestName}的${relation}`
+    : undefined;
+}
+
+function isInferredCanonicalNameCompatible(candidate: string, originalName: string): boolean {
+  const normalizedCandidate = candidate.trim();
+  const normalizedOriginal = originalName.trim();
+  if (isScopedNumberedTitle(normalizedCandidate) && isBareNumberedTitle(normalizedOriginal)) {
+    return normalizedCandidate.endsWith(normalizedOriginal);
+  }
+  if (isScopedKinshipName(normalizedCandidate) && isBareKinshipAlias(normalizedOriginal)) {
+    return normalizedCandidate.endsWith(`的${stripDemonstrative(normalizedOriginal)}`);
+  }
+  return false;
+}
+
+function isNarrativeAliasFragment(alias: string): boolean {
+  const normalized = alias.trim();
+  if (!normalized) return false;
+  if (BARE_KINSHIP_TERMS.some((term) => normalized.startsWith(term) && normalized.length > term.length + 2)) {
+    return true;
+  }
+  if (normalized.length > 12 && /[左右]手|手机|打火机|说道|看见|望着|拿着|走进|走出|跑去|买了|觉得|正在|忽然/u.test(normalized)) {
+    return true;
+  }
+  return false;
+}
+
 function startsWithKnownSurname(name: string): boolean {
   return COMPOUND_SURNAMES.some((surname) => name.startsWith(surname))
     || COMMON_SURNAMES.has(name[0]);
@@ -429,6 +682,7 @@ function hasDisallowedCanonicalAddressSuffix(name: string): boolean {
 
 function isCanonicalNameCandidate(name: string): boolean {
   const normalized = name.trim();
+  if (isScopedNumberedTitle(normalized) || isScopedKinshipName(normalized)) return true;
   return isLikelyProperChineseName(normalized)
     && !isNameScopedAddress(normalized)
     && !hasDisallowedCanonicalAddressSuffix(normalized);
@@ -441,7 +695,7 @@ function canonicalNameScore(name: string, sourceText?: string): number {
 export function chooseCanonicalCharacterName(
   characterName: string,
   aliases: string[] = [],
-  options: Pick<SanitizeCharacterAliasesOptions, 'sourceText'> = {}
+  options: Pick<SanitizeCharacterAliasesOptions, 'sourceText' | 'knownCharacterNames'> = {}
 ): string {
   const originalName = characterName.trim();
   let bestName = originalName;
@@ -449,10 +703,29 @@ export function chooseCanonicalCharacterName(
     ? canonicalNameScore(originalName, options.sourceText)
     : Number.NEGATIVE_INFINITY;
 
+  const inferredFromOriginal = inferScopedKinshipName(
+    originalName,
+    options.sourceText,
+    options.knownCharacterNames
+  ) ?? inferScopedNumberedTitle(originalName, options.sourceText);
+
+  if (inferredFromOriginal && isCanonicalNameCandidate(inferredFromOriginal)) {
+    bestName = inferredFromOriginal;
+    bestScore = canonicalNameScore(inferredFromOriginal, options.sourceText) + 1000;
+  }
+
   for (const alias of aliases) {
-    const candidate = alias.trim();
+    const rawCandidate = alias.trim();
+    const candidate = inferScopedKinshipName(
+      rawCandidate,
+      options.sourceText,
+      options.knownCharacterNames
+    ) ?? inferScopedNumberedTitle(rawCandidate, options.sourceText) ?? rawCandidate;
     if (!candidate || !isCanonicalNameCandidate(candidate)) continue;
-    if (!isAliasCompatibleWithCharacterName(candidate, originalName)) continue;
+    if (
+      !isAliasCompatibleWithCharacterName(candidate, originalName)
+      && !isInferredCanonicalNameCompatible(candidate, originalName)
+    ) continue;
     if (options.sourceText && !options.sourceText.includes(candidate)) continue;
 
     const score = canonicalNameScore(candidate, options.sourceText);
@@ -480,6 +753,7 @@ export function sanitizeCharacterAliases(
     if (!normalized) continue;
     if (normalizeName(normalized) === normalizeName(characterName)) continue;
     if (seen.has(normalized)) continue;
+    if (isNarrativeAliasFragment(normalized)) continue;
     if (isGenericCharacterAlias(normalized)) continue;
     if (sourceText && !sourceText.includes(rawAlias) && !sourceText.includes(normalized)) continue;
     if (
@@ -520,6 +794,21 @@ export function sanitizeCharacterAliases(
   }
 
   return cleanAliases;
+}
+
+export function implicitCharacterSignalAliases(characterName: string): string[] {
+  const normalized = characterName.trim();
+  const aliases: string[] = [];
+
+  const kinship = BARE_KINSHIP_TERMS.find((term) => normalized.endsWith(`的${term}`));
+  if (kinship) aliases.push(kinship);
+
+  if (isScopedNumberedTitle(normalized)) {
+    const title = normalized.match(/[大二三四五六七八九十]+长老$/u)?.[0];
+    if (title) aliases.push(title);
+  }
+
+  return [...new Set(aliases)];
 }
 
 export function isSafeAliasMatch(char1: CharacterInput, char2: CharacterInput): boolean {

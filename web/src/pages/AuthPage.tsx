@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { BookOpen, Loader2 } from 'lucide-react';
@@ -9,17 +9,20 @@ import { Label } from '@/components/ui/label';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { useLogin, useRegister } from '@/api/auth';
 import { useAuthStore } from '@/store/authStore';
+import { setPendingShareCode } from '@/lib/one-time-share-code';
 
 export function AuthPage() {
   const navigate = useNavigate();
   const token = useAuthStore((s) => s.token);
+  const bootstrapping = useAuthStore((s) => s.bootstrapping);
   const login = useLogin();
   const register = useRegister();
+  const registrationInProgress = useRef(false);
 
-  // 已登录则直接进书库（例如在 /login 手动访问时）。
+  // 启动刷新恢复账号后离开登录页；注册流程由成功回调导航到一次性分享码页面。
   useEffect(() => {
-    if (token) navigate('/library', { replace: true });
-  }, [token, navigate]);
+    if (token && !registrationInProgress.current) navigate('/library', { replace: true });
+  }, [navigate, token]);
 
   const [mode, setMode] = useState<'login' | 'register'>('login');
   const [email, setEmail] = useState('');
@@ -28,6 +31,10 @@ export function AuthPage() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (bootstrapping) {
+      toast.error('正在恢复登录状态，请稍候');
+      return;
+    }
     const handleErr = (err: unknown) =>
       toast.error(err instanceof Error ? err.message : '操作失败');
     if (mode === 'login') {
@@ -42,20 +49,25 @@ export function AuthPage() {
         },
       );
     } else {
+      registrationInProgress.current = true;
       register.mutate(
         { email: email.trim(), password, name: name.trim() },
         {
-          onSuccess: () => {
+          onSuccess: (data) => {
+            setPendingShareCode(data.shareCode);
             toast.success('注册成功，已自动登录');
-            navigate('/library', { replace: true });
+            navigate('/account', { replace: true });
           },
-          onError: handleErr,
+          onError: (error) => {
+            registrationInProgress.current = false;
+            handleErr(error);
+          },
         },
       );
     }
   };
 
-  const pending = login.isPending || register.isPending;
+  const pending = bootstrapping || login.isPending || register.isPending;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-6">
@@ -126,12 +138,6 @@ export function AuthPage() {
                 {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 {mode === 'login' ? '登录' : '注册并登录'}
               </Button>
-              {mode === 'login' && (
-                <p className="pt-1 text-center text-xs text-muted-foreground">
-                  本地默认账号：<code className="rounded bg-muted px-1">test@example.com</code> /{' '}
-                  <code className="rounded bg-muted px-1">example</code>
-                </p>
-              )}
             </form>
           </CardContent>
         </Card>

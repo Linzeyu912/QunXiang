@@ -7,8 +7,12 @@ import {
   getExtractionArtifacts,
   getPrescanArtifacts,
   listExtractionRuns,
+  updateArtifact,
+  type ArtifactPatch,
 } from '../services/artifacts.service.js';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
+import { sendServerError } from '../lib/send-error.js';
+import { sendBookNotFound } from '../lib/api-errors.js';
 
 export async function artifactsRoutes(fastify: FastifyInstance) {
   // 实体提取富产物（结构化描述/视觉设定/生成提示词/叙事事件），按最新完整运行返回
@@ -16,13 +20,37 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
     try {
-      return await getExtractionArtifacts(id);
+      return await getExtractionArtifacts(id, ownerId!);
     } catch (err) {
-      request.log.error(err);
-      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+      return sendServerError(reply, err, request.log);
+    }
+  });
+
+  // 更新实体产物（描写 / 提示词）— 人工编辑
+  fastify.patch('/:id/extraction-artifacts/:entityType/:entityName', async (request, reply) => {
+    const { id, entityType, entityName } = request.params as { id: string; entityType: string; entityName: string };
+    if (!['character', 'location', 'item'].includes(entityType)) {
+      return reply.status(400).send({ error: '无效的实体类型' });
+    }
+    const ownerId = await resolveOwnerId(request);
+    if (!(await ownsBook(id, ownerId))) {
+      return reply.status(404).send({ error: '书籍不存在' });
+    }
+    const patch = request.body as ArtifactPatch;
+    if (!patch || (!patch.visual && !patch.prompt)) {
+      return reply.status(400).send({ error: '缺少更新内容' });
+    }
+    try {
+      const result = await updateArtifact(id, ownerId!, entityType as 'character' | 'location' | 'item', decodeURIComponent(entityName), patch);
+      if (!result.success) {
+        return reply.status(400).send({ error: result.error });
+      }
+      return { ok: true };
+    } catch (err) {
+      return sendServerError(reply, err, request.log);
     }
   });
 
@@ -31,13 +59,12 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
     try {
-      return await listExtractionRuns(id);
+      return await listExtractionRuns(id, ownerId!);
     } catch (err) {
-      request.log.error(err);
-      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+      return sendServerError(reply, err, request.log);
     }
   });
 
@@ -46,13 +73,12 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
     try {
-      return await getPrescanArtifacts(id);
+      return await getPrescanArtifacts(id, ownerId!);
     } catch (err) {
-      request.log.error(err);
-      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+      return sendServerError(reply, err, request.log);
     }
   });
 
@@ -61,15 +87,14 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
     try {
-      const outline = await getChapterOutline(id);
-      if (!outline) return reply.status(404).send({ error: 'Book or file not found' });
+      const outline = await getChapterOutline(id, ownerId!);
+      if (!outline) return reply.status(404).send({ error: '书籍或文件不存在' });
       return outline;
     } catch (err) {
-      request.log.error(err);
-      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+      return sendServerError(reply, err, request.log);
     }
   });
 
@@ -78,19 +103,18 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     const { id, index } = request.params as { id: string; index: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
     const chapterIndex = Number(index);
     if (!Number.isInteger(chapterIndex) || chapterIndex < 0) {
       return reply.status(400).send({ error: '无效的章节序号' });
     }
     try {
-      const content = await getChapterContent(id, chapterIndex);
-      if (!content) return reply.status(404).send({ error: 'Book or chapter not found' });
+      const content = await getChapterContent(id, ownerId!, chapterIndex);
+      if (!content) return reply.status(404).send({ error: '书籍或章节不存在' });
       return content;
     } catch (err) {
-      request.log.error(err);
-      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+      return sendServerError(reply, err, request.log);
     }
   });
 
@@ -99,18 +123,17 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
     const { lineNum } = (request.body ?? {}) as { lineNum?: unknown };
     if (typeof lineNum !== 'number' || !Number.isInteger(lineNum) || lineNum < 1) {
       return reply.status(400).send({ error: '无效的行号' });
     }
     try {
-      await restoreNoiseLine(id, lineNum);
+      if (!(await restoreNoiseLine(id, ownerId!, lineNum))) return sendBookNotFound(reply);
       return { ok: true };
     } catch (err) {
-      request.log.error(err);
-      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+      return sendServerError(reply, err, request.log);
     }
   });
 
@@ -119,18 +142,17 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
     const { lineNum } = (request.body ?? {}) as { lineNum?: unknown };
     if (typeof lineNum !== 'number' || !Number.isInteger(lineNum) || lineNum < 1) {
       return reply.status(400).send({ error: '无效的行号' });
     }
     try {
-      await unrestoreNoiseLine(id, lineNum);
+      if (!(await unrestoreNoiseLine(id, ownerId!, lineNum))) return sendBookNotFound(reply);
       return { ok: true };
     } catch (err) {
-      request.log.error(err);
-      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+      return sendServerError(reply, err, request.log);
     }
   });
 }

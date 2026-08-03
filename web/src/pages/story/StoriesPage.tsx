@@ -22,6 +22,7 @@ import {
 } from '@/api/stories';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -192,7 +193,7 @@ export function StoriesPage() {
       )}
 
       {listQ.isLoading ? (
-        <p className="p-6 text-sm text-muted-foreground">加载中…</p>
+        <StoryListSkeleton />
       ) : stories.length === 0 ? (
         <EmptyState bookId={bookId} />
       ) : (
@@ -578,6 +579,36 @@ function TagGroup({
             {v}
           </Badge>
         ))}
+      </div>
+    </div>
+  );
+}
+
+/** 故事列表加载骨架：复刻左列表 + 右详情双栏布局。 */
+function StoryListSkeleton() {
+  return (
+    <div
+      className="grid h-[calc(100vh-16rem)] grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] overflow-hidden rounded-lg border bg-card"
+      aria-label="故事列表加载中"
+    >
+      <div className="overflow-hidden border-r">
+        {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+          <div key={i} className="border-b border-border/60 px-4 py-3">
+            <div className="flex items-center justify-between gap-2">
+              <Skeleton className="h-4 w-32" />
+              <Skeleton className="h-5 w-12" />
+            </div>
+            <Skeleton className="mt-2 h-3 w-24" />
+            <Skeleton className="mt-1.5 h-3 w-full" />
+          </div>
+        ))}
+      </div>
+      <div className="space-y-4 p-6">
+        <Skeleton className="h-6 w-1/3" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-2/3" />
+        <Skeleton className="mt-6 h-24 w-full" />
       </div>
     </div>
   );

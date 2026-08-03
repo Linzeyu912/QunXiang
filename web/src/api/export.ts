@@ -1,4 +1,4 @@
-import { getToken } from '@/store/authStore';
+import { apiFetch } from './client';
 import type { EntityType } from '@/types';
 
 export type ExportFormat = 'json' | 'markdown' | 'csv';
@@ -14,12 +14,24 @@ export async function fetchExportPreview(
   format: ExportFormat,
   type: ExportType = 'character',
 ): Promise<string> {
-  const headers: Record<string, string> = {};
-  const token = getToken();
-  if (token) headers['Authorization'] = `Bearer ${token}`;
-  const res = await fetch(getExportUrl(bookId, format, type), { headers });
-  if (!res.ok) {
-    throw new Error(`导出失败：${res.status}`);
-  }
+  const res = await apiFetch<Response>(getExportUrl(bookId, format, type), { raw: true });
   return res.text();
+}
+
+/** 鉴权下载导出文件，不把访问令牌放入 URL。 */
+export async function downloadExport(
+  bookId: string,
+  format: ExportFormat,
+  type: ExportType = 'character',
+): Promise<void> {
+  const response = await apiFetch<Response>(getExportUrl(bookId, format, type), { raw: true });
+  const blob = await response.blob();
+  const objectUrl = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = objectUrl;
+  anchor.download = `entities-${type}.${format === 'markdown' ? 'md' : format}`;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
 }

@@ -3,6 +3,8 @@ import { createTaskRepository, type TaskRepository } from './task.repository.js'
 import { createBookRepository, type BookRepository } from './book.repository.js';
 import { createUserRepository, type UserRepository } from './user.repository.js';
 import { testPrisma } from './test-setup.js';
+import { testUserInput } from './test-fixtures.js';
+import { randomUUID } from 'node:crypto';
 
 describe('TaskRepository', () => {
   let taskRepo: TaskRepository;
@@ -18,7 +20,7 @@ describe('TaskRepository', () => {
     await testPrisma.task.deleteMany();
     await testPrisma.book.deleteMany();
     await testPrisma.user.deleteMany();
-    testUser = await userRepo.create({ email: 'taskuser@example.com', name: 'Task User' });
+    testUser = await userRepo.create(testUserInput('taskuser@example.com', '任务测试用户'));
     testBook = await bookRepo.create({ title: 'Task Book', filePath: '/tmp/test.txt', fileSize: 1024, mimeType: 'text/plain', userId: testUser.id });
   });
 
@@ -64,7 +66,7 @@ describe('TaskRepository', () => {
     });
 
     it('should return null when task does not exist', async () => {
-      const found = await taskRepo.findById('non-existent-id');
+      const found = await taskRepo.findById(randomUUID());
       expect(found).toBeNull();
     });
 
@@ -273,7 +275,7 @@ describe('TaskRepository', () => {
     });
 
     it('should throw error when task not found', async () => {
-      await expect(taskRepo.incrementRetryCount('non-existent')).rejects.toThrow('Task not found');
+      await expect(taskRepo.incrementRetryCount(randomUUID())).rejects.toThrow('任务不存在');
     });
   });
 });

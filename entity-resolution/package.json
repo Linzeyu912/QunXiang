@@ -5,6 +5,8 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
-    "@novel-agent/core": "workspace:*"
+    "@novel-agent/core": "workspace:*",
+    "@novel-agent/extractors": "workspace:*",
+    "@novel-agent/schemas": "workspace:*"
   }
 }

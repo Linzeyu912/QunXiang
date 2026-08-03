@@ -2,6 +2,8 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { createBookRepository, type BookRepository } from './book.repository.js';
 import { createUserRepository, type UserRepository } from './user.repository.js';
 import { testPrisma } from './test-setup.js';
+import { testUserInput } from './test-fixtures.js';
+import { randomUUID } from 'node:crypto';
 
 describe('BookRepository', () => {
   let bookRepo: BookRepository;
@@ -13,7 +15,7 @@ describe('BookRepository', () => {
     userRepo = createUserRepository(testPrisma);
     await testPrisma.book.deleteMany();
     await testPrisma.user.deleteMany();
-    testUser = await userRepo.create({ email: 'bookuser@example.com', name: 'Book User' });
+    testUser = await userRepo.create(testUserInput('bookuser@example.com', '书籍测试用户'));
   });
 
   describe('create', () => {
@@ -51,7 +53,7 @@ describe('BookRepository', () => {
     });
 
     it('should return null when book does not exist', async () => {
-      const found = await bookRepo.findById('non-existent-id');
+      const found = await bookRepo.findById(randomUUID());
       expect(found).toBeNull();
     });
   });
@@ -67,7 +69,7 @@ describe('BookRepository', () => {
     });
 
     it('should return only books for the specified user', async () => {
-      const otherUser = await userRepo.create({ email: 'other@example.com', name: 'Other User' });
+      const otherUser = await userRepo.create(testUserInput('other@example.com', '其他用户'));
       await bookRepo.create({ title: 'My Book', filePath: '/tmp/test.txt', fileSize: 1024, mimeType: 'text/plain', userId: testUser.id });
       await bookRepo.create({ title: 'Other Book', filePath: '/tmp/other.txt', fileSize: 1024, mimeType: 'text/plain', userId: otherUser.id });
 
@@ -103,6 +105,30 @@ describe('BookRepository', () => {
       const updated = await bookRepo.updateStatus(book.id, 'EXTRACTED');
 
       expect(updated.status).toBe('EXTRACTED');
+    });
+  });
+
+  describe('setCurrentSnapshot', () => {
+    it('置 currentSnapshotId 且不刷新 updatedAt（P0-1 回归：避免 contentRevision 漂移死循环）', async () => {
+      const book = await bookRepo.create({ title: 'Snap', filePath: '/tmp/s.txt', fileSize: 1, mimeType: 'text/plain', userId: testUser.id });
+      const before = book.updatedAt;
+      await new Promise((r) => setTimeout(r, 20));
+      const snapshotId = randomUUID();
+      await bookRepo.setCurrentSnapshot(book.id, snapshotId);
+      const after = await bookRepo.findById(book.id);
+      expect(after?.currentSnapshotId).toBe(snapshotId);
+      expect(after?.updatedAt).toEqual(before);
+    });
+
+    it('传 null 清除 currentSnapshotId 且不刷新 updatedAt', async () => {
+      const book = await bookRepo.create({ title: 'Snap2', filePath: '/tmp/s2.txt', fileSize: 1, mimeType: 'text/plain', userId: testUser.id });
+      await bookRepo.setCurrentSnapshot(book.id, randomUUID());
+      const before = (await bookRepo.findById(book.id))!.updatedAt;
+      await new Promise((r) => setTimeout(r, 20));
+      await bookRepo.setCurrentSnapshot(book.id, null);
+      const after = await bookRepo.findById(book.id);
+      expect(after?.currentSnapshotId).toBeNull();
+      expect(after?.updatedAt).toEqual(before);
     });
   });
 

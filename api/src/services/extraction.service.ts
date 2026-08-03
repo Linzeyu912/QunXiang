@@ -1,10 +1,10 @@
 import { BookRepository, TaskRepository } from '@novel-agent/storage';
-import { TaskDispatcher, DatabaseTaskQueue, eventBus } from '@novel-agent/scheduler';
+import { TaskDispatcher, DatabaseTaskQueue, eventBus, EXTRACTION_PIPELINE } from '@novel-agent/scheduler';
 import type { PipelineEvent } from '@novel-agent/scheduler';
 import { CharacterRepository, LocationRepository, ItemRepository } from '@novel-agent/storage';
 import { getDefaultProvider, getApiKeyCount } from '@novel-agent/llm';
 import type { AgentType } from '@novel-agent/core';
-import { ConflictError } from '../lib/errors.js';
+import { ConflictError, NotFoundError } from '../lib/errors.js';
 
 const taskQueue = new DatabaseTaskQueue();
 const dispatcher = new TaskDispatcher(taskQueue);
@@ -100,38 +100,137 @@ const PIPELINE_STAGES: { id: AgentType; name: string; weight: number }[] = [
   { id: 'reviewer', name: '审核入库', weight: 10 },
 ];
 
-export async function startExtraction(bookId: string, userId: string) {
+export async function startExtraction(bookId: string, ownerId: string) {
   // 幂等：该书已有 pending/running 任务 → 本次运行仍在进行，拒绝重复触发。
   // （孤儿 running 任务由 dispatcher 启动时的 recoverInterruptedTasks 回收，
   // 因此运行期出现的 running/running 即视为真实进行中。）
-  const existing = await TaskRepository.findByBookId(bookId);
+  const book = await BookRepository.findOwnedById(bookId, ownerId);
+  if (!book) throw new Error('书籍不存在或无权访问');
+  const existing = await TaskRepository.findByOwnedBookId(bookId, ownerId);
   if (existing.some((t) => t.status === 'pending' || t.status === 'running')) {
     throw new ConflictError('该书正在提取中，请等待当前运行结束');
   }
 
   try {
     // Update book status
-    await BookRepository.updateStatus(bookId, 'EXTRACTING');
+    await BookRepository.updateOwnedStatus(bookId, ownerId, 'EXTRACTING');
 
     // 清掉上一轮的遗留任务，确保 getExtractionStages / 进度反映的是本次运行，
     // 而不是上一次 completed/failed 的历史任务（否则重跑会瞬间显示"已完成"）。
-    await TaskRepository.deleteByBookId(bookId);
+    await TaskRepository.deleteOwnedByBookId(bookId, ownerId);
 
     // Validate provider is available (will throw if not configured)
     const provider = await getDefaultProvider();
 
     // Enqueue extraction task; actual processing happens in the background worker
-    const { extractorTaskId } = await dispatcher.startExtraction(bookId, userId);
+    const { extractorTaskId } = await dispatcher.startExtraction(bookId, ownerId);
 
     return { taskId: extractorTaskId, provider: provider.name };
+  } catch (err) {
+    await BookRepository.updateOwnedStatus(bookId, ownerId, 'FAILED');
+    throw err;
+  }
+}
+
+/**
+ * 断点续传：从第一个失败的 stage 开始重跑(成功 stage 复用 result)。
+ *
+ * 行为：
+ * 1. 找第一个 status='failed' 的 stage — 若都成功,抛 NotFoundError(让用户用 getStages 自行查看)
+ * 2. 清除该 stage 的 error 字段,status 重置 pending
+ * 3. 删除该 stage 之后所有 stage 的 task 行(包括它们之前 pending/failed 的记录)
+ * 4. 串好前序 stage 的 result(从 Task.result 反序列化)到 payload,enqueue 新 task
+ * 5. worker 接管,后续 stage 由 dispatcher.processNext 链式 enqueue
+ *
+ * 幂等保证：
+ * - 已 completed 的 stage 不重跑
+ * - 用户对已失败的 stage 之外的 stage 调 resume,行为是"从最早的失败点继续",
+ *   避免误重跑已成功的昂贵 stage(如 visual-description 又烧一次 LLM 费)
+ */
+export async function resumeExtraction(bookId: string, userId: string) {
+  const tasks = await TaskRepository.findByBookId(bookId);
+  if (tasks.length === 0) {
+    throw new NotFoundError('该书没有提取任务记录，请先触发 startExtraction');
+  }
+
+  // 拒绝正在跑的(用 startExtraction 即可)
+  if (tasks.some((t) => t.status === 'pending' || t.status === 'running')) {
+    throw new ConflictError('该书正在提取中，无需 resume');
+  }
+
+  // 找第一个失败的 stage
+  const firstFailed = tasks.find((t) => t.status === 'failed');
+  if (!firstFailed) {
+    // 全部 completed,前端可以用 getStages 判断
+    throw new ConflictError('该书所有 stage 都已成功，无需 resume');
+  }
+
+  const failedStageId = firstFailed.agentType;
+  const failedStageIndex = EXTRACTION_PIPELINE.indexOf(failedStageId as AgentType);
+  if (failedStageIndex === -1) {
+    throw new Error(`Unknown stage in pipeline: ${failedStageId}`);
+  }
+
+  try {
+    // 1. 把 failed stage 本身重置为 pending(清 error)
+    await TaskRepository.updateStatus(firstFailed.id, 'pending');
+
+    // 2. 删除 failed stage 之后的所有 stage 行(包括之前 pending/failed 的)
+    const stagesAfterFailed = tasks.filter((t) => {
+      const idx = EXTRACTION_PIPELINE.indexOf(t.agentType as AgentType);
+      return idx > failedStageIndex;
+    });
+    for (const t of stagesAfterFailed) {
+      await TaskRepository.updateStatus(t.id, 'pending');
+    }
+
+    // 3. 构造 payload:从已完成 stage 的 result 拼起来
+    const completedResults: Record<string, unknown> = {};
+    for (const t of tasks) {
+      if (t.status === 'completed' && t.result) {
+        // result 存在数据库里可能是字符串(serialize 的 JSON)或对象
+        const r = typeof t.result === 'string' ? safeParseJson(t.result) : t.result;
+        if (r && typeof r === 'object') {
+          Object.assign(completedResults, r);
+        }
+      }
+    }
+
+    const resumePayload = {
+      bookId,
+      userId,
+      ...completedResults,
+    };
+
+    // 4. 重置 book 状态 + enqueue 新 task
+    await BookRepository.updateStatus(bookId, 'EXTRACTING');
+    const resumeTaskId = await TaskRepository.create({
+      bookId,
+      agentType: failedStageId as AgentType,
+      payload: resumePayload,
+      status: 'pending',
+    });
+    // 不需要 dispatcher.startExtraction(那个会从 extractor 开始);
+    // 我们的 worker 每秒轮询,会自动捡起这个新 task。
+
+    return { taskId: resumeTaskId, resumedFrom: failedStageId };
   } catch (err) {
     await BookRepository.updateStatus(bookId, 'FAILED');
     throw err;
   }
 }
 
-export async function pollExtractionStatus(taskId: string, bookId?: string) {
-  const task = await dispatcher.getTaskStatus(taskId);
+/** 解析 Task.result 字段(可能是 JSON 字符串)。失败返回 null。 */
+function safeParseJson(s: string): unknown {
+  try {
+    return JSON.parse(s);
+  } catch {
+    return null;
+  }
+}
+
+export async function pollExtractionStatus(taskId: string, ownerId: string, bookId?: string) {
+  const task = await TaskRepository.findOwnedById(taskId, ownerId);
   if (!task) {
     return { status: 'not_found' };
   }
@@ -147,16 +246,16 @@ export async function pollExtractionStatus(taskId: string, bookId?: string) {
 
   // If extraction failed, update book status
   if (task.status === 'failed') {
-    await BookRepository.updateStatus(taskBookId, 'FAILED');
+    await BookRepository.updateOwnedStatus(taskBookId, ownerId, 'FAILED');
     return { status: 'failed', task };
   }
 
   // If extraction is complete (passed through all pipeline stages), fetch characters
   if (task.agentType === 'reviewer' && task.status === 'completed') {
-    const characters = await CharacterRepository.findByBookId(taskBookId);
+    const characters = await CharacterRepository.findByOwnedBookId(taskBookId, ownerId);
 
     // Update book status
-    await BookRepository.updateStatus(taskBookId, 'EXTRACTED');
+    await BookRepository.updateOwnedStatus(taskBookId, ownerId, 'EXTRACTED');
 
     return { status: 'completed', task, characters };
   }
@@ -183,8 +282,10 @@ export interface ExtractionStagesResult {
   stages: ExtractionStageInfo[];
 }
 
-export async function getExtractionStages(bookId: string): Promise<ExtractionStagesResult> {
-  const tasks = await TaskRepository.findByBookId(bookId);
+export async function getExtractionStages(bookId: string, ownerId: string): Promise<ExtractionStagesResult> {
+  const book = await BookRepository.findOwnedById(bookId, ownerId);
+  if (!book) throw new Error('书籍不存在或无权访问');
+  const tasks = await TaskRepository.findByOwnedBookId(bookId, ownerId);
 
   let overallProgress = 0;
   let isComplete = false;
@@ -220,15 +321,32 @@ export async function getExtractionStages(bookId: string): Promise<ExtractionSta
   const reviewerStage = stages.find((s) => s.id === 'reviewer');
   if (reviewerStage?.status === 'completed') {
     const [chars, locs, items] = await Promise.all([
-      CharacterRepository.findByBookId(bookId),
-      LocationRepository.findByBookId(bookId),
-      ItemRepository.findByBookId(bookId),
+      CharacterRepository.findByOwnedBookId(bookId, ownerId),
+      LocationRepository.findByOwnedBookId(bookId, ownerId),
+      ItemRepository.findByOwnedBookId(bookId, ownerId),
     ]);
     if (chars.length === 0 && locs.length === 0 && items.length === 0) {
       // reviewer 任务状态仍是 completed（来自任务表），但语义上没有产出，
       // 在 stage 上标注原因，让前端 StageCard 能显示，且不进入 isComplete。
       reviewerStage.message = '审核入库完成，但未提取到任何角色/场景/道具';
     } else {
+      isComplete = true;
+      overallProgress = 100;
+    }
+  }
+
+  // 物化书籍（公共书库 seed 物化 / 分享复制）实体直接入库，没有任何任务记录：
+  // tasks 全空 + book.status=EXTRACTED + 确有实体 → 把全部阶段合成 completed。
+  // 否则前端 BookIndexRedirect 会把这类书判成"未提取"，入口重定向到 pipeline
+  // 空白页，用户看不到任何提取结果。空实体时不判完成（与上面的防御一致）。
+  if (!isComplete && tasks.length === 0 && book.status === 'EXTRACTED') {
+    const [chars, locs, items] = await Promise.all([
+      CharacterRepository.findByOwnedBookId(bookId, ownerId),
+      LocationRepository.findByOwnedBookId(bookId, ownerId),
+      ItemRepository.findByOwnedBookId(bookId, ownerId),
+    ]);
+    if (chars.length + locs.length + items.length > 0) {
+      for (const stage of stages) stage.status = 'completed';
       isComplete = true;
       overallProgress = 100;
     }
@@ -254,10 +372,11 @@ export async function getExtractionStages(bookId: string): Promise<ExtractionSta
  * Returns an async generator that yields SSE-formatted strings.
  */
 export async function* createExtractionStream(
-  bookId: string
+  bookId: string,
+  ownerId: string,
 ): AsyncGenerator<string> {
   // Send initial state (full stages snapshot)
-  const initialState = await getExtractionStages(bookId);
+  const initialState = await getExtractionStages(bookId, ownerId);
   yield `data: ${JSON.stringify(initialState)}\n\n`;
 
   // If already complete or failed, close immediately

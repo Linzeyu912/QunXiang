@@ -23,6 +23,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { PanelSkeleton } from '@/components/ui/skeleton';
 import { ConfidenceBar } from '@/components/review/ConfidenceBar';
 import { AssetWarningBanner } from '@/components/story/AssetWarningBanner';
 import { EditableTextBlock } from '@/components/story/EditableTextBlock';
@@ -128,7 +129,7 @@ export function StoryAssetsPage() {
       </div>
 
       {packQ.isLoading ? (
-        <p className="p-6 text-sm text-muted-foreground">加载中…</p>
+        <PanelSkeleton lines={6} />
       ) : notExtracted ? (
         <div className="flex h-[40vh] flex-col items-center justify-center gap-3 rounded-lg border border-dashed">
           <Boxes className="h-8 w-8 text-muted-foreground/50" />
@@ -404,7 +405,7 @@ function PromptsPane({ bookId, storyId }: { bookId: string; storyId: string }) {
     return pack.allPrompts.filter((p) => p.assetType === filter);
   }, [pack, filter]);
 
-  if (promptsQ.isLoading) return <p className="p-6 text-sm text-muted-foreground">加载中…</p>;
+  if (promptsQ.isLoading) return <PanelSkeleton lines={5} />;
   if (!pack) return <p className="p-6 text-sm text-muted-foreground">提示词尚未生成。</p>;
 
   return (

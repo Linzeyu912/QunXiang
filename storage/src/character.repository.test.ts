@@ -3,6 +3,8 @@ import { createCharacterRepository, type CharacterRepository } from './character
 import { createBookRepository, type BookRepository } from './book.repository.js';
 import { createUserRepository, type UserRepository } from './user.repository.js';
 import { testPrisma } from './test-setup.js';
+import { testUserInput } from './test-fixtures.js';
+import { randomUUID } from 'node:crypto';
 
 describe('CharacterRepository', () => {
   let charRepo: CharacterRepository;
@@ -18,7 +20,7 @@ describe('CharacterRepository', () => {
     await testPrisma.character.deleteMany();
     await testPrisma.book.deleteMany();
     await testPrisma.user.deleteMany();
-    testUser = await userRepo.create({ email: 'charuser@example.com', name: 'Char User' });
+    testUser = await userRepo.create(testUserInput('charuser@example.com', '角色测试用户'));
     testBook = await bookRepo.create({ title: 'Test Book', filePath: '/tmp/test.txt', fileSize: 1024, mimeType: 'text/plain', userId: testUser.id });
   });
 
@@ -188,7 +190,7 @@ describe('CharacterRepository', () => {
     });
 
     it('should return null when character does not exist', async () => {
-      const found = await charRepo.findById('non-existent-id');
+      const found = await charRepo.findById(randomUUID());
       expect(found).toBeNull();
     });
   });

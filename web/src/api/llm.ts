@@ -1,10 +1,33 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiFetch } from './client';
-import type { ConcurrencyMode, ConcurrencyStatus, LlmStatus } from '@/types';
+import type { ConcurrencyMode, ConcurrencyStatus, ImageStatus, LlmStatus } from '@/types';
 
 export const llmKey = {
   status: ['llm', 'status'] as const,
+  presets: ['llm', 'presets'] as const,
 };
+
+export interface ProviderModel {
+  id: string;
+  name: string;
+  /** 默认图片尺寸，选中模型时自动填充 */
+  defaultSize?: string;
+}
+
+export interface ProviderPreset {
+  id: string;
+  name: string;
+  baseUrl: string;
+  models: ProviderModel[];
+}
+
+export function useLlmPresets() {
+  return useQuery({
+    queryKey: llmKey.presets,
+    queryFn: () => apiFetch<{ presets: ProviderPreset[] }>('/health/llm/presets'),
+    staleTime: Infinity,
+  });
+}
 
 export function useLlmStatus() {
   return useQuery({
@@ -71,5 +94,53 @@ export interface LlmTestResult {
 export function useTestLlmConnection() {
   return useMutation({
     mutationFn: () => apiFetch<LlmTestResult>('/health/llm/test', { method: 'POST' }),
+  });
+}
+
+// ── Image generation config ──
+
+export function useImagePresets() {
+  return useQuery({
+    queryKey: ['image', 'presets'],
+    queryFn: () => apiFetch<{ presets: ProviderPreset[] }>('/health/image/presets'),
+    staleTime: Infinity,
+  });
+}
+
+export function useImageStatus() {
+  return useQuery({
+    queryKey: ['image', 'status'],
+    queryFn: () => apiFetch<ImageStatus>('/health/image'),
+    staleTime: 15_000,
+  });
+}
+
+export interface ImageConfigPatch {
+  apiKey?: string;
+  baseUrl?: string;
+  model?: string;
+  size?: string;
+  characterRatio?: string;
+  itemRatio?: string;
+  locationRatio?: string;
+}
+
+export function useSetImageConfig() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (patch: ImageConfigPatch) =>
+      apiFetch<ImageStatus>('/health/image/config', { method: 'PATCH', body: patch }),
+    onSuccess: (data) => {
+      qc.setQueryData(['image', 'status'], data);
+    },
+  });
+}
+
+export function useTestImageConnection() {
+  return useMutation({
+    mutationFn: () => apiFetch<{ success: boolean; message: string; timestamp: string }>(
+      '/health/image/test',
+      { method: 'POST' },
+    ),
   });
 }

@@ -22,28 +22,42 @@ logs/
 # Database
 *.db
 *.db-journal
+*.db-shm
+*.db-wal
 prisma/dev.db
 prisma/dev.db-journal
+prisma/prisma/
 *.db.bak*
 
 # Environment files
 .env
 .env.local
 .env.*.local
+.env.docker
 api.env
 !.env.example
 
+# Deployment secrets
+.db-password
+
 # Encrypted config (contains API keys)
 .novel-agent-config.encrypted
+.novel-agent-image-config.encrypted
 
 # Claude Code
 .claude/
 .codebuddy/
 .omc/
+.worktrees/
+
+# Other AI/tool metadata (auto-generated, not project content)
+.qoder/
+.workbuddy/
 
 # IDE
 .idea/
 .vscode/
+.obsidian/
 
 # OS
 .DS_Store
@@ -58,6 +72,8 @@ test/
 
 # Uploads and runtime data
 storage/uploads/
+storage/objects/
+storage/pgdata/
 storage/dispatcher.log
 
 # Pipeline run output (contains verbatim excerpts of source novels — never commit)

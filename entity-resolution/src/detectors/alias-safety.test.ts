@@ -86,4 +86,38 @@ describe('sanitizeCharacterAliases', () => {
   it('promotes a compatible full proper name over a short nickname', () => {
     expect(chooseCanonicalCharacterName('薰儿', ['薰儿小姐', '熏儿', '萧熏儿', '萧薰儿'])).toBe('萧熏儿');
   });
+
+  it('scopes bare family relationship names to the dominant known character and drops sentence-fragment aliases', () => {
+    const sourceText = [
+      '路明非觉得脑袋被震得嗡嗡响。',
+      '他和叔叔婶婶一起住，有一个名叫路鸣泽的堂弟。',
+      '叔叔是个很讲品位的人，看见叔叔左手手机右手打火机。',
+    ].join('');
+
+    expect(chooseCanonicalCharacterName('叔叔', ['叔叔左手手机右手打火机'], {
+      sourceText,
+      knownCharacterNames: ['路明非', '路鸣泽'],
+    } as any)).toBe('路明非的叔叔');
+
+    expect(sanitizeCharacterAliases('路明非的叔叔', ['叔叔', '叔叔左手手机右手打火机'], {
+      sourceText,
+      knownCharacterNames: ['路明非', '路鸣泽'],
+    })).toEqual([]);
+  });
+
+  it('normalizes compact relationship mentions to a scoped kinship name instead of the owner name', () => {
+    const sourceText = '路明非叔叔坐在沙发上，叔叔左手手机右手打火机。';
+
+    expect(chooseCanonicalCharacterName('叔叔', [], {
+      sourceText,
+      knownCharacterNames: ['路明非'],
+    })).toBe('路明非的叔叔');
+  });
+
+  it('promotes numbered role titles to a scoped family title and removes the bare title alias', () => {
+    const sourceText = '我们萧家利润损失很大。议事厅内，三长老满脸凶光，怒声道。';
+
+    expect(chooseCanonicalCharacterName('三长老', [], { sourceText })).toBe('萧家三长老');
+    expect(sanitizeCharacterAliases('萧家三长老', ['三长老'], { sourceText })).toEqual([]);
+  });
 });

@@ -12,10 +12,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { fetchExportPreview, getExportUrl, type ExportFormat, type ExportType } from '@/api/export';
+import { downloadExport, fetchExportPreview, type ExportFormat, type ExportType } from '@/api/export';
 import { useExtractionArtifacts } from '@/api/artifacts';
-import { downloadBlob, downloadJson, downloadText } from '@/components/story/PromptCopyBlock';
-import { getToken } from '@/store/authStore';
+import { downloadJson, downloadText } from '@/components/story/PromptCopyBlock';
 
 const FORMATS: { value: ExportFormat; label: string }[] = [
   { value: 'json', label: 'JSON' },
@@ -49,25 +48,14 @@ export function ExportPage() {
     }
   };
 
-  // 用 fetch 带 Authorization 头下载（window.location.href 导航无法带 Auth 头，
-  // 生产环境无 cookie 会话时会 401）。拿到 Blob 后用 downloadBlob 触发保存。
   const download = async () => {
+    setLoading(true);
     try {
-      const token = getToken();
-      const res = await fetch(getExportUrl(bookId, format, type), {
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
-      });
-      if (!res.ok) {
-        throw new Error(`导出失败（HTTP ${res.status}）`);
-      }
-      const blob = await res.blob();
-      // 从 Content-Disposition 取文件名，取不到则按 type.format 兜底
-      const dispo = res.headers.get('content-disposition') || '';
-      const match = dispo.match(/filename="?([^";]+)"?/i);
-      const filename = match?.[1] || `${type}-${bookId}.${format === 'markdown' ? 'md' : format}`;
-      downloadBlob(blob, filename);
-    } catch (e) {
-      toast.error(`导出失败：${(e as Error).message}`);
+      await downloadExport(bookId, format, type);
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : '导出下载失败');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -98,8 +86,8 @@ export function ExportPage() {
               ))}
             </SelectContent>
           </Select>
-          <Button onClick={download} className="gap-2">
-            <Download className="h-4 w-4" />
+          <Button onClick={download} className="gap-2" disabled={loading}>
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
             下载 {format.toUpperCase()}
           </Button>
         </div>

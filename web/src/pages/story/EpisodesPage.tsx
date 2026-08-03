@@ -13,6 +13,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
+import { PanelSkeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PromptCopyBlock, downloadJson } from '@/components/story/PromptCopyBlock';
 import { ScriptReviewBar } from '@/components/story/ScriptReviewBar';
@@ -65,7 +66,7 @@ export function EpisodesPage() {
       </div>
 
       {episodesQ.isLoading ? (
-        <p className="p-6 text-sm text-muted-foreground">加载中…</p>
+        <PanelSkeleton lines={6} />
       ) : !data?.hasDirectorRun ? (
         <div className="flex h-[40vh] flex-col items-center justify-center gap-3 rounded-lg border border-dashed">
           <Clapperboard className="h-8 w-8 text-muted-foreground/50" />
@@ -314,7 +315,7 @@ function StoryboardPane({
   const packQ = useStoryboard(bookId, storyId, episodeNo);
   const res = packQ.data;
 
-  if (packQ.isLoading) return <p className="p-6 text-sm text-muted-foreground">加载中…</p>;
+  if (packQ.isLoading) return <PanelSkeleton lines={5} />;
   if (!res?.pack) return <BlockedState reason={res?.reason} review={res?.review ?? null} />;
 
   const pack = res.pack;
@@ -393,7 +394,7 @@ function VideoPane({
   const packQ = useVideoPrompts(bookId, storyId, episodeNo);
   const res = packQ.data;
 
-  if (packQ.isLoading) return <p className="p-6 text-sm text-muted-foreground">加载中…</p>;
+  if (packQ.isLoading) return <PanelSkeleton lines={5} />;
   if (!res?.pack) return <BlockedState reason={res?.reason} review={res?.review ?? null} />;
 
   const pack = res.pack;

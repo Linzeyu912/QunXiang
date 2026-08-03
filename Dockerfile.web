@@ -1,0 +1,31 @@
+# ===== Web 前端多阶段构建 =====
+
+# ── 阶段1：构建 ──
+FROM node:20-bookworm-slim AS builder
+WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@9.15.4 --activate
+
+# 拷 workspace 配置和依赖包的 package.json
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+COPY web/package.json web/package.json
+COPY core/package.json core/package.json
+COPY schemas/package.json schemas/package.json
+COPY story-arcs/package.json story-arcs/package.json
+
+# 安装依赖
+RUN pnpm install --frozen-lockfile
+
+# 拷源码（web + 它依赖的 workspace 包）
+COPY core/ core/
+COPY schemas/ schemas/
+COPY story-arcs/ story-arcs/
+COPY web/ web/
+
+# 构建前端（跳过 tsc 类型检查，只做 vite build——tsc 会因 Docker 内缺少 @types/node 而报 test 文件的错）
+RUN cd web && npx vite build
+
+# ── 阶段2：nginx 托管静态文件 ──
+FROM nginx:alpine AS runner
+COPY --from=builder /app/web/dist /usr/share/nginx/html
+COPY web/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80

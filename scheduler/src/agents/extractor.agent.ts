@@ -1,10 +1,9 @@
 import type { AgentType, Character, Location, Item, Owner } from '@novel-agent/core';
 import { createExtractor } from '@novel-agent/extractors';
-import { BookRepository } from '@novel-agent/storage';
+import { BookRepository, getSharedAssetSourceResolver } from '@novel-agent/storage';
 import { parseTxtEnhanced } from '@novel-agent/import';
 import { calcImportance, type EntityImportance, type EntityType } from '@novel-agent/entity-prescan';
 import { bookSlug } from '@novel-agent/story-arcs';
-import { readFile } from 'fs/promises';
 import { join } from 'path';
 import { fuseCharactersWithPrescan } from './character-fusion.js';
 import {
@@ -84,8 +83,8 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     throw new Error(`Book not found: ${bookId}`);
   }
 
-  // Read content from disk
-  const content = await readFile(book.filePath, 'utf-8');
+  // Read content via resolver（对象存储优先，旧书 filePath 只读回退）
+  const content = await getSharedAssetSourceResolver().readSourceText(book);
 
   // Use a readable directory name (from book title) + timestamp to avoid
   // overwriting previous runs' output. Each run gets its own directory.

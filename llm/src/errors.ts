@@ -20,7 +20,14 @@ export type LLMErrorCode =
   | 'VALIDATION_ERROR'
   | 'TIMEOUT'
   | 'MODEL_NOT_FOUND'
-  | 'UNKNOWN';
+  | 'UNKNOWN'
+  | 'IMAGE_TIMEOUT'
+  | 'IMAGE_NETWORK'
+  | 'IMAGE_HTTP'
+  | 'IMAGE_EMPTY'
+  | 'IMAGE_DECODE'
+  | 'IMAGE_DOWNLOAD'
+  | 'IMAGE_NO_OUTPUT';
 
 /**
  * Thrown when provider is not configured (for example no API key)

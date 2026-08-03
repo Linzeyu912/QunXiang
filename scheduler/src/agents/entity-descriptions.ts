@@ -88,7 +88,9 @@ const GENERIC_ALIASES = new Set([
 const CHARACTER_FIELD_PATTERNS: Array<FieldPattern<CharacterDescriptionField>> = [
   {
     field: 'appearance',
-    re: /(容貌|面容|脸庞|脸颊|脸色|小脸|俏脸|眉眼|眉毛|眸子|眼眸|瞳孔|唇|鼻|肌肤|皮肤|清秀|俊美|苍老|稚嫩|面孔)/u,
+    // 收紧：去掉裸匹配的 唇/鼻（会误匹配"辛酸冲到鼻孔里""舔了舔嘴唇"等感官/动作句），
+    // 只保留明确的外貌描写词。唇/鼻 限定为视觉组合词。
+    re: /(容貌|面容|脸庞|脸颊|脸色|小脸|俏脸|眉眼|眉毛|眸子|眼眸|瞳孔|樱唇|红唇|薄唇|厚唇|唇形|唇角|唇边|鼻梁|高鼻|鼻挺|鼻翼|鼻尖|挺鼻|肌肤|皮肤|清秀|俊美|苍老|稚嫩|面孔)/u,
   },
   {
     field: 'clothing',
@@ -203,6 +205,21 @@ function splitSentences(text: string): string[] {
     .split(/(?<=[。！？!?])|\n+/u)
     .map((part) => part.trim())
     .filter(Boolean);
+}
+
+/**
+ * 判断一个分句是否属于"感官/动作/心理/文学性描写"而非视觉外貌描写。
+ * 这类分句虽然可能包含外貌相关字（如"鼻""唇"），但实际是在写感受或动作，
+ * 不应作为外貌证据。例如"辛酸一直冲到鼻孔里""舔了舔嘴唇"。
+ */
+const NON_VISUAL_CLAUSE_RE = /(?:辛酸|酸楚|苦涩|心酸|心悸|心痛|悲痛|悲凉|凄凉|凄然).{0,6}(?:冲|涌|漫|钻|袭|堵|哽)/u;
+const NON_VISUAL_ACTION_RE = /(?:舔|咬|嚼|吞|咽|吸|呼|抹|擦|揉|捏|摸)了?(?:舔|咬|嚼|吞|咽|吸|呼|抹|擦|揉|捏|摸)?(?:嘴唇|嘴|舌|唇|脸|眼|鼻)/u;
+const NON_VISUAL_SENSORY_RE = /(?:冲到|涌上|涌起|涌进|钻进|袭来|漫上|堵住|哽住).{0,4}(?:鼻孔|鼻|喉|喉咙|心头|胸口|心|胸)/u;
+
+function isNonVisualClause(clause: string): boolean {
+  return NON_VISUAL_CLAUSE_RE.test(clause)
+    || NON_VISUAL_ACTION_RE.test(clause)
+    || NON_VISUAL_SENSORY_RE.test(clause);
 }
 
 function splitClauses(sentence: string): string[] {
@@ -342,6 +359,7 @@ function ownedFieldsInSentence<Field extends string>(
   for (const clause of splitClauses(sentence)) {
     owner = clauseOwner(clause, evidence, owner);
     if (!clauseBelongsToCurrentEntity(owner, evidence)) continue;
+    if (isNonVisualClause(clause)) continue;
     for (const field of matchedFields(clause, patterns)) {
       fields.add(field);
     }
@@ -362,11 +380,43 @@ function fieldSummary<Field extends string>(
       owner = clauseOwner(clause, item, owner);
       if (!matchedFields(clause, patterns).includes(field)) continue;
       if (!clauseBelongsToCurrentEntity(owner, item)) continue;
+      if (isNonVisualClause(clause)) continue;
       result.push(clause.replace(/[。！？!?，,；;、]+$/u, '').trim());
     }
     return result;
   });
   return unique(snippets).join('；');
+}
+
+/**
+ * 与 fieldSummary 相同逻辑，但每条片段附加章节出处（第x章）。
+ * 用于 sourceFields → visual-description → prompt-generation 链路，
+ * 让最终生图 prompt 中每条视觉描写可溯源到原文章节。
+ */
+function fieldSummaryWithChapters<Field extends string>(
+  evidence: Array<DescriptionEvidenceSnippet<Field>>,
+  field: Field,
+  patterns: Array<FieldPattern<Field>>
+): string {
+  const snippets: string[] = [];
+  const seen = new Set<string>();
+  for (const item of evidence) {
+    let owner: ClauseOwner = 'unknown';
+    for (const clause of splitClauses(item.text)) {
+      owner = clauseOwner(clause, item, owner);
+      if (!matchedFields(clause, patterns).includes(field)) continue;
+      if (!clauseBelongsToCurrentEntity(owner, item)) continue;
+      if (isNonVisualClause(clause)) continue;
+      const cleaned = clause.replace(/[。！？!?，,；;、]+$/u, '').trim();
+      if (!cleaned) continue;
+      const dedupeKey = cleaned.slice(0, 20);
+      if (seen.has(dedupeKey)) continue;
+      seen.add(dedupeKey);
+      const ch = item.chapterIndex > 0 ? `（第${item.chapterIndex}章）` : '';
+      snippets.push(`${cleaned}${ch}`);
+    }
+  }
+  return snippets.join('；');
 }
 
 function coverageFor<Field extends string>(
@@ -430,7 +480,12 @@ function extractDescriptionPacks<EntityType extends string, Field extends string
       }
     }
 
+    // fields 带章节出处（第x章），供 visual-description → prompt-generation 链路溯源
     const fields = Object.fromEntries(
+      fieldOrder.map((field) => [field, fieldSummaryWithChapters(evidenceSnippets, field, patterns)])
+    ) as Record<Field, string>;
+    // sourceDescription 不带章节出处，给 description-fusion 用（融合后的简介不需要章节标注）
+    const fieldsPlain = Object.fromEntries(
       fieldOrder.map((field) => [field, fieldSummary(evidenceSnippets, field, patterns)])
     ) as Record<Field, string>;
     const filledFields = fieldOrder.filter((field) => fields[field]);
@@ -441,7 +496,7 @@ function extractDescriptionPacks<EntityType extends string, Field extends string
       entityType,
       name: entity.name,
       aliases: names.filter((name) => normalizeName(name) !== normalizeName(entity.name)),
-      sourceDescription: filledFields.map((field) => fields[field]).join('；'),
+      sourceDescription: fieldOrder.filter((field) => fieldsPlain[field]).map((field) => fieldsPlain[field]).join('；'),
       fields,
       missingFields,
       evidenceSnippets,

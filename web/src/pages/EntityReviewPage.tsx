@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { CheckCheck, Loader2, Search } from 'lucide-react';
@@ -11,6 +11,7 @@ import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { parseAliases } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -129,24 +130,64 @@ export function EntityReviewPage({ type }: Props) {
     [entities, selectedId],
   );
 
-  const setStatus = (v: string) => {
-    if (v === 'ALL') sp.delete('status');
-    else sp.set('status', v);
-    sp.delete('sel');
-    setSp(sp, { replace: true });
-  };
+  // URL 参数统一走函数式更新：不就地改 sp 对象，且保证回调引用稳定
+  //（配合 memo 化的列表/详情面板，工具栏输入不会触发整棵子树重渲染）。
+  const setStatus = useCallback(
+    (v: string) => {
+      setSp(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          if (v === 'ALL') next.delete('status');
+          else next.set('status', v);
+          next.delete('sel');
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [setSp],
+  );
 
-  const setTier = (v: string) => {
-    if (v === 'ALL') sp.delete('tier');
-    else sp.set('tier', v);
-    sp.delete('sel');
-    setSp(sp, { replace: true });
-  };
+  const setTier = useCallback(
+    (v: string) => {
+      setSp(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          if (v === 'ALL') next.delete('tier');
+          else next.set('tier', v);
+          next.delete('sel');
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [setSp],
+  );
 
-  const handleSelect = (id: string) => {
-    sp.set('sel', id);
-    setSp(sp, { replace: true });
-  };
+  const handleSelect = useCallback(
+    (id: string) => {
+      setSp(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          next.set('sel', id);
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [setSp],
+  );
+
+  const handleJumpToName = useCallback(
+    (name: string) => {
+      const target = (query.data ?? []).find(
+        (e) => e.name === name || parseAliases(e.aliases).includes(name),
+      );
+      if (target) handleSelect(target.id);
+      else toast.info(`「${name}」不在当前列表（可能被筛选过滤或未入库）`);
+    },
+    [query.data, handleSelect],
+  );
 
   const moveSelection = (dir: 1 | -1) => {
     if (!selected || entities.length === 0) return;
@@ -182,7 +223,7 @@ export function EntityReviewPage({ type }: Props) {
     true,
   );
 
-  const pendingInView = entities.filter((e) => e.status === 'PENDING');
+  const pendingInView = useMemo(() => entities.filter((e) => e.status === 'PENDING'), [entities]);
 
   return (
     <div className="space-y-4">
@@ -249,10 +290,10 @@ export function EntityReviewPage({ type }: Props) {
         <TierLegend className="rounded-lg border bg-muted/30 px-3 py-2" />
       )}
 
-      <div className="grid h-[calc(100vh-16rem)] grid-rows-1 grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] overflow-hidden rounded-lg border bg-card">
+      <div className="grid h-[calc(100vh-16rem)] grid-rows-1 grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] overflow-hidden rounded-lg border bg-card shadow-sm">
         <div className="relative min-h-0 overflow-hidden border-r">
           {query.isLoading ? (
-            <p className="p-6 text-sm text-muted-foreground">加载中…</p>
+            <EntityListSkeleton />
           ) : (
             <EntityListPanel
               entities={entities as AnyEntity[]}
@@ -269,13 +310,7 @@ export function EntityReviewPage({ type }: Props) {
               entity={selected}
               type={type}
               bookId={bookId}
-              onJumpToName={(name) => {
-                const target = (query.data ?? []).find(
-                  (e) => e.name === name || parseAliases(e.aliases).includes(name),
-                );
-                if (target) handleSelect(target.id);
-                else toast.info(`「${name}」不在当前列表（可能被筛选过滤或未入库）`);
-              }}
+              onJumpToName={handleJumpToName}
             />
           ) : (
             <div className="flex h-full items-center justify-center p-6 text-sm text-muted-foreground">
@@ -284,6 +319,23 @@ export function EntityReviewPage({ type }: Props) {
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+/** 实体列表加载骨架：按真实行高（约 68px）铺占位行，加载完成后不跳版。 */
+function EntityListSkeleton() {
+  return (
+    <div className="absolute inset-0 overflow-hidden" aria-label="实体列表加载中">
+      {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+        <div key={i} className="border-b border-border/60 px-4 py-3">
+          <div className="flex items-center justify-between gap-2">
+            <Skeleton className="h-4 w-28" />
+            <Skeleton className="h-5 w-12" />
+          </div>
+          <Skeleton className="mt-2 h-3 w-40" />
+        </div>
+      ))}
     </div>
   );
 }

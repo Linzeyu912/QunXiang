@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { AlertCircle, CheckCircle2, FileSearch, Loader2, Play } from 'lucide-react';
-import { useStages, useExtractionStream, useStartExtraction } from '@/api/extraction';
+import { useStages, useExtractionStream, useStartExtraction, useResumeExtraction } from '@/api/extraction';
 import { useExtractionArtifacts, useExtractionRuns, usePrescanArtifacts } from '@/api/artifacts';
 import { useLlmStatus } from '@/api/llm';
 import { Badge } from '@/components/ui/badge';
 import { formatDate } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import {
@@ -61,6 +62,7 @@ export function PipelinePage() {
   const stages = useStages(bookId);
   const llm = useLlmStatus();
   const start = useStartExtraction(bookId);
+  const resume = useResumeExtraction(bookId);
   const extractionGate = getExtractionStartGate(llm.data, llm.isLoading);
 
   const isRunning = stages.data?.isRunning && !stages.data?.isComplete;
@@ -104,7 +106,7 @@ export function PipelinePage() {
   }
 
   if (stages.isLoading) {
-    return <p className="text-sm text-muted-foreground">加载中…</p>;
+    return <PipelineSkeleton />;
   }
 
   const data = stages.data;
@@ -213,14 +215,24 @@ export function PipelinePage() {
 
       {data?.isFailed && (
         <Card className="border-destructive/40 bg-destructive/5 p-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm font-medium text-destructive">提取失败</p>
-              <p className="text-xs text-destructive/80">查看失败阶段的错误信息，修复后可再次触发</p>
+              <p className="text-xs text-destructive/80">查看失败阶段的错误信息，修复后可再次触发或从失败处继续</p>
             </div>
-            <Button variant="destructive" onClick={handleStart} disabled={start.isPending || !extractionGate.canStart}>
-              重新开始
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={() => resume.mutate()}
+                disabled={resume.isPending || start.isPending || !extractionGate.canStart}
+                title="从第一个失败的 stage 继续，已成功的 stage 不重跑"
+              >
+                {resume.isPending ? '恢复中…' : '从失败处继续'}
+              </Button>
+              <Button variant="destructive" onClick={handleStart} disabled={start.isPending || resume.isPending || !extractionGate.canStart}>
+                重新开始
+              </Button>
+            </div>
           </div>
         </Card>
       )}
@@ -413,5 +425,35 @@ function ExtractionSummaryCard({ bookId }: { bookId: string }) {
         </pre>
       </CardContent>
     </Card>
+  );
+}
+
+/** 管道页加载骨架：整体进度卡 + 6 张阶段卡占位，贴合真实布局。 */
+function PipelineSkeleton() {
+  return (
+    <div className="space-y-6" aria-label="管道进度加载中">
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+          <Skeleton className="h-5 w-20" />
+          <Skeleton className="h-4 w-14" />
+        </CardHeader>
+        <CardContent className="space-y-2">
+          <Skeleton className="h-2 w-full" />
+          <Skeleton className="h-3 w-32" />
+        </CardContent>
+      </Card>
+      <div className="grid gap-3 md:grid-cols-2">
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <Card key={i} className="p-4">
+            <div className="flex items-center justify-between">
+              <Skeleton className="h-4 w-24" />
+              <Skeleton className="h-5 w-14" />
+            </div>
+            <Skeleton className="mt-3 h-3 w-full" />
+            <Skeleton className="mt-2 h-3 w-3/5" />
+          </Card>
+        ))}
+      </div>
+    </div>
   );
 }

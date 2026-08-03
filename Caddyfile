@@ -1,0 +1,18 @@
+# Caddy 反向代理配置
+# 先用 IP + HTTP，后续加域名时改为 example.com { ... } 即可自动签 TLS
+
+:80 {
+	# API 前缀列表（与 web/vite.config.ts API_PREFIXES 保持一致）
+	@api path /books /books/* /characters /characters/* /locations /locations/* \
+	          /items /items/* /export /export/* /health /health/* \
+	          /auth /auth/* /account /account/* /shares /shares/* \
+	          /public-assets /public-assets/* /objects /objects/*
+	handle @api {
+		reverse_proxy api:3001
+	}
+
+	# 其他所有请求 → 前端 nginx 静态文件
+	handle {
+		reverse_proxy web:80
+	}
+}

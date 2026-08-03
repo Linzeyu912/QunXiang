@@ -39,6 +39,7 @@ import {
   LocationRepository,
   ItemRepository,
 } from '@novel-agent/storage';
+import { testUserInput } from '../../../storage/src/test-fixtures.js';
 import { getExtractionStages } from './extraction.service.js';
 
 /**
@@ -79,10 +80,12 @@ async function wipeAll() {
 
 describe('getExtractionStages — 空结果不再误报"已完成"', () => {
   let bookId: string;
+  let ownerId: string;
 
   beforeEach(async () => {
     await wipeAll();
-    const user = await UserRepository.create({ email: 'stages-test@example.com', name: 'Stages Test' });
+    const user = await UserRepository.create(testUserInput('stages-test@example.com', '阶段测试用户'));
+    ownerId = user.id;
     const book = await BookRepository.create({
       title: '空结果测试书',
       filePath: '/tmp/empty.txt',
@@ -101,7 +104,7 @@ describe('getExtractionStages — 空结果不再误报"已完成"', () => {
     await seedCompletedPipeline(bookId);
     // 故意不写入任何 character/location/item
 
-    const result = await getExtractionStages(bookId);
+    const result = await getExtractionStages(bookId, ownerId);
 
     expect(result.isComplete, '空结果不应判完成').toBe(false);
     expect(result.isFailed, 'reviewer 任务本身是 completed，task 层不算 failed').toBe(false);
@@ -120,7 +123,7 @@ describe('getExtractionStages — 空结果不再误报"已完成"', () => {
       },
     ]);
 
-    const result = await getExtractionStages(bookId);
+    const result = await getExtractionStages(bookId, ownerId);
 
     expect(result.isComplete, '有实体时应正常判完成').toBe(true);
     expect(result.overallProgress).toBe(100);
@@ -145,7 +148,7 @@ describe('getExtractionStages — 空结果不再误报"已完成"', () => {
       },
     ]);
 
-    const result = await getExtractionStages(bookId);
+    const result = await getExtractionStages(bookId, ownerId);
     expect(result.isComplete).toBe(true);
   });
 
@@ -154,7 +157,7 @@ describe('getExtractionStages — 空结果不再误报"已完成"', () => {
     for (const agentType of PIPELINE.filter((a) => a !== 'reviewer')) {
       await TaskRepository.create({ bookId, agentType, payload: { bookId }, status: 'completed' });
     }
-    const result = await getExtractionStages(bookId);
+    const result = await getExtractionStages(bookId, ownerId);
     expect(result.isComplete).toBe(false);
   });
 });

@@ -8,6 +8,7 @@ import { App } from './App';
 import { ErrorFallback } from './components/ErrorFallback';
 import { ApiError } from './api/client';
 import { translateApiError } from './utils/errorTranslator';
+import { registerAccountQueryClient } from './lib/account-query-cache';
 import './index.css';
 
 /**
@@ -47,6 +48,8 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+registerAccountQueryClient(queryClient);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

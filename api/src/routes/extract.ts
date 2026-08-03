@@ -1,7 +1,8 @@
 import type { FastifyInstance } from 'fastify';
-import { startExtraction, pollExtractionStatus, getExtractionStages, createExtractionStream } from '../services/extraction.service.js';
+import { startExtraction, resumeExtraction, pollExtractionStatus, getExtractionStages, createExtractionStream } from '../services/extraction.service.js';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
-import { ConflictError } from '../lib/errors.js';
+import { ConflictError, NotFoundError } from '../lib/errors.js';
+import { sendBookNotFound } from '../lib/api-errors.js';
 
 export async function extractRoutes(fastify: FastifyInstance) {
   // Trigger extraction
@@ -12,13 +13,13 @@ export async function extractRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
     const userId = request.user!.userId;
 
     try {
       const { taskId } = await startExtraction(id, userId);
-      return { taskId, message: 'Extraction started' };
+      return { taskId, message: '已开始提取' };
     } catch (error) {
       if (error instanceof ConflictError) {
         return reply.status(409).send({ error: (error as Error).message });
@@ -28,22 +29,45 @@ export async function extractRoutes(fastify: FastifyInstance) {
     }
   });
 
-  // Poll extraction status
-  fastify.get('/:id/extract/status', async (request, reply) => {
+  // ISSUE-7 断点续传：从第一个失败 stage 继续
+  fastify.post('/:id/extract/resume', async (request, reply) => {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
       return reply.status(404).send({ error: 'Book not found' });
     }
+    const userId = request.user!.userId;
+
+    try {
+      const result = await resumeExtraction(id, userId);
+      return { ...result, message: `Resumed from stage: ${result.resumedFrom}` };
+    } catch (error) {
+      if (error instanceof ConflictError) {
+        return reply.status(409).send({ error: (error as Error).message });
+      }
+      if (error instanceof NotFoundError) {
+        return reply.status(404).send({ error: (error as Error).message });
+      }
+      request.log.error(error);
+      return reply.status(500).send({ error: '断点续传失败，请查看服务端日志' });
+    }
+  });
+
+  // Poll extraction status
+  fastify.get('/:id/extract/status', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const ownerId = await resolveOwnerId(request);
+    if (!(await ownsBook(id, ownerId))) {
+      return sendBookNotFound(reply);
+    }
     const { taskId } = request.query as { taskId?: string };
 
     if (!taskId) {
-      return reply.status(400).send({ error: 'taskId is required' });
+      return reply.status(400).send({ error: '缺少 taskId 参数' });
     }
 
-    // 传 bookId 给 service，断言该 task 确实属于路径里的 book（堵 IDOR：
-    // 否则用户可用自己名下的 bookId 过 ownsBook 校验，换上别人的 taskId 读到他人进度/结果）
-    const status = await pollExtractionStatus(taskId, id);
+    // 同时校验任务归属用户和路径中的书籍，避免用本人书籍 ID 读取其他任务。
+    const status = await pollExtractionStatus(taskId, ownerId!, id);
     return status;
   });
 
@@ -52,11 +76,11 @@ export async function extractRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
 
     try {
-      const stages = await getExtractionStages(id);
+      const stages = await getExtractionStages(id, ownerId!);
       return stages;
     } catch (error) {
       request.log.error(error);
@@ -71,7 +95,7 @@ export async function extractRoutes(fastify: FastifyInstance) {
     // 鉴权+归属必须在写 SSE 头之前完成，否则即便返 404 浏览器也会把连接当 SSE 处理
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(bookId, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
 
     // Set SSE headers
@@ -84,11 +108,11 @@ export async function extractRoutes(fastify: FastifyInstance) {
 
     // Stream events
     try {
-      for await (const chunk of createExtractionStream(bookId)) {
+      for await (const chunk of createExtractionStream(bookId, ownerId!)) {
         reply.raw.write(chunk);
       }
     } catch (err) {
-      console.error('[SSE] Stream error:', err);
+      console.error('提取进度流发生错误：', err);
       reply.raw.write(`event: error\ndata: ${JSON.stringify({ message: '获取提取进度失败', timestamp: Date.now() })}\n\n`);
     }
 

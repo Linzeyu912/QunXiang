@@ -1,6 +1,5 @@
 import { create } from 'zustand';
-
-const TOKEN_KEY = 'na-token';
+import { transitionAccountQueryOwner } from '../lib/account-query-cache';
 
 export interface AuthUser {
   id: string;
@@ -11,44 +10,27 @@ export interface AuthUser {
 interface AuthState {
   token: string | null;
   user: AuthUser | null;
-  /** /auth/me 加载态：有 token 时启动校验，期间用于避免误跳登录页。 */
+  /** 启动刷新会话期间用于避免误跳登录页。 */
   bootstrapping: boolean;
-  setAuth: (token: string, user: AuthUser) => void;
+  setAuth: (token: string, user: AuthUser) => Promise<void>;
   setUser: (user: AuthUser) => void;
   setBootstrapping: (v: boolean) => void;
-  logout: () => void;
-}
-
-function loadToken(): string | null {
-  try {
-    return localStorage.getItem(TOKEN_KEY);
-  } catch {
-    return null;
-  }
+  logout: () => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  token: loadToken(),
+  token: null,
   user: null,
-  // 初始化阶段一律处于 bootstrapping：无 token 时也要先尝试自动登录（见 App.tsx），
-  // 成功/失败后再置 false，避免 RequireAuth 在自动登录完成前就抢跳 /login。
+  // 启动时只通过 HttpOnly Cookie 刷新会话，不从浏览器持久存储恢复令牌。
   bootstrapping: true,
-  setAuth: (token, user) => {
-    try {
-      localStorage.setItem(TOKEN_KEY, token);
-    } catch {
-      /* 忽略隐私模式写入失败 */
-    }
+  setAuth: async (token, user) => {
+    await transitionAccountQueryOwner(user.id);
     set({ token, user, bootstrapping: false });
   },
   setUser: (user) => set({ user, bootstrapping: false }),
   setBootstrapping: (v) => set({ bootstrapping: v }),
-  logout: () => {
-    try {
-      localStorage.removeItem(TOKEN_KEY);
-    } catch {
-      /* ignore */
-    }
+  logout: async () => {
+    await transitionAccountQueryOwner(null);
     set({ token: null, user: null, bootstrapping: false });
   },
 }));

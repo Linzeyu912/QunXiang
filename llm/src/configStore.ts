@@ -52,6 +52,22 @@ export function normalizeApiKeys(config: Pick<RuntimeLlmConfig, 'apiKey' | 'apiK
 }
 
 const CONFIG_FILENAME = '.novel-agent-config.encrypted';
+const IMAGE_CONFIG_FILENAME = '.novel-agent-image-config.encrypted';
+
+/**
+ * Runtime Image configuration (stored in memory + optionally persisted to encrypted file)
+ */
+export interface RuntimeImageConfig {
+  provider: 'custom';
+  apiKey?: string;
+  baseUrl?: string;
+  model?: string;
+  /** 图片尺寸（Seedream/OpenAI 风格，如 "2K"/"1024x1024"），优先于 aspect_ratio */
+  size?: string;
+  characterRatio?: string;
+  itemRatio?: string;
+  locationRatio?: string;
+}
 
 /**
  * Get the project root directory for config file storage.
@@ -84,13 +100,22 @@ function getProjectRoot(): string {
  * Get the master secret for encryption.
  * Reads from KEY_VAULTS_SECRET env var.
  * If not set, auto-generates one and writes to .env file.
+ *
+ * 测试环境（VITEST / NODE_ENV=test）只生成进程内临时密钥，绝不写 api/.env——
+ * 否则会轮换掉真实密钥，使磁盘上的加密配置（含 API key）永久无法解密
+ * （2026-07-24 事故：vitest 无 dotenv 环境触发自动轮换，DeepSeek key 丢失）。
  */
 function getMasterSecret(): string {
   const envSecret = process.env.KEY_VAULTS_SECRET;
   if (envSecret) return envSecret;
 
-  // Auto-generate and persist
   const newSecret = randomBytes(32).toString('hex');
+  if (process.env.VITEST || process.env.NODE_ENV === 'test') {
+    process.env.KEY_VAULTS_SECRET = newSecret;
+    return newSecret;
+  }
+
+  // Auto-generate and persist
   const envPath = join(getProjectRoot(), 'api', '.env');
 
   try {
@@ -216,5 +241,56 @@ export function clearConfigFromDisk(): boolean {
     return true;
   } catch {
     return false;
+  }
+}
+
+// ── Image config persistence (separate file, same encryption) ──
+
+function getImageConfigPath(): string {
+  return join(getProjectRoot(), IMAGE_CONFIG_FILENAME);
+}
+
+export function saveImageConfigToDisk(config: RuntimeImageConfig): void {
+  const secret = getMasterSecret();
+  const persisted: Record<string, string | undefined> = {
+    provider: config.provider,
+    baseUrl: config.baseUrl,
+    model: config.model,
+    characterRatio: config.characterRatio,
+    itemRatio: config.itemRatio,
+    locationRatio: config.locationRatio,
+  };
+  if (config.apiKey) {
+    persisted.encryptedApiKey = encrypt(config.apiKey, secret);
+  }
+  const jsonStr = JSON.stringify(persisted);
+  const encrypted = encrypt(jsonStr, secret);
+  writeFileSync(getImageConfigPath(), encrypted, 'utf8');
+}
+
+export function loadImageConfigFromDisk(): RuntimeImageConfig | null {
+  const configPath = getImageConfigPath();
+  if (!existsSync(configPath)) return null;
+  try {
+    const secret = getMasterSecret();
+    const encrypted = readFileSync(configPath, 'utf8').trim();
+    const jsonStr = decrypt(encrypted, secret);
+    const persisted = JSON.parse(jsonStr) as Record<string, string | undefined>;
+    if (persisted.provider !== 'custom') return null;
+    const result: RuntimeImageConfig = {
+      provider: 'custom',
+      baseUrl: persisted.baseUrl,
+      model: persisted.model,
+      characterRatio: persisted.characterRatio,
+      itemRatio: persisted.itemRatio,
+      locationRatio: persisted.locationRatio,
+    };
+    if (persisted.encryptedApiKey) {
+      result.apiKey = decrypt(persisted.encryptedApiKey, secret);
+    }
+    return result;
+  } catch (error) {
+    console.warn('[configStore] Failed to load encrypted image config:', error instanceof Error ? error.message : String(error));
+    return null;
   }
 }

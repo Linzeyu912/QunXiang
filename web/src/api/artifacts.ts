@@ -110,3 +110,39 @@ export function matchArtifacts(
   }
   return undefined;
 }
+
+// ── 产物人工编辑 ──
+
+/** 可编辑的描写字段 */
+export interface VisualDescriptionPatch {
+  enhancedDescription?: string;
+  llmSupplement?: string;
+  visualFields?: Record<string, string>;
+  visualDetails?: Record<string, string>;
+}
+
+/** 可编辑的提示词字段 */
+export interface PromptPatch {
+  prompt?: string;
+  variants?: Array<{ stage: string; prompt: string }>;
+}
+
+export interface ArtifactPatch {
+  visual?: VisualDescriptionPatch;
+  prompt?: PromptPatch;
+}
+
+/** 更新实体产物（描写 / 提示词） */
+export function useUpdateArtifact(bookId: string, entityType: string, entityName: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (patch: ArtifactPatch) =>
+      apiFetch<{ ok: boolean }>(
+        `/books/${bookId}/extraction-artifacts/${entityType}/${encodeURIComponent(entityName)}`,
+        { method: 'PATCH', body: patch },
+      ),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: artifactsKey.all(bookId) });
+    },
+  });
+}

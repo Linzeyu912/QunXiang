@@ -5,6 +5,7 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
+    "@novel-agent/entity-prescan": "workspace:*",
     "@novel-agent/import": "workspace:*",
     "uuid": "^9.0.0"
   },

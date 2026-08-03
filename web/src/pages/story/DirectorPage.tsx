@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Separator } from '@/components/ui/separator';
+import { RowListSkeleton } from '@/components/ui/skeleton';
 import { formatDate } from '@/lib/utils';
 import type { AssignmentWithStatus, CreateAssignmentBody, StorySummary } from '@/types/story';
 
@@ -231,7 +232,7 @@ function AssignmentHistory({
     <div className="space-y-3">
       <h3 className="text-base font-semibold">任务历史</h3>
       {assignmentsQ.isLoading ? (
-        <p className="text-sm text-muted-foreground">加载中…</p>
+        <RowListSkeleton rows={3} />
       ) : assignments.length === 0 ? (
         <p className="text-sm text-muted-foreground">还没有运行过导演任务。</p>
       ) : (

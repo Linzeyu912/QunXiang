@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { summarizeExtractionResult, EMPTY_EXTRACTION_REASON } from './extraction-result-summary.js';
+import {
+  summarizeExtractionResult,
+  EMPTY_EXTRACTION_REASON,
+  firstFailedBatchError,
+  buildEmptyExtractionMessage,
+} from './extraction-result-summary.js';
 
 /**
  * 空结果判定是历史 bug 的核心防护点：
@@ -52,5 +57,43 @@ describe('summarizeExtractionResult (空结果守卫)', () => {
   it('EMPTY_EXTRACTION_REASON 是非空中文说明，供失败分支透传给前端', () => {
     expect(EMPTY_EXTRACTION_REASON).toBeTruthy();
     expect(EMPTY_EXTRACTION_REASON.length).toBeGreaterThan(5);
+  });
+});
+
+describe('firstFailedBatchError / buildEmptyExtractionMessage (空结果根因透传)', () => {
+  it('failedBatches 有错误时提取首个并截断到 200 字', () => {
+    const longError = `Custom LLM API error 404: ${'x'.repeat(300)}`;
+    const result = { failedBatches: [{ batch: 0, error: longError }] };
+    const rootCause = firstFailedBatchError(result);
+    expect(rootCause).toBeTruthy();
+    expect(rootCause!.startsWith('Custom LLM API error 404')).toBe(true);
+    expect(rootCause!.length).toBeLessThanOrEqual(201); // 200 + …
+  });
+
+  it('跳过空白 error，取第一个有内容的批次错误', () => {
+    const result = {
+      failedBatches: [
+        { batch: 0, error: '   ' },
+        { batch: 1, error: 'Custom LLM API error 401: invalid key' },
+      ],
+    };
+    expect(firstFailedBatchError(result)).toBe('Custom LLM API error 401: invalid key');
+  });
+
+  it('无 failedBatches 或全部无 error 时返回 null', () => {
+    expect(firstFailedBatchError({})).toBeNull();
+    expect(firstFailedBatchError(null)).toBeNull();
+    expect(firstFailedBatchError({ failedBatches: [] })).toBeNull();
+    expect(firstFailedBatchError({ failedBatches: [{ batch: 0 }] })).toBeNull();
+  });
+
+  it('buildEmptyExtractionMessage 有根因时拼接，无根因时回退通用文案', () => {
+    const withCause = buildEmptyExtractionMessage({
+      failedBatches: [{ batch: 0, error: 'Custom LLM API error 404: ' }],
+    });
+    expect(withCause).toContain(EMPTY_EXTRACTION_REASON);
+    expect(withCause).toContain('首个批次错误：Custom LLM API error 404');
+
+    expect(buildEmptyExtractionMessage({ characters: [] })).toBe(EMPTY_EXTRACTION_REASON);
   });
 });

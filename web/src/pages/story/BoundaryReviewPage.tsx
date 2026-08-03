@@ -5,6 +5,7 @@ import { ArrowLeft, CheckCircle2, ChevronLeft, ChevronRight, GitMerge, Scissors 
 import { useBoundaryReviews, useResolveBoundary } from '@/api/stories';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Separator } from '@/components/ui/separator';
 import { BoundaryConfidenceBar } from '@/components/story/BoundaryConfidenceBar';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
@@ -89,7 +90,7 @@ export function BoundaryReviewPage() {
       </div>
 
       {reviewsQ.isLoading ? (
-        <p className="p-6 text-sm text-muted-foreground">加载中…</p>
+        <BoundaryReviewSkeleton />
       ) : items.length === 0 ? (
         <DoneState bookId={bookId} />
       ) : (
@@ -205,6 +206,32 @@ function ReviewCard({
           <GitMerge className="mr-1.5 h-4 w-4" />
           并入上一段 (M)
         </Button>
+      </div>
+    </div>
+  );
+}
+
+/** 边界复核加载骨架：复刻裁决卡片的章节文本 + 操作区布局。 */
+function BoundaryReviewSkeleton() {
+  return (
+    <div className="space-y-4 rounded-lg border bg-card p-6" aria-label="边界复核加载中">
+      <div className="flex items-center justify-between">
+        <Skeleton className="h-5 w-32" />
+        <Skeleton className="h-5 w-16" />
+      </div>
+      <Skeleton className="h-2 w-full" />
+      <div className="space-y-2 pt-2">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-4/5" />
+      </div>
+      <div className="space-y-2 border-t pt-4">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-3/5" />
+      </div>
+      <div className="flex gap-2 pt-2">
+        <Skeleton className="h-9 w-28" />
+        <Skeleton className="h-9 w-28" />
       </div>
     </div>
   );

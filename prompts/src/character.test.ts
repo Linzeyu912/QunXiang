@@ -8,4 +8,10 @@ describe('CHARACTER_EXTRACTION_PROMPT', () => {
     expect(CHARACTER_EXTRACTION_PROMPT).toContain('不要省略原文中已经出现的身份、关系、能力、经历或关键行为');
     expect(CHARACTER_EXTRACTION_PROMPT).toContain('description 必须输出完整句或完整短语');
   });
+
+  it('requires scoped names and rejects sentence-fragment aliases', () => {
+    expect(CHARACTER_EXTRACTION_PROMPT).toContain('路明非的叔叔');
+    expect(CHARACTER_EXTRACTION_PROMPT).toContain('叔叔左手手机右手打火机');
+    expect(CHARACTER_EXTRACTION_PROMPT).toContain('萧家三长老');
+  });
 });

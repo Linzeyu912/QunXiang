@@ -1,8 +1,36 @@
+import { useState, useRef } from 'react';
+import { toast } from 'sonner';
+import { Image, Loader2, Star, Trash2, Upload, ChevronDown, ChevronRight, Pencil, Save, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Separator } from '@/components/ui/separator';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { EvidenceSnippets } from '@/components/story/EvidenceSnippets';
 import { PromptCopyBlock } from '@/components/story/PromptCopyBlock';
-import type { EntityArtifacts } from '@/types';
+import {
+  useEntityImages,
+  useGenerateImage,
+  useUploadImage,
+  useDeleteImage,
+  useSetPrimaryImage,
+  useProtectedImageUrl,
+} from '@/api/images';
+import { useUpdateArtifact } from '@/api/artifacts';
+import { cn } from '@/lib/utils';
+import type { EntityArtifacts, EntityType, GenerationPromptEntry } from '@/types';
 
 // 融合/视觉字段的中文标签；未知键回退显示原始键名
 const FIELD_LABEL: Record<string, string> = {
@@ -34,93 +62,486 @@ const FIELD_LABEL: Record<string, string> = {
   condition: '状态',
 };
 
-const COVERAGE_LABEL: Record<string, string> = {
-  strong: '证据充分',
-  partial: '证据部分',
-  weak: '证据薄弱',
-  none: '无证据',
-};
-
 const QUALITY_LABEL: Record<string, string> = {
   high: '高',
   medium: '中',
   low: '低',
 };
 
+// 描述区域标题根据实体类型动态切换
+const DESCRIPTION_TITLE: Record<EntityType, string> = {
+  character: '人物描写',
+  location: '场景描写',
+  item: '道具描写',
+};
+
+// completionStatus / descriptionSource 的中文标签
+const COMPLETION_STATUS_LABEL: Record<string, string> = {
+  source_only: '纯原文',
+  llm_completed: 'LLM 补全',
+  llm_inferred: 'LLM 推断',
+  mixed: '混合',
+};
+
+const DESCRIPTION_SOURCE_LABEL: Record<string, string> = {
+  source: '原文',
+  llm: 'LLM',
+  mixed: '混合',
+};
+
 function label(key: string): string {
   return FIELD_LABEL[key] ?? key;
 }
 
-function FieldGrid({ fields }: { fields: Record<string, string> }) {
+/** 分字段详情：默认折叠，点击展开查看各维度的字段值。 */
+function FieldDetails({
+  fields,
+  label: labelFn,
+  title = '分字段详情',
+}: {
+  fields: Record<string, string>;
+  label: (key: string) => string;
+  title?: string;
+}) {
+  const [open, setOpen] = useState(false);
   const entries = Object.entries(fields).filter(([, v]) => v && v.trim());
   if (entries.length === 0) return null;
+
   return (
-    <dl className="grid grid-cols-1 gap-x-4 gap-y-1.5 text-sm md:grid-cols-2">
-      {entries.map(([k, v]) => (
-        <div key={k} className="flex flex-col">
-          <dt className="text-xs text-muted-foreground">{label(k)}</dt>
-          <dd className="whitespace-pre-wrap leading-relaxed">{v}</dd>
-        </div>
-      ))}
-    </dl>
+    <div className="space-y-1">
+      <button
+        type="button"
+        className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+        onClick={() => setOpen((v) => !v)}
+      >
+        {open ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
+        {title} ({entries.length})
+      </button>
+      {open && (
+        <dl className="space-y-1.5 rounded-md bg-muted/50 p-2 text-xs leading-relaxed text-muted-foreground">
+          {entries.map(([k, v]) => (
+            <div key={k} className="flex gap-1.5">
+              <dt className="shrink-0 font-medium text-foreground/70">{labelFn(k)}</dt>
+              <dd className="whitespace-pre-wrap">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+    </div>
   );
 }
 
-/** 产物查询状态：用于在产物缺失/加载时给出明确提示，而非整节静默消失。 */
-export type ArtifactsQueryState = 'loading' | 'no-run' | 'ready';
+/** ── 提示词多版本（按年龄阶段）：单阶段退化为单条 PromptCopyBlock ── */
+function PromptVariants({
+  prompt,
+  stage,
+  onStageChange,
+}: {
+  prompt: GenerationPromptEntry;
+  stage?: string;
+  onStageChange: (s?: string) => void;
+}) {
+  const variants = prompt.variants ?? [];
+  if (variants.length <= 1) {
+    return <PromptCopyBlock prompt={prompt.prompt} />;
+  }
+  const current =
+    variants.find((v) => v.stage === stage) ?? variants.find((v) => v.isPrimary) ?? variants[0];
+  return (
+    <div className="space-y-2">
+      <Tabs value={current.stage} onValueChange={onStageChange}>
+        <TabsList>
+          {variants.map((v) => (
+            <TabsTrigger key={v.stage} value={v.stage}>
+              {v.label}
+              {v.isPrimary && ' ★'}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        <TabsContent value={current.stage} className="space-y-1">
+          <PromptCopyBlock prompt={current.prompt} />
+          {current.sourceChapters && (
+            <p className="text-xs text-muted-foreground">原文依据：{current.sourceChapters}</p>
+          )}
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+
+/** ── 实体图片画廊（多张：AI 生成 + 用户上传，DB 持久化，刷新自动显示）── */
+function EntityImageGallery({
+  bookId,
+  entityType,
+  entityName,
+  stage,
+}: {
+  bookId: string;
+  entityType: EntityType;
+  entityName: string;
+  stage?: string;
+}) {
+  const q = useEntityImages(bookId, entityType, entityName);
+  const generate = useGenerateImage(bookId);
+  const upload = useUploadImage(bookId);
+  const del = useDeleteImage(bookId);
+  const setPrimary = useSetPrimaryImage(bookId);
+  const fileInput = useRef<HTMLInputElement>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [stageFilter, setStageFilter] = useState<string | null>(null);
+
+  // 切换 stage 过滤时清除选中，避免引用已过滤掉的图片
+  const handleStageFilter = (s: string | null) => {
+    setSelectedId(null);
+    setStageFilter(s);
+  };
+
+  const allImages = q.data ?? [];
+  // 按 stage 过滤
+  const images = stageFilter ? allImages.filter((i) => i.stage === stageFilter) : allImages;
+  // 当前大图：手动选中优先，否则主图，否则首张
+  const featured = images.find((i) => i.id === selectedId) ?? images.find((i) => i.isPrimary) ?? images[0];
+
+  // 收集所有已有 stage 标签（去重 + 排序）
+  const stageTabs = Array.from(
+    new Set(allImages.map((i) => i.stage).filter((s): s is string => !!s)),
+  ).sort();
+
+  const handleGenerate = async () => {
+    try {
+      await generate.mutateAsync({ type: entityType, name: entityName, stage });
+      toast.success(`${entityName} 图片已生成`);
+    } catch (err) {
+      toast.error(`生图失败：${err instanceof Error ? err.message : String(err)}`);
+    }
+  };
+
+  const handleFile = async (file: File | undefined) => {
+    if (!file) return;
+    try {
+      await upload.mutateAsync({ type: entityType, name: entityName, file });
+      toast.success('图片已上传');
+    } catch (err) {
+      toast.error(`上传失败：${err instanceof Error ? err.message : String(err)}`);
+    }
+  };
+
+  const handleDelete = async (imageId: string) => {
+    try {
+      await del.mutateAsync({ imageId, type: entityType, name: entityName });
+      toast.success('已删除');
+      if (selectedId === imageId) setSelectedId(null);
+    } catch (err) {
+      toast.error(`删除失败：${err instanceof Error ? err.message : String(err)}`);
+    }
+  };
+
+  const handleSetPrimary = async (imageId: string) => {
+    try {
+      await setPrimary.mutateAsync({ imageId, type: entityType, name: entityName });
+      toast.success('已设为主图');
+    } catch (err) {
+      toast.error(`操作失败：${err instanceof Error ? err.message : String(err)}`);
+    }
+  };
+
+  const busy = generate.isPending || upload.isPending;
+
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-xs font-medium text-muted-foreground">实体图片</span>
+        <Button variant="outline" size="sm" className="gap-1" disabled={busy} onClick={handleGenerate}>
+          {generate.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Image className="h-3.5 w-3.5" />}
+          AI 生成
+        </Button>
+        <Button variant="outline" size="sm" className="gap-1" disabled={busy} onClick={() => fileInput.current?.click()}>
+          {upload.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Upload className="h-3.5 w-3.5" />}
+          上传图片
+        </Button>
+        <input
+          ref={fileInput}
+          type="file"
+          title="上传实体图片"
+          accept="image/png,image/jpeg,image/webp"
+          className="hidden"
+          onChange={(e) => {
+            const f = e.target.files?.[0];
+            handleFile(f);
+            e.target.value = '';
+          }}
+        />
+      </div>
+
+      {stageTabs.length > 1 && (
+        <div className="flex flex-wrap items-center gap-1">
+          <span className="text-xs text-muted-foreground">筛选：</span>
+          <Button
+            variant={stageFilter === null ? 'secondary' : 'ghost'}
+            size="sm"
+            className="h-6 px-2 text-xs"
+            onClick={() => handleStageFilter(null)}
+          >
+            全部
+          </Button>
+          {stageTabs.map((s) => (
+            <Button
+              key={s}
+              variant={stageFilter === s ? 'secondary' : 'ghost'}
+              size="sm"
+              className="h-6 px-2 text-xs"
+              onClick={() => handleStageFilter(s)}
+            >
+              {s}
+            </Button>
+          ))}
+        </div>
+      )}
+
+      {busy && (
+        <div className="flex items-center gap-2 rounded-md border bg-muted/30 p-3 text-xs text-muted-foreground">
+          <Loader2 className="h-4 w-4 animate-spin" />
+          {generate.isPending ? `正在生成 ${entityName} 的图片，请稍候（5-30 秒）…` : '正在上传图片…'}
+        </div>
+      )}
+
+      {q.isLoading ? (
+        <div className="flex items-center gap-2 p-2 text-xs text-muted-foreground">
+          <Loader2 className="h-4 w-4 animate-spin" /> 加载图片…
+        </div>
+      ) : images.length === 0 ? (
+        <p className="text-xs text-muted-foreground">
+          {stageFilter ? `暂无「${stageFilter}」阶段图片。` : '暂无图片，点击「AI 生成」或「上传图片」。'}
+        </p>
+      ) : (
+        <>
+          {featured && (
+            <div className="relative overflow-hidden rounded-md border bg-muted/10">
+              <ProtectedEntityImage
+                bookId={bookId}
+                imageId={featured.id}
+                alt={`${entityName} 图片`}
+                className="max-h-[480px] w-full object-contain"
+                loading="lazy"
+                onError={() => toast.error('图片加载失败')}
+              />
+              <div className="absolute right-1.5 top-1.5 flex gap-1">
+                <Badge variant={featured.source === 'generated' ? 'secondary' : 'outline'}>
+                  {featured.source === 'generated' ? 'AI 生成' : '手动上传'}
+                </Badge>
+                {featured.isPrimary && <Badge variant="success">主图</Badge>}
+                {featured.stage && <Badge variant="outline">{featured.stage}</Badge>}
+              </div>
+            </div>
+          )}
+
+          {images.length > 1 && (
+            <div className="flex flex-wrap gap-2">
+              {images.map((img) => (
+                <div
+                  key={img.id}
+                  className={cn(
+                    'group relative overflow-hidden rounded-md border',
+                    img.id === featured?.id ? 'ring-2 ring-primary' : '',
+                  )}
+                >
+                  <button type="button" onClick={() => setSelectedId(img.id)} className="block">
+                    <ProtectedEntityImage
+                      bookId={bookId}
+                      imageId={img.id}
+                      alt={img.entityName}
+                      className="h-20 w-20 object-cover"
+                      loading="lazy"
+                    />
+                  </button>
+                  {img.stage && (
+                    <span className="absolute bottom-0.5 left-0.5 rounded bg-black/60 px-1 py-0.5 text-[9px] text-white">
+                      {img.stage}
+                    </span>
+                  )}
+                  {!img.isPrimary && (
+                    <button
+                      type="button"
+                      title="设为主图"
+                      disabled={setPrimary.isPending}
+                      onClick={() => handleSetPrimary(img.id)}
+                      className="absolute left-0.5 top-0.5 rounded bg-background/80 p-0.5 text-muted-foreground opacity-0 transition-opacity hover:text-amber-500 group-hover:opacity-100"
+                    >
+                      <Star className="h-3 w-3" />
+                    </button>
+                  )}
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <button
+                        type="button"
+                        title="删除"
+                        disabled={del.isPending}
+                        className="absolute right-0.5 top-0.5 rounded bg-background/80 p-0.5 text-muted-foreground opacity-0 transition-opacity hover:text-destructive group-hover:opacity-100"
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>删除这张图片？</AlertDialogTitle>
+                        <AlertDialogDescription>此操作不可撤销。</AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>取消</AlertDialogCancel>
+                        <AlertDialogAction onClick={() => handleDelete(img.id)}>确认删除</AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
+function ProtectedEntityImage({
+  bookId,
+  imageId,
+  ...props
+}: { bookId: string; imageId: string } & React.ImgHTMLAttributes<HTMLImageElement>) {
+  const src = useProtectedImageUrl(bookId, imageId);
+  return <img {...props} src={src ?? undefined} />;
+}
+
+/**
+ * 可编辑的字段区域：默认展示模式，点击"编辑"切换为编辑模式。
+ */
+function EditableField({
+  label,
+  value,
+  onChange,
+  multiline = false,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  multiline?: boolean;
+}) {
+  return (
+    <div className="space-y-1">
+      <label className="text-xs font-medium text-muted-foreground">{label}</label>
+      {multiline ? (
+        <Textarea
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="min-h-[80px] text-sm"
+        />
+      ) : (
+        <Input value={value} onChange={(e) => onChange(e.target.value)} className="text-sm" />
+      )}
+    </div>
+  );
+}
+
+/**
+ * 可编辑的字段 Map 区域（如 visualFields / visualDetails）。
+ */
+function EditableFieldMap({
+  label: sectionLabel,
+  fields,
+  onChange,
+}: {
+  label: string;
+  fields: Record<string, string>;
+  onChange: (v: Record<string, string>) => void;
+}) {
+  const entries = Object.entries(fields).filter(([, v]) => v && v.trim());
+  if (entries.length === 0) return null;
+
+  return (
+    <div className="space-y-2">
+      <p className="text-xs font-medium text-muted-foreground">{sectionLabel}</p>
+      {entries.map(([k, v]) => (
+        <EditableField
+          key={k}
+          label={label(k)}
+          value={v}
+          onChange={(newVal) => onChange({ ...fields, [k]: newVal })}
+          multiline
+        />
+      ))}
+    </div>
+  );
+}
 
 /**
  * 提取管线富产物展示：视觉设定（visual-description）、结构化描述字段与证据
  * （description-fusion）、生成提示词（prompt-generation）。
+ * 产物缺失时整节不渲染，不影响原有面板。
  *
- * 状态说明（避免用户困惑"为什么看不到提示词"）：
- * - loading：产物接口请求中 → 显示"加载产物中…"
- * - no-run：该书还没有任何完成的提取运行 → 显示"尚未生成产物，请先完成提取"
- * - ready：有运行，但当前实体未匹配到产物 → 显示"该实体暂无生成提示词"
- * - ready 且 artifacts 存在：正常渲染视觉设定 / 结构化描述 / 提示词。
+ * 支持人工编辑：描写区（enhancedDescription/llmSupplement/visualFields/visualDetails）
+ * 和提示词区（prompt/variants）均可编辑后保存。
  */
+export type ArtifactsQueryState = 'loading' | 'no-run' | 'ready';
+
 export function EntityArtifactsSection({
   artifacts,
+  bookId,
+  entityType,
+  entityName,
   state = 'ready',
 }: {
   artifacts: EntityArtifacts | undefined;
+  bookId: string;
+  entityType: EntityType;
+  entityName: string;
   state?: ArtifactsQueryState;
 }) {
-  // 加载中：永远显示一条提示，让用户知道产物正在读取。
+  const [stage, setStage] = useState<string | undefined>(undefined);
+  const updateMutation = useUpdateArtifact(bookId, entityType, entityName);
+
+  // ── 编辑状态 ──
+  const [editingDesc, setEditingDesc] = useState(false);
+  const [editingPrompt, setEditingPrompt] = useState(false);
+
+  // 描写编辑表单
+  const [editEnhanced, setEditEnhanced] = useState('');
+  const [editLlmSupplement, setEditLlmSupplement] = useState('');
+  const [editVisualFields, setEditVisualFields] = useState<Record<string, string>>({});
+  const [editVisualDetails, setEditVisualDetails] = useState<Record<string, string>>({});
+
+  // 提示词编辑表单
+  const [editPrompt, setEditPrompt] = useState('');
+  const [editVariants, setEditVariants] = useState<Array<{ stage: string; prompt: string }>>([]);
+
   if (state === 'loading') {
     return (
       <>
         <Separator />
-        <div className="text-sm text-muted-foreground">加载提取产物中…</div>
+        <div className="rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
+          正在加载实体产物…
+        </div>
       </>
     );
   }
-
-  // 该书还没有完成的提取运行：明确告知用户去跑提取，而不是什么都不显示。
   if (state === 'no-run') {
     return (
       <>
         <Separator />
         <div className="rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
-          本书尚未生成提取产物（视觉设定 / 结构化描述 / 生成提示词）。
-          请先在「管道」页完成一次提取。
+          尚未生成实体产物，请先在“管道”页完成一次提取。
         </div>
       </>
     );
   }
-
-  // ready 态但当前实体没有匹配到任何产物：提示该实体暂无产物，而非整节消失。
   if (!artifacts) {
     return (
       <>
         <Separator />
         <div className="rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
-          该实体暂无生成提示词（可能在本次提取中被判定为低置信度或未参与提示词生成）。
+          当前实体暂无视觉设定或生成提示词。
         </div>
       </>
     );
   }
-
   const fused = artifacts.visual ?? artifacts.description;
   const visual = artifacts.visual;
   const prompt = artifacts.prompt;
@@ -129,49 +550,131 @@ export function EntityArtifactsSection({
       <>
         <Separator />
         <div className="rounded-md border border-dashed bg-muted/30 p-3 text-sm text-muted-foreground">
-          该实体暂无生成提示词。
+          当前实体暂无视觉设定或生成提示词。
         </div>
       </>
     );
   }
 
+  // ── 描写编辑：进入/保存/取消 ──
+  const startEditDesc = () => {
+    setEditEnhanced(visual?.enhancedDescription || visual?.finalDescription || fused?.sourceDescription || '');
+    setEditLlmSupplement(visual?.llmSupplement || '');
+    setEditVisualFields({ ...(visual?.visualFields ?? {}) });
+    setEditVisualDetails({ ...(visual?.visualDetails ?? {}) });
+    setEditingDesc(true);
+  };
+
+  const saveDesc = async () => {
+    try {
+      await updateMutation.mutateAsync({
+        visual: {
+          enhancedDescription: editEnhanced,
+          llmSupplement: editLlmSupplement,
+          visualFields: editVisualFields,
+          visualDetails: editVisualDetails,
+        },
+      });
+      toast.success('描写已保存');
+      setEditingDesc(false);
+    } catch (e) {
+      toast.error(`保存失败：${(e as Error).message}`);
+    }
+  };
+
+  // ── 提示词编辑：进入/保存/取消 ──
+  const startEditPrompt = () => {
+    setEditPrompt(prompt?.prompt || '');
+    setEditVariants(prompt?.variants?.map((v) => ({ stage: v.stage, prompt: v.prompt })) ?? []);
+    setEditingPrompt(true);
+  };
+
+  const savePrompt = async () => {
+    try {
+      await updateMutation.mutateAsync({
+        prompt: {
+          prompt: editPrompt,
+          variants: editVariants.length > 0 ? editVariants : undefined,
+        },
+      });
+      toast.success('提示词已保存');
+      setEditingPrompt(false);
+    } catch (e) {
+      toast.error(`保存失败：${(e as Error).message}`);
+    }
+  };
+
   return (
     <>
-      {visual && (visual.visualDetails || visual.visualFields) && (
-        <>
-          <Separator />
-          <div>
-            <h3 className="mb-2 text-sm font-medium">视觉设定</h3>
-            {visual.visualDetails && Object.keys(visual.visualDetails).length > 0 ? (
-              <FieldGrid fields={visual.visualDetails} />
-            ) : (
-              visual.visualFields && <FieldGrid fields={visual.visualFields} />
-            )}
-          </div>
-        </>
-      )}
-
-      {fused && (
+      {(visual || fused) && (
         <>
           <Separator />
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
-              <h3 className="text-sm font-medium">结构化描述</h3>
-              {fused.sourceCoverage && (
-                <Badge variant={fused.sourceCoverage === 'strong' ? 'success' : 'warning'}>
-                  {COVERAGE_LABEL[fused.sourceCoverage] ?? fused.sourceCoverage}
+              <h3 className="text-sm font-medium">{DESCRIPTION_TITLE[entityType]}</h3>
+              {visual?.completionStatus && (
+                <Badge variant="outline">
+                  {COMPLETION_STATUS_LABEL[visual.completionStatus] ?? visual.completionStatus}
                 </Badge>
               )}
-              {fused.needsReview && <Badge variant="warning">建议复核</Badge>}
+              {visual?.descriptionSource && (
+                <Badge variant="muted">
+                  来源：{DESCRIPTION_SOURCE_LABEL[visual.descriptionSource] ?? visual.descriptionSource}
+                </Badge>
+              )}
+              <div className="ml-auto flex gap-1">
+                {editingDesc ? (
+                  <>
+                    <Button size="sm" variant="ghost" className="h-7 px-2 gap-1" onClick={() => setEditingDesc(false)}>
+                      <X className="h-3.5 w-3.5" /> 取消
+                    </Button>
+                    <Button size="sm" variant="default" className="h-7 px-2 gap-1" onClick={saveDesc} disabled={updateMutation.isPending}>
+                      {updateMutation.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Save className="h-3.5 w-3.5" />} 保存
+                    </Button>
+                  </>
+                ) : (
+                  <Button size="sm" variant="ghost" className="h-7 px-2 gap-1" onClick={startEditDesc}>
+                    <Pencil className="h-3.5 w-3.5" /> 编辑
+                  </Button>
+                )}
+              </div>
             </div>
-            {fused.fields && <FieldGrid fields={fused.fields} />}
-            {fused.missingFields && fused.missingFields.length > 0 && (
-              <p className="text-xs text-muted-foreground">
-                缺失字段：{fused.missingFields.map((f) => label(f)).join('、')}
-              </p>
-            )}
-            {fused.evidenceSnippets && fused.evidenceSnippets.length > 0 && (
-              <EvidenceSnippets snippets={fused.evidenceSnippets} />
+
+            {editingDesc ? (
+              <div className="space-y-3">
+                <EditableField label="概括性描述" value={editEnhanced} onChange={setEditEnhanced} multiline />
+                <EditableField label="LLM 补写" value={editLlmSupplement} onChange={setEditLlmSupplement} multiline />
+                <EditableFieldMap label="视觉字段" fields={editVisualFields} onChange={setEditVisualFields} />
+                <EditableFieldMap label="结构化细分" fields={editVisualDetails} onChange={setEditVisualDetails} />
+              </div>
+            ) : (
+              <>
+                {(() => {
+                  const summary = visual?.enhancedDescription || visual?.finalDescription || fused?.sourceDescription || '';
+                  const trimmed = summary.trim();
+                  if (trimmed) {
+                    return <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground">{trimmed}</p>;
+                  }
+                  return null;
+                })()}
+                {visual?.llmSupplement && visual.llmSupplement.trim() && (
+                  <p className="whitespace-pre-wrap text-xs leading-relaxed text-muted-foreground">
+                    <span className="font-medium">补写：</span>{visual.llmSupplement}
+                  </p>
+                )}
+                {visual?.visualFields && Object.values(visual.visualFields).some((v) => v && v.trim()) && (
+                  <FieldDetails fields={visual.visualFields} label={label} title="视觉字段" />
+                )}
+                {visual?.visualDetails && Object.values(visual.visualDetails).some((v) => v && v.trim()) && (
+                  <FieldDetails fields={visual.visualDetails} label={label} title="结构化细分" />
+                )}
+                {fused?.fields && Object.values(fused.fields).some((v) => v && v.trim()) && (
+                  <FieldDetails fields={fused.fields} label={label} title="原文字段" />
+                )}
+                {fused?.evidenceSnippets && fused.evidenceSnippets.length > 0 && (
+                  <EvidenceSnippets snippets={fused.evidenceSnippets} />
+                )}
+              </>
             )}
           </div>
         </>
@@ -189,17 +692,70 @@ export function EntityArtifactsSection({
                 </Badge>
               )}
               {prompt.source && <Badge variant="outline">{prompt.source}</Badge>}
-            </div>
-            <PromptCopyBlock prompt={prompt.prompt} />
-            {prompt.styleTags && prompt.styleTags.length > 0 && (
-              <div className="flex flex-wrap gap-1">
-                {prompt.styleTags.map((t) => (
-                  <Badge key={t} variant="secondary">
-                    {t}
-                  </Badge>
-                ))}
+              <div className="ml-auto flex gap-1">
+                {editingPrompt ? (
+                  <>
+                    <Button size="sm" variant="ghost" className="h-7 px-2 gap-1" onClick={() => setEditingPrompt(false)}>
+                      <X className="h-3.5 w-3.5" /> 取消
+                    </Button>
+                    <Button size="sm" variant="default" className="h-7 px-2 gap-1" onClick={savePrompt} disabled={updateMutation.isPending}>
+                      {updateMutation.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Save className="h-3.5 w-3.5" />} 保存
+                    </Button>
+                  </>
+                ) : (
+                  <Button size="sm" variant="ghost" className="h-7 px-2 gap-1" onClick={startEditPrompt}>
+                    <Pencil className="h-3.5 w-3.5" /> 编辑
+                  </Button>
+                )}
               </div>
+            </div>
+
+            {editingPrompt ? (
+              <div className="space-y-3">
+                {editVariants.length > 1 ? (
+                  <Tabs value={editVariants.find((v) => v.stage === stage)?.stage ?? editVariants[0]?.stage} onValueChange={setStage}>
+                    <TabsList>
+                      {editVariants.map((v) => (
+                        <TabsTrigger key={v.stage} value={v.stage}>{v.stage}</TabsTrigger>
+                      ))}
+                    </TabsList>
+                    {editVariants.map((v, i) => (
+                      <TabsContent key={v.stage} value={v.stage}>
+                        <Textarea
+                          value={v.prompt}
+                          onChange={(e) => {
+                            const next = [...editVariants];
+                            next[i] = { ...next[i], prompt: e.target.value };
+                            setEditVariants(next);
+                          }}
+                          className="min-h-[120px] font-mono text-xs"
+                        />
+                      </TabsContent>
+                    ))}
+                  </Tabs>
+                ) : (
+                  <Textarea
+                    value={editPrompt}
+                    onChange={(e) => setEditPrompt(e.target.value)}
+                    className="min-h-[120px] font-mono text-xs"
+                  />
+                )}
+              </div>
+            ) : (
+              <>
+                <PromptVariants prompt={prompt} stage={stage} onStageChange={setStage} />
+                {prompt.styleTags && prompt.styleTags.length > 0 && (
+                  <div className="flex flex-wrap gap-1">
+                    {prompt.styleTags.map((t) => (
+                      <Badge key={t} variant="secondary">{t}</Badge>
+                    ))}
+                  </div>
+                )}
+              </>
             )}
+
+            <Separator />
+            <EntityImageGallery bookId={bookId} entityType={entityType} entityName={entityName} stage={stage} />
           </div>
         </>
       )}

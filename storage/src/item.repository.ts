@@ -1,6 +1,7 @@
 import { prisma } from './prisma.js';
 import type { Item, Owner } from '@novel-agent/core';
 import type { PrismaClient } from '@prisma/client';
+import { decodeJsonField, encodeJsonField } from './json-field.js';
 
 export interface ItemRepository {
   create(data: {
@@ -44,20 +45,26 @@ export interface ItemRepository {
     owners?: Owner[];
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Item[]>;
+  findByOwnedBookId(bookId: string, ownerId: string): Promise<Item[]>;
   findById(id: string): Promise<Item | null>;
+  findOwnedById(id: string, ownerId: string): Promise<Item | null>;
   findByStatus(bookId: string, status: string): Promise<Item[]>;
+  findByOwnedStatus(bookId: string, ownerId: string, status: string): Promise<Item[]>;
   findByTier(bookId: string, tier: string): Promise<Item[]>;
+  findByOwnedTier(bookId: string, ownerId: string, tier: string): Promise<Item[]>;
   update(id: string, data: Partial<Item>): Promise<Item>;
+  updateOwned(id: string, ownerId: string, data: Partial<Item>): Promise<Item | null>;
   updateStatus(id: string, status: string): Promise<Item>;
+  updateOwnedStatus(id: string, ownerId: string, status: string): Promise<Item | null>;
   deleteByBookId(bookId: string): Promise<void>;
 }
 
 function parseItem(dbItem: Record<string, unknown>): Item {
   return {
     ...dbItem,
-    aliases: JSON.parse((dbItem.aliases as string) || '[]'),
-    chapterAppearances: JSON.parse((dbItem.chapterAppearances as string) || '[]'),
-    owners: JSON.parse((dbItem.owners as string) || '[]'),
+    aliases: decodeJsonField(dbItem.aliases, []),
+    chapterAppearances: decodeJsonField(dbItem.chapterAppearances, []),
+    owners: decodeJsonField(dbItem.owners, []),
     tier: (dbItem.tier as string) || 'candidate',
   } as unknown as Item;
 }
@@ -69,7 +76,7 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
         data: {
           bookId: data.bookId,
           name: data.name,
-          aliases: JSON.stringify(data.aliases),
+          aliases: encodeJsonField(data.aliases),
           description: data.description,
           confidence: data.confidence,
           chapterRef: data.chapterRef,
@@ -83,8 +90,8 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
           mentionCount: data.mentionCount ?? 0,
           firstChapter: data.firstChapter,
           lastChapter: data.lastChapter,
-          chapterAppearances: JSON.stringify(data.chapterAppearances || []),
-          owners: JSON.stringify(data.owners || []),
+          chapterAppearances: encodeJsonField(data.chapterAppearances || []),
+          owners: encodeJsonField(data.owners || []),
         },
       });
       return parseItem(created);
@@ -95,7 +102,7 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
         data: items.map(i => ({
           bookId: i.bookId,
           name: i.name,
-          aliases: JSON.stringify(i.aliases),
+          aliases: encodeJsonField(i.aliases),
           description: i.description,
           confidence: i.confidence,
           chapterRef: i.chapterRef,
@@ -109,8 +116,8 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
           mentionCount: i.mentionCount ?? 0,
           firstChapter: i.firstChapter,
           lastChapter: i.lastChapter,
-          chapterAppearances: JSON.stringify(i.chapterAppearances || []),
-          owners: JSON.stringify(i.owners || []),
+          chapterAppearances: encodeJsonField(i.chapterAppearances || []),
+          owners: encodeJsonField(i.owners || []),
         })),
       });
       return result.count;
@@ -119,7 +126,15 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
     async findByBookId(bookId: string) {
       const items = await db.item.findMany({
         where: { bookId },
-        orderBy: { importanceScore: 'desc' },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
+      });
+      return items.map(i => parseItem(i as unknown as Record<string, unknown>));
+    },
+
+    async findByOwnedBookId(bookId: string, ownerId: string) {
+      const items = await db.item.findMany({
+        where: { bookId, book: { userId: ownerId } },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
       });
       return items.map(i => parseItem(i as unknown as Record<string, unknown>));
     },
@@ -130,10 +145,23 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
       return parseItem(item as unknown as Record<string, unknown>);
     },
 
+    async findOwnedById(id: string, ownerId: string) {
+      const item = await db.item.findFirst({ where: { id, book: { userId: ownerId } } });
+      return item ? parseItem(item as unknown as Record<string, unknown>) : null;
+    },
+
     async findByStatus(bookId: string, status: string) {
       const items = await db.item.findMany({
         where: { bookId, status },
-        orderBy: { importanceScore: 'desc' },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
+      });
+      return items.map(i => parseItem(i as unknown as Record<string, unknown>));
+    },
+
+    async findByOwnedStatus(bookId: string, ownerId: string, status: string) {
+      const items = await db.item.findMany({
+        where: { bookId, status, book: { userId: ownerId } },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
       });
       return items.map(i => parseItem(i as unknown as Record<string, unknown>));
     },
@@ -141,7 +169,15 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
     async findByTier(bookId: string, tier: string) {
       const items = await db.item.findMany({
         where: { bookId, tier },
-        orderBy: { importanceScore: 'desc' },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
+      });
+      return items.map(i => parseItem(i as unknown as Record<string, unknown>));
+    },
+
+    async findByOwnedTier(bookId: string, ownerId: string, tier: string) {
+      const items = await db.item.findMany({
+        where: { bookId, tier, book: { userId: ownerId } },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
       });
       return items.map(i => parseItem(i as unknown as Record<string, unknown>));
     },
@@ -149,13 +185,13 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
     async update(id: string, data: Partial<Item>) {
       const updateData: Record<string, unknown> = { ...data };
       if (data.aliases) {
-        updateData.aliases = JSON.stringify(data.aliases);
+        updateData.aliases = encodeJsonField(data.aliases);
       }
       if (data.chapterAppearances) {
-        updateData.chapterAppearances = JSON.stringify(data.chapterAppearances);
+        updateData.chapterAppearances = encodeJsonField(data.chapterAppearances);
       }
       if (data.owners) {
-        updateData.owners = JSON.stringify(data.owners);
+        updateData.owners = encodeJsonField(data.owners);
       }
       const updated = await db.item.update({
         where: { id },
@@ -164,12 +200,30 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
       return parseItem(updated as unknown as Record<string, unknown>);
     },
 
+    async updateOwned(id: string, ownerId: string, data: Partial<Item>) {
+      const updateData: Record<string, unknown> = { ...data };
+      if (data.aliases) updateData.aliases = encodeJsonField(data.aliases);
+      if (data.chapterAppearances) updateData.chapterAppearances = encodeJsonField(data.chapterAppearances);
+      if (data.owners) updateData.owners = encodeJsonField(data.owners);
+      const result = await db.item.updateMany({ where: { id, book: { userId: ownerId } }, data: updateData });
+      if (result.count !== 1) return null;
+      const updated = await db.item.findFirst({ where: { id, book: { userId: ownerId } } });
+      return updated ? parseItem(updated as unknown as Record<string, unknown>) : null;
+    },
+
     async updateStatus(id: string, status: string) {
       const updated = await db.item.update({
         where: { id },
         data: { status },
       });
       return parseItem(updated as unknown as Record<string, unknown>);
+    },
+
+    async updateOwnedStatus(id: string, ownerId: string, status: string) {
+      const result = await db.item.updateMany({ where: { id, book: { userId: ownerId } }, data: { status } });
+      if (result.count !== 1) return null;
+      const updated = await db.item.findFirst({ where: { id, book: { userId: ownerId } } });
+      return updated ? parseItem(updated as unknown as Record<string, unknown>) : null;
     },
 
     async deleteByBookId(bookId: string) {

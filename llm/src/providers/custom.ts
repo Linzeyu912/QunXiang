@@ -76,6 +76,38 @@ function jsonContentFromResponse(content: string): string {
  * Create a custom OpenAI-compatible LLM provider
  * Uses LLM_API_KEY, LLM_BASE_URL, LLM_MODEL, LLM_TIMEOUT environment variables
  */
+/**
+ * 规范化 OpenAI 兼容 API 的 base URL，兼容用户在 UI / .env 里常见的几种填法：
+ *   - 完整端点（…/chat/completions）         → 原样
+ *   - 带版本号的根（…/v1 或 …/v4）            → 追加 /<endpoint>
+ *   - 裸域名（…/api/paas、…/com 等）          → 追加 /v1/<endpoint>（OpenAI 标准）
+ * 末尾斜杠会被合并。避免用户只填根域名时拼成 /chat/completions（缺 /v1），
+ * 进而打到服务商 nginx 网关层返回纯文本 404（而非 API 的 JSON 错误）。
+ */
+export function normalizeApiUrl(
+  raw: string,
+  endpoint: 'chat/completions' | 'images/generations',
+): string {
+  const url = raw.trim().replace(/\/+$/, '');
+  if (url.endsWith(`/${endpoint}`)) return url;
+  // 判断 URL 是否已经是完整端点（含非标准路径如 /v1/image/create），
+  // 还是 API 版本前缀（如 /v1、/api/v3、/api/paas/v4）需要追加 endpoint。
+  //
+  // 规则：如果最后一段是版本号（v\d+）或整个路径只含版本前缀，则追加；
+  // 否则（路径含非版本段如 image/create）视为完整端点，原样返回。
+  const lastSeg = url.split('/').pop() ?? '';
+  // 最后一段是版本号（v1、v3、v4 等）→ 追加 endpoint
+  if (/^v\d+$/i.test(lastSeg)) return `${url}/${endpoint}`;
+  // URL 已含 endpoint 关键词（chat/completions 或 images/generations 的变体）→ 原样
+  if (/\/(chat|images?)\//i.test(url)) return url;
+  // 路径较短（≤2 段）且不含版本号 → 追加 /v1/endpoint
+  const afterHost = url.includes('://') ? url.slice(url.indexOf('://') + 3) : url;
+  const pathSegs = afterHost.split('/').filter(Boolean).slice(1);
+  if (pathSegs.length <= 1) return `${url}/v1/${endpoint}`;
+  // 其他情况（3+ 段但最后一段非版本号）→ 视为完整端点
+  return url;
+}
+
 export function createCustomProvider(config?: CustomConfig): LLMProvider {
   // 合并多 key 来源：config.apiKeys > config.apiKey > LLM_API_KEYS env > LLM_API_KEY env。
   // 同一厂家多个 key 轮询使用，把单 key 的并发额度（通常 10 路）提升到 N×10。
@@ -107,12 +139,7 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
   const apiKey = keys[0] || '';
 
   const rawBaseUrl = config?.baseUrl || process.env.LLM_BASE_URL || 'https://api.openai.com/v1';
-  // 用户在 UI/env 里通常只填到 /v1（如 .env.example）。OpenAI 兼容的聊天端点
-  // 是 /chat/completions，这里自动补全：已带 /chat/completions 则原样使用，
-  // 否则拼上。这样无论用户填 https://api.deepseek.com/v1 还是完整路径都能工作。
-  const baseUrl = rawBaseUrl.endsWith('/chat/completions')
-    ? rawBaseUrl
-    : `${rawBaseUrl.replace(/\/$/, '')}/chat/completions`;
+  const baseUrl = normalizeApiUrl(rawBaseUrl, 'chat/completions');
   const model = config?.model || process.env.LLM_MODEL || 'gpt-4o';
   // Support LLM_TIMEOUT env var (in milliseconds)
   const envTimeout = parseInt(process.env.LLM_TIMEOUT || '', 10);

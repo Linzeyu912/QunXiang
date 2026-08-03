@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { apiFetch } from './client';
+import { apiFetch, openAuthenticatedSse } from './client';
 import { booksKey } from './books';
 import { entitiesKey } from './entities';
-import { getToken } from '@/store/authStore';
 import type { ExtractionStagesResult, StageStatus, AgentType } from '@/types';
 
 export const extractionKey = {
@@ -30,6 +29,25 @@ export function useStartExtraction(bookId: string) {
   return useMutation({
     mutationFn: () =>
       apiFetch<{ taskId: string; message: string }>(`/books/${bookId}/extract`, { method: 'POST' }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: booksKey.all });
+      qc.invalidateQueries({ queryKey: extractionKey.stages(bookId) });
+    },
+  });
+}
+
+/**
+ * 断点续传：从第一个失败的 stage 继续（成功 stage 复用 result）。
+ * 仅在 extraction 已失败（isFailed=true）时调用。
+ */
+export function useResumeExtraction(bookId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: () =>
+      apiFetch<{ taskId: string; resumedFrom: string; message: string }>(
+        `/books/${bookId}/extract/resume`,
+        { method: 'POST' },
+      ),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: booksKey.all });
       qc.invalidateQueries({ queryKey: extractionKey.stages(bookId) });
@@ -93,15 +111,12 @@ export function useExtractionStream(bookId: string | undefined, enabled: boolean
   useEffect(() => {
     if (!bookId || !enabled) return;
 
-    // EventSource 不能设置请求头，token 走 query param（后端 onRequest 钩子兜底读取）。
-    const token = getToken();
-    const url = `/books/${bookId}/extract/stream${token ? `?access_token=${encodeURIComponent(token)}` : ''}`;
-    const es = new EventSource(url);
+    const controller = new AbortController();
     const key = extractionKey.stages(bookId);
 
-    const applyEvent = (raw: MessageEvent, eventName?: string) => {
+    const applyEvent = (raw: string, eventName?: string) => {
       try {
-        const data = JSON.parse(raw.data);
+        const data = JSON.parse(raw);
         // 首帧（无 event 名，纯 data:）是完整快照
         if (!eventName && 'stages' in data) {
           qc.setQueryData(key, data as ExtractionStagesResult);
@@ -120,39 +135,21 @@ export function useExtractionStream(bookId: string | undefined, enabled: boolean
           }
         }
       } catch (err) {
-        console.warn('[SSE] parse error', err);
+        console.warn('进度流解析失败：', err);
       }
     };
 
-    es.onmessage = (e) => {
-      failures = 0; // 收到帧说明连接正常，重置失败计数
-      applyEvent(e);
-    };
-    const namedEvents = ['stage-started', 'stage-completed', 'stage-failed', 'completed', 'error'];
-    const handlers = namedEvents.map((name) => {
-      const h = (e: MessageEvent) => {
-        failures = 0;
-        applyEvent(e, name);
-      };
-      es.addEventListener(name, h as EventListener);
-      return { name, h };
-    });
-    // 限制重连次数：后端持续 4xx（任务结束/token 失效）或网络断开时，
-    // EventSource 默认会无限自动重连，每次都 401/404 再断，刷日志且无效。
-    // 超过阈值后显式 close，改由 useExtractionStages 的轮询兜底。
-    let failures = 0;
-    const MAX_FAILURES = 8;
-    es.onerror = () => {
-      failures++;
-      qc.invalidateQueries({ queryKey: key });
-      if (failures >= MAX_FAILURES) {
-        es.close();
+    void openAuthenticatedSse(`/books/${bookId}/extract/stream`, {
+      signal: controller.signal,
+      onEvent: ({ event, data }) => applyEvent(data, event === 'message' ? undefined : event),
+    }).catch((error) => {
+      if (!(error instanceof DOMException && error.name === 'AbortError')) {
+        qc.invalidateQueries({ queryKey: key });
       }
-    };
+    });
 
     return () => {
-      handlers.forEach(({ name, h }) => es.removeEventListener(name, h as EventListener));
-      es.close();
+      controller.abort();
     };
   }, [bookId, enabled, qc]);
 }

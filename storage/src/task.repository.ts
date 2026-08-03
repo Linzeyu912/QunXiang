@@ -1,6 +1,7 @@
 import { prisma } from './prisma.js';
 import type { Task, AgentType } from '@novel-agent/core';
-import type { PrismaClient } from '@prisma/client';
+import { Prisma, type PrismaClient } from '@prisma/client';
+import { decodeJsonField, encodeJsonField } from './json-field.js';
 
 export interface TaskRepository {
   create(data: {
@@ -8,9 +9,13 @@ export interface TaskRepository {
     agentType: AgentType;
     payload: unknown;
     status?: string;
+    result?: unknown;
+    error?: string;
   }): Promise<Task>;
   findById(id: string): Promise<Task | null>;
+  findOwnedById(id: string, ownerId: string): Promise<Task | null>;
   updateStatus(id: string, status: string, result?: unknown, error?: string): Promise<Task>;
+  updateOwnedStatus(id: string, ownerId: string, status: string, result?: unknown, error?: string): Promise<Task | null>;
   findPending(agentType: AgentType): Promise<Task[]>;
   /**
    * 原子抢占一条 pending 任务：把最老的 pending 标记为 running 并返回。
@@ -20,13 +25,27 @@ export interface TaskRepository {
    */
   claimNext(agentType: AgentType): Promise<Task | null>;
   findByBookId(bookId: string): Promise<Task[]>;
+  findByOwnedBookId(bookId: string, ownerId: string): Promise<Task[]>;
   /** 删除该书全部任务记录——重新提取前清掉上一轮遗留，避免 getExtractionStages 读到旧状态。 */
   deleteByBookId(bookId: string): Promise<void>;
+  deleteOwnedByBookId(bookId: string, ownerId: string): Promise<boolean>;
   findAllPending(agentType: AgentType): Promise<Task[]>;
   markAsDeadLetter(taskId: string, error: string, retryCount: number): Promise<Task>;
   findStuckTasks(thresholdMs: number): Promise<Task[]>;
   recoverStuckTask(taskId: string): Promise<Task>;
   incrementRetryCount(taskId: string): Promise<Task>;
+}
+
+function parseTask(task: Record<string, unknown>): Task {
+  return {
+    ...task,
+    agentType: task.agentType as AgentType,
+    status: task.status as Task['status'],
+    error: (task.error as string | null) ?? undefined,
+    failedAt: (task.failedAt as Date | null) ?? undefined,
+    payload: decodeJsonField(task.payload, {}),
+    result: decodeJsonField(task.result, undefined),
+  } as Task;
 }
 
 export function createTaskRepository(db: PrismaClient): TaskRepository {
@@ -36,36 +55,31 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
       agentType: AgentType;
       payload: unknown;
       status?: string;
+      result?: unknown;
+      error?: string;
     }): Promise<Task> {
       const created = await db.task.create({
         data: {
           bookId: data.bookId,
           agentType: data.agentType,
-          payload: JSON.stringify(data.payload),
+          payload: encodeJsonField(data.payload),
           status: data.status || 'pending',
+          result: data.result ? encodeJsonField(data.result) : undefined,
+          error: data.error,
         },
       });
-      return {
-        ...created,
-        agentType: created.agentType as AgentType,
-        status: created.status as Task['status'],
-        error: created.error ?? undefined,
-        failedAt: created.failedAt ?? undefined,
-        payload: JSON.parse(created.payload || '{}'),
-      };
+      return parseTask(created as unknown as Record<string, unknown>);
     },
 
     async findById(id: string): Promise<Task | null> {
       const task = await db.task.findUnique({ where: { id } });
       if (!task) return null;
-      return {
-        ...task,
-        agentType: task.agentType as AgentType,
-        status: task.status as Task['status'],
-        error: task.error ?? undefined,
-        failedAt: task.failedAt ?? undefined,
-        payload: JSON.parse(task.payload || '{}'),
-      } as Task;
+      return parseTask(task as unknown as Record<string, unknown>);
+    },
+
+    async findOwnedById(id: string, ownerId: string): Promise<Task | null> {
+      const task = await db.task.findFirst({ where: { id, book: { userId: ownerId } } });
+      return task ? parseTask(task as unknown as Record<string, unknown>) : null;
     },
 
     async updateStatus(
@@ -78,19 +92,29 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
         where: { id },
         data: {
           status,
-          result: result ? JSON.stringify(result) : undefined,
+          result: result === undefined
+            ? undefined
+            : result === null
+              ? Prisma.JsonNull
+              : encodeJsonField(result),
           error,
         },
       });
-      return {
-        ...updated,
-        agentType: updated.agentType as AgentType,
-        status: updated.status as Task['status'],
-        error: updated.error ?? undefined,
-        failedAt: updated.failedAt ?? undefined,
-        payload: JSON.parse(updated.payload || '{}'),
-        result: updated.result ? JSON.parse(updated.result) : undefined,
-      };
+      return parseTask(updated as unknown as Record<string, unknown>);
+    },
+
+    async updateOwnedStatus(id, ownerId, status, result, error): Promise<Task | null> {
+      const update = await db.task.updateMany({
+        where: { id, book: { userId: ownerId } },
+        data: {
+          status,
+          result: result === undefined ? undefined : result === null ? Prisma.JsonNull : encodeJsonField(result),
+          error,
+        },
+      });
+      if (update.count !== 1) return null;
+      const task = await db.task.findFirst({ where: { id, book: { userId: ownerId } } });
+      return task ? parseTask(task as unknown as Record<string, unknown>) : null;
     },
 
     async findPending(agentType: AgentType): Promise<Task[]> {
@@ -99,10 +123,7 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
         orderBy: { createdAt: 'asc' },
         take: 1,
       });
-      return tasks.map(t => ({
-        ...t,
-        payload: JSON.parse(t.payload || '{}'),
-      })) as Task[];
+      return tasks.map(task => parseTask(task as unknown as Record<string, unknown>));
     },
 
     async claimNext(agentType: AgentType): Promise<Task | null> {
@@ -128,14 +149,7 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
       // 3. 抢到，读回完整行（含 payload）
       const task = await db.task.findUnique({ where: { id: pending.id } });
       if (!task) return null;
-      return {
-        ...task,
-        agentType: task.agentType as AgentType,
-        status: task.status as Task['status'],
-        error: task.error ?? undefined,
-        failedAt: task.failedAt ?? undefined,
-        payload: JSON.parse(task.payload || '{}'),
-      } as Task;
+      return parseTask(task as unknown as Record<string, unknown>);
     },
 
     async findByBookId(bookId: string): Promise<Task[]> {
@@ -143,14 +157,24 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
         where: { bookId },
         orderBy: { createdAt: 'asc' },
       });
-      return tasks.map(t => ({
-        ...t,
-        payload: JSON.parse(t.payload || '{}'),
-      })) as Task[];
+      return tasks.map(task => parseTask(task as unknown as Record<string, unknown>));
     },
 
     async deleteByBookId(bookId: string): Promise<void> {
       await db.task.deleteMany({ where: { bookId } });
+    },
+
+    async findByOwnedBookId(bookId: string, ownerId: string): Promise<Task[]> {
+      const tasks = await db.task.findMany({
+        where: { bookId, book: { userId: ownerId } },
+        orderBy: { createdAt: 'asc' },
+      });
+      return tasks.map(task => parseTask(task as unknown as Record<string, unknown>));
+    },
+
+    async deleteOwnedByBookId(bookId: string, ownerId: string): Promise<boolean> {
+      const result = await db.task.deleteMany({ where: { bookId, book: { userId: ownerId } } });
+      return result.count > 0;
     },
 
     async findAllPending(agentType: AgentType): Promise<Task[]> {
@@ -158,10 +182,7 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
         where: { agentType, status: 'pending' },
         orderBy: { createdAt: 'asc' },
       });
-      return tasks.map(t => ({
-        ...t,
-        payload: JSON.parse(t.payload || '{}'),
-      })) as Task[];
+      return tasks.map(task => parseTask(task as unknown as Record<string, unknown>));
     },
 
     async markAsDeadLetter(
@@ -189,10 +210,7 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
           updatedAt: { lt: cutoff },
         },
       });
-      return tasks.map(t => ({
-        ...t,
-        payload: JSON.parse(t.payload || '{}'),
-      })) as Task[];
+      return tasks.map(task => parseTask(task as unknown as Record<string, unknown>));
     },
 
     async recoverStuckTask(taskId: string): Promise<Task> {
@@ -210,7 +228,7 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
     async incrementRetryCount(taskId: string): Promise<Task> {
       const task = await db.task.findUnique({ where: { id: taskId } });
       if (!task) {
-        throw new Error(`Task not found: ${taskId}`);
+        throw new Error(`任务不存在：${taskId}`);
       }
       return db.task.update({
         where: { id: taskId },

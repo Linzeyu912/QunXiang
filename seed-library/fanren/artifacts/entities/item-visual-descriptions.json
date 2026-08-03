@@ -1,0 +1,6075 @@
+[
+  {
+    "name": "无名口诀",
+    "tier": "supporting",
+    "fields": {
+      "usage": "",
+      "material": "张铁就从心里往外的大为羡慕",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "仅供阅览默读，常被修行者朝夕诵读。",
+      "material": "可能记录于书册或兽皮之上，纸页泛黄。",
+      "condition": "书册边角可能有磨损，但整体保存完整。",
+      "ownership": "属于韩立初期持有的功法秘籍。",
+      "colorShape": "书册形状，页面大小适中，封面或为灰蓝色封面。",
+      "visualEffects": "修炼时体内偶有淡蓝色凉性能量流隐约透出。"
+    },
+    "llmSupplement": "所有字段均根据口诀作为实物秘籍的属性进行了保守视觉补全",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {
+      "scale": "长度约二十厘米，宽约十二厘米，厚度较薄。",
+      "effects": "无可见光效，但修炼者运转时皮肤下似有微光流淌。",
+      "condition": "老旧但平整，无撕裂但有使用过的旧痕。",
+      "ownership": "墨大夫传授给韩立的基础口诀。",
+      "colorShape": "长方形书册，约一掌长，灰蓝色封面或淡黄色内页。",
+      "materialTexture": "纸页略薄，手感稍有毛边，携带着绢帛或草纸的原始质感。"
+    },
+    "inferredFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.5,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "而对韩立所练的无名口诀，张铁就从心里往外的大为羡慕。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "无名口诀"
+        ]
+      }
+    ],
+    "finalDescription": "一本外形普通的修身养性口诀书册，约一掌长。封面为灰蓝色或素色，内页泛黄，纸页略薄并带有轻微的毛边质感。整体保存完好，边角稍有使用磨损，常被持有者贴身携带，翻阅时无光影波动，但修行者习练时体内偶有淡蓝色能量微透。",
+    "summarizedFields": [
+      "material"
+    ],
+    "descriptionSource": "mixed",
+    "sourceDescription": "张铁就从心里往外的大为羡慕",
+    "enhancedDescription": "一本外形普通的修身养性口诀书册，约一掌长。封面为灰蓝色或素色，内页泛黄，纸页略薄并带有轻微的毛边质感。整体保存完好，边角稍有使用磨损，常被持有者贴身携带，翻阅时无光影波动，但修行者习练时体内偶有淡蓝色能量微透。",
+    "supplementDescription": "所有字段均根据口诀作为实物秘籍的属性进行了保守视觉补全"
+  },
+  {
+    "name": "法宝残片",
+    "tier": "candidate",
+    "fields": {
+      "usage": "不是结丹期修士就是元婴期修士炼制出来的",
+      "material": "灵石也在数天前就全部花完",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": "这法宝残片能隐形和遮掩灵气时；此残片不妨碍盖住之物从外界吸入灵气的说法"
+    },
+    "aliases": [
+      "残片",
+      "破布"
+    ],
+    "confidence": 0.65,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "不是结丹期修士就是元婴期修士炼制出来的",
+      "material": "灵石也在数天前就全部花完",
+      "condition": "皱巴破烂状，边缘残损不完整。",
+      "ownership": "原属黑汉，后被韩立以飞行符换得，归韩立所有。",
+      "colorShape": "半透明、微乳白或浅灰白色，形状不规则，边缘参差不齐。",
+      "visualEffects": "这法宝残片能隐形和遮掩灵气时；此残片不妨碍盖住之物从外界吸入灵气的说法"
+    },
+    "llmSupplement": "colorShape, condition, ownership 字段基于已有的原文描述进行了视觉概括与保守补全",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "ownership"
+    ],
+    "visualDetails": {
+      "scale": "尺寸不大，张开后或如手帕般大小，足以包裹小型物体。",
+      "effects": "启用时覆盖区域如凭空消失，全无视觉痕迹，极度低调。",
+      "condition": "老旧残破，边缘磨损开裂，可见炼制残余灵力流转。",
+      "ownership": "太南小会后归属韩立，现为韩立行走修仙界的隐秘底牌。",
+      "colorShape": "不规则多边破片状，微微泛黄或乳白半透明。",
+      "materialTexture": "薄纱质地，表面皱褶多，手感轻柔且半透。"
+    },
+    "inferredFields": [
+      "colorShape",
+      "condition",
+      "ownership"
+    ],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.456,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "这是法宝残片，不是结丹期修士就是元婴期修士炼制出来的，不是同样水平的修士，谁能看的破它的隐匿功效？",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "法宝残片",
+          "残片"
+        ]
+      },
+      {
+        "text": "但此时他身上除了这法宝残片外，其它物品都有用处，灵石也在数天前就全部花完，让他如今进退两难。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "法宝残片",
+          "残片"
+        ]
+      },
+      {
+        "text": "原来韩立一开始听此人说，这法宝残片能隐形和遮掩灵气时，心里就一动，一个模模糊糊的想法跳入了他脑中！",
+        "fields": [
+          "visualEffects"
+        ],
+        "chapterIndex": 140,
+        "chapterTitle": "势在必得",
+        "matchedNames": [
+          "法宝残片",
+          "残片"
+        ]
+      },
+      {
+        "text": "“不过在此之前，我想试一下下曾说的，此残片不妨碍盖住之物从外界吸入灵气的说法？",
+        "fields": [
+          "visualEffects"
+        ],
+        "chapterIndex": 141,
+        "chapterTitle": "升仙令",
+        "matchedNames": [
+          "残片"
+        ]
+      }
+    ],
+    "finalDescription": "一块皱巴巴的半透明破布，质地轻薄如纱，边缘参差不齐，整体呈不规则片状。颜色微白或淡黄，表面布满褶皱，看似破烂却暗藏微弱的灵力波动。激发后能完美隐匿被覆盖物体的轮廓与灵气，呈完全透明的消失状态，是结丹期以上修士炼制法宝遗留的残片。",
+    "summarizedFields": [],
+    "descriptionSource": "mixed",
+    "sourceDescription": "灵石也在数天前就全部花完; 不是结丹期修士就是元婴期修士炼制出来的; 这法宝残片能隐形和遮掩灵气时; 此残片不妨碍盖住之物从外界吸入灵气的说法; 这法宝残片能隐形和遮掩灵气时；此残片不妨碍盖住之物从外界吸入灵气的说法",
+    "enhancedDescription": "一块皱巴巴的半透明破布，质地轻薄如纱，边缘参差不齐，整体呈不规则片状。颜色微白或淡黄，表面布满褶皱，看似破烂却暗藏微弱的灵力波动。激发后能完美隐匿被覆盖物体的轮廓与灵气，呈完全透明的消失状态，是结丹期以上修士炼制法宝遗留的残片。",
+    "supplementDescription": "colorShape, condition, ownership 字段基于已有的原文描述进行了视觉概括与保守补全"
+  },
+  {
+    "name": "火弹术",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "竟被贴身携带",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "远程释放或凝聚于掌心作为近距离切割/攻击武器。",
+      "material": "凝聚法力而成的火焰球体，无实体材质。",
+      "condition": "形态稳定，火舌翻卷但不崩散。",
+      "ownership": "竟被贴身携带",
+      "colorShape": "一团高温耀眼的橙红色小型球状火焰，直径约一拳大小。",
+      "visualEffects": "掌心悬浮高温火球，释放出灼热气流，光线强烈刺眼，周围空气因热浪微微扭曲。"
+    },
+    "llmSupplement": "material, colorShape, condition, usage, visualEffects 字段根据法术属性与改良描述进行了保守视觉补全",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "visualDetails": {
+      "scale": "直径约十到十五厘米，浓缩了火元素的球体。",
+      "effects": "火焰高亮带扭曲热浪的气场，光晕刺眼，极度高温可将靠近之物瞬间焚化。",
+      "condition": "法术能量稳定，控制精准时形如一盏灼热的提灯。",
+      "ownership": "韩立习得并改良，可在近距离如匕首般握住使用。",
+      "colorShape": "核心为明亮的橙红色，边缘向金红色过渡，球形聚合。",
+      "materialTexture": "纯粹的火焰元素聚合体，无固体触感，外部为流动跳动的炎舌。"
+    },
+    "inferredFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.419,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "至于那本书，韩立原以为既然能在“火弹术”下幸存，肯定也不是寻常之物，谁知翻了几页后才发现，此书竟是一本族谱，一本秦姓氏的族谱，也不知和金光上人有何关系，竟被贴身携带。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 93,
+        "chapterTitle": "烈火焚敌",
+        "matchedNames": [
+          "火弹术"
+        ]
+      }
+    ],
+    "finalDescription": "一枚悬浮于掌心的橙红色火球，直径约一掌宽，核心明亮近乎白炽，边缘翻卷着金红色的火焰。火球形态凝实稳定，周遭空气被高温烤得扭曲波动，释放出强烈的灼热气浪与刺眼光芒，既可远射亦可被紧握在手中当作焚尽一切的近战焰刃。",
+    "summarizedFields": [],
+    "descriptionSource": "mixed",
+    "sourceDescription": "竟被贴身携带",
+    "enhancedDescription": "一枚悬浮于掌心的橙红色火球，直径约一掌宽，核心明亮近乎白炽，边缘翻卷着金红色的火焰。火球形态凝实稳定，周遭空气被高温烤得扭曲波动，释放出强烈的灼热气浪与刺眼光芒，既可远射亦可被紧握在手中当作焚尽一切的近战焰刃。",
+    "supplementDescription": "material, colorShape, condition, usage, visualEffects 字段根据法术属性与改良描述进行了保守视觉补全"
+  },
+  {
+    "name": "黑索法器",
+    "tier": "supporting",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "黑索",
+      "妖异长刀"
+    ],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "刀形态可握持近战；化索后可伸缩缠绕目标",
+      "material": "漆黑金属质感的刀身，表面被流动的黑气覆盖",
+      "condition": "表面完好，黑气充盈流动",
+      "ownership": "原由一名大汉持有",
+      "colorShape": "长刀形态时通体漆黑，刀身修长；化为黑色长索时呈绳索状",
+      "visualEffects": "黑气萦绕刀身，化索时黑雾弥漫"
+    },
+    "llmSupplement": "长刀形态通体漆黑，金属质感，表面黑气流动不息；化为黑索时呈绳索状，可伸缩数丈；使用时黑雾弥漫，光线被吞没；原持有者为一名大汉",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {
+      "scale": "长刀约三尺余，化为长索可延伸数丈",
+      "usage": "近战斩击或化为长索远距离缠绕",
+      "effects": "使用时有黑气缠绕刀身，化索时黑雾弥漫，光线被吞没",
+      "condition": "完好无缺，黑气充盈",
+      "ownership": "原属一名大汉，后被主角所获",
+      "colorShape": "长刀形态通体漆黑，刀身狭长；可变为黑色绳索状长索",
+      "materialTexture": "漆黑金属质感，表面黑气流动如烟雾"
+    },
+    "inferredFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "sourceCoverage": "none",
+    "importanceScore": 0.3875,
+    "completionStatus": "llm_inferred",
+    "evidenceSnippets": [],
+    "finalDescription": "一把通体漆黑的长刀，刀身表面涌动着诡异的黑气，刀柄简朴。催动后刀身可化为一条黑色长索，随意伸缩，缠绕时黑雾弥漫，散发出阴冷的光泽。",
+    "summarizedFields": [],
+    "descriptionSource": "mixed",
+    "sourceDescription": "",
+    "enhancedDescription": "一把通体漆黑的长刀，刀身表面涌动着诡异的黑气，刀柄简朴。催动后刀身可化为一条黑色长索，随意伸缩，缠绕时黑雾弥漫，散发出阴冷的光泽。",
+    "supplementDescription": "长刀形态通体漆黑，金属质感，表面黑气流动不息；化为黑索时呈绳索状，可伸缩数丈；使用时黑雾弥漫，光线被吞没；原持有者为一名大汉"
+  },
+  {
+    "name": "青黑色葫芦",
+    "tier": "supporting",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "从葫芦嘴喷出数个黑色圆球",
+      "material": "青黑色葫芦壳，表面光滑",
+      "condition": "完整无破损",
+      "ownership": "原属黄衣人",
+      "colorShape": "葫芦形，上部连接下部较大球体，整体呈青黑色",
+      "visualEffects": "喷出时产生黑色圆球状攻击"
+    },
+    "llmSupplement": "青黑色葫芦，表面光滑，葫芦嘴可喷出黑色圆球；原属黄衣人",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {
+      "scale": "约巴掌大小，可握持于手中",
+      "usage": "倾倒葫芦嘴，从中喷出黑色圆球进行攻击",
+      "effects": "喷出物为黑色圆球，飞行轨迹可见",
+      "condition": "完好，表面无裂痕",
+      "ownership": "黄衣人持有",
+      "colorShape": "青黑色葫芦，上部小圆球连接下部大圆球，整体线条流畅",
+      "materialTexture": "葫芦壳质地，表面光滑或略有天然纹理"
+    },
+    "inferredFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "sourceCoverage": "none",
+    "importanceScore": 0.3875,
+    "completionStatus": "llm_inferred",
+    "evidenceSnippets": [],
+    "finalDescription": "一只青黑色的小葫芦，表面光滑，葫芦嘴处可喷出数个黑色圆球。",
+    "summarizedFields": [],
+    "descriptionSource": "mixed",
+    "sourceDescription": "",
+    "enhancedDescription": "一只青黑色的小葫芦，表面光滑，葫芦嘴处可喷出数个黑色圆球。",
+    "supplementDescription": "青黑色葫芦，表面光滑，葫芦嘴可喷出黑色圆球；原属黄衣人"
+  },
+  {
+    "name": "生死契",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "开口问起了身旁的厉飞雨",
+      "colorShape": "郑重的接过来两份血红色的文书；还让他二人在血红的生死书上；首先用黑色的墨迹签下了死契",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "死契",
+      "生死书",
+      "血红色文书"
+    ],
+    "confidence": 0.46,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "展开的文书，留有签署区域",
+      "material": "纸质",
+      "condition": "平整无破损，保存完好",
+      "ownership": "由七玄门王门主持有",
+      "colorShape": "纸面底色血红色，上有黑色墨迹签下的死契字样",
+      "visualEffects": ""
+    },
+    "llmSupplement": "文书为纸质，底色血红色，黑色墨迹签署，完整无破损；原属七玄门王门主持有",
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "visualDetails": {
+      "scale": "约正常信纸大小，可双手展开",
+      "usage": "死斗双方用黑色墨迹在血红色文书上签名",
+      "condition": "完整，无折痕，边缘齐整",
+      "ownership": "七玄门王门主持有并呈递",
+      "colorShape": "鲜红底色，黑色字迹与签名，文字工整",
+      "materialTexture": "薄纸质感，表面略带粗糙，吸墨良好"
+    },
+    "inferredFields": [
+      "material",
+      "condition",
+      "usage"
+    ],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.381,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "见到附近的人都对死契斗议论纷纷，对此茫然不知的韩立，有些忍耐不住，开口问起了身旁的厉飞雨。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 85,
+        "chapterTitle": "死契血斗",
+        "matchedNames": [
+          "死契"
+        ]
+      },
+      {
+        "text": "就在二人纠缠不清之际，王门主从一名弟子那里，郑重的接过来两份血红色的文书，正是生死契。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 86,
+        "chapterTitle": "突变",
+        "matchedNames": [
+          "生死契",
+          "死契"
+        ]
+      },
+      {
+        "text": "他接着用手一指，让原本参加死斗的弟子中身手最弱的两人，退出了队伍，让韩立和厉飞雨加了进去，还让他二人在血红的生死书上，首先用黑色的墨迹签下了死契，让他们最先成为参加死斗的成员。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 87,
+        "chapterTitle": "略显身手",
+        "matchedNames": [
+          "死契",
+          "生死书"
+        ]
+      }
+    ],
+    "finalDescription": "两份血红色的纸质文书，表面用黑色墨迹签有‘死契’字样，平整展开，色泽对比强烈。",
+    "summarizedFields": [
+      "colorShape",
+      "ownership"
+    ],
+    "descriptionSource": "mixed",
+    "sourceDescription": "郑重的接过来两份血红色的文书; 还让他二人在血红的生死书上; 首先用黑色的墨迹签下了死契; 开口问起了身旁的厉飞雨; 郑重的接过来两份血红色的文书；还让他二人在血红的生死书上；首先用黑色的墨迹签下了死契",
+    "enhancedDescription": "两份血红色的纸质文书，表面用黑色墨迹签有‘死契’字样，平整展开，色泽对比强烈。",
+    "supplementDescription": "文书为纸质，底色血红色，黑色墨迹签署，完整无破损；原属七玄门王门主持有"
+  },
+  {
+    "name": "墨大夫遗书",
+    "tier": "candidate",
+    "fields": {
+      "usage": "韩立手中拿着写满了字迹的墨大夫遗书",
+      "material": "因此在这几页纸上",
+      "condition": "",
+      "ownership": "韩立手中拿着写满了字迹的墨大夫遗书",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "遗书"
+    ],
+    "confidence": 0.5,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "韩立手中拿着写满了字迹的墨大夫遗书",
+      "material": "纸质",
+      "condition": "纸张略显陈旧，可能有折痕",
+      "ownership": "韩立手中拿着写满了字迹的墨大夫遗书",
+      "colorShape": "发黄的纸页，写满黑色字迹",
+      "visualEffects": ""
+    },
+    "llmSupplement": "纸页发黄，有黑色字迹，略显陈旧，纸张边缘有自然老化痕迹",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects"
+    ],
+    "visualDetails": {
+      "scale": "数页信纸大小，可折叠",
+      "usage": "展开阅读，黑色字迹清晰",
+      "condition": "略有折痕，边缘微卷，整体保存尚可",
+      "ownership": "墨大夫亲笔遗书，后归韩立",
+      "colorShape": "淡黄色底，黑色墨迹，字迹工整",
+      "materialTexture": "普通宣纸或信纸，因时间久远微微发黄"
+    },
+    "inferredFields": [
+      "colorShape",
+      "condition"
+    ],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.381,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "因此在这几页纸上，墨大夫很清楚的告诉韩立，这份遗书和之前所下的阴毒是他用来做最坏打算的后手，万一他夺舍不成，出了什么意外，那么能够活下来的十有八九就是韩立了。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "遗书"
+        ]
+      },
+      {
+        "text": "韩立手中拿着写满了字迹的墨大夫遗书，正在一家叫汇源客栈的上房内，不停的来回走动着，在思虑着什么。",
+        "fields": [
+          "usage",
+          "ownership"
+        ],
+        "chapterIndex": 104,
+        "chapterTitle": "情报",
+        "matchedNames": [
+          "墨大夫遗书",
+          "遗书"
+        ]
+      }
+    ],
+    "finalDescription": "几页发黄的纸张，上面写满了黑色的字迹，是墨大夫的亲笔遗书。",
+    "summarizedFields": [
+      "material"
+    ],
+    "descriptionSource": "mixed",
+    "sourceDescription": "因此在这几页纸上; 韩立手中拿着写满了字迹的墨大夫遗书",
+    "enhancedDescription": "几页发黄的纸张，上面写满了黑色的字迹，是墨大夫的亲笔遗书。",
+    "supplementDescription": "纸页发黄，有黑色字迹，略显陈旧，纸张边缘有自然老化痕迹"
+  },
+  {
+    "name": "剑符",
+    "tier": "supporting",
+    "fields": {
+      "usage": "",
+      "material": "露出跟他黝黑色皮肤完全相反的洁白牙齿",
+      "condition": "但因为残缺不全",
+      "ownership": "向着三大高手中唯一残活的灰衣人飞去；手中的灰芒",
+      "colorShape": "看形状正是刚才躲过的那一枚暗器；露出跟他黝黑色皮肤完全相反的洁白牙齿；让人瞧不清其真实形状",
+      "visualEffects": "寒光流射"
+    },
+    "aliases": [
+      "小剑符",
+      "灰色符箓",
+      "灰芒"
+    ],
+    "confidence": 0.88,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "以驱物术驱动，化为锋利灰光飞剑攻击",
+      "material": "露出跟他黝黑色皮肤完全相反的洁白牙齿",
+      "condition": "符箓本身残缺不全",
+      "ownership": "向着三大高手中唯一残活的灰衣人飞去；手中的灰芒",
+      "colorShape": "看形状正是刚才躲过的那一枚暗器；露出跟他黝黑色皮肤完全相反的洁白牙齿；让人瞧不清其真实形状",
+      "visualEffects": "寒光流射"
+    },
+    "llmSupplement": "符纸质地，灰色底色，绘有小剑纹样，符身残缺；驱动后化为灰芒飞剑，寒光流射；原属金光上人，后归韩立",
+    "missingFields": [
+      "usage"
+    ],
+    "visualDetails": {
+      "scale": "符箓约两指宽，飞剑形态长约数寸至尺许",
+      "usage": "以灵力驱动化为灰色飞剑，可远距穿刺",
+      "effects": "灰芒寒光流射，飞行时拖曳灰光尾迹",
+      "condition": "符身残缺，边缘可能有破损",
+      "ownership": "原为金光上人法器，后被韩立收取",
+      "colorShape": "灰色底色，上有灰色小剑纹样；飞剑形态为一束伸缩不定的灰芒",
+      "materialTexture": "符纸，表面粗糙有墨绘"
+    },
+    "inferredFields": [
+      "usage"
+    ],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.35,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "汉子微微一呆，有些莫名其，此时眼前光华一现，一道灰芒从他胸前穿膛而过，看形状正是刚才躲过的那一枚暗器。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 90,
+        "chapterTitle": "飞剑？",
+        "matchedNames": [
+          "灰芒"
+        ]
+      },
+      {
+        "text": "与灰芒对射的寒流，不停的掉下些残渣碎屑，但因为残缺不全，已看不出原本的面目。",
+        "fields": [
+          "condition"
+        ],
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰芒"
+        ]
+      },
+      {
+        "text": "金光上人此时傲气十足，他指挥着再次从地上一跃而起的灰芒，向着三大高手中唯一残活的灰衣人飞去。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰芒"
+        ]
+      },
+      {
+        "text": "灰芒所到之处，人人惊慌失措，四处躲避，只有一个长相普通，看年纪只有十七八岁的青年原地没动，这青年冲着金光上人笑了一下，露出跟他黝黑色皮肤完全相反的洁白牙齿，接着他冲着那道灰光一指，灰光就老老实实的落在了他的手上。",
+        "fields": [
+          "material",
+          "colorShape"
+        ],
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰芒"
+        ],
+        "otherMatchedNames": [
+          "灰光"
+        ]
+      },
+      {
+        "text": "手中的灰芒，仍灵姓十足的伸缩不定，寒光流射，让人瞧不清其真实形状。",
+        "fields": [
+          "ownership",
+          "visualEffects",
+          "colorShape"
+        ],
+        "chapterIndex": 92,
+        "chapterTitle": "剑符",
+        "matchedNames": [
+          "灰芒"
+        ]
+      }
+    ],
+    "finalDescription": "一枚灰色符箓，符面绘有一柄灰色小剑图案，本身残缺不全。驱动后化为一道锋利的灰芒，寒光流射，形状模糊难辨，如飞剑般穿梭攻击。",
+    "summarizedFields": [
+      "condition"
+    ],
+    "descriptionSource": "mixed",
+    "sourceDescription": "露出跟他黝黑色皮肤完全相反的洁白牙齿; 看形状正是刚才躲过的那一枚暗器; 让人瞧不清其真实形状; 但因为残缺不全; 寒光流射; 向着三大高手中唯一残活的灰衣人飞去; 手中的灰芒; 看形状正是刚才躲过的那一枚暗器；露出跟他黝黑色皮肤完全相反的洁白牙齿；让人瞧不清其真实形状; 向着三大高手中唯一残活的灰衣人飞去；手中的灰芒",
+    "enhancedDescription": "一枚灰色符箓，符面绘有一柄灰色小剑图案，本身残缺不全。驱动后化为一道锋利的灰芒，寒光流射，形状模糊难辨，如飞剑般穿梭攻击。",
+    "supplementDescription": "符纸质地，灰色底色，绘有小剑纹样，符身残缺；驱动后化为灰芒飞剑，寒光流射；原属金光上人，后归韩立"
+  },
+  {
+    "name": "抽髓丸",
+    "tier": "supporting",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "口服",
+      "material": "由多种草药炼制的丹药，表面光滑",
+      "condition": "完好无损",
+      "ownership": "厉飞雨持有",
+      "colorShape": "粉红色药丸",
+      "visualEffects": ""
+    },
+    "llmSupplement": "粉红色药丸，约黄豆大小，表面光滑；由厉飞雨持有",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {
+      "scale": "约黄豆大小",
+      "usage": "直接吞服",
+      "condition": "完整，无碎裂",
+      "ownership": "厉飞雨",
+      "colorShape": "粉红色，圆形，光泽暗哑",
+      "materialTexture": "丹药质地，表面光滑细腻"
+    },
+    "inferredFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "sourceCoverage": "none",
+    "importanceScore": 0.35,
+    "completionStatus": "llm_inferred",
+    "evidenceSnippets": [],
+    "finalDescription": "一枚粉红色的药丸，约黄豆大小，表面光滑。",
+    "summarizedFields": [],
+    "descriptionSource": "mixed",
+    "sourceDescription": "",
+    "enhancedDescription": "一枚粉红色的药丸，约黄豆大小，表面光滑。",
+    "supplementDescription": "粉红色药丸，约黄豆大小，表面光滑；由厉飞雨持有"
+  },
+  {
+    "name": "回风钵",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "放着一个有奇怪花纹的黄钵和一小块半透明的布料状物品",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "黄钵"
+    ],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "放着一个有奇怪花纹的黄钵和一小块半透明的布料状物品",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.344,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "在这两人之间的摊子上，放着一个有奇怪花纹的黄钵和一小块半透明的布料状物品。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "黄钵"
+        ]
+      }
+    ],
+    "finalDescription": "一只带有奇怪花纹的黄钵法器，为秦叶岭叶家弟子所有，曾在太南小会交易广场上摆出; 此物与黑汉的功法极为相配，但持有人拒绝用非法宝残片的物品交换",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "放着一个有奇怪花纹的黄钵和一小块半透明的布料状物品",
+    "enhancedDescription": "一只带有奇怪花纹的黄钵法器，为秦叶岭叶家弟子所有，曾在太南小会交易广场上摆出; 此物与黑汉的功法极为相配，但持有人拒绝用非法宝残片的物品交换",
+    "supplementDescription": ""
+  },
+  {
+    "name": "定神符",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "似乎绘制定神符光靠符纸是不行的",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "黄纸符箓"
+    ],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "似乎绘制定神符光靠符纸是不行的",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.306,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "但是他忽然间想到，似乎绘制定神符光靠符纸是不行的，还需要毛笔和丹砂之类的东西。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "定神符"
+        ]
+      }
+    ],
+    "finalDescription": "一种绘有银色符号的黄色符纸，贴在额头可定住他人身体，使其无法动弹; 此符曾被墨大夫用于控制韩立，韩立也因缺乏合适符材而无法施展此符咒",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "似乎绘制定神符光靠符纸是不行的",
+    "enhancedDescription": "一种绘有银色符号的黄色符纸，贴在额头可定住他人身体，使其无法动弹; 此符曾被墨大夫用于控制韩立，韩立也因缺乏合适符材而无法施展此符咒",
+    "supplementDescription": ""
+  },
+  {
+    "name": "金针",
+    "tier": "candidate",
+    "fields": {
+      "usage": "他不知从哪儿取出几根细细的金针",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "他不知从哪儿取出几根细细的金针",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.306,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "他不知从哪儿取出几根细细的金针，麻利的插入脑后的秘穴之中，让自己红光满面，精神大涨，有足够的精力来施展法术，不会出错。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 56,
+        "chapterTitle": "光球之战",
+        "matchedNames": [
+          "金针"
+        ]
+      }
+    ],
+    "finalDescription": "墨大夫用于刺激脑部穴位的金针，可提振精神; 后来也成为韩立用于针灸、放血解毒的医疗工具",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "他不知从哪儿取出几根细细的金针",
+    "enhancedDescription": "墨大夫用于刺激脑部穴位的金针，可提振精神; 后来也成为韩立用于针灸、放血解毒的医疗工具",
+    "supplementDescription": ""
+  },
+  {
+    "name": "墨大夫的外伤药",
+    "tier": "candidate",
+    "fields": {
+      "usage": "一打开瓶盖",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "外伤药",
+      "伤药"
+    ],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "一打开瓶盖",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.306,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "一打开瓶盖，一股浓郁的药香味充满了整个屋子，轻轻地药粉倒在隆起的脚趾上，一种清凉的感觉马上传了上来，真不亏是墨大夫秘制的伤药，马上就见效了。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "伤药"
+        ]
+      }
+    ],
+    "finalDescription": "墨大夫秘制的伤药，对淤血、青肿有奇效，呈药粉状，药香浓郁",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "一打开瓶盖",
+    "enhancedDescription": "墨大夫秘制的伤药，对淤血、青肿有奇效，呈药粉状，药香浓郁",
+    "supplementDescription": ""
+  },
+  {
+    "name": "千人醉",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "普通人闻了就会骨松筋软四肢无力",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "普通人闻了就会骨松筋软四肢无力",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.306,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "这是迷药千人醉，普通人闻了就会骨松筋软四肢无力，学武之人闻了也得真气丧失武功暂失，就算你是修仙者，也不可能长久待在此屋内而无事。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 116,
+        "chapterTitle": "翻脸",
+        "matchedNames": [
+          "千人醉"
+        ]
+      }
+    ],
+    "finalDescription": "一种迷药，普通人闻了骨松筋软，学武之人真气丧失，严氏等人在烛中点燃意图迷倒韩立",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "普通人闻了就会骨松筋软四肢无力",
+    "enhancedDescription": "一种迷药，普通人闻了骨松筋软，学武之人真气丧失，严氏等人在烛中点燃意图迷倒韩立",
+    "supplementDescription": ""
+  },
+  {
+    "name": "《青溪笔录》",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.269,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "青溪上人记录的密闻传说杂记，内附升仙令等图画和说明，圆脸青年赠予韩立答谢解围之恩",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "青溪上人记录的密闻传说杂记，内附升仙令等图画和说明，圆脸青年赠予韩立答谢解围之恩",
+    "supplementDescription": ""
+  },
+  {
+    "name": "七玄门黑旗",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "玄字旗"
+    ],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.269,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "七玄门的标志，黑漆马车边框上插着的三角黑旗，上绣银色“玄”字，红边，代表七玄门重要人物驾临",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "七玄门的标志，黑漆马车边框上插着的三角黑旗，上绣银色“玄”字，红边，代表七玄门重要人物驾临",
+    "supplementDescription": ""
+  },
+  {
+    "name": "符宝",
+    "tier": "candidate",
+    "fields": {
+      "usage": "不知何时拔出了背后宝剑",
+      "material": "从韩立木匣内飞射出了一道丈许长的灰光",
+      "condition": "看情形因为灰光过于锋利",
+      "ownership": "不知何时拔出了背后宝剑",
+      "colorShape": "",
+      "visualEffects": "这光芒如蛟龙出水一样"
+    },
+    "aliases": [
+      "画着小剑的符箓",
+      "灰光"
+    ],
+    "confidence": 0.81,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "不知何时拔出了背后宝剑",
+      "material": "从韩立木匣内飞射出了一道丈许长的灰光",
+      "condition": "看情形因为灰光过于锋利",
+      "ownership": "不知何时拔出了背后宝剑",
+      "colorShape": "",
+      "visualEffects": "这光芒如蛟龙出水一样"
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.2685,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "汉子虽然机灵的把身子倾侧，躲过了首次的穿胸一击，但灰光和其肩部擦身而过后，手臂就轻悄悄的滑落而下，看情形因为灰光过于锋利，这汉子竟然丝毫没能察觉到此事的发生。",
+        "fields": [
+          "condition"
+        ],
+        "chapterIndex": 90,
+        "chapterTitle": "飞剑？",
+        "matchedNames": [
+          "灰光"
+        ]
+      },
+      {
+        "text": "这时人们才发现，原本和儒生一起奔出的灰衣人，不知何时拔出了背后宝剑，正一步一个脚印的向灰光走去，而他所持的宝剑剑尖之上，竟冒出了二寸多长的白芒，那白芒伸缩不定，寒气逼人。",
+        "fields": [
+          "usage",
+          "ownership"
+        ],
+        "chapterIndex": 91,
+        "chapterTitle": "抢宝",
+        "matchedNames": [
+          "灰光"
+        ]
+      },
+      {
+        "text": "随着此声发出，从韩立木匣内飞射出了一道丈许长的灰光，这光芒如蛟龙出水一样，围着四周就转了那么一圈，那些圆球就如同遇到克星一样，全都被一一劈分为二，跌落到了尘埃。",
+        "fields": [
+          "material",
+          "visualEffects"
+        ],
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "灰光"
+        ]
+      }
+    ],
+    "finalDescription": "韩立从金光上人处得到的符宝，形如画着小剑的符箓，存放在木匣中，可催动丈许长灰色剑光，威力巨大，黄衣人识得此物并极为惊恐",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "从韩立木匣内飞射出了一道丈许长的灰光; 看情形因为灰光过于锋利; 不知何时拔出了背后宝剑; 这光芒如蛟龙出水一样",
+    "enhancedDescription": "韩立从金光上人处得到的符宝，形如画着小剑的符箓，存放在木匣中，可催动丈许长灰色剑光，威力巨大，黄衣人识得此物并极为惊恐",
+    "supplementDescription": ""
+  },
+  {
+    "name": "金刚符",
+    "tier": "candidate",
+    "fields": {
+      "usage": "取出了那张从金光上人得到的金刚符",
+      "material": "金属姓初级中阶防御用灵符；价值九块低阶灵石",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": "他发现人家符箓的灵气比他怀内的那张可要充足的多"
+    },
+    "aliases": [],
+    "confidence": 0.57,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "取出了那张从金光上人得到的金刚符",
+      "material": "金属姓初级中阶防御用灵符；价值九块低阶灵石",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": "他发现人家符箓的灵气比他怀内的那张可要充足的多"
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.2685,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "甚至韩立还在一个不起眼的货摊前，见到了一张和自己那个能放出金罩的符箓一模一样的灵符，旁边的标价牌上写的很清楚：金刚符，金属姓初级中阶防御用灵符，价值九块低阶灵石。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "金刚符"
+        ]
+      },
+      {
+        "text": "仔细观察完货摊上金刚符后，他发现人家符箓的灵气比他怀内的那张可要充足的多，显然是尚未用过的新品，而估计他那个残旧品，顶多只能卖到人家三分之一的价钱。",
+        "fields": [
+          "visualEffects"
+        ],
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "金刚符"
+        ]
+      },
+      {
+        "text": "于是，在高速飞驰中的韩立，取出了那张从金光上人得到的金刚符，这金刚符也是一种符术，其口诀韩立早已从苦桑和尚口中得知，如今总算派上了用场。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "金刚符"
+        ]
+      }
+    ],
+    "finalDescription": "防御符箓，使用后可在身外形成金色护罩，韩立从金光上人处得到，口诀得自苦桑和尚",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "金属姓初级中阶防御用灵符; 价值九块低阶灵石; 取出了那张从金光上人得到的金刚符; 他发现人家符箓的灵气比他怀内的那张可要充足的多; 金属姓初级中阶防御用灵符；价值九块低阶灵石",
+    "enhancedDescription": "防御符箓，使用后可在身外形成金色护罩，韩立从金光上人处得到，口诀得自苦桑和尚",
+    "supplementDescription": ""
+  },
+  {
+    "name": "引魂钟",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.2315,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "黄铜制的小钟，钟壁有淡淡血痕，敲响后可控制尸人曲魂; 此物从墨大夫遗物中获得，非主人也可凭此驱使炼尸",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "黄铜制的小钟，钟壁有淡淡血痕，敲响后可控制尸人曲魂; 此物从墨大夫遗物中获得，非主人也可凭此驱使炼尸",
+    "supplementDescription": ""
+  },
+  {
+    "name": "神秘小瓶",
+    "tier": "candidate",
+    "fields": {
+      "usage": "立刻把瓶子打开；韩立用手紧紧地握着瓶子；帮我把这个瓶子打开好吗；可瓶子仍然保持着通体的完整；整个瓶面仍然保持着光洁；手拿着瓶子倚在床边；全都聚集到了手里握着的瓶子上；把瓶子再次取出来；把瓶子取出放好后；去试着打开盖子；瓶子的盖子已经被他给打开了；韩立取出来小瓶；并没有急切地打开它；他把瓶盖小心的打开；把刚刚从瓶中取出来的绿液放到了各种各样的容器之中；只要把绿液从神秘的小瓶中取出来；每曰里都把小瓶取出；正拿着几个小瓶；韩立从怀内取出一个瓶子；递给了那青年；青年打开瓶子；挨个打开了盖子",
+      "material": "不过金属做成的瓶子倒是很少见到；把瓶子拿到眼皮底下；张铁一见到韩立在自己的屋里；张铁略为愣了一下；张铁冲韩立歉意的摇了摇头；也没有什么精神同张铁闲聊；仍不敢置信的用手去摸了摸瓶子被铁锤砸到的地方；把它撞装进了皮袋；再它被装入皮袋后；瓶子的秘密已经放到了自己的眼皮底下；其中一个小白玉瓶被他挑了出来；拼命的在眨眼皮；心里头那块高高挂起的石头总算又落了下来；玉瓶；和一张纸条呆呆的出神；伸出纤细的玉手抓起瓶子",
+      "condition": "",
+      "ownership": "韩立从怀中摸出那个瓶子；他自己手中的这个瓶子称得上是无价之宝；墨彩环把小瓶在手中抛了几下；递给了那青年；伸手把两个瓶子拿在手中",
+      "colorShape": "是一个有着细长颈的圆瓶状物品；瓶子原本的颜色显露了出来；墨绿色叶状花纹；瓶子通体都是一种淡淡的浅绿色；在瓶面上还印着几个墨绿色花纹；花纹呈叶片状；是这种材质本身所有的一种颜色；可瓶子仍然保持着通体的完整；一丝丝肉眼可见的白色光芒；形成一颗颗米粒大小的白色光点；让整只瓶子都被一层薄薄的白色光芒团团围住；正不停的吸收着游荡在附近的白色光点；瓶子身上的墨绿色花纹；一滴黄豆那么大的碧绿色液体；它的叶子渐渐的由黄色转变成了黄黑色；又由黄黑色变成了黑色；倒出了一颗碧绿色的药丸",
+      "visualEffects": "一丝丝肉眼可见的白色光芒；让整只瓶子都被一层薄薄的白色光芒团团围住；瓶子周围的光芒才渐渐的消去；突然发出了耀眼的绿色光芒"
+    },
+    "aliases": [
+      "瓶子",
+      "小瓶",
+      "小瓶子",
+      "绿色小瓶"
+    ],
+    "confidence": 0.88,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "旋开瓶盖，可承接瓶中凝聚的绿色液体；液体可催生植物年份",
+      "material": "非金属的奇特材质，触感温润，似玉非玉",
+      "condition": "瓶身完整，表面光洁如新，无丝毫损伤",
+      "ownership": "韩立从野外拾得，后一直贴身收藏",
+      "colorShape": "拳头大小，细长颈的圆瓶，通体淡绿色，瓶面有墨绿色叶片状花纹，顶端配有小巧瓶盖",
+      "visualEffects": "在月光或星光下，瓶身会自行吸收白色光点，形成薄薄的白色光晕包围瓶体；偶尔散发耀眼的绿色光芒"
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "condition"
+    ],
+    "visualDetails": {
+      "scale": "拳头大小，可单手握持",
+      "usage": "旋开瓶盖，将瓶内凝聚的绿色液体倒入容器；平时密封保存",
+      "effects": "夜间可自行吸收月华星辉，瓶身外笼罩一层薄薄的白色光芒；液体成形时有微弱的绿色辉光透出",
+      "condition": "完好无损，瓶面光洁如新，无刮痕无裂纹",
+      "ownership": "韩立机缘获得，视若至宝，随身携带",
+      "colorShape": "约为拳头大小的细长颈圆瓶，线条流畅，瓶身淡绿，上有浮雕般的墨绿色叶状花纹，栩栩如生；瓶盖小巧，与瓶口紧密扣合",
+      "materialTexture": "非金属的奇特材质，表面光滑温润，触之如玉石，内里隐隐透出天然的淡绿色泽"
+    },
+    "inferredFields": [
+      "condition"
+    ],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.231,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "韩立仔细打量了一下，这个造成自己光荣负伤的元凶，是一个有着细长颈的圆瓶状物品，瓶子表面沾满了泥土，完全变成了土灰色，看不出一点本来的色彩。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "难怪这东西个头不大，却把自己的脚撞的会如此疼痛，不过金属做成的瓶子倒是很少见到。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "用手搓了搓瓶颈部分的泥土，瓶子原本的颜色显露了出来，绿莹莹的非常好看，瓶面上还有些精美的、墨绿色叶状花纹，顶端有一个小巧的瓶盖紧紧的封住了瓶口。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "韩立从怀中摸出那个瓶子，又找了个抹布把它擦得干干净净，这时瓶子的整个原貌才呈现在了他的眼前。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "瓶子通体都是一种淡淡的浅绿色，在瓶面上还印着几个墨绿色花纹，花纹呈叶片状，栩栩如生，摸上去有一种凸出来的感觉，似是用真的树叶直接镶嵌上去一样。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "韩立仔细观察了好一会儿，这才肯定，这个瓶子是由某种他所不知道的材质做成，这种淡绿色看起来也是一种天然色，是这种材质本身所有的一种颜色，不像是后天加染上去的。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "当看到那牢牢密封着的瓶盖时，韩立决定满足自己的好奇心，立刻把瓶子打开，看看里面倒底有没有东西。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "把瓶子拿到眼皮底下，又仔仔细细的检查了一遍。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "韩立用手紧紧地握着瓶子，看着它，发呆了一阵。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "张铁一见到韩立在自己的屋里，就是一愣，还没等他开口说话，早已等得不耐烦的韩立立马就把瓶子递到了他的眼前。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "“张哥，帮个忙，帮我把这个瓶子打开好吗？",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "”张铁略为愣了一下，就接过了瓶子。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "”张铁冲韩立歉意的摇了摇头，把瓶子抛还给了他，又给他另提了一条建议。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "韩立现在心里很失望，也没有什么精神同张铁闲聊，问侯了几下他练功的进度，便离开了他的屋子，准备回去自己想办法去解决瓶子的问题。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "甚至，最后一下，把半个瓶身都砸进了青砖里，可瓶子仍然保持着通体的完整，没有半分会被砸碎的迹象。",
+        "fields": [
+          "colorShape",
+          "usage"
+        ],
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "韩立惊呆了，仍不敢置信的用手去摸了摸瓶子被铁锤砸到的地方，没有一丝的砸痕留在上面，绿莹莹的，整个瓶面仍然保持着光洁。",
+        "fields": [
+          "material",
+          "usage"
+        ],
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "再加上脚上还有伤，精神也有些疲倦，便在不知不觉中，手拿着瓶子倚在床边，昏昏的睡了过去。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "一丝丝肉眼可见的白色光芒，通过屋子里唯一开着的天窗从天而降，全都聚集到了手里握着的瓶子上，形成一颗颗米粒大小的白色光点，让整只瓶子都被一层薄薄的白色光芒团团围住。",
+        "fields": [
+          "colorShape",
+          "visualEffects",
+          "usage"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "这个瓶子在透过瓶子的表面，正不停的吸收着游荡在附近的白色光点。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "韩立把头缩了回去，转身一把抓住小瓶，把它撞装进了皮袋，然后飞快的跑了出去。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "小瓶"
+        ]
+      },
+      {
+        "text": "才小心的，把瓶子再次取出来，又轻轻地放到地面上。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "原本瓶子附近的光点，再它被装入皮袋后，已消失的无影无踪。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "一直等到天色快要发亮，瓶子周围的光芒才渐渐的消去，恢复了它的平静。",
+        "fields": [
+          "visualEffects"
+        ],
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "当韩立来到老地方，把瓶子取出放好后，这种吸收光点的现象，竟然只维持了短短的半刻钟，就停了下来。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "接着，瓶子身上的墨绿色花纹，突然发出了耀眼的绿色光芒，并在瓶子表面，浮现出了几个金黄色的文字、符号。",
+        "fields": [
+          "colorShape",
+          "visualEffects"
+        ],
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "他大大咧咧的拿起了瓶子，下意识的、去试着打开盖子。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "等到韩立确认，眼前所发生的事确实是真的，瓶子的秘密已经放到了自己的眼皮底下，他再也按耐不住自己心里头的激动，把眼睛凑到瓶口前，往里头望去。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "瓶子里面，一滴黄豆那么大的碧绿色液体，在里头缓缓的滚动着，把整个瓶壁都映成了绿莹莹的一片。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "虽然，瓶子的盖子已经被他给打开了，但结果令他很不满意。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 14,
+        "chapterTitle": "神秘液",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "韩立也不客气，在他身上搜索起来，找出了许多的杂物，其中一个小白玉瓶被他挑了出来，这瓶子这么名贵，密封的又这么好，一定是他要找的东西。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "他拿起瓶子回头望了下厉师兄的表情，果然，他现在满脸喜色，拼命的在眨眼皮。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "韩立取出来小瓶，并没有急切地打开它，而是用四年后的目光重新审视了它一遍，看看有什么自己以前曾遗漏掉的地方没有。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "小瓶"
+        ]
+      },
+      {
+        "text": "韩立不再无谓的浪费时间，他把瓶盖小心的打开，瓶子里那滴翠绿色的液体仍老老实实的待在瓶子的底部，和四年前相比并没有什么不同。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "当韩立一看到这种奇景，心里头那块高高挂起的石头总算又落了下来，这基本可以肯定，这小瓶并不是一次姓的消耗品，而是一个可屡次使用的奇物。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "小瓶"
+        ]
+      },
+      {
+        "text": "随后韩立又做了几次绿液的保存试验，把刚刚从瓶中取出来的绿液放到了各种各样的容器之中，有瓷瓶、玉瓶、葫芦、银瓶等等，发现无论何种容器都无法把绿液保存超过一刻钟的时间，只要把绿液从神秘的小瓶中取出来，就必须在一刻钟的时间内用掉，否则它就会自己慢慢消失的无影无踪。",
+        "fields": [
+          "usage",
+          "material"
+        ],
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "小瓶"
+        ]
+      },
+      {
+        "text": "每当有新的绿液从小瓶中产生时，他就把它滴在了这株三乌草上面，而这三乌草也不负所望，它的叶子渐渐的由黄色转变成了黄黑色，又由黄黑色变成了黑色，终于在它的叶子完全变得乌黑发亮以后，它成了一株世间少有的千年三乌草。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "小瓶"
+        ]
+      },
+      {
+        "text": "韩立从墨大夫屋内的各类书籍上看到不少“怀璧其罪”的例子，他自己手中的这个瓶子称得上是无价之宝，如果被外人知道他有这么一个宝贝在手上，他绝对活不到第二天早上，他会和以前的许多“怀璧之人”一样，被闻讯而来的各类贪婪之徒所淹没。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 26,
+        "chapterTitle": "催药生",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "现在的他，每曰里都把小瓶取出，放置谷内一空旷之处，让它每过七八曰就能酝酿出神奇的绿液，来催生出年份长久的珍稀草药，然后再精心配制各种成药。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 66,
+        "chapterTitle": "古怪规定",
+        "matchedNames": [
+          "小瓶"
+        ]
+      },
+      {
+        "text": "而厉飞雨此时，正拿着几个小瓶，和一张纸条呆呆的出神，他早上刚从张袖儿那里回来之时，屋内就多了这些东西出来。",
+        "fields": [
+          "usage",
+          "material"
+        ],
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "小瓶"
+        ]
+      },
+      {
+        "text": "”墨彩环把小瓶在手中抛了几下，嬉笑着说道。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 113,
+        "chapterTitle": "萦香丸",
+        "matchedNames": [
+          "小瓶"
+        ]
+      },
+      {
+        "text": "韩立从怀内取出一个瓶子，倒出一粒云翅鸟最爱吃的“黄栗丸”，轻塞进了鸟嘴里，然后柔声道：“小家伙，跟上那个刚走出屋子的人，如果他一离开此城范围想逃的话，就马上就来告诉我。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 120,
+        "chapterTitle": "定计夺帮",
+        "matchedNames": [
+          "瓶子"
+        ],
+        "otherMatchedNames": [
+          "云翅鸟",
+          "黄栗丸"
+        ]
+      },
+      {
+        "text": "严氏二话不说，伸出纤细的玉手抓起瓶子，倒出了一颗碧绿色的药丸，然后望了李氏等人一眼，就仰首吞下。",
+        "fields": [
+          "material",
+          "colorShape"
+        ],
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "而剩下的几人中，又有一人掏出了个瓶子，递给了那青年。",
+        "fields": [
+          "usage",
+          "ownership"
+        ],
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "青年打开瓶子，嗅了嗅，就轻轻的摇摇头，把瓶子还给了主人。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "瓶子"
+        ]
+      },
+      {
+        "text": "青年也不废话，伸手把两个瓶子拿在手中，挨个打开了盖子。",
+        "fields": [
+          "ownership",
+          "usage"
+        ],
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "瓶子"
+        ]
+      }
+    ],
+    "finalDescription": "拳头大小的细长颈圆瓶，由一种非金非玉的奇特材质制成，通体呈现淡绿色，表面光洁温润。瓶面印有浮雕般的墨绿色叶片状花纹，栩栩如生。顶端的小瓶盖紧封瓶口，瓶身完好无损。在月光下，瓶体自行吸收白色光点，形成一层薄薄的光晕，偶尔绽放翠绿色光芒。瓶内凝聚的碧绿液体，能催生草木，蕴藏勃勃生机。",
+    "summarizedFields": [
+      "material",
+      "colorShape",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "descriptionSource": "mixed",
+    "sourceDescription": "不过金属做成的瓶子倒是很少见到; 把瓶子拿到眼皮底下; 张铁一见到韩立在自己的屋里; 张铁略为愣了一下; 张铁冲韩立歉意的摇了摇头; 也没有什么精神同张铁闲聊; 仍不敢置信的用手去摸了摸瓶子被铁锤砸到的地方; 把它撞装进了皮袋; 再它被装入皮袋后; 瓶子的秘密已经放到了自己的眼皮底下; 其中一个小白玉瓶被他挑了出来; 拼命的在眨眼皮; 心里头那块高高挂起的石头总算又落了下来; 玉瓶; 和一张纸条呆呆的出神; 伸出纤细的玉手抓起瓶子; 是一个有着细长颈的圆瓶状物品; 瓶子原本的颜色显露了出来; 墨绿色叶状花纹; 瓶子通体都是一种淡淡的浅绿色; 在瓶面上还印着几个墨绿色花纹; 花纹呈叶片状; 是这种材质本身所有的一种颜色; 可瓶子仍然保持着通体的完整; 一丝丝肉眼可见的白色光芒; 形成一颗颗米粒大小的白色光点; 让整只瓶子都被一层薄薄的白色光芒团团围住; 正不停的吸收着游荡在附近的白色光点; 瓶子身上的墨绿色花纹; 一滴黄豆那么大的碧绿色液体; 它的叶子渐渐的由黄色转变成了黄黑色; 又由黄黑色变成了黑色; 倒出了一颗碧绿色的药丸; 立刻把瓶子打开; 韩立用手紧紧地握着瓶子; 帮我把这个瓶子打开好吗; 整个瓶面仍然保持着光洁; 手拿着瓶子倚在床边; 全都聚集到了手里握着的瓶子上; 把瓶子再次取出来; 把瓶子取出放好后; 去试着打开盖子; 瓶子的盖子已经被他给打开了; 韩立取出来小瓶; 并没有急切地打开它; 他把瓶盖小心的打开; 把刚刚从瓶中取出来的绿液放到了各种各样的容器之中; 只要把绿液从神秘的小瓶中取出来; 每曰里都把小瓶取出; 正拿着几个小瓶; 韩立从怀内取出一个瓶子; 递给了那青年; 青年打开瓶子; 挨个打开了盖子; 瓶子周围的光芒才渐渐的消去; 突然发出了耀眼的绿色光芒; 韩立从怀中摸出那个瓶子; 他自己手中的这个瓶子称得上是无价之宝; 墨彩环把小瓶在手中抛了几下; 伸手把两个瓶子拿在手中; 不过金属做成的瓶子倒是很少见到；把瓶子拿到眼皮底下；张铁一见到韩立在自己的屋里；张铁略为愣了一下；张铁冲韩立歉意的摇了摇头；也没有什么精神同张铁闲聊；仍不敢置信的用手去摸了摸瓶子被铁锤砸到的地方；把它撞装进了皮袋；再它被装入皮袋后；瓶子的秘密已经放到了自己的眼皮底下；其中一个小白玉瓶被他挑了出来；拼命的在眨眼皮；心里头那块高高挂起的石头总算又落了下来；玉瓶；和一张纸条呆呆的出神；伸出纤细的玉手抓起瓶子; 是一个有着细长颈的圆瓶状物品；瓶子原本的颜色显露了出来；墨绿色叶状花纹；瓶子通体都是一种淡淡的浅绿色；在瓶面上还印着几个墨绿色花纹；花纹呈叶片状；是这种材质本身所有的一种颜色；可瓶子仍然保持着通体的完整；一丝丝肉眼可见的白色光芒；形成一颗颗米粒大小的白色光点；让整只瓶子都被一层薄薄的白色光芒团团围住；正不停的吸收着游荡在附近的白色光点；瓶子身上的墨绿色花纹；一滴黄豆那么大的碧绿色液体；它的叶子渐渐的由黄色转变成了黄黑色；又由黄黑色变成了黑色；倒出了一颗碧绿色的药丸; 立刻把瓶子打开；韩立用手紧紧地握着瓶子；帮我把这个瓶子打开好吗；可瓶子仍然保持着通体的完整；整个瓶面仍然保持着光洁；手拿着瓶子倚在床边；全都聚集到了手里握着的瓶子上；把瓶子再次取出来；把瓶子取出放好后；去试着打开盖子；瓶子的盖子已经被他给打开了；韩立取出来小瓶；并没有急切地打开它；他把瓶盖小心的打开；把刚刚从瓶中取出来的绿液放到了各种各样的容器之中；只要把绿液从神秘的小瓶中取出来；每曰里都把小瓶取出；正拿着几个小瓶；韩立从怀内取出一个瓶子；递给了那青年；青年打开瓶子；挨个打开了盖子; 一丝丝肉眼可见的白色光芒；让整只瓶子都被一层薄薄的白色光芒团团围住；瓶子周围的光芒才渐渐的消去；突然发出了耀眼的绿色光芒; 韩立从怀中摸出那个瓶子；他自己手中的这个瓶子称得上是无价之宝；墨彩环把小瓶在手中抛了几下；递给了那青年；伸手把两个瓶子拿在手中",
+    "enhancedDescription": "拳头大小的细长颈圆瓶，由一种非金非玉的奇特材质制成，通体呈现淡绿色，表面光洁温润。瓶面印有浮雕般的墨绿色叶片状花纹，栩栩如生。顶端的小瓶盖紧封瓶口，瓶身完好无损。在月光下，瓶体自行吸收白色光点，形成一层薄薄的光晕，偶尔绽放翠绿色光芒。瓶内凝聚的碧绿液体，能催生草木，蕴藏勃勃生机。",
+    "supplementDescription": ""
+  },
+  {
+    "name": "暖阳宝玉",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "据信上说此毒只能由他家传的“暖阳宝玉”可解；嫁妆是他全部财产的一半和那颗“暖阳宝玉”；墨大夫在离开之前已经把宝玉交给了他的发妻；还是偷了宝玉逃之夭夭；暗下决心一定要把那“暖阳宝玉”弄到手时；否则那暖阳宝玉岂不要做为陪嫁落；那暖阳宝玉一定要弄到手；至于怎么拿到那宝玉；还是先把暖阳宝玉弄到手的好；而嫁妆指明了是那颗“暖阳宝玉”；既然已无法从墨府骗到宝玉；就把“暖阳宝玉”强行要过来；不得不来岚州取暖阳宝玉解毒的事；你们把暖阳宝玉给我；我就立刻把暖阳宝玉双手奉上；我早已把宝玉交予了心腹之人；就会立即毁掉宝玉；他早知那暖阳宝玉；因此拿下对方等人硬逼问宝玉的下落；是一定不会给“暖阳宝玉”的；我们不但把宝玉给你解毒；我们就将暖阳宝玉交付与你；我用解药换你们手中的宝玉；从得到这暖阳宝玉至今；不过这暖阳宝玉还真是一件异宝；韩立把宝玉放入身旁的一个木匣内；当场就把宝玉拿出来；韩立得到宝玉后",
+      "condition": "",
+      "ownership": "墨大夫在离开之前已经把宝玉交给了他的发妻；我用解药换你们手中的宝玉；韩立把宝玉放入身旁的一个木匣内；然后把它慎重的贴身藏好",
+      "colorShape": "",
+      "visualEffects": "它竟可已容纳自己的灵气"
+    },
+    "aliases": [
+      "宝玉"
+    ],
+    "confidence": 0.65,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "贴身佩戴，可缓缓解去阴寒之毒",
+      "material": "据信上说此毒只能由他家传的“暖阳宝玉”可解; 嫁妆是他全部财产的一半和那颗“暖阳宝玉”; 墨大夫在离开之前已经把宝玉交给了他的发妻; 还是偷了宝玉逃之夭夭; 暗下决心一定要把那“暖阳宝玉”弄到手时; 否则那暖阳宝玉岂不要做为陪嫁落",
+      "condition": "完好无损，玉质细腻，光润如脂",
+      "ownership": "原为墨大夫家传宝物，后由韩立所得，贴身收藏",
+      "colorShape": "椭圆形的青色玉佩，玉质温润，内部隐隐透出红色光晕",
+      "visualEffects": "它竟可已容纳自己的灵气"
+    },
+    "llmSupplement": "补写了颜色形状、状态、使用方式及光效视觉特征",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage"
+    ],
+    "visualDetails": {
+      "scale": "可握于掌心的玉佩大小",
+      "usage": "用绳线穿系，贴身佩戴于胸前，以体温激发玉中阳和之气",
+      "effects": "遇灵气则红光隐隐，温热自生，可驱散体内阴毒",
+      "condition": "新净完好，无裂无瑕",
+      "ownership": "墨家传家之物，后成为韩立解毒的关键宝物",
+      "colorShape": "椭圆形玉佩，青中泛赤，中心透出隐约红光，表面打磨光滑",
+      "materialTexture": "青色美玉，质地温润细腻，有如凝脂"
+    },
+    "inferredFields": [
+      "colorShape",
+      "condition",
+      "usage"
+    ],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.231,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "韩立之所以变成这样，全是因为遗书给他留下了一个很糟糕的坏消息和一个两难的选择，那颗“尸虫丸”的解药竟然有毒，还是一种少见的阴毒，据信上说此毒只能由他家传的“暖阳宝玉”可解，除此之外别无他法，即使是传说中的几种解毒圣药也不可能解此毒。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ],
+        "otherMatchedNames": [
+          "遗书",
+          "尸虫丸"
+        ]
+      },
+      {
+        "text": "而作为弥补他暗算韩立的代价，和让韩立不计前嫌去援手的报酬，他愿意把自己的一名女儿，指定给韩立为妻，嫁妆是他全部财产的一半和那颗“暖阳宝玉”。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "墨大夫在离开之前已经把宝玉交给了他的发妻，指明了是专门做女儿出的嫁妆之用，因此韩立为了小命着想，不想娶也得去娶。",
+        "fields": [
+          "material",
+          "ownership"
+        ],
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "是否要接触墨大夫的妻室，还是偷了宝玉逃之夭夭？",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 104,
+        "chapterTitle": "情报",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "韩立正在忧心忡忡，暗下决心一定要把那“暖阳宝玉”弄到手时，外面有人敲起了屋门。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 104,
+        "chapterTitle": "情报",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "“看来这墨府非去一趟不可了，否则那暖阳宝玉岂不要做为陪嫁落，到了此人手上。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 105,
+        "chapterTitle": "惊信",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "“不管怎么说，那暖阳宝玉一定要弄到手，而且要抓紧。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "他打算夜里悄悄的去见那位主持惊蛟会的严夫人，然后用墨大夫事先留给他的信物，直接去揭穿那位冒牌货取信于墨府，至于怎么拿到那宝玉，则只有见机行事了。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 107,
+        "chapterTitle": "墨玉珠",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "并且他心里琢磨了一下后，觉得墨府的人虽然知道这位吴公子是冒牌货了，但还是出面和她们接触一下比较好，毕竟自己身上的阴毒随时都有发作的可能，还是先把暖阳宝玉弄到手的好。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "书信上内容韩立早已看过数遍，讲的并不复杂，就是说送信的韩立是墨大夫的关门弟子，可以予以完全信任，而此时墨府若面临什么麻烦可以让韩立去解决，只要韩立能保住墨府上下平安，就让严氏从三位千金中选出一位许配给韩立为妻，而嫁妆指明了是那颗“暖阳宝玉”，至于墨大夫自己则声称有要事在身，还不能回来和妻女团聚，让严氏她们不要挂心。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 110,
+        "chapterTitle": "狐",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "韩立打定了主意，既然已无法从墨府骗到宝玉，那为了身上的阴毒，也只有采取强硬手段了。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 116,
+        "chapterTitle": "翻脸",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "他打算稍显些身手，让严氏等人知道厉害，就把“暖阳宝玉”强行要过来。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 116,
+        "chapterTitle": "翻脸",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "最后发现身中阴毒，不得不来岚州取暖阳宝玉解毒的事，索姓也一并说了出来。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 117,
+        "chapterTitle": "言和",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "韩立听严氏此话，回过头来，淡淡的道：“有什么好谈的，你们把暖阳宝玉给我，我扭头就走，决不再搔扰墨府！",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 117,
+        "chapterTitle": "言和",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "“你只要把惊蛟会的死对头，五色门和独霸山庄给灭了，让我墨府无后顾之忧，我就立刻把暖阳宝玉双手奉上，并可让你在彩环等人中任选一位为妻。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "“但若打算持强硬抢，或劫我们姐妹持要挟的话，那下就打错了主意，我早已把宝玉交予了心腹之人，如若有个风吹草动，就会立即毁掉宝玉，让我们同归于尽。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "他早知那暖阳宝玉，肯定不是光靠蛮干就能拿到手的，对方除了嘴上说的要胁外，还不知隐藏有多少的后招。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "因此拿下对方等人硬逼问宝玉的下落，那只是下下之策，最好还是让对方心甘情愿的自己拿出来的好。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "但韩立也知道，这样的话此时说出口一点意思也没有，这些妇人看样子不在自己身上拿到好处，是一定不会给“暖阳宝玉”的。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 118,
+        "chapterTitle": "二选一",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "“我们的要求也不过分，只要下能把五色门和独霸山庄的魁首都给灭掉，我们不但把宝玉给你解毒，而且还可以把她们姐妹三人全嫁于你为妻妾，你刚才不是一直瞅着凤舞吗！",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "我们就按公子说的条件成交，只要韩公子能杀掉独霸山庄的庄主“怒狮”欧阳飞天，我们就将暖阳宝玉交付与你，让下解毒。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "反正等我杀了欧阳连天回来时，我用解药换你们手中的宝玉。",
+        "fields": [
+          "material",
+          "ownership"
+        ],
+        "chapterIndex": 123,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "从得到这暖阳宝玉至今，他一路上不停拔除身上的寒毒，结果过了半月之久，直到今曰才彻底的根除干净，实在是不易。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "不过这暖阳宝玉还真是一件异宝，它竟可已容纳自己的灵气，让其驱起毒来事半功倍，容易了许多。",
+        "fields": [
+          "material",
+          "visualEffects"
+        ],
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "暖阳宝玉",
+          "宝玉"
+        ]
+      },
+      {
+        "text": "想到这里，韩立把宝玉放入身旁的一个木匣内，然后把它慎重的贴身藏好。",
+        "fields": [
+          "material",
+          "ownership"
+        ],
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "剩下的事情就简单了，严氏确认完首级后，当场就把宝玉拿出来，和韩交换了解药。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "宝玉"
+        ]
+      },
+      {
+        "text": "韩立得到宝玉后，拒绝了严氏的竭力挽留，无心再和墨府等人应酬，就立即再次离开了嘉元城，往太南山赶来。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 126,
+        "chapterTitle": "太南山、太南谷、少年",
+        "matchedNames": [
+          "宝玉"
+        ]
+      }
+    ],
+    "finalDescription": "椭圆形的青色玉佩，质地温润细腻，宛如凝脂。玉中深藏一缕淡红色光晕，映得整块玉泛起柔和的暖意。玉佩完好无损，表面打磨光洁。贴身佩戴时，能缓缓散发温热，驱散侵入骨髓的阴寒之气，是墨家代代相传的宝物，后落入韩立手中。",
+    "summarizedFields": [
+      "ownership"
+    ],
+    "descriptionSource": "mixed",
+    "sourceDescription": "据信上说此毒只能由他家传的“暖阳宝玉”可解; 嫁妆是他全部财产的一半和那颗“暖阳宝玉”; 墨大夫在离开之前已经把宝玉交给了他的发妻; 还是偷了宝玉逃之夭夭; 暗下决心一定要把那“暖阳宝玉”弄到手时; 否则那暖阳宝玉岂不要做为陪嫁落; 那暖阳宝玉一定要弄到手; 至于怎么拿到那宝玉; 还是先把暖阳宝玉弄到手的好; 而嫁妆指明了是那颗“暖阳宝玉”; 既然已无法从墨府骗到宝玉; 就把“暖阳宝玉”强行要过来; 不得不来岚州取暖阳宝玉解毒的事; 你们把暖阳宝玉给我; 我就立刻把暖阳宝玉双手奉上; 我早已把宝玉交予了心腹之人; 就会立即毁掉宝玉; 他早知那暖阳宝玉; 因此拿下对方等人硬逼问宝玉的下落; 是一定不会给“暖阳宝玉”的; 我们不但把宝玉给你解毒; 我们就将暖阳宝玉交付与你; 我用解药换你们手中的宝玉; 从得到这暖阳宝玉至今; 不过这暖阳宝玉还真是一件异宝; 韩立把宝玉放入身旁的一个木匣内; 当场就把宝玉拿出来; 韩立得到宝玉后; 它竟可已容纳自己的灵气; 然后把它慎重的贴身藏好; 据信上说此毒只能由他家传的“暖阳宝玉”可解；嫁妆是他全部财产的一半和那颗“暖阳宝玉”；墨大夫在离开之前已经把宝玉交给了他的发妻；还是偷了宝玉逃之夭夭；暗下决心一定要把那“暖阳宝玉”弄到手时；否则那暖阳宝玉岂不要做为陪嫁落；那暖阳宝玉一定要弄到手；至于怎么拿到那宝玉；还是先把暖阳宝玉弄到手的好；而嫁妆指明了是那颗“暖阳宝玉”；既然已无法从墨府骗到宝玉；就把“暖阳宝玉”强行要过来；不得不来岚州取暖阳宝玉解毒的事；你们把暖阳宝玉给我；我就立刻把暖阳宝玉双手奉上；我早已把宝玉交予了心腹之人；就会立即毁掉宝玉；他早知那暖阳宝玉；因此拿下对方等人硬逼问宝玉的下落；是一定不会给“暖阳宝玉”的；我们不但把宝玉给你解毒；我们就将暖阳宝玉交付与你；我用解药换你们手中的宝玉；从得到这暖阳宝玉至今；不过这暖阳宝玉还真是一件异宝；韩立把宝玉放入身旁的一个木匣内；当场就把宝玉拿出来；韩立得到宝玉后; 墨大夫在离开之前已经把宝玉交给了他的发妻；我用解药换你们手中的宝玉；韩立把宝玉放入身旁的一个木匣内；然后把它慎重的贴身藏好",
+    "enhancedDescription": "椭圆形的青色玉佩，质地温润细腻，宛如凝脂。玉中深藏一缕淡红色光晕，映得整块玉泛起柔和的暖意。玉佩完好无损，表面打磨光洁。贴身佩戴时，能缓缓散发温热，驱散侵入骨髓的阴寒之气，是墨家代代相传的宝物，后落入韩立手中。",
+    "supplementDescription": "补写了颜色形状、状态、使用方式及光效视觉特征"
+  },
+  {
+    "name": "韩立订制短剑",
+    "tier": "candidate",
+    "fields": {
+      "usage": "韩立暗暗使自己维持着第四层的功力；缓缓的用左手拔出了短剑；从怀中另取出了一件武器",
+      "material": "而从右边的袖口内悄然滑下了一个白纸包；一大片白色粉末从纸包中挥洒了出来；突然来了个铁板桥；整个身子像没了脊椎骨一般；让短剑紧贴着肚皮滑了过去；不但没伤到对方的皮毛；是韩立花重金让铁匠打造的最后一柄短剑",
+      "condition": "让人一看就觉得锋利无比；很锋利的样子",
+      "ownership": "左手悄悄的按向了腰间；韩立从腰间；手中的短剑突然横了过来；从怀中另取出了一件武器；只用手中的短剑；才把手中的短剑横在身前；你看看我手中的短剑；单手所持短剑平放于腰间；却觉得手中轻飘飘的",
+      "colorShape": "一大片白色粉末从纸包中挥洒了出来；把腹部的衣衫都划开了一条细长的口子；韩立的短剑砍到银色巨掌之上",
+      "visualEffects": "韩立也诡异的消失在了雾气之中；又舞成一小片寒光"
+    },
+    "aliases": [
+      "短剑",
+      "特制短剑"
+    ],
+    "confidence": 1,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "可悬于腰间或暗藏袖中，单手拔剑；剑刃可刺击，中空剑身内藏机关，能弹出尖锥伤人",
+      "material": "精铁打造，剑身青光隐隐",
+      "condition": "崭新的利刃，剑锋寒光闪烁，极为锋利",
+      "ownership": "韩立花费重金请铁匠秘密打造，为其防身利器",
+      "colorShape": "一大片白色粉末从纸包中挥洒了出来；把腹部的衣衫都划开了一条细长的口子；韩立的短剑砍到银色巨掌之上",
+      "visualEffects": "韩立也诡异的消失在了雾气之中；又舞成一小片寒光"
+    },
+    "llmSupplement": "",
+    "missingFields": [],
+    "visualDetails": {
+      "scale": "长约一尺，刃宽两指",
+      "usage": "拔剑后可作格挡刺击；对敌时以剑身吸引注意，旋开机关弹出尖锥，实施出其不意之攻击",
+      "effects": "舞动时剑光如银瓶乍破，寒光咄咄，形成一团护体剑芒",
+      "condition": "崭新无缺，刃无卷口，寒芒逼人",
+      "ownership": "韩立私下订制，作为行走江湖的保命底牌",
+      "colorShape": "一尺来长的短剑，形制紧凑，剑柄简洁，剑鞘式样朴素；剑身呈柳叶形，尖端有暗口，内藏细长尖锥，可按机关弹出",
+      "materialTexture": "精铁反复锻打，剑身青光湛湛，刃口薄而锋利"
+    },
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.231,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "韩立暗暗使自己维持着第四层的功力，见到墨大夫的这种表情，心里有些嘀咕，警觉心马上提到了最高级，左手悄悄的按向了腰间，那里有一柄订制的带鞘短剑",
+        "fields": [
+          "usage",
+          "ownership"
+        ],
+        "chapterIndex": 45,
+        "chapterTitle": "暗算与獠牙",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "为了自己，也为了家中亲人的安危，韩立从腰间，缓缓的用左手拔出了短剑，这把剑只有一尺来长，青光闪闪，让人一看就觉得锋利无比，是一把上好的利剑。",
+        "fields": [
+          "ownership",
+          "usage",
+          "condition"
+        ],
+        "chapterIndex": 45,
+        "chapterTitle": "暗算与獠牙",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "他左手的短剑在身前一横，吸引住了对方的视线，而从右边的袖口内悄然滑下了一个白纸包，落在了右手心中，然后抬手一扬，一大片白色粉末从纸包中挥洒了出来，眨眼间就化作一股浓浓的白烟，笼罩住了韩立全身，使他的身形变得模糊不清，若有若无，而且这烟雾还很快就扩散到了全屋，使整个房间都成了白茫茫的一片，伸手见不了五指，韩立也诡异的消失在了雾气之中。",
+        "fields": [
+          "material",
+          "colorShape",
+          "visualEffects"
+        ],
+        "chapterIndex": 46,
+        "chapterTitle": "破膛一剑",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "墨大夫大惊失色，慌忙之间急中生智，突然来了个铁板桥，整个身子像没了脊椎骨一般，从中间向后打了个对折，险险的让过此剑，让短剑紧贴着肚皮滑了过去，把腹部的衣衫都划开了一条细长的口子，差点给他来了个大开膛。",
+        "fields": [
+          "material",
+          "colorShape"
+        ],
+        "chapterIndex": 46,
+        "chapterTitle": "破膛一剑",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "韩立自然不知其中的虚实，但就是知道了真像，他也不会用自己的血肉之躯，去测试对方手掌的硬度，只见他握剑的手腕轻轻一抖，手中的短剑突然横了过来，并被舞成了一个车小的银团，护住了自己的上半身。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 47,
+        "chapterTitle": "魔银手对罗烟步",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "“铛”的一声脆响，韩立的短剑砍到银色巨掌之上，溅起了几丝火星，不但没伤到对方的皮毛，反被倒弹的老高。",
+        "fields": [
+          "colorShape",
+          "material"
+        ],
+        "chapterIndex": 47,
+        "chapterTitle": "魔银手对罗烟步",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "韩立沉吟了一下，从怀中另取出了一件武器，这同样是把半尺长的带鞘短剑，因为尺寸过短，说是短剑不如说是匕首还比较恰当一些，把剑抽出鞘后，看起来比普通的匕首宽厚了许多，也是明亮无比，很锋利的样子。",
+        "fields": [
+          "usage",
+          "ownership",
+          "condition"
+        ],
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "韩立一瞬间，就把这些想得透彻无比，他叹了口气，轻轻的摇了摇头，没言语一句，只用手中的短剑，往对方身上比划了几下，就把一切意思都表明了。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "韩立仿佛也受惊不小，一脸的惊慌之色，急忙倒退了两步，和对方拉开了一段距离，才把手中的短剑横在身前，又舞成一小片寒光，挡住了墨大夫的去路，似乎已完全忘却了上次交手时，所吃的苦头。",
+        "fields": [
+          "ownership",
+          "visualEffects"
+        ],
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "“现在的你，才是真的上了大当，你看看我手中的短剑！",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "听到话声，墨大夫不由自主的向短剑望去，只见对方不知什么时候，已停止了手上的舞动，而摆出了一个奇怪的姿势，上半身微微后仰，单手所持短剑平放于腰间，下半shen则是一个一触即发的绷紧弓步，整个人成了一副挽弓射箭的怪摸样。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 48,
+        "chapterTitle": "诈语",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "他顾不得双眼还未恢复正常，单手猛然使出了十成的功力，把短剑往身边一拉，想把韩立从对面硬给拽过来，然后再亲手制住，却觉得手中轻飘飘的，恍若无物。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 49,
+        "chapterTitle": "套中套",
+        "matchedNames": [
+          "短剑"
+        ]
+      },
+      {
+        "text": "此物，是韩立花重金让铁匠打造的最后一柄短剑，也是最贵的一把，不过他并不擅长此类武器，所以一直没有拿出来使用，没想到现在倒用上了。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 60,
+        "chapterTitle": "试毒",
+        "matchedNames": [
+          "短剑"
+        ]
+      }
+    ],
+    "finalDescription": "一柄一尺来长的短剑，精铁百炼而成，剑身青光隐隐，刃口薄而锋利。剑鞘简朴，剑柄握感扎实。剑刃中空，内藏一根可弹出的细长尖锥，是韩立花重金订制的暗手兵器。挥动时剑光如雪，舞成一团寒光护住身形，令人不敢近前。",
+    "summarizedFields": [
+      "material",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "descriptionSource": "llm",
+    "sourceDescription": "而从右边的袖口内悄然滑下了一个白纸包; 一大片白色粉末从纸包中挥洒了出来; 突然来了个铁板桥; 整个身子像没了脊椎骨一般; 让短剑紧贴着肚皮滑了过去; 不但没伤到对方的皮毛; 是韩立花重金让铁匠打造的最后一柄短剑; 把腹部的衣衫都划开了一条细长的口子; 韩立的短剑砍到银色巨掌之上; 让人一看就觉得锋利无比; 很锋利的样子; 韩立暗暗使自己维持着第四层的功力; 缓缓的用左手拔出了短剑; 从怀中另取出了一件武器; 韩立也诡异的消失在了雾气之中; 又舞成一小片寒光; 左手悄悄的按向了腰间; 韩立从腰间; 手中的短剑突然横了过来; 只用手中的短剑; 才把手中的短剑横在身前; 你看看我手中的短剑; 单手所持短剑平放于腰间; 却觉得手中轻飘飘的; 而从右边的袖口内悄然滑下了一个白纸包；一大片白色粉末从纸包中挥洒了出来；突然来了个铁板桥；整个身子像没了脊椎骨一般；让短剑紧贴着肚皮滑了过去；不但没伤到对方的皮毛；是韩立花重金让铁匠打造的最后一柄短剑; 一大片白色粉末从纸包中挥洒了出来；把腹部的衣衫都划开了一条细长的口子；韩立的短剑砍到银色巨掌之上; 让人一看就觉得锋利无比；很锋利的样子; 韩立暗暗使自己维持着第四层的功力；缓缓的用左手拔出了短剑；从怀中另取出了一件武器; 韩立也诡异的消失在了雾气之中；又舞成一小片寒光; 左手悄悄的按向了腰间；韩立从腰间；手中的短剑突然横了过来；从怀中另取出了一件武器；只用手中的短剑；才把手中的短剑横在身前；你看看我手中的短剑；单手所持短剑平放于腰间；却觉得手中轻飘飘的",
+    "enhancedDescription": "一柄一尺来长的短剑，精铁百炼而成，剑身青光隐隐，刃口薄而锋利。剑鞘简朴，剑柄握感扎实。剑刃中空，内藏一根可弹出的细长尖锥，是韩立花重金订制的暗手兵器。挥动时剑光如雪，舞成一团寒光护住身形，令人不敢近前。",
+    "supplementDescription": ""
+  },
+  {
+    "name": "清灵散",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "口服，每次一粒，可解多种毒素",
+      "material": "多种药材炼制，丹药本身呈赤红色",
+      "condition": "保存完好，丸体硬挺，有淡淡药香",
+      "ownership": "由韩立亲手配制，随身携带",
+      "colorShape": "葡萄大小的圆形药丸，色泽红如朱砂，表面圆润光滑",
+      "visualEffects": "服用后无明显外在光效"
+    },
+    "llmSupplement": "该道具所有视觉特征均为根据上下文补写，包括材质、颜色形状、状态、使用方式及归属",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {
+      "scale": "葡萄大小，直径约一厘米",
+      "usage": "放入口中温水送服，或在中毒前预防性服用",
+      "effects": "药力迅速化解体内毒素，无显著光色变化",
+      "condition": "丸粒完整，不碎裂，药香犹存",
+      "ownership": "韩立依方炼制，常备于瓷瓶中",
+      "colorShape": "圆形药丸，径约半寸，颜色赤红，无杂色",
+      "materialTexture": "药粉紧实搓成丸，质如凝脂，表面微有光泽"
+    },
+    "inferredFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "sourceCoverage": "none",
+    "importanceScore": 0.231,
+    "completionStatus": "llm_inferred",
+    "evidenceSnippets": [],
+    "finalDescription": "一粒粒葡萄大小的圆形丹药，色泽赤红，宛如朱砂。药丸表面圆润光滑，质如凝脂，散发淡淡药草香气。通常盛放在精巧的小瓷瓶内，以备不时之需。口服后药力快速化解百毒，是韩立自制的防身良药。",
+    "summarizedFields": [],
+    "descriptionSource": "mixed",
+    "sourceDescription": "",
+    "enhancedDescription": "一粒粒葡萄大小的圆形丹药，色泽赤红，宛如朱砂。药丸表面圆润光滑，质如凝脂，散发淡淡药草香气。通常盛放在精巧的小瓷瓶内，以备不时之需。口服后药力快速化解百毒，是韩立自制的防身良药。",
+    "supplementDescription": "该道具所有视觉特征均为根据上下文补写，包括材质、颜色形状、状态、使用方式及归属"
+  },
+  {
+    "name": "眨眼剑谱",
+    "tier": "candidate",
+    "fields": {
+      "usage": "一打开封面",
+      "material": "上面白纸黑字",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "眨眼剑法秘籍"
+    ],
+    "confidence": 0.31,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "一打开封面",
+      "material": "上面白纸黑字",
+      "condition": "书页泛黄，边缘微卷，有翻阅痕迹但整体完整",
+      "ownership": "原藏于七绝堂，后被韩立默记于心",
+      "colorShape": "封面打开后，内页白纸黑字，字迹工整，配有剑招图谱",
+      "visualEffects": ""
+    },
+    "llmSupplement": "补写了书册的状态、颜色形状及归属等视觉特征",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {
+      "scale": "约三十二开本，厚约一指",
+      "usage": "研习者按页翻阅，心领神会招式与口诀",
+      "effects": "无特殊光效",
+      "condition": "书页泛黄，边角稍有磨损，但无缺页",
+      "ownership": "七绝堂藏书，韩立获准翻阅，凭强记习得",
+      "colorShape": "大开本薄册，封面题有“眨眼剑谱”四字，内文墨书，图释清晰",
+      "materialTexture": "桑皮纸本，线装，纸张略脆"
+    },
+    "inferredFields": [
+      "colorShape",
+      "condition",
+      "ownership"
+    ],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.231,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "一打开封面，现露出秘籍的第一页，上面白纸黑字，清清楚楚的写着“眨眼剑谱”四个大字。",
+        "fields": [
+          "usage",
+          "material"
+        ],
+        "chapterIndex": 36,
+        "chapterTitle": "吃惊",
+        "matchedNames": [
+          "眨眼剑谱"
+        ]
+      }
+    ],
+    "finalDescription": "一本纸页泛黄的线装秘籍，封面题着“眨眼剑谱”四个苍劲大字。翻开内页，白纸黑字记载着眨眼剑法的精要，图文并茂，招式诡异。书页因常年翻看而边角微卷，却依旧保存完整，曾被藏于七绝堂中，直至韩立将其默记心底。",
+    "summarizedFields": [],
+    "descriptionSource": "mixed",
+    "sourceDescription": "上面白纸黑字; 一打开封面",
+    "enhancedDescription": "一本纸页泛黄的线装秘籍，封面题着“眨眼剑谱”四个苍劲大字。翻开内页，白纸黑字记载着眨眼剑法的精要，图文并茂，招式诡异。书页因常年翻看而边角微卷，却依旧保存完整，曾被藏于七绝堂中，直至韩立将其默记心底。",
+    "supplementDescription": "补写了书册的状态、颜色形状及归属等视觉特征"
+  },
+  {
+    "name": "养精丹",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "这时玉瓶内的药丸只剩下三颗了",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "这时玉瓶内的药丸只剩下三颗了",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.231,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "直到多年以后，王绝楚去世之时，他才留下了药丸的名称——“养精丹”，这时玉瓶内的药丸只剩下三颗了。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "养精丹"
+        ]
+      }
+    ],
+    "finalDescription": "韩立配制的疗伤灵药，对内外伤都有奇效，可迅速止血结疤，次日疤痕全消，也能治疗重伤、延长寿命; 韩立曾用此药恢复自身伤势，并为好友厉飞雨炼制以延长其寿命",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "这时玉瓶内的药丸只剩下三颗了",
+    "enhancedDescription": "韩立配制的疗伤灵药，对内外伤都有奇效，可迅速止血结疤，次日疤痕全消，也能治疗重伤、延长寿命; 韩立曾用此药恢复自身伤势，并为好友厉飞雨炼制以延长其寿命",
+    "supplementDescription": ""
+  },
+  {
+    "name": "尸虫丸",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.231,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "墨居仁用秘法泡制的白色虫卵药丸，服下后虫卵潜伏体内一年，若无解药则孵化啃食内脏; 韩立曾被迫服下此丸，其附带的阴毒需暖阳宝玉方能解除",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "墨居仁用秘法泡制的白色虫卵药丸，服下后虫卵潜伏体内一年，若无解药则孵化啃食内脏; 韩立曾被迫服下此丸，其附带的阴毒需暖阳宝玉方能解除",
+    "supplementDescription": ""
+  },
+  {
+    "name": "云翅鸟",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "向附近新建成的小木屋走去；他在最后附上了“巨汉铁奴”和“云翅鸟”的控制和呼唤方法；半闭着眼皮",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "小黄鸟"
+    ],
+    "confidence": 0.34,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "向附近新建成的小木屋走去；他在最后附上了“巨汉铁奴”和“云翅鸟”的控制和呼唤方法；半闭着眼皮",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.231,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "说完韩立移动身形，向附近新建成的小木屋走去，路过小黄鸟树边时，他不禁抬头看了一眼。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 42,
+        "chapterTitle": "云翅鸟",
+        "matchedNames": [
+          "小黄鸟"
+        ]
+      },
+      {
+        "text": "最后，作为证实他留下此遗书的真心，他在最后附上了“巨汉铁奴”和“云翅鸟”的控制和呼唤方法。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 62,
+        "chapterTitle": "交易",
+        "matchedNames": [
+          "云翅鸟"
+        ],
+        "otherMatchedNames": [
+          "遗书"
+        ]
+      },
+      {
+        "text": "在韩立肩头上，站着那只黄羽毛的“云翅鸟”，这只灵姓十足的小东西，半闭着眼皮，看来正在休憩中。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 98,
+        "chapterTitle": "回村",
+        "matchedNames": [
+          "云翅鸟"
+        ]
+      }
+    ],
+    "finalDescription": "墨大夫饲养的黄色小鸟，极具灵性，飞行速度快过强弓利箭，可用于监视行踪，除非目标离开山脉否则不回报; 后来成为韩立的宠物",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "向附近新建成的小木屋走去; 他在最后附上了“巨汉铁奴”和“云翅鸟”的控制和呼唤方法; 半闭着眼皮; 向附近新建成的小木屋走去；他在最后附上了“巨汉铁奴”和“云翅鸟”的控制和呼唤方法；半闭着眼皮",
+    "enhancedDescription": "墨大夫饲养的黄色小鸟，极具灵性，飞行速度快过强弓利箭，可用于监视行踪，除非目标离开山脉否则不回报; 后来成为韩立的宠物",
+    "supplementDescription": ""
+  },
+  {
+    "name": "长刀",
+    "tier": "candidate",
+    "fields": {
+      "usage": "一把拔出身边放着的长刀跳了起来；拔出插在泥土里的长刀；因为那个刚才藏在土里的大汉",
+      "material": "百年铁线蛇的鳞片能铸器",
+      "condition": "",
+      "ownership": "从背后抽出了一把黑气萦绕的长刀",
+      "colorShape": "身上换了一件白色锦袍；自己跑回到水潭边缘",
+      "visualEffects": "这少年手拿一把寒光四射的长刀"
+    },
+    "aliases": [],
+    "confidence": 0.88,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "一把拔出身边放着的长刀跳了起来；拔出插在泥土里的长刀；因为那个刚才藏在土里的大汉",
+      "material": "百年铁线蛇的鳞片能铸器",
+      "condition": "",
+      "ownership": "从背后抽出了一把黑气萦绕的长刀",
+      "colorShape": "身上换了一件白色锦袍；自己跑回到水潭边缘",
+      "visualEffects": "这少年手拿一把寒光四射的长刀"
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "condition"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.231,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "这时，从王大胖那方走出一个神色冷酷的少年出来，这少年手拿一把寒光四射的长刀，一步一步的走到了场中央，然后一言不发，闭起了双目。",
+        "fields": [
+          "visualEffects"
+        ],
+        "chapterIndex": 17,
+        "chapterTitle": "厉师兄（1）",
+        "matchedNames": [
+          "长刀"
+        ]
+      },
+      {
+        "text": "过了一顿饭的功夫，正盘坐着的厉师兄猛然睁开双目，一把拔出身边放着的长刀跳了起来，手臂用力一挥，只见刀芒一闪，明晃晃的刀刃已架在了韩立的脖子上。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 21,
+        "chapterTitle": "止痛药",
+        "matchedNames": [
+          "长刀"
+        ]
+      },
+      {
+        "text": "只有他独自一人待在山谷出口处，身上换了一件白色锦袍，背上却仍带着那把给韩立留下深刻印象的长刀。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 24,
+        "chapterTitle": "惊魂定",
+        "matchedNames": [
+          "长刀"
+        ]
+      },
+      {
+        "text": "他不再理会埋头苦读的韩立，自己跑回到水潭边缘，拔出插在泥土里的长刀，自顾自的耍了起来。",
+        "fields": [
+          "colorShape",
+          "usage"
+        ],
+        "chapterIndex": 37,
+        "chapterTitle": "三不练",
+        "matchedNames": [
+          "长刀"
+        ]
+      },
+      {
+        "text": "比如说：可以自动追敌的飞镖法器，可以往外喷火的葫芦，能砍到人让人冻结的长刀，银翅蚁的卵可以制药，百年铁线蛇的鳞片能铸器，等等。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 139,
+        "chapterTitle": "法宝残片",
+        "matchedNames": [
+          "长刀"
+        ]
+      },
+      {
+        "text": "因为那个刚才藏在土里的大汉，从背后抽出了一把黑气萦绕的长刀，恶狠狠的向韩立扑了过来。",
+        "fields": [
+          "usage",
+          "ownership"
+        ],
+        "chapterIndex": 143,
+        "chapterTitle": "斩杀",
+        "matchedNames": [
+          "长刀"
+        ]
+      }
+    ],
+    "finalDescription": "厉飞雨所使用的长刀，锋利异常，随其战斗与威慑，曾架在韩立脖子上",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "百年铁线蛇的鳞片能铸器; 身上换了一件白色锦袍; 自己跑回到水潭边缘; 一把拔出身边放着的长刀跳了起来; 拔出插在泥土里的长刀; 因为那个刚才藏在土里的大汉; 这少年手拿一把寒光四射的长刀; 从背后抽出了一把黑气萦绕的长刀; 身上换了一件白色锦袍；自己跑回到水潭边缘; 一把拔出身边放着的长刀跳了起来；拔出插在泥土里的长刀；因为那个刚才藏在土里的大汉",
+    "enhancedDescription": "厉飞雨所使用的长刀，锋利异常，随其战斗与威慑，曾架在韩立脖子上",
+    "supplementDescription": ""
+  },
+  {
+    "name": "金罩符",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "金色符箓",
+      "护罩符"
+    ],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.231,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "符箓，可释放出金色护罩，防御力极强，能抵挡重击",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "符箓，可释放出金色护罩，防御力极强，能抵挡重击",
+    "supplementDescription": ""
+  },
+  {
+    "name": "升仙令",
+    "tier": "candidate",
+    "fields": {
+      "usage": "将小友收入门下",
+      "material": "整个牌子看起来不像金属",
+      "condition": "",
+      "ownership": "这个令牌乃是王门主的贴身信物；而这个胖子是王门主的贴身亲信",
+      "colorShape": "一面印有“升仙”两个金色的古篆；另一面则有一个银色的“令”字",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "令牌",
+      "升仙令牌",
+      "王门主的令牌"
+    ],
+    "confidence": 0.69,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "将小友收入门下",
+      "material": "整个牌子看起来不像金属",
+      "condition": "",
+      "ownership": "这个令牌乃是王门主的贴身信物；而这个胖子是王门主的贴身亲信",
+      "colorShape": "一面印有“升仙”两个金色的古篆；另一面则有一个银色的“令”字",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.231,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "这个令牌乃是王门主的贴身信物，持有它就可暂时向长老以下的弟子发号施令，而这个胖子是王门主的贴身亲信，听说还是比较近的表亲，所以王门主如果有什么口信、命令，都是通过此人来传达的。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "令牌"
+        ]
+      },
+      {
+        "text": "令牌则是一块漆黑的三角形牌子，一面印有“升仙”两个金色的古篆，另一面则有一个银色的“令”字，整个牌子看起来不像金属，却又沉甸甸的，份量不轻，不知有何用途。",
+        "fields": [
+          "colorShape",
+          "material"
+        ],
+        "chapterIndex": 93,
+        "chapterTitle": "烈火焚敌",
+        "matchedNames": [
+          "令牌"
+        ]
+      },
+      {
+        "text": "既然小友能携升仙令来此，那本掌门一定会遵守先贤们定下的规矩，将小友收入门下。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "升仙令"
+        ]
+      }
+    ],
+    "finalDescription": "越国七大仙派所制的黑色三角形令牌，非金非木，上刻“升仙”古篆，认令不认人，持令可获得筑基丹和入门资格; 原属秦家，由金光上人带出，后在七玄门事件中落入韩立之手",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "整个牌子看起来不像金属; 一面印有“升仙”两个金色的古篆; 另一面则有一个银色的“令”字; 将小友收入门下; 这个令牌乃是王门主的贴身信物; 而这个胖子是王门主的贴身亲信; 一面印有“升仙”两个金色的古篆；另一面则有一个银色的“令”字; 这个令牌乃是王门主的贴身信物；而这个胖子是王门主的贴身亲信",
+    "enhancedDescription": "越国七大仙派所制的黑色三角形令牌，非金非木，上刻“升仙”古篆，认令不认人，持令可获得筑基丹和入门资格; 原属秦家，由金光上人带出，后在七玄门事件中落入韩立之手",
+    "supplementDescription": ""
+  },
+  {
+    "name": "萦香丸",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.231,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "一种宫廷御药，能发出迷人心扉的持久异香，且能避除蚊虫; 此丸由韩立配制并赠予墨彩环",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "一种宫廷御药，能发出迷人心扉的持久异香，且能避除蚊虫; 此丸由韩立配制并赠予墨彩环",
+    "supplementDescription": ""
+  },
+  {
+    "name": "秦氏族谱",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.231,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "一本秦姓氏的族谱，被金光上人贴身携带，原因不明",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "一本秦姓氏的族谱，被金光上人贴身携带，原因不明",
+    "supplementDescription": ""
+  },
+  {
+    "name": "七鬼噬魂银刃",
+    "tier": "candidate",
+    "fields": {
+      "usage": "郑重的打开了盒盖；当墨大夫从盒内取出一把银刃时；墨大夫拿着这把怪刃",
+      "material": "如同纸片一般厚薄；让韩立不由得毛骨悚然",
+      "condition": "让人一见就觉得锋利无比",
+      "ownership": "",
+      "colorShape": "这银刃形状古怪；呈半月形状；露出了血红的眼珠",
+      "visualEffects": "寒光在刃面上流动闪烁；再加上浮现在墨大夫脸上的妖邪黑雾"
+    },
+    "aliases": [
+      "怪刃",
+      "银刃",
+      "七把怪刃"
+    ],
+    "confidence": 0.88,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "郑重的打开了盒盖；当墨大夫从盒内取出一把银刃时；墨大夫拿着这把怪刃",
+      "material": "如同纸片一般厚薄；让韩立不由得毛骨悚然",
+      "condition": "让人一见就觉得锋利无比",
+      "ownership": "",
+      "colorShape": "这银刃形状古怪；呈半月形状；露出了血红的眼珠",
+      "visualEffects": "寒光在刃面上流动闪烁；再加上浮现在墨大夫脸上的妖邪黑雾"
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "墨大夫当着韩立面，郑重的打开了盒盖，里面放了几把一模一样的银刃，这银刃形状古怪，看起来似刀非刀，似剑非剑，刃身弯曲，呈半月形状，尺寸大小又如同匕首相仿，很是奇特。",
+        "fields": [
+          "usage",
+          "colorShape"
+        ],
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "银刃"
+        ]
+      },
+      {
+        "text": "当墨大夫从盒内取出一把银刃时，韩立才发现，这怪刃还奇薄无比，如同纸片一般厚薄，寒光在刃面上流动闪烁，让人一见就觉得锋利无比，想必用来切割血肉之躯，一定如同裁剪衣服一样的轻易。",
+        "fields": [
+          "usage",
+          "material",
+          "visualEffects",
+          "condition"
+        ],
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "怪刃",
+          "银刃"
+        ]
+      },
+      {
+        "text": "墨大夫拿着这把怪刃，用眼角意味深长的斜瞥了韩立一眼。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "怪刃"
+        ]
+      },
+      {
+        "text": "这个举动，让韩立不由得毛骨悚然，难道真让他这张乌鸦嘴给猜中了，对方要用这把怪刃切割自己不成。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "怪刃"
+        ]
+      },
+      {
+        "text": "这一次，那七把怪刃没在抖动，更没有发出异响，而是同时睁开了双目，露出了血红的眼珠，嘴巴也同时张裂的更大，并鼓起腮膀，大口大口的往空中吸着什么。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 53,
+        "chapterTitle": "美男子",
+        "matchedNames": [
+          "怪刃",
+          "七把怪刃"
+        ]
+      },
+      {
+        "text": "首次触摸到另一个世界的韩立，被这种神奇的力量给彻底震住了，那古怪的银刃，诡异的鬼头，再加上浮现在墨大夫脸上的妖邪黑雾，这种种无法用常理解释的现象，无一不颠覆了他以往的认知。",
+        "fields": [
+          "visualEffects"
+        ],
+        "chapterIndex": 53,
+        "chapterTitle": "美男子",
+        "matchedNames": [
+          "银刃"
+        ]
+      }
+    ],
+    "finalDescription": "七把形状古怪的银刃，刃身呈半月形，薄如纸片，末端有鬼头，可以噬魂; 墨大夫用于施展七鬼噬魂大法，吞噬脸上的鬼雾",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "如同纸片一般厚薄; 让韩立不由得毛骨悚然; 这银刃形状古怪; 呈半月形状; 露出了血红的眼珠; 让人一见就觉得锋利无比; 郑重的打开了盒盖; 当墨大夫从盒内取出一把银刃时; 墨大夫拿着这把怪刃; 寒光在刃面上流动闪烁; 再加上浮现在墨大夫脸上的妖邪黑雾; 如同纸片一般厚薄；让韩立不由得毛骨悚然; 这银刃形状古怪；呈半月形状；露出了血红的眼珠; 郑重的打开了盒盖；当墨大夫从盒内取出一把银刃时；墨大夫拿着这把怪刃; 寒光在刃面上流动闪烁；再加上浮现在墨大夫脸上的妖邪黑雾",
+    "enhancedDescription": "七把形状古怪的银刃，刃身呈半月形，薄如纸片，末端有鬼头，可以噬魂; 墨大夫用于施展七鬼噬魂大法，吞噬脸上的鬼雾",
+    "supplementDescription": ""
+  },
+  {
+    "name": "飞行符",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "还另外得到了一打符纸和一本早已被他盯上多时的咒书",
+      "condition": "",
+      "ownership": "一低身把那飞行符拿到了手中",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.38,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "还另外得到了一打符纸和一本早已被他盯上多时的咒书",
+      "condition": "",
+      "ownership": "一低身把那飞行符拿到了手中",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "就这样，“飞行符”成了韩立的囊中之物，还另外得到了一打符纸和一本早已被他盯上多时的咒书。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 132,
+        "chapterTitle": "收获",
+        "matchedNames": [
+          "飞行符"
+        ]
+      },
+      {
+        "text": "”黑汉一听大喜，一低身把那飞行符拿到了手中，急忙翻来覆去看了几遍，确定不是假货后，才笑眯眯的说道。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 141,
+        "chapterTitle": "升仙令",
+        "matchedNames": [
+          "飞行符"
+        ]
+      }
+    ],
+    "finalDescription": "初级高阶灵符，飞行类符箓，韩立用它换取了黑汉的法宝残片",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "还另外得到了一打符纸和一本早已被他盯上多时的咒书; 一低身把那飞行符拿到了手中",
+    "enhancedDescription": "初级高阶灵符，飞行类符箓，韩立用它换取了黑汉的法宝残片",
+    "supplementDescription": ""
+  },
+  {
+    "name": "护心镜",
+    "tier": "candidate",
+    "fields": {
+      "usage": "从那里取出来一面护心镜",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "从那里取出来一面护心镜",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "墨大夫走到了他的面前，似乎看出了他心中所想，讥笑的神色在脸上一闪而过，他先在韩立的胸口处摸了一下，从那里取出来一面护心镜，不禁有些哑然，原来是此物挡住了他的点穴。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "护心镜"
+        ]
+      }
+    ],
+    "finalDescription": "韩立藏在胸口的一面护心镜，挡住了墨大夫的点穴",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "从那里取出来一面护心镜",
+    "enhancedDescription": "韩立藏在胸口的一面护心镜，挡住了墨大夫的点穴",
+    "supplementDescription": ""
+  },
+  {
+    "name": "黄木盒",
+    "tier": "candidate",
+    "fields": {
+      "usage": "打开后取出一根根闪闪发光的银针；随后从怀内取出一个长方形的黄木盒；递给了少女；示意韩立打开来看",
+      "material": "从怀中拿出一个檀木盒子；雕刻精致的檀木盒；韩立稍微活动了下有点麻木的手脚；伸手接过了檀木盒；随后从怀内取出一个长方形的黄木盒；伸出一蒲扇大手把一个细长的木盒；而把木盒转交给了韩立",
+      "condition": "",
+      "ownership": "从怀中拿出一个檀木盒子；干净利索的在这人背后穴位处扎了上去；递给了少女；而把木盒转交给了韩立",
+      "colorShape": "随后从怀内取出一个长方形的黄木盒；伸出一蒲扇大手把一个细长的木盒",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "木盒"
+    ],
+    "confidence": 0.77,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "打开后取出一根根闪闪发光的银针；随后从怀内取出一个长方形的黄木盒；递给了少女；示意韩立打开来看",
+      "material": "从怀中拿出一个檀木盒子; 雕刻精致的檀木盒; 韩立稍微活动了下有点麻木的手脚; 伸手接过了檀木盒; 随后从怀内取出一个长方形的黄木盒; 伸出一蒲扇大手把一个细长的木盒",
+      "condition": "",
+      "ownership": "从怀中拿出一个檀木盒子；干净利索的在这人背后穴位处扎了上去；递给了少女；而把木盒转交给了韩立",
+      "colorShape": "随后从怀内取出一个长方形的黄木盒；伸出一蒲扇大手把一个细长的木盒",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "他一个箭步冲了过去，从怀中拿出一个檀木盒子，打开后取出一根根闪闪发光的银针，干净利索的在这人背后穴位处扎了上去。",
+        "fields": [
+          "material",
+          "ownership",
+          "usage"
+        ],
+        "chapterIndex": 20,
+        "chapterTitle": "抽髓丸",
+        "matchedNames": [
+          "木盒"
+        ]
+      },
+      {
+        "text": "墨大夫听到他所说的话，神色缓和起来，眼中露出了些许赞赏之意，可并没有上前给韩立解穴，反而谨慎的从怀里拿出了一个四角形、雕刻精致的檀木盒。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 31,
+        "chapterTitle": "尸虫丸",
+        "matchedNames": [
+          "木盒"
+        ]
+      },
+      {
+        "text": "韩立稍微活动了下有点麻木的手脚，二话不说，伸手接过了檀木盒，用两根手指把盒中的药丸轻轻的夹出。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 31,
+        "chapterTitle": "尸虫丸",
+        "matchedNames": [
+          "木盒"
+        ]
+      },
+      {
+        "text": "他轻轻的摇摇头没说什么，随后从怀内取出一个长方形的黄木盒，这盒子精致无比，上面雕龙画凤，一看就知是名贵之物，寻常人家难得一见。",
+        "fields": [
+          "material",
+          "colorShape",
+          "usage"
+        ],
+        "chapterIndex": 51,
+        "chapterTitle": "巨汉显威",
+        "matchedNames": [
+          "黄木盒",
+          "木盒"
+        ]
+      },
+      {
+        "text": "”巨汉夹带着一股狂风，冲到了韩立身边，伸出一蒲扇大手把一个细长的木盒，递给了少女。",
+        "fields": [
+          "material",
+          "colorShape",
+          "usage",
+          "ownership"
+        ],
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "木盒"
+        ]
+      },
+      {
+        "text": "少女顾不得埋怨兄长的莽撞，而把木盒转交给了韩立，示意韩立打开来看。",
+        "fields": [
+          "material",
+          "ownership",
+          "usage"
+        ],
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "木盒"
+        ]
+      }
+    ],
+    "finalDescription": "一个雕刻精美的长方形黄木盒，用来盛放七鬼噬魂银刃",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "从怀中拿出一个檀木盒子; 雕刻精致的檀木盒; 韩立稍微活动了下有点麻木的手脚; 伸手接过了檀木盒; 随后从怀内取出一个长方形的黄木盒; 伸出一蒲扇大手把一个细长的木盒; 而把木盒转交给了韩立; 打开后取出一根根闪闪发光的银针; 递给了少女; 示意韩立打开来看; 干净利索的在这人背后穴位处扎了上去; 从怀中拿出一个檀木盒子；雕刻精致的檀木盒；韩立稍微活动了下有点麻木的手脚；伸手接过了檀木盒；随后从怀内取出一个长方形的黄木盒；伸出一蒲扇大手把一个细长的木盒；而把木盒转交给了韩立; 随后从怀内取出一个长方形的黄木盒；伸出一蒲扇大手把一个细长的木盒; 打开后取出一根根闪闪发光的银针；随后从怀内取出一个长方形的黄木盒；递给了少女；示意韩立打开来看; 从怀中拿出一个檀木盒子；干净利索的在这人背后穴位处扎了上去；递给了少女；而把木盒转交给了韩立",
+    "enhancedDescription": "一个雕刻精美的长方形黄木盒，用来盛放七鬼噬魂银刃",
+    "supplementDescription": ""
+  },
+  {
+    "name": "解毒丹",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "可解腐心丸之毒的丹药，韩立给孙二狗彻底解毒",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "可解腐心丸之毒的丹药，韩立给孙二狗彻底解毒",
+    "supplementDescription": ""
+  },
+  {
+    "name": "金竺笔",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "笔杆则用金精和乌铁混合而成",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "金竺"
+    ],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "笔杆则用金精和乌铁混合而成",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "“此笔曰金竺，笔尖用二级妖兽金睛猿颈毛制成，笔杆则用金精和乌铁混合而成，再经筑基期的修士用文武火祭炼三天三夜，此笔才大功告成。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 137,
+        "chapterTitle": "金竺笔",
+        "matchedNames": [
+          "金竺"
+        ]
+      }
+    ],
+    "finalDescription": "制符用的毛笔，笔尖由二级妖兽金睛猿颈毛制成，笔杆用金精和乌铁混合，经筑基期修士文武火祭炼三天三夜，笔杆末端铭印“金竺”二字，原为卖书少女家传宝物",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "笔杆则用金精和乌铁混合而成",
+    "enhancedDescription": "制符用的毛笔，笔尖由二级妖兽金睛猿颈毛制成，笔杆用金精和乌铁混合，经筑基期修士文武火祭炼三天三夜，笔杆末端铭印“金竺”二字，原为卖书少女家传宝物",
+    "supplementDescription": ""
+  },
+  {
+    "name": "七星草种子",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "装在灰色小布袋中的七星草种子，十年以上的七星草是制作符纸的最佳原料，系韩立从卖书少女处换得",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "装在灰色小布袋中的七星草种子，十年以上的七星草是制作符纸的最佳原料，系韩立从卖书少女处换得",
+    "supplementDescription": ""
+  },
+  {
+    "name": "通音符",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "初级符纸，可化为火光传递讯息进入太南谷阵法",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "初级符纸，可化为火光传递讯息进入太南谷阵法",
+    "supplementDescription": ""
+  },
+  {
+    "name": "五毒水",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "韩立暗中制作的毒液，喷射后腐蚀性极强，能轻易蚀穿木板",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "韩立暗中制作的毒液，喷射后腐蚀性极强，能轻易蚀穿木板",
+    "supplementDescription": ""
+  },
+  {
+    "name": "笑魂散",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "剧毒之药，只要有一滴入口即必死无疑，韩立用于毒杀沈重山及其护法和小金芝等人",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "剧毒之药，只要有一滴入口即必死无疑，韩立用于毒杀沈重山及其护法和小金芝等人",
+    "supplementDescription": ""
+  },
+  {
+    "name": "长春功",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "木属姓修仙基础功法；价值两低阶灵石",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "木属姓修仙基础功法；价值两低阶灵石",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "这本书前面的标价牌上标注着：《长春功》，木属姓修仙基础功法，价值两低阶灵石。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 136,
+        "chapterTitle": "燕家",
+        "matchedNames": [
+          "长春功"
+        ]
+      }
+    ],
+    "finalDescription": "木属性修仙基础功法，记载了一至十三层长春功法决，韩立以两颗黄龙丹从卖书少女处购得",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "木属姓修仙基础功法; 价值两低阶灵石; 木属姓修仙基础功法；价值两低阶灵石",
+    "enhancedDescription": "木属性修仙基础功法，记载了一至十三层长春功法决，韩立以两颗黄龙丹从卖书少女处购得",
+    "supplementDescription": ""
+  },
+  {
+    "name": "长春功秘籍",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "记载长春功前六层和后两层完整口诀的书籍，封面伪装为《长生经》，原本属于墨大夫，被韩立从暗格中发现",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "记载长春功前六层和后两层完整口诀的书籍，封面伪装为《长生经》，原本属于墨大夫，被韩立从暗格中发现",
+    "supplementDescription": ""
+  },
+  {
+    "name": "止痛药",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "自从厉飞雨第一次从韩立手中拿到了止痛药",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "自从厉飞雨第一次从韩立手中拿到了止痛药",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.194,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "自从厉飞雨第一次从韩立手中拿到了止痛药，回去试用了一下，真的是非常的有效，“抽髓丸”的痛苦减轻了不少。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 33,
+        "chapterTitle": "私下交易",
+        "matchedNames": [
+          "止痛药"
+        ],
+        "otherMatchedNames": [
+          "抽髓丸"
+        ]
+      }
+    ],
+    "finalDescription": "韩立配制的药粉，能有效减轻抽髓丸带来的痛苦，厉飞雨极度依赖",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "自从厉飞雨第一次从韩立手中拿到了止痛药",
+    "enhancedDescription": "韩立配制的药粉，能有效减轻抽髓丸带来的痛苦，厉飞雨极度依赖",
+    "supplementDescription": ""
+  },
+  {
+    "name": "连珠弩",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "连珠硬弩"
+    ],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.1565,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "军用连珠硬弩，杀伤力强，野狼帮从当副将的堂兄处购得三百多张，用于攻打七玄门",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "军用连珠硬弩，杀伤力强，野狼帮从当副将的堂兄处购得三百多张，用于攻打七玄门",
+    "supplementDescription": ""
+  },
+  {
+    "name": "驱物术",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "但如今被符纸之事一提醒；韩立顺手把符纸揣到了怀里",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.27,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "但如今被符纸之事一提醒；韩立顺手把符纸揣到了怀里",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.1565,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "但如今被符纸之事一提醒，他才明白过来，这“驱物术”所驱使的肯定不是普通物件，而应是修仙者们使用的特定物品。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 75,
+        "chapterTitle": "法武并用",
+        "matchedNames": [
+          "驱物术"
+        ]
+      },
+      {
+        "text": "韩立顺手把符纸揣到了怀里，他可不敢当着原主人的面，就大摇大摆的使用此物，谁知对方在符箓上做了什么手脚没有，而且他的“驱物术”还没经过几次实物练习，生疏的很，估计就是此时用上此物，也很难伤得了对方。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 92,
+        "chapterTitle": "剑符",
+        "matchedNames": [
+          "驱物术"
+        ]
+      }
+    ],
+    "finalDescription": "一种法术，可驱使特定物品，韩立尝试驱使普通物件和墨大夫法器均失败，推测需修仙者特制物品",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "但如今被符纸之事一提醒; 韩立顺手把符纸揣到了怀里; 但如今被符纸之事一提醒；韩立顺手把符纸揣到了怀里",
+    "enhancedDescription": "一种法术，可驱使特定物品，韩立尝试驱使普通物件和墨大夫法器均失败，推测需修仙者特制物品",
+    "supplementDescription": ""
+  },
+  {
+    "name": "御风决",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.1565,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "一种辅助法术，施展后身轻如燕，可高速移动不耗体力，消耗微量法力，常用于长途赶路",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "一种辅助法术，施展后身轻如燕，可高速移动不耗体力，消耗微量法力，常用于长途赶路",
+    "supplementDescription": ""
+  },
+  {
+    "name": "飞天符",
+    "tier": "archived",
+    "fields": {
+      "usage": "",
+      "material": "价值三十块灵低阶灵石",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "风属性初级上阶飞行符"
+    ],
+    "confidence": 0.19,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "价值三十块灵低阶灵石",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.15,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "灵符旁边的牌子上写着：“飞天符“风属姓初级上阶飞行类灵符，价值三十块灵低阶灵石，或换同等价值的固元培本类丹药。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 131,
+        "chapterTitle": "灵石与灵符",
+        "matchedNames": [
+          "飞天符"
+        ]
+      }
+    ],
+    "finalDescription": "风属性初级上阶飞行符，可让使用者腾空快速远行，能反复使用，价值三十块低阶灵石; 韩立用五瓶丹药换得",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "价值三十块灵低阶灵石",
+    "enhancedDescription": "风属性初级上阶飞行符，可让使用者腾空快速远行，能反复使用，价值三十块低阶灵石; 韩立用五瓶丹药换得",
+    "supplementDescription": ""
+  },
+  {
+    "name": "墨大夫书信",
+    "tier": "candidate",
+    "fields": {
+      "usage": "取出暗信来",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "信上的黑色墨迹已荡然无存",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "暗信",
+      "明信"
+    ],
+    "confidence": 0.38,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "取出暗信来",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "信上的黑色墨迹已荡然无存",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "“取出暗信来，大家一看不就明白了！",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "暗信"
+        ]
+      },
+      {
+        "text": "没有多久，书信就完全干透了，信上的黑色墨迹已荡然无存，反而现出了一些红色的淡淡字迹，这就是墨大夫耗费心机想让韩立带给妻女的信件——暗信。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "暗信"
+        ]
+      }
+    ],
+    "finalDescription": "墨大夫托韩立带给妻女的信件，表面是普通家书，实藏暗信",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "信上的黑色墨迹已荡然无存; 取出暗信来",
+    "enhancedDescription": "墨大夫托韩立带给妻女的信件，表面是普通家书，实藏暗信",
+    "supplementDescription": ""
+  },
+  {
+    "name": "缠香丝",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "一种阴毒的药物，中毒者动用真气会加速毒发，最终全身骨骼萎缩，需长期服用独门解药，无法根除; 韩立涂于兵刃上用来威胁墨大夫",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "一种阴毒的药物，中毒者动用真气会加速毒发，最终全身骨骼萎缩，需长期服用独门解药，无法根除; 韩立涂于兵刃上用来威胁墨大夫",
+    "supplementDescription": ""
+  },
+  {
+    "name": "腐心丸",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "韩立独门秘制的慢性毒药，服下后每月必须服用解药，否则会五脏六腑糜烂而死; 韩立曾以此药控制孙二狗，后为其化解",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "韩立独门秘制的慢性毒药，服下后每月必须服用解药，否则会五脏六腑糜烂而死; 韩立曾以此药控制孙二狗，后为其化解",
+    "supplementDescription": ""
+  },
+  {
+    "name": "黑木匣",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "长条形木匣"
+    ],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "黑色长条形木匣，上贴符纸封印，疑似装载飞剑，金光上人准备用于死斗",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "黑色长条形木匣，上贴符纸封印，疑似装载飞剑，金光上人准备用于死斗",
+    "supplementDescription": ""
+  },
+  {
+    "name": "黄龙丹",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "韩立按神秘配方用珍贵药材配制的洗髓灵药，能增加功力，有脱胎换骨之效，与金髓丸配合使用可帮助长春功突破瓶颈",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "韩立按神秘配方用珍贵药材配制的洗髓灵药，能增加功力，有脱胎换骨之效，与金髓丸配合使用可帮助长春功突破瓶颈",
+    "supplementDescription": ""
+  },
+  {
+    "name": "金髓丸",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "韩立按神秘配方炼制的洗髓灵药，药效极强，能增加功力、脱胎换骨，与黄龙丹共同辅助长春功突破",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "韩立按神秘配方炼制的洗髓灵药，药效极强，能增加功力、脱胎换骨，与黄龙丹共同辅助长春功突破",
+    "supplementDescription": ""
+  },
+  {
+    "name": "七毒水",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "韩立在原五毒水基础上加入土菇花改进的毒液，能妨碍修仙者元神，用来偷袭余子童使其无法施法",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "韩立在原五毒水基础上加入土菇花改进的毒液，能妨碍修仙者元神，用来偷袭余子童使其无法施法",
+    "supplementDescription": ""
+  },
+  {
+    "name": "青叶法器",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "黄枫谷新弟子的标准飞行法器，韩立领取后可踩踏飞行",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "黄枫谷新弟子的标准飞行法器，韩立领取后可踩踏飞行",
+    "supplementDescription": ""
+  },
+  {
+    "name": "十倍储物袋",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "储物袋"
+    ],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "低阶储物袋，可收纳物品并缩小至十分之一，韩立入门领取的标准配备之一",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "低阶储物袋，可收纳物品并缩小至十分之一，韩立入门领取的标准配备之一",
+    "supplementDescription": ""
+  },
+  {
+    "name": "铁铃铛",
+    "tier": "candidate",
+    "fields": {
+      "usage": "只有一只黑色的铁铃挂在屋梁上",
+      "material": "和几个小巧玲珑的铁铃铛；分别悬挂着一只小巧的铁铃；看到这些铁铃；只有一只黑色的铁铃挂在屋梁上",
+      "condition": "",
+      "ownership": "腰间",
+      "colorShape": "只有一只黑色的铁铃挂在屋梁上",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "铁铃",
+      "小铁铃"
+    ],
+    "confidence": 0.77,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "只有一只黑色的铁铃挂在屋梁上",
+      "material": "和几个小巧玲珑的铁铃铛；分别悬挂着一只小巧的铁铃；看到这些铁铃；只有一只黑色的铁铃挂在屋梁上",
+      "condition": "",
+      "ownership": "腰间",
+      "colorShape": "只有一只黑色的铁铃挂在屋梁上",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "除此之外，还有一些说不上用途的无名部件，和几个小巧玲珑的铁铃铛，也被要求在最快时间内打制完成，为此韩立花费了不菲的银两，让他又有了些许肉痛的感觉。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 41,
+        "chapterTitle": "留言夜出",
+        "matchedNames": [
+          "铁铃铛",
+          "铁铃"
+        ]
+      },
+      {
+        "text": "最令人惊讶的是，在他的脖子、腰间、手臂、大腿、脚脖等部位，分别悬挂着一只小巧的铁铃。",
+        "fields": [
+          "ownership",
+          "material"
+        ],
+        "chapterIndex": 43,
+        "chapterTitle": "万事具备",
+        "matchedNames": [
+          "铁铃"
+        ]
+      },
+      {
+        "text": "看到这些铁铃，再想想韩立在林中幽灵般的移动，就不难得知，刚才的身法是如何的妖异了。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 43,
+        "chapterTitle": "万事具备",
+        "matchedNames": [
+          "铁铃"
+        ]
+      },
+      {
+        "text": "墨大夫有些纳闷，忙抬首往上细看，整个人却不禁一呆，只见头顶上空空如也，一个鬼影都没有，只有一只黑色的铁铃挂在屋梁上，被他的掌风给激的摇晃不止，那叮当的响声正是从它那里传来，哪里有韩立的半个人影！",
+        "fields": [
+          "material",
+          "colorShape",
+          "usage"
+        ],
+        "chapterIndex": 46,
+        "chapterTitle": "破膛一剑",
+        "matchedNames": [
+          "铁铃"
+        ]
+      }
+    ],
+    "finalDescription": "韩立订制的小巧玲珑的铁铃铛，用于练习罗烟步，悬挂在脖子、腰间、手臂、腿部等处，以检验身法是否产生声响",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "和几个小巧玲珑的铁铃铛; 分别悬挂着一只小巧的铁铃; 看到这些铁铃; 只有一只黑色的铁铃挂在屋梁上; 腰间; 和几个小巧玲珑的铁铃铛；分别悬挂着一只小巧的铁铃；看到这些铁铃；只有一只黑色的铁铃挂在屋梁上",
+    "enhancedDescription": "韩立订制的小巧玲珑的铁铃铛，用于练习罗烟步，悬挂在脖子、腰间、手臂、腿部等处，以检验身法是否产生声响",
+    "supplementDescription": ""
+  },
+  {
+    "name": "王门主的令牌",
+    "tier": "candidate",
+    "fields": {
+      "usage": "将小友收入门下",
+      "material": "整个牌子看起来不像金属",
+      "condition": "",
+      "ownership": "这个令牌乃是王门主的贴身信物；而这个胖子是王门主的贴身亲信",
+      "colorShape": "一面印有“升仙”两个金色的古篆；另一面则有一个银色的“令”字",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "令牌",
+      "升仙令",
+      "升仙令牌"
+    ],
+    "confidence": 0.69,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "将小友收入门下",
+      "material": "整个牌子看起来不像金属",
+      "condition": "",
+      "ownership": "这个令牌乃是王门主的贴身信物；而这个胖子是王门主的贴身亲信",
+      "colorShape": "一面印有“升仙”两个金色的古篆；另一面则有一个银色的“令”字",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "这个令牌乃是王门主的贴身信物，持有它就可暂时向长老以下的弟子发号施令，而这个胖子是王门主的贴身亲信，听说还是比较近的表亲，所以王门主如果有什么口信、命令，都是通过此人来传达的。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 80,
+        "chapterTitle": "遇敌",
+        "matchedNames": [
+          "令牌"
+        ]
+      },
+      {
+        "text": "令牌则是一块漆黑的三角形牌子，一面印有“升仙”两个金色的古篆，另一面则有一个银色的“令”字，整个牌子看起来不像金属，却又沉甸甸的，份量不轻，不知有何用途。",
+        "fields": [
+          "colorShape",
+          "material"
+        ],
+        "chapterIndex": 93,
+        "chapterTitle": "烈火焚敌",
+        "matchedNames": [
+          "令牌"
+        ]
+      },
+      {
+        "text": "既然小友能携升仙令来此，那本掌门一定会遵守先贤们定下的规矩，将小友收入门下。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "升仙令"
+        ]
+      }
+    ],
+    "finalDescription": "王绝楚的贴身信物",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "整个牌子看起来不像金属; 一面印有“升仙”两个金色的古篆; 另一面则有一个银色的“令”字; 将小友收入门下; 这个令牌乃是王门主的贴身信物; 而这个胖子是王门主的贴身亲信; 一面印有“升仙”两个金色的古篆；另一面则有一个银色的“令”字; 这个令牌乃是王门主的贴身信物；而这个胖子是王门主的贴身亲信",
+    "enhancedDescription": "王绝楚的贴身信物",
+    "supplementDescription": ""
+  },
+  {
+    "name": "长生经",
+    "tier": "candidate",
+    "fields": {
+      "usage": "手里拿着外皮写着“长生经”",
+      "material": "手里拿着外皮写着“长生经”",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.31,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "手里拿着外皮写着“长生经”",
+      "material": "手里拿着外皮写着“长生经”",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "韩立躺坐在墨大夫以前经常坐的太师椅上，手里拿着外皮写着“长生经”，实质内容却是长春功口诀的一卷书，看得津津有味，异常的投入。",
+        "fields": [
+          "material",
+          "usage"
+        ],
+        "chapterIndex": 65,
+        "chapterTitle": "韩神医",
+        "matchedNames": [
+          "长生经"
+        ],
+        "otherMatchedNames": [
+          "长春功"
+        ]
+      }
+    ],
+    "finalDescription": "墨大夫经常研读的一本书籍，封面三个黑字，内容讲修身养性、延年益寿之道",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "手里拿着外皮写着“长生经”",
+    "enhancedDescription": "墨大夫经常研读的一本书籍，封面三个黑字，内容讲修身养性、延年益寿之道",
+    "supplementDescription": ""
+  },
+  {
+    "name": "黄栗丸",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "云翅鸟最爱吃的丹药，韩立用于喂食灵鸟",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "云翅鸟最爱吃的丹药，韩立用于喂食灵鸟",
+    "supplementDescription": ""
+  },
+  {
+    "name": "金光符",
+    "tier": "candidate",
+    "fields": {
+      "usage": "他不慌不忙的从怀里取出了一张黄色符纸",
+      "material": "他不慌不忙的从怀里取出了一张黄色符纸",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "上面竟布满了金色的字符和花纹",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "黄色符纸"
+    ],
+    "confidence": 0.42,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "他不慌不忙的从怀里取出了一张黄色符纸",
+      "material": "他不慌不忙的从怀里取出了一张黄色符纸",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "上面竟布满了金色的字符和花纹",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "眼见这位壮汉已接近了自己，金光上人停止了怪笑，他不慌不忙的从怀里取出了一张黄色符纸，这张黄符金光闪闪，上面竟布满了金色的字符和花纹，一见就知其价值不菲。",
+        "fields": [
+          "material",
+          "usage",
+          "colorShape"
+        ],
+        "chapterIndex": 88,
+        "chapterTitle": "金光罩",
+        "matchedNames": [
+          "黄色符纸"
+        ]
+      }
+    ],
+    "finalDescription": "金色符纸，上有金色字符和花纹，可施出寸许厚的金光罩防护，坚固如钢铁",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "他不慌不忙的从怀里取出了一张黄色符纸; 上面竟布满了金色的字符和花纹",
+    "enhancedDescription": "金色符纸，上有金色字符和花纹，可施出寸许厚的金光罩防护，坚固如钢铁",
+    "supplementDescription": ""
+  },
+  {
+    "name": "烈阳剑",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "黄枫谷配发给韩立的法器长剑",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "黄枫谷配发给韩立的法器长剑",
+    "supplementDescription": ""
+  },
+  {
+    "name": "龙形戒指",
+    "tier": "candidate",
+    "fields": {
+      "usage": "并把它递给了严氏；李氏从戒指中也取出了不少药粉",
+      "material": "一甩手把戒指隔着窗纸扔进了房内",
+      "condition": "",
+      "ownership": "腰间还系着几个金铃；并把它递给了严氏；露出了手指上的另一枚龙纹戒指；洁白的手指上竟也带了一个同样的戒指",
+      "colorShape": "结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉；里面暗藏的药粉分别是黄色和黑色的; 结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "戒指",
+      "纹龙戒"
+    ],
+    "confidence": 0.77,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "并把它递给了严氏；李氏从戒指中也取出了不少药粉",
+      "material": "一甩手把戒指隔着窗纸扔进了房内",
+      "condition": "",
+      "ownership": "腰间还系着几个金铃；并把它递给了严氏；露出了手指上的另一枚龙纹戒指；洁白的手指上竟也带了一个同样的戒指",
+      "colorShape": "结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉；里面暗藏的药粉分别是黄色和黑色的; 结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "这侏儒有四十几岁的年纪，长得干干瘦瘦，他身上套着一件金丝绣边的红袍，手指、脖子上分别带着金戒指和挂着粗粗的金链，腰间还系着几个金铃，张嘴说话间口中金光闪闪，看来镶了金牙在里面，从外表上看，一副十足的暴发户的打扮。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "韩立想到这里，伸手从怀内掏出了墨大夫的信物——一枚龙形戒指，然后悄声走到屋子窗外，一甩手把戒指隔着窗纸扔进了房内。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "龙形戒指",
+          "戒指"
+        ]
+      },
+      {
+        "text": "”显然墨彩环已经捡起了戒指，并把它递给了严氏。",
+        "fields": [
+          "usage",
+          "ownership"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "不过她并没有马上回应韩立的问候，而是一扬左手，露出了手指上的另一枚龙纹戒指。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "严氏把韩立的那枚和自己手上的戒指，轻轻的对靠在一起，结果两只戒指的龙形花纹紧密的贴合到了一处，结合的完美无缺，中间没有丝毫间隙出现。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "接着又把自己手上的那枚龙形戒指，轻拧了几下，竟把戒指拧成了两半，露出了夹层内暗藏的白色药粉。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "龙形戒指",
+          "戒指"
+        ]
+      },
+      {
+        "text": "她轻巧的来到桌前，略一抬手，洁白的手指上竟也带了一个同样的戒指。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "李氏从戒指中也取出了不少药粉，倒进了茶杯内。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "接着三夫人、五夫人，挨个作出了相同的举动，她们也都有一个龙形戒指，里面暗藏的药粉分别是黄色和黑色的。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "龙形戒指",
+          "戒指"
+        ]
+      },
+      {
+        "text": "韩立想到这里，伸手从怀内掏出了墨大夫的信物——一枚龙形戒指，然后悄声走到屋子窗外，一甩手把戒指隔着窗纸扔进了房内。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "龙形戒指"
+        ]
+      },
+      {
+        "text": "接着又把自己手上的那枚龙形戒指，轻拧了几下，竟把戒指拧成了两半，露出了夹层内暗藏的白色药粉。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "龙形戒指"
+        ]
+      }
+    ],
+    "finalDescription": "墨大夫留给四位夫人的戒指，内有夹层，藏有不同颜色药粉，用于调配现形水显影暗信",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "一甩手把戒指隔着窗纸扔进了房内; 结果两只戒指的龙形花纹紧密的贴合到了一处; 露出了夹层内暗藏的白色药粉; 里面暗藏的药粉分别是黄色和黑色的; 并把它递给了严氏; 李氏从戒指中也取出了不少药粉; 腰间还系着几个金铃; 露出了手指上的另一枚龙纹戒指; 洁白的手指上竟也带了一个同样的戒指; 结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉；里面暗藏的药粉分别是黄色和黑色的; 结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉; 并把它递给了严氏；李氏从戒指中也取出了不少药粉; 腰间还系着几个金铃；并把它递给了严氏；露出了手指上的另一枚龙纹戒指；洁白的手指上竟也带了一个同样的戒指",
+    "enhancedDescription": "墨大夫留给四位夫人的戒指，内有夹层，藏有不同颜色药粉，用于调配现形水显影暗信",
+    "supplementDescription": ""
+  },
+  {
+    "name": "墨大夫的遗书",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "墨大夫死前藏在香囊中的信纸，提出交易，要求韩立照顾其家人并娶其女，同时附有控制巨汉的方法",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "墨大夫死前藏在香囊中的信纸，提出交易，要求韩立照顾其家人并娶其女，同时附有控制巨汉的方法",
+    "supplementDescription": ""
+  },
+  {
+    "name": "平安符",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "这个皮袋是他从家里出来时；韩母特意用一块兽皮给他缝制的；用手指隔着衣服抚mo着装着平安符的小皮袋；小皮袋”“平安符”这东西的名字立刻映到了了他的脑海里；三下五除二把皮袋的口子撑开；把它送到了自己的眼皮底下；他拿住装平安符的皮袋",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.42,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "这个皮袋是他从家里出来时; 韩母特意用一块兽皮给他缝制的; 用手指隔着衣服抚mo着装着平安符的小皮袋; 小皮袋”“平安符”这东西的名字立刻映到了了他的脑海里; 三下五除二把皮袋的口子撑开; 把它送到了自己的眼皮底下",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "这个皮袋是他从家里出来时，韩母特意用一块兽皮给他缝制的，能防水防潮，用来给他装一枚用野猪牙制成的平安符，希望能用此来保佑他平平安安，无病无灾。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 12,
+        "chapterTitle": "砸瓶子",
+        "matchedNames": [
+          "平安符"
+        ]
+      },
+      {
+        "text": "韩立把手放到了胸口上，用手指隔着衣服抚mo着装着平安符的小皮袋。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 22,
+        "chapterTitle": "心魔生",
+        "matchedNames": [
+          "平安符"
+        ]
+      },
+      {
+        "text": "“小皮袋”“平安符”这东西的名字立刻映到了了他的脑海里。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 22,
+        "chapterTitle": "心魔生",
+        "matchedNames": [
+          "平安符"
+        ]
+      },
+      {
+        "text": "他飞快的冲向被扔在远处的袋子，几个箭步就跑到了跟前，一俯身把袋子捡了起来，三下五除二把皮袋的口子撑开，从里面把父母给他平安符抓了出来。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "平安符"
+        ]
+      },
+      {
+        "text": "现在韩立对自己身上发生的一切变化都不再理会，只是用一只手掌轻轻托着这个平安符，把它送到了自己的眼皮底下，用剩下的一只手轻柔的、慢慢的抚mo着它，全身心的凝视着它看。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "平安符"
+        ]
+      },
+      {
+        "text": "他拿住装平安符的皮袋，准备把立了大功的平安符放回袋子，再妥善收好。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 23,
+        "chapterTitle": "试药兔",
+        "matchedNames": [
+          "平安符"
+        ]
+      }
+    ],
+    "finalDescription": "韩立父母给的平安符，具有清心宁神的效果，曾帮助韩立抵御心魔入侵",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "这个皮袋是他从家里出来时; 韩母特意用一块兽皮给他缝制的; 用手指隔着衣服抚mo着装着平安符的小皮袋; 小皮袋”“平安符”这东西的名字立刻映到了了他的脑海里; 三下五除二把皮袋的口子撑开; 把它送到了自己的眼皮底下; 他拿住装平安符的皮袋; 这个皮袋是他从家里出来时；韩母特意用一块兽皮给他缝制的；用手指隔着衣服抚mo着装着平安符的小皮袋；小皮袋”“平安符”这东西的名字立刻映到了了他的脑海里；三下五除二把皮袋的口子撑开；把它送到了自己的眼皮底下；他拿住装平安符的皮袋",
+    "enhancedDescription": "韩立父母给的平安符，具有清心宁神的效果，曾帮助韩立抵御心魔入侵",
+    "supplementDescription": ""
+  },
+  {
+    "name": "软剑",
+    "tier": "candidate",
+    "fields": {
+      "usage": "从腰间拔出一把明晃晃的软剑出来",
+      "material": "",
+      "condition": "",
+      "ownership": "从腰间拔出一把明晃晃的软剑出来；被迫用手中的软剑去招架；给震飞了手中的兵器；然后从腰间抽出了一把软剑",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.46,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "从腰间拔出一把明晃晃的软剑出来",
+      "material": "",
+      "condition": "",
+      "ownership": "从腰间拔出一把明晃晃的软剑出来；被迫用手中的软剑去招架；给震飞了手中的兵器；然后从腰间抽出了一把软剑",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "visualEffects"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "这名弟子看起来武艺也是不弱，从腰间拔出一把明晃晃的软剑出来，这把软剑只有拇指粗细，柔软无力，一看就知道不是一般平庸的人能用的。",
+        "fields": [
+          "usage",
+          "ownership"
+        ],
+        "chapterIndex": 18,
+        "chapterTitle": "厉师兄（2）",
+        "matchedNames": [
+          "软剑"
+        ]
+      },
+      {
+        "text": "他刚才在厉师兄迅猛的连环刀势下，躲避不及，被迫用手中的软剑去招架，结果被刀上传过来的一股巨力，给震飞了手中的兵器。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 19,
+        "chapterTitle": "江湖斗",
+        "matchedNames": [
+          "软剑"
+        ]
+      },
+      {
+        "text": "孙二狗的脸色已变得蜡黄，他亲眼看见那个年轻人，幽灵般的转到了黑熊身后，然后从腰间抽出了一把软剑，一剑就轻易刺穿了黑熊的喉部，此时对方正掏出一块白布，在擦拭那把明晃晃的利剑。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 103,
+        "chapterTitle": "收服",
+        "matchedNames": [
+          "软剑"
+        ]
+      }
+    ],
+    "finalDescription": "韩立藏在腰间的软剑，锋利异常，用以一剑刺穿黑熊喉咙",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "从腰间拔出一把明晃晃的软剑出来; 被迫用手中的软剑去招架; 给震飞了手中的兵器; 然后从腰间抽出了一把软剑; 从腰间拔出一把明晃晃的软剑出来；被迫用手中的软剑去招架；给震飞了手中的兵器；然后从腰间抽出了一把软剑",
+    "enhancedDescription": "韩立藏在腰间的软剑，锋利异常，用以一剑刺穿黑熊喉咙",
+    "supplementDescription": ""
+  },
+  {
+    "name": "尸虫丸解药",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "黑丹药"
+    ],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "墨大夫给予韩立的解药，服下后可解除尸虫丸之毒，一粒即消融虫丸",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "墨大夫给予韩立的解药，服下后可解除尸虫丸之毒，一粒即消融虫丸",
+    "supplementDescription": ""
+  },
+  {
+    "name": "纹龙戒",
+    "tier": "candidate",
+    "fields": {
+      "usage": "并把它递给了严氏；李氏从戒指中也取出了不少药粉",
+      "material": "一甩手把戒指隔着窗纸扔进了房内",
+      "condition": "",
+      "ownership": "腰间还系着几个金铃；并把它递给了严氏；露出了手指上的另一枚龙纹戒指；洁白的手指上竟也带了一个同样的戒指",
+      "colorShape": "结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉；里面暗藏的药粉分别是黄色和黑色的; 结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉",
+      "visualEffects": ""
+    },
+    "aliases": [
+      "戒指",
+      "龙形戒指"
+    ],
+    "confidence": 0.77,
+    "entityType": "item",
+    "needsReview": false,
+    "visualFields": {
+      "usage": "并把它递给了严氏；李氏从戒指中也取出了不少药粉",
+      "material": "一甩手把戒指隔着窗纸扔进了房内",
+      "condition": "",
+      "ownership": "腰间还系着几个金铃；并把它递给了严氏；露出了手指上的另一枚龙纹戒指；洁白的手指上竟也带了一个同样的戒指",
+      "colorShape": "结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉；里面暗藏的药粉分别是黄色和黑色的; 结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "condition",
+      "visualEffects"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "strong",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "这侏儒有四十几岁的年纪，长得干干瘦瘦，他身上套着一件金丝绣边的红袍，手指、脖子上分别带着金戒指和挂着粗粗的金链，腰间还系着几个金铃，张嘴说话间口中金光闪闪，看来镶了金牙在里面，从外表上看，一副十足的暴发户的打扮。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 82,
+        "chapterTitle": "金光上人",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "韩立想到这里，伸手从怀内掏出了墨大夫的信物——一枚龙形戒指，然后悄声走到屋子窗外，一甩手把戒指隔着窗纸扔进了房内。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "龙形戒指",
+          "戒指"
+        ]
+      },
+      {
+        "text": "”显然墨彩环已经捡起了戒指，并把它递给了严氏。",
+        "fields": [
+          "usage",
+          "ownership"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "不过她并没有马上回应韩立的问候，而是一扬左手，露出了手指上的另一枚龙纹戒指。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "严氏把韩立的那枚和自己手上的戒指，轻轻的对靠在一起，结果两只戒指的龙形花纹紧密的贴合到了一处，结合的完美无缺，中间没有丝毫间隙出现。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "接着又把自己手上的那枚龙形戒指，轻拧了几下，竟把戒指拧成了两半，露出了夹层内暗藏的白色药粉。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "龙形戒指",
+          "戒指"
+        ]
+      },
+      {
+        "text": "她轻巧的来到桌前，略一抬手，洁白的手指上竟也带了一个同样的戒指。",
+        "fields": [
+          "ownership"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "李氏从戒指中也取出了不少药粉，倒进了茶杯内。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "戒指"
+        ]
+      },
+      {
+        "text": "接着三夫人、五夫人，挨个作出了相同的举动，她们也都有一个龙形戒指，里面暗藏的药粉分别是黄色和黑色的。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "龙形戒指",
+          "戒指"
+        ]
+      },
+      {
+        "text": "韩立想到这里，伸手从怀内掏出了墨大夫的信物——一枚龙形戒指，然后悄声走到屋子窗外，一甩手把戒指隔着窗纸扔进了房内。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 109,
+        "chapterTitle": "登门",
+        "matchedNames": [
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "龙形戒指"
+        ]
+      },
+      {
+        "text": "接着又把自己手上的那枚龙形戒指，轻拧了几下，竟把戒指拧成了两半，露出了夹层内暗藏的白色药粉。",
+        "fields": [
+          "colorShape"
+        ],
+        "chapterIndex": 112,
+        "chapterTitle": "暗信",
+        "matchedNames": [
+          "戒指"
+        ],
+        "otherMatchedNames": [
+          "龙形戒指"
+        ]
+      }
+    ],
+    "finalDescription": "墨大夫的信物，一对龙形花纹戒指，韩立与严氏各执一枚，可完美贴合，用以证明身份",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "一甩手把戒指隔着窗纸扔进了房内; 结果两只戒指的龙形花纹紧密的贴合到了一处; 露出了夹层内暗藏的白色药粉; 里面暗藏的药粉分别是黄色和黑色的; 并把它递给了严氏; 李氏从戒指中也取出了不少药粉; 腰间还系着几个金铃; 露出了手指上的另一枚龙纹戒指; 洁白的手指上竟也带了一个同样的戒指; 结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉；里面暗藏的药粉分别是黄色和黑色的; 结果两只戒指的龙形花纹紧密的贴合到了一处；露出了夹层内暗藏的白色药粉; 并把它递给了严氏；李氏从戒指中也取出了不少药粉; 腰间还系着几个金铃；并把它递给了严氏；露出了手指上的另一枚龙纹戒指；洁白的手指上竟也带了一个同样的戒指",
+    "enhancedDescription": "墨大夫的信物，一对龙形花纹戒指，韩立与严氏各执一枚，可完美贴合，用以证明身份",
+    "supplementDescription": ""
+  },
+  {
+    "name": "象甲功",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "张铁所练的功夫很奇特；张铁将它练到了第一层的顶峰；最近的张铁；还不要把人练得至少脱下几层皮；就连只修炼了两个月“象甲功”的张铁；也变的皮糙肉厚更能挨打；本准备给张铁修炼“象甲功”负了外伤时提前预备的；张铁就郁闷的直翻白眼；现在的张铁对“象甲功”；张铁对“象甲功”后几层的恐惧；另一位师兄兼好友张铁；张铁莫不是害怕“象甲功”第四层的修炼；劫持了当年“象甲功”略有所成的张铁；却用某种法术让张铁魂魄全失",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.42,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "修炼者逐页研读，按照图文行功练体",
+      "material": "线装册页，纸质粗韧",
+      "condition": "书册老旧，边缘磨损，内页偶有污渍，但文字清晰",
+      "ownership": "墨大夫传予张铁修炼，后亦为韩立所知",
+      "colorShape": "封皮暗黄色，上写“象甲功”三个大字，内页为墨书心法配图",
+      "visualEffects": ""
+    },
+    "llmSupplement": "该道具缺乏原文具体视觉描写，所有外貌、状态、使用方式均为根据功法属性保守补写",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {
+      "scale": "中等尺寸，约成人手掌大小，厚两指余",
+      "usage": "可参照图谱调整姿势，按心法运转内力，苦练皮肉筋骨",
+      "effects": "无外在光效",
+      "condition": "因反复翻阅，封面起毛，书口泛黑，但整体完整",
+      "ownership": "墨大夫所藏功法，授给张铁修炼，韩立亦曾翻阅",
+      "colorShape": "较厚一册，封面灰黄，无多余纹饰，仅中央楷书“象甲功”；内文墨色深浅不一，附有人体经络图",
+      "materialTexture": "粗纸线装，质地坚实，耐翻阅"
+    },
+    "inferredFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "ownership"
+    ],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.119,
+    "completionStatus": "llm_completed",
+    "evidenceSnippets": [
+      {
+        "text": "张铁所练的功夫很奇特，据墨大夫所说是一门很少见的武功“象甲功”，这门武功据他所说在江湖上很少有人见到过，许多人甚至连听也没又听过，更别说有人修炼了。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "只是眼馋“象甲功”的厉害之处，毫不犹豫的答应修炼此功，并且这项武功似乎很适合他，短短的两个月，张铁将它练到了第一层的顶峰。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "最近的张铁，为了冲破“象甲功”的第一层，在墨大夫的建议下，每天下午都在赤水峰数十米的瀑布下，顶着那从高处落下的巨大冲击力练功。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 9,
+        "chapterTitle": "象甲功",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "这“象甲功”真不是一般的人能消受得了的，只是区区的第一层就要承受如此大的折磨，到了后几层，还不要把人练得至少脱下几层皮。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "就连只修炼了两个月“象甲功”的张铁，也变的皮糙肉厚更能挨打，力气也比以前大了许多。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 10,
+        "chapterTitle": "神秘瓶子",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "韩立急忙把手伸向自己床上的木枕，从枕头下面掏出一个小药瓶出来，这是墨大夫精心调制的外伤药，对淤血、青肿，甚至流血都有奇效，这是他毫不容易从墨大夫那讨来的，本准备给张铁修炼“象甲功”负了外伤时提前预备的，没想到自己倒先用上了。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 11,
+        "chapterTitle": "瓶难开",
+        "matchedNames": [
+          "象甲功"
+        ],
+        "otherMatchedNames": [
+          "外伤药",
+          "伤药"
+        ]
+      },
+      {
+        "text": "一说起对方的“象甲功”，张铁就郁闷的直翻白眼。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "现在的张铁对“象甲功”，简直有些谈虎色变，他虽然只是修练了第一层，但已经被墨大夫折磨的叫苦连天。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "张铁对“象甲功”后几层的恐惧，韩立还是能理解的。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 13,
+        "chapterTitle": "异象起",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "另一位师兄兼好友张铁，在两年前练成“象甲功”第三层时，就突然消失了。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "后来，韩立猜想，张铁莫不是害怕“象甲功”第四层的修炼，才不知不觉、偷偷地溜掉。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 15,
+        "chapterTitle": "四年后",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "十有八九，肯定是墨大夫伙同余子童，劫持了当年“象甲功”略有所成的张铁，又伪造了其出走的假象，骗过了七玄门的众多耳目。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "象甲功"
+        ]
+      },
+      {
+        "text": "然后暗地里，却用某种法术让张铁魂魄全失，接着把他的躯体变得如此的古怪，和“象甲功”大成的情形很相像。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 64,
+        "chapterTitle": "曲魂",
+        "matchedNames": [
+          "象甲功"
+        ]
+      }
+    ],
+    "finalDescription": "一本粗纸线装的古旧武学秘籍，封皮暗黄，正中题写着“象甲功”三个大字。内页布满墨书心法与经络图谱，纸质粗韧，边角因长年翻看而起毛卷曲。整本书册虽显陈旧，却透出一股厚重扎实之气。被墨大夫传给张铁，助他修得铜皮铁骨。",
+    "summarizedFields": [
+      "material"
+    ],
+    "descriptionSource": "mixed",
+    "sourceDescription": "张铁所练的功夫很奇特; 张铁将它练到了第一层的顶峰; 最近的张铁; 还不要把人练得至少脱下几层皮; 就连只修炼了两个月“象甲功”的张铁; 也变的皮糙肉厚更能挨打; 本准备给张铁修炼“象甲功”负了外伤时提前预备的; 张铁就郁闷的直翻白眼; 现在的张铁对“象甲功”; 张铁对“象甲功”后几层的恐惧; 另一位师兄兼好友张铁; 张铁莫不是害怕“象甲功”第四层的修炼; 劫持了当年“象甲功”略有所成的张铁; 却用某种法术让张铁魂魄全失; 张铁所练的功夫很奇特；张铁将它练到了第一层的顶峰；最近的张铁；还不要把人练得至少脱下几层皮；就连只修炼了两个月“象甲功”的张铁；也变的皮糙肉厚更能挨打；本准备给张铁修炼“象甲功”负了外伤时提前预备的；张铁就郁闷的直翻白眼；现在的张铁对“象甲功”；张铁对“象甲功”后几层的恐惧；另一位师兄兼好友张铁；张铁莫不是害怕“象甲功”第四层的修炼；劫持了当年“象甲功”略有所成的张铁；却用某种法术让张铁魂魄全失",
+    "enhancedDescription": "一本粗纸线装的古旧武学秘籍，封皮暗黄，正中题写着“象甲功”三个大字。内页布满墨书心法与经络图谱，纸质粗韧，边角因长年翻看而起毛卷曲。整本书册虽显陈旧，却透出一股厚重扎实之气。被墨大夫传给张铁，助他修得铜皮铁骨。",
+    "supplementDescription": "该道具缺乏原文具体视觉描写，所有外貌、状态、使用方式均为根据功法属性保守补写"
+  },
+  {
+    "name": "正阳劲",
+    "tier": "candidate",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "七玄门基本内功心法，修炼后可产生热流真气，增强力量，普通童子修炼后能拳断小树、跳高一丈",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "七玄门基本内功心法，修炼后可产生热流真气，增强力量，普通童子修炼后能拳断小树、跳高一丈",
+    "supplementDescription": ""
+  },
+  {
+    "name": "筑基丹",
+    "tier": "candidate",
+    "fields": {
+      "usage": "还必须要服用只有大门派才可炼制成的灵药“筑基丹”；就是这样严格选拔出来的数百最佳弟子",
+      "material": "七八块中阶灵石",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.46,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "还必须要服用只有大门派才可炼制成的灵药“筑基丹”；就是这样严格选拔出来的数百最佳弟子",
+      "material": "七八块中阶灵石",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0.119,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "原来，所有修炼气期的修仙者如果想要进入筑基期，成为真正修仙界的一员，除了要把基础功法练到七层之后，还必须要服用只有大门派才可炼制成的灵药“筑基丹”，才有望突破境界瓶颈，筑基成功。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 134,
+        "chapterTitle": "升仙大会",
+        "matchedNames": [
+          "筑基丹"
+        ]
+      },
+      {
+        "text": "七八块中阶灵石，一些初级中高阶的灵符和几样上好的法器，师叔我还是能拿出手的，实在不行的话，师叔还有些精进法力的丹药，虽然无法和筑基丹相比，但也是门内难得的灵药了！",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 145,
+        "chapterTitle": "不速之客",
+        "matchedNames": [
+          "筑基丹"
+        ]
+      },
+      {
+        "text": "就是这样严格选拔出来的数百最佳弟子，在服用筑基丹后，能通过筑基进入到筑基期的，也只是二三十人而已。",
+        "fields": [
+          "usage"
+        ],
+        "chapterIndex": 147,
+        "chapterTitle": "谷内详情",
+        "matchedNames": [
+          "筑基丹"
+        ]
+      }
+    ],
+    "finalDescription": "可帮助炼气期修仙者筑基的珍贵丹药，黄枫谷每十年分配一次，韩立用升仙令获得一粒资格后交易给了叶姓老者的侄孙",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "七八块中阶灵石; 还必须要服用只有大门派才可炼制成的灵药“筑基丹”; 就是这样严格选拔出来的数百最佳弟子; 还必须要服用只有大门派才可炼制成的灵药“筑基丹”；就是这样严格选拔出来的数百最佳弟子",
+    "enhancedDescription": "可帮助炼气期修仙者筑基的珍贵丹药，黄枫谷每十年分配一次，韩立用升仙令获得一粒资格后交易给了叶姓老者的侄孙",
+    "supplementDescription": ""
+  },
+  {
+    "name": "冷月刀",
+    "tier": "archived",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "黄枫谷配发给韩立的法器刀",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "黄枫谷配发给韩立的法器刀",
+    "supplementDescription": ""
+  },
+  {
+    "name": "铁筒",
+    "tier": "archived",
+    "fields": {
+      "usage": "",
+      "material": "把自己的手指悄悄地从一个缩在袖口里的铁筒上挪了开；把手缩到袖口里抓住了那里的一只铁筒；伸手从他的袖子里把那只铁筒搜了出来；他漫不经心的试射了一下铁筒里的东西",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0.42,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "把自己的手指悄悄地从一个缩在袖口里的铁筒上挪了开；把手缩到袖口里抓住了那里的一只铁筒；伸手从他的袖子里把那只铁筒搜了出来；他漫不经心的试射了一下铁筒里的东西",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "partial",
+    "importanceScore": 0,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [
+      {
+        "text": "韩立想到这里，把自己的手指悄悄地从一个缩在袖口里的铁筒上挪了开。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 21,
+        "chapterTitle": "止痛药",
+        "matchedNames": [
+          "铁筒"
+        ]
+      },
+      {
+        "text": "他机警地、小心翼翼的往后退了半步，把手缩到袖口里抓住了那里的一只铁筒，把绷紧的神经才放松了一点，这时耳边忽然传来了墨大夫一声低低的嘲语声。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 29,
+        "chapterTitle": "冲突起",
+        "matchedNames": [
+          "铁筒"
+        ]
+      },
+      {
+        "text": "可墨大夫根本不与理会，伸手从他的袖子里把那只铁筒搜了出来，拿在手里，然后用一种嘲笑、蔑视的目光看着他的表演。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 29,
+        "chapterTitle": "冲突起",
+        "matchedNames": [
+          "铁筒"
+        ]
+      },
+      {
+        "text": "就在刚才，他漫不经心的试射了一下铁筒里的东西，结果从筒内喷射出来的毒液，轻而易举的把地面给腐蚀到底。",
+        "fields": [
+          "material"
+        ],
+        "chapterIndex": 32,
+        "chapterTitle": "豪气生",
+        "matchedNames": [
+          "铁筒"
+        ]
+      }
+    ],
+    "finalDescription": "韩立藏在袖口内的暗器铁筒，作为护身手段，后被墨大夫搜出",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "把自己的手指悄悄地从一个缩在袖口里的铁筒上挪了开; 把手缩到袖口里抓住了那里的一只铁筒; 伸手从他的袖子里把那只铁筒搜了出来; 他漫不经心的试射了一下铁筒里的东西; 把自己的手指悄悄地从一个缩在袖口里的铁筒上挪了开；把手缩到袖口里抓住了那里的一只铁筒；伸手从他的袖子里把那只铁筒搜了出来；他漫不经心的试射了一下铁筒里的东西",
+    "enhancedDescription": "韩立藏在袖口内的暗器铁筒，作为护身手段，后被墨大夫搜出",
+    "supplementDescription": ""
+  },
+  {
+    "name": "玉带短剑",
+    "tier": "archived",
+    "fields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "aliases": [],
+    "confidence": 0,
+    "entityType": "item",
+    "needsReview": true,
+    "visualFields": {
+      "usage": "",
+      "material": "",
+      "condition": "",
+      "ownership": "",
+      "colorShape": "",
+      "visualEffects": ""
+    },
+    "llmSupplement": "",
+    "missingFields": [
+      "material",
+      "colorShape",
+      "condition",
+      "usage",
+      "visualEffects",
+      "ownership"
+    ],
+    "visualDetails": {},
+    "inferredFields": [],
+    "sourceCoverage": "none",
+    "importanceScore": 0,
+    "completionStatus": "source_only",
+    "evidenceSnippets": [],
+    "finalDescription": "韩立花费重金请铁匠打造的软剑，柔韧锋利，平时藏在腰带夹层中，用于劈砍余子童元神",
+    "summarizedFields": [],
+    "descriptionSource": "source",
+    "sourceDescription": "",
+    "enhancedDescription": "韩立花费重金请铁匠打造的软剑，柔韧锋利，平时藏在腰带夹层中，用于劈砍余子童元神",
+    "supplementDescription": ""
+  }
+]

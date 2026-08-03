@@ -15,15 +15,38 @@ type CharacterEntity = Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedA
 type ItemEntity = Omit<Item, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>;
 type LocationEntity = Omit<Location, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>;
 
+/** 角色年龄成长阶段（仅按原文证据识别，不凭空推断） */
+export type AgeStage = 'child' | 'youth' | 'young' | 'middle' | 'old';
+
+/** 单个年龄阶段的提示词版本。人物描写须有原文依据、可溯源。 */
+export interface PromptVariant {
+  stage: AgeStage;
+  label: string;
+  prompt: string;
+  outfit?: string;
+  /** 溯源：该版本基于的原文章节区间（来自 outfit/description 证据） */
+  sourceChapters?: string;
+  /** 其余服饰套系（含章节区间） */
+  outfitList?: string[];
+  source: 'template-only' | 'llm-polished' | 'llm-fallback';
+  isPrimary?: boolean;
+}
+
 export interface GenerationPrompt {
   entityName: string;
   entityType: 'character' | 'item' | 'location';
   tier: string;
   prompt: string;
+  /** 角色的多个年龄阶段版本（仅 character；顶层 prompt = 主阶段，向后兼容旧读取方） */
+  variants?: PromptVariant[];
+  /** 识别到的阶段（调试/前端展示） */
+  detectedStages?: AgeStage[];
   styleTags: string[];
   source: 'template-only' | 'llm-polished' | 'llm-fallback';
   quality: 'high' | 'medium' | 'low';
   description?: string;
+  /** 视觉描写概括（来自 visual-description agent），供 LLM polish 补写"未详述"字段 */
+  enhancedDescription?: string;
 }
 
 export interface PromptGenerationPayload extends Record<string, unknown> {
@@ -107,89 +130,321 @@ function renderOutfitList(outfits: Outfit[], primary?: Outfit): string[] {
   return ['', '其余服饰套系（参考，非本四视图）：', ...lines];
 }
 
-function buildCharacterDesignSheet(pack: any): GenerationPrompt {
+// ── 年龄阶段（仅按原文证据识别，绝不凭空推断；人物描写须可溯源）──
+
+const STAGE_ORDER: AgeStage[] = ['child', 'youth', 'young', 'middle', 'old'];
+
+const STAGE_LABEL: Record<AgeStage, string> = {
+  child: '孩童（约6-10岁）',
+  youth: '少年（约14-16岁）',
+  young: '青年（约20-30岁）',
+  middle: '中年（约40-55岁）',
+  old: '老年（约60岁以上）',
+};
+
+// 阶段对体态的合理倾向（基于年龄段的客观外貌规律，非编造个体特征）
+const STAGE_BODY: Record<AgeStage, string> = {
+  child: '身形矮小稚嫩',
+  youth: '身形单薄、尚未完全长成，略显清瘦',
+  young: '身形挺拔修长，体格匀称',
+  middle: '体格沉稳厚实，气势内敛',
+  old: '身形清瘦略显佝偻',
+};
+
+/** 数值年龄 → 阶段 */
+function ageNumberToStage(age: number): AgeStage {
+  if (age <= 10) return 'child';
+  if (age <= 17) return 'youth';
+  if (age <= 35) return 'young';
+  if (age <= 58) return 'middle';
+  return 'old';
+}
+
+/** 原文明确写出的年龄词 → 阶段 */
+function stageFromKeywords(text: string): AgeStage | null {
+  if (/老者|老头|老翁|苍老|白发苍苍|鬓发皆白|灵魂体/.test(text)) return 'old';
+  if (/中年|壮年/.test(text)) return 'middle';
+  if (/青年/.test(text)) return 'young';
+  if (/少年|少女/.test(text)) return 'youth';
+  if (/孩童|幼年/.test(text)) return 'child';
+  return null;
+}
+
+/** 角色出场的章节跨度（原文证据：覆盖的时期范围） */
+function computeChapterSpan(pack: any, outfits: Outfit[]): number {
+  const chaps: number[] = [];
+  if (pack.firstChapter != null) chaps.push(pack.firstChapter);
+  if (pack.lastChapter != null) chaps.push(pack.lastChapter);
+  for (const o of outfits) {
+    if (o.firstChapter != null) chaps.push(o.firstChapter);
+    if (o.lastChapter != null) chaps.push(o.lastChapter);
+  }
+  if (chaps.length < 2) return 0;
+  return Math.max(...chaps) - Math.min(...chaps);
+}
+
+/**
+ * 按原文证据识别角色跨越的年龄阶段（纯规则，不调 LLM）。
+ * 默认只返回当前阶段；仅在原文有明确证据（老年词/成长时间线+章节跨度）时扩展。
+ */
+function detectAgeStages(pack: any, tier: string): { stages: AgeStage[]; primary: AgeStage } {
+  const desc = pack.description || '';
+  const statusMarkers = pack.visualFields?.statusMarkers || '';
+  // outfits 的 description 常含角色年龄/样子线索（如"枯瘦老翁""三十来岁精壮男子"），作为阶段证据
+  const outfitText = (Array.isArray(pack.outfits) ? pack.outfits : [])
+    .map((o: any) => `${o.scene || ''} ${o.description || ''}`)
+    .join(' ');
+  const text = `${desc} ${statusMarkers} ${outfitText}`;
+  // 主语部分（desc 前 80 字）+ outfit 描述：年龄词判断用。outfit description 常含角色年龄/样子
+  // （如"枯瘦老翁""三十来岁"），纳入可识别 outfit 里显式的阶段；desc 只取前 80 字避免匹配后段描述别人的词。
+  const head = `${desc.slice(0, 80)} ${statusMarkers} ${outfitText}`.slice(0, 300);
+  const outfits: Outfit[] = Array.isArray(pack.outfits) ? pack.outfits : [];
+
+  // 当前阶段（锚点，必有）：优先原文明确年龄词（避免成长数字干扰），其次数值年龄
+  const currentAge = findCurrentAge(text);
+  const currentStage: AgeStage =
+    stageFromKeywords(head) ??
+    (currentAge != null ? ageNumberToStage(currentAge) : null) ??
+    (tier === 'core' ? 'youth' : 'young');
+
+  const stages = new Set<AgeStage>([currentStage]);
+
+  // 老年证据（原文明确写老者/白发/灵魂体；若有巅峰回忆则补中年——均有原文依据）
+  const hasOldKw = /老者|老头|老翁|苍老|白发苍苍|鬓发皆白|灵魂体/.test(head);
+  const hasFlashbackPeak = /巅峰|当年|年轻时|昔日|曾经|全盛|曾是/.test(text);
+  if (hasOldKw) {
+    stages.add('old');
+    if (hasFlashbackPeak) stages.add('middle');
+  }
+
+  // 成长型证据（原文成长时间线 / 多个年龄数字 / 多套服饰）；重要角色才扩展
+  const hasGrowthTimeline = /数年后|多年后|几年后|数载|时光|岁月|从小|自幼|长大后|成长|蜕变|重新崛起|天赋|天才少年|天才/.test(text);
+  const ageNumberCount = (text.match(/(\d{1,3}|[一二三四五六七八九]?十[一二三四五六七八九]?|一百[一二三四五六七八九]?)\s*岁/g) || []).length;
+  const hasGrowthEvidence = hasGrowthTimeline || ageNumberCount >= 2 || outfits.length >= 2;
+  const isProtagonist = tier === 'core' || (pack.mentionCount ?? 0) >= 100;
+  if (!hasOldKw && isProtagonist && hasGrowthEvidence) {
+    stages.add('youth');
+    stages.add('young');
+    // 注：child 阶段不在成长型里自动加——description 常提到别人的孩童年龄（如"韩立七岁"），
+    // 仅当该角色当前就是孩童（currentStage=child）时才保留，避免误匹配。
+  }
+
+  const stageList = STAGE_ORDER.filter((s) => stages.has(s));
+  // primary：成长型角色不以"孩童"作主阶段（故事主体通常是少年/青年，孩童是起点）
+  let primary = currentStage;
+  if (primary === 'child' && stages.has('youth')) primary = 'youth';
+  else if (primary === 'child' && stages.has('young')) primary = 'young';
+  return { stages: stageList, primary };
+}
+
+/**
+ * 生成单个年龄阶段的设计图提示词。个体特征（面部/发型/标志物/服装）来自原文
+ * visualFields/visualDetails/outfits（可溯源）；仅体态/年龄行按阶段调整（年龄段客观规律）。
+ * 返回该阶段 prompt + 溯源元数据（outfit/章节区间）。
+ */
+function buildCharacterDesignSheet(pack: any, stage?: AgeStage): {
+  prompt: string;
+  outfit?: string;
+  sourceChapters?: string;
+  outfitList?: string[];
+} {
   const tier = pack.tier || 'candidate';
   const vf = pack.visualFields || {};
   const vd = pack.visualDetails || {};
   const desc = pack.description || '';
 
-  // Extract structured fields from visual-description data
-  const body = pickOne(vd, vf, 'bodyBuild', 'body') || '未详述';
-  const face = pickOne(vd, vf, 'faceShape', 'appearance') || '未详述';
-  const hair = pickOne(vd, vf, 'hair') || '未详述';
-  const eyes = pickOne(vd, vf, 'eyes') || '未详述';
-  const nose = pickOne(vd, vf, 'nose') || '未详述';
-  const lips = pickOne(vd, vf, 'lips') || '未详述';
-  const skin = pickOne(vd, vf, 'skin') || '未详述';
-  const temperament = pickOne(vd, vf, 'temperament') || '未详述';
-  const makeup = pickOne(vd, vf, 'makeupStyling') || '未详述';
-  // Prefer structured primary outfit (captured at extraction with chapter range);
-  // fall back to the regex clothing field if no outfits are available.
+  // 个体特征（原文依据，跨阶段不变，保证"同一人"）
+  const rawBody = pickOne(vd, vf, 'bodyBuild', 'body');
+  const faceShape = pickOne(vd, vf, 'faceShape', 'appearance');
+  const hair = pickOne(vd, vf, 'hair');
+  const eyes = pickOne(vd, vf, 'eyes');
+  const nose = pickOne(vd, vf, 'nose');
+  const lips = pickOne(vd, vf, 'lips');
+  const skin = pickOne(vd, vf, 'skin');
+  const temperament = pickOne(vd, vf, 'temperament');
+  const makeup = pickOne(vd, vf, 'makeupStyling');
   const outfits: Outfit[] = Array.isArray(pack.outfits) ? pack.outfits : [];
   const primaryOutfit = pickPrimaryOutfit(outfits);
-  const clothing = primaryOutfit?.description || pickOne(vd, vf, 'clothing') || '未详述';
-  const items = cleanVisualField(vf.signatureItems || '') || '无';
-  const ageHint = buildAgeHint(tier, desc);
+  const items = cleanVisualField(vf.signatureItems || '');
+  const ability = cleanVisualField(vf.abilityVisuals || '');
+  const statusMarkers = (vf.statusMarkers || '').trim();
 
-  // Age/identity: from description and tier
+  // 阶段相关变量（stage 版本按阶段；默认 stage=undefined 时用原文/主套）
+  const { primary: primaryStage } = detectAgeStages(pack, tier);
+  const effStage = stage ?? primaryStage;
+  // 服装统一用主套：outfit 的章节区间是剧情时间≠角色年龄，按章节选 outfit 对应阶段会错乱
+  // （如墨大夫"老翁装"在第40章却被选给青年）。阶段差异靠体态/年龄行体现，服装保持原文主套（可溯源）。
+  const stageOutfit = primaryOutfit;
+  const clothing = stageOutfit?.description || pickOne(vd, vf, 'clothing');
+  // 体态：stage 版本用年龄段客观规律（非个体编造）；默认用原文 body
+  const body = stage ? STAGE_BODY[effStage] : (rawBody || '未详述');
+  const ageHint = stage ? STAGE_LABEL[effStage] : buildAgeHint(tier, desc, statusMarkers);
+
+  // 标志性特征（原文依据）
+  const signatureParts: string[] = [];
+  if (items && items !== '无') signatureParts.push(items);
+  if (ability) signatureParts.push(ability);
+  const signature = signatureParts.filter((s) => s && s !== '无').join('；') || '无突出标志性特征';
+
+  // 面部（原文依据，片段去重）
+  const faceFragments = [faceShape, eyes, nose, lips, skin]
+    .filter((s) => s && s !== '未详述')
+    .flatMap((s) => s.split(/[。；;]/).map((x) => x.trim()).filter(Boolean));
+  const seenFace = new Set<string>();
+  const faceCombinedDedup = faceFragments.filter((f) => {
+    const k = f.slice(0, 6);
+    if (seenFace.has(k)) return false;
+    seenFace.add(k);
+    return true;
+  });
+  const faceCombined = faceCombinedDedup.length > 0 ? faceCombinedDedup.join('；') : '未详述';
+
   const sections = [
-    `- 服装/配色：${clothing}`,
-    `- 面部/五官：${[face, eyes, nose, lips, skin].filter(s => s !== '未详述').join('，')}`,
-    `- 发型：${hair}`,
+    `★ 标志性特征：${signature}`,
+    `- 服装/配色：${clothing || '未详述'}`,
+    `- 面部/五官：${faceCombined}`,
+    `- 发型：${hair || '未详述'}`,
     `- 体态/身形：${body}`,
-    `- 神情/气质：${temperament}`,
-    `- 饰物/随身特征：${items}`,
+    `- 神情/气质：${temperament || '未详述'}`,
     `- 年龄/身份视觉线索：${ageHint}`,
   ];
+  if (makeup && makeup !== '未详述') sections.push(`- 妆造：${makeup}`);
 
+  const stageSuffix = stage ? `（${STAGE_LABEL[effStage]}）` : '';
   const template = [
-    `四视图角色设定图 —— ${pack.name}`,
+    `四视图角色设定图 —— ${pack.name}${stageSuffix}`,
     '---',
     '角色设定拆解',
     ...sections,
     '---',
     '四视图要求：同一人物，正面全身、侧面全身、背面全身、面部特写。服装、体型、发型、饰物四个角度保持一致。' + CHARACTER_STYLE_TAGS.join('，') + '。',
-    ...renderOutfitList(outfits, primaryOutfit),
   ].join('\n');
 
-  const needsPolish = needsLlmPolish(tier);
+  const usedOutfit = stageOutfit || primaryOutfit;
+  const sourceChapters =
+    usedOutfit && (usedOutfit.firstChapter != null || usedOutfit.lastChapter != null)
+      ? `第${usedOutfit.firstChapter ?? '?'}-${usedOutfit.lastChapter ?? '?'}章`
+      : undefined;
+
+  // 其余服饰列表（含章节区间，可溯源）
+  const outfitList = renderOutfitList(outfits, primaryOutfit);
+  const templateWithOutfits = outfitList.length > 0
+    ? `${template}\n\n${outfitList.join('\n')}`
+    : template;
+
+  return { prompt: templateWithOutfits, outfit: usedOutfit?.description, sourceChapters, outfitList };
+}
+
+/**
+ * 为角色生成多个年龄阶段版本（仅按原文证据识别的阶段）。
+ * 全部 template 秒出（无 LLM）；顶层 prompt = 主阶段（向后兼容旧读取方）；variants 含全部阶段。
+ */
+function buildCharacterDesignSheetMultiStage(pack: any): GenerationPrompt {
+  const tier = pack.tier || 'candidate';
+  const mentionCount = pack.mentionCount ?? 0;
+  const importanceScore = pack.importanceScore ?? 0;
+  const { stages, primary: primaryStage } = detectAgeStages(pack, tier);
+
+  const variants: PromptVariant[] = stages.map((st) => {
+    const sheet = buildCharacterDesignSheet(pack, st);
+    return {
+      stage: st,
+      label: STAGE_LABEL[st],
+      prompt: sheet.prompt,
+      outfit: sheet.outfit,
+      sourceChapters: sheet.sourceChapters,
+      outfitList: sheet.outfitList,
+      source: 'template-only' as const,
+      isPrimary: st === primaryStage,
+    };
+  });
+
+  const primaryVariant = variants.find((v) => v.isPrimary) ?? variants[0];
+  const needsPolish = needsLlmPolish(tier, mentionCount, importanceScore);
 
   return {
     entityName: pack.name,
     entityType: 'character',
     tier,
-    prompt: template,
+    prompt: primaryVariant?.prompt ?? '',
+    variants,
+    detectedStages: stages,
     styleTags: CHARACTER_STYLE_TAGS,
     source: needsPolish ? 'llm-polished' : 'template-only',
     quality: needsPolish ? 'high' : 'medium',
     description: pack.description || (pack as any).currentDescription || '',
-  } as GenerationPrompt;
+    enhancedDescription: pack.enhancedDescription || pack.finalDescription || '',
+  };
 }
+
+// LLM 保守输出时的无意义占位，pickOne 应跳过并 fallback 到 visualFields / 下一个 key。
+const PLACEHOLDER_RE = /原文未描写|未描写|未提及|^不详$|^未知$|^无$/;
 
 function pickOne(vd: any, vf: any, ...keys: string[]): string {
   for (const k of keys) {
-    const v = ((vd[k] || vf[k] || '').trim());
-    if (v && v.length > 1) return cleanVisualField(v);
+    const raw = ((vd[k] || vf[k] || '').trim());
+    if (raw.length <= 1) continue;
+    if (PLACEHOLDER_RE.test(raw)) continue;
+    const cleaned = cleanVisualField(raw);
+    if (cleaned) return cleaned;
   }
   return '';
 }
 
-function buildAgeHint(tier: string, description: string): string {
-  // Extract age-related signals from description
-  const ageMatch = description.match(/(\d{1,3})\s*(岁|年龄)/);
-  if (ageMatch) return `${ageMatch[0]}`;
-  const youthWords: [string, string][] = [
+// 中文数字串 → int（"十一"→11, "二十三"→23, "一百二"→102）
+function cnNumeralToInt(s: string): number | null {
+  const d: Record<string, number> = { '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9 };
+  let m = s.match(/^([一二三四五六七八九])?十([一二三四五六七八九])?$/);
+  if (m) return (m[1] ? d[m[1]] : 1) * 10 + (m[2] ? d[m[2]] : 0);
+  m = s.match(/^一百([一二三四五六七八九])?$/);
+  if (m) return 100 + (m[1] ? d[m[1]] : 0);
+  return null;
+}
+
+// 提取"当前"年龄：优先"已达/现年/年方"等明确表达；排除过去事件（"X岁时""X岁那年"，如"十一岁时""十岁那年"）
+function findCurrentAge(text: string): number | null {
+  const tail = (m: RegExpMatchArray) => text.slice((m.index ?? 0) + m[0].length, (m.index ?? 0) + m[0].length + 2);
+  const isPast = (m: RegExpMatchArray) => tail(m)[0] === '时' || tail(m).startsWith('那年');
+  const explicit = text.match(/(?:已达|现年|如今|今年|年方|年仅|年约|约)\s*(\d{1,3})\s*岁/);
+  if (explicit) return Number(explicit[1]);
+  for (const m of text.matchAll(/(\d{1,3})\s*岁/g)) {
+    if (isPast(m)) continue;
+    return Number(m[1]);
+  }
+  for (const m of text.matchAll(/([一二三四五六七八九]?十[一二三四五六七八九]?|一百[一二三四五六七八九]?)岁/g)) {
+    if (isPast(m)) continue;
+    const n = cnNumeralToInt(m[1]);
+    if (n != null) return n;
+  }
+  return null;
+}
+
+function buildAgeHint(tier: string, description: string, statusMarkers?: string): string {
+  // 扫描完整 description + statusMarkers（年龄/身份线索常散落其中，如"十一岁""三星斗者"）
+  const text = `${description || ''} ${statusMarkers || ''}`;
+  // 当前年龄：优先"已达/现年/年方"等明确表达，排除"X岁时"（过去事件，如"十一岁时仅八段斗之气"）
+  const age = findCurrentAge(text);
+  if (age != null) return `${age}岁左右`;
+  // Age-stage keywords — scan full text (年龄关键词可能在描述后段)
+  const ageWords: [string, string][] = [
+    ['老者', '老年（约60岁以上）'], ['老头', '老年'], ['老翁', '老年'],
+    ['苍老', '老年'], ['白发苍苍', '老年'],
+    ['中年男子', '中年男子（约40-55岁）'], ['中年人', '中年'], ['中年', '中年（约40-55岁）'],
+    ['壮年', '壮年（约30-40岁）'],
+    ['年轻人', '青年（约20-30岁）'], ['青年', '青年（约20-30岁）'],
     ['少年', '少年（约14-16岁）'], ['少女', '少女（约14-16岁）'],
-    ['青年', '青年（约20-30岁）'], ['中年', '中年'],
-    ['老年', '老年'], ['孩童', '孩童'], ['幼年', '幼年'],
-    ['年轻', '年轻'], ['年幼', '年幼'], ['年老', '年老'],
+    ['孩童', '孩童'], ['幼年', '幼年'], ['稚嫩', '年少'],
   ];
-  for (const [w, hint] of youthWords) {
-    if (description.includes(w)) return hint;
+  for (const [w, hint] of ageWords) {
+    if (text.includes(w)) return hint;
   }
   if (tier === 'core') return '少年/青年（主角）';
   if (tier === 'supporting') return '中青年';
-  return '不详';
+  // 身份/实力线索（statusMarkers 常含"三星斗者""宗主"等视觉可辨的身份符号）
+  const sm = (statusMarkers || '').trim();
+  if (sm && !PLACEHOLDER_RE.test(sm)) return sm;
+  // 找不到具体年龄/身份时返回空，由模板显示中性占位（不再硬编码"不详"）
+  return '';
 }
 
 const LOCATION_VIEW_HINT = '全景视角，广角构图，景深层次分明';
@@ -237,10 +492,47 @@ function cleanVisualField(text: string): string {
   return result.join('。');
 }
 
-function needsLlmPolish(tier?: string): boolean {
+/**
+ * 剥离文本中所有章节出处标注，保留归属者备注等有用信息。
+ *
+ * 匹配格式：
+ *   - （第x章）→ 整体移除
+ *   - （第x-y章）→ 整体移除
+ *   - （第x章，备注）→ 移除章节号，保留（备注）
+ *   - （第x-y章，备注）→ 移除章节号，保留（备注）
+ */
+function stripChapterRef(text: string): string {
+  return text
+    // 有备注：去掉"第x章，"，保留（备注）
+    .replace(/（第[\d?]+-?[\d]*章[，,、]\s*/gu, '（')
+    // 无备注：去掉整个（第x章）
+    .replace(/（第[\d?]+-?[\d]*章）/gu, '')
+    // 清理空括号和多余分号
+    .replace(/（\s*）/gu, '')
+    .replace(/；{2,}/gu, '；')
+    .replace(/^；|；$/gu, '')
+    .trim();
+}
+
+function needsLlmPolish(tier?: string, mentionCount?: number, importanceScore?: number): boolean {
   if (!USE_LLM) return false;
-  if (!tier) return false;
-  return (TIER_ORDER[tier] ?? 99) <= (TIER_ORDER[LLM_MIN_TIER] ?? 99);
+  // tier-based: core/supporting always polished
+  if (tier && (TIER_ORDER[tier] ?? 99) <= (TIER_ORDER[LLM_MIN_TIER] ?? 99)) return true;
+  // mentionCount fallback: tier is often lost through the pipeline; high-mention characters are major
+  if ((mentionCount ?? 0) >= 20) return true;
+  if ((importanceScore ?? 0) >= 0.4) return true;
+  return false;
+}
+
+/**
+ * 判断是否因"未详述"字段而需要 LLM polish。
+ * 当模板生成的 prompt 含"未详述"且实体有 description 或 enhancedDescription 时，
+ * 触发 LLM polish 让其从已有描述中补写缺失的视觉字段。
+ */
+function needsPolishForUnset(prompt: string, hasDescription: boolean, hasEnhancedDescription: boolean): boolean {
+  if (!USE_LLM) return false;
+  if (!hasDescription && !hasEnhancedDescription) return false;
+  return /未详述/.test(prompt);
 }
 
 // ── Pure-visual composers (only visual information, no backstory / power level / social status) ──
@@ -317,7 +609,7 @@ function renderOwnerLine(owners: Owner[]): string {
 }
 
 function buildCharacterPrompt(pack: CharacterVisualDescriptionPack): GenerationPrompt {
-  return buildCharacterDesignSheet(pack);
+  return buildCharacterDesignSheetMultiStage(pack);
 }
 
 function buildLocationPrompt(pack: LocationVisualDescriptionPack): GenerationPrompt {
@@ -361,6 +653,7 @@ function buildLocationPrompt(pack: LocationVisualDescriptionPack): GenerationPro
     source: needsPolish ? 'llm-polished' : 'template-only',
     quality: needsPolish ? 'high' : 'medium',
     description: (pack as any).description || (pack as any).currentDescription || '',
+    enhancedDescription: pack.enhancedDescription || pack.finalDescription || '',
   } as GenerationPrompt;
 }
 
@@ -407,21 +700,48 @@ function buildItemPrompt(pack: ItemVisualDescriptionPack): GenerationPrompt {
     source: needsPolish ? 'llm-polished' : 'template-only',
     quality: needsPolish ? 'high' : 'medium',
     description: (pack as any).description || (pack as any).currentDescription || '',
+    enhancedDescription: pack.enhancedDescription || pack.finalDescription || '',
   } as GenerationPrompt;
 }
 
 // ── LLM polish ──
 
-const POLISH_CHARACTER_PROMPT = `你是角色设定图润色 agent。任务：将模板生成的四视图角色设定图优化为可直接用于 AI 生图的专业提示词。
+const POLISH_CHARACTER_PROMPT = `你是角色设定图润色 agent。任务：把模板生成的四视图角色设定图优化为**详细、可直接生图**的专业提示词，让每个角色特点鲜明、辨识度高。
 
-规则：
-- 保持”四视图角色设定图 —— 角色名”的结构格式不变
-- 保持”角色设定拆解”的逐项字段
-- 主要人物（tier=core/supporting）：补充未详述字段，根据已有设定做保守合理推断。优先从 description 提取年龄/身份/服装线索
-- 次要人物（tier=candidate/archived）：精简冗余描述，移除那些与主视觉无关的叙述。未详述的字段可保留”未详述”或删除整行
-- 四视图要求末尾加入：古风玄幻，精致细节，柔和光影，高质量CG
-- 同一人物在四个视图中服装、体型、发型、饰物保持一致
-- 不添加原文没有的角色特征
+核心目标：突出该角色区别于其他角色的独有视觉特征。
+
+【补写未详述字段 — 极重要】
+模板生成的 prompt 中常有"未详述"字段。输入数据里提供了两个字段供你补写：
+- enhancedDescription：视觉描写概括（已从原文提取的视觉信息，优先从这里提取身材/脸型/发型/眼睛/肤色/服装/气质等）
+- description：角色剧情描述（含身份、经历、关系等，可推断年龄/身份视觉线索）
+当某字段为"未详述"时：先从 enhancedDescription 提取对应的视觉信息补写；enhancedDescription 没有的，再从 description 合理推断后补写。只有两个来源都完全无依据时，才保留"未详述"或删去该行。
+
+【章节出处保留 — 极重要】
+templatePrompt 中每条视觉描写末尾的"（第x章）"是原文出处标注。你在润色时必须为每条视觉描写保留对应的"（第x章）"标注。格式：每条描写以"（第x章）"结尾，多条之间用"；"分隔。如果你从 enhancedDescription 或 description 补写了缺失字段，没有章节依据的不加章节标注。
+
+逐项要求（对主要人物 core/supporting，以及任何登场次数高的人物，必须全部充实到可生图程度）：
+
+★ 标志性特征：这是整张设定图最重要的一行。挑出 1-3 个**只有这个角色才有**的视觉锚点（如：手指上的黑色古戒、眸中的金色火焰、半透明的灵魂体、胸口的七星徽记、修长的长腿等）。如果模板已给出，确认它确实是最具辨识度的；如果模板是”无突出标志性特征”，从 description 和其他字段里找出真正独特的特征补上。
+
+- 服装/配色：必须具体到款式+颜色+材质+纹样+腰饰/靴子。如”萧家青色劲装，袖口绣暗纹，腰束玄色布带，脚踏黑色短靴”。不允许只写”青色衣衫”这类过于简略的描述。从 outfits/description 推断合理细节。
+
+- 面部/五官：按 脸型→眉眼→鼻→唇→肤色 顺序，每项都给具体描述。如”清秀瓜子脸，下颌略尖；漆黑深邃的眼眸，目光平静时内敛；高挺鼻梁；薄唇紧抿常带苦涩弧度；肤色偏白略显苍白”。
+
+- 发型：发色+长度+样式（束/散/髻/辫）。如”乌黑长发随意束在脑后，几缕碎发垂落额前”。
+
+- 体态/身形：身高感+体型+姿态。如”身形修长挺拔但略显单薄，少年身板尚未完全长成”。
+
+- 神情/气质：核心气质词。如”眼神透着与年龄不符的坚定与隐忍，落寞时与周围格格不入”。
+
+- 年龄/身份视觉线索：根据 description 和 enhancedDescription 推断具体年龄阶段（少年/青年/中年/老年）+ 身份视觉符号（族长/弟子/炼药师等）。如果是"未详述"或"不详"，必须从 enhancedDescription 优先提取，其次从 description 推断后填上。
+
+次要人物（candidate/archived，登场很少）：精简非视觉叙述，未详述字段优先从 enhancedDescription/description 补写，确实无视觉依据的可删整行，但标志性特征和服装/面部必须保留。
+
+格式约束：
+- 保持”四视图角色设定图 —— 角色名”和”角色设定拆解”结构
+- 末尾保留四视图要求 + “古风玄幻，精致细节，柔和光影，高质量CG”
+- 同一人物四视图（正面/侧面/背面/面部特写）服装、体型、发型、饰物必须一致
+- 不添加原文完全没有的角色特征（如不要凭空给角色加纹身、伤疤）
 
 只返回 JSON。`;
 
@@ -429,25 +749,37 @@ const POLISH_ITEM_LOCATION_PROMPT = `你是生图提示词润色 agent。任务�
 
 规则：
 - 保持"场景设定图/道具设定图 —— 名称"的结构格式不变
-- 保持"设定拆解"的逐项字段；未详述的字段可做保守视觉补全或删除整行
+- 保持"设定拆解"的逐项字段；未详述的字段优先从 enhancedDescription（视觉描写概括）提取对应信息补写，其次从 description 做保守视觉推断，确实无依据的可删除整行
 - 主要实体（core/supporting）：补全缺失字段的保守视觉推断，强化最具辨识度的视觉特征
 - 次要实体：精简冗余，移除与主视觉无关的叙述
 - 末尾"全景要求/展示要求/分镜要求"行保留构图、风格标签与九宫格分镜指令
 - 严格只保留视觉相关内容，不添加原文没有的设定
 - 道具的"归属者"行仅作设定参考，不要写进画面（除非该持有者本就要入画）
+- 【章节出处保留】templatePrompt 中每条视觉描写末尾的"（第x章）"是原文出处标注，润色时必须保留。没有章节依据的补写内容不加标注。
 
 只返回 JSON。`;
 
-// chatExtract 返回结构：每条实体对应一个 polishedPrompt。所有调用点都在 try/catch 内，
-// 解析失败会降级为跳过润色，因此宽松定义即可。
+// chatExtract 返回结构：每条实体对应一个 polishedPrompt。LLM 可能用不同字段名
+// (polishedPrompt / prompt / polished / output / content)，全部宽松接收。
+const polishEntitySchemaRaw = z.object({
+  name: z.string(),
+  polishedPrompt: z.string().optional(),
+  prompt: z.string().optional(),
+  polished: z.string().optional(),
+  output: z.string().optional(),
+  content: z.string().optional(),
+}).passthrough();
+
+function extractPolished(entry: any): string {
+  return (entry.polishedPrompt || entry.prompt || entry.polished || entry.output || entry.content || '').trim();
+}
+
 const polishSchema = z.object({
-  prompts: z.array(
-    z.object({
-      name: z.string(),
-      polishedPrompt: z.string(),
-    }),
-  ),
-});
+  prompts: z.array(polishEntitySchemaRaw).optional().default([]),
+  characters: z.array(polishEntitySchemaRaw).optional().default([]),
+  items: z.array(polishEntitySchemaRaw).optional().default([]),
+  locations: z.array(polishEntitySchemaRaw).optional().default([]),
+}).passthrough();
 
 async function polishWithLlm(prompts: GenerationPrompt[]): Promise<Map<string, string>> {
   const result = new Map<string, string>();
@@ -465,18 +797,34 @@ async function polishWithLlm(prompts: GenerationPrompt[]): Promise<Map<string, s
           name: p.entityName, entityType: p.entityType, tier: p.tier,
           templatePrompt: p.prompt,
           description: (p as any).description || '',
+          enhancedDescription: p.enhancedDescription || '',
         })),
       };
       const llmResult = await provider.chatExtract(
         POLISH_CHARACTER_PROMPT,
-        `请润色以下角色设定图：\n${JSON.stringify(payload, null, 2)}`,
+        `请润色以下角色设定图。每个实体的 templatePrompt 是模板生成的初版，你必须返回润色后的完整四视图文本。
+
+输出格式（严格遵守，不要回显输入字段）：
+{
+  "prompts": [
+    {"name": "萧炎", "polishedPrompt": "四视图角色设定图 —— 萧炎\\n---\\n角色设定拆解\\n★ 标志性特征：...\\n- 服装/配色：...\\n- 面部/五官：...\\n- 发型：...\\n- 体态/身形：...\\n- 神情/气质：...\\n- 年龄/身份视觉线索：...\\n---\\n四视图要求：...古风玄幻，精致细节，柔和光影，高质量CG。"}
+  ]
+}
+
+输入数据：
+${JSON.stringify(payload, null, 2)}`,
         polishSchema
       );
-      for (const entry of llmResult.prompts ?? []) {
-        if (entry.polishedPrompt) result.set(entry.name, entry.polishedPrompt);
+      const all = [...(llmResult.prompts ?? []), ...(llmResult.characters ?? [])];
+      let ok = 0;
+      for (const entry of all) {
+        const text = extractPolished(entry);
+        if (text && entry.name) { result.set(entry.name, text); ok++; }
       }
+      console.log(`[PromptGeneration] Character polish: ${ok}/${chars.length} succeeded`);
     } catch (error) {
-      console.warn(`[PromptGeneration] Character polish failed: ${error instanceof Error ? error.message : String(error)}`);
+      const msg = error instanceof Error ? `${error.message}\n${error.stack?.slice(0, 500) || ''}` : String(error);
+      console.warn(`[PromptGeneration] Character polish failed for ${chars.length} chars: ${msg}`);
     }
   }
 
@@ -487,16 +835,32 @@ async function polishWithLlm(prompts: GenerationPrompt[]): Promise<Map<string, s
         prompts: others.map(p => ({
           name: p.entityName, entityType: p.entityType, tier: p.tier,
           templatePrompt: p.prompt,
+          description: (p as any).description || '',
+          enhancedDescription: p.enhancedDescription || '',
         })),
       };
       const llmResult = await provider.chatExtract(
         POLISH_ITEM_LOCATION_PROMPT,
-        `请润色以下生图提示词：\n${JSON.stringify(payload, null, 2)}`,
+        `请润色以下生图提示词。每个实体的 templatePrompt 是模板生成的初版，你必须返回润色后的完整文本。
+
+输出格式（严格遵守，不要回显输入字段）：
+{
+  "prompts": [
+    {"name": "聚气散", "polishedPrompt": "道具设定图 —— 聚气散\\n---\\n...润色后的完整设定文本..."}
+  ]
+}
+
+输入数据：
+${JSON.stringify(payload, null, 2)}`,
         polishSchema
       );
-      for (const entry of llmResult.prompts ?? []) {
-        if (entry.polishedPrompt) result.set(entry.name, entry.polishedPrompt);
+      const all = [...(llmResult.prompts ?? []), ...(llmResult.items ?? []), ...(llmResult.locations ?? [])];
+      let ok = 0;
+      for (const entry of all) {
+        const text = extractPolished(entry);
+        if (text && entry.name) { result.set(entry.name, text); ok++; }
       }
+      console.log(`[PromptGeneration] Item/location polish: ${ok}/${others.length} succeeded`);
     } catch (error) {
       console.warn(`[PromptGeneration] Item/location polish failed: ${error instanceof Error ? error.message : String(error)}`);
     }
@@ -545,15 +909,50 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
     if (entity.name && Array.isArray((entity as any).owners)) ownerMap.set(entity.name, (entity as any).owners);
   }
 
-  let characterPrompts = characterPacks.map(p => buildCharacterPrompt({ ...p, tier: resolveTier(p.name), description: descMap.get(p.name) || '', outfits: outfitMap.get(p.name) || [] } as any));
+  // Build mentionCount / importanceScore maps so LLM polish can trigger for major characters
+  // even when tier is lost through the pipeline.
+  const mentionMap = new Map<string, number>();
+  const importanceMap = new Map<string, number>();
+  for (const entity of source.characters || []) {
+    if (entity.name) {
+      mentionMap.set(entity.name, (entity as any).mentionCount ?? 0);
+      importanceMap.set(entity.name, (entity as any).importanceScore ?? 0);
+    }
+  }
+
+  let characterPrompts = characterPacks.map(p => buildCharacterPrompt({
+    ...p,
+    tier: resolveTier(p.name),
+    description: descMap.get(p.name) || '',
+    outfits: outfitMap.get(p.name) || [],
+    mentionCount: mentionMap.get(p.name) ?? 0,
+    importanceScore: importanceMap.get(p.name) ?? 0,
+  } as any));
   let locationPrompts = locationPacks.map(p => buildLocationPrompt({ ...p, tier: resolveTier(p.name) } as any));
   let itemPrompts = itemPacks.map(p => buildItemPrompt({ ...p, tier: resolveTier(p.name), owners: ownerMap.get(p.name) || [] } as any));
 
   // LLM polish
+  const charMentionMap = new Map<string, number>();
+  const charImportanceMap = new Map<string, number>();
+  for (const entity of source.characters || []) {
+    if (entity.name) {
+      charMentionMap.set(entity.name, (entity as any).mentionCount ?? 0);
+      charImportanceMap.set(entity.name, (entity as any).importanceScore ?? 0);
+    }
+  }
   const llmTargets = [
-    ...characterPrompts.filter((p) => needsLlmPolish(p.tier)),
-    ...locationPrompts.filter((p) => needsLlmPolish(p.tier)),
-    ...itemPrompts.filter((p) => needsLlmPolish(p.tier)),
+    ...characterPrompts.filter((p) =>
+      needsLlmPolish(p.tier, charMentionMap.get(p.entityName), charImportanceMap.get(p.entityName))
+      || needsPolishForUnset(p.prompt, Boolean(descMap.get(p.entityName)), Boolean(p.enhancedDescription))
+    ),
+    ...locationPrompts.filter((p) =>
+      needsLlmPolish(p.tier)
+      || needsPolishForUnset(p.prompt, Boolean(descMap.get(p.entityName)), Boolean(p.enhancedDescription))
+    ),
+    ...itemPrompts.filter((p) =>
+      needsLlmPolish(p.tier)
+      || needsPolishForUnset(p.prompt, Boolean(descMap.get(p.entityName)), Boolean(p.enhancedDescription))
+    ),
   ];
 
   let llmPolished = 0;
@@ -585,6 +984,11 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
         if (newPrompt) {
           p.prompt = newPrompt;
           p.source = 'llm-polished';
+          // 回写主 variant，保持顶层 prompt 与主阶段 variant 一致
+          if (Array.isArray(p.variants)) {
+            const pv = p.variants.find((v) => v.isPrimary);
+            if (pv) { pv.prompt = newPrompt; pv.source = 'llm-polished'; }
+          }
           llmPolished++;
         } else {
           p.source = 'llm-fallback';
@@ -602,6 +1006,18 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
   console.log(
     `[PromptGeneration] Generated ${characterPrompts.length + locationPrompts.length + itemPrompts.length} prompts (llm-polished=${llmPolished}, template-only=${templateOnly}, llm-fallback=${llmFallback})`
   );
+
+  // 最终剥离：章节标注（第x章）是溯源元数据，只在中间链路中传递，
+  // 不应进入生图 prompt（会浪费 token、引入非视觉噪声）。
+  // 必须在 LLM 润色之后执行——LLM 需要章节上下文才能保留出处，但最终 prompt 必须干净。
+  for (const p of characterPrompts) {
+    p.prompt = stripChapterRef(p.prompt);
+    if (Array.isArray(p.variants)) {
+      for (const v of p.variants) v.prompt = stripChapterRef(v.prompt);
+    }
+  }
+  for (const p of locationPrompts) p.prompt = stripChapterRef(p.prompt);
+  for (const p of itemPrompts) p.prompt = stripChapterRef(p.prompt);
 
   return {
     ...source,

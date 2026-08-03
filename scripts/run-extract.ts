@@ -10,7 +10,9 @@ import { z } from 'zod';
 import { CHARACTER_EXTRACTION_PROMPT, CHARACTER_BATCH_PROMPT } from '@novel-agent/prompts';
 import {
   chooseCanonicalCharacterName,
+  implicitCharacterSignalAliases,
   isCollectiveCharacterAlias,
+  isGenericCharacterAlias,
   isSafeAliasMatch,
   isSafeSharedAliasMatch,
   sanitizeCharacterAliases,
@@ -45,6 +47,23 @@ interface Chapter { index: number; title?: string; content: string }
 
 function norm(s: string) { return s.toLowerCase().trim(); }
 function unique<T>(v: Array<T | null | undefined>): T[] { return [...new Set(v.filter((x): x is T => x != null))]; }
+function uniqueImplicitAliasesByCharacter<T extends { name: string }>(characters: T[]): Map<string, string[]> {
+  const rawAliases = new Map<string, string[]>();
+  const aliasCounts = new Map<string, number>();
+
+  for (const character of characters) {
+    const aliases = unique(implicitCharacterSignalAliases(character.name));
+    rawAliases.set(character.name, aliases);
+    for (const alias of aliases) aliasCounts.set(alias, (aliasCounts.get(alias) ?? 0) + 1);
+  }
+
+  return new Map(
+    [...rawAliases].map(([name, aliases]) => [
+      name,
+      aliases.filter((alias) => aliasCounts.get(alias) === 1),
+    ])
+  );
+}
 function mergeDescriptions(...values: Array<string | null | undefined>): string | undefined {
   const descriptions: string[] = [];
   for (const value of values) {
@@ -157,7 +176,8 @@ async function main() {
   const knownAliases = Object.fromEntries(allCh.map(c => [c.name, c.aliases ?? []]));
   for (const c of allCh) {
     if (isCollectiveCharacterAlias(c.name)) continue;
-    const canon = chooseCanonicalCharacterName(c.name, c.aliases ?? [], { sourceText });
+    const canon = chooseCanonicalCharacterName(c.name, c.aliases ?? [], { sourceText, knownCharacterNames: knownNames });
+    if (isCollectiveCharacterAlias(canon) || isGenericCharacterAlias(canon)) continue;
     const pool = canon === c.name ? (c.aliases ?? []) : [...(c.aliases ?? []), c.name];
     const clean = sanitizeCharacterAliases(canon, pool, { sourceText, knownCharacterNames: knownNames, knownAliasesByCharacter: knownAliases });
     const cand: Ch = { name: canon, aliases: clean, description: c.description || '', confidence: c.confidence ?? 0,
@@ -172,9 +192,10 @@ async function main() {
   const dLo = dedupArr(allLo);
 
   // Count mentions
+  const implicitAliasesByCharacter = uniqueImplicitAliasesByCharacter(dCh);
   for (const ch of chapters) {
     for (const c of dCh) {
-      for (const n of [c.name, ...(c.aliases || [])]) {
+      for (const n of [c.name, ...(c.aliases || []), ...(implicitAliasesByCharacter.get(c.name) ?? [])]) {
         const rx = new RegExp(n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
         const m = ch.content.match(rx);
         if (m) c.mentionCount = (c.mentionCount || 0) + m.length;

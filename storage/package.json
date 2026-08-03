@@ -9,12 +9,17 @@
   },
   "scripts": {
     "db:generate": "prisma generate",
-    "db:push": "prisma db push",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:migrate:deploy": "prisma migrate deploy",
+    "db:migrate:status": "prisma migrate status",
     "db:studio": "prisma studio",
     "db:migrate-data": "tsx scripts/migrate-data.ts",
     "db:rollback": "tsx scripts/rollback.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1090.0",
+    "@aws-sdk/s3-request-presigner": "^3.1090.0",
+    "@novel-agent/core": "workspace:*",
     "@prisma/client": "^5.10.0"
   },
   "devDependencies": {

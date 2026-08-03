@@ -11,9 +11,20 @@
 
 const NAME_PREFIXES = ['老', '小', '阿'];
 
-// Longest-first ordering is applied at use, so multi-char suffixes (少爷/小姐/大人)
-// are tried before single-char ones.
-const NAME_SUFFIXES = ['少爷', '小姐', '大人', '哥', '弟', '姐', '妹', '叔', '姨', '公', '婆', '爷', '奶', '儿', '郎', '娘', '姑'];
+// Longest-first ordering is applied at use, so multi-char suffixes (少爷/小姐/大人/教授)
+// are tried before single-char ones。
+// 包含：家族称谓（少爷/小姐...）、亲属称谓（哥/弟/姐/妹...）、职业头衔（教授/老师/医生...）、
+// 尊称（先生/女士...），用于合并"古德里安"与"古德里安教授"这类同一人物的不同称呼。
+const NAME_SUFFIXES = [
+  // 家族/身份
+  '少爷', '小姐', '大人',
+  // 职业头衔
+  '教授', '老师', '医生', '校长', '院长', '局长', '处长', '队长', '将军', '司令', '总督', '长官',
+  // 尊称
+  '先生', '女士', '夫人', '太太',
+  // 亲属/社交称谓
+  '哥', '弟', '姐', '妹', '叔', '姨', '公', '婆', '爷', '奶', '儿', '郎', '娘', '姑',
+];
 
 export function normalizeChineseName(name: string): string {
   let n = name.trim().replace(/薰/g, '熏');

@@ -177,35 +177,47 @@ const VISUAL_DESCRIPTION_SYSTEM_PROMPT = `你是小说实体视觉描述补全 a
 - 所有 visualFields、visualDetails、enhancedDescription、llmSupplement 的内容必须使用简体中文；不要输出英文描述。
 - sourceFields/fields 和 evidenceSnippets 是原文证据，只能依据输入保留，不要改写或覆盖。
 - 【关键】visualFields 每个字段的内容必须是**纯视觉描述语言**：直接描述外貌/材质/颜色/尺寸/光线等可见属性。严禁写入动作叙述（"望着""走出""转过身"）、心理活动（"心想""感到"）、对话引用、世界观设定（"斗气大陆""玄阶功法"）、实力等级对比、战斗力强弱。如果 sourceFields 混入了叙述碎片，只提取其中纯视觉的部分，丢弃其余。
+- 【关键 — 必须改写而非照抄】sourceFields 中的内容是正则抽取的原文碎片，常混入大量非视觉内容。你不能直接复制 sourceFields 的原文到 visualFields，必须**用自己的语言重新概括**为简洁的视觉描述。例如 sourceFields.appearance = "辛酸一直冲到鼻孔里；路明非舔了舔嘴唇" → 这不是外貌描写，应输出空字符串或"原文未提供明确外貌描写"。例如 sourceFields.clothing = "他们会给路明非套上黑色的军服和长风衣；他穿着一身墨绿色的西装" → visualFields.clothing 应概括为"黑色军服配深色长风衣，或墨绿色西装"。
+- 【章节出处保留 — 极重要】sourceFields 中每条片段末尾的"（第x章）"是原文出处标注。你在改写 visualFields 时，必须为每条视觉描写保留或补上对应的"（第x章）"标注。格式：每条描写以"（第x章）"结尾，多条之间用"；"分隔。例如 sourceFields.clothing = "身穿青色劲装（第1章）；一身黑袍遮面（第5章）" → visualFields.clothing 应输出类似"青色劲装（第1章）；宽大黑袍遮掩面容（第5章）"。如果你从 enhancedDescription 或 description 补写了缺失字段，没有章节依据的不加章节标注。
+- 【禁例 — 以下内容必须丢弃，不得出现在任何 visualFields 或 enhancedDescription 中】
+  · 感官/情绪描写："辛酸冲到鼻孔里""心里一紧""鼻子一酸"
+  · 动作描写："舔了舔嘴唇""踢着石头远去""呆呆地看着背影"
+  · 叙述/剧情："路明非的语文老师拿他的作文作为反面例子""每次母亲写信来"
+  · 比喻/文学性表达："如刀割面""那个钢刀一样的女孩""一刀正中路明非的心头"
+  · 非本角色描写：sourceFields 中混入的其他角色的服饰/外貌
 - 只有原文缺失的字段，才可以根据简介、人物性格、身份、剧情气质做保守补写。
 - 不要把补写内容说成原文描写；补写只放在缺失字段里，并写入 llmSupplement。
 - 如果只是概括已有 sourceFields，没有补写缺失字段，llmSupplement 必须留空。
-- enhancedDescription 和 llmSupplement 都只写实体视觉描述本身，不要写”原文未描写””enhancedDescription 中”等过程说明。
+- enhancedDescription 和 llmSupplement 都只写实体视觉描述本身，不要写"原文未描写""enhancedDescription 中"等过程说明。
 - 如果原文没有具体外貌/材质/场景描写，允许做克制补全，但不要创造具体到不合理的颜色、服饰纹样、五官细节、材质品牌等硬设定。
 
-【人物 enhancedDescription 必须包含的叙事视觉描述】
-主角或核心人物必须写成一段流畅的自然中文叙事，将以下所有可视特征无缝织入：
-身材体型、脸型轮廓、整体气质、头发（颜色/长度/样式）、眼睛（颜色/形状/神态）、鼻子、嘴唇、皮肤（肤色/质感）、装束穿着、标志性道具、能力视觉特效（如有）。
-——写法示例：”少年身材修长挺拔，一张清秀的瓜子脸上嵌着深邃如夜空的黑瞳，高挺的鼻梁下薄唇紧抿，透着与年龄不符的坚毅。乌黑长发随意束在脑后，几缕碎发垂落额前。身着青色劲装，袖口绣有暗纹，左手无名指上戴着一枚古朴的黑色戒指，戒面隐隐泛着幽光。”
+【人物 enhancedDescription — 概括性人物描写】
+enhancedDescription 是一段概括性的人物视觉描写，必须满足：
+1. 用流畅的自然中文写成一段话，读起来像角色设定卡上的外貌概括，而不是原文片段的拼接。
+2. 只写该角色**稳定的、可复现的**视觉特征：身材体型、脸型轮廓、整体气质、头发（颜色/长度/样式）、眼睛（颜色/形状/神态）、装束穿着、标志性道具。
+3. 不要写一次性动作、临时表情、剧情事件、心理感受。不要照抄原文原句。
+4. 如果原文信息不足，宁可简短也不要用非视觉内容凑字数。
+——正确示例："少年身材修长偏瘦，瓜子脸清秀，黑色短发，眼神中偶有精光闪过。常穿黑色军服配深色长风衣，或一身墨绿色西装。"
+——错误示例（禁止）："路明非的背影踢着石头自由自在地远去。辛酸一直冲到鼻孔里。路明非舔了舔嘴唇。"（这是动作和感官描写，不是外貌概括）
 次要人物可简略，但至少包含身材、脸型、气质、装束的关键信息。
 
-【道具 enhancedDescription 必须包含的叙事视觉描述】
-物品/道具必须写成一段流畅的自然中文叙事，织入：
+【道具 enhancedDescription — 概括性道具描写】
+物品/道具写成一段概括性描写，织入：
 材质质感、颜色与形状、尺寸大小、状态（新旧/完整/破损）、使用方式、视觉光效（如有）、归属者。
-——写法示例：”通体碧绿的丹药约龙眼大小，表面光滑温润，隐隐散发着一层淡绿色的光泽，异香从中弥漫而出，光是闻一闻便让人精神为之一振。丹药装在古色古香的玉匣之中，玉匣边缘镶有一圈金线。”
+——示例："通体碧绿的丹药约龙眼大小，表面光滑温润，隐隐散发淡绿色光泽，装在古色古香的玉匣中。"
 
-【地点 enhancedDescription 必须包含的叙事视觉描述】
-地点必须写成一段流畅的自然中文叙事，织入：
-整体环境、空间布局与尺度、氛围基调、光线特征、时间感、该地点发生的关键行动、标志性视觉锚点。
-——写法示例：”萧家大厅宽敞肃穆，青砖铺地，四壁悬挂家族旗帜与古字画。正上方设主座与三位长老席位，中央可容数十人聚集。厅中光线从雕花窗棂透入，在青砖上映出斑驳光影。角落处萧薰儿常捧书静坐，气氛平日庄重，退婚当日却剑拔弩张，少女冷语如惊雷般在大厅中回荡。”
+【地点 enhancedDescription — 概括性场景描写】
+地点写成一段概括性描写，织入：
+整体环境、空间布局与尺度、氛围基调、光线特征、时间感、标志性视觉锚点。
+——示例："萧家大厅宽敞肃穆，青砖铺地，四壁悬挂家族旗帜与古字画。正上方设主座与三位长老席位，光线从雕花窗棂透入，映出斑驳光影。"
 
 - 不要生成生图 prompt，不要出现镜头、画幅、风格、模型参数。
 
 只返回 JSON：
 {
-  “characters”: [{“name”: “entity name”, “visualFields”: {“field”: “value”}, “visualDetails”: {“bodyBuild”: “...”, “faceShape”: “...”, “temperament”: “...”, “hair”: “...”, “eyes”: “...”, “nose”: “...”, “lips”: “...”, “skin”: “...”, “makeupStyling”: “...”}, “enhancedDescription”: “...”, “llmSupplement”: “...”}],
-  “items”: [{“name”: “entity name”, “visualFields”: {“field”: “value”}, “visualDetails”: {“materialTexture”: “...”, “colorShape”: “...”, “condition”: “...”, “scale”: “...”, “effects”: “...”}, “enhancedDescription”: “...”, “llmSupplement”: “...”}],
-  “locations”: [{“name”: “entity name”, “visualFields”: {“field”: “value”}, “visualDetails”: {“environment”: “...”, “layout”: “...”, “atmosphere”: “...”, “lighting”: “...”, “keyVisualAnchors”: “...”}, “enhancedDescription”: “...”, “llmSupplement”: “...”}]
+  "characters": [{"name": "entity name", "visualFields": {"field": "value"}, "visualDetails": {"bodyBuild": "...", "faceShape": "...", "temperament": "...", "hair": "...", "eyes": "...", "nose": "...", "lips": "...", "skin": "...", "makeupStyling": "..."}, "enhancedDescription": "...", "llmSupplement": "..."}],
+  "items": [{"name": "entity name", "visualFields": {"field": "value"}, "visualDetails": {"materialTexture": "...", "colorShape": "...", "condition": "...", "scale": "...", "effects": "..."}, "enhancedDescription": "...", "llmSupplement": "..."}],
+  "locations": [{"name": "entity name", "visualFields": {"field": "value"}, "visualDetails": {"environment": "...", "layout": "...", "atmosphere": "...", "lighting": "...", "keyVisualAnchors": "..."}, "enhancedDescription": "...", "llmSupplement": "..."}]
 }`;
 
 interface CompletionInput<EntityType extends string, Field extends string> {
@@ -230,7 +242,26 @@ function unique(values: string[]): string[] {
 }
 
 function splitDescriptionParts(value: string | null | undefined): string[] {
-  return unique(cleanText(value).split(/[;；。\n]+/u));
+  return uniquePreservingChapterRef(cleanText(value).split(/[;；。\n]+/u));
+}
+
+/**
+ * 与 unique 相同，但去重时忽略末尾的（第x章）标注，
+ * 保证同一描述片段在不同章节出现时不会被误去重。
+ */
+function uniquePreservingChapterRef(values: string[]): string[] {
+  const seen = new Set<string>();
+  const result: string[] = [];
+  for (const raw of values) {
+    const value = raw.trim();
+    if (!value) continue;
+    // 去重 key 去掉章节标注，但保留原始文本（含章节标注）
+    const key = cleanText(value).replace(/（第\d+章）/gu, '').trim();
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    result.push(value);
+  }
+  return result;
 }
 
 function sanitizeSupplementPart(value: string): string {
@@ -266,6 +297,63 @@ function cleanVisualDetails(value: Record<string, string> | undefined): Record<s
 
 function shouldSummarizeSourceField(value: string): boolean {
   return value.length > SOURCE_FIELD_SUMMARY_CHARS || splitDescriptionParts(value).length > SOURCE_FIELD_SUMMARY_PARTS;
+}
+
+// 叙述性内容的关键词——出现这些说明 source field 是原文碎片而非纯视觉描述。
+// sourceFields 是正则从原文抽取的片段，常混入动作叙述、心理活动、因果连接等非视觉内容。
+// 视觉概括不会使用这些词，因此含任一关键词即判定为"非纯视觉"。
+const NARRATIVE_INDICATORS = [
+  // 动作叙述（角色在做某事，而非静态外貌）
+  '望着', '看着', '看见', '听见', '听到', '感觉', '发现', '察觉', '盯着',
+  '转过', '转身', '站起', '走出', '走了', '走来', '窜到', '逃命', '咬了',
+  '缓缓', '对着', '飘出', '飞奔', '跳跃', '叩', '敲', '推门', '拉门',
+  '活捉', '抓住', '拿走', '收好', '接过', '递给', '收起', '拿出', '掏出',
+  '抬了', '瞪住', '打量', '扫了',
+  // 对话/语气
+  '说道', '问道', '笑道', '喝道', '怒斥', '吼道', '喊道', '开口', '出声',
+  '冷笑', '低语', '大喝', '大笑', '轻笑', '森然', '说着',
+  // 叙事连接/时间
+  '只见', '忽然', '突然', '片刻', '当时', '当下', '随即', '顿时',
+  '紧接着', '下一秒', '随后', '然后', '接着', '此时', '此刻', '此际',
+  '之际', '之时',
+  // 心理/感官
+  '心想', '感到', '觉得', '暗想', '心头', '辛酸', '鼻酸', '心里',
+  '发凉', '不安', '寒心', '凄凉', '满意', '愤怒', '惊讶', '感激', '佩服',
+  // 因果/转折/条件（原文叙述标志，视觉概括不会用这些）
+  '因为', '所以', '但是', '而且', '虽然', '不过', '于是', '如果',
+  '因此', '由于', '尽管', '而是', '除了', '其中', '原本', '里面',
+  // 世界观/抽象设定
+  '斗气', '大陆', '帝国', '宗门', '功法', '斗技', '炼药', '拍卖',
+  '坊市', '实力', '凝聚', '境界',
+];
+
+/** 判断文本是否含叙述性内容（动作/心理/因果/世界观等非视觉描述） */
+function hasNarrativeContent(value: string): boolean {
+  if (!value) return false;
+  return NARRATIVE_INDICATORS.some((indicator) => value.includes(indicator));
+}
+
+/**
+ * 判断 source field 是否为纯视觉描述（不含叙述性内容）。
+ * sourceFields 是正则抽取的原文碎片，若含叙述词说明它不是纯视觉概括，
+ * 应交给 LLM 清洗而非直接保留。
+ */
+function isPureVisualSource(value: string): boolean {
+  if (!value || !value.trim()) return false;
+  const parts = splitDescriptionParts(value);
+  if (parts.length === 0) return false;
+  return !parts.some((part) => hasNarrativeContent(part));
+}
+
+/**
+ * 清洗 visualFields 值：过滤掉含叙述性内容的片段，只保留纯视觉描述。
+ * 用于 composeEnhancedDescription 的 fallback 分支，防止原文叙述碎片混入最终描写。
+ */
+function cleanVisualFieldValue(value: string | undefined): string {
+  if (!value) return '';
+  const parts = splitDescriptionParts(value);
+  const cleaned = parts.filter((part) => !hasNarrativeContent(part));
+  return cleaned.join('；');
 }
 
 function sampleDescriptionForPrompt(
@@ -470,14 +558,11 @@ function collectCompletionInputs<EntityType extends string, Field extends string
 }
 
 function needsLlmCompletion(input: AnyCompletionInput): boolean {
-  // source 字段过长需要概括时，无论主次实体都触发 LLM 做概括
   if (needsSourceSummary(input)) return true;
   // Major entities always get LLM completion — they need visualDetails for prompt generation
   if (input.priorityHint === 'major') return true;
-  // Secondary entities: 默认不补全缺失的视觉字段（次要实体不值得为它消耗 LLM 调用），
-  // 只有显式开启 VISUAL_DESCRIPTION_SUPPLEMENT_SECONDARY 时才补全。
-  // （旧逻辑 "return missingFields.length > 0" 会让任何缺字段的次要实体都触发 LLM，
-  // 与「默认不推断次要实体」的设计意图相悖。）
+  // Secondary entities get LLM only when explicitly enabled (VISUAL_DESCRIPTION_SUPPLEMENT_SECONDARY).
+  // 默认 source_only——不因 missingFields 就调 LLM，避免给每个次要实体都烧一次调用。
   return SUPPLEMENT_SECONDARY;
 }
 
@@ -614,12 +699,15 @@ function buildUserPrompt(inputs: AnyCompletionInput[]): string {
   return `请补全并清洗以下实体的视觉描述字段。
 
 【关键指令】
-1. 已有 sourceFields 中常混入动作叙述、对话引用、世界观设定等非视觉碎片。你必须为每个字段（无论是否 missing）输出清洗后的**纯视觉描述**写入 visualFields。过滤规则：丢弃"望着""走出""说道""斗气大陆""玄阶功法"等非视觉内容，只保留外貌/材质/色彩/形状/尺寸/光线/质感等可视属性。
-2. missingFields 按现有规则保守补写。
-3. sourceFieldOmittedParts 只表示还有未放入 prompt 的同类证据，不需要处理。
+1. 已有 sourceFields 中常混入动作叙述、对话引用、世界观设定、感官/情绪描写等非视觉碎片。你必须为每个字段（无论是否 missing）输出清洗后的**纯视觉描述**写入 visualFields。过滤规则：丢弃"望着""走出""说道""斗气大陆""玄阶功法""辛酸冲到鼻孔里""舔了舔嘴唇""踢着石头远去"等非视觉内容，只保留外貌/材质/色彩/形状/尺寸/光线/质感等可视属性。
+2. 【必须改写】不要直接复制 sourceFields 的原文到 visualFields。用你自己的语言将原文中的视觉信息概括为简洁描述。如果某个 sourceField 全部都是非视觉内容，visualFields 对应字段输出空字符串。
+3. missingFields 按现有规则保守补写。
+4. sourceFieldOmittedParts 只表示还有未放入 prompt 的同类证据，不需要处理。
 
 【强制要求 — enhancedDescription 质量】
-enhancedDescription 必须是一段能独立使用的流畅中文叙事，将所有 visualFields 和 visualDetails 的信息无缝织入一个自然段落...\n\n${JSON.stringify(payload, null, 2)}`;
+enhancedDescription 必须是一段概括性的人物/道具/场景视觉描写，用你自己的语言写成流畅的自然中文段落。它不是原文片段的拼接，而是像角色设定卡上的外貌概括。只写稳定的可复现视觉特征，丢弃一次性动作、临时表情、剧情事件、心理感受、文学性比喻。
+
+${JSON.stringify(payload, null, 2)}`;
 }
 
 function outputKey(kind: EntityKind, name: string): string {
@@ -657,14 +745,15 @@ function safeLlmFields<Field extends string>(
     const llmValue = cleanText(llm?.visualFields?.[field] || '');
     if (sourcePack.fields[field]) {
       const sourceValue = sourcePack.fields[field];
-      // source 有值时：只有当 source 字段过长需要概括、且 LLM 返回了概括值，
-      // 才采用 LLM 的概括（标 summarized）。否则保留 source 原值——
-      // LLM 不应覆盖原文已有的、清晰准确的短描述（如把"黑袍"改成"白袍"是错误）。
-      if (llmValue && shouldSummarizeSourceField(sourceValue)) {
+      // source field 含叙述性内容（动作/心理/因果/世界观等）时，即使短也需 LLM 清洗，
+      // 否则原文碎片会直接混入 visualFields 并拼进 enhancedDescription。
+      const sourceIsDirty = !isPureVisualSource(sourceValue);
+      if (llmValue && (shouldSummarizeSourceField(sourceValue) || sourceIsDirty)) {
+        // source 长/脏时用 LLM 清洗版（condense）；source 已短而干净则保留下面的 else 分支，
+        // 不让 LLM 改写——防止把原文已确认的字段替换成幻觉值（如 black robe→white robe）。
         visualFields[field] = llmValue;
         summarizedFields.push(field);
       } else if (shouldSummarizeSourceField(sourceValue)) {
-        // source 过长但 LLM 没返回概括：本地截断
         visualFields[field] = sampleDescriptionForPrompt(
           sourceValue,
           SOURCE_FIELD_SUMMARY_CHARS,
@@ -703,6 +792,9 @@ function hasProtectedFieldConflict<Field extends string>(
     const sourceValue = cleanText(sourcePack.fields[field]);
     const llmValue = cleanText(llm?.visualFields?.[field]);
     if (!sourceValue || !llmValue || sourceValue === llmValue) continue;
+    // source field 含叙述性内容时不保护——LLM 改写它是正确行为（清洗非视觉碎片），
+    // 不应因 LLM 偏离了叙述性原文就判定为冲突。
+    if (!isPureVisualSource(sourceValue)) continue;
     if (includesText(enhancedDescription, llmValue)) return true;
   }
 
@@ -742,12 +834,14 @@ function composeEnhancedDescription<Field extends string>(
 
   if (input.kind === 'characters') {
     const clauses: string[] = [];
-    const appearance = visualFields['appearance' as Field] as string | undefined;
-    const clothing = visualFields['clothing' as Field] as string | undefined;
-    const body = visualFields['body' as Field] as string | undefined;
-    const temperament = visualFields['temperament' as Field] as string | undefined;
-    const ability = visualFields['abilityVisuals' as Field] as string | undefined;
-    const items = visualFields['signatureItems' as Field] as string | undefined;
+    // 用 cleanVisualFieldValue 过滤掉 visualFields 中残留的叙述性原文碎片，
+    // 只保留纯视觉描述，防止 fallback 拼出"因为他看到巨汉…"这类原文叙述。
+    const appearance = cleanVisualFieldValue(visualFields['appearance' as Field] as string | undefined);
+    const clothing = cleanVisualFieldValue(visualFields['clothing' as Field] as string | undefined);
+    const body = cleanVisualFieldValue(visualFields['body' as Field] as string | undefined);
+    const temperament = cleanVisualFieldValue(visualFields['temperament' as Field] as string | undefined);
+    const ability = cleanVisualFieldValue(visualFields['abilityVisuals' as Field] as string | undefined);
+    const items = cleanVisualFieldValue(visualFields['signatureItems' as Field] as string | undefined);
     if (body) clauses.push(body);
     if (appearance) clauses.push(appearance);
     if (temperament) clauses.push(temperament);
@@ -761,12 +855,12 @@ function composeEnhancedDescription<Field extends string>(
 
   if (input.kind === 'items') {
     const clauses: string[] = [];
-    const material = visualFields['material' as Field] as string | undefined;
-    const colorShape = visualFields['colorShape' as Field] as string | undefined;
-    const condition = visualFields['condition' as Field] as string | undefined;
-    const usage = visualFields['usage' as Field] as string | undefined;
-    const effects = visualFields['visualEffects' as Field] as string | undefined;
-    const ownership = visualFields['ownership' as Field] as string | undefined;
+    const material = cleanVisualFieldValue(visualFields['material' as Field] as string | undefined);
+    const colorShape = cleanVisualFieldValue(visualFields['colorShape' as Field] as string | undefined);
+    const condition = cleanVisualFieldValue(visualFields['condition' as Field] as string | undefined);
+    const usage = cleanVisualFieldValue(visualFields['usage' as Field] as string | undefined);
+    const effects = cleanVisualFieldValue(visualFields['visualEffects' as Field] as string | undefined);
+    const ownership = cleanVisualFieldValue(visualFields['ownership' as Field] as string | undefined);
     if (material) clauses.push(material);
     if (colorShape) clauses.push(colorShape);
     if (condition) clauses.push(condition);
@@ -781,12 +875,12 @@ function composeEnhancedDescription<Field extends string>(
   // locations
   {
     const clauses: string[] = [];
-    const env = visualFields['environment' as Field] as string | undefined;
-    const layout = visualFields['layout' as Field] as string | undefined;
-    const atmosphere = visualFields['atmosphere' as Field] as string | undefined;
-    const lighting = visualFields['lighting' as Field] as string | undefined;
-    const time = visualFields['time' as Field] as string | undefined;
-    const actionCtx = visualFields['actionContext' as Field] as string | undefined;
+    const env = cleanVisualFieldValue(visualFields['environment' as Field] as string | undefined);
+    const layout = cleanVisualFieldValue(visualFields['layout' as Field] as string | undefined);
+    const atmosphere = cleanVisualFieldValue(visualFields['atmosphere' as Field] as string | undefined);
+    const lighting = cleanVisualFieldValue(visualFields['lighting' as Field] as string | undefined);
+    const time = cleanVisualFieldValue(visualFields['time' as Field] as string | undefined);
+    const actionCtx = cleanVisualFieldValue(visualFields['actionContext' as Field] as string | undefined);
     if (env) clauses.push(env);
     if (layout) clauses.push(layout);
     if (atmosphere) clauses.push(atmosphere);

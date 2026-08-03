@@ -1,7 +1,21 @@
 import { prisma } from './prisma.js';
 import type { CharacterReview } from '@novel-agent/core';
+import type { PrismaClient } from '@prisma/client';
 
-export const ReviewRepository = {
+export interface ReviewRepository {
+  create(data: {
+    characterId: string;
+    userId: string;
+    action: string;
+    previousValue?: string;
+    newValue?: string;
+  }): Promise<CharacterReview>;
+  findByCharacterId(characterId: string): Promise<CharacterReview[]>;
+  findOwnedByCharacterId(characterId: string, ownerId: string): Promise<CharacterReview[]>;
+}
+
+export function createReviewRepository(db: PrismaClient): ReviewRepository {
+  return {
   async create(data: {
     characterId: string;
     userId: string;
@@ -9,13 +23,27 @@ export const ReviewRepository = {
     previousValue?: string;
     newValue?: string;
   }): Promise<CharacterReview> {
-    return prisma.characterReview.create({ data }) as Promise<CharacterReview>;
+    return db.characterReview.create({ data }) as Promise<CharacterReview>;
   },
 
   async findByCharacterId(characterId: string): Promise<CharacterReview[]> {
-    return prisma.characterReview.findMany({
+    return db.characterReview.findMany({
       where: { characterId },
-      orderBy: { createdAt: 'desc' },
+      orderBy: [{ createdAt: 'desc' }, { id: 'asc' }],
     }) as Promise<CharacterReview[]>;
   },
-};
+
+  async findOwnedByCharacterId(characterId: string, ownerId: string): Promise<CharacterReview[]> {
+    return db.characterReview.findMany({
+      where: {
+        characterId,
+        userId: ownerId,
+        character: { book: { userId: ownerId } },
+      },
+      orderBy: [{ createdAt: 'desc' }, { id: 'asc' }],
+    }) as Promise<CharacterReview[]>;
+  },
+  };
+}
+
+export const ReviewRepository = createReviewRepository(prisma);

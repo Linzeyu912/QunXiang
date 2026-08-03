@@ -30,3 +30,33 @@ export function summarizeExtractionResult(result: unknown): ExtractionResultSumm
 /** 空结果（三类实体全无）时的失败原因，供 dispatcher 与测试共用。 */
 export const EMPTY_EXTRACTION_REASON =
   '未提取到任何角色/场景/道具：可能是 LLM 配置问题、输入过短或全部被当成幻觉过滤';
+
+interface FailedBatch {
+  batch?: number;
+  error?: string;
+}
+
+/**
+ * 从管道结果的 failedBatches 中提取首个批次错误（截断 200 字）。
+ * 空结果的根因几乎总是批次级 LLM 错误（404/401/超时），把它拼进失败文案
+ * 能让用户直接看到根因，而不是只看"可能是配置问题"的猜测。
+ */
+export function firstFailedBatchError(result: unknown): string | null {
+  const r = (result && typeof result === 'object' ? result : {}) as Record<string, unknown>;
+  if (!Array.isArray(r.failedBatches)) return null;
+  for (const entry of r.failedBatches as FailedBatch[]) {
+    if (entry && typeof entry.error === 'string' && entry.error.trim()) {
+      const trimmed = entry.error.trim();
+      return trimmed.length > 200 ? `${trimmed.slice(0, 200)}…` : trimmed;
+    }
+  }
+  return null;
+}
+
+/** 空结果失败文案：通用原因 + 首个批次根因（若有）。 */
+export function buildEmptyExtractionMessage(result: unknown): string {
+  const rootCause = firstFailedBatchError(result);
+  return rootCause
+    ? `${EMPTY_EXTRACTION_REASON}。首个批次错误：${rootCause}`
+    : EMPTY_EXTRACTION_REASON;
+}

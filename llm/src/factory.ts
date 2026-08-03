@@ -1,11 +1,18 @@
 import { z } from 'zod';
-import type { LLMProvider, ProviderConfig } from './index.js';
+import type { LLMProvider, ProviderConfig, ImageProvider } from './index.js';
 import { createCustomProvider } from './providers/custom.js';
 import { createMockProvider } from './providers/mock.js';
+import { createImageProvider } from './providers/image-custom.js';
 import { LLMError, ProviderNotConfiguredError } from './errors.js';
 import { maskApiKey } from './keyVault.js';
-import type { RuntimeLlmConfig } from './configStore.js';
-import { saveConfigToDisk, loadConfigFromDisk, normalizeApiKeys } from './configStore.js';
+import type { RuntimeLlmConfig, RuntimeImageConfig } from './configStore.js';
+import {
+  saveConfigToDisk,
+  loadConfigFromDisk,
+  normalizeApiKeys,
+  saveImageConfigToDisk,
+  loadImageConfigFromDisk,
+} from './configStore.js';
 
 /**
  * Provider configuration schema
@@ -305,6 +312,102 @@ export async function getDefaultProvider(): Promise<LLMProvider> {
 export async function isAnyProviderAvailable(): Promise<boolean> {
   try {
     return await createCustomProvider().isConfigured();
+  } catch {
+    return false;
+  }
+}
+
+// 图片生成 Provider 与文本 LLM 独立配置，因为两类接口的返回结构不同。
+let runtimeImageConfig: RuntimeImageConfig | undefined;
+
+export function setRuntimeImageConfig(config: Partial<RuntimeImageConfig>): void {
+  if (!runtimeImageConfig) {
+    runtimeImageConfig = { provider: 'custom' };
+  }
+  if (config.apiKey !== undefined) runtimeImageConfig.apiKey = config.apiKey || undefined;
+  if (config.baseUrl !== undefined) runtimeImageConfig.baseUrl = config.baseUrl;
+  if (config.model !== undefined) runtimeImageConfig.model = config.model;
+  if (config.size !== undefined) runtimeImageConfig.size = config.size || undefined;
+  if (config.characterRatio !== undefined) runtimeImageConfig.characterRatio = config.characterRatio;
+  if (config.itemRatio !== undefined) runtimeImageConfig.itemRatio = config.itemRatio;
+  if (config.locationRatio !== undefined) runtimeImageConfig.locationRatio = config.locationRatio;
+
+  try {
+    saveImageConfigToDisk(runtimeImageConfig);
+  } catch (error) {
+    console.warn('[图片配置] 保存失败：', error instanceof Error ? error.message : String(error));
+  }
+}
+
+export function getRuntimeImageConfig(): RuntimeImageConfig | undefined {
+  return runtimeImageConfig;
+}
+
+export function getMaskedImageConfig(): {
+  provider: string;
+  keyHint: string;
+  baseUrl: string;
+  model: string;
+  size: string;
+  characterRatio: string;
+  itemRatio: string;
+  locationRatio: string;
+} | undefined {
+  if (!runtimeImageConfig) return undefined;
+  return {
+    provider: runtimeImageConfig.provider,
+    keyHint: runtimeImageConfig.apiKey ? maskApiKey(runtimeImageConfig.apiKey) : '',
+    baseUrl: runtimeImageConfig.baseUrl || '',
+    model: runtimeImageConfig.model || '',
+    size: runtimeImageConfig.size || '',
+    characterRatio: runtimeImageConfig.characterRatio || '',
+    itemRatio: runtimeImageConfig.itemRatio || '',
+    locationRatio: runtimeImageConfig.locationRatio || '',
+  };
+}
+
+export function loadPersistedImageConfig(): void {
+  const persisted = loadImageConfigFromDisk();
+  if (persisted) runtimeImageConfig = persisted;
+}
+
+export function createImageProviderFromConfig(config: {
+  provider?: 'custom' | 'mock';
+  apiKey?: string;
+  baseUrl?: string;
+  model?: string;
+}): ImageProvider {
+  switch (config.provider) {
+    case 'mock':
+      throw new LLMError('暂未实现模拟图片生成服务，请使用自定义图片服务。', 'mock', 'UNKNOWN', false);
+    case 'custom':
+    default:
+      return createImageProvider({
+        apiKey: config.apiKey,
+        baseUrl: config.baseUrl,
+        model: config.model,
+      });
+  }
+}
+
+export function getDefaultImageProvider(): ImageProvider {
+  if (runtimeImageConfig?.apiKey) {
+    return createImageProvider({
+      apiKey: runtimeImageConfig.apiKey,
+      baseUrl: runtimeImageConfig.baseUrl,
+      model: runtimeImageConfig.model,
+      size: runtimeImageConfig.size,
+    });
+  }
+  const provider = (process.env.IMAGE_PROVIDER || 'custom') as 'custom' | 'mock';
+  return createImageProviderFromConfig({ provider });
+}
+
+export { createImageProvider } from './providers/image-custom.js';
+
+export async function isImageProviderAvailable(): Promise<boolean> {
+  try {
+    return await getDefaultImageProvider().isConfigured();
   } catch {
     return false;
   }

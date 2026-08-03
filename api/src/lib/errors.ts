@@ -5,3 +5,11 @@ export class ConflictError extends Error {
     this.name = 'ConflictError';
   }
 }
+
+/** HTTP 404 语义：资源不存在或不属于当前用户。 */
+export class NotFoundError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'NotFoundError';
+  }
+}

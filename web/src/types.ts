@@ -16,6 +16,38 @@ export interface Book {
   updatedAt?: string;
 }
 
+/** 完整数据包下载状态。 */
+export type DownloadState = 'not-prepared' | 'preparing' | 'ready' | 'needs-update' | 'failed';
+
+export interface BookDownloadState {
+  bookId: string;
+  state: DownloadState;
+  snapshotId?: string;
+  progress?: number;
+  snapshotVersion?: number;
+  readyAt?: string;
+  bytes?: number;
+  failureReason?: string;
+  message?: string;
+}
+
+/** 一套显著服饰/装扮；一个角色在不同场景/章节可有多套。 */
+export interface Outfit {
+  description: string;
+  scene?: string;
+  firstChapter?: number;
+  lastChapter?: number;
+}
+
+/** 道具持有者；道具可易主，故为复数。 */
+export interface Owner {
+  name: string;
+  canonicalName?: string;
+  firstChapter?: number;
+  lastChapter?: number;
+  note?: string;
+}
+
 interface EntityBase {
   id: string;
   bookId: string;
@@ -36,6 +68,8 @@ interface EntityBase {
 export interface Character extends EntityBase {
   dialogueCount: number;
   coCharacters: string[] | string;
+  /** 角色的多套服饰/装扮（与后端 core/types.ts Outfit 对齐） */
+  outfits?: Outfit[] | string;
 }
 
 export interface LocationEntity extends EntityBase {
@@ -56,6 +90,8 @@ export interface ItemEntity extends EntityBase {
   pillarCausal: number;
   pillarUniqueness: number;
   pillarTransition: number;
+  /** 道具的持有者列表（与后端 core/types.ts Owner 对齐） */
+  owners?: Owner[] | string;
 }
 
 export type AnyEntity = Character | LocationEntity | ItemEntity;
@@ -102,6 +138,16 @@ export interface CharacterReview {
 
 // —— 提取富产物（output/{run}/entities/ 下的三层文件，见 api/src/services/artifacts.service.ts）——
 
+/** 结构化证据片段（与后端 DescriptionEvidenceSnippet 对齐） */
+export interface DescriptionEvidenceSnippet {
+  chapterIndex: number;
+  chapterTitle?: string;
+  text: string;
+  matchedNames: string[];
+  otherMatchedNames?: string[];
+  fields: string[];
+}
+
 export interface FusedDescriptionEntry {
   entityType: string;
   name: string;
@@ -109,7 +155,7 @@ export interface FusedDescriptionEntry {
   sourceDescription?: string;
   fields?: Record<string, string>;
   missingFields?: string[];
-  evidenceSnippets?: string[];
+  evidenceSnippets?: DescriptionEvidenceSnippet[];
   sourceCoverage?: string;
   confidence?: number;
   needsReview?: boolean;
@@ -120,6 +166,27 @@ export interface VisualDescriptionEntry extends FusedDescriptionEntry {
   importanceScore?: number;
   visualFields?: Record<string, string>;
   visualDetails?: Record<string, string>;
+  /** LLM 生成的概括性视觉描写段落 */
+  enhancedDescription?: string;
+  /** 最终使用的视觉描写（= enhancedDescription 或其 fallback） */
+  finalDescription?: string;
+  llmSupplement?: string;
+  completionStatus?: string;
+  descriptionSource?: string;
+}
+
+/** 单个年龄阶段的提示词版本（人物描写可溯源） */
+export interface PromptVariantEntry {
+  stage: string;
+  label: string;
+  prompt: string;
+  outfit?: string;
+  /** 溯源：该版本基于的原文章节区间 */
+  sourceChapters?: string;
+  /** 其余服饰套系（含章节区间） */
+  outfitList?: string[];
+  source?: string;
+  isPrimary?: boolean;
 }
 
 export interface GenerationPromptEntry {
@@ -127,6 +194,9 @@ export interface GenerationPromptEntry {
   entityType: string;
   tier?: string;
   prompt: string;
+  /** 角色的多个年龄阶段版本（仅 character；顶层 prompt = 主阶段） */
+  variants?: PromptVariantEntry[];
+  detectedStages?: string[];
   styleTags?: string[];
   source?: string;
   quality?: string;
@@ -266,6 +336,31 @@ export interface ConcurrencyStatus {
   recommended: number;
 }
 
+// —— 实体图片生成 ——
+
+/** 单张实体图片元数据（画廊，DB 持久化）。 */
+export interface EntityImageMeta {
+  id: string;
+  entityType: EntityType;
+  entityName: string;
+  mime: string;
+  ext: string;
+  bytes: number;
+  aspectRatio: string | null;
+  source: 'generated' | 'uploaded';
+  stage: string | null;
+  isPrimary: boolean;
+  createdAt: string;
+}
+
+/** @deprecated 旧名兼容，等同 EntityImageMeta。 */
+export type EntityImageResult = EntityImageMeta;
+
+export interface ImageGenerationError {
+  error: string;
+  code: string;
+}
+
 export interface LlmStatus {
   provider: string;
   configured: boolean;
@@ -280,4 +375,77 @@ export interface LlmStatus {
   concurrency?: ConcurrencyStatus;
   timestamp: string;
   error?: string;
+  /** 保存配置后自动连接测试失败的提示（仅 PATCH /llm/config 响应可能携带） */
+  warning?: string;
+}
+
+export interface ImageStatus {
+  provider: string;
+  configured: boolean;
+  keyHint: string;
+  baseUrl: string;
+  model: string;
+  size: string;
+  characterRatio: string;
+  itemRatio: string;
+  locationRatio: string;
+  timestamp: string;
+  error?: string;
+}
+
+// —— 公共素材库 ——
+
+/** 公共素材图片信息（含签名 URL） */
+export interface PublicAssetImage {
+  id: string;
+  objectKey: string;
+  mime: string;
+  bytes: number;
+  aspectRatio: string | null;
+  stage: string | null;
+  isPrimary: boolean;
+  url: string;
+}
+
+/** 公共素材列表项（列表页用，不含 payload 全文） */
+export interface PublicAssetListItem {
+  id: string;
+  publisherId: string;
+  publisherName: string;
+  kind: EntityType;
+  name: string;
+  summary: string | null;
+  tags: string[];
+  takenCount: number;
+  createdAt: string;
+  primaryImageUrl: string | null;
+  status?: string;
+}
+
+/** 公共素材详情 */
+export interface PublicAssetDetail {
+  id: string;
+  publisherId: string;
+  publisherName: string;
+  kind: EntityType;
+  name: string;
+  summary: string | null;
+  tags: string[];
+  payload: {
+    name?: string;
+    aliases?: string[];
+    description?: string | null;
+    visualDetails?: Record<string, string> | null;
+    enhancedDescription?: string | null;
+    promptVariants?: Array<{
+      stage?: string;
+      label?: string;
+      prompt?: string;
+      isPrimary?: boolean;
+    }>;
+    sourceBookTitle?: string;
+  };
+  takenCount: number;
+  createdAt: string;
+  images: PublicAssetImage[];
 }

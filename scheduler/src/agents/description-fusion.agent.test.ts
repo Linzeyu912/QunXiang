@@ -243,4 +243,47 @@ describe('executeDescriptionFusion', () => {
     expect(result.locations.find((location) => location.name === '太南谷')?.aliases).toEqual(['太南会']);
     expect(chatExtract).not.toHaveBeenCalled();
   });
+
+  it('removes noisy sentence-fragment aliases from locations and items', async () => {
+    const { executeDescriptionFusion } = await import('./description-fusion.agent.js');
+
+    const base = {
+      confidence: 0.9,
+      status: 'PENDING' as const,
+      chapterAppearances: [1],
+      importanceScore: 0.6,
+      tier: 'supporting' as const,
+      storyScore: 1,
+      productionScore: 0.5,
+      pillarCausal: 0.4,
+      pillarUniqueness: 0.4,
+      pillarTransition: 0.3,
+      mentionCount: 2,
+    };
+
+    const result = await executeDescriptionFusion({
+      characters: [],
+      items: [
+        {
+          ...base,
+          name: '纯黑色N96手机',
+          aliases: ['N96', '叔叔左手手机右手打火机', '手机右手打火机', '纯黑色N96手机'],
+          description: '路明非收到的手机。',
+          owners: [],
+        },
+      ],
+      locations: [
+        {
+          ...base,
+          name: '放映厅',
+          aliases: ['这里', '放映厅大门走去', '放映厅'],
+          description: '文学社聚会所在场地。',
+        },
+      ],
+    });
+
+    expect(result.items[0].aliases).toEqual(['N96']);
+    expect(result.locations[0].aliases).toEqual([]);
+    expect(chatExtract).not.toHaveBeenCalled();
+  });
 });

@@ -3,11 +3,11 @@ import { chaptersFor, findEvidence, qualityFor, sourceRangeHint, splitSentences,
 
 const MAX_APPEARANCE_EVIDENCE = 8;
 
-const APPEARANCE_HINT_RE = /(身穿|穿着|一身|衣衫|衣袍|衣裙|衣服|长袍|黑袍|白衣|青衫|黄袍|裙|袍|容貌|面容|脸庞|脸颊|脸色|俏脸|小脸|眉眼|眉毛|眸子|眼眸|美眸|瞳孔|樱唇|唇|鼻|肤|皮肤|长发|黑发|白发|发丝|发髻|束发|肩背|手指|身材|身形|体型|单薄|高大|瘦削|清秀|俊美|苍老|稚嫩|神色|神情|气质|面孔|戒指|玉佩|簪|佩剑)/u;
+const APPEARANCE_HINT_RE = /(身穿|穿着|一身|衣衫|衣袍|衣裙|衣服|长袍|黑袍|白衣|青衫|黄袍|裙|袍|容貌|面容|脸庞|脸颊|脸色|俏脸|小脸|眉眼|眉毛|眸子|眼眸|美眸|瞳孔|樱唇|红唇|薄唇|厚唇|唇形|唇角|唇边|鼻梁|高鼻|鼻挺|鼻翼|鼻尖|挺鼻|肌肤|皮肤|长发|黑发|白发|发丝|发髻|束发|肩背|手指|身材|身形|体型|单薄|高大|瘦削|清秀|俊美|苍老|稚嫩|神色|神情|气质|面孔|戒指|玉佩|簪|佩剑)/u;
 
 const VISUAL_DIMENSIONS: Array<{ label: string; re: RegExp }> = [
   { label: '服装/配色', re: /(身穿|穿着|一身|衣衫|衣袍|衣裙|衣服|长袍|黑袍|白衣|青衫|黄袍|裙|袍|黑色|白色|月白|青色|黄色|紫色|红色)/u },
-  { label: '面部/五官', re: /(容貌|面容|脸庞|脸颊|脸色|俏脸|小脸|眉眼|眉毛|眸子|眼眸|美眸|瞳孔|唇|鼻|肤|皮肤|清秀|俊美|苍老|面孔)/u },
+  { label: '面部/五官', re: /(容貌|面容|脸庞|脸颊|脸色|俏脸|小脸|眉眼|眉毛|眸子|眼眸|美眸|瞳孔|樱唇|红唇|薄唇|厚唇|唇形|唇角|唇边|鼻梁|高鼻|鼻挺|鼻翼|鼻尖|挺鼻|肌肤|皮肤|清秀|俊美|苍老|面孔)/u },
   { label: '发型', re: /(长发|黑发|白发|发丝|发髻|束发|垂肩)/u },
   { label: '体态/身形', re: /(肩背|身材|身形|体型|单薄|高大|瘦削)/u },
   { label: '神情/气质', re: /(神色|神情|气质|平静|沉默|倔强|怒意|落寞|狰狞|清冷|冷漠|笑容)/u },
@@ -16,6 +16,20 @@ const VISUAL_DIMENSIONS: Array<{ label: string; re: RegExp }> = [
 ];
 
 const SUBJECTLESS_APPEARANCE_START_RE = /^(?:[\u4e00-\u9fff]{0,4}的?)?(脸庞|脸颊|脸色|面容|容貌|眉眼|眉毛|眸子|眼眸|美眸|瞳孔|小脸|俏脸|手指|戒指|衣衫|衣袍|衣裙|衣服|长袍|长发|黑发|白发|发丝|发髻|肩背|身材|身形|体型|神色|神情)/u;
+
+/**
+ * 判断分句是否为感官/动作/心理/文学性描写而非视觉外貌描写。
+ * 与 entity-descriptions.ts 中的 isNonVisualClause 保持一致。
+ */
+const NON_VISUAL_CLAUSE_RE = /(?:辛酸|酸楚|苦涩|心酸|心悸|心痛|悲痛|悲凉|凄凉|凄然).{0,6}(?:冲|涌|漫|钻|袭|堵|哽)/u;
+const NON_VISUAL_ACTION_RE = /(?:舔|咬|嚼|吞|咽|吸|呼|抹|擦|揉|捏|摸)了?(?:舔|咬|嚼|吞|咽|吸|呼|抹|擦|揉|捏|摸)?(?:嘴唇|嘴|舌|唇|脸|眼|鼻)/u;
+const NON_VISUAL_SENSORY_RE = /(?:冲到|涌上|涌起|涌进|钻进|袭来|漫上|堵住|哽住).{0,4}(?:鼻孔|鼻|喉|喉咙|心头|胸口|心|胸)/u;
+
+function isNonVisualClause(clause: string): boolean {
+  return NON_VISUAL_CLAUSE_RE.test(clause)
+    || NON_VISUAL_ACTION_RE.test(clause)
+    || NON_VISUAL_SENSORY_RE.test(clause);
+}
 
 function splitClauses(sentence: string): string[] {
   return sentence
@@ -72,6 +86,7 @@ function appearanceClausesFor(sentence: string, name: string, assumeDirectSubjec
       hasAppearance
       && ((mentionsName && !isIndirectMention(clause, name)) || subjectlessAllowed)
       && !isLikelyOtherSubjectClause(clause, name, assumeDirectSubject)
+      && !isNonVisualClause(clause)
     ) {
       evidence.push(clause);
     }

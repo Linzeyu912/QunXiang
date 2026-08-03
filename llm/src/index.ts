@@ -53,8 +53,33 @@ export interface ExtractionResult<T> {
   };
 }
 
-export { createProvider, getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig } from './factory.js';
+/**
+ * Image Provider interface - text-to-image generation.
+ * Separate from LLMProvider because the API shape differs (binary/url vs JSON).
+ * Pluggable so models can be swapped (reve → DALL-E → SD ...) via env config.
+ */
+export interface ImageProvider {
+  /** Provider name (e.g., 'custom' or 'mock') */
+  name: string;
+
+  /** Check if provider is configured and available */
+  isConfigured(): boolean | Promise<boolean>;
+
+  /**
+   * Generate an image from a text prompt.
+   * @returns the image buffer + mime type
+   */
+  generateImage(prompt: string, opts?: {
+    aspectRatio?: string;   // "16:9" | "3:4" | "1:1" ... (provider-dependent)
+    seed?: number;
+  }): Promise<{ buffer: Buffer; mime: string }>;
+}
+
+export { createProvider, getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig, getDefaultImageProvider, createImageProvider, isImageProviderAvailable, setRuntimeImageConfig, getRuntimeImageConfig, getMaskedImageConfig, loadPersistedImageConfig } from './factory.js';
+export type { RuntimeImageConfig } from './configStore.js';
 export { LLMError, ProviderNotConfiguredError } from './errors.js';
 export { maskApiKey } from './keyVault.js';
 export { normalizeApiKeys } from './configStore.js';
 export type { RuntimeLlmConfig } from './configStore.js';
+export { PROVIDER_PRESETS, IMAGE_PROVIDER_PRESETS } from './providers/presets.js';
+export type { ProviderPreset, ProviderModel } from './providers/presets.js';

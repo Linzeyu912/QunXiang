@@ -8,6 +8,8 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
+    "socks": "^2.8.9",
+    "undici": "^6.27.0",
     "zod": "^3.22.0"
   },
   "devDependencies": {

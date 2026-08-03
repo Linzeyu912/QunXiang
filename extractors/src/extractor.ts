@@ -10,7 +10,9 @@ import {
 import { getDefaultProvider } from '@novel-agent/llm';
 import {
   chooseCanonicalCharacterName,
+  implicitCharacterSignalAliases,
   isCollectiveCharacterAlias,
+  isGenericCharacterAlias,
   isSafeAliasMatch,
   isSafeSharedAliasMatch,
   sanitizeCharacterAliases,
@@ -71,7 +73,7 @@ const BATCH_SIZE = envNumber('EXTRACTOR_BATCH_SIZE', 20);
 const MAX_RETRIES = envNumber('EXTRACTOR_MAX_RETRIES', 3);
 
 // Max concurrent LLM calls (avoids overwhelming the API)
-const MAX_CONCURRENT_BATCHES = envNumber('EXTRACTOR_MAX_CONCURRENT_BATCHES', 2);
+const MAX_CONCURRENT_BATCHES = envNumber('EXTRACTOR_MAX_CONCURRENT_BATCHES', 4);
 
 // Outer guard so a provider request that never settles cannot stall the pipeline forever.
 const BATCH_TIMEOUT_MS = envNumber('EXTRACTOR_BATCH_TIMEOUT_MS', 180_000);
@@ -86,6 +88,28 @@ function norm(s: string): string {
 
 function unique<T>(values: Array<T | null | undefined>): T[] {
   return [...new Set(values.filter((v): v is T => v != null))];
+}
+
+function uniqueImplicitAliasesByCharacter(
+  characters: Array<{ name: string }>
+): Map<string, string[]> {
+  const rawAliases = new Map<string, string[]>();
+  const aliasCounts = new Map<string, number>();
+
+  for (const character of characters) {
+    const aliases = unique(implicitCharacterSignalAliases(character.name));
+    rawAliases.set(character.name, aliases);
+    for (const alias of aliases) {
+      aliasCounts.set(alias, (aliasCounts.get(alias) ?? 0) + 1);
+    }
+  }
+
+  return new Map(
+    [...rawAliases].map(([name, aliases]) => [
+      name,
+      aliases.filter((alias) => aliasCounts.get(alias) === 1),
+    ])
+  );
 }
 
 function minDefined(a: number | undefined, b: number | undefined): number | undefined {
@@ -396,17 +420,30 @@ export function createExtractor() {
       const failedChapters: Chapter[] = [];
       const errors: string[] = [];
 
-      for (const chapter of batch) {
-        const result = await processBatch(provider, bookTitle, [chapter], batchNum, total, false);
-        if (result.error) {
+      // 并发重试各章：原先 for-await 逐章串行，N 章要 N 轮 LLM 调用，失败兜底时极慢。
+      // 各章互相独立，allSettled 并发即可；结果按原顺序归并到 batch* 数组。
+      const settled = await Promise.allSettled(
+        batch.map((chapter) => processBatch(provider, bookTitle, [chapter], batchNum, total, false)),
+      );
+      settled.forEach((item, i) => {
+        const chapter = batch[i];
+        if (item.status === 'fulfilled') {
+          const result = item.value;
+          if (result.error) {
+            failedChapters.push(chapter);
+            errors.push(`chapter ${chapter.index}: ${result.error}`);
+          } else {
+            batchCharacters.push(...result.batchCharacters);
+            batchItems.push(...result.batchItems);
+            batchLocations.push(...result.batchLocations);
+          }
+        } else {
           failedChapters.push(chapter);
-          errors.push(`chapter ${chapter.index}: ${result.error}`);
-          continue;
+          errors.push(
+            `chapter ${chapter.index}: ${item.reason instanceof Error ? item.reason.message : String(item.reason)}`,
+          );
         }
-        batchCharacters.push(...result.batchCharacters);
-        batchItems.push(...result.batchItems);
-        batchLocations.push(...result.batchLocations);
-      }
+      });
 
       const failedBatches = failedChapters.length > 0
         ? [{
@@ -440,7 +477,11 @@ export function createExtractor() {
     for (const c of allCharacters) {
       if (isCollectiveCharacterAlias(c.name)) continue;
 
-      const canonicalName = chooseCanonicalCharacterName(c.name, c.aliases ?? [], { sourceText });
+      const canonicalName = chooseCanonicalCharacterName(c.name, c.aliases ?? [], {
+        sourceText,
+        knownCharacterNames,
+      });
+      if (isCollectiveCharacterAlias(canonicalName) || isGenericCharacterAlias(canonicalName)) continue;
       const aliasPool = canonicalName === c.name
         ? c.aliases ?? []
         : [...(c.aliases ?? []), c.name];
@@ -478,7 +519,12 @@ export function createExtractor() {
     // Signals (mention/dialogue/co-occurrence) computed from consolidated names+aliases.
     // Sum across main name + ALL aliases so mentionCount reflects total presence
     // (e.g. 萧薰儿 + 萧熏儿 + 薰儿 + 熏儿).
-    const allNames = characters.flatMap((c) => [c.name, ...(c.aliases || [])]);
+    const implicitAliasesByCharacter = uniqueImplicitAliasesByCharacter(characters);
+    const allNames = unique(characters.flatMap((c) => [
+      c.name,
+      ...(c.aliases || []),
+      ...(implicitAliasesByCharacter.get(c.name) ?? []),
+    ]));
     const signals = extractCharacterSignals(chapters, allNames);
     // Map any name/alias back to its canonical (main) name so coCharacters always
     // refer to entities by main name. Handles "薰儿" vs "熏儿" / "萧薰儿" vs "萧熏儿"
@@ -487,18 +533,23 @@ export function createExtractor() {
     for (const c of characters) {
       aliasToCanonical.set(c.name, c.name);
       for (const a of c.aliases || []) aliasToCanonical.set(a, c.name);
+      for (const a of implicitAliasesByCharacter.get(c.name) ?? []) aliasToCanonical.set(a, c.name);
     }
     const canonicalizeCo = (name: string): string => aliasToCanonical.get(name) || name;
     for (const c of characters) {
+      const signalAliases = unique([
+        ...(c.aliases || []),
+        ...(implicitAliasesByCharacter.get(c.name) ?? []),
+      ]);
       const mainSig = signals.get(c.name);
-      const aliasSigs = (c.aliases || [])
+      const aliasSigs = signalAliases
         .map((a) => signals.get(a))
         .filter((s): s is NonNullable<typeof s> => Boolean(s));
       c.mentionCount = (mainSig?.mentionCount ?? 0)
         + aliasSigs.reduce((sum, s) => sum + (s.mentionCount ?? 0), 0);
       c.dialogueCount = (mainSig?.dialogueCount ?? 0)
         + aliasSigs.reduce((sum, s) => sum + (s.dialogueCount ?? 0), 0);
-      const selfNames = new Set([c.name, ...(c.aliases || [])]);
+      const selfNames = new Set([c.name, ...signalAliases]);
       c.coCharacters = [...new Set([
         ...(mainSig?.coCharacters ?? []),
         ...aliasSigs.flatMap((s) => s.coCharacters ?? []),

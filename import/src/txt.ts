@@ -20,10 +20,11 @@ export function parseTxt(content: string, filename: string): ParseResult {
   const fullText = content.trim();
 
   // Guard against extremely large files
-  const MAX_PARSE_LENGTH = 5 * 1024 * 1024; // 5MB of text ≈ 1.5M Chinese characters
+  // 与上传限制（50MB）保持一致，允许大篇幅小说上传
+  const MAX_PARSE_LENGTH = Number(process.env.MAX_PARSE_LENGTH) || 30 * 1024 * 1024; // 30MB 字符 ≈ 1000 万汉字
   if (fullText.length > MAX_PARSE_LENGTH) {
     throw new Error(
-      `文件内容过长（${(fullText.length / 1024 / 1024).toFixed(1)}MB字符），超出解析上限 5MB 字符。` +
+      `文件内容过长（${(fullText.length / 1024 / 1024).toFixed(1)}MB字符），超出解析上限 ${(MAX_PARSE_LENGTH / 1024 / 1024).toFixed(0)}MB 字符。` +
       `建议：① 拆分为多卷上传 ② 或去除非正文内容（广告、作者的话等）后重试`
     );
   }

@@ -3,83 +3,89 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
 }
 
 model User {
-  id           String   @id @default(uuid())
-  email        String   @unique
-  name         String
-  passwordHash String?
-  createdAt    DateTime @default(now())
-
-  books    Book[]
-  reviews  CharacterReview[]
-  sessions ExtractionSession[]
+  id              String              @id @default(uuid()) @db.Uuid
+  email           String
+  emailNormalized String              @unique
+  name            String
+  passwordHash    String
+  status          String              @default("ACTIVE")
+  shareCodeHash   String              @unique
+  createdAt       DateTime            @default(now()) @db.Timestamptz(3)
+  books           Book[]
+  reviews         CharacterReview[]
+  sessions        ExtractionSession[]
+  refreshSessions RefreshSession[]
 }
 
 model Book {
-  id        String   @id @default(uuid())
-  title     String
-  filePath  String
-  fileSize  Int
-  mimeType  String   @default("text/plain")
-  status    String   @default("UPLOADED")
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  characters Character[]
-  locations  Location[]
-  items      Item[]
-  sessions   ExtractionSession[]
-  noiseOverrides NoiseOverride[]
+  id                String              @id @default(uuid()) @db.Uuid
+  title             String
+  filePath          String
+  fileSize          Int
+  mimeType          String              @default("text/plain")
+  status            String              @default("UPLOADED")
+  userId            String              @db.Uuid
+  user              User                @relation(fields: [userId], references: [id], onDelete: Restrict)
+  sourceObjectKey   String?
+  currentSnapshotId String?             @db.Uuid
+  createdAt         DateTime            @default(now()) @db.Timestamptz(3)
+  updatedAt         DateTime            @updatedAt @db.Timestamptz(3)
+  characters        Character[]
+  locations         Location[]
+  items             Item[]
+  sessions          ExtractionSession[]
+  tasks             Task[]
+  noiseOverrides    NoiseOverride[]
+  entityImages      EntityImage[]
+  snapshots         AssetSnapshot[]     @relation("BookSnapshots")
+  bookShares        BookShare[]         @relation("BookShares")
+  artifacts         BookArtifact[]      @relation("BookArtifacts")
+  sourceBookId      String?             @db.Uuid
+  sourceShareId     String?             @db.Uuid
 
   @@index([userId])
 }
 
 model Character {
-  id          String   @id @default(uuid())
-  bookId      String
-  book        Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
-  name        String
-  aliases     String   @default("[]")
-  description String?
-  confidence  Float    @default(0.5)
-  status      String   @default("PENDING")
-  chapterRef  String?
-
-  // 新增字段：用于重要性评估
-  firstChapter      Int?
-  lastChapter       Int?
-  chapterAppearances String @default("[]")
-  mentionCount      Int      @default(0)
-  dialogueCount     Int      @default(0)
-  coCharacters     String   @default("[]")
-  outfits           String   @default("[]")
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  reviews CharacterReview[]
+  id                 String            @id @default(uuid()) @db.Uuid
+  bookId             String            @db.Uuid
+  book               Book              @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  name               String
+  aliases            Json              @default("[]")
+  description        String?
+  confidence         Float             @default(0.5)
+  status             String            @default("PENDING")
+  chapterRef         String?
+  firstChapter       Int?
+  lastChapter        Int?
+  chapterAppearances Json              @default("[]")
+  mentionCount       Int               @default(0)
+  dialogueCount      Int               @default(0)
+  coCharacters       Json              @default("[]")
+  outfits            Json              @default("[]")
+  createdAt          DateTime          @default(now()) @db.Timestamptz(3)
+  updatedAt          DateTime          @updatedAt @db.Timestamptz(3)
+  reviews            CharacterReview[]
 
   @@index([bookId])
 }
 
 model Location {
-  id                 String   @id @default(uuid())
-  bookId             String
+  id                 String   @id @default(uuid()) @db.Uuid
+  bookId             String   @db.Uuid
   book               Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
   name               String
-  aliases            String   @default("[]")
+  aliases            Json     @default("[]")
   description        String?
   confidence         Float    @default(0.5)
   status             String   @default("PENDING")
   chapterRef         String?
-
-  // 重要性评估字段
   importanceScore    Float    @default(0)
   tier               String   @default("candidate")
   storyScore         Int      @default(0)
@@ -90,27 +96,24 @@ model Location {
   mentionCount       Int      @default(0)
   firstChapter       Int?
   lastChapter        Int?
-  chapterAppearances String   @default("[]")
-
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  chapterAppearances Json     @default("[]")
+  createdAt          DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt          DateTime @updatedAt @db.Timestamptz(3)
 
   @@index([bookId])
   @@index([tier])
 }
 
 model Item {
-  id                 String   @id @default(uuid())
-  bookId             String
+  id                 String   @id @default(uuid()) @db.Uuid
+  bookId             String   @db.Uuid
   book               Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
   name               String
-  aliases            String   @default("[]")
+  aliases            Json     @default("[]")
   description        String?
   confidence         Float    @default(0.5)
   status             String   @default("PENDING")
   chapterRef         String?
-
-  // 重要性评估字段
   importanceScore    Float    @default(0)
   tier               String   @default("candidate")
   storyScore         Int      @default(0)
@@ -121,68 +124,294 @@ model Item {
   mentionCount       Int      @default(0)
   firstChapter       Int?
   lastChapter        Int?
-  chapterAppearances String   @default("[]")
-  owners             String   @default("[]")
-
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  chapterAppearances Json     @default("[]")
+  owners             Json     @default("[]")
+  createdAt          DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt          DateTime @updatedAt @db.Timestamptz(3)
 
   @@index([bookId])
   @@index([tier])
 }
 
 model CharacterReview {
-  id            String   @id @default(uuid())
-  characterId    String
+  id            String    @id @default(uuid()) @db.Uuid
+  characterId   String    @db.Uuid
   character     Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
-  userId        String
-  user          User     @relation(fields: [userId], references: [id])
+  userId        String    @db.Uuid
+  user          User      @relation(fields: [userId], references: [id], onDelete: Restrict)
   action        String
   previousValue String?
   newValue      String?
-  createdAt     DateTime @default(now())
+  createdAt     DateTime  @default(now()) @db.Timestamptz(3)
 }
 
 model ExtractionSession {
-  id         String   @id @default(uuid())
-  bookId     String
-  book       Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
-  userId     String
-  user       User     @relation(fields: [userId], references: [id])
-  status     String   @default("RUNNING")
-  createdAt  DateTime @default(now())
-  completedAt DateTime?
+  id          String    @id @default(uuid()) @db.Uuid
+  bookId      String    @db.Uuid
+  book        Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  userId      String    @db.Uuid
+  user        User      @relation(fields: [userId], references: [id], onDelete: Restrict)
+  status      String    @default("RUNNING")
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  completedAt DateTime? @db.Timestamptz(3)
 }
 
 model Task {
-  id           String    @id @default(uuid())
-  bookId       String
+  id           String    @id @default(uuid()) @db.Uuid
+  bookId       String    @db.Uuid
+  book         Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
   agentType    String
-  payload      String    @default("{}")
+  payload      Json      @default("{}")
   status       String    @default("pending")
-  result       String?
+  result       Json?
   error        String?
   retryCount   Int       @default(0)
   deadLettered Boolean   @default(false)
-  failedAt     DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  failedAt     DateTime? @db.Timestamptz(3)
+  createdAt    DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime  @updatedAt @db.Timestamptz(3)
 
   @@index([status])
   @@index([agentType])
   @@index([bookId])
 }
 
-/// 文本清洗的人工覆盖：标记某行被「找回」（不删除）。lineNum 为规范化后文本 1-based 行号。
+/// 文本清洗的人工覆盖：标记某行被“找回”（不删除）。lineNum 为规范化后文本 1-based 行号。
 model NoiseOverride {
-  id        String   @id @default(uuid())
-  bookId    String
+  id        String   @id @default(uuid()) @db.Uuid
+  bookId    String   @db.Uuid
   book      Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
   lineNum   Int
   action    String   @default("keep")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
 
   @@unique([bookId, lineNum])
   @@index([bookId])
+}
+
+/// 实体图片元数据；文件名只使用 UUID，entityName 不进入文件路径。
+model EntityImage {
+  id          String   @id @default(uuid()) @db.Uuid
+  bookId      String   @db.Uuid
+  book        Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  entityType  String
+  entityName  String
+  filePath    String
+  objectKey   String?
+  mime        String
+  ext         String
+  bytes       Int
+  aspectRatio String?
+  source      String   @default("generated")
+  stage       String?
+  isPrimary   Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([bookId, entityType, entityName])
+  @@index([bookId])
+}
+
+model RefreshSession {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  familyId  String    @db.Uuid
+  tokenHash String    @unique
+  expiresAt DateTime  @db.Timestamptz(3)
+  rotatedAt DateTime? @db.Timestamptz(3)
+  revokedAt DateTime? @db.Timestamptz(3)
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+
+  @@index([userId])
+  @@index([familyId])
+}
+
+model BackgroundJob {
+  id             String    @id @default(uuid()) @db.Uuid
+  kind           String
+  uniqueKey      String    @unique
+  status         String    @default("pending")
+  payload        Json
+  result         Json?
+  error          String?
+  attempts       Int       @default(0)
+  leaseOwner     String?
+  leaseExpiresAt DateTime? @db.Timestamptz(3)
+  nextRunAt      DateTime  @default(now()) @db.Timestamptz(3)
+  createdAt      DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime  @updatedAt @db.Timestamptz(3)
+
+  @@index([status, nextRunAt])
+  @@index([leaseExpiresAt])
+}
+
+model AuditLog {
+  id         String   @id @default(uuid()) @db.Uuid
+  actorType  String
+  actorId    String?
+  action     String
+  targetType String
+  targetId   String
+  metadata   Json
+  createdAt  DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([targetType, targetId, createdAt])
+}
+
+/// 不可变对象：内容寻址（sha256+bytes 唯一），objectKey 私有且不可覆盖。跨书籍去重。
+model AssetObject {
+  id        String   @id @default(uuid()) @db.Uuid
+  sha256    String
+  bytes     BigInt
+  mime      String
+  objectKey String   @unique
+  etag      String?
+  versionId String?
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  snapshots SnapshotObject[]
+  publicAssetImages PublicAssetImage[]
+
+  @@unique([sha256, bytes])
+  @@index([sha256])
+}
+
+/// 资产快照：版本化、不可变（ready 后不可改）。新表统一用 ownerId 语义（ADR 0001）。
+model AssetSnapshot {
+  id               String    @id @default(uuid()) @db.Uuid
+  bookId           String    @db.Uuid
+  book             Book      @relation("BookSnapshots", fields: [bookId], references: [id], onDelete: Cascade)
+  ownerId          String    @db.Uuid
+  version          Int
+  contentRevision  String
+  status           String    @default("building")
+  manifestObjectId String?   @db.Uuid
+  archiveObjectId  String?   @db.Uuid
+  failureReason    String?
+  createdAt        DateTime  @default(now()) @db.Timestamptz(3)
+  readyAt          DateTime? @db.Timestamptz(3)
+  objects          SnapshotObject[]
+  shares           BookShare[]         @relation("SnapshotShares")
+
+  @@unique([bookId, version])
+  @@unique([bookId, contentRevision], map: "AssetSnapshot_book_content_revision")
+  @@index([bookId, status])
+  @@index([ownerId])
+}
+
+/// 快照与对象的引用关系；logicalPath 为 ZIP 内逻辑路径，唯一 per 快照。
+/// state 限定 present/empty/not-generated；对象是否可删除由引用关系事务计算。
+model SnapshotObject {
+  id          String @id @default(uuid()) @db.Uuid
+  snapshotId  String @db.Uuid
+  snapshot    AssetSnapshot @relation(fields: [snapshotId], references: [id], onDelete: Cascade)
+  objectId    String @db.Uuid
+  object      AssetObject @relation(fields: [objectId], references: [id], onDelete: Restrict)
+  logicalPath String
+  category    String
+  state       String
+  reason      String?
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+
+  @@unique([snapshotId, logicalPath])
+  @@index([objectId])
+  @@index([snapshotId])
+}
+
+/// 指定账号分享：active→copying→copied 或 active→revoked（条件更新，先成功者决定）。
+model BookShare {
+  id            String    @id @default(uuid()) @db.Uuid
+  bookId        String    @db.Uuid
+  book          Book      @relation("BookShares", fields: [bookId], references: [id], onDelete: Cascade)
+  snapshotId    String    @db.Uuid
+  snapshot      AssetSnapshot @relation("SnapshotShares", fields: [snapshotId], references: [id], onDelete: Restrict)
+  senderId      String    @db.Uuid
+  recipientId   String    @db.Uuid
+  status        String    @default("active") // active|copying|copied|revoked
+  failureReason String?
+  createdAt     DateTime  @default(now()) @db.Timestamptz(3)
+  claimedAt     DateTime? @db.Timestamptz(3)
+  copiedAt      DateTime? @db.Timestamptz(3)
+  revokedAt     DateTime? @db.Timestamptz(3)
+
+  @@index([recipientId, status])
+  @@index([bookId, status])
+  @@index([senderId])
+}
+
+/// 书籍文件型产物登记（提取/故事/导演/run-summary 等）：(bookId, logicalPath) 唯一，
+/// objectKey 指向对象存储；多设备经此表定位产物，不再扫描本机 output/。
+model BookArtifact {
+  id          String   @id @default(uuid()) @db.Uuid
+  bookId      String   @db.Uuid
+  book        Book     @relation("BookArtifacts", fields: [bookId], references: [id], onDelete: Cascade)
+  logicalPath String
+  category    String
+  objectKey   String
+  sha256      String
+  bytes       BigInt
+  mime        String
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime @updatedAt @db.Timestamptz(3)
+
+  @@unique([bookId, logicalPath])
+  @@index([bookId])
+}
+
+/// 公共素材：实体卡的不可变快照。payload 自包含，不依赖源书/源实体存活。
+/// publisherId/takerId/targetBookId 均为裸列（无 FK），避免删用户/删书级联影响公共池。
+model PublicAsset {
+  id           String   @id @default(uuid()) @db.Uuid
+  publisherId  String   @db.Uuid
+  kind         String   // character | location | item
+  name         String   // 实体名（列表页主标题，冗余自 payload 便于检索）
+  summary      String?  // 一句话介绍（列表页副标题）
+  tags         Json     @default("[]") // string[]，发布者自填
+  payload      Json     // 实体完整快照：字段集 + visualDetails + promptVariants
+  status       String   @default("published") // published | unlisted（下架）| removed（管理员）
+  takenCount   Int      @default(0)           // 冗余计数，排序用，由 PublicAssetTake 事务维护
+  createdAt    DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(3)
+
+  images       PublicAssetImage[]
+  takes        PublicAssetTake[]
+
+  @@index([status, kind])
+  @@index([publisherId])
+  @@index([status, takenCount])
+}
+
+/// 公共素材的图片引用：字节不复制，指向 AssetObject（内容寻址）。
+/// objectKey 冗余存储便于直接签 URL；AssetObject 行保证对象不被引用计数回收。
+model PublicAssetImage {
+  id             String @id @default(uuid()) @db.Uuid
+  publicAssetId  String @db.Uuid
+  publicAsset    PublicAsset @relation(fields: [publicAssetId], references: [id], onDelete: Cascade)
+  assetObjectId  String @db.Uuid
+  assetObject    AssetObject @relation(fields: [assetObjectId], references: [id], onDelete: Restrict)
+  objectKey      String
+  mime           String
+  bytes          Int
+  aspectRatio    String?
+  stage          String?  // 年龄阶段（与 EntityImage.stage 对齐）
+  isPrimary      Boolean  @default(false)
+  sortOrder      Int      @default(0)
+
+  @@index([publicAssetId])
+  @@index([assetObjectId])
+}
+
+/// 拿取记录：计数、防重复拿取提示、后续"我的拿取"列表。
+model PublicAssetTake {
+  id            String   @id @default(uuid()) @db.Uuid
+  publicAssetId String   @db.Uuid
+  publicAsset   PublicAsset @relation(fields: [publicAssetId], references: [id], onDelete: Cascade)
+  takerId       String   @db.Uuid
+  targetBookId  String   @db.Uuid   // 拿取到哪本书
+  createdAt     DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([takerId])
+  @@index([publicAssetId])
+  @@index([takerId, targetBookId, publicAssetId])
 }

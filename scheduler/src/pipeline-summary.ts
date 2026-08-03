@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
-import { BookRepository, CharacterRepository, LocationRepository, ItemRepository } from '@novel-agent/storage';
+import { BookRepository, CharacterRepository, LocationRepository, ItemRepository, persistBookArtifact } from '@novel-agent/storage';
 import { bookSlug } from '@novel-agent/story-arcs';
 
 type NamedEntity = { name?: unknown };
@@ -122,8 +122,17 @@ export async function writePipelineFinalSummary(
   const finalDir = join(outputRoot, dirName, 'final');
   const filePath = join(finalDir, 'run-summary.json');
 
+  const runSummaryBody = JSON.stringify(summary, null, 2) + '\n';
   await mkdir(finalDir, { recursive: true });
-  await writeFile(filePath, JSON.stringify(summary, null, 2) + '\n', 'utf-8');
+  await writeFile(filePath, runSummaryBody, 'utf-8');
+  // 双写到对象存储 + BookArtifact（logicalPath 不含 runDir，最新 run 覆盖）。
+  await persistBookArtifact({
+    bookId,
+    logicalPath: 'run-summary.json',
+    category: 'run-summary',
+    body: runSummaryBody,
+    mime: 'application/json',
+  });
 
   // Write final entity results to output/{dirName}/entities/ (from DB = truly final,
   // after validation + resolution). Events come from the payload (preserved through
@@ -174,8 +183,27 @@ async function writeEntityOutput(
 
     const entitiesDir = join(outputRoot, dirName, 'entities');
     await mkdir(entitiesDir, { recursive: true });
+    // 双写：本机 output/ 落盘后同步到对象存储 + BookArtifact（logicalPath 不含 runDir）。
     const writeJson = async (filename: string, data: unknown) => {
-      await writeFile(join(entitiesDir, filename), JSON.stringify(data, null, 2) + '\n', 'utf-8');
+      const body = JSON.stringify(data, null, 2) + '\n';
+      await writeFile(join(entitiesDir, filename), body, 'utf-8');
+      await persistBookArtifact({
+        bookId,
+        logicalPath: `entities/${filename}`,
+        category: 'extraction',
+        body,
+        mime: 'application/json',
+      });
+    };
+    const writeText = async (filename: string, text: string, mime: string) => {
+      await writeFile(join(entitiesDir, filename), text, 'utf-8');
+      await persistBookArtifact({
+        bookId,
+        logicalPath: `entities/${filename}`,
+        category: 'extraction',
+        body: text,
+        mime,
+      });
     };
     for (const output of descriptionOutputs) {
       if (output.packs.length > 0) {
@@ -214,11 +242,11 @@ async function writeEntityOutput(
       writeJson('items.json', items),
       writeJson('locations.json', locations),
       writeJson('events.json', events),
-      writeFile(join(entitiesDir, 'summary.md'), buildEntityMarkdown(bookTitle, characters, items, locations, events), 'utf-8'),
+      writeText('summary.md', buildEntityMarkdown(bookTitle, characters, items, locations, events), 'text/markdown'),
       ...promptWrites,
     ]);
     if (promptMd) {
-      await writeFile(join(entitiesDir, 'all-prompts.md'), promptMd, 'utf-8');
+      await writeText('all-prompts.md', promptMd, 'text/markdown');
     }
     const promptSummary = promptFiles.map((f) => `${f.key}=${(Array.isArray(payload[f.key]) ? (payload[f.key] as unknown[]).length : 0)}`).join(', ');
     console.log(`[Pipeline] Entity output: ${entitiesDir}/ (characters=${characters.length}, items=${items.length}, locations=${locations.length}, events=${events.length}, prompts=${promptSummary})`);
@@ -333,10 +361,24 @@ function buildAllPromptsMarkdown(
       const qualityTag = entry.quality === 'high' ? '★' : entry.quality === 'medium' ? '☆' : '';
       lines.push(`### ${tierTag} ${name} ${qualityTag}`);
       lines.push('');
-      lines.push('```');
-      lines.push(entry.prompt || '');
-      lines.push('```');
-      lines.push('');
+      // 多年龄阶段版本：每个阶段一个子块（带原文溯源）；否则单条
+      const variants = Array.isArray((entry as any).variants) ? (entry as any).variants : undefined;
+      if (variants && variants.length > 1) {
+        for (const v of variants) {
+          const source = v.sourceChapters ? `（原文依据：${v.sourceChapters}）` : '';
+          lines.push(`#### ${v.label}${v.isPrimary ? ' ★' : ''}${source}`);
+          lines.push('');
+          lines.push('```');
+          lines.push(v.prompt || '');
+          lines.push('```');
+          lines.push('');
+        }
+      } else {
+        lines.push('```');
+        lines.push(entry.prompt || '');
+        lines.push('```');
+        lines.push('');
+      }
     }
   }
 

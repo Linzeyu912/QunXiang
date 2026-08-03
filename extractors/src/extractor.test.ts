@@ -227,8 +227,96 @@ describe('extractEntities', () => {
       },
     ]);
 
-    expect(result.characters.map((character) => character.name)).toEqual(['三长老']);
+    expect(result.characters.map((character) => character.name)).toEqual(['萧家三长老']);
     expect(result.characters[0].aliases).toEqual([]);
+  });
+
+  it('normalizes generic relationship and numbered title character names before signal filtering', async () => {
+    const { createExtractor } = await import('./extractor.js');
+    chatExtract.mockResolvedValueOnce({
+      characters: [
+        {
+          name: '叔叔',
+          aliases: ['叔叔左手手机右手打火机'],
+          description: '路明非的叔叔，关心手机和名牌。',
+          confidence: 0.86,
+          firstChapter: 1,
+          lastChapter: 1,
+          chapterAppearances: [1],
+        },
+        {
+          name: '三长老',
+          aliases: [],
+          description: '萧家三长老，参与家族议事。',
+          confidence: 0.86,
+          firstChapter: 2,
+          lastChapter: 2,
+          chapterAppearances: [2],
+        },
+      ],
+      items: [],
+      locations: [],
+    });
+
+    const result = await createExtractor()('混合样例', [
+      {
+        index: 1,
+        content: '路明非和叔叔婶婶一起住。叔叔是个很讲品位的人，看见叔叔左手手机右手打火机。',
+      },
+      {
+        index: 2,
+        content: '我们萧家利润损失很大。议事厅内，三长老满脸凶光，怒声道。',
+      },
+    ]);
+
+    const uncle = result.characters.find((character) => character.name === '路明非的叔叔');
+    const elder = result.characters.find((character) => character.name === '萧家三长老');
+
+    expect(uncle?.aliases).toEqual([]);
+    expect(uncle?.mentionCount).toBeGreaterThan(0);
+    expect(elder?.aliases).toEqual([]);
+    expect(elder?.mentionCount).toBeGreaterThan(0);
+  });
+
+  it('does not count ambiguous implicit relationship aliases for multiple scoped relatives', async () => {
+    const { createExtractor } = await import('./extractor.js');
+    chatExtract.mockResolvedValueOnce({
+      characters: [
+        {
+          name: '路明非的叔叔',
+          aliases: [],
+          description: '路明非的叔叔。',
+          confidence: 0.86,
+          firstChapter: 1,
+          lastChapter: 1,
+          chapterAppearances: [1],
+        },
+        {
+          name: '楚子航的叔叔',
+          aliases: [],
+          description: '楚子航的叔叔。',
+          confidence: 0.86,
+          firstChapter: 1,
+          lastChapter: 1,
+          chapterAppearances: [1],
+        },
+      ],
+      items: [],
+      locations: [],
+    });
+
+    const result = await createExtractor()('龙族', [
+      {
+        index: 1,
+        content: '叔叔拎着手机进门。楚子航的叔叔只在资料里出现。',
+      },
+    ]);
+
+    const luUncle = result.characters.find((character) => character.name === '路明非的叔叔');
+    const chuUncle = result.characters.find((character) => character.name === '楚子航的叔叔');
+
+    expect(luUncle?.mentionCount).toBe(0);
+    expect(chuUncle?.mentionCount).toBe(1);
   });
 
   it('uses a full proper alias as the canonical character name instead of a short nickname', async () => {

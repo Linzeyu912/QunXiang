@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { Check, Loader2, Pencil, X } from 'lucide-react';
+import { Check, Loader2, Pencil, X, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { EntityStatusBadge, TierBadge } from '@/components/StatusBadge';
 import { ConfidenceBar } from './ConfidenceBar';
 import { EntityArtifactsSection } from './EntityArtifactsSection';
+import { PublishAssetDialog } from '@/components/PublishAssetDialog';
 import { formatDate, parseAliases } from '@/lib/utils';
 import { useCharacterReviews, useUpdateEntity } from '@/api/entities';
 import { matchArtifacts, useExtractionArtifacts } from '@/api/artifacts';
@@ -23,8 +24,14 @@ interface Props {
   onJumpToName?: (name: string) => void;
 }
 
-export function EntityDetailPanel({ entity, type, bookId, onJumpToName }: Props) {
+export const EntityDetailPanel = memo(function EntityDetailPanel({
+  entity,
+  type,
+  bookId,
+  onJumpToName,
+}: Props) {
   const [editing, setEditing] = useState(false);
+  const [publishOpen, setPublishOpen] = useState(false);
   const [name, setName] = useState(entity.name);
   const [aliasesText, setAliasesText] = useState(parseAliases(entity.aliases).join('，'));
   const [description, setDescription] = useState(entity.description ?? '');
@@ -32,12 +39,9 @@ export function EntityDetailPanel({ entity, type, bookId, onJumpToName }: Props)
   const update = useUpdateEntity(type, bookId);
   const artifactsQ = useExtractionArtifacts(bookId);
   const artifacts = matchArtifacts(artifactsQ.data, type, entity.name, parseAliases(entity.aliases));
-
-  // 产物查询状态：把 react-query 的加载/数据态映射成 EntityArtifactsSection 能理解的
-  // 三态，让用户能区分"未提取"（no-run）/ "加载中"（loading）/ "就绪但无匹配"（ready）。
   const artifactsState: 'loading' | 'no-run' | 'ready' = artifactsQ.isLoading
     ? 'loading'
-    : artifactsQ.data && artifactsQ.data.available
+    : artifactsQ.data?.available
       ? 'ready'
       : 'no-run';
 
@@ -80,7 +84,7 @@ export function EntityDetailPanel({ entity, type, bookId, onJumpToName }: Props)
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-start justify-between gap-3 border-b p-4">
+      <div className="flex items-start justify-between gap-3 border-b bg-muted/40 p-4">
         <div className="min-w-0 flex-1 space-y-1">
           <div className="flex items-center gap-2">
             <h2 className="truncate text-lg font-semibold">{entity.name}</h2>
@@ -114,6 +118,17 @@ export function EntityDetailPanel({ entity, type, bookId, onJumpToName }: Props)
             <X className="h-3.5 w-3.5" />
             拒绝
           </Button>
+          {entity.status === 'APPROVED' && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setPublishOpen(true)}
+              className="gap-1"
+            >
+              <Share2 className="h-3.5 w-3.5" />
+              发布到公共库
+            </Button>
+          )}
         </div>
       </div>
 
@@ -199,26 +214,6 @@ export function EntityDetailPanel({ entity, type, bookId, onJumpToName }: Props)
             </dl>
           </div>
 
-          {hasTier && (
-            <>
-              <Separator />
-              <div>
-                <h3 className="mb-2 text-sm font-medium">三支柱评分</h3>
-                <dl className="grid grid-cols-3 gap-2 text-sm">
-                  <Row label="因果">
-                    {(entity as { pillarCausal: number }).pillarCausal}
-                  </Row>
-                  <Row label="唯一">
-                    {(entity as { pillarUniqueness: number }).pillarUniqueness}
-                  </Row>
-                  <Row label="转折">
-                    {(entity as { pillarTransition: number }).pillarTransition}
-                  </Row>
-                </dl>
-              </div>
-            </>
-          )}
-
           {type === 'character' && (
             <CoCharactersSection
               entity={entity as Character}
@@ -226,14 +221,32 @@ export function EntityDetailPanel({ entity, type, bookId, onJumpToName }: Props)
             />
           )}
 
-          <EntityArtifactsSection artifacts={artifacts} state={artifactsState} />
+          <EntityArtifactsSection
+            artifacts={artifacts}
+            bookId={bookId}
+            entityType={type}
+            entityName={entity.name}
+            state={artifactsState}
+          />
 
           {type === 'character' && <ReviewHistorySection characterId={entity.id} />}
         </div>
       </div>
+
+      {entity.status === 'APPROVED' && (
+        <PublishAssetDialog
+          open={publishOpen}
+          onOpenChange={setPublishOpen}
+          bookId={bookId}
+          entityType={type}
+          entityId={entity.id}
+          entityName={entity.name}
+          defaultSummary={entity.description}
+        />
+      )}
     </div>
   );
-}
+});
 
 /** 共现角色（Character.coCharacters，提取阶段统计的同场景/同段落共现） */
 function CoCharactersSection({

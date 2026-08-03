@@ -1,234 +1,220 @@
-# 群像 QunXiang
-
-[![Vite](https://img.shields.io/badge/Vite-5.4-646cff?logo=vite)](https://vitejs.dev/)
-[![React](https://img.shields.io/badge/React-18.3-61dafb?logo=react)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
-[![Fastify](https://img.shields.io/badge/Fastify-4-000000?logo=fastify)](https://fastify.dev/)
-[![Prisma](https://img.shields.io/badge/Prisma-5-2d3748?logo=prisma)](https://www.prisma.io/)
-[![pnpm](https://img.shields.io/badge/pnpm-workspace-f69220?logo=pnpm)](https://pnpm.io/)
-[![Node](https://img.shields.io/badge/Node-20%2B-339933?logo=node.js)](https://nodejs.org/)
-
-**从小说文本中提取角色、场景、道具与叙事事件，扩写为生成式提示词，产出可复用的数字资产。**
-
-*Turn novel text into structured entities — characters, scenes, props, and narrative events — then expand them into generation-ready prompts for digital IP assets.*
-
+---
+tags:
+  - 实体组
+created: 2026-06-20
+updated: 2026-08-03
+status: 公开仓库 · 实体提取、云端书库与数字资产生产
 ---
 
-## 这是什么
+# 群像 QunXiang
 
-「群像」是一个开源的**小说/剧本实体抽取与数字资产生成引擎**。
+[![CI](https://github.com/Linzeyu912/QunXiang/actions/workflows/ci.yml/badge.svg)](https://github.com/Linzeyu912/QunXiang/actions/workflows/ci.yml)
 
-短剧、动画、游戏、AI 内容创作的上游都是文本，但一段小说原文没法直接喂给图像/视频生成模型——角色长什么样、场景是什么氛围、道具有什么细节，都散落在成百上千段描述里，且分散在几十章节中反复出现、彼此矛盾或互相补充。
+面向小说 IP 资产生产的中文工作台。系统把 TXT 小说转换为可追溯、可审核、可分享和可下载的角色、场景、道具、叙事事件、视觉设定、生成提示词与图片资产。
 
-群像做的事情，是把这堆散落的文字，整理成一份可以被创作者、生成模型、资产库直接使用的结构化资料：
+本仓库是公开的群像版本，与内部 `YingHe-entity` 同步实体生产能力，同时保留公开仓库已有的中文交互、多密钥并发、文本编码兼容和管线稳定性修复。
 
-```
-小说 / 剧本 / 设定集文本
-        │
-        ▼
-   导入 + 预处理（编码检测、章节切分、噪声清理）
-        │
-        ▼
-   实体预扫描 + 抽取（角色 / 场景 / 道具 / 叙事事件）
-        │
-        ▼
-   校验 + 实体消解（跨章节合并、置信度校验、简介融合）
-        │
-        ▼
-   视觉描述 + 提示词生成（图像 / 视频 / 3D 模型等下游用途）
-        │
-        ▼
-   人工审核入库 + 多格式导出（结构化数字资产）
-```
+## 当前能力
 
-产出的资产最终服务于短剧制作流程（选角、置景、道具设计、分镜）和数字 IP 社区（创作者围绕同一部作品的角色/场景库进行二创、扩展、共建）。
+- 账号注册、登录、刷新会话、退出、修改资料与密码；数据按账号隔离。
+- 上传 TXT 小说，统一文本编码，识别书名、章节结构和噪声；新账号可自动获得 `seed-library/` 中的预置示例书籍。
+- 执行角色、场景、道具提取，包含预扫描、置信度校验、实体消解、描述融合、视觉描述、提示词生成和审核入库。
+- 在网页中查看管线进度、运行历史、章节、证据片段、审核历史、共现角色及各类中间产物。
+- 为实体调用兼容 OpenAI 协议的文生图服务，也可上传、浏览、设为主图和删除图片。
+- 导出 JSON、Markdown、CSV；为完整书籍成果创建版本快照并下载完整数据包。
+- 通过邮箱和账号分享码分享书籍；接收方可复制为自己的独立副本。
+- 将角色、场景、道具发布到公共素材库，浏览公共素材并拿取到自己的书库。
+- 继续完成故事切分、边界审核、故事资产包、导演分配、分集与分镜相关产物。
+- 本地文件系统对象存储开箱即用；生产环境可切换到 MinIO、R2、AWS S3、OSS 等 S3 兼容服务。
 
-## 核心能力
+## 工程结构
 
-- **多类型实体抽取**——角色（姓名、别名、外貌、性格）、场景（地点、氛围、时间）、道具（外观、归属、作用）、叙事事件
-- **跨章节实体消歧与合并**——同一角色在不同章节的描述自动关联、去重、补全，而不是抽取出一堆碎片
-- **原文索引**——每条描述都保留对原文位置（章节/段落/引用片段）的追溯，方便核对与人工修订
-- **描述扩写**——将小说中零散、克制的原文描述，扩写为细节完整、适合下游生成模型理解的结构化描述
-- **提示词生成**——针对图像/视频生成场景，将扩写后的描述转换为可直接使用的生成式提示词
-- **可插拔 LLM 后端**——OpenAI 兼容的 Custom API、内置 Mock 模式可切换，按成本和精度取舍
-- **人工审核环节**——自动抽取结果保留人工确认/修正的空间（支持快捷键、批量通过、审核历史），而不是全自动黑箱产出
-- **多格式导出**——JSON / Markdown / CSV，方便接入下游生产工具链或社区平台
-- **故事链路**——在实体资产之上做故事切分、边界审核、资产包、导演分配和分镜/剧集管理
-
-## 技术栈
-
-前端、后端、管线各自独立，通过 pnpm workspace 组织成 17 个本地包。
-
-| 层 | 技术 |
-| --- | --- |
-| Web 前端 | React 18 + Vite 5 + TypeScript（strict）+ Tailwind 3 + Radix UI + TanStack Query + Zustand + React Router |
-| API 后端 | Fastify 4 + Prisma 5 + SQLite + `@fastify/jwt` 鉴权 + `@fastify/multipart` 上传 |
-| 抽取管线 | TypeScript workspace 包：`import` → `preprocess` → `entity-prescan` → `extractors` → `validators` → `entity-resolution` → `exporters`，由 `scheduler` 调度 |
-| LLM | OpenAI 兼容 Custom Provider + Mock 模式（`llm` 包） |
-| 测试 | Vitest |
-| 包管理 | pnpm workspace + Node 20+ |
-
-## 项目结构
-
-```
+```text
 QunXiang/
-├─ core/                # 领域模型与共享类型
-├─ schemas/             # Zod 实体 schema（角色/场景/道具/事件）
-├─ import/              # TXT 导入与书名/编码识别
-├─ preprocess/          # 章节切分、噪声过滤
-├─ entity-prescan/      # 实体预扫描与中间产物
-├─ extractors/          # LLM 实体抽取
-├─ validators/          # 置信度校验
-├─ entity-resolution/   # 跨章节消解与合并
-├─ prompts/             # 提示词模板
-├─ llm/                 # 可插拔 LLM Provider
-├─ scheduler/           # 内存任务队列 + 流水线编排
-├─ exporters/           # JSON / Markdown / CSV 导出
-├─ storage/             # Prisma schema + SQLite + 仓储层
-├─ story-arcs/          # 故事链路：切分、资产、导演、分镜
-├─ api/                 # Fastify HTTP 服务（port 3000）
-├─ web/                 # Vite + React 前端（port 5173）
-└─ docs/                # 流程图与研究文档
+├── api/                 # 后端接口、鉴权与业务编排
+├── web/                 # 中文网页工作台
+├── agent/               # 高层代理与管线驱动
+├── core/                # 领域核心与共享类型
+├── entity-prescan/      # 书名、章节与噪声预扫描
+├── entity-resolution/   # 实体消解与描述融合
+├── extractors/          # 角色、场景、道具提取器
+├── import/              # 原文导入与编码规范化
+├── preprocess/          # 文本预处理
+├── scheduler/           # 提取管线调度
+├── story-arcs/          # 故事切分、资产与导演流程
+├── prompts/             # 提示词模板
+├── llm/                 # 文本模型和文生图适配器
+├── schemas/             # 数据契约
+├── validators/          # 质量校验
+├── exporters/           # JSON、Markdown、CSV 导出
+├── storage/             # PostgreSQL、Prisma 与对象存储
+├── seed-library/        # 新账号可物化的预置示例书库
+├── scripts/             # 数据库、测试、校验和维护脚本
+└── docs/                # 设计、部署、研究与阶段文档
 ```
 
 ## 环境要求
 
-- Windows 10/11、macOS 或 Linux
-- Node.js 20+
-- pnpm 9+（未安装可运行 `npm install -g pnpm`）
-- 一个 LLM Provider：首次启动默认未配置，需先在 `LLM 设置` 填 API Key；仅冒烟测试时可运行 `start-mock.bat` 使用内置 Mock 数据
+- Node.js 20+。
+- pnpm 9+；未安装时可运行 `npm install -g pnpm`。
+- PostgreSQL 15；Windows 快速启动和完整测试推荐使用 Docker Desktop。
+- 实体提取需要一个兼容 OpenAI Chat Completions 协议的模型服务；只浏览页面或使用模拟模式时不需要真实密钥。
+- AI 生图是可选能力，需要另行配置兼容 `/v1/images/generations` 的服务。
 
-## 首次安装 / 跨机器部署（重要）
+## Windows 快速启动
 
-> 本项目所有**本地配置和数据都不进 git**（出于安全与版权考虑）：
-> `api/.env`（含 LLM API Key）、`storage/prisma/dev.db`（用户/书/实体数据）、
-> `.novel-agent-config.encrypted`（Web 端保存的 LLM 配置密文）、`output/`（提取产物，
-> 含小说原文片段）都被 `.gitignore` 排除。
->
-> **这意味着把仓库 clone 到新机器后，这些都需要重新生成，不是"配置丢失"**。
-> 这是设计如此，不是 bug。下面是任一台新机器首次跑起来的标准流程。
-
-### Windows（推荐用脚本）
-
-首次克隆后在仓库根目录依次运行：
+推荐先启动 Docker Desktop，然后在仓库根目录双击或运行：
 
 ```bat
-setup.bat
-launch.bat
+start.bat
 ```
 
-- `setup.bat`：安装依赖（`pnpm install`）、创建 `api/.env` 与 `storage/.env`、初始化 SQLite 数据库（默认不写入 API Key）
-- `launch.bat`：同时启动 API（`http://localhost:3000`）与 Web（`http://localhost:5173`）
+脚本会检查 Node.js 与 pnpm、安装依赖、创建本地环境文件、启动 PostgreSQL、执行正式迁移并生成 Prisma Client，最后打开：
 
-也可以直接运行 `start.bat`，它会在缺少本地配置时补齐 env 和 SQLite，然后启动服务；只跑假数据用 `start-mock.bat`。
+- 网页：`http://localhost:5173`
+- API：`http://localhost:3001`
 
-### macOS / Linux（手动）
+若只想用模拟模型验证页面和流程，运行：
+
+```bat
+start-mock.bat
+```
+
+`setup.bat` 是不依赖 Docker 的 Windows 备选方案：它使用仓库随依赖安装的嵌入式 PostgreSQL 完成初始化；数据库已启动后可用 `launch.bat` 打开 API 与网页。两套数据库启动方式不要同时占用本机 `5432` 端口。
+
+脚本只会写入开发用本地密钥，不会写入真实模型 API Key。进入系统后请在“模型设置”中配置服务商；未配置时提取按钮会保持禁用。
+
+## 手动启动
+
+适合 macOS、Linux，或希望自己控制服务的 Windows 用户。先安装依赖并准备环境文件：
 
 ```bash
 pnpm install
 cp api/.env.example api/.env
-pnpm db:push        # 初始化/同步 SQLite 数据库结构
-pnpm dev:api        # 后端
-pnpm dev:web        # 前端（另开一个终端）
 ```
 
-打开 `http://localhost:5173`。
-
-### 从一台机器搬到另一台机器时的检查清单
-
-换台电脑部署时，以下内容**不会随 git 同步，必须在新机器重新配置**：
-
-| 内容 | 位置 | 新机器要做什么 |
-| --- | --- | --- |
-| 数据库 | `storage/prisma/dev.db` | `pnpm db:push` 重建空库；用户与书籍需重新创建/上传 |
-| LLM 配置 | `api/.env` + `.novel-agent-config.encrypted` | 在 Web `LLM 设置` 页重新填 API Key（详见下一节） |
-| 提取产物 | `output/`、`api/.intermediate/` | 重新上传书 + 跑一次提取后自动生成 |
-| 上传原文 | `storage/uploads/` | 重新上传 TXT |
-
-> 默认本地账号 `test@example.com / example`：API 启动时会自动确保这个账号存在（空库则创建；
-> 非空库会把"持书用户"改造成默认账号并重置密码为 `example`）。前端开机尝试用此账号自动登录，
-> 失败时登录页会显示该提示，可直接手动登录。换机后请用这套凭据登录。
-
-## 配置 LLM
-
-启动后进入 Web 顶部导航的 `LLM 设置`：
-
-- `Mock`：内置假数据，不需要 API Key，仅用于部署冒烟测试
-- `Custom API`：填写 API Key、模型名、Base URL（可以是 `/v1` 根地址，也可以是完整 `/chat/completions` 地址）
-
-设置页内「常见服务商填写示例」可一键填入以下配置：
-
-| 服务商 | 接口地址（Base URL） | 模型名示例 |
-| --- | --- | --- |
-| MiniMax（国内） | `https://api.minimaxi.com/v1` | `MiniMax-M2` |
-| MiniMax（国际） | `https://api.minimax.io/v1` | `MiniMax-M2` |
-| DeepSeek | `https://api.deepseek.com/v1` | `deepseek-chat` |
-| OpenAI | `https://api.openai.com/v1` | `gpt-4o-mini` |
-
-> 注意：MiniMax 国内站与国际站的 API Key 不通用；接口地址填到 `/v1` 即可，后端会自动补全 `/chat/completions`。
-
-填好后点「测试连接」验证；失败时会显示具体原因（认证失败 / 接口或模型不存在 / 网络错误 / 超时），便于定位是 Key、模型名还是 Base URL 的问题。
-
-也可以直接在 `api/.env` 配置，修改后重启 API：
+创建 `storage/.env`，写入与 `api/.env` 相同的两个数据库连接：
 
 ```env
-LLM_PROVIDER=custom
-LLM_API_KEY=sk-...
-LLM_BASE_URL=https://api.openai.com/v1
-LLM_MODEL=gpt-4o
+DATABASE_URL=postgresql://novel_agent:change_me_in_production@127.0.0.1:5432/novel_agent
+DIRECT_DATABASE_URL=postgresql://novel_agent:change_me_in_production@127.0.0.1:5432/novel_agent
 ```
+
+默认本地配置使用文件系统对象存储，`OBJECT_STORAGE_SIGN_SECRET`、`JWT_SECRET` 和 `KEY_VAULTS_SECRET` 都必须设置。生产环境请分别换成独立的强随机值；`KEY_VAULTS_SECRET` 丢失后，网页保存的模型密钥将无法解密。
+
+使用仓库自带的 PostgreSQL 容器时：
+
+```bash
+docker compose up -d --wait postgres
+pnpm db:migrate:deploy
+pnpm --filter @novel-agent/storage exec prisma generate --schema=./prisma/schema.prisma
+```
+
+分别启动后端和前端：
+
+```bash
+pnpm dev:api
+pnpm dev:web
+```
+
+打开 `http://localhost:5173`，注册账号后进入书库。若已有本机 PostgreSQL，请把两个 `.env` 中的连接地址改成同一个实际数据库，再执行迁移。
+
+## 模型与文生图配置
+
+启动后进入顶部导航的“模型设置”。
+
+文本模型支持 DeepSeek、MiniMax、OpenAI、SiliconFlow、智谱、Moonshot、百度千帆、阿里通义、Anthropic 等预设，也可填写任意 OpenAI 兼容地址。可以保存多个 API Key，由调度器轮询使用。`Mock` 仅用于开发和冒烟验证。
+
+文生图支持 Reve、OpenAI、SiliconFlow、智谱、阿里通义、火山引擎等预设，也可使用自定义兼容接口；尺寸、实体默认宽高比和代理可分别配置。
+
+网页保存的文本与图片模型配置分别加密写入仓库根目录：
+
+- `.novel-agent-config.encrypted`
+- `.novel-agent-image-config.encrypted`
+
+它们和本地 `.env` 已被 Git 忽略。不要提交真实密钥。
 
 ## 使用流程
 
-1. 首次访问会自动尝试用本地默认账号登录；失败时进入登录页，可用 `test@example.com / example` 登录，或点「注册」创建新账户（密码本地 scrypt 哈希存储）。
-2. 在 `书库` 上传一本 TXT 小说。上传时会自动检测编码（UTF-8 / GBK / GB18030）并转码为 UTF-8 落盘，国内常见 GBK 编码的小说可直接使用，无需手动转码。
-3. 打开书籍详情，先看 `章节` Tab：确认切章模式、章节字数、噪声过滤明细和叙事事件标注。
-4. 先到 `LLM 设置` 配好 Provider；未就绪时 `管道` Tab 和书库列表里的提取按钮会禁用。
-5. 进入 `管道` Tab，点击开始提取；运行历史、预扫描中间产物和结果概览会保留在页面上。
-6. 提取完成后进入 `角色` / `场景` / `道具` Tab 审核实体（支持 J/K/A/R 快捷键、批量通过）。
-7. 在实体详情里查看结构化描述、视觉设定、提示词、证据、共现角色和审核历史。**未完成提取时详情页会明确提示「尚未生成产物」，而非空白。**
-8. 进入 `导出` Tab 选择实体类型与格式，下载 JSON / Markdown / CSV。
-9. 需要故事级资产时，进入 `故事` / `导演` / `剧集` 等 Tab 继续做切分、资产和分镜流程。
+1. 注册或登录；新账号会把 `seed-library/` 中的预置书籍复制到自己的账号下。
+2. 在“书库”上传 TXT，或打开预置书籍查看已有实体和图片。
+3. 在“模型设置”配置文本模型；需要 AI 生图时再配置文生图服务。
+4. 在书籍的“章节”和“管道”页检查切章、噪声与预扫描结果，然后开始或继续提取。
+5. 在“角色”“场景”“道具”页审核实体，查看证据、描述、提示词和图片。
+6. 在“导出”页下载单类实体结果；在书库准备并下载包含完整成果的版本快照。
+7. 使用书库的分享按钮把书籍发给指定账号，或把单个实体发布到“公共素材库”。
+8. 需要故事级资产时，继续进入“故事”“导演”等页面完成后续流程。
 
-> 数据按账户隔离：每个用户只能看到自己上传的书。启用鉴权前的 anonymous 数据在启用鉴权后不再可见，需要重新上传。
+## 数据与目录
+
+- PostgreSQL 是账号、书籍、实体、审核、分享、快照和公共素材元数据的权威来源。
+- `storage/objects/` 是默认本地对象存储，保存原文、图片、快照归档和对象化管线产物；切换到 S3 时由对应存储桶承载。
+- `storage/uploads/` 保留兼容旧数据的本地上传与实体图片路径。
+- `api/output/` 和 `api/.intermediate/` 是源码运行时的本地管线产物与预扫描中间结果；新的正式产物会同步到对象存储和 `BookArtifact` 记录，Git 不跟踪这些运行目录。
+- `seed-library/` 是随代码版本管理的预置示例书包，不是某个运行账号的数据目录。
+- `storage/prisma/migrations/` 是 PostgreSQL 正式迁移历史；`storage/prisma/sqlite-legacy/` 仅保留旧版 SQLite 迁移资料。
+
+备份时至少保留 PostgreSQL、对象存储目录或存储桶、运行环境文件及两个加密模型配置文件。`KEY_VAULTS_SECRET` 必须与加密配置一起备份。
+
+## Linux 生产部署
+
+仓库提供 API、前端、PostgreSQL、Caddy 的容器配置。服务器安装 Docker 与 Docker Compose 插件后，在项目根目录运行：
+
+```bash
+bash deploy.sh
+```
+
+脚本会生成 PostgreSQL、JWT、下载签名和模型配置加密密钥，构建镜像、执行迁移并启动服务。首次部署后：
+
+- 在 `api/.env.production` 中配置真实模型参数，或登录网页后配置。
+- 备份 `api/.env.production`、`.db-password`、`.env.docker`、PostgreSQL 卷和对象存储卷。
+- 不要把脚本生成后的密钥提交到 Git。
+- 有域名时修改 `Caddyfile`，Caddy 可自动申请 HTTPS 证书。
+
+API 容器通过 `tsx` 运行 TypeScript 源码，前端由 Nginx 托管静态构建并提供单页路由回退。`api/package.json` 的 `start` 仍指向 `dist/index.js`，当前部署流程不使用该命令。
+
+## 验证
+
+基础检查：
+
+```bash
+pnpm check:workspace-deps
+pnpm --filter @novel-agent/api exec tsc -p tsconfig.json --noEmit --rootDir .. --pretty false
+pnpm --filter @novel-agent/web build
+```
+
+完整测试会启动隔离的 PostgreSQL 与 MinIO 测试容器、重置测试库并在结束后清理，不会连接或重置正式数据库：
+
+```bash
+pnpm test
+```
+
+因此完整测试需要正在运行的 Docker。已知限制和待办见 [`KNOWN_ISSUES.md`](KNOWN_ISSUES.md)。
 
 ## 常见问题
 
-- **换台电脑后 LLM 调用失败 / 看不到提示词**：LLM Key 与提取产物都只存在本机（不进 git）。新机器需在 `LLM 设置` 重新填 Key，并重新上传书、跑一次提取，提示词等产物才会出现。
-- **默认账号 `test@example.com` 登不上**：API 启动时会自动确保该账号存在并把密码重置为 `example`；若库中已有持书用户，该用户会被改造成默认账号。重启一次 API 后用 `test@example.com / example` 登录即可。
-- **实体列表只能看到最上面、无法滚动**：已修复。若仍出现，刷新页面一次即可。
-- **注册账号/密码被自动填进了 LLM 设置框**：浏览器自动填充导致。密钥框已改为显隐切换，若仍被填充，清除浏览器对该站点的已保存密码即可。
-- **LLM 测试连接报错**：点「测试连接」查看具体提示——`认证失败` 是 Key 错；`接口或模型不存在` 是 Base URL 或模型名错；`超时/网络错误` 检查地址可达性与代理设置。
+API 提示缺少 `OBJECT_STORAGE_SIGN_SECRET`：在 `api/.env` 中配置一个本地随机密钥并重启 API；生产环境不要使用示例值。
 
-## 重要目录
+API 能启动但不能提取：进入“模型设置”确认文本模型已经保存并显示可用。
 
-- `api/.env`：API 运行配置（LLM Key、JWT 密钥等，**不进 git**）
-- `storage/.env`：Prisma/SQLite 辅助配置（**不进 git**）
-- `storage/prisma/dev.db`：默认本地 SQLite 数据库（**不进 git**）
-- `storage/uploads/`：上传的 TXT 原文（**不进 git**）
-- `api/output/`：实体提取与故事链路最终产物（含原文片段，**不进 git**）
-- `api/.intermediate/`：预扫描等中间产物（**不进 git**）
-- `.novel-agent-config.encrypted`：从 Web UI 保存的 LLM 配置密文（**不进 git**）
+上传后章节为空或明显不对：先查看“章节”页的切章模式和噪声过滤明细；兜底切章表示原文没有识别到稳定的章节标题。
 
-> 带「不进 git」标记的文件都不会随仓库同步，新机器部署时需按上文「跨机器部署」一节重新生成。
+数据库认证失败：确认 `api/.env`、`storage/.env` 和 PostgreSQL 实际密码一致。Windows Docker 启动脚本会调用 `pnpm db:sync-password` 修复已有数据卷的密码漂移。
 
-## 应用场景
+前端部署后刷新页面返回 404：生产部署必须启用单页路由回退；仓库提供的 `web/nginx.conf` 已配置。
 
-- **短剧制作**：开机前快速产出角色小传、场景设定集、道具清单，供选角、美术、置景团队直接使用
-- **数字 IP 社区**：围绕一部小说/剧本生成可共享的角色卡、场景卡，创作者可以在统一资产库基础上进行二创、拓展支线、共建世界观
-- **AI 内容生产流水线**：作为文本到视觉生成的中间层，产出结构化提示词供图像/视频生成模型使用
+## 与统筹仓库的关系
 
-## 项目状态
+本仓库是实体组工程代码、公共示例书包和完整工程文档的权威来源。`docs/` 下的设计、流程、计划和数据契约只在本仓库维护；适合跨组查阅的调研结论与阶段进度再按需归档到统筹仓库，并注明原路径和提交号。
 
-早期开发阶段，正在从内部迭代版本梳理出面向社区的独立开源实现。欢迎关注、提 Issue、参与设计讨论。
+故事组通过稳定实体 ID、证据片段和叙事事件引用成果；视频组通过资产 ID、版本、视觉设定、图片和提示词引用成果。运行缓存不能替代正式资产版本。
 
-## 贡献
+## 协作约定
 
-欢迎以 Issue、Discussion 或 PR 的形式参与。在正式的贡献指南发布前，建议先开 Issue 讨论设计再动手实现，避免重复劳动。
+- 开始工作前先同步远程分支，提交说明应明确变更类型与内容。
+- 大附件使用 Git LFS；调研文档按项目文档规范归档。
+- 面向用户的界面文案、提示、错误与日志统一使用中文；代码标识符使用英文，注释使用中文（见 `AGENTS.md`）。
 
-## 许可证与声明
+---
 
-本项目仅提供文本解析与资产生成工具，不提供、不分发任何受版权保护的小说原文。请确保你处理的文本已获得合法授权。
-
-License：待定（建议 MIT，随首个可运行版本一并确定）。
+*实体提取组维护 · 最近更新 2026-08-03*

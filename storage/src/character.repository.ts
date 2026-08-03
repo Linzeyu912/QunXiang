@@ -1,6 +1,7 @@
 import { prisma } from './prisma.js';
 import type { Character, Outfit } from '@novel-agent/core';
 import type { PrismaClient } from '@prisma/client';
+import { decodeJsonField, encodeJsonField } from './json-field.js';
 
 export interface CharacterRepository {
   create(data: {
@@ -34,20 +35,25 @@ export interface CharacterRepository {
     outfits?: Outfit[];
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Character[]>;
+  findByOwnedBookId(bookId: string, ownerId: string): Promise<Character[]>;
   findById(id: string): Promise<Character | null>;
+  findOwnedById(id: string, ownerId: string): Promise<Character | null>;
   findByStatus(bookId: string, status: string): Promise<Character[]>;
+  findByOwnedStatus(bookId: string, ownerId: string, status: string): Promise<Character[]>;
   update(id: string, data: Partial<Character>): Promise<Character>;
+  updateOwned(id: string, ownerId: string, data: Partial<Character>): Promise<Character | null>;
   updateStatus(id: string, status: string): Promise<Character>;
+  updateOwnedStatus(id: string, ownerId: string, status: string): Promise<Character | null>;
   deleteByBookId(bookId: string): Promise<void>;
 }
 
 function parseCharacter(dbChar: Record<string, unknown>): Character {
   return {
     ...dbChar,
-    aliases: JSON.parse((dbChar.aliases as string) || '[]'),
-    chapterAppearances: JSON.parse((dbChar.chapterAppearances as string) || '[]'),
-    coCharacters: JSON.parse((dbChar.coCharacters as string) || '[]'),
-    outfits: JSON.parse((dbChar.outfits as string) || '[]'),
+    aliases: decodeJsonField(dbChar.aliases, []),
+    chapterAppearances: decodeJsonField(dbChar.chapterAppearances, []),
+    coCharacters: decodeJsonField(dbChar.coCharacters, []),
+    outfits: decodeJsonField(dbChar.outfits, []),
   } as unknown as Character;
 }
 
@@ -72,17 +78,17 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
         data: {
           bookId: data.bookId,
           name: data.name,
-          aliases: JSON.stringify(data.aliases),
+          aliases: encodeJsonField(data.aliases),
           description: data.description,
           confidence: data.confidence,
           chapterRef: data.chapterRef,
           firstChapter: data.firstChapter,
           lastChapter: data.lastChapter,
-          chapterAppearances: JSON.stringify(data.chapterAppearances || []),
+          chapterAppearances: encodeJsonField(data.chapterAppearances || []),
           mentionCount: data.mentionCount || 0,
           dialogueCount: data.dialogueCount || 0,
-          coCharacters: JSON.stringify(data.coCharacters || []),
-          outfits: JSON.stringify(data.outfits || []),
+          coCharacters: encodeJsonField(data.coCharacters || []),
+          outfits: encodeJsonField(data.outfits || []),
         },
       });
       return parseCharacter(created);
@@ -107,17 +113,17 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
         data: characters.map(c => ({
           bookId: c.bookId,
           name: c.name,
-          aliases: JSON.stringify(c.aliases),
+          aliases: encodeJsonField(c.aliases),
           description: c.description,
           confidence: c.confidence,
           chapterRef: c.chapterRef,
           firstChapter: c.firstChapter,
           lastChapter: c.lastChapter,
-          chapterAppearances: JSON.stringify(c.chapterAppearances || []),
+          chapterAppearances: encodeJsonField(c.chapterAppearances || []),
           mentionCount: c.mentionCount || 0,
           dialogueCount: c.dialogueCount || 0,
-          coCharacters: JSON.stringify(c.coCharacters || []),
-          outfits: JSON.stringify(c.outfits || []),
+          coCharacters: encodeJsonField(c.coCharacters || []),
+          outfits: encodeJsonField(c.outfits || []),
         })),
       });
       return result.count;
@@ -131,10 +137,23 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       return chars.map(c => parseCharacter(c as unknown as Record<string, unknown>));
     },
 
+    async findByOwnedBookId(bookId: string, ownerId: string): Promise<Character[]> {
+      const chars = await db.character.findMany({
+        where: { bookId, book: { userId: ownerId } },
+        orderBy: { createdAt: 'asc' },
+      });
+      return chars.map(c => parseCharacter(c as unknown as Record<string, unknown>));
+    },
+
     async findById(id: string): Promise<Character | null> {
       const char = await db.character.findUnique({ where: { id } });
       if (!char) return null;
       return parseCharacter(char as unknown as Record<string, unknown>);
+    },
+
+    async findOwnedById(id: string, ownerId: string): Promise<Character | null> {
+      const char = await db.character.findFirst({ where: { id, book: { userId: ownerId } } });
+      return char ? parseCharacter(char as unknown as Record<string, unknown>) : null;
     },
 
     async findByStatus(bookId: string, status: string): Promise<Character[]> {
@@ -145,19 +164,27 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       return chars.map(c => parseCharacter(c as unknown as Record<string, unknown>));
     },
 
+    async findByOwnedStatus(bookId: string, ownerId: string, status: string): Promise<Character[]> {
+      const chars = await db.character.findMany({
+        where: { bookId, status, book: { userId: ownerId } },
+        orderBy: { createdAt: 'asc' },
+      });
+      return chars.map(c => parseCharacter(c as unknown as Record<string, unknown>));
+    },
+
     async update(id: string, data: Partial<Character>): Promise<Character> {
       const updateData: Record<string, unknown> = { ...data };
       if (data.aliases) {
-        updateData.aliases = JSON.stringify(data.aliases);
+        updateData.aliases = encodeJsonField(data.aliases);
       }
       if (data.chapterAppearances) {
-        updateData.chapterAppearances = JSON.stringify(data.chapterAppearances);
+        updateData.chapterAppearances = encodeJsonField(data.chapterAppearances);
       }
       if (data.coCharacters) {
-        updateData.coCharacters = JSON.stringify(data.coCharacters);
+        updateData.coCharacters = encodeJsonField(data.coCharacters);
       }
       if (data.outfits) {
-        updateData.outfits = JSON.stringify(data.outfits);
+        updateData.outfits = encodeJsonField(data.outfits);
       }
       const updated = await db.character.update({
         where: { id },
@@ -166,12 +193,33 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       return parseCharacter(updated as unknown as Record<string, unknown>);
     },
 
+    async updateOwned(id: string, ownerId: string, data: Partial<Character>): Promise<Character | null> {
+      const existing = await db.character.findFirst({ where: { id, book: { userId: ownerId } } });
+      if (!existing) return null;
+      const updateData: Record<string, unknown> = { ...data };
+      if (data.aliases) updateData.aliases = encodeJsonField(data.aliases);
+      if (data.chapterAppearances) updateData.chapterAppearances = encodeJsonField(data.chapterAppearances);
+      if (data.coCharacters) updateData.coCharacters = encodeJsonField(data.coCharacters);
+      if (data.outfits) updateData.outfits = encodeJsonField(data.outfits);
+      const result = await db.character.updateMany({ where: { id, book: { userId: ownerId } }, data: updateData });
+      if (result.count !== 1) return null;
+      const updated = await db.character.findFirst({ where: { id, book: { userId: ownerId } } });
+      return updated ? parseCharacter(updated as unknown as Record<string, unknown>) : null;
+    },
+
     async updateStatus(id: string, status: string): Promise<Character> {
       const updated = await db.character.update({
         where: { id },
         data: { status },
       });
       return parseCharacter(updated as unknown as Record<string, unknown>);
+    },
+
+    async updateOwnedStatus(id: string, ownerId: string, status: string): Promise<Character | null> {
+      const result = await db.character.updateMany({ where: { id, book: { userId: ownerId } }, data: { status } });
+      if (result.count !== 1) return null;
+      const updated = await db.character.findFirst({ where: { id, book: { userId: ownerId } } });
+      return updated ? parseCharacter(updated as unknown as Record<string, unknown>) : null;
     },
 
     async deleteByBookId(bookId: string): Promise<void> {

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { apiFetch } from './client';
-import { getToken } from '@/store/authStore';
+import { apiFetch, openAuthenticatedSse } from './client';
 import type {
   AssetPatch,
   BoundaryDecision,
@@ -122,23 +121,43 @@ export function useSegmentationProgress(
       finishedRef.current(ok, error);
     };
 
-    // EventSource 不能设置请求头，token 走 query param。
-    const token = getToken();
-    const streamUrl = `/books/${bookId}/stories/segment/stream${token ? `?access_token=${encodeURIComponent(token)}` : ''}`;
-    const es = new EventSource(streamUrl);
+    const controller = new AbortController();
     let closed = false;
     let pollTimer: ReturnType<typeof setInterval> | undefined;
+
+    const startPolling = () => {
+      if (closed || pollTimer) return;
+      // SSE 断开兜底：轮询任务状态。
+      pollTimer = setInterval(async () => {
+        try {
+          const task = await apiFetch<{ status: string; message?: string; error?: string }>(
+            `/books/${bookId}/stories/segment/status?taskId=${activeTaskId}`,
+          );
+          if (task.status === 'completed') {
+            clearInterval(pollTimer);
+            pollTimer = undefined;
+            finish(true);
+          } else if (task.status === 'failed') {
+            clearInterval(pollTimer);
+            pollTimer = undefined;
+            finish(false, task.error);
+          }
+        } catch {
+          // 保持轮询。
+        }
+      }, 5000);
+    };
 
     const handle = (event: StoryPipelineEvent) => {
       if (event.type === 'stage-started' || event.type === 'stage-completed') {
         setProgress({ active: true, stage: event.stage, message: event.message });
       } else if (event.type === 'done') {
         closed = true;
-        es.close();
+        controller.abort();
         finish(true);
       } else if (event.type === 'error') {
         closed = true;
-        es.close();
+        controller.abort();
         finish(false, event.message);
       }
     };
@@ -147,47 +166,25 @@ export function useSegmentationProgress(
       try {
         return JSON.parse(raw) as StoryPipelineEvent;
       } catch (err) {
-        console.warn('[SSE] parse error', err);
+        console.warn('进度流解析失败：', err);
         return null;
       }
     };
 
-    es.onmessage = (e) => {
-      const evt = parse(e.data);
-      if (evt) handle(evt);
-    };
-    for (const type of ['stage-started', 'stage-completed', 'review-needed', 'done', 'error']) {
-      es.addEventListener(type, (e) => {
-        const evt = parse((e as MessageEvent).data);
+    void openAuthenticatedSse(`/books/${bookId}/stories/segment/stream`, {
+      signal: controller.signal,
+      onEvent: ({ event, data }) => {
+        const evt = parse(data);
+        if (evt && !evt.type) evt.type = event as StoryPipelineEvent['type'];
         if (evt) handle(evt);
-      });
-    }
-
-    es.onerror = () => {
-      if (closed) return;
-      es.close();
-      // SSE 断开兜底：轮询任务状态
-      pollTimer = setInterval(async () => {
-        try {
-          const task = await apiFetch<{ status: string; message?: string; error?: string }>(
-            `/books/${bookId}/stories/segment/status?taskId=${activeTaskId}`,
-          );
-          if (task.status === 'completed') {
-            clearInterval(pollTimer);
-            finish(true);
-          } else if (task.status === 'failed') {
-            clearInterval(pollTimer);
-            finish(false, task.error);
-          }
-        } catch {
-          // 保持轮询
-        }
-      }, 5000);
-    };
+      },
+    }).then(startPolling).catch((error) => {
+      if (!(error instanceof DOMException && error.name === 'AbortError')) startPolling();
+    });
 
     return () => {
       closed = true;
-      es.close();
+      controller.abort();
       if (pollTimer) clearInterval(pollTimer);
     };
   }, [bookId, activeTaskId, qc]);

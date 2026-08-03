@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { AlertCircle, CheckCircle2, FileText, Loader2, MoreVertical, Play, Settings, Trash2, Upload } from 'lucide-react';
+import { AlertCircle, CheckCircle2, FileText, Loader2, MoreVertical, Play, Settings, Share, Trash2, Upload } from 'lucide-react';
 import { useBooks, useDeleteBook, useUploadBook } from '@/api/books';
 import { useStartExtraction } from '@/api/extraction';
 import { useLlmStatus } from '@/api/llm';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 import { FileDropzone } from '@/components/upload/FileDropzone';
 import { BookStatusBadge } from '@/components/StatusBadge';
+import { BookDownloadSection } from '@/components/BookDownloadSection';
+import { ShareDialog } from '@/components/ShareDialog';
 import { getExtractionStartGate } from '@/lib/extractionGate';
 import { formatBytes, formatDate } from '@/lib/utils';
 import {
@@ -70,7 +73,7 @@ export function LibraryPage() {
       )}
 
       {booksQ.isLoading ? (
-        <p className="text-sm text-muted-foreground">加载中…</p>
+        <BookListSkeleton />
       ) : books.length === 0 ? (
         <EmptyState onUpload={() => setShowUpload(true)} />
       ) : (
@@ -84,11 +87,35 @@ export function LibraryPage() {
   );
 }
 
+/** 书库加载骨架：按 BookRow 的真实布局占位，避免加载完成后页面跳动。 */
+function BookListSkeleton() {
+  return (
+    <div className="grid gap-3" aria-label="书库加载中">
+      {[0, 1, 2].map((i) => (
+        <Card key={i} className="flex items-center gap-4 p-4">
+          <Skeleton className="h-10 w-10 rounded-lg" />
+          <div className="flex-1 space-y-2">
+            <Skeleton className="h-4 w-2/5" />
+            <Skeleton className="h-3 w-1/4" />
+          </div>
+          <Skeleton className="h-6 w-14" />
+          <Skeleton className="h-8 w-20" />
+        </Card>
+      ))}
+    </div>
+  );
+}
+
 function EmptyState({ onUpload }: { onUpload: () => void }) {
   return (
-    <Card className="flex flex-col items-center gap-3 p-10 text-center">
-      <FileText className="h-10 w-10 text-muted-foreground" />
-      <p className="text-sm text-muted-foreground">还没有书籍，先上传一本 TXT 试试</p>
+    <Card className="flex flex-col items-center gap-3 border-dashed p-10 text-center">
+      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted">
+        <FileText className="h-7 w-7 text-muted-foreground" />
+      </div>
+      <div>
+        <p className="text-sm font-medium">书库还是空的</p>
+        <p className="mt-1 text-xs text-muted-foreground">上传一本 TXT 小说，开始提取角色/场景/道具</p>
+      </div>
       <Button onClick={onUpload} variant="outline">
         <Upload className="mr-2 h-4 w-4" />
         上传书籍
@@ -100,6 +127,7 @@ function EmptyState({ onUpload }: { onUpload: () => void }) {
 function BookRow({ book }: { book: Book }) {
   const navigate = useNavigate();
   const del = useDeleteBook();
+  const [shareOpen, setShareOpen] = useState(false);
   const start = useStartExtraction(book.id);
   const llm = useLlmStatus();
 
@@ -137,8 +165,11 @@ function BookRow({ book }: { book: Book }) {
   };
 
   return (
-    <Card className="flex items-center gap-4 p-4">
-      <FileText className="h-6 w-6 shrink-0 text-muted-foreground" />
+    <Card className="flex items-center gap-4 p-4 transition-shadow hover:shadow-md">
+      {/* 书籍图标放进灰底方块，与顶栏品牌块的视觉语言一致 */}
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted">
+        <FileText className="h-5 w-5 text-muted-foreground" />
+      </div>
       <div className="min-w-0 flex-1">
         <button
           onClick={() => navigate(`/books/${book.id}`)}
@@ -151,6 +182,7 @@ function BookRow({ book }: { book: Book }) {
         </p>
       </div>
       <BookStatusBadge status={book.status} />
+      {book.status === 'EXTRACTED' && <BookDownloadSection bookId={book.id} />}
       <div className="flex items-center gap-1">
         {!extractionGate.canStart && extractionGate.reason === 'llm-not-configured' && (
           <Button variant="secondary" size="sm" onClick={() => navigate('/settings/llm')} className="gap-1">
@@ -218,12 +250,23 @@ function BookRow({ book }: { book: Book }) {
         <Button
           variant="ghost"
           size="icon"
+          onClick={() => setShareOpen(true)}
+          disabled={book.status !== 'EXTRACTED'}
+          aria-label={`分享《${book.title}》`}
+          title="分享"
+        >
+          <Share className="h-4 w-4" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={() => navigate(`/books/${book.id}`)}
           aria-label={`打开《${book.title}》详情`}
         >
           <MoreVertical className="h-4 w-4" />
         </Button>
       </div>
+      <ShareDialog bookId={book.id} bookTitle={book.title} open={shareOpen} onOpenChange={setShareOpen} />
     </Card>
   );
 }

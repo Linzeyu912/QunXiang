@@ -1,9 +1,10 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { BookOpen, LogOut, Moon, Settings, Sun } from 'lucide-react';
+import { BookOpen, LogOut, Moon, Settings, Sun, UserRound } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { useUiStore } from '@/store/uiStore';
 import { useAuthStore } from '@/store/authStore';
+import { logoutSession } from '@/api/auth';
 import { Button } from '@/components/ui/button';
 
 export function AppLayout() {
@@ -11,12 +12,16 @@ export function AppLayout() {
   const theme = useUiStore((s) => s.theme);
   const toggleTheme = useUiStore((s) => s.toggleTheme);
   const user = useAuthStore((s) => s.user);
-  const logout = useAuthStore((s) => s.logout);
 
-  const handleLogout = () => {
-    logout();
-    toast.success('已退出登录');
-    navigate('/login', { replace: true });
+  const handleLogout = async () => {
+    try {
+      await logoutSession();
+      toast.success('已退出登录');
+    } catch {
+      toast.error('服务端退出失败，本机登录态已清除');
+    } finally {
+      navigate('/login', { replace: true });
+    }
   };
 
   return (
@@ -24,10 +29,13 @@ export function AppLayout() {
       <header className="sticky top-0 z-40 flex h-14 items-center gap-4 border-b bg-background/95 px-6 backdrop-blur">
         <button
           onClick={() => navigate('/library')}
-          className="flex items-center gap-2 font-semibold"
+          className="flex items-center gap-2 font-semibold tracking-tight"
           aria-label="返回书库首页"
         >
-          <BookOpen className="h-5 w-5 text-primary" />
+          {/* 品牌图标做成主色实心方块，比裸图标更有辨识度 */}
+          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-sm">
+            <BookOpen className="h-4 w-4" />
+          </span>
           <span>QunXiang</span>
           <span className="rounded bg-muted px-1.5 py-0.5 text-xs font-normal text-muted-foreground">
             实体提取
@@ -35,9 +43,15 @@ export function AppLayout() {
         </button>
         <nav className="ml-6 flex items-center gap-1 text-sm" aria-label="主导航">
           <NavLinkItem to="/library">书库</NavLinkItem>
+          <NavLinkItem to="/public">公共素材库</NavLinkItem>
+          <NavLinkItem to="/shared">分享给我</NavLinkItem>
           <NavLinkItem to="/settings/llm">
             <Settings className="mr-1 h-3.5 w-3.5" />
             LLM 设置
+          </NavLinkItem>
+          <NavLinkItem to="/account">
+            <UserRound className="mr-1 h-3.5 w-3.5" />
+            账号
           </NavLinkItem>
         </nav>
         <div className="ml-auto flex items-center gap-2">
@@ -81,7 +95,7 @@ function NavLinkItem({ to, children }: { to: string; children: React.ReactNode }
         cn(
           'flex items-center rounded-md px-3 py-1.5 transition-colors',
           isActive
-            ? 'bg-secondary text-secondary-foreground'
+            ? 'bg-secondary font-medium text-secondary-foreground shadow-sm'
             : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground',
         )
       }

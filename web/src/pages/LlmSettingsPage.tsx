@@ -1,72 +1,127 @@
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
-import { CheckCircle2, ChevronDown, ChevronRight, Eye, EyeOff, Loader2, Plus, Trash2, XCircle } from 'lucide-react';
+import { CheckCircle2, Eye, EyeOff, Loader2, Plus, Trash2, XCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { useLlmStatus, useSetLlmConfig, useSetConcurrencyMode, useTestLlmConnection, type LlmConfigPatch } from '@/api/llm';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  useLlmStatus, useSetLlmConfig, useSetConcurrencyMode, useTestLlmConnection, useLlmPresets,
+  useImageStatus, useSetImageConfig, useTestImageConnection, useImagePresets,
+  type LlmConfigPatch, type ImageConfigPatch, type ProviderPreset,
+} from '@/api/llm';
 import type { ConcurrencyMode } from '@/types';
+
+/** 根据已保存的 baseUrl/model 反推出匹配的预设服务商和模型 */
+function matchPreset(
+  presets: ProviderPreset[],
+  baseUrl: string,
+  model: string,
+): { providerId: string; modelId: string } | null {
+  if (!baseUrl) return null;
+  for (const p of presets) {
+    if (baseUrl === p.baseUrl || baseUrl === p.baseUrl.replace(/\/+$/, '')) {
+      const matched = p.models.find((m) => m.id === model);
+      return { providerId: p.id, modelId: matched ? matched.id : '' };
+    }
+  }
+  return null;
+}
 
 export function LlmSettingsPage() {
   const { data: status, isLoading } = useLlmStatus();
+  const { data: presetsData } = useLlmPresets();
   const setConfig = useSetLlmConfig();
   const setMode = useSetConcurrencyMode();
   const test = useTestLlmConnection();
 
-  // 多 key 编辑：初始留一个空行让用户填新 key；已保存的 key 用 mask 占位（不回显明文）。
-  // 编辑语义：用户填入的非空 key 会和"已保存且未改动"的 key 合并后整体提交。
+  const presets = presetsData?.presets ?? [];
+
+  // ── 预设选择模式 ──
+  const [selectedProviderId, setSelectedProviderId] = useState<string>('');
+  const [selectedModelId, setSelectedModelId] = useState<string>('');
+
+  // ── 自定义模式 ──
+  const [useCustom, setUseCustom] = useState(false);
+  const [customBaseUrl, setCustomBaseUrl] = useState('');
+  const [customModel, setCustomModel] = useState('');
+
+  // ── 通用 ──
   const [apiKeys, setApiKeys] = useState<string[]>(['']);
-  const [baseUrl, setBaseUrl] = useState('');
-  const [model, setModel] = useState('');
   const [showKey, setShowKey] = useState(false);
-  const [showExamples, setShowExamples] = useState(false);
-
-  // 后端 keyHints 表示已保存的 key。初始化编辑区：若已有 key，展示 mask 行 + 一个空行；
-  // 否则只留一个空行。
-  // 用 initialized ref 防止 status 引用变化（窗口 focus refetch、保存后 setQueryData 等）
-  // 覆盖用户正在编辑的 baseUrl/model/key——只在首次加载时填充表单。
   const initialized = useRef(false);
-  const keyCount = status?.keyHints?.length ?? 0;
+
+  // 当前选中的预设对象
+  const activePreset = presets.find((p) => p.id === selectedProviderId);
+  const activeModels = activePreset?.models ?? [];
+
+  // 初始化：根据已保存的 baseUrl/model 反推预设
   useEffect(() => {
-    if (!status) return;
-    if (!initialized.current) {
-      setBaseUrl(status.baseUrl || '');
-      setModel(status.model || '');
-      initialized.current = true;
+    if (!status || presets.length === 0 || initialized.current) return;
+    const savedUrl = status.baseUrl || '';
+    const savedModel = status.model || '';
+    const match = matchPreset(presets, savedUrl, savedModel);
+    if (match && match.providerId) {
+      setSelectedProviderId(match.providerId);
+      setSelectedModelId(match.modelId);
+      setUseCustom(false);
+    } else if (savedUrl || savedModel) {
+      // 已有配置但不匹配任何预设 → 进入自定义模式
+      setUseCustom(true);
+      setCustomBaseUrl(savedUrl);
+      setCustomModel(savedModel);
     }
-    const saved = status.keyHints && status.keyHints.length > 0 ? status.keyHints : [];
-    if (saved.length > 0) {
-      // 用占位符代表"已保存的 key 不变"：空字符串输入框 + 旁注 mask
-      setApiKeys(['']);
-    }
-    // 依赖收窄为 keyCount（只在 key 数量变化时重置 key 编辑区），不再依赖整个 status 对象
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keyCount]);
+    initialized.current = true;
+  }, [status, presets]);
 
-  const updateKey = (i: number, v: string) => {
-    setApiKeys((prev) => prev.map((k, idx) => (idx === i ? v : k)));
+  // 切换服务商时重置模型选择
+  const onProviderChange = (providerId: string) => {
+    setSelectedProviderId(providerId);
+    setSelectedModelId('');
+    setUseCustom(false);
   };
-  const addKey = () => setApiKeys((prev) => [...prev, '']);
-  const removeKey = (i: number) => setApiKeys((prev) => prev.filter((_, idx) => idx !== i));
 
+  const updateKey = (index: number, value: string) => {
+    setApiKeys((current) => current.map((key, keyIndex) => keyIndex === index ? value : key));
+  };
+
+  const addKey = () => setApiKeys((current) => [...current, '']);
+
+  const removeKey = (index: number) => {
+    setApiKeys((current) => {
+      const next = current.filter((_, keyIndex) => keyIndex !== index);
+      return next.length > 0 ? next : [''];
+    });
+  };
+
+  // 保存
   const save = async () => {
     try {
       const patch: LlmConfigPatch = { provider: 'custom' };
-      if (baseUrl.trim()) patch.baseUrl = baseUrl.trim();
-      if (model.trim()) patch.model = model.trim();
-      // 收集用户填入的非空 key（trim），去重
-      const newKeys = apiKeys
-        .map((k) => k.trim())
-        .filter((k) => k.length > 0);
-      const deduped = [...new Set(newKeys)];
-      if (deduped.length > 0) {
-        patch.apiKeys = deduped;
+
+      if (useCustom) {
+        // 自定义模式：使用手填的值
+        if (customBaseUrl.trim()) patch.baseUrl = customBaseUrl.trim();
+        if (customModel.trim()) patch.model = customModel.trim();
+      } else {
+        // 预设模式：从预设表查 baseUrl，模型 id 直接提交
+        if (activePreset) patch.baseUrl = activePreset.baseUrl;
+        if (selectedModelId) patch.model = selectedModelId;
       }
-      await setConfig.mutateAsync(patch);
-      toast.success('已保存配置');
-      // 保存后清空编辑区，已保存的 key 由 status.keyHints 反映
+
+      const newKeys = [...new Set(apiKeys.map((key) => key.trim()).filter(Boolean))];
+      if (newKeys.length > 0) patch.apiKeys = newKeys;
+      const res = await setConfig.mutateAsync(patch);
+      if (res.warning) {
+        // 保存成功但自动连接测试失败（如接口地址路径错误）——醒目提示，避免带病运行
+        toast.warning(res.warning, { duration: 10000 });
+      } else {
+        toast.success('已保存配置，连接测试通过');
+      }
       setApiKeys(['']);
     } catch (e) {
       toast.error(`保存失败：${(e as Error).message}`);
@@ -76,41 +131,34 @@ export function LlmSettingsPage() {
   const switchMode = async (mode: ConcurrencyMode) => {
     try {
       await setMode.mutateAsync(mode);
-      toast.success(mode === 'parallel-books' ? '已切换为：优先并行本数' : '已切换为：优先单本速度');
-    } catch (e) {
-      toast.error(`切换失败：${(e as Error).message}`);
+      toast.success(mode === 'parallel-books' ? '已切换为优先并行多本' : '已切换为优先单本速度');
+    } catch (error) {
+      toast.error(`切换失败：${(error as Error).message}`);
     }
   };
 
   const runTest = async () => {
     try {
       const res = await test.mutateAsync();
-      if (res.success) {
-        toast.success(res.message);
-      } else {
-        // 失败时把原始报错片段一并展示，方便用户判断是 base url / key / 模型名
-        // / 网络 / 超时中的哪一项问题。detail 可能较长，sonner 支持多行 description。
-        toast.error(res.message, {
-          description: res.detail ? `原始信息：${res.detail}` : undefined,
-          duration: 8000,
-        });
-      }
+      if (res.success) toast.success(res.message);
+      else toast.error(res.message);
     } catch (e) {
       toast.error(`测试失败：${(e as Error).message}`);
     }
   };
 
   if (isLoading) {
-    return <p className="text-sm text-muted-foreground">加载中…</p>;
+    return <LlmSettingsSkeleton />;
   }
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">LLM 服务商设置</h1>
-        <p className="text-sm text-muted-foreground">配置提取管道使用的语言模型</p>
+        <h1 className="text-2xl font-semibold tracking-tight">服务商设置</h1>
+        <p className="text-sm text-muted-foreground">配置 LLM 提取模型与文生图模型</p>
       </div>
 
+      {/* ── 当前状态 ── */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
           <CardTitle>当前状态</CardTitle>
@@ -131,172 +179,148 @@ export function LlmSettingsPage() {
           <StatusRow label="模型">{status?.model || '-'}</StatusRow>
           <StatusRow label="接口地址">{status?.baseUrl || '-'}</StatusRow>
           <StatusRow label="API 密钥">
-            {status?.keyCount && status.keyCount > 0
-              ? `${status.keyCount} 个密钥（${status.keyHints?.join(' / ') || status.keyHint}）`
-              : (status?.keyHint || '未设置')}
+            {status?.keyCount
+              ? `${status.keyCount} 个（${status.keyHints?.join(' / ') || status.keyHint}）`
+              : '未设置'}
           </StatusRow>
-          {status?.concurrency && (
-            <StatusRow label="并发模式">
-              {status.concurrency.mode === 'parallel-books' ? '优先并行本数' : '优先单本速度'}
-              （{status.concurrency.workers} worker）
-            </StatusRow>
-          )}
           {status?.error && (
             <p className="col-span-2 text-xs text-destructive">{status.error}</p>
           )}
         </CardContent>
       </Card>
 
+      {/* ── 修改配置 ── */}
       <Card>
         <CardHeader>
           <CardTitle>修改配置</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="rounded-md border bg-muted/30 p-3">
-            <p className="text-sm font-medium">自定义 API</p>
-            <p className="mt-0.5 text-xs text-muted-foreground">
-              使用兼容 OpenAI Chat Completions 协议的 LLM 接口。
-            </p>
+          {/* 服务商选择 */}
+          <div className="space-y-1.5">
+            <Label>服务商</Label>
+            <Select value={useCustom ? '__custom__' : selectedProviderId} onValueChange={(v) => {
+              if (v === '__custom__') {
+                setUseCustom(true);
+                // 如果之前有预设选中，把 baseUrl 回填到自定义框
+                if (activePreset && !customBaseUrl) setCustomBaseUrl(activePreset.baseUrl);
+              } else {
+                onProviderChange(v);
+              }
+            }}>
+              <SelectTrigger>
+                <SelectValue placeholder="选择服务商" />
+              </SelectTrigger>
+              <SelectContent>
+                {presets.map((p) => (
+                  <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>
+                ))}
+                <SelectItem value="__custom__">自定义（手动填写）</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
-          {/* 常见服务商填写示例：折叠展开。重点解决 minimax 等国产 OpenAI 兼容
-              服务因 base url / 模型名填错导致调用失败的问题。点击行可一键回填。 */}
-          <div className="rounded-md border">
-            <button
-              type="button"
-              onClick={() => setShowExamples((v) => !v)}
-              className="flex w-full items-center justify-between px-3 py-2 text-sm font-medium hover:bg-accent/40"
-            >
-              <span>常见服务商填写示例（minimax / DeepSeek / OpenAI）</span>
-              {showExamples ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-            </button>
-            {showExamples && (
-              <div className="space-y-2 border-t px-3 py-2 text-xs text-muted-foreground">
-                <ProviderExample
-                  title="MiniMax（国内）"
-                  baseUrl="https://api.minimaxi.com/v1"
-                  model="MiniMax-M2"
-                  onApply={(b, m) => { setBaseUrl(b); setModel(m); }}
+          {/* 预设模式：模型下拉 */}
+          {!useCustom && (
+            <div className="space-y-1.5">
+              <Label>模型</Label>
+              <Select
+                value={selectedModelId}
+                onValueChange={setSelectedModelId}
+                disabled={!activePreset}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder={activePreset ? '选择模型' : '请先选择服务商'} />
+                </SelectTrigger>
+                <SelectContent>
+                  {activeModels.map((m) => (
+                    <SelectItem key={m.id} value={m.id}>{m.name}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {activePreset && (
+                <p className="text-xs text-muted-foreground">
+                  接口地址：<code className="rounded bg-muted px-1">{activePreset.baseUrl}</code>
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* 自定义模式：手填 baseUrl + model */}
+          {useCustom && (
+            <>
+              <div className="space-y-1.5">
+                <Label>接口地址</Label>
+                <Input
+                  name="llm-base-url"
+                  autoComplete="off"
+                  placeholder="https://api.openai.com/v1"
+                  value={customBaseUrl}
+                  onChange={(e) => setCustomBaseUrl(e.target.value)}
                 />
-                <ProviderExample
-                  title="MiniMax（国际）"
-                  baseUrl="https://api.minimax.io/v1"
-                  model="MiniMax-M2"
-                  onApply={(b, m) => { setBaseUrl(b); setModel(m); }}
-                />
-                <ProviderExample
-                  title="DeepSeek"
-                  baseUrl="https://api.deepseek.com/v1"
-                  model="deepseek-chat"
-                  onApply={(b, m) => { setBaseUrl(b); setModel(m); }}
-                />
-                <ProviderExample
-                  title="OpenAI"
-                  baseUrl="https://api.openai.com/v1"
-                  model="gpt-4o-mini"
-                  onApply={(b, m) => { setBaseUrl(b); setModel(m); }}
-                />
-                <p className="pt-1">
-                  提示：接口地址填到 <code className="rounded bg-muted px-1">/v1</code> 即可，后端会自动补全
-                  <code className="rounded bg-muted px-1">/chat/completions</code>；注意 minimax 国内站与国际站的密钥不通用。
+                <p className="text-xs text-muted-foreground">
+                  可填写 /v1 根地址或完整 /chat/completions 地址，后端会自动兼容。
                 </p>
               </div>
-            )}
-          </div>
+              <div className="space-y-1.5">
+                <Label>模型名称</Label>
+                <Input
+                  name="llm-model"
+                  autoComplete="off"
+                  placeholder="gpt-4o-mini"
+                  value={customModel}
+                  onChange={(e) => setCustomModel(e.target.value)}
+                />
+              </div>
+            </>
+          )}
 
-          <div className="space-y-1.5">
-            <Label>接口地址</Label>
-            <Input
-              name="llm-base-url"
-              autoComplete="off"
-              spellCheck={false}
-              placeholder="https://api.openai.com/v1"
-              value={baseUrl}
-              onChange={(e) => setBaseUrl(e.target.value)}
-            />
-            <p className="text-xs text-muted-foreground">
-              填到 /v1 根地址或完整 /chat/completions 地址均可，后端自动兼容。
-            </p>
-          </div>
-          <div className="space-y-1.5">
-            <Label>模型名称</Label>
-            <Input
-              name="llm-model"
-              autoComplete="off"
-              spellCheck={false}
-              placeholder="gpt-4o-mini"
-              value={model}
-              onChange={(e) => setModel(e.target.value)}
-            />
-          </div>
-          <div className="space-y-1.5">
+          {/* API Key */}
+          <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label>API 密钥</Label>
-              <Button type="button" variant="ghost" size="sm" className="h-6 px-2 text-xs" onClick={addKey}>
-                <Plus className="mr-1 h-3 w-3" />
-                添加密钥
+              <Label>API 密钥（支持多个）</Label>
+              <Button type="button" variant="outline" size="sm" onClick={addKey}>
+                <Plus className="mr-1 h-3.5 w-3.5" />新增密钥
               </Button>
             </div>
-            {/* 已保存的 key 以 mask 展示（只读），下方是用户可填/可增删的新 key 输入框。
-                多 key 同厂家轮询，把单 key 的 ~10 路并发额度提升到 N×10。 */}
             {status?.keyHints && status.keyHints.length > 0 && (
-              <div className="space-y-1">
-                {status.keyHints.map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2 rounded-md border border-dashed bg-muted/30 px-2 py-1.5 text-xs text-muted-foreground"
-                  >
-                    <span className="font-mono">{h}</span>
-                    <Badge variant="outline" className="ml-auto">已保存</Badge>
-                  </div>
+              <div className="flex flex-wrap gap-1.5">
+                {status.keyHints.map((hint, index) => (
+                  <Badge key={`${hint}-${index}`} variant="secondary" className="font-mono">{hint}</Badge>
                 ))}
               </div>
             )}
-            <div className="space-y-1.5">
-              {apiKeys.map((k, i) => (
-                <div key={i} className="relative">
-                  {/* text + 显隐切换，规避浏览器对 password 框的 autofill */}
+            {apiKeys.map((key, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <div className="relative flex-1">
                   <Input
                     type={showKey ? 'text' : 'password'}
-                    name={`llm-api-key-${i}`}
+                    name={`llm-api-key-${index}`}
                     autoComplete="off"
                     spellCheck={false}
-                    className="pr-16"
-                    placeholder="填入新密钥（留空不添加）"
-                    value={k}
-                    onChange={(e) => updateKey(i, e.target.value)}
+                    placeholder="输入新密钥；全部留空则保留已保存密钥"
+                    value={key}
+                    onChange={(event) => updateKey(index, event.target.value)}
+                    className="pr-10"
                   />
-                  <div className="absolute right-1 top-1 flex items-center">
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-7"
-                      onClick={() => setShowKey((v) => !v)}
-                      aria-label={showKey ? '隐藏密钥' : '显示密钥'}
-                      title={showKey ? '隐藏' : '显示'}
-                    >
-                      {showKey ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                    </Button>
-                    {apiKeys.length > 1 && (
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        className="h-7 w-7 text-muted-foreground hover:text-destructive"
-                        onClick={() => removeKey(i)}
-                        aria-label="删除此密钥输入框"
-                        title="删除"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    )}
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowKey((visible) => !visible)}
+                    tabIndex={-1}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    aria-label={showKey ? '隐藏密钥' : '显示密钥'}
+                  >
+                    {showKey ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
                 </div>
-              ))}
-            </div>
+                {apiKeys.length > 1 && (
+                  <Button type="button" variant="ghost" size="icon" onClick={() => removeKey(index)} aria-label="删除密钥输入框">
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
+            ))}
             <p className="text-xs text-muted-foreground">
-              支持同厂家多个密钥，后端会自动轮询以提升并发额度。保存后已添加的密钥会显示为掩码。
+              填写新密钥后会整体替换当前密钥列表；全部留空保存则保留现有密钥。
             </p>
           </div>
 
@@ -313,43 +337,387 @@ export function LlmSettingsPage() {
         </CardContent>
       </Card>
 
-      {/* 并发模式选择：让用户在「并行多本」和「单本速度」之间取舍。
-          - parallel-books：worker 数 = key 数，多本并行
-          - single-book-speed：单 worker，全部额度给当前一本 */}
       <Card>
         <CardHeader>
           <CardTitle>并发模式</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <p className="text-xs text-muted-foreground">
-            根据「密钥数」与「使用场景」选择。每个密钥通常对应约 10 路并发额度。
+            多密钥可用于并行处理多本书，也可以集中处理当前一本。
           </p>
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
             <ModeOption
               active={status?.concurrency?.mode === 'parallel-books'}
               disabled={setMode.isPending}
               onClick={() => switchMode('parallel-books')}
-              title="优先并行本数"
-              desc={`worker 数 = 密钥数，多本书可同时提取${status?.concurrency ? `（当前 ${status.concurrency.workers} 个 worker）` : ''}`}
+              title="优先并行多本"
+              description={`工作进程数跟随密钥数${status?.concurrency ? `，当前 ${status.concurrency.workers} 个` : ''}`}
             />
             <ModeOption
               active={status?.concurrency?.mode === 'single-book-speed'}
               disabled={setMode.isPending}
               onClick={() => switchMode('single-book-speed')}
               title="优先单本速度"
-              desc="单 worker，把全部并发额度集中给当前这一本（同时只能处理 1 本）"
+              description="使用一个工作进程，把调用额度集中给当前书籍"
             />
           </div>
           {status?.concurrency && (
             <p className="rounded-md bg-muted/40 p-2 text-xs text-muted-foreground">
-              {status.concurrency.keyCount > 0
-                ? `检测到 ${status.concurrency.keyCount} 个密钥。建议「优先并行本数」模式，可同时提取约 ${status.concurrency.recommended} 本。`
-                : '尚未配置密钥。配置后可按密钥数自动并行多本。'}
+              已检测到 {status.concurrency.keyCount} 个密钥，建议可同时处理 {status.concurrency.recommended} 本书。
             </p>
           )}
         </CardContent>
       </Card>
+
+      {/* ── 文生图设置 ── */}
+      <ImageSettingsCard />
     </div>
+  );
+}
+
+function ModeOption({
+  active,
+  disabled,
+  onClick,
+  title,
+  description,
+}: {
+  active: boolean;
+  disabled: boolean;
+  onClick: () => void;
+  title: string;
+  description: string;
+}) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      className={`rounded-md border p-3 text-left transition-colors ${active ? 'border-primary bg-primary/5' : 'hover:bg-accent/40'}`}
+    >
+      <span className="flex items-center gap-1.5 text-sm font-medium">
+        {active && <CheckCircle2 className="h-3.5 w-3.5 text-primary" />}
+        {title}
+      </span>
+      <span className="mt-1 block text-xs text-muted-foreground">{description}</span>
+    </button>
+  );
+}
+
+/** 文生图设置卡片 */
+function ImageSettingsCard() {
+  const { data: status, isLoading } = useImageStatus();
+  const { data: presetsData } = useImagePresets();
+  const setConfig = useSetImageConfig();
+  const test = useTestImageConnection();
+
+  const presets = presetsData?.presets ?? [];
+
+  // ── 预设选择模式 ──
+  const [selectedProviderId, setSelectedProviderId] = useState<string>('');
+  const [selectedModelId, setSelectedModelId] = useState<string>('');
+
+  // ── 自定义模式 ──
+  const [useCustom, setUseCustom] = useState(false);
+  const [customBaseUrl, setCustomBaseUrl] = useState('');
+  const [customModel, setCustomModel] = useState('');
+
+  // ── 通用 ──
+  const [apiKey, setApiKey] = useState('');
+  const [showKey, setShowKey] = useState(false);
+  const [size, setSize] = useState('');
+  const [characterRatio, setCharacterRatio] = useState('');
+  const [itemRatio, setItemRatio] = useState('');
+  const [locationRatio, setLocationRatio] = useState('');
+
+  const activePreset = presets.find((p) => p.id === selectedProviderId);
+  const activeModels = activePreset?.models ?? [];
+
+  // 初始化：根据已保存的 baseUrl/model 反推预设
+  useEffect(() => {
+    if (!status || presets.length === 0) return;
+    const savedUrl = status.baseUrl || '';
+    const savedModel = status.model || '';
+    const match = matchPreset(presets, savedUrl, savedModel);
+    if (match && match.providerId) {
+      setSelectedProviderId(match.providerId);
+      setSelectedModelId(match.modelId);
+      setUseCustom(false);
+    } else if (savedUrl || savedModel) {
+      setUseCustom(true);
+      setCustomBaseUrl(savedUrl);
+      setCustomModel(savedModel);
+    }
+    setSize(status.size || '');
+    setCharacterRatio(status.characterRatio || '');
+    setItemRatio(status.itemRatio || '');
+    setLocationRatio(status.locationRatio || '');
+  }, [status, presets]);
+
+  const onProviderChange = (providerId: string) => {
+    setSelectedProviderId(providerId);
+    setSelectedModelId('');
+    setSize('');
+    setUseCustom(false);
+  };
+
+  const onModelChange = (modelId: string) => {
+    setSelectedModelId(modelId);
+    // 自动填充该模型的默认 size
+    const model = activeModels.find((m) => m.id === modelId);
+    if (model?.defaultSize) {
+      setSize(model.defaultSize);
+    }
+  };
+
+  const save = async () => {
+    try {
+      const patch: ImageConfigPatch = {};
+
+      if (useCustom) {
+        if (customBaseUrl.trim()) patch.baseUrl = customBaseUrl.trim();
+        if (customModel.trim()) patch.model = customModel.trim();
+      } else {
+        if (activePreset) patch.baseUrl = activePreset.baseUrl;
+        if (selectedModelId) patch.model = selectedModelId;
+      }
+
+      if (apiKey.trim()) patch.apiKey = apiKey.trim();
+      // size: 预设模式下自动从模型获取，自定义模式用手填值
+      const matchedModel = activeModels.find((m) => m.id === selectedModelId);
+      const effectiveSize = useCustom ? size.trim() : (matchedModel?.defaultSize || size.trim());
+      console.log('[image-config] save:', { useCustom, selectedModelId, matchedModel: matchedModel?.id, defaultSize: matchedModel?.defaultSize, effectiveSize });
+      if (effectiveSize) patch.size = effectiveSize;
+      if (characterRatio.trim()) patch.characterRatio = characterRatio.trim();
+      if (itemRatio.trim()) patch.itemRatio = itemRatio.trim();
+      if (locationRatio.trim()) patch.locationRatio = locationRatio.trim();
+      await setConfig.mutateAsync(patch);
+      toast.success('图片配置已保存');
+      setApiKey('');
+    } catch (e) {
+      toast.error(`保存失败：${(e as Error).message}`);
+    }
+  };
+
+  const runTest = async () => {
+    try {
+      const res = await test.mutateAsync();
+      if (res.success) toast.success(res.message);
+      else toast.error(res.message);
+    } catch (e) {
+      toast.error(`测试失败：${(e as Error).message}`);
+    }
+  };
+
+  if (isLoading) return null;
+
+  return (
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+        <CardTitle>文生图服务商</CardTitle>
+        {status?.configured ? (
+          <Badge variant="success" className="gap-1">
+            <CheckCircle2 className="h-3 w-3" />
+            就绪
+          </Badge>
+        ) : (
+          <Badge variant="destructive" className="gap-1">
+            <XCircle className="h-3 w-3" />
+            未就绪
+          </Badge>
+        )}
+      </CardHeader>
+      <CardContent className="grid grid-cols-2 gap-3 text-sm">
+        <StatusRow label="服务商">{status?.provider ?? '-'}</StatusRow>
+        <StatusRow label="模型">{status?.model || '-'}</StatusRow>
+        <StatusRow label="接口地址">{status?.baseUrl || '-'}</StatusRow>
+        <StatusRow label="API 密钥">{status?.keyHint || '未设置'}</StatusRow>
+        {status?.error && (
+          <p className="col-span-2 text-xs text-destructive">{status.error}</p>
+        )}
+      </CardContent>
+
+      <CardContent className="space-y-4">
+        <Separator />
+        <p className="text-sm font-medium">修改配置</p>
+        <p className="text-xs text-muted-foreground">
+          使用兼容 OpenAI <code>/v1/images/generations</code> 协议的文生图接口。
+        </p>
+
+        {/* 服务商选择 */}
+        <div className="space-y-1.5">
+          <Label>服务商</Label>
+          <Select value={useCustom ? '__custom__' : selectedProviderId} onValueChange={(v) => {
+            if (v === '__custom__') {
+              setUseCustom(true);
+              if (activePreset && !customBaseUrl) setCustomBaseUrl(activePreset.baseUrl);
+            } else {
+              onProviderChange(v);
+            }
+          }}>
+            <SelectTrigger>
+              <SelectValue placeholder="选择服务商" />
+            </SelectTrigger>
+            <SelectContent>
+              {presets.map((p) => (
+                <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>
+              ))}
+              <SelectItem value="__custom__">自定义（手动填写）</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* 预设模式：模型下拉 */}
+        {!useCustom && (
+          <div className="space-y-1.5">
+            <Label>模型</Label>
+            <Select
+              value={selectedModelId}
+              onValueChange={onModelChange}
+              disabled={!activePreset}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder={activePreset ? '选择模型' : '请先选择服务商'} />
+              </SelectTrigger>
+              <SelectContent>
+                {activeModels.map((m) => (
+                  <SelectItem key={m.id} value={m.id}>{m.name}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {activePreset && (
+              <p className="text-xs text-muted-foreground">
+                接口地址：<code className="rounded bg-muted px-1">{activePreset.baseUrl}</code>
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* 自定义模式：手填 baseUrl + model */}
+        {useCustom && (
+          <>
+            <div className="space-y-1.5">
+              <Label>接口地址</Label>
+              <Input
+                name="image-base-url"
+                autoComplete="off"
+                placeholder="https://api.openai.com/v1"
+                value={customBaseUrl}
+                onChange={(e) => setCustomBaseUrl(e.target.value)}
+              />
+              <p className="text-xs text-muted-foreground">
+                可填 /v1 根地址或完整 /images/generations 地址。
+              </p>
+            </div>
+            <div className="space-y-1.5">
+              <Label>模型名称</Label>
+              <Input
+                name="image-model"
+                autoComplete="off"
+                placeholder="reve/create-image"
+                value={customModel}
+                onChange={(e) => setCustomModel(e.target.value)}
+              />
+            </div>
+          </>
+        )}
+
+        {/* API Key */}
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between">
+            <Label>API 密钥</Label>
+            {status?.keyHint && (
+              <span className="font-mono text-xs text-muted-foreground">当前：{status.keyHint}</span>
+            )}
+          </div>
+          <div className="relative">
+            <Input
+              type={showKey ? 'text' : 'password'}
+              name="image-api-key"
+              autoComplete="off"
+              placeholder="输入新密钥可覆盖（留空保存则保留当前值）"
+              value={apiKey}
+              onChange={(e) => setApiKey(e.target.value)}
+              className="pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setShowKey((v) => !v)}
+              tabIndex={-1}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+            >
+              {showKey ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
+
+        {/* 图片尺寸：预设模式自动填充，自定义模式可手填 */}
+        <div className="space-y-1.5">
+          <Label>图片尺寸</Label>
+          {!useCustom && selectedModelId ? (
+            <div className="flex items-center gap-2">
+              <Input
+                value={activeModels.find((m) => m.id === selectedModelId)?.defaultSize || ''}
+                readOnly
+                className="bg-muted/50"
+              />
+              <span className="text-xs text-muted-foreground">（跟随模型自动设置）</span>
+            </div>
+          ) : (
+            <Input
+              name="image-size"
+              autoComplete="off"
+              placeholder="1024x1024 或 2K（留空则使用宽高比）"
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+            />
+          )}
+          <p className="text-xs text-muted-foreground">
+            Seedream 用 <code className="rounded bg-muted px-1">2K</code>，OpenAI/SiliconFlow 用 <code className="rounded bg-muted px-1">1024x1024</code>，Reve 留空。
+          </p>
+        </div>
+
+        <Separator />
+        <p className="text-sm font-medium">默认宽高比（可按实体类型覆盖）</p>
+        <div className="grid grid-cols-3 gap-3">
+          <div className="space-y-1.5">
+            <Label className="text-xs">角色 (Character)</Label>
+            <Input
+              placeholder="3:4"
+              value={characterRatio}
+              onChange={(e) => setCharacterRatio(e.target.value)}
+            />
+          </div>
+          <div className="space-y-1.5">
+            <Label className="text-xs">道具 (Item)</Label>
+            <Input
+              placeholder="1:1"
+              value={itemRatio}
+              onChange={(e) => setItemRatio(e.target.value)}
+            />
+          </div>
+          <div className="space-y-1.5">
+            <Label className="text-xs">场景 (Location)</Label>
+            <Input
+              placeholder="16:9"
+              value={locationRatio}
+              onChange={(e) => setLocationRatio(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 pt-2">
+          <Button onClick={save} disabled={setConfig.isPending}>
+            {setConfig.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            保存
+          </Button>
+          <Button variant="outline" onClick={runTest} disabled={test.isPending}>
+            {test.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            测试连接
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -361,67 +729,37 @@ function StatusRow({ label, children }: { label: string; children: React.ReactNo
     </div>
   );
 }
-
-/** 并发模式选项卡片。 */
-function ModeOption({
-  active,
-  disabled,
-  onClick,
-  title,
-  desc,
-}: {
-  active: boolean;
-  disabled: boolean;
-  onClick: () => void;
-  title: string;
-  desc: string;
-}) {
+/** LLM 设置页加载骨架：标题 + 状态卡 + 配置表单卡占位，贴合真实布局。 */
+function LlmSettingsSkeleton() {
   return (
-    <button
-      type="button"
-      disabled={disabled}
-      onClick={onClick}
-      className={
-        'flex flex-col items-start gap-1 rounded-md border p-3 text-left transition-colors disabled:opacity-50 ' +
-        (active ? 'border-primary bg-primary/5 ring-1 ring-primary' : 'hover:bg-accent/40')
-      }
-    >
-      <span className="flex items-center gap-1.5 text-sm font-medium">
-        {active && <CheckCircle2 className="h-3.5 w-3.5 text-primary" />}
-        {title}
-      </span>
-      <span className="text-xs text-muted-foreground">{desc}</span>
-    </button>
-  );
-}
-
-/** 服务商示例条目：展示标题 + base url + 模型名，点「填入」一键回填到表单。 */
-function ProviderExample({
-  title,
-  baseUrl,
-  model,
-  onApply,
-}: {
-  title: string;
-  baseUrl: string;
-  model: string;
-  onApply: (baseUrl: string, model: string) => void;
-}) {
-  return (
-    <div className="flex items-center justify-between gap-2 rounded bg-muted/40 px-2 py-1.5">
-      <div className="min-w-0">
-        <p className="font-medium text-foreground">{title}</p>
-        <p className="truncate font-mono text-[11px]">{baseUrl} · {model}</p>
+    <div className="mx-auto max-w-2xl space-y-6" aria-label="设置加载中">
+      <div className="space-y-2">
+        <Skeleton className="h-7 w-48" />
+        <Skeleton className="h-4 w-64" />
       </div>
-      <Button
-        type="button"
-        variant="outline"
-        size="sm"
-        className="h-6 shrink-0 px-2 text-xs"
-        onClick={() => onApply(baseUrl, model)}
-      >
-        填入
-      </Button>
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+          <Skeleton className="h-5 w-20" />
+          <Skeleton className="h-5 w-14" />
+        </CardHeader>
+        <CardContent className="space-y-2">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-3/4" />
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader className="pb-3">
+          <Skeleton className="h-5 w-24" />
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <Skeleton className="h-4 w-16" />
+          <Skeleton className="h-9 w-full" />
+          <Skeleton className="h-4 w-16" />
+          <Skeleton className="h-9 w-full" />
+          <Skeleton className="h-4 w-16" />
+          <Skeleton className="h-9 w-full" />
+        </CardContent>
+      </Card>
     </div>
   );
 }

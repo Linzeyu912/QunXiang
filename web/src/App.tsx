@@ -1,30 +1,66 @@
-import { useEffect, useRef } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { toast } from 'sonner';
 import { AppLayout } from './components/layout/AppLayout';
-import { LibraryPage } from './pages/LibraryPage';
 import { BookLayout } from './pages/BookLayout';
-import { BookIndexRedirect } from './pages/BookIndexRedirect';
-import { PipelinePage } from './pages/PipelinePage';
-import { ChaptersPage } from './pages/ChaptersPage';
-import { EntityReviewPage } from './pages/EntityReviewPage';
-import { ExportPage } from './pages/ExportPage';
-import { LlmSettingsPage } from './pages/LlmSettingsPage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { StoriesPage } from './pages/story/StoriesPage';
-import { BoundaryReviewPage } from './pages/story/BoundaryReviewPage';
-import { StoryAssetsPage } from './pages/story/StoryAssetsPage';
-import { EpisodesPage } from './pages/story/EpisodesPage';
-import { DirectorPage } from './pages/story/DirectorPage';
 import { AuthPage } from './pages/AuthPage';
+import { AccountPage } from './pages/AccountPage';
+import { SharedWithMePage } from './pages/SharedWithMePage';
+import { PublicLibraryPage } from './pages/PublicLibraryPage';
+import { PublicAssetDetailPage } from './pages/PublicAssetDetailPage';
 import { useAuthStore } from './store/authStore';
-import { useBootstrapUser, loginDefaultUser } from './api/auth';
+import { bootstrapSession } from './api/auth';
+
+// 路由级代码分割：各页面按需加载，首屏只下载登录页 + 布局骨架。
+// 具名导出通过 .then 适配成 lazy 需要的 default 导出。
+const LibraryPage = lazy(() =>
+  import('./pages/LibraryPage').then((m) => ({ default: m.LibraryPage })),
+);
+const BookIndexRedirect = lazy(() =>
+  import('./pages/BookIndexRedirect').then((m) => ({ default: m.BookIndexRedirect })),
+);
+const PipelinePage = lazy(() =>
+  import('./pages/PipelinePage').then((m) => ({ default: m.PipelinePage })),
+);
+const ChaptersPage = lazy(() =>
+  import('./pages/ChaptersPage').then((m) => ({ default: m.ChaptersPage })),
+);
+const EntityReviewPage = lazy(() =>
+  import('./pages/EntityReviewPage').then((m) => ({ default: m.EntityReviewPage })),
+);
+const ExportPage = lazy(() =>
+  import('./pages/ExportPage').then((m) => ({ default: m.ExportPage })),
+);
+const LlmSettingsPage = lazy(() =>
+  import('./pages/LlmSettingsPage').then((m) => ({ default: m.LlmSettingsPage })),
+);
+const NotFoundPage = lazy(() =>
+  import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
+);
+const StoriesPage = lazy(() =>
+  import('./pages/story/StoriesPage').then((m) => ({ default: m.StoriesPage })),
+);
+const BoundaryReviewPage = lazy(() =>
+  import('./pages/story/BoundaryReviewPage').then((m) => ({ default: m.BoundaryReviewPage })),
+);
+const StoryAssetsPage = lazy(() =>
+  import('./pages/story/StoryAssetsPage').then((m) => ({ default: m.StoryAssetsPage })),
+);
+const EpisodesPage = lazy(() =>
+  import('./pages/story/EpisodesPage').then((m) => ({ default: m.EpisodesPage })),
+);
+const DirectorPage = lazy(() =>
+  import('./pages/story/DirectorPage').then((m) => ({ default: m.DirectorPage })),
+);
+
+/** 页面分包加载中的占位提示，避免路由切换时白屏。 */
+function PageLoading() {
+  return <div className="p-10 text-sm text-muted-foreground">页面加载中…</div>;
+}
 
 /**
  * 未登录拦截：
- * - bootstrapping：启动期等待登录态确定——有 token 时等 /auth/me 校验，无 token 时等
- *   默认账号自动登录尝试完成。期间不抢跳，避免误把正常用户弹回 /login。
- * - 退出 bootstrapping 后仍无 token（自动登录也失败）：重定向到 /login 手动登录兜底。
+ * - bootstrapping：有 token 时等待 /auth/me 校验，期间不抢跳。
+ * - 退出 bootstrapping 后仍无 token：重定向到登录页。
  */
 function RequireAuth({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -40,42 +76,14 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
 }
 
 export function App() {
-  const token = useAuthStore((s) => s.token);
-  const user = useAuthStore((s) => s.user);
-  const setAuth = useAuthStore((s) => s.setAuth);
-  const setBootstrapping = useAuthStore((s) => s.setBootstrapping);
-  const bootstrap = useBootstrapUser();
-  const autoLoginTried = useRef(false);
-
-  // 顶层负责用 token 换取/校验用户对象，独立于受保护路由的挂载。
+  // 顶层只执行一次 Cookie 会话恢复，不创建或覆盖任何账号。
   useEffect(() => {
-    if (token && !user) {
-      bootstrap.mutate();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
-
-  // 无 token：用默认本地账号静默自动登录，免去每次开机手输账号密码。
-  // 成功 → setAuth（同时退出 bootstrapping，正常进书库）；
-  // 失败 → 退出 bootstrapping 落到登录页（手动登录兜底），并提示默认账号凭据，
-  //        让用户知道下一步（换机后 ensureDefaultUser 可能改过密码，用户不知情）。
-  useEffect(() => {
-    if (token || autoLoginTried.current) return;
-    autoLoginTried.current = true;
-    loginDefaultUser()
-      .then((data) => setAuth(data.token, data.user))
-      .catch(() => {
-        setBootstrapping(false);
-        // 不在前端 toast 明文默认凭据（会进客户端 bundle）。仅提示手动登录，
-        // 默认账号说明见 README「跨机器部署」一节。
-        toast.info('自动登录失败，请手动登录。默认账号说明见 README。', {
-          duration: 6000,
-        });
-      });
-  }, [token, setAuth, setBootstrapping]);
+    void bootstrapSession();
+  }, []);
 
   return (
-    <Routes>
+    <Suspense fallback={<PageLoading />}>
+      <Routes>
       <Route path="/login" element={<AuthPage />} />
       <Route
         element={
@@ -101,8 +109,13 @@ export function App() {
           <Route path="director" element={<DirectorPage />} />
         </Route>
         <Route path="/settings/llm" element={<LlmSettingsPage />} />
+        <Route path="/shared" element={<SharedWithMePage />} />
+        <Route path="/public" element={<PublicLibraryPage />} />
+        <Route path="/public/:id" element={<PublicAssetDetailPage />} />
+        <Route path="/account" element={<AccountPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
+    </Suspense>
   );
 }

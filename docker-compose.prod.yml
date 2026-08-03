@@ -1,0 +1,77 @@
+# 生产环境 Docker Compose
+# 用法：POSTGRES_PASSWORD=xxx docker compose -f docker-compose.prod.yml up -d
+
+services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: novel-agent-caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - api
+      - web
+    restart: unless-stopped
+    networks:
+      - novel-agent-net
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: novel-agent-api
+    env_file:
+      - api/.env.production
+    environment:
+      # postgres 密码从环境变量注入（compose 会合并 env_file 和 environment）
+      DATABASE_URL: postgresql://novel_agent:${POSTGRES_PASSWORD}@postgres:5432/novel_agent
+      DIRECT_DATABASE_URL: postgresql://novel_agent:${POSTGRES_PASSWORD}@postgres:5432/novel_agent
+    volumes:
+      - object-data:/app/storage/objects
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - novel-agent-net
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: novel-agent-web
+    restart: unless-stopped
+    networks:
+      - novel-agent-net
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: novel-agent-postgres
+    environment:
+      POSTGRES_DB: novel_agent
+      POSTGRES_USER: novel_agent
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U novel_agent -d novel_agent"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - novel-agent-net
+
+volumes:
+  postgres-data:
+  object-data:
+  caddy-data:
+  caddy-config:
+
+networks:
+  novel-agent-net:
+    driver: bridge

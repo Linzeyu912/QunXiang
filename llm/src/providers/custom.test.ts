@@ -45,7 +45,8 @@ describe('createCustomProvider', () => {
     });
     await provider.chatExtract('system', 'user', z.object({ value: z.string() }));
 
-    const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
+    const callArgs = fetchMock.mock.calls[0] as unknown[];
+    const body = JSON.parse(String((callArgs[1] as { body?: string } | undefined)?.body ?? '{}'));
     expect(body.response_format).toEqual({ type: 'json_object' });
   });
 });

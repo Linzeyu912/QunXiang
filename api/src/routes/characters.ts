@@ -1,7 +1,9 @@
 import type { FastifyInstance } from 'fastify';
 import { CharacterRepository, ReviewRepository, prisma } from '@novel-agent/storage';
 import { characterUpdateSchema } from '@novel-agent/schemas';
-import { ownsBook, resolveOwnerId } from '../lib/authz.js';
+import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
+import { sendServerError } from '../lib/send-error.js';
+import { sendBookNotFound } from '../lib/api-errors.js';
 
 export async function charactersRoutes(fastify: FastifyInstance) {
   // Get characters (optionally filtered by status)
@@ -9,20 +11,20 @@ export async function charactersRoutes(fastify: FastifyInstance) {
     const { bookId, status } = request.query as { bookId?: string; status?: string };
 
     if (!bookId) {
-      return reply.status(400).send({ error: 'bookId is required' });
+      return reply.status(400).send({ error: '缺少 bookId 参数' });
     }
 
-    // 越权防护：不是当前用户名下的书，返回空列表（不泄露存在性）
+    // 不存在和越权返回完全相同的响应，避免泄露资源存在性。
     const ownerId = await resolveOwnerId(request);
-    if (!(await ownsBook(bookId, ownerId))) {
-      return { characters: [] };
+    if (!(await loadOwnedBook(bookId, ownerId))) {
+      return sendBookNotFound(reply);
     }
 
     let characters;
     if (status) {
-      characters = await CharacterRepository.findByStatus(bookId, status);
+      characters = await CharacterRepository.findByOwnedStatus(bookId, ownerId!, status);
     } else {
-      characters = await CharacterRepository.findByBookId(bookId);
+      characters = await CharacterRepository.findByOwnedBookId(bookId, ownerId!);
     }
 
     return { characters };
@@ -32,20 +34,23 @@ export async function charactersRoutes(fastify: FastifyInstance) {
   fastify.post('/batch', async (request, reply) => {
     const { ids, status } = request.body as { ids?: string[]; status?: string };
     if (!Array.isArray(ids) || ids.length === 0) {
-      return reply.status(400).send({ error: 'ids is required' });
+      return reply.status(400).send({ error: 'ids 为必填项' });
     }
     if (status !== 'APPROVED' && status !== 'REJECTED') {
-      return reply.status(400).send({ error: 'status must be APPROVED or REJECTED' });
+      return reply.status(400).send({ error: 'status 必须为 APPROVED 或 REJECTED' });
     }
 
     try {
       const userId = request.user.userId;
       const ownerId = await resolveOwnerId(request);
+      if (!ownerId) {
+        return reply.status(401).send({ error: '请先登录' });
+      }
 
       // 一次 findMany 取回所有实体（替代逐条 findById 的 N+1 查询），
       // 再批量校验归属。整个审核写入用事务包裹，中途失败则全部回滚（原子性）。
       const characters = await prisma.character.findMany({
-        where: { id: { in: ids } },
+        where: { id: { in: ids }, book: { userId: ownerId } },
         select: { id: true, bookId: true, status: true },
       });
       const charById = new Map(characters.map((c) => [c.id, c]));
@@ -58,11 +63,6 @@ export async function charactersRoutes(fastify: FastifyInstance) {
         const character = charById.get(id);
         if (!character) {
           skipped.push({ id, reason: '不存在' });
-          continue;
-        }
-        // 归属校验：批量查一次所有相关 book 的 owner
-        if (!(await ownsBook(character.bookId, ownerId))) {
-          skipped.push({ id, reason: '不存在' }); // 统一按不存在跳过，避免泄露
           continue;
         }
         toUpdate.push({ id, previousValue: character.status });
@@ -89,8 +89,7 @@ export async function charactersRoutes(fastify: FastifyInstance) {
       }
       return { updated, skipped };
     } catch (err) {
-      request.log.error(err);
-      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+      return sendServerError(reply, err, request.log);
     }
   });
 
@@ -101,13 +100,10 @@ export async function charactersRoutes(fastify: FastifyInstance) {
 
       const body = characterUpdateSchema.parse(request.body);
 
-      const character = await CharacterRepository.findById(id);
-      if (!character) {
-        return reply.status(404).send({ error: 'Character not found' });
-      }
       const ownerId = await resolveOwnerId(request);
-      if (!(await ownsBook(character.bookId, ownerId))) {
-        return reply.status(404).send({ error: 'Character not found' });
+      const character = ownerId ? await CharacterRepository.findOwnedById(id, ownerId) : null;
+      if (!character) {
+        return sendBookNotFound(reply);
       }
 
       // Record review action (semantically distinct from character status)
@@ -126,27 +122,24 @@ export async function charactersRoutes(fastify: FastifyInstance) {
       }
 
       // Update character
-      const updated = await CharacterRepository.update(id, body);
+      const updated = await CharacterRepository.updateOwned(id, ownerId!, body);
+      if (!updated) return sendBookNotFound(reply);
 
       return { character: updated };
     } catch (err) {
-      request.log.error(err);
-      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+      return sendServerError(reply, err, request.log);
     }
   });
 
   // Get character reviews
   fastify.get('/:id/reviews', async (request, reply) => {
     const { id } = request.params as { id: string };
-    const character = await CharacterRepository.findById(id);
-    if (!character) {
-      return reply.status(404).send({ error: 'Character not found' });
-    }
     const ownerId = await resolveOwnerId(request);
-    if (!(await ownsBook(character.bookId, ownerId))) {
-      return reply.status(404).send({ error: 'Character not found' });
+    const character = ownerId ? await CharacterRepository.findOwnedById(id, ownerId) : null;
+    if (!character) {
+      return sendBookNotFound(reply);
     }
-    const reviews = await ReviewRepository.findByCharacterId(id);
+    const reviews = await ReviewRepository.findOwnedByCharacterId(id, ownerId!);
     return { reviews };
   });
 }

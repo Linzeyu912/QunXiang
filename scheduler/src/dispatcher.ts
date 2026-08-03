@@ -13,7 +13,7 @@ import {
 import { CharacterRepository, LocationRepository, ItemRepository, BookRepository, TaskRepository } from '@novel-agent/storage';
 import { eventBus, type PipelineEvent } from './event-bus.js';
 import { writePipelineFinalSummary } from './pipeline-summary.js';
-import { summarizeExtractionResult, EMPTY_EXTRACTION_REASON } from './extraction-result-summary.js';
+import { summarizeExtractionResult, buildEmptyExtractionMessage } from './extraction-result-summary.js';
 
 const DEFAULT_RETRY_CONFIG = {
   maxRetries: 3,
@@ -282,13 +282,16 @@ export class TaskDispatcher {
         // 全被幻觉过滤、批次全失败）。此时不应静默标完成，否则前端会看到"已完成"
         // 但角色/场景页面为空（历史 bug）。判失败，保留旧实体不被清，让用户重试。
         if (totalCount === 0) {
-          await this.queue.fail(task.id, EMPTY_EXTRACTION_REASON);
+          // 拼接 failedBatches 里的首个批次错误作为根因（如 LLM 404/401），
+          // 避免用户只拿到"可能是配置问题"的猜测式文案而误判失败环节。
+          const emptyMessage = buildEmptyExtractionMessage(result);
+          await this.queue.fail(task.id, emptyMessage);
           await this.finalizePipeline(task.bookId, 'failed');
           eventBus.emit({
             type: 'error',
             bookId: task.bookId,
             stageId: agentType,
-            message: EMPTY_EXTRACTION_REASON,
+            message: emptyMessage,
             timestamp: Date.now(),
           });
           return undefined;

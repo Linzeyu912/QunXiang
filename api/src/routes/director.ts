@@ -8,6 +8,7 @@ import {
   type CreateAssignmentBody,
 } from '../services/story.service.js';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
+import { sendBookNotFound } from '../lib/api-errors.js';
 
 function sendError(reply: FastifyReply, err: unknown) {
   if (err instanceof NotFoundError) return reply.status(404).send({ error: err.message });
@@ -27,7 +28,7 @@ export async function directorRoutes(fastify: FastifyInstance) {
     if (!id) return;
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
   });
 
@@ -36,14 +37,14 @@ export async function directorRoutes(fastify: FastifyInstance) {
     const body = request.body as CreateAssignmentBody;
 
     if (!ASSIGNMENT_TYPES.has(body?.assignmentType)) {
-      return reply.status(400).send({ error: 'invalid assignmentType' });
+      return reply.status(400).send({ error: '导演任务类型无效' });
     }
     if (!OBJECTIVES.has(body?.objective)) {
-      return reply.status(400).send({ error: 'invalid objective' });
+      return reply.status(400).send({ error: '导演任务目标无效' });
     }
     try {
       // 导演管线为确定性同步计算，直接在请求内完成并返回结果记录
-      return await createAssignment(id, body);
+      return await createAssignment(id, request.user.userId, body);
     } catch (err) {
       return sendError(reply, err);
     }
@@ -52,7 +53,7 @@ export async function directorRoutes(fastify: FastifyInstance) {
   fastify.get('/:id/director/assignments', async (request, reply) => {
     const { id } = request.params as { id: string };
     try {
-      return await listAssignments(id);
+      return await listAssignments(id, request.user.userId);
     } catch (err) {
       return sendError(reply, err);
     }

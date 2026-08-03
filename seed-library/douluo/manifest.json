@@ -1,0 +1,14 @@
+{
+  "slug": "douluo",
+  "title": "斗罗大陆前100章",
+  "version": 1,
+  "exportedAt": "2026-07-26T16:09:21.016Z",
+  "sourceFile": "source.txt",
+  "fileSize": 2645211,
+  "counts": {
+    "characters": 99,
+    "locations": 57,
+    "items": 70,
+    "images": 0
+  }
+}

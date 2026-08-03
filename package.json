@@ -10,6 +10,7 @@
     "validators",
     "entity-resolution",
     "scheduler",
+    "agent",
     "story-arcs",
     "llm",
     "api",
@@ -24,13 +25,26 @@
     "dev:api": "pnpm --filter @novel-agent/api dev",
     "dev:web": "pnpm --filter @novel-agent/web dev",
     "build": "pnpm -r build",
-    "db:push": "cd storage && pnpm exec prisma db push --schema=./prisma/schema.prisma --skip-generate --accept-data-loss",
+    "db:migrate:dev": "pnpm --filter @novel-agent/storage exec prisma migrate dev --schema=./prisma/schema.prisma",
+    "db:migrate:deploy": "pnpm --filter @novel-agent/storage exec prisma migrate deploy --schema=./prisma/schema.prisma",
+    "db:migrate:status": "pnpm --filter @novel-agent/storage exec prisma migrate status --schema=./prisma/schema.prisma",
+    "db:sync-password": "node scripts/sync-db-password.mjs",
     "test": "node scripts/test.mjs",
-    "test:watch": "node scripts/test.mjs --watch"
+    "test:watch": "node scripts/test.mjs --watch",
+    "test:postgres:up": "docker compose -f docker-compose.test.yml up -d --wait postgres-test",
+    "test:postgres:down": "docker compose -f docker-compose.test.yml down -v",
+    "test:minio:up": "docker compose -f docker-compose.test.yml up -d --wait minio-test",
+    "test:minio:down": "docker compose -f docker-compose.test.yml rm -fsv minio-test",
+    "test:database:validate": "node scripts/validate-test-database-url.mjs",
+    "check:workspace-deps": "node scripts/check-workspace-deps.mjs"
   },
   "devDependencies": {
     "dotenv": "^17.4.2",
     "tsx": "^4.22.3",
     "vitest": "^2.1.9"
+  },
+  "dependencies": {
+    "@embedded-postgres/windows-x64": "18.4.0-beta.17",
+    "embedded-postgres": "18.4.0-beta.17"
   }
 }

@@ -1,9 +1,9 @@
 import { EventEmitter } from 'node:events';
 import { randomUUID } from 'node:crypto';
 import { existsSync } from 'node:fs';
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
-import { BookRepository } from '@novel-agent/storage';
+import { BookArtifactRepository, BookRepository, getSharedAssetSourceResolver, persistBookArtifact } from '@novel-agent/storage';
 import { parseTxtEnhanced } from '@novel-agent/import';
 import {
   buildStorySegmentsFromParseResult,
@@ -18,6 +18,7 @@ import type {
   AssetWarning,
   CharacterInStory,
   DirectorAssignment,
+  DirectorPipelineResult,
   PropInStory,
   SceneInStory,
   ScriptEpisode,
@@ -33,6 +34,7 @@ import type {
   StorySegment,
   VideoPromptPack,
 } from '@novel-agent/story-arcs';
+import { readArtifactJson } from './artifact-store.js';
 
 // 输出目录统一用 bookId 作为目录名（与 director-pipeline 内部的
 // storyAssetDirectory(outputDir, bundle.story.bookId, …) 保持一致），
@@ -61,17 +63,81 @@ function storyDir(bookId: string, storyId: string): string {
   return storyAssetDirectory(OUTPUT_ROOT, bookId, storyId);
 }
 
-async function readJson<T>(path: string): Promise<T | null> {
-  try {
-    return JSON.parse(await readFile(path, 'utf-8')) as T;
-  } catch {
-    return null;
-  }
+/** 故事产物本机写 + 对象存储 / BookArtifact 双写（category: 'story'）。 */
+async function writeStoryArtifact(
+  bookId: string,
+  logicalPath: string,
+  fsPath: string,
+  value: unknown,
+): Promise<void> {
+  const body = `${JSON.stringify(value, null, 2)}\n`;
+  await mkdir(dirname(fsPath), { recursive: true });
+  await writeFile(fsPath, body, 'utf-8');
+  await persistBookArtifact({ bookId, logicalPath, category: 'story', body });
 }
 
-async function writeJson(path: string, value: unknown): Promise<void> {
-  await mkdir(dirname(path), { recursive: true });
-  await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, 'utf-8');
+/** writeStoryAssetFiles 后把 9 个故事资产文件同步到对象存储（in-memory，避免回读磁盘）。 */
+async function persistStoryAssetArtifacts(
+  bookId: string,
+  files: {
+    story?: StorySegment;
+    characters: StoryCharacterFile;
+    scenes: StorySceneFile;
+    props: StoryPropFile;
+    assetPack: StoryAssetPack;
+    assetPrompts: StoryAssetPromptPack;
+  },
+): Promise<void> {
+  const storyId = files.assetPack.storyId;
+  const base = `stories/${storyId}`;
+  const writes: Array<{ filename: string; value: unknown }> = [
+    { filename: 'characters.json', value: files.characters },
+    { filename: 'scenes.json', value: files.scenes },
+    { filename: 'props.json', value: files.props },
+    { filename: 'asset-pack.json', value: files.assetPack },
+    { filename: 'character-prompts.json', value: { storyId, bookId, prompts: files.assetPrompts.characterPrompts } },
+    { filename: 'scene-prompts.json', value: { storyId, bookId, prompts: files.assetPrompts.scenePrompts } },
+    { filename: 'prop-prompts.json', value: { storyId, bookId, prompts: files.assetPrompts.propPrompts } },
+    { filename: 'asset-prompts.json', value: files.assetPrompts },
+  ];
+  if (files.story) writes.push({ filename: 'story.json', value: files.story });
+  await Promise.all(
+    writes.map((w) =>
+      persistBookArtifact({
+        bookId,
+        logicalPath: `${base}/${w.filename}`,
+        category: 'story',
+        body: `${JSON.stringify(w.value, null, 2)}\n`,
+      }),
+    ),
+  );
+}
+
+/** runDirectorPipelineForStory 后把 6 个导演文件同步到对象存储（in-memory）。 */
+async function persistDirectorArtifacts(
+  bookId: string,
+  storyId: string,
+  result: DirectorPipelineResult,
+): Promise<void> {
+  const base = `stories/${storyId}/director`;
+  const writes: Array<{ filename: string; value: unknown }> = [
+    { filename: 'director-assignment.json', value: result.assignment },
+    { filename: 'episode-plan.json', value: { storyId, plans: result.episodePlans } },
+    { filename: 'script-episodes.json', value: { storyId, episodes: result.scriptEpisodes } },
+    { filename: 'script-review.json', value: result.scriptReview },
+    { filename: 'storyboard-prompt-pack.json', value: result.storyboardPromptPacks[0] },
+    { filename: 'video-prompt-pack.json', value: result.videoPromptPacks[0] },
+  ];
+  await Promise.all(
+    writes.map((w) =>
+      persistBookArtifact({
+        bookId,
+        logicalPath: `${base}/${w.filename}`,
+        category: 'director',
+        body: `${JSON.stringify(w.value, null, 2)}\n`,
+      }),
+    ),
+  );
 }
 
 // ---------- 持久化文档结构 ----------
@@ -230,18 +296,32 @@ export interface SegmentationOptions {
   autoApprove?: boolean;
 }
 
+async function requireOwnedBook(bookId: string, ownerId: string) {
+  const book = await BookRepository.findOwnedById(bookId, ownerId);
+  if (!book) throw new NotFoundError('书籍不存在或无权访问');
+  return book;
+}
+
+/** 任何按 storyId 访问文件的入口，都必须先确认故事段属于该账号的这本书。 */
+async function requireOwnedStory(bookId: string, ownerId: string, storyId: string): Promise<StorySegment> {
+  await requireOwnedBook(bookId, ownerId);
+  const doc = await loadSegmentsDoc(bookId);
+  const story = doc?.segments.find((segment) => segment.id === storyId);
+  if (!story) throw new NotFoundError('故事段不存在');
+  return story;
+}
+
 export async function startSegmentation(
   bookId: string,
+  ownerId: string,
   options: SegmentationOptions = {},
 ): Promise<{ taskId: string; existing: boolean }> {
+  const book = await requireOwnedBook(bookId, ownerId);
   for (const task of tasks.values()) {
     if (task.bookId === bookId && task.status === 'running') {
       return { taskId: task.id, existing: true };
     }
   }
-
-  const book = await BookRepository.findById(bookId);
-  if (!book) throw new NotFoundError(`Book not found: ${bookId}`);
 
   const task: StoryTask = {
     id: `story-seg-${randomUUID().slice(0, 8)}`,
@@ -253,7 +333,8 @@ export async function startSegmentation(
   };
   tasks.set(task.id, task);
 
-  void runSegmentation(task, book.filePath, book.title, options).catch((err) => {
+  const sourceContent = await getSharedAssetSourceResolver().readSourceText(book);
+  void runSegmentation(task, sourceContent, book.title, options).catch((err) => {
     touchTask(task, { status: 'failed', error: String(err) });
     emit(bookId, { type: 'error', taskId: task.id, message: String(err), timestamp: Date.now() });
   });
@@ -263,7 +344,7 @@ export async function startSegmentation(
 
 async function runSegmentation(
   task: StoryTask,
-  filePath: string,
+  content: string,
   title: string,
   options: SegmentationOptions = {},
 ): Promise<void> {
@@ -277,7 +358,6 @@ async function runSegmentation(
   };
 
   stage('chapter-analysis', '解析章节与实体预扫描');
-  const content = await readFile(filePath, 'utf-8');
   const enhanced = await parseTxtEnhanced(content, title, {
     bookId,
     prescanOutputPath: join('.intermediate', 'story', bookId, 'prescan'),
@@ -297,8 +377,8 @@ async function runSegmentation(
   // 重切分会使旧的资产/剧本失效，直接清空 stories 子树
   await rm(join(bookDir(bookId), 'stories'), { recursive: true, force: true });
   const doc: SegmentsDoc = { bookId, generatedAt: new Date().toISOString(), segments };
-  await writeJson(segmentsFile(bookId), doc);
-  await writeJson(reviewFile(bookId), { bookId, items: reviews } satisfies ReviewDoc);
+  await writeStoryArtifact(bookId, 'story-segments.json', segmentsFile(bookId), doc);
+  await writeStoryArtifact(bookId, 'story-boundary-review.json', reviewFile(bookId), { bookId, items: reviews } satisfies ReviewDoc);
   stageDone('segment-assembly', `共 ${segments.length} 段`);
 
   const pending = reviews.filter((r) => r.status === 'pending').length;
@@ -310,12 +390,16 @@ async function runSegmentation(
   emit(bookId, { type: 'done', taskId: task.id, timestamp: Date.now() });
 }
 
-export function getSegmentationStatus(taskId: string): StoryTask | null {
-  return tasks.get(taskId) ?? null;
+export async function getSegmentationStatus(taskId: string, ownerId: string): Promise<StoryTask | null> {
+  const task = tasks.get(taskId) ?? null;
+  if (!task) return null;
+  await requireOwnedBook(task.bookId, ownerId);
+  return task;
 }
 
 /** SSE 流：转发本书的故事管线事件，terminal 事件后关闭。 */
-export async function* createStoryStream(bookId: string): AsyncGenerator<string> {
+export async function* createStoryStream(bookId: string, ownerId: string): AsyncGenerator<string> {
+  await requireOwnedBook(bookId, ownerId);
   const running = [...tasks.values()].find((t) => t.bookId === bookId && t.status === 'running');
   yield `data: ${JSON.stringify({ type: 'snapshot', task: running ?? null, timestamp: Date.now() })}\n\n`;
   if (!running) return;
@@ -358,12 +442,30 @@ export async function* createStoryStream(bookId: string): AsyncGenerator<string>
 
 // ---------- 故事段读写 ----------
 
+/** 读 stories/{storyId}/{filename}：优先 BookArtifact，回退本机 output/。 */
+async function readStoryFile<T>(bookId: string, storyId: string, filename: string): Promise<T | null> {
+  return readArtifactJson<T>(
+    bookId,
+    `stories/${storyId}/${filename}`,
+    join(storyDir(bookId, storyId), filename),
+  );
+}
+
+/** 读 stories/{storyId}/director/{filename}：优先 BookArtifact，回退本机 output/。 */
+async function readDirectorFile<T>(bookId: string, storyId: string, filename: string): Promise<T | null> {
+  return readArtifactJson<T>(
+    bookId,
+    `stories/${storyId}/director/${filename}`,
+    join(storyDir(bookId, storyId), 'director', filename),
+  );
+}
+
 async function loadSegmentsDoc(bookId: string): Promise<SegmentsDoc | null> {
-  return readJson<SegmentsDoc>(segmentsFile(bookId));
+  return readArtifactJson<SegmentsDoc>(bookId, 'story-segments.json', segmentsFile(bookId));
 }
 
 async function loadReviewDoc(bookId: string): Promise<ReviewDoc> {
-  return (await readJson<ReviewDoc>(reviewFile(bookId))) ?? { bookId, items: [] };
+  return (await readArtifactJson<ReviewDoc>(bookId, 'story-boundary-review.json', reviewFile(bookId))) ?? { bookId, items: [] };
 }
 
 function stripSource(seg: StorySegment): Omit<StorySegment, 'sourceText'> {
@@ -371,26 +473,38 @@ function stripSource(seg: StorySegment): Omit<StorySegment, 'sourceText'> {
   return rest;
 }
 
-function toSummary(bookId: string, seg: StorySegment): StorySummary {
+function toSummary(bookId: string, seg: StorySegment, artifactPaths?: Set<string>): StorySummary {
+  const hasArtifact = (logicalPath: string) =>
+    Boolean(artifactPaths?.has(logicalPath)) ||
+    existsSync(join(OUTPUT_ROOT, bookId, logicalPath));
   return {
     ...stripSource(seg),
-    assetsExtracted: existsSync(join(storyDir(bookId, seg.id), 'asset-pack.json')),
-    directorRan: existsSync(join(storyDir(bookId, seg.id), 'director', 'script-episodes.json')),
+    assetsExtracted: hasArtifact(`stories/${seg.id}/asset-pack.json`),
+    directorRan: hasArtifact(`stories/${seg.id}/director/script-episodes.json`),
   };
 }
 
-export async function listStories(bookId: string): Promise<{
+export async function listStories(bookId: string, ownerId: string): Promise<{
   stories: StorySummary[];
   pendingBoundaryReviews: number;
   generatedAt: string | null;
 }> {
+  await requireOwnedBook(bookId, ownerId);
   const doc = await loadSegmentsDoc(bookId);
   const review = await loadReviewDoc(bookId);
+  // 一次性拉取该书全部 BookArtifact logicalPath，供 toSummary 判定资产/导演是否已生成（多设备无本机 output/ 也能正确显示）。
+  let artifactPaths: Set<string> | undefined;
+  try {
+    const artifacts = await BookArtifactRepository.findByBook(bookId);
+    artifactPaths = new Set(artifacts.map((a) => a.logicalPath));
+  } catch (err) {
+    console.warn(`[story] 读取 BookArtifact 列表失败，回退本机 output/：${err instanceof Error ? err.message : err}`);
+  }
   const sorted = [...(doc?.segments ?? [])].sort(
     (a, b) => a.startChapter - b.startChapter || a.id.localeCompare(b.id),
   );
   return {
-    stories: sorted.map((s) => toSummary(bookId, s)),
+    stories: sorted.map((s) => toSummary(bookId, s, artifactPaths)),
     pendingBoundaryReviews: review.items.filter((i) => i.status === 'pending').length,
     generatedAt: doc?.generatedAt ?? null,
   };
@@ -398,24 +512,28 @@ export async function listStories(bookId: string): Promise<{
 
 export async function getStory(
   bookId: string,
+  ownerId: string,
   storyId: string,
   includeSource: boolean,
 ): Promise<StorySegment | Omit<StorySegment, 'sourceText'>> {
+  await requireOwnedBook(bookId, ownerId);
   const doc = await loadSegmentsDoc(bookId);
   const seg = doc?.segments.find((s) => s.id === storyId);
-  if (!seg) throw new NotFoundError(`Story not found: ${storyId}`);
+  if (!seg) throw new NotFoundError(`故事段不存在：${storyId}`);
   return includeSource ? seg : stripSource(seg);
 }
 
 export async function approveStory(
   bookId: string,
+  ownerId: string,
   storyId: string,
   approved: boolean,
 ): Promise<StorySummary> {
+  await requireOwnedBook(bookId, ownerId);
   const doc = await loadSegmentsDoc(bookId);
-  if (!doc) throw new NotFoundError('No story segments yet');
+  if (!doc) throw new NotFoundError('尚未生成故事段');
   const seg = doc.segments.find((s) => s.id === storyId);
-  if (!seg) throw new NotFoundError(`Story not found: ${storyId}`);
+  if (!seg) throw new NotFoundError(`故事段不存在：${storyId}`);
 
   if (approved) {
     const review = await loadReviewDoc(bookId);
@@ -426,12 +544,13 @@ export async function approveStory(
   }
 
   seg.approved = approved;
-  await writeJson(segmentsFile(bookId), doc);
+  await writeStoryArtifact(bookId, 'story-segments.json', segmentsFile(bookId), doc);
   return toSummary(bookId, seg);
 }
 
 export async function approveStoriesBatch(
   bookId: string,
+  ownerId: string,
   storyIds: string[],
   approved: boolean,
 ): Promise<{ updated: string[]; skipped: { storyId: string; reason: string }[] }> {
@@ -439,7 +558,7 @@ export async function approveStoriesBatch(
   const skipped: { storyId: string; reason: string }[] = [];
   for (const storyId of storyIds) {
     try {
-      await approveStory(bookId, storyId, approved);
+      await approveStory(bookId, ownerId, storyId, approved);
       updated.push(storyId);
     } catch (err) {
       skipped.push({ storyId, reason: err instanceof Error ? err.message : String(err) });
@@ -452,8 +571,10 @@ export async function approveStoriesBatch(
 
 export async function listBoundaryReviews(
   bookId: string,
+  ownerId: string,
   status?: 'pending' | 'resolved',
 ): Promise<{ items: BoundaryReviewApiItem[] }> {
+  await requireOwnedBook(bookId, ownerId);
   const doc = await loadReviewDoc(bookId);
   const items = status ? doc.items.filter((i) => i.status === status) : doc.items;
   return { items };
@@ -497,12 +618,14 @@ function mergeSegments(prev: StorySegment, cur: StorySegment): StorySegment {
 
 export async function resolveBoundaryReview(
   bookId: string,
+  ownerId: string,
   reviewId: string,
   decision: BoundaryDecision,
 ): Promise<{ item: BoundaryReviewApiItem; merged: boolean; pendingCount: number }> {
+  await requireOwnedBook(bookId, ownerId);
   const reviewDoc = await loadReviewDoc(bookId);
   const item = reviewDoc.items.find((i) => i.id === reviewId);
-  if (!item) throw new NotFoundError(`Review item not found: ${reviewId}`);
+  if (!item) throw new NotFoundError(`审核项不存在：${reviewId}`);
   if (item.status === 'resolved') throw new ConflictError('该审核项已裁决');
   if (decision === 'merge_with_previous' && !item.canMerge) {
     throw new BadRequestError('该段没有可合并的上一段');
@@ -511,7 +634,7 @@ export async function resolveBoundaryReview(
   let merged = false;
   if (decision === 'merge_with_previous') {
     const doc = await loadSegmentsDoc(bookId);
-    if (!doc) throw new NotFoundError('No story segments yet');
+    if (!doc) throw new NotFoundError('尚未生成故事段');
     const sorted = [...doc.segments].sort(
       (a, b) => a.startChapter - b.startChapter || a.id.localeCompare(b.id),
     );
@@ -522,7 +645,7 @@ export async function resolveBoundaryReview(
     const cur = sorted[idx];
     const mergedSeg = mergeSegments(prev, cur);
     doc.segments = sorted.filter((s) => s.id !== cur.id).map((s) => (s.id === prev.id ? mergedSeg : s));
-    await writeJson(segmentsFile(bookId), doc);
+    await writeStoryArtifact(bookId, 'story-segments.json', segmentsFile(bookId), doc);
 
     // 两段的旧资产都已失效
     await rm(storyDir(bookId, prev.id), { recursive: true, force: true });
@@ -540,7 +663,7 @@ export async function resolveBoundaryReview(
 
   item.status = 'resolved';
   item.resolvedDecision = decision;
-  await writeJson(reviewFile(bookId), reviewDoc);
+  await writeStoryArtifact(bookId, 'story-boundary-review.json', reviewFile(bookId), reviewDoc);
 
   const pendingCount = reviewDoc.items.filter((i) => i.status === 'pending').length;
   return { item, merged, pendingCount };
@@ -548,38 +671,34 @@ export async function resolveBoundaryReview(
 
 // ---------- 故事资产（同步：确定性提取，毫秒级） ----------
 
-export async function extractAssets(bookId: string, storyId: string): Promise<StoryAssetPack> {
-  const doc = await loadSegmentsDoc(bookId);
-  const seg = doc?.segments.find((s) => s.id === storyId);
-  if (!seg) throw new NotFoundError(`Story not found: ${storyId}`);
+export async function extractAssets(bookId: string, ownerId: string, storyId: string): Promise<StoryAssetPack> {
+  const seg = await requireOwnedStory(bookId, ownerId, storyId);
   if (!seg.approved) throw new ConflictError('故事段尚未审批，请先在故事页审批');
 
   const bundle = buildStoryAssetBundle(seg);
-  await writeStoryAssetFiles(
-    OUTPUT_ROOT,
-    {
-      story: bundle.story,
-      characters: bundle.characters,
-      scenes: bundle.scenes,
-      props: bundle.props,
-      assetPack: bundle.assetPack,
-      assetPrompts: bundle.assetPrompts,
-    },
-    bookId,
-  );
+  const files = {
+    story: bundle.story,
+    characters: bundle.characters,
+    scenes: bundle.scenes,
+    props: bundle.props,
+    assetPack: bundle.assetPack,
+    assetPrompts: bundle.assetPrompts,
+  };
+  await writeStoryAssetFiles(OUTPUT_ROOT, files, bookId);
+  await persistStoryAssetArtifacts(bookId, files);
   return bundle.assetPack;
 }
 
-export async function getAssetPack(bookId: string, storyId: string): Promise<StoryAssetPack> {
-  const pack = await readJson<StoryAssetPack>(join(storyDir(bookId, storyId), 'asset-pack.json'));
+export async function getAssetPack(bookId: string, ownerId: string, storyId: string): Promise<StoryAssetPack> {
+  await requireOwnedStory(bookId, ownerId, storyId);
+  const pack = await readStoryFile<StoryAssetPack>(bookId, storyId, 'asset-pack.json');
   if (!pack) throw new NotFoundError('资产尚未提取');
   return pack;
 }
 
-export async function getAssetPrompts(bookId: string, storyId: string): Promise<StoryAssetPromptPack> {
-  const prompts = await readJson<StoryAssetPromptPack>(
-    join(storyDir(bookId, storyId), 'asset-prompts.json'),
-  );
+export async function getAssetPrompts(bookId: string, ownerId: string, storyId: string): Promise<StoryAssetPromptPack> {
+  await requireOwnedStory(bookId, ownerId, storyId);
+  const prompts = await readStoryFile<StoryAssetPromptPack>(bookId, storyId, 'asset-prompts.json');
   if (!prompts) throw new NotFoundError('资产尚未提取');
   return prompts;
 }
@@ -600,45 +719,46 @@ function rebuildWarnings(pack: Omit<StoryAssetPack, 'assetWarnings'>): AssetWarn
       assetType,
       assetName: name,
       issue: quality === 'missing' ? 'missing_description' : 'thin_description',
-      message: `${name} needs a stronger visual description before image generation.`,
+      message: `${name} 在生成图片前需要补充更完整的视觉描述。`,
     });
   const pushLowConfidence = (assetType: AssetWarning['assetType'], name: string, note: string) =>
     warnings.push({ assetType, assetName: name, issue: 'low_confidence', message: `${name} ${note}` });
 
   for (const c of pack.characters) {
     if (c.needsDescriptionRepair) pushRepair('character', c.name, c.descriptionQuality);
-    if (c.confidence < 0.75) pushLowConfidence('character', c.name, 'is a candidate character and should not drive plot-critical visuals without review.');
+    if (c.confidence < 0.75) pushLowConfidence('character', c.name, '属于候选角色，审核前不应作为关键剧情视觉依据。');
   }
   for (const s of pack.scenes) {
     if (s.needsDescriptionRepair) pushRepair('scene', s.name, s.descriptionQuality);
-    if (s.confidence < 0.75) pushLowConfidence('scene', s.name, 'is a candidate scene and should be treated as reference only.');
+    if (s.confidence < 0.75) pushLowConfidence('scene', s.name, '属于候选场景，仅可作为参考。');
   }
   for (const p of pack.props) {
     if (p.needsDescriptionRepair) pushRepair('prop', p.name, p.descriptionQuality);
-    if (p.confidence < 0.75) pushLowConfidence('prop', p.name, 'is a candidate prop and should be treated as reference only.');
+    if (p.confidence < 0.75) pushLowConfidence('prop', p.name, '属于候选道具，仅可作为参考。');
   }
   return warnings;
 }
 
 export async function patchAsset(
   bookId: string,
+  ownerId: string,
   storyId: string,
   assetType: AssetType,
   assetName: string,
   patch: AssetPatch,
 ): Promise<CharacterInStory | SceneInStory | PropInStory> {
-  const dir = storyDir(bookId, storyId);
-  const story = await readJson<StorySegment>(join(dir, 'story.json'));
-  const characters = await readJson<StoryCharacterFile>(join(dir, 'characters.json'));
-  const scenes = await readJson<StorySceneFile>(join(dir, 'scenes.json'));
-  const props = await readJson<StoryPropFile>(join(dir, 'props.json'));
+  await requireOwnedStory(bookId, ownerId, storyId);
+  const story = await readStoryFile<StorySegment>(bookId, storyId, 'story.json');
+  const characters = await readStoryFile<StoryCharacterFile>(bookId, storyId, 'characters.json');
+  const scenes = await readStoryFile<StorySceneFile>(bookId, storyId, 'scenes.json');
+  const props = await readStoryFile<StoryPropFile>(bookId, storyId, 'props.json');
   if (!story || !characters || !scenes || !props) throw new NotFoundError('资产尚未提取');
 
   let target: CharacterInStory | SceneInStory | PropInStory | undefined;
   if (assetType === 'character') target = characters.characters.find((c) => c.name === assetName);
   else if (assetType === 'scene') target = scenes.scenes.find((s) => s.name === assetName);
   else target = props.props.find((p) => p.name === assetName);
-  if (!target) throw new NotFoundError(`Asset not found: ${assetType}/${assetName}`);
+  if (!target) throw new NotFoundError(`资产不存在：${assetType}/${assetName}`);
 
   if (patch.description !== undefined) {
     target.description = patch.description.trim();
@@ -665,24 +785,21 @@ export async function patchAsset(
   const assetPack: StoryAssetPack = { ...packBase, assetWarnings: rebuildWarnings(packBase) };
   const assetPrompts = buildStoryAssetPromptPack(story, packBase);
 
-  await writeStoryAssetFiles(
-    OUTPUT_ROOT,
-    { story, characters, scenes, props, assetPack, assetPrompts },
-    bookId,
-  );
+  const patchFiles = { story, characters, scenes, props, assetPack, assetPrompts };
+  await writeStoryAssetFiles(OUTPUT_ROOT, patchFiles, bookId);
+  await persistStoryAssetArtifacts(bookId, patchFiles);
   return target;
 }
 
 // ---------- 导演管线（同步：确定性纯函数） ----------
 
 async function readBundle(bookId: string, storyId: string): Promise<StoryAssetBundle> {
-  const dir = storyDir(bookId, storyId);
-  const story = await readJson<StorySegment>(join(dir, 'story.json'));
-  const characters = await readJson<StoryCharacterFile>(join(dir, 'characters.json'));
-  const scenes = await readJson<StorySceneFile>(join(dir, 'scenes.json'));
-  const props = await readJson<StoryPropFile>(join(dir, 'props.json'));
-  const assetPack = await readJson<StoryAssetPack>(join(dir, 'asset-pack.json'));
-  const assetPrompts = await readJson<StoryAssetPromptPack>(join(dir, 'asset-prompts.json'));
+  const story = await readStoryFile<StorySegment>(bookId, storyId, 'story.json');
+  const characters = await readStoryFile<StoryCharacterFile>(bookId, storyId, 'characters.json');
+  const scenes = await readStoryFile<StorySceneFile>(bookId, storyId, 'scenes.json');
+  const props = await readStoryFile<StoryPropFile>(bookId, storyId, 'props.json');
+  const assetPack = await readStoryFile<StoryAssetPack>(bookId, storyId, 'asset-pack.json');
+  const assetPrompts = await readStoryFile<StoryAssetPromptPack>(bookId, storyId, 'asset-prompts.json');
   if (!story || !characters || !scenes || !props || !assetPack || !assetPrompts) {
     throw new NotFoundError('资产文件不完整，请先提取资产');
   }
@@ -700,17 +817,19 @@ export interface CreateAssignmentBody {
 
 export async function createAssignment(
   bookId: string,
+  ownerId: string,
   body: CreateAssignmentBody,
 ): Promise<AssignmentWithStatus> {
+  await requireOwnedBook(bookId, ownerId);
   if (!body.storyIds?.length) throw new BadRequestError('storyIds 不能为空');
 
   const doc = await loadSegmentsDoc(bookId);
-  if (!doc) throw new NotFoundError('No story segments yet');
+  if (!doc) throw new NotFoundError('尚未生成故事段');
   const notApproved: string[] = [];
   const targets: StorySegment[] = [];
   for (const storyId of body.storyIds) {
     const seg = doc.segments.find((s) => s.id === storyId);
-    if (!seg) throw new NotFoundError(`Story not found: ${storyId}`);
+    if (!seg) throw new NotFoundError(`故事段不存在：${storyId}`);
     if (!seg.approved) notApproved.push(storyId);
     else targets.push(seg);
   }
@@ -734,13 +853,15 @@ export async function createAssignment(
   const errors: string[] = [];
   for (const seg of targets) {
     try {
-      // 资产未提取时先提取（同步、确定性）
-      if (!existsSync(join(storyDir(bookId, seg.id), 'asset-pack.json'))) {
-        await extractAssets(bookId, seg.id);
+      // 资产未提取时先提取（同步、确定性）。BookArtifact 或本机 output/ 任一存在即跳过。
+      const existingPack = await readStoryFile<StoryAssetPack>(bookId, seg.id, 'asset-pack.json');
+      if (!existingPack) {
+        await extractAssets(bookId, ownerId, seg.id);
       }
       // 从磁盘读 bundle，保留人工修复过的描述
       const bundle = await readBundle(bookId, seg.id);
-      await runDirectorPipelineForStory(bundle, { outputDir: OUTPUT_ROOT, assignment });
+      const directorResult = await runDirectorPipelineForStory(bundle, { outputDir: OUTPUT_ROOT, assignment });
+      await persistDirectorArtifacts(bookId, seg.id, directorResult);
     } catch (err) {
       errors.push(`${seg.id}: ${err instanceof Error ? err.message : String(err)}`);
     }
@@ -753,15 +874,16 @@ export async function createAssignment(
   };
 
   const assignDoc =
-    (await readJson<AssignmentsDoc>(assignmentsFile(bookId))) ?? { bookId, assignments: [] };
+    (await readArtifactJson<AssignmentsDoc>(bookId, 'director-assignments.json', assignmentsFile(bookId))) ?? { bookId, assignments: [] };
   assignDoc.assignments.unshift(record);
-  await writeJson(assignmentsFile(bookId), assignDoc);
+  await writeStoryArtifact(bookId, 'director-assignments.json', assignmentsFile(bookId), assignDoc);
 
   return record;
 }
 
-export async function listAssignments(bookId: string): Promise<{ assignments: AssignmentWithStatus[] }> {
-  const doc = await readJson<AssignmentsDoc>(assignmentsFile(bookId));
+export async function listAssignments(bookId: string, ownerId: string): Promise<{ assignments: AssignmentWithStatus[] }> {
+  await requireOwnedBook(bookId, ownerId);
+  const doc = await readArtifactJson<AssignmentsDoc>(bookId, 'director-assignments.json', assignmentsFile(bookId));
   return { assignments: doc?.assignments ?? [] };
 }
 
@@ -774,15 +896,15 @@ export interface EpisodesResponse {
   review: ScriptReview | null;
 }
 
-export async function getEpisodes(bookId: string, storyId: string): Promise<EpisodesResponse> {
-  const dir = join(storyDir(bookId, storyId), 'director');
-  const planDoc = await readJson<{ storyId: string; plans: ScriptEpisodePlan[] }>(
-    join(dir, 'episode-plan.json'),
+export async function getEpisodes(bookId: string, ownerId: string, storyId: string): Promise<EpisodesResponse> {
+  await requireOwnedStory(bookId, ownerId, storyId);
+  const planDoc = await readDirectorFile<{ storyId: string; plans: ScriptEpisodePlan[] }>(
+    bookId, storyId, 'episode-plan.json',
   );
-  const episodeDoc = await readJson<{ storyId: string; episodes: ScriptEpisode[] }>(
-    join(dir, 'script-episodes.json'),
+  const episodeDoc = await readDirectorFile<{ storyId: string; episodes: ScriptEpisode[] }>(
+    bookId, storyId, 'script-episodes.json',
   );
-  const review = await readJson<ScriptReview>(join(dir, 'script-review.json'));
+  const review = await readDirectorFile<ScriptReview>(bookId, storyId, 'script-review.json');
   return {
     hasDirectorRun: !!episodeDoc,
     plans: planDoc?.plans ?? [],
@@ -799,28 +921,30 @@ export interface PromptPackResponse<T> {
 
 export async function getStoryboardPack(
   bookId: string,
+  ownerId: string,
   storyId: string,
   episodeNo: number,
 ): Promise<PromptPackResponse<StoryboardPromptPack>> {
-  const dir = join(storyDir(bookId, storyId), 'director');
-  const pack = await readJson<StoryboardPromptPack>(join(dir, 'storyboard-prompt-pack.json'));
+  await requireOwnedStory(bookId, ownerId, storyId);
+  const pack = await readDirectorFile<StoryboardPromptPack>(bookId, storyId, 'storyboard-prompt-pack.json');
   if (pack && pack.episodeNo === episodeNo) return { pack };
 
-  const review = await readJson<ScriptReview>(join(dir, 'script-review.json'));
+  const review = await readDirectorFile<ScriptReview>(bookId, storyId, 'script-review.json');
   if (review && !review.accepted) return { pack: null, reason: 'review_blocked', review };
   return { pack: null, reason: 'not_generated', review: review ?? null };
 }
 
 export async function getVideoPromptPack(
   bookId: string,
+  ownerId: string,
   storyId: string,
   episodeNo: number,
 ): Promise<PromptPackResponse<VideoPromptPack>> {
-  const dir = join(storyDir(bookId, storyId), 'director');
-  const pack = await readJson<VideoPromptPack>(join(dir, 'video-prompt-pack.json'));
+  await requireOwnedStory(bookId, ownerId, storyId);
+  const pack = await readDirectorFile<VideoPromptPack>(bookId, storyId, 'video-prompt-pack.json');
   if (pack && pack.episodeNo === episodeNo) return { pack };
 
-  const review = await readJson<ScriptReview>(join(dir, 'script-review.json'));
+  const review = await readDirectorFile<ScriptReview>(bookId, storyId, 'script-review.json');
   if (review && !review.accepted) return { pack: null, reason: 'review_blocked', review };
   return { pack: null, reason: 'not_generated', review: review ?? null };
 }

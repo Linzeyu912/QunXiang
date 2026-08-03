@@ -1,7 +1,65 @@
 import type { FastifyInstance } from 'fastify';
-import { getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig } from '@novel-agent/llm';
-import type { RuntimeLlmConfig } from '@novel-agent/llm';
+import { getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig, getDefaultImageProvider, getMaskedImageConfig, setRuntimeImageConfig, loadPersistedImageConfig, PROVIDER_PRESETS, IMAGE_PROVIDER_PRESETS } from '@novel-agent/llm';
+import type { RuntimeLlmConfig, RuntimeImageConfig } from '@novel-agent/llm';
 import { reconfigureWorkers, getConcurrencyStatus, type ConcurrencyMode } from '../services/extraction.service.js';
+
+interface ConnectionTestResult {
+  success: boolean;
+  message: string;
+}
+
+/**
+ * 用当前生效配置跑一次最小 LLM 请求，验证配置真实可用。
+ * PATCH /llm/config（保存后自动验证）与 POST /llm/test（手动测试）共用。
+ */
+async function runLlmConnectionTest(): Promise<ConnectionTestResult> {
+  const provider = await getDefaultProvider();
+  const isConfigured = await provider.isConfigured();
+
+  if (!isConfigured) {
+    return { success: false, message: 'Provider 未配置。请检查 API Key 和设置。' };
+  }
+
+  // Mock is always "connected"
+  if (provider.name === 'mock') {
+    return { success: true, message: 'Mock 模式始终可用。' };
+  }
+
+  // Custom: try a minimal chat request with the actual provider
+  try {
+    const { z } = await import('zod');
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    try {
+      await provider.chatExtract(
+        'You are a test assistant. Respond with valid JSON only.',
+        'Respond with: {"ok": true}',
+        z.object({ ok: z.boolean() })
+      );
+    } finally {
+      clearTimeout(timeoutId);
+    }
+    return { success: true, message: '连接成功，API Key 有效。' };
+  } catch (chatErr) {
+    const msg = chatErr instanceof Error ? chatErr.message : String(chatErr);
+    if (msg.includes('401') || msg.includes('auth') || msg.includes('API key') || msg.includes('Authentication')) {
+      return { success: false, message: '认证失败，请检查 API Key。' };
+    }
+    if (msg.includes('404') || msg.includes('page not found')) {
+      // 纯文本/nginx 404 多半是接口地址路径不对（如缺少 /v1/chat/completions），
+      // 而非模型名——服务商 API 层的错误通常是 JSON。
+      return { success: false, message: '接口返回 404：通常是「接口地址」路径不对（如缺少 /v1），请到设置页核对；少数情况才是模型名错误。' };
+    }
+    if (msg.includes('model')) {
+      return { success: false, message: '模型不存在，请检查模型名称。' };
+    }
+    if (msg.includes('network') || msg.includes('fetch') || msg.includes('ECONNREFUSED') || msg.includes('abort')) {
+      return { success: false, message: `网络错误：${msg.substring(0, 100)}` };
+    }
+    // Other errors — connection works but something else failed
+    return { success: false, message: `测试失败：${msg.substring(0, 150)}` };
+  }
+}
 
 /**
  * Health check endpoints for the API
@@ -13,10 +71,20 @@ export async function healthRoutes(fastify: FastifyInstance) {
   } catch (err) {
     console.warn('[health] Failed to load persisted config:', err instanceof Error ? err.message : String(err));
   }
+  try {
+    loadPersistedImageConfig();
+  } catch (err) {
+    console.warn('[health] Failed to load persisted image config:', err instanceof Error ? err.message : String(err));
+  }
 
   // Basic health check
   fastify.get('/health', async () => {
     return { status: 'ok', timestamp: new Date().toISOString() };
+  });
+
+  // LLM provider presets (for frontend dropdown)
+  fastify.get('/llm/presets', async () => {
+    return { presets: PROVIDER_PRESETS };
   });
 
   // LLM provider health check
@@ -183,6 +251,16 @@ export async function healthRoutes(fastify: FastifyInstance) {
       const isConfigured = await provider.isConfigured();
       const maskedConfig = getMaskedConfig();
 
+      // 保存后自动验证：配置格式合法不代表可用（如 baseUrl 指向错误路径 → 404）。
+      // 不阻断保存（用户可能先存后改），但把测试结果作为 warning 返回给前端提示。
+      let warning: string | undefined;
+      if (isConfigured) {
+        const testResult = await runLlmConnectionTest();
+        if (!testResult.success) {
+          warning = `配置已保存，但连接测试失败：${testResult.message}`;
+        }
+      }
+
       return {
         provider: providerName,
         configured: isConfigured,
@@ -192,6 +270,7 @@ export async function healthRoutes(fastify: FastifyInstance) {
         keyCount: getApiKeyCount(),
         baseUrl: maskedConfig?.baseUrl || '',
         model: maskedConfig?.model || '',
+        ...(warning ? { warning } : {}),
         concurrency,
         timestamp: new Date().toISOString(),
       };
@@ -231,101 +310,168 @@ export async function healthRoutes(fastify: FastifyInstance) {
     config: { rateLimit: { max: 3, timeWindow: '1 minute' } },
   }, async (request, reply) => {
     try {
-      const provider = await getDefaultProvider();
+      const result = await runLlmConnectionTest();
+      return {
+        ...result,
+        timestamp: new Date().toISOString(),
+      };
+    } catch (error) {
+      return reply.status(500).send({
+        success: false,
+        message: error instanceof Error ? error.message : String(error),
+        timestamp: new Date().toISOString(),
+      });
+    }
+  });
+
+  // Image provider presets (for frontend dropdown)
+  fastify.get('/image/presets', async () => {
+    return { presets: IMAGE_PROVIDER_PRESETS };
+  });
+
+  // ── Image generation provider status ──
+  fastify.get('/image', async (_request, reply) => {
+    try {
+      const provider = getDefaultImageProvider();
+      const isConfigured = await provider.isConfigured();
+      const maskedConfig = getMaskedImageConfig();
+
+      return {
+        provider: 'custom',
+        configured: isConfigured,
+        keyHint: maskedConfig?.keyHint || '',
+        baseUrl: maskedConfig?.baseUrl || '',
+        model: maskedConfig?.model || '',
+        size: maskedConfig?.size || '',
+        characterRatio: maskedConfig?.characterRatio || '',
+        itemRatio: maskedConfig?.itemRatio || '',
+        locationRatio: maskedConfig?.locationRatio || '',
+        timestamp: new Date().toISOString(),
+      };
+    } catch (error) {
+      return reply.status(503).send({
+        provider: 'none',
+        configured: false,
+        keyHint: '',
+        baseUrl: '',
+        model: '',
+        error: error instanceof Error ? error.message : String(error),
+        timestamp: new Date().toISOString(),
+      });
+    }
+  });
+
+  // ── Configure image generation provider ──
+  fastify.patch('/image/config', async (request, reply) => {
+    const body = request.body as {
+      apiKey?: string;
+      baseUrl?: string;
+      model?: string;
+      size?: string;
+      characterRatio?: string;
+      itemRatio?: string;
+      locationRatio?: string;
+    } | undefined;
+
+    if (!body) {
+      return reply.status(400).send({ error: 'Missing request body' });
+    }
+
+    // Basic validation (same as LLM)
+    const emailLike = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (body.model !== undefined && body.model.trim() !== '') {
+      if (emailLike.test(body.model.trim())) {
+        return reply.status(400).send({ error: '模型名称看起来像邮箱地址，请检查是否被浏览器自动填充了注册账号。' });
+      }
+    }
+    if (body.apiKey !== undefined && body.apiKey.trim() !== '') {
+      if (emailLike.test(body.apiKey.trim())) {
+        return reply.status(400).send({ error: 'API Key 看起来像邮箱地址，请检查是否被浏览器自动填充了注册账号。' });
+      }
+      if (/\s/.test(body.apiKey)) {
+        return reply.status(400).send({ error: 'API Key 不应包含空白字符。' });
+      }
+    }
+    if (body.baseUrl !== undefined && body.baseUrl.trim() !== '') {
+      if (!/^https?:\/\//i.test(body.baseUrl.trim())) {
+        return reply.status(400).send({ error: 'Base URL 必须以 http:// 或 https:// 开头。' });
+      }
+    }
+
+    try {
+      const config: Partial<RuntimeImageConfig> = { provider: 'custom' };
+      if (body.apiKey !== undefined) config.apiKey = body.apiKey;
+      if (body.baseUrl !== undefined) config.baseUrl = body.baseUrl;
+      if (body.model !== undefined) config.model = body.model;
+      if (body.size !== undefined) config.size = body.size;
+      if (body.characterRatio !== undefined) config.characterRatio = body.characterRatio;
+      if (body.itemRatio !== undefined) config.itemRatio = body.itemRatio;
+      if (body.locationRatio !== undefined) config.locationRatio = body.locationRatio;
+
+      setRuntimeImageConfig(config);
+
+      const provider = getDefaultImageProvider();
+      const isConfigured = await provider.isConfigured();
+      const maskedConfig = getMaskedImageConfig();
+
+      return {
+        provider: 'custom',
+        configured: isConfigured,
+        keyHint: maskedConfig?.keyHint || '',
+        baseUrl: maskedConfig?.baseUrl || '',
+        model: maskedConfig?.model || '',
+        size: maskedConfig?.size || '',
+        characterRatio: maskedConfig?.characterRatio || '',
+        itemRatio: maskedConfig?.itemRatio || '',
+        locationRatio: maskedConfig?.locationRatio || '',
+        timestamp: new Date().toISOString(),
+      };
+    } catch (error) {
+      return reply.status(500).send({
+        error: error instanceof Error ? error.message : String(error),
+        timestamp: new Date().toISOString(),
+      });
+    }
+  });
+
+  // ── Test image generation connection ──
+  fastify.post('/image/test', async (request, reply) => {
+    try {
+      const provider = getDefaultImageProvider();
       const isConfigured = await provider.isConfigured();
 
       if (!isConfigured) {
         return {
           success: false,
-          message: 'Provider 未配置。请检查 API Key 和设置。',
+          message: '图片服务商未配置。请在下方填写 API Key、Base URL 和模型名称。',
           timestamp: new Date().toISOString(),
         };
       }
 
-      // Mock is always "connected"
-      if (provider.name === 'mock') {
-        return {
-          success: true,
-          message: 'Mock 模式始终可用。',
-          timestamp: new Date().toISOString(),
-        };
-      }
-
-      // Custom: try a minimal chat request with the actual provider
+      // Try a minimal image generation to verify
       try {
-        const { z } = await import('zod');
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000);
-        try {
-          await provider.chatExtract(
-            'You are a test assistant. Respond with valid JSON only.',
-            'Respond with: {"ok": true}',
-            z.object({ ok: z.boolean() })
-          );
-        } finally {
-          clearTimeout(timeoutId);
-        }
+        const result = await provider.generateImage('a simple red circle on white background', { aspectRatio: '1:1' });
+        const ok = result.buffer.length > 100; // sanity check
         return {
-          success: true,
-          message: '连接成功，API Key 有效。',
+          success: ok,
+          message: ok
+            ? `连接成功！测试图片 ${(result.buffer.length / 1024).toFixed(1)} KB`
+            : '生图返回空结果，请检查模型名称。',
           timestamp: new Date().toISOString(),
         };
-      } catch (chatErr) {
-        // custom provider 现在抛出带 code 的 LLMError，这里据此给出精确提示；
-        // 同时把原始报错片段放进 detail，让前端能展示具体原因（区分 base url /
-        // key / 模型名 / 网络 / 超时），而不是笼统的"测试失败"。
-        const { LLMError } = await import('@novel-agent/llm');
-        const code = chatErr instanceof LLMError ? chatErr.code : undefined;
-        const msg = chatErr instanceof Error ? chatErr.message : String(chatErr);
-        const detail = msg.slice(0, 400);
-
-        if (code === 'AUTH_ERROR' || /401|403|认证失败|unauthorized|api key/i.test(msg)) {
-          return {
-            success: false,
-            message: '认证失败（401/403）。请检查 API Key 是否正确、是否与所选服务商匹配。',
-            detail,
-            timestamp: new Date().toISOString(),
-          };
+      } catch (genErr) {
+        const msg = genErr instanceof Error ? genErr.message : String(genErr);
+        if (msg.includes('401') || msg.includes('auth') || msg.includes('API key')) {
+          return { success: false, message: '认证失败，请检查 API Key。', timestamp: new Date().toISOString() };
         }
-        if (code === 'MODEL_NOT_FOUND' || /404|模型不存在|model not found/i.test(msg)) {
-          return {
-            success: false,
-            message: '接口或模型不存在（404）。请检查 Base URL（末尾通常为 /v1）与模型名称是否正确。',
-            detail,
-            timestamp: new Date().toISOString(),
-          };
+        if (msg.includes('404') || msg.includes('page not found')) {
+          return { success: false, message: '接口返回 404：通常是「接口地址」路径不对（如缺少 /v1），请到设置页核对。', timestamp: new Date().toISOString() };
         }
-        if (code === 'TIMEOUT' || /超时|timeout|timed out|abort/i.test(msg)) {
-          return {
-            success: false,
-            message: '请求超时。可能是网络不可达，或 Base URL 指向了错误的地址。',
-            detail,
-            timestamp: new Date().toISOString(),
-          };
+        if (msg.includes('model')) {
+          return { success: false, message: '模型不存在，请检查模型名称。', timestamp: new Date().toISOString() };
         }
-        if (code === 'RATE_LIMIT' || /429|限流|rate limit/i.test(msg)) {
-          return {
-            success: false,
-            message: '请求被限流（429），稍后重试。',
-            detail,
-            timestamp: new Date().toISOString(),
-          };
-        }
-        if (code === 'NETWORK_ERROR' || /network|fetch|ECONNREFUSED|ENOTFOUND|getaddrinfo|DNS/i.test(msg)) {
-          return {
-            success: false,
-            message: '网络错误：无法连接到服务端。请检查 Base URL 是否可达、网络/代理设置。',
-            detail,
-            timestamp: new Date().toISOString(),
-          };
-        }
-        // 兜底：连接可能通了，但响应内容不符合预期（解析失败等）
-        return {
-          success: false,
-          message: '测试失败：连接正常，但响应不符合预期。可能是模型名错误或返回格式不兼容。',
-          detail,
-          timestamp: new Date().toISOString(),
-        };
+        return { success: false, message: `测试失败：${msg.substring(0, 150)}`, timestamp: new Date().toISOString() };
       }
     } catch (error) {
       // 测试连接的错误信息保留给用户诊断（如认证失败/模型不存在），但记录完整日志便于排查

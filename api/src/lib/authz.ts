@@ -22,9 +22,7 @@ export async function loadOwnedBook(
   ownerId: string | null,
 ): Promise<BookRow | null> {
   if (!ownerId) return null;
-  const book = await BookRepository.findById(bookId);
-  if (!book || book.userId !== ownerId) return null;
-  return book;
+  return BookRepository.findOwnedById(bookId, ownerId);
 }
 
 /** 便捷布尔形式，用于列表/批量等只需判断归属的场景。 */

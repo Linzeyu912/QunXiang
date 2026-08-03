@@ -4,6 +4,7 @@ export { isSameName, sameNameDetector } from './detectors/same-name.js';
 export { isAliasMatch, aliasMatchDetector } from './detectors/alias-match.js';
 export {
   chooseCanonicalCharacterName,
+  implicitCharacterSignalAliases,
   isCollectiveCharacterAlias,
   isGenericCharacterAlias,
   isSafeAliasMatch,

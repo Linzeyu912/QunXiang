@@ -1,6 +1,7 @@
 import { prisma } from './prisma.js';
 import type { Location } from '@novel-agent/core';
 import type { PrismaClient } from '@prisma/client';
+import { decodeJsonField, encodeJsonField } from './json-field.js';
 
 export interface LocationRepository {
   create(data: {
@@ -42,19 +43,25 @@ export interface LocationRepository {
     chapterAppearances?: number[];
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Location[]>;
+  findByOwnedBookId(bookId: string, ownerId: string): Promise<Location[]>;
   findById(id: string): Promise<Location | null>;
+  findOwnedById(id: string, ownerId: string): Promise<Location | null>;
   findByStatus(bookId: string, status: string): Promise<Location[]>;
+  findByOwnedStatus(bookId: string, ownerId: string, status: string): Promise<Location[]>;
   findByTier(bookId: string, tier: string): Promise<Location[]>;
+  findByOwnedTier(bookId: string, ownerId: string, tier: string): Promise<Location[]>;
   update(id: string, data: Partial<Location>): Promise<Location>;
+  updateOwned(id: string, ownerId: string, data: Partial<Location>): Promise<Location | null>;
   updateStatus(id: string, status: string): Promise<Location>;
+  updateOwnedStatus(id: string, ownerId: string, status: string): Promise<Location | null>;
   deleteByBookId(bookId: string): Promise<void>;
 }
 
 function parseLocation(dbLoc: Record<string, unknown>): Location {
   return {
     ...dbLoc,
-    aliases: JSON.parse((dbLoc.aliases as string) || '[]'),
-    chapterAppearances: JSON.parse((dbLoc.chapterAppearances as string) || '[]'),
+    aliases: decodeJsonField(dbLoc.aliases, []),
+    chapterAppearances: decodeJsonField(dbLoc.chapterAppearances, []),
     tier: (dbLoc.tier as string) || 'candidate',
   } as unknown as Location;
 }
@@ -66,7 +73,7 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
         data: {
           bookId: data.bookId,
           name: data.name,
-          aliases: JSON.stringify(data.aliases),
+          aliases: encodeJsonField(data.aliases),
           description: data.description,
           confidence: data.confidence,
           chapterRef: data.chapterRef,
@@ -80,7 +87,7 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
           mentionCount: data.mentionCount ?? 0,
           firstChapter: data.firstChapter,
           lastChapter: data.lastChapter,
-          chapterAppearances: JSON.stringify(data.chapterAppearances || []),
+          chapterAppearances: encodeJsonField(data.chapterAppearances || []),
         },
       });
       return parseLocation(created);
@@ -91,7 +98,7 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
         data: locations.map(l => ({
           bookId: l.bookId,
           name: l.name,
-          aliases: JSON.stringify(l.aliases),
+          aliases: encodeJsonField(l.aliases),
           description: l.description,
           confidence: l.confidence,
           chapterRef: l.chapterRef,
@@ -105,7 +112,7 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
           mentionCount: l.mentionCount ?? 0,
           firstChapter: l.firstChapter,
           lastChapter: l.lastChapter,
-          chapterAppearances: JSON.stringify(l.chapterAppearances || []),
+          chapterAppearances: encodeJsonField(l.chapterAppearances || []),
         })),
       });
       return result.count;
@@ -114,7 +121,15 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
     async findByBookId(bookId: string) {
       const locs = await db.location.findMany({
         where: { bookId },
-        orderBy: { importanceScore: 'desc' },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
+      });
+      return locs.map(l => parseLocation(l as unknown as Record<string, unknown>));
+    },
+
+    async findByOwnedBookId(bookId: string, ownerId: string) {
+      const locs = await db.location.findMany({
+        where: { bookId, book: { userId: ownerId } },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
       });
       return locs.map(l => parseLocation(l as unknown as Record<string, unknown>));
     },
@@ -125,10 +140,23 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
       return parseLocation(loc as unknown as Record<string, unknown>);
     },
 
+    async findOwnedById(id: string, ownerId: string) {
+      const loc = await db.location.findFirst({ where: { id, book: { userId: ownerId } } });
+      return loc ? parseLocation(loc as unknown as Record<string, unknown>) : null;
+    },
+
     async findByStatus(bookId: string, status: string) {
       const locs = await db.location.findMany({
         where: { bookId, status },
-        orderBy: { importanceScore: 'desc' },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
+      });
+      return locs.map(l => parseLocation(l as unknown as Record<string, unknown>));
+    },
+
+    async findByOwnedStatus(bookId: string, ownerId: string, status: string) {
+      const locs = await db.location.findMany({
+        where: { bookId, status, book: { userId: ownerId } },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
       });
       return locs.map(l => parseLocation(l as unknown as Record<string, unknown>));
     },
@@ -136,7 +164,15 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
     async findByTier(bookId: string, tier: string) {
       const locs = await db.location.findMany({
         where: { bookId, tier },
-        orderBy: { importanceScore: 'desc' },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
+      });
+      return locs.map(l => parseLocation(l as unknown as Record<string, unknown>));
+    },
+
+    async findByOwnedTier(bookId: string, ownerId: string, tier: string) {
+      const locs = await db.location.findMany({
+        where: { bookId, tier, book: { userId: ownerId } },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
       });
       return locs.map(l => parseLocation(l as unknown as Record<string, unknown>));
     },
@@ -144,10 +180,10 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
     async update(id: string, data: Partial<Location>) {
       const updateData: Record<string, unknown> = { ...data };
       if (data.aliases) {
-        updateData.aliases = JSON.stringify(data.aliases);
+        updateData.aliases = encodeJsonField(data.aliases);
       }
       if (data.chapterAppearances) {
-        updateData.chapterAppearances = JSON.stringify(data.chapterAppearances);
+        updateData.chapterAppearances = encodeJsonField(data.chapterAppearances);
       }
       const updated = await db.location.update({
         where: { id },
@@ -156,12 +192,29 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
       return parseLocation(updated as unknown as Record<string, unknown>);
     },
 
+    async updateOwned(id: string, ownerId: string, data: Partial<Location>) {
+      const updateData: Record<string, unknown> = { ...data };
+      if (data.aliases) updateData.aliases = encodeJsonField(data.aliases);
+      if (data.chapterAppearances) updateData.chapterAppearances = encodeJsonField(data.chapterAppearances);
+      const result = await db.location.updateMany({ where: { id, book: { userId: ownerId } }, data: updateData });
+      if (result.count !== 1) return null;
+      const updated = await db.location.findFirst({ where: { id, book: { userId: ownerId } } });
+      return updated ? parseLocation(updated as unknown as Record<string, unknown>) : null;
+    },
+
     async updateStatus(id: string, status: string) {
       const updated = await db.location.update({
         where: { id },
         data: { status },
       });
       return parseLocation(updated as unknown as Record<string, unknown>);
+    },
+
+    async updateOwnedStatus(id: string, ownerId: string, status: string) {
+      const result = await db.location.updateMany({ where: { id, book: { userId: ownerId } }, data: { status } });
+      if (result.count !== 1) return null;
+      const updated = await db.location.findFirst({ where: { id, book: { userId: ownerId } } });
+      return updated ? parseLocation(updated as unknown as Record<string, unknown>) : null;
     },
 
     async deleteByBookId(bookId: string) {

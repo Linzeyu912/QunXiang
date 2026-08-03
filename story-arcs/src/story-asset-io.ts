@@ -1,5 +1,5 @@
 import { mkdir, readFile, writeFile } from 'fs/promises';
-import { join, resolve } from 'path';
+import { isAbsolute, join, relative, resolve } from 'path';
 import type {
   StoryAssetPack,
   StoryAssetPromptPack,
@@ -10,7 +10,19 @@ import type {
 } from './types.js';
 
 export function storyAssetDirectory(outputDir: string, bookDirName: string, storyId: string): string {
-  return resolve(outputDir, bookDirName, 'stories', storyId);
+  for (const [label, value] of [['书籍目录', bookDirName], ['故事编号', storyId]] as const) {
+    if (!value || value === '.' || value === '..' || /[\\/\0]/.test(value)) {
+      throw new Error(`${label}无效`);
+    }
+  }
+
+  const storiesRoot = resolve(outputDir, bookDirName, 'stories');
+  const target = resolve(storiesRoot, storyId);
+  const pathFromRoot = relative(storiesRoot, target);
+  if (!pathFromRoot || pathFromRoot.startsWith('..') || isAbsolute(pathFromRoot)) {
+    throw new Error('故事目录超出书籍资产范围');
+  }
+  return target;
 }
 
 async function writeJson(filePath: string, value: unknown): Promise<void> {

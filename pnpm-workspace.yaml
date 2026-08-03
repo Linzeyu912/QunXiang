@@ -7,6 +7,7 @@ packages:
   - 'validators'
   - 'entity-resolution'
   - 'scheduler'
+  - 'agent'
   - 'story-arcs'
   - 'llm'
   - 'api'
@@ -16,6 +17,7 @@ packages:
   - 'preprocess'
   - 'entity-prescan'
 allowBuilds:
+  '@embedded-postgres/windows-x64': true
   '@prisma/client': true
   '@prisma/engines': true
   better-sqlite3: true

@@ -1,0 +1,4 @@
+# Windows 批处理必须用 CRLF 换行，否则 cmd.exe 行解析错乱
+# （中文乱码 / "'xxx' 不是内部或外部命令"）。autocrlf 不可靠，显式锁定。
+*.bat text eol=crlf
+*.cmd text eol=crlf
