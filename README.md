@@ -2,13 +2,21 @@
 tags:
   - 实体组
 created: 2026-06-20
-updated: 2026-08-03
+updated: 2026-08-04
 status: 公开仓库 · 实体提取、云端书库与数字资产生产
 ---
 
 # 群像 QunXiang
 
 [![CI](https://github.com/Linzeyu912/QunXiang/actions/workflows/ci.yml/badge.svg)](https://github.com/Linzeyu912/QunXiang/actions/workflows/ci.yml)
+[![Vite](https://img.shields.io/badge/Vite-5.4-646cff?logo=vite)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-18.3-61dafb?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
+[![Fastify](https://img.shields.io/badge/Fastify-4-000000?logo=fastify)](https://fastify.dev/)
+[![Prisma](https://img.shields.io/badge/Prisma-5-2d3748?logo=prisma)](https://www.prisma.io/)
+[![pnpm](https://img.shields.io/badge/pnpm-workspace-f69220?logo=pnpm)](https://pnpm.io/)
+[![Node](https://img.shields.io/badge/Node-20%2B-339933?logo=node.js)](https://nodejs.org/)
 
 面向小说 IP 资产生产的中文工作台。系统把 TXT 小说转换为可追溯、可审核、可分享和可下载的角色、场景、道具、叙事事件、视觉设定、生成提示词与图片资产。
 
@@ -217,4 +225,4 @@ API 能启动但不能提取：进入“模型设置”确认文本模型已经�
 
 ---
 
-*实体提取组维护 · 最近更新 2026-08-03*
+*实体提取组维护 · 最近更新 2026-08-04*
