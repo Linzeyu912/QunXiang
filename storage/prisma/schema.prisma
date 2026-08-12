@@ -111,6 +111,7 @@ model Item {
   book               Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
   name               String
   aliases            Json     @default("[]")
+  category           String   @default("other") // 大类：weapon|skill|food|pill|treasure|other
   description        String?
   confidence         Float    @default(0.5)
   status             String   @default("PENDING")
@@ -132,6 +133,8 @@ model Item {
 
   @@index([bookId])
   @@index([tier])
+  @@index([bookId, status])
+  @@index([bookId, category])
 }
 
 /// 世界观与体系设定实体（灵气/斗气等能量体系、境界等级、组织势力、规则法则）。

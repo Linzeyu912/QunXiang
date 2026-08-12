@@ -41,9 +41,16 @@ export const CHARACTER_EXTRACTION_PROMPT = `你是一位从小说中提取实体
 - 序号职务必须补足组织/家族范围；如果原文可判断是萧家的三长老，name 必须写"萧家三长老"，不要写"三长老"，也不要把"三长老"当 aliases。
 
 【物品道具 items】
-提取对剧情有意义的物品：武器、法宝、丹药、功法、信物、关键道具等。不要抓一次性消耗的普通物件。
+提取对剧情有意义的物品：武器、法宝、丹药、功法/技能、食物、信物、关键道具等。不要抓一次性消耗的普通物件。
 - name: 物品名（必填）
 - aliases: 别名/别称数组（可以为空）
+- category: 道具大类（必填），必须为以下之一：
+  - "weapon": 武器（刀剑枪尺等用于战斗的兵器）
+  - "skill": 技能/功法/斗技（可学习施展的功法招式，如吸掌、焰分尺）
+  - "food": 食物（灵果、茶酒、饭菜等可食用物）
+  - "pill": 丹药/消耗品（丹药、灵草、药剂等炼制或一次性消耗物）
+  - "treasure": 法宝/器物（非武器类的贵重器物、信物、奇物）
+  - "other": 其他（无法归入以上类别的关键道具）
 - description: 物品说明（是什么、有什么作用或来历）
 - confidence: 置信度（0.0-1.0）
 - firstChapter: 首次出现章节索引（从 1 开始）
@@ -86,7 +93,7 @@ export const CHARACTER_EXTRACTION_PROMPT = `你是一位从小说中提取实体
 description 必须输出完整句或完整短语，不能以半截句、连接词、数字残片结尾；如果某个信息无法完整表达，宁可去掉该残片，也不要输出未完成的句子。
 
 只返回 JSON 对象。示例：
-{"characters":[{"name":"萧炎","aliases":["萧炎哥","萧炎哥哥","炎儿","三少爷"],"description":"主角，萧家三少爷，曾为天才少年，功力倒退后重新崛起，身怀神秘黑色古戒","confidence":0.95,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3,4,5,6,7,8,9,10],"outfits":[{"description":"青色劲装，袖口绣有暗纹","scene":"日常","firstChapter":1,"lastChapter":10},{"description":"宽大黑袍与大黑斗篷，遮掩面容","scene":"伪装炼药师/拍卖场","firstChapter":3,"lastChapter":8}]}],"items":[{"name":"黑色古戒","aliases":["古朴戒指","戒指"],"description":"萧炎母亲遗物，内藏神秘灵魂体药老，曾吸取萧炎三年斗之气","confidence":0.9,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,8,9],"owners":[{"name":"萧炎母亲","note":"遗物"},{"name":"萧炎","firstChapter":1,"lastChapter":10,"note":"佩戴于左手无名指"}]}],"locations":[{"name":"乌坦城","aliases":["乌坦"],"description":"加玛帝国东部的一座城市，萧家所在地","confidence":0.85,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3]}],"worldviews":[{"name":"斗气","aliases":[],"description":"斗气大陆通行的能量体系，修炼者通过修炼斗气提升实力，斗气等级决定修炼者地位","category":"power-system","confidence":0.9,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3,5]},{"name":"斗之气三段","aliases":[],"description":"斗气修炼的基础境界之一，萧炎曾经的天赋水准，分为一至九段","category":"realm","confidence":0.85,"firstChapter":1,"lastChapter":2,"chapterAppearances":[1,2]}]}`;
+{"characters":[{"name":"萧炎","aliases":["萧炎哥","萧炎哥哥","炎儿","三少爷"],"description":"主角，萧家三少爷，曾为天才少年，功力倒退后重新崛起，身怀神秘黑色古戒","confidence":0.95,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3,4,5,6,7,8,9,10],"outfits":[{"description":"青色劲装，袖口绣有暗纹","scene":"日常","firstChapter":1,"lastChapter":10},{"description":"宽大黑袍与大黑斗篷，遮掩面容","scene":"伪装炼药师/拍卖场","firstChapter":3,"lastChapter":8}]}],"items":[{"name":"黑色古戒","aliases":["古朴戒指","戒指"],"category":"treasure","description":"萧炎母亲遗物，内藏神秘灵魂体药老，曾吸取萧炎三年斗之气","confidence":0.9,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,8,9],"owners":[{"name":"萧炎母亲","note":"遗物"},{"name":"萧炎","firstChapter":1,"lastChapter":10,"note":"佩戴于左手无名指"}]}],"locations":[{"name":"乌坦城","aliases":["乌坦"],"description":"加玛帝国东部的一座城市，萧家所在地","confidence":0.85,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3]}],"worldviews":[{"name":"斗气","aliases":[],"description":"斗气大陆通行的能量体系，修炼者通过修炼斗气提升实力，斗气等级决定修炼者地位","category":"power-system","confidence":0.9,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3,5]},{"name":"斗之气三段","aliases":[],"description":"斗气修炼的基础境界之一，萧炎曾经的天赋水准，分为一至九段","category":"realm","confidence":0.85,"firstChapter":1,"lastChapter":2,"chapterAppearances":[1,2]}]}`;
 
 export const CHARACTER_BATCH_PROMPT = (bookTitle: string, batchNum: number, totalBatches: number): string =>
   `从书籍《${bookTitle}》中提取所有【人物角色】、【物品道具】、【地点场景】和【世界观与体系设定】。这是第 ${batchNum} 批（共 ${totalBatches} 批）。按系统提示给出的 JSON 对象结构返回。`;

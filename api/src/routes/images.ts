@@ -43,9 +43,10 @@ export async function imageRoutes(fastify: FastifyInstance) {
   });
 
   // ── AI 生成一张（画廊新增）──
+  // 查询参数：aspectRatio 宽高比；stage 年龄阶段；outfit 服饰套系（scene 标签，仅角色）
   fastify.post('/:id/images/:type/:name', async (request, reply) => {
     const { id, type, name } = request.params as { id: string; type: string; name: string };
-    const { aspectRatio, stage } = (request.query || {}) as { aspectRatio?: string; stage?: string };
+    const { aspectRatio, stage, outfit } = (request.query || {}) as { aspectRatio?: string; stage?: string; outfit?: string };
 
     if (!validateType(type)) {
       return reply.status(400).send({ error: '实体类型必须为角色、道具或场景' });
@@ -60,7 +61,7 @@ export async function imageRoutes(fastify: FastifyInstance) {
     }
 
     try {
-      return await generateEntityImage(id, ownerId!, type, name, { aspectRatio, stage });
+      return await generateEntityImage(id, ownerId!, type, name, { aspectRatio, stage, outfit });
     } catch (error) {
       return reply.status(errStatus(error)).send(errBody(error));
     }

@@ -112,13 +112,15 @@ async function resolveLatestRunDir(bookId: string, ownerId: string): Promise<str
   return latest.runDir;
 }
 
-/** 从 *-prompts.json 读出指定实体的 prompt（优先 BookArtifact + 对象存储，回退本机 output/）。 */
+/** 从 *-prompts.json 读出指定实体的 prompt（优先 BookArtifact + 对象存储，回退本机 output/）。
+ * outfit 指定时优先取服饰套系变体（outfitVariants，按 scene/描述匹配）。 */
 async function readEntityPrompt(
   bookId: string,
   runDir: string,
   entityType: EntityType,
   entityName: string,
   stage?: string,
+  outfit?: string,
 ): Promise<string> {
   const filename = PROMPTS_FILE[entityType];
   const file = join(OUTPUT_ROOT, runDir, 'entities', filename);
@@ -141,6 +143,21 @@ async function readEntityPrompt(
       `未在 ${file} 中找到实体 ${entityType}“${entityName}”的提示词`,
       'NO_PROMPT_FOR_ENTITY'
     );
+  }
+  // 服饰套系变体：按 scene/描述匹配 outfit；未命中时报错提示重跑提示词阶段
+  if (outfit) {
+    const outfitVariants: Array<{ scene?: string; description?: string; prompt?: string }> =
+      Array.isArray(hit.outfitVariants) ? hit.outfitVariants : [];
+    const picked = outfitVariants.find((v) => v.scene === outfit)
+      ?? outfitVariants.find((v) => v.description === outfit)
+      ?? outfitVariants.find((v) => typeof v.scene === 'string' && (v.scene as string).includes(outfit));
+    if (!picked?.prompt) {
+      throw new ImageGenerationError(
+        `未在 ${file} 中找到“${entityName}”的服饰套系“${outfit}”提示词，请重新运行提示词生成阶段。`,
+        'NO_PROMPT_FOR_OUTFIT'
+      );
+    }
+    return picked.prompt;
   }
   // 多年龄阶段版本：按 stage 选 variant；无 stage 取主 variant；再回退顶层 prompt（向后兼容旧产物）
   const variants: any[] | undefined = Array.isArray(hit.variants) ? hit.variants : undefined;
@@ -212,16 +229,17 @@ async function persistImage(
   return toMeta(row);
 }
 
-/** AI 生成一张图片并入库（画廊新增，source=generated）。 */
+/** AI 生成一张图片并入库（画廊新增，source=generated）。
+ * opts.outfit 指定服饰套系（scene 标签）时，取套系专属提示词生图，图片 stage 记为套系标签。 */
 export async function generateEntityImage(
   bookId: string,
   ownerId: string,
   entityType: EntityType,
   entityName: string,
-  opts: { aspectRatio?: string; stage?: string } = {},
+  opts: { aspectRatio?: string; stage?: string; outfit?: string } = {},
 ): Promise<EntityImageMeta> {
   const runDir = await resolveLatestRunDir(bookId, ownerId);
-  const prompt = await readEntityPrompt(bookId, runDir, entityType, entityName, opts.stage);
+  const prompt = await readEntityPrompt(bookId, runDir, entityType, entityName, opts.stage, opts.outfit);
   const aspectRatio = opts.aspectRatio || getDefaultRatio(entityType);
 
   // 调 provider 生图
@@ -241,7 +259,7 @@ export async function generateEntityImage(
     throw new ImageGenerationError(`生成图片失败：${msg}`, 'GENERATION_FAILED');
   }
 
-  return persistImage(bookId, ownerId, entityType, entityName, generated.buffer, generated.mime, 'generated', aspectRatio, opts.stage);
+  return persistImage(bookId, ownerId, entityType, entityName, generated.buffer, generated.mime, 'generated', aspectRatio, opts.outfit || opts.stage);
 }
 
 /** 用户上传一张图片并入库（画廊新增，source=uploaded，aspectRatio=null 按原图）。 */

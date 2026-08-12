@@ -41,6 +41,7 @@ interface EntityEnrichment {
   confidence?: number;
   aliases?: string[];
   description?: string;
+  category?: string;
 }
 
 /** Map EntityImportance[] into DB-ready objects. The optional `enrich` map lets
@@ -56,6 +57,7 @@ function mapEntitiesToDb(
     return {
       name: imp.text,
       aliases: e?.aliases ?? ([] as string[]),
+      category: e?.category,
       description: e?.description ?? descriptions.get(imp.text) ?? undefined,
       confidence: e?.confidence ?? 0.7,
       status: 'PENDING' as const,
@@ -146,7 +148,7 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
 
   /** Build prescan mention map + LLM mention list + enrichment, then score importance. */
   function llmEntitiesWithPrescan(
-    llmEntities: { name: string; aliases?: string[]; description?: string; confidence?: number; firstChapter?: number; lastChapter?: number; chapterAppearances?: number[] }[],
+    llmEntities: { name: string; aliases?: string[]; description?: string; confidence?: number; category?: string; firstChapter?: number; lastChapter?: number; chapterAppearances?: number[] }[],
     prescanMentions: EntityMention[],
     entityType: EntityType,
   ): Omit<Location, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[] {
@@ -187,6 +189,7 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
         confidence: ent.confidence ?? 0.7,
         aliases: ent.aliases ?? [],
         description: ent.description,
+        category: ent.category,
       });
     }
 
@@ -205,7 +208,7 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
   } else {
     // No prescan: entities still come from LLM, with neutral importance.
     const noPrescanMap = (
-      ents: { name: string; aliases?: string[]; description?: string; confidence?: number; firstChapter?: number; lastChapter?: number; chapterAppearances?: number[] }[],
+      ents: { name: string; aliases?: string[]; description?: string; confidence?: number; category?: string; firstChapter?: number; lastChapter?: number; chapterAppearances?: number[] }[],
       entityType: EntityType,
     ) => llmEntitiesWithPrescan(ents, [], entityType);
     locations = noPrescanMap(entityResult.locations, 'location');

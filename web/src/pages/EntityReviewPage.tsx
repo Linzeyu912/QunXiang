@@ -51,6 +51,19 @@ const TIER_LABEL: Record<Tier | 'ALL', string> = {
   archived: '归档',
 };
 
+// 道具大类筛选项（仅道具 Tab 展示）
+const ITEM_CATEGORY_OPTIONS = ['ALL', 'weapon', 'skill', 'food', 'pill', 'treasure', 'other'] as const;
+
+const ITEM_CATEGORY_LABEL: Record<(typeof ITEM_CATEGORY_OPTIONS)[number], string> = {
+  ALL: '全部大类',
+  weapon: '武器',
+  skill: '技能功法',
+  food: '食物',
+  pill: '丹药消耗品',
+  treasure: '法宝器物',
+  other: '其他物品',
+};
+
 const TITLE: Record<EntityType, string> = {
   character: '角色审核',
   location: '场景审核',
@@ -98,11 +111,13 @@ export function EntityReviewPage({ type }: Props) {
 
   const status = (sp.get('status') as EntityStatus | null) ?? undefined;
   const tier = (sp.get('tier') as Tier | null) ?? undefined;
+  const category = sp.get('category') ?? undefined;
   const selectedId = sp.get('sel') ?? undefined;
 
   const query = useEntities(type, bookId, {
     status,
     tier: type === 'location' || type === 'item' ? tier : undefined,
+    category: type === 'item' ? category : undefined,
   });
   const update = useUpdateEntity(type, bookId);
   const artifactsQ = useExtractionArtifacts(bookId);
@@ -160,6 +175,22 @@ export function EntityReviewPage({ type }: Props) {
           const next = new URLSearchParams(prev);
           if (v === 'ALL') next.delete('tier');
           else next.set('tier', v);
+          next.delete('sel');
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [setSp],
+  );
+
+  const setCategory = useCallback(
+    (v: string) => {
+      setSp(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          if (v === 'ALL') next.delete('category');
+          else next.set('category', v);
           next.delete('sel');
           return next;
         },
@@ -282,6 +313,20 @@ export function EntityReviewPage({ type }: Props) {
                 {TIER_OPTIONS.map((t) => (
                   <SelectItem key={t} value={t}>
                     {TIER_LABEL[t]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+          {type === 'item' && (
+            <Select value={category ?? 'ALL'} onValueChange={setCategory}>
+              <SelectTrigger className="w-32">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {ITEM_CATEGORY_OPTIONS.map((c) => (
+                  <SelectItem key={c} value={c}>
+                    {ITEM_CATEGORY_LABEL[c]}
                   </SelectItem>
                 ))}
               </SelectContent>

@@ -82,6 +82,19 @@ export interface LocationEntity extends EntityBase {
   pillarTransition: number;
 }
 
+/** 道具大类（提取时由 LLM 判定，可在审核时修改） */
+export type ItemCategory = 'weapon' | 'skill' | 'food' | 'pill' | 'treasure' | 'other';
+
+/** 道具大类中文标签（列表/详情/筛选共用） */
+export const ITEM_CATEGORY_LABEL: Record<ItemCategory, string> = {
+  weapon: '武器',
+  skill: '技能功法',
+  food: '食物',
+  pill: '丹药消耗品',
+  treasure: '法宝器物',
+  other: '其他物品',
+};
+
 export interface ItemEntity extends EntityBase {
   importanceScore: number;
   tier: Tier;
@@ -90,6 +103,8 @@ export interface ItemEntity extends EntityBase {
   pillarCausal: number;
   pillarUniqueness: number;
   pillarTransition: number;
+  /** 道具大类：武器/技能功法/食物/丹药消耗品/法宝器物/其他 */
+  category?: ItemCategory;
   /** 道具的持有者列表（与后端 core/types.ts Owner 对齐） */
   owners?: Owner[] | string;
 }
@@ -219,6 +234,19 @@ export interface PromptVariantEntry {
   isPrimary?: boolean;
 }
 
+/** 单套服饰（非主套）的完整四视图提示词（模板生成，可经 LLM 补写） */
+export interface OutfitVariantEntry {
+  /** 场景/用途标签（如 "伪装炼药师"） */
+  scene?: string;
+  /** 原文服饰描述 */
+  description: string;
+  /** 完整四视图提示词 */
+  prompt: string;
+  /** 溯源：该套出现的章节区间 */
+  sourceChapters?: string;
+  source?: string;
+}
+
 export interface GenerationPromptEntry {
   entityName: string;
   entityType: string;
@@ -226,6 +254,8 @@ export interface GenerationPromptEntry {
   prompt: string;
   /** 角色的多个年龄阶段版本（仅 character；顶层 prompt = 主阶段） */
   variants?: PromptVariantEntry[];
+  /** 非主套服饰套系的完整设计图提示词（仅 character） */
+  outfitVariants?: OutfitVariantEntry[];
   detectedStages?: string[];
   styleTags?: string[];
   source?: string;

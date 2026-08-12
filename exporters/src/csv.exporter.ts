@@ -31,11 +31,22 @@ const WORLDVIEW_COLS: Col[] = [
   { header: '类别', get: (e) => e.category ?? '' },
 ];
 
+// 道具大类列（weapon/skill/food/pill/treasure/other）
+const ITEM_CATEGORY_COLS: Col[] = [
+  { header: 'category', get: (e) => e.category ?? '' },
+];
+
 export class CsvExporter extends BaseExporter {
   export(entities: ExportEntity[], _book: Book, kind: EntityKind): string {
     const cols = [
       ...COMMON_COLS,
-      ...(kind === 'character' ? CHARACTER_COLS : kind === 'worldview' ? WORLDVIEW_COLS : TIERED_COLS),
+      ...(kind === 'character'
+        ? CHARACTER_COLS
+        : kind === 'worldview'
+          ? WORLDVIEW_COLS
+          : kind === 'item'
+            ? [...ITEM_CATEGORY_COLS, ...TIERED_COLS]
+            : TIERED_COLS),
     ];
     const lines: string[] = [];
 

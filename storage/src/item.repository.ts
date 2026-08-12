@@ -8,6 +8,7 @@ export interface ItemRepository {
     bookId: string;
     name: string;
     aliases: string[];
+    category?: string;
     description?: string;
     confidence: number;
     chapterRef?: string;
@@ -28,6 +29,7 @@ export interface ItemRepository {
     bookId: string;
     name: string;
     aliases: string[];
+    category?: string;
     description?: string;
     confidence: number;
     chapterRef?: string;
@@ -52,6 +54,8 @@ export interface ItemRepository {
   findByOwnedStatus(bookId: string, ownerId: string, status: string): Promise<Item[]>;
   findByTier(bookId: string, tier: string): Promise<Item[]>;
   findByOwnedTier(bookId: string, ownerId: string, tier: string): Promise<Item[]>;
+  findByOwnedCategory(bookId: string, ownerId: string, category: string): Promise<Item[]>;
+  countByOwnedCategory(bookId: string, ownerId: string, category: string): Promise<number>;
   update(id: string, data: Partial<Item>): Promise<Item>;
   updateOwned(id: string, ownerId: string, data: Partial<Item>): Promise<Item | null>;
   updateStatus(id: string, status: string): Promise<Item>;
@@ -77,6 +81,7 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
           bookId: data.bookId,
           name: data.name,
           aliases: encodeJsonField(data.aliases),
+          category: data.category,
           description: data.description,
           confidence: data.confidence,
           chapterRef: data.chapterRef,
@@ -103,6 +108,7 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
           bookId: i.bookId,
           name: i.name,
           aliases: encodeJsonField(i.aliases),
+          category: i.category,
           description: i.description,
           confidence: i.confidence,
           chapterRef: i.chapterRef,
@@ -180,6 +186,18 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
         orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
       });
       return items.map(i => parseItem(i as unknown as Record<string, unknown>));
+    },
+
+    async findByOwnedCategory(bookId: string, ownerId: string, category: string) {
+      const items = await db.item.findMany({
+        where: { bookId, category, book: { userId: ownerId } },
+        orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
+      });
+      return items.map(i => parseItem(i as unknown as Record<string, unknown>));
+    },
+
+    async countByOwnedCategory(bookId: string, ownerId: string, category: string) {
+      return db.item.count({ where: { bookId, category, book: { userId: ownerId } } });
     },
 
     async update(id: string, data: Partial<Item>) {

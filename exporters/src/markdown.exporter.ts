@@ -11,6 +11,16 @@ const WORLDVIEW_CATEGORY_LABEL: Record<string, string> = {
   rule: '规则法则',
 };
 
+/** 道具大类中文标签（导出展示用）。 */
+const ITEM_CATEGORY_LABEL: Record<string, string> = {
+  weapon: '武器',
+  skill: '技能功法',
+  food: '食物',
+  pill: '丹药消耗品',
+  treasure: '法宝器物',
+  other: '其他物品',
+};
+
 export class MarkdownExporter extends BaseExporter {
   export(entities: ExportEntity[], book: Book, kind: EntityKind): string {
     const lines: string[] = [];
@@ -66,6 +76,9 @@ export class MarkdownExporter extends BaseExporter {
           lines.push(`| 类别 | ${WORLDVIEW_CATEGORY_LABEL[e.category] ?? e.category} |`);
         }
       } else {
+        if (kind === 'item' && e.category) {
+          lines.push(`| Category | ${ITEM_CATEGORY_LABEL[e.category] ?? e.category} |`);
+        }
         if (e.tier) lines.push(`| Tier | ${e.tier} |`);
         if (e.importanceScore != null) {
           lines.push(`| Importance | ${e.importanceScore.toFixed(3)} |`);

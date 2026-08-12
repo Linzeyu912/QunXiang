@@ -13,9 +13,13 @@ export const ownerSchema = z.object({
   note: z.string().optional(),
 });
 
+/** 道具大类：武器/技能功法/食物/丹药消耗品/法宝器物/其他物品 */
+export const itemCategorySchema = z.enum(['weapon', 'skill', 'food', 'pill', 'treasure', 'other']);
+
 export const itemSchema = z.object({
   name: z.string().min(1),
   aliases: z.array(z.string()).default([]),
+  category: itemCategorySchema.default('other'),
   description: z.string().optional(),
   confidence: z.number().min(0).max(1).default(0.5),
   chapterRef: z.string().optional(),
@@ -44,6 +48,7 @@ export const itemCreateSchema = itemSchema.extend({
 export const itemUpdateSchema = z.object({
   name: z.string().min(1).optional(),
   aliases: z.array(z.string()).optional(),
+  category: itemCategorySchema.optional(),
   description: z.string().optional(),
   status: z.enum(['PENDING', 'APPROVED', 'REJECTED']).optional(),
 });

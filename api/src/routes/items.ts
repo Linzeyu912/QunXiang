@@ -5,10 +5,13 @@ import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
 
+// 合法道具大类（与 schemas itemCategorySchema 保持一致）
+const VALID_ITEM_CATEGORIES = new Set(['weapon', 'skill', 'food', 'pill', 'treasure', 'other']);
+
 export async function itemRoutes(fastify: FastifyInstance) {
-  // Get items (optionally filtered by status or tier)
+  // Get items (optionally filtered by status, tier or category)
   fastify.get('/', async (request, reply) => {
-    const { bookId, status, tier } = request.query as { bookId?: string; status?: string; tier?: string };
+    const { bookId, status, tier, category } = request.query as { bookId?: string; status?: string; tier?: string; category?: string };
 
     if (!bookId) {
       return reply.status(400).send({ error: '缺少 bookId 参数' });
@@ -23,7 +26,12 @@ export async function itemRoutes(fastify: FastifyInstance) {
     }
 
     let items;
-    if (tier) {
+    if (category) {
+      if (!VALID_ITEM_CATEGORIES.has(category)) {
+        return reply.status(400).send({ error: 'category 必须为 weapon、skill、food、pill、treasure 或 other' });
+      }
+      items = await ItemRepository.findByOwnedCategory(bookId, ownerId!, category);
+    } else if (tier) {
       items = await ItemRepository.findByOwnedTier(bookId, ownerId!, tier);
     } else if (status) {
       items = await ItemRepository.findByOwnedStatus(bookId, ownerId!, status);

@@ -3,8 +3,10 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import { Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { EntityStatusBadge, TierBadge } from '@/components/StatusBadge';
+import { Badge } from '@/components/ui/badge';
 import { parseAliases } from '@/lib/utils';
-import type { AnyEntity, EntityType } from '@/types';
+import { ITEM_CATEGORY_LABEL } from '@/types';
+import type { AnyEntity, EntityType, ItemCategory } from '@/types';
 
 interface Props {
   entities: AnyEntity[];
@@ -39,6 +41,7 @@ const EntityRow = memo(function EntityRow({
 }: RowProps) {
   const aliases = parseAliases(entity.aliases);
   const hasTier = type !== 'character' && 'tier' in entity;
+  const itemCategory = type === 'item' ? (entity as { category?: ItemCategory }).category : undefined;
   return (
     <button
       onClick={() => onSelect(entity.id)}
@@ -66,6 +69,11 @@ const EntityRow = memo(function EntityRow({
           )}
         </span>
         <div className="flex shrink-0 items-center gap-1">
+          {itemCategory && (
+            <Badge variant="outline" className="px-1 text-[10px] font-normal">
+              {ITEM_CATEGORY_LABEL[itemCategory] ?? itemCategory}
+            </Badge>
+          )}
           {hasTier && (
             <TierBadge
               tier={(entity as { tier: 'core' | 'supporting' | 'candidate' | 'archived' }).tier}

@@ -55,7 +55,7 @@ export function useEntityImages(bookId: string, type: EntityType, name: string) 
   });
 }
 
-/** AI 生成一张（画廊新增）。 */
+/** AI 生成一张（画廊新增）。outfit 指定服饰套系（scene 标签，仅角色）。 */
 export function useGenerateImage(bookId: string) {
   const qc = useQueryClient();
   return useMutation({
@@ -64,15 +64,18 @@ export function useGenerateImage(bookId: string) {
       name,
       aspectRatio,
       stage,
+      outfit,
     }: {
       type: EntityType;
       name: string;
       aspectRatio?: string;
       stage?: string;
+      outfit?: string;
     }) => {
       const params = new URLSearchParams();
       if (aspectRatio) params.set('aspectRatio', aspectRatio);
       if (stage) params.set('stage', stage);
+      if (outfit) params.set('outfit', outfit);
       const qs = params.toString() ? `?${params}` : '';
       return apiFetch<EntityImageMeta>(
         `/books/${bookId}/images/${type}/${encodeURIComponent(name)}${qs}`,

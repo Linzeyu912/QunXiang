@@ -28,7 +28,7 @@ const KEYS: Record<EntityType, string> = {
 
 export const entitiesKey = {
   all: (bookId: string) => ['entities', bookId] as const,
-  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier }) =>
+  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string }) =>
     ['entities', bookId, type, filters ?? {}] as const,
   reviews: (id: string) => ['character-reviews', id] as const,
 };
@@ -36,6 +36,8 @@ export const entitiesKey = {
 interface ListParams {
   status?: EntityStatus;
   tier?: Tier;
+  /** 道具大类过滤（仅 item 类型有效） */
+  category?: string;
 }
 
 function buildQuery(bookId: string, params?: ListParams): string {
@@ -43,6 +45,7 @@ function buildQuery(bookId: string, params?: ListParams): string {
   sp.set('bookId', bookId);
   if (params?.status) sp.set('status', params.status);
   if (params?.tier) sp.set('tier', params.tier);
+  if (params?.category) sp.set('category', params.category);
   return sp.toString();
 }
 
@@ -81,6 +84,8 @@ interface EntityPatch {
   aliases?: string[];
   description?: string;
   status?: EntityStatus;
+  /** 道具大类（仅 item） */
+  category?: string;
 }
 
 export function useUpdateEntity(type: EntityType, bookId: string) {

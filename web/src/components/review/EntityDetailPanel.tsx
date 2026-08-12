@@ -14,7 +14,33 @@ import { PublishAssetDialog } from '@/components/PublishAssetDialog';
 import { formatDate, parseAliases } from '@/lib/utils';
 import { useCharacterReviews, useUpdateEntity } from '@/api/entities';
 import { matchArtifacts, useExtractionArtifacts } from '@/api/artifacts';
-import type { AnyEntity, Character, CharacterReview, EntityStatus, EntityType } from '@/types';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { ITEM_CATEGORY_LABEL } from '@/types';
+import type {
+  AnyEntity,
+  Character,
+  CharacterReview,
+  EntityStatus,
+  EntityType,
+  ItemCategory,
+  WorldviewEntity,
+} from '@/types';
+
+/** 世界观/体系类别中文标签 */
+const WORLDVIEW_CATEGORY_LABEL: Record<string, string> = {
+  worldview: '世界观背景',
+  'power-system': '力量体系',
+  realm: '境界等级',
+  faction: '组织势力',
+  rule: '规则法则',
+};
+
 
 interface Props {
   entity: AnyEntity;
@@ -93,6 +119,37 @@ export const EntityDetailPanel = memo(function EntityDetailPanel({
               <TierBadge
                 tier={(entity as { tier: 'core' | 'supporting' | 'candidate' | 'archived' }).tier}
               />
+            )}
+            {type === 'worldview' && 'category' in entity && (
+              <Badge variant="outline">
+                {WORLDVIEW_CATEGORY_LABEL[(entity as WorldviewEntity).category] ??
+                  (entity as WorldviewEntity).category}
+              </Badge>
+            )}
+            {type === 'item' && (
+              <Select
+                value={(entity as { category?: ItemCategory }).category ?? 'other'}
+                onValueChange={(v) => {
+                  update.mutate(
+                    { id: entity.id, patch: { category: v } },
+                    {
+                      onSuccess: () => toast.success('道具大类已更新'),
+                      onError: (err) => toast.error(err instanceof Error ? err.message : String(err)),
+                    },
+                  );
+                }}
+              >
+                <SelectTrigger className="h-6 w-28 text-xs" title="道具大类（点击修改）">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {(Object.keys(ITEM_CATEGORY_LABEL) as ItemCategory[]).map((c) => (
+                    <SelectItem key={c} value={c}>
+                      {ITEM_CATEGORY_LABEL[c]}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             )}
           </div>
           <p className="text-xs text-muted-foreground">ID {entity.id.slice(0, 8)}</p>

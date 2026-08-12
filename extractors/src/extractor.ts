@@ -250,6 +250,8 @@ function dedupItems(items: ItemInputOutput[]): ItemInputOutput[] {
         ),
         description: mergeEntityDescriptions(existing.description, item.description),
         confidence: Math.max(existing.confidence ?? 0, item.confidence ?? 0),
+        // 大类合并：具体类别优先于默认的 other
+        category: existing.category && existing.category !== 'other' ? existing.category : (item.category ?? existing.category),
         firstChapter: chapters.length ? chapters[0] : existing.firstChapter,
         lastChapter: chapters.length ? chapters[chapters.length - 1] : existing.lastChapter,
         chapterAppearances: chapters,

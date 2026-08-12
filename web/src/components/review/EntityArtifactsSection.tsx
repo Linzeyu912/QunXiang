@@ -8,6 +8,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -30,7 +37,7 @@ import {
 } from '@/api/images';
 import { useUpdateArtifact } from '@/api/artifacts';
 import { cn } from '@/lib/utils';
-import type { EntityArtifacts, EntityType, GenerationPromptEntry } from '@/types';
+import type { EntityArtifacts, EntityType, GenerationPromptEntry, OutfitVariantEntry } from '@/types';
 
 // 融合/视觉字段的中文标签；未知键回退显示原始键名
 const FIELD_LABEL: Record<string, string> = {
@@ -176,11 +183,14 @@ function EntityImageGallery({
   entityType,
   entityName,
   stage,
+  outfits,
 }: {
   bookId: string;
   entityType: EntityType;
   entityName: string;
   stage?: string;
+  /** 服饰套系变体（仅角色）：非空时生图可选套系 */
+  outfits?: OutfitVariantEntry[];
 }) {
   const q = useEntityImages(bookId, entityType, entityName);
   const generate = useGenerateImage(bookId);
@@ -190,6 +200,8 @@ function EntityImageGallery({
   const fileInput = useRef<HTMLInputElement>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [stageFilter, setStageFilter] = useState<string | null>(null);
+  // 服饰套系选择（'PRIMARY' = 主套，其余为 scene/描述标签）
+  const [outfitPick, setOutfitPick] = useState<string>('PRIMARY');
 
   // 切换 stage 过滤时清除选中，避免引用已过滤掉的图片
   const handleStageFilter = (s: string | null) => {
@@ -210,8 +222,9 @@ function EntityImageGallery({
 
   const handleGenerate = async () => {
     try {
-      await generate.mutateAsync({ type: entityType, name: entityName, stage });
-      toast.success(`${entityName} 图片已生成`);
+      const outfit = outfitPick !== 'PRIMARY' ? outfitPick : undefined;
+      await generate.mutateAsync({ type: entityType, name: entityName, stage, outfit });
+      toast.success(`${entityName} 图片已生成${outfit ? `（套系：${outfit}）` : ''}`);
     } catch (err) {
       toast.error(`生图失败：${err instanceof Error ? err.message : String(err)}`);
     }
@@ -256,6 +269,21 @@ function EntityImageGallery({
           {generate.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Image className="h-3.5 w-3.5" />}
           AI 生成
         </Button>
+        {outfits && outfits.length > 0 && (
+          <Select value={outfitPick} onValueChange={setOutfitPick}>
+            <SelectTrigger className="h-9 w-40 text-xs" title="选择服饰套系">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="PRIMARY">主套服饰</SelectItem>
+              {outfits.map((o, i) => (
+                <SelectItem key={i} value={o.scene || o.description.slice(0, 20) || `套系${i + 1}`}>
+                  {o.scene || o.description.slice(0, 20) || `套系${i + 1}`}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
         <Button variant="outline" size="sm" className="gap-1" disabled={busy} onClick={() => fileInput.current?.click()}>
           {upload.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Upload className="h-3.5 w-3.5" />}
           上传图片
@@ -398,6 +426,75 @@ function EntityImageGallery({
             </div>
           )}
         </>
+      )}
+    </div>
+  );
+}
+
+/** ── 服饰套系提示词（非主套的完整四视图，可折叠查看/复制/按套生图）── */
+function OutfitPromptsSection({
+  bookId,
+  entityType,
+  entityName,
+  outfits,
+}: {
+  bookId: string;
+  entityType: EntityType;
+  entityName: string;
+  outfits: OutfitVariantEntry[];
+}) {
+  const [open, setOpen] = useState(false);
+  const generate = useGenerateImage(bookId);
+
+  const handleGenerateOutfit = async (o: OutfitVariantEntry, i: number) => {
+    try {
+      await generate.mutateAsync({
+        type: entityType,
+        name: entityName,
+        outfit: o.scene || o.description.slice(0, 20) || `套系${i + 1}`,
+      });
+      toast.success(`${entityName}（${o.scene || `套系${i + 1}`}）图片已生成`);
+    } catch (err) {
+      toast.error(`生图失败：${err instanceof Error ? err.message : String(err)}`);
+    }
+  };
+
+  return (
+    <div className="rounded-md border">
+      <button
+        type="button"
+        className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm font-medium hover:bg-accent/50"
+        onClick={() => setOpen((v) => !v)}
+      >
+        {open ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+        服饰套系提示词（{outfits.length} 套非主套）
+        <span className="text-xs font-normal text-muted-foreground">每套均为完整四视图，生图时可按套系选择</span>
+      </button>
+      {open && (
+        <div className="space-y-3 border-t px-3 py-3">
+          {outfits.map((o, i) => (
+            <div key={i} className="space-y-1">
+              <div className="flex items-center gap-2">
+                <Badge variant="outline">{o.scene || `套系${i + 1}`}</Badge>
+                {o.sourceChapters && (
+                  <span className="text-xs text-muted-foreground">{o.sourceChapters}</span>
+                )}
+                {o.source === 'llm-polished' && <Badge variant="secondary">LLM 补写</Badge>}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="ml-auto h-7 gap-1 px-2 text-xs"
+                  disabled={generate.isPending}
+                  onClick={() => handleGenerateOutfit(o, i)}
+                >
+                  {generate.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Image className="h-3.5 w-3.5" />}
+                  生成这套
+                </Button>
+              </div>
+              <PromptCopyBlock label={o.description} prompt={o.prompt} />
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
@@ -752,11 +849,19 @@ export function EntityArtifactsSection({
                     ))}
                   </div>
                 )}
+                {prompt.outfitVariants && prompt.outfitVariants.length > 0 && (
+                  <OutfitPromptsSection
+                    bookId={bookId}
+                    entityType={entityType}
+                    entityName={entityName}
+                    outfits={prompt.outfitVariants}
+                  />
+                )}
               </>
             )}
 
             <Separator />
-            <EntityImageGallery bookId={bookId} entityType={entityType} entityName={entityName} stage={stage} />
+            <EntityImageGallery bookId={bookId} entityType={entityType} entityName={entityName} stage={stage} outfits={prompt.outfitVariants} />
           </div>
         </>
       )}

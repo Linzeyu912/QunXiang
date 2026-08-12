@@ -87,6 +87,8 @@ export interface Item {
   bookId: string;
   name: string;
   aliases: string[];
+  /** 道具大类：weapon 武器/skill 技能功法/food 食物/pill 丹药消耗品/treasure 法宝器物/other 其他 */
+  category?: ItemCategory;
   description?: string;
   confidence: number;
   status: 'PENDING' | 'APPROVED' | 'REJECTED';
@@ -111,6 +113,9 @@ export interface Item {
   createdAt: Date;
   updatedAt?: Date;
 }
+
+/** 道具大类（提取时由 LLM 判定，可在审核时修改）。 */
+export type ItemCategory = 'weapon' | 'skill' | 'food' | 'pill' | 'treasure' | 'other';
 
 /** 世界观/体系设定类别：世界观背景、力量体系、境界等级、组织势力、规则法则。 */
 export type WorldviewCategory = 'worldview' | 'power-system' | 'realm' | 'faction' | 'rule';

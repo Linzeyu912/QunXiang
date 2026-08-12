@@ -32,6 +32,19 @@ export interface PromptVariant {
   isPrimary?: boolean;
 }
 
+/** 单套服饰（非主套）对应的完整四视图设计图提示词。生图时可按套系选择。 */
+export interface OutfitVariant {
+  /** 场景/用途标签（如 "伪装炼药师" "战斗"） */
+  scene?: string;
+  /** 原文服饰描述 */
+  description: string;
+  /** 完整四视图提示词（模板生成，可经 LLM 补写） */
+  prompt: string;
+  /** 溯源：该套出现的章节区间 */
+  sourceChapters?: string;
+  source: 'template-only' | 'llm-polished' | 'llm-fallback';
+}
+
 export interface GenerationPrompt {
   entityName: string;
   entityType: 'character' | 'item' | 'location';
@@ -39,6 +52,8 @@ export interface GenerationPrompt {
   prompt: string;
   /** 角色的多个年龄阶段版本（仅 character；顶层 prompt = 主阶段，向后兼容旧读取方） */
   variants?: PromptVariant[];
+  /** 非主套服饰套系的完整设计图提示词（仅 character） */
+  outfitVariants?: OutfitVariant[];
   /** 识别到的阶段（调试/前端展示） */
   detectedStages?: AgeStage[];
   styleTags: string[];
@@ -242,7 +257,7 @@ function detectAgeStages(pack: any, tier: string): { stages: AgeStage[]; primary
  * visualFields/visualDetails/outfits（可溯源）；仅体态/年龄行按阶段调整（年龄段客观规律）。
  * 返回该阶段 prompt + 溯源元数据（outfit/章节区间）。
  */
-function buildCharacterDesignSheet(pack: any, stage?: AgeStage): {
+function buildCharacterDesignSheet(pack: any, stage?: AgeStage, forcedOutfit?: Outfit): {
   prompt: string;
   outfit?: string;
   sourceChapters?: string;
@@ -272,9 +287,10 @@ function buildCharacterDesignSheet(pack: any, stage?: AgeStage): {
   // 阶段相关变量（stage 版本按阶段；默认 stage=undefined 时用原文/主套）
   const { primary: primaryStage } = detectAgeStages(pack, tier);
   const effStage = stage ?? primaryStage;
-  // 服装统一用主套：outfit 的章节区间是剧情时间≠角色年龄，按章节选 outfit 对应阶段会错乱
-  // （如墨大夫"老翁装"在第40章却被选给青年）。阶段差异靠体态/年龄行体现，服装保持原文主套（可溯源）。
-  const stageOutfit = primaryOutfit;
+  // 服装：指定套系时强制用该套（服饰套系专属设计图）；否则统一用主套。
+  // outfit 的章节区间是剧情时间≠角色年龄，按章节选 outfit 对应阶段会错乱
+  // （如墨大夫"老翁装"在第40章却被选给青年）。阶段差异靠体态/年龄行体现，服装保持原文可溯源。
+  const stageOutfit = forcedOutfit ?? primaryOutfit;
   const clothing = stageOutfit?.description || pickOne(vd, vf, 'clothing');
   // 体态：stage 版本用年龄段客观规律（非个体编造）；默认用原文 body
   const body = stage ? STAGE_BODY[effStage] : (rawBody || '未详述');
@@ -310,7 +326,11 @@ function buildCharacterDesignSheet(pack: any, stage?: AgeStage): {
   ];
   if (makeup && makeup !== '未详述') sections.push(`- 妆造：${makeup}`);
 
-  const stageSuffix = stage ? `（${STAGE_LABEL[effStage]}）` : '';
+  const stageSuffix = stage
+    ? forcedOutfit
+      ? `（${STAGE_LABEL[effStage]}·${forcedOutfit.scene || '套系'}服饰）`
+      : `（${STAGE_LABEL[effStage]}）`
+    : '';
   const template = [
     `四视图角色设定图 —— ${pack.name}${stageSuffix}`,
     '---',
@@ -326,8 +346,8 @@ function buildCharacterDesignSheet(pack: any, stage?: AgeStage): {
       ? `第${usedOutfit.firstChapter ?? '?'}-${usedOutfit.lastChapter ?? '?'}章`
       : undefined;
 
-  // 其余服饰列表（含章节区间，可溯源）
-  const outfitList = renderOutfitList(outfits, primaryOutfit);
+  // 其余服饰列表（含章节区间，可溯源）；套系专属图不再附参考列表
+  const outfitList = forcedOutfit ? [] : renderOutfitList(outfits, primaryOutfit);
   const templateWithOutfits = outfitList.length > 0
     ? `${template}\n\n${outfitList.join('\n')}`
     : template;
@@ -869,6 +889,132 @@ ${JSON.stringify(payload, null, 2)}`,
   return result;
 }
 
+// ── Outfit variant expansion (non-primary outfit sets get full design-sheet prompts) ──
+
+const POLISH_OUTFIT_PROMPT = `你是服饰套系设定图补写 agent。任务：为角色的每一套非主要服饰生成**详细、可直接生图**的四视图角色设定图提示词，让同一角色不同服饰的生成图明显不同。
+
+核心要求：
+- 每条输入的 key 唯一标识一套服饰，输出必须原样返回对应 key，不得混淆、合并或遗漏。
+- 人物身份特征（面部/五官、发型、体态、神情气质、辨识度锚点）必须与 templatePrompt 保持一致——是同一个人换了衣服，不是另一个人。
+- 服装/配色：围绕该套服饰的描述展开，具体到款式+颜色+材质+纹样+配饰+鞋履；不同套系之间必须有明显视觉差异。
+- 保持"四视图角色设定图"结构与末尾四视图要求、风格标签（古风玄幻，精致细节，柔和光影，高质量CG）。
+- 不要添加原文完全没有的角色特征。
+
+只返回 JSON。`;
+
+const outfitPolishSchema = z.object({
+  prompts: z.array(polishEntitySchemaRaw.extend({ key: z.string().optional() })).optional().default([]),
+}).passthrough();
+
+/**
+ * 为角色的非主套服饰构建完整四视图提示词，并用 LLM 补写具体细节，
+ * 避免不同套系生图时提示词过于笼统导致画面无差异。
+ * LLM 不可用/失败时保留模板版（仍远优于单行参考）。返回成功补写的条数。
+ */
+async function expandCharacterOutfitVariants(
+  packByName: Map<string, any>,
+  characterPrompts: GenerationPrompt[],
+): Promise<number> {
+  // 1. 模板：每套非主套一张完整设计图
+  const pending: Array<{ key: string; entityName: string; variant: OutfitVariant }> = [];
+  for (const p of characterPrompts) {
+    const pack = packByName.get(p.entityName);
+    if (!pack) continue;
+    const outfits: Outfit[] = Array.isArray(pack.outfits) ? pack.outfits : [];
+    if (outfits.length < 2) continue;
+    const primary = pickPrimaryOutfit(outfits);
+    const rest = outfits.filter((o) => o !== primary);
+    if (rest.length === 0) continue;
+    const { primary: primaryStage } = detectAgeStages(pack, pack.tier || 'candidate');
+    const variants: OutfitVariant[] = [];
+    rest.forEach((o, idx) => {
+      const sheet = buildCharacterDesignSheet(pack, primaryStage, o);
+      const variant: OutfitVariant = {
+        scene: o.scene,
+        description: o.description,
+        prompt: sheet.prompt,
+        sourceChapters: sheet.sourceChapters,
+        source: 'template-only',
+      };
+      variants.push(variant);
+      pending.push({ key: `${p.entityName}::${o.scene || o.description.slice(0, 12) || idx}`, entityName: p.entityName, variant });
+    });
+    p.outfitVariants = variants;
+  }
+
+  if (pending.length === 0) return 0;
+  console.log(`[PromptGeneration] Outfit variants built: ${pending.length} across ${characterPrompts.filter((p) => p.outfitVariants?.length).length} characters`);
+  if (!USE_LLM) return 0;
+
+  // 2. LLM 补写（按字符数分组，控制单次上下文）
+  const provider = await getDefaultProvider();
+  const groups: Array<typeof pending> = [];
+  let current: typeof pending = [];
+  let currentChars = 0;
+  for (const entry of pending) {
+    const est = entry.variant.prompt.length + entry.key.length + 160;
+    if (current.length > 0 && currentChars + est > MAX_CHARS) {
+      groups.push(current);
+      current = [];
+      currentChars = 0;
+    }
+    current.push(entry);
+    currentChars += est;
+  }
+  if (current.length > 0) groups.push(current);
+
+  let polishedCount = 0;
+  for (const group of groups) {
+    try {
+      const payload = {
+        prompts: group.map((g) => ({
+          key: g.key,
+          characterName: g.entityName,
+          scene: g.variant.scene || '',
+          outfitDescription: g.variant.description,
+          templatePrompt: g.variant.prompt,
+        })),
+      };
+      const llmResult = await provider.chatExtract(
+        POLISH_OUTFIT_PROMPT,
+        `请为以下服饰套系补写完整四视图提示词。每条的 templatePrompt 是模板初版，你必须返回补写后的完整文本，并原样返回 key。
+
+输出格式（严格遵守，不要回显输入字段）：
+{
+  "prompts": [
+    {"key": "萧炎::伪装炼药师", "polishedPrompt": "四视图角色设定图 —— 萧炎（少年·伪装炼药师服饰）\\n---\\n...补写后的完整设定文本..."}
+  ]
+}
+
+输入数据：
+${JSON.stringify(payload, null, 2)}`,
+        outfitPolishSchema
+      );
+      const byKey = new Map<string, string>();
+      for (const entry of llmResult.prompts ?? []) {
+        const text = extractPolished(entry);
+        const key = (entry as { key?: string }).key;
+        if (text && key) byKey.set(key, text);
+      }
+      for (const g of group) {
+        const text = byKey.get(g.key);
+        if (text) {
+          g.variant.prompt = text;
+          g.variant.source = 'llm-polished';
+          polishedCount++;
+        } else {
+          g.variant.source = 'llm-fallback';
+        }
+      }
+    } catch (error) {
+      console.warn(`[PromptGeneration] Outfit polish failed for ${group.length} outfits: ${error instanceof Error ? error.message : String(error)}`);
+      for (const g of group) g.variant.source = 'llm-fallback';
+    }
+  }
+  console.log(`[PromptGeneration] Outfit polish: ${polishedCount}/${pending.length} succeeded`);
+  return polishedCount;
+}
+
 // ── Main executor ──
 
 export async function executePromptGeneration(payload: unknown): Promise<PromptGenerationResult> {
@@ -903,6 +1049,9 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
     if (entity.name && Array.isArray((entity as any).outfits)) outfitMap.set(entity.name, (entity as any).outfits);
   }
 
+  // 完整 pack 缓存（服饰套系补写需要 visualFields/outfits 等全量字段）
+  const packByName = new Map<string, any>();
+
   // Build name→owners map from items (structured ownership captured at extraction)
   const ownerMap = new Map<string, Owner[]>();
   for (const entity of source.items || []) {
@@ -920,14 +1069,19 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
     }
   }
 
-  let characterPrompts = characterPacks.map(p => buildCharacterPrompt({
-    ...p,
-    tier: resolveTier(p.name),
-    description: descMap.get(p.name) || '',
-    outfits: outfitMap.get(p.name) || [],
-    mentionCount: mentionMap.get(p.name) ?? 0,
-    importanceScore: importanceMap.get(p.name) ?? 0,
-  } as any));
+  let characterPrompts = characterPacks.map(p => {
+    const input = {
+      ...p,
+      tier: resolveTier(p.name),
+      description: descMap.get(p.name) || '',
+      outfits: outfitMap.get(p.name) || [],
+      mentionCount: mentionMap.get(p.name) ?? 0,
+      importanceScore: importanceMap.get(p.name) ?? 0,
+    };
+    // 保留完整 pack，供服饰套系补写时读取 visualFields/outfits
+    packByName.set(p.name, input);
+    return buildCharacterPrompt(input as any);
+  });
   let locationPrompts = locationPacks.map(p => buildLocationPrompt({ ...p, tier: resolveTier(p.name) } as any));
   let itemPrompts = itemPacks.map(p => buildItemPrompt({ ...p, tier: resolveTier(p.name), owners: ownerMap.get(p.name) || [] } as any));
 
@@ -1003,8 +1157,17 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
     locationPrompts.filter((p) => p.source === 'template-only').length +
     itemPrompts.filter((p) => p.source === 'template-only').length;
 
+  // 服饰套系补写：为非主套服饰构建完整四视图提示词并 LLM 补写细节，
+  // 避免"其余服饰套系"只有一行参考导致不同服饰生图无差异。
+  let outfitPolished = 0;
+  try {
+    outfitPolished = await expandCharacterOutfitVariants(packByName, characterPrompts);
+  } catch (err) {
+    console.warn(`[PromptGeneration] Outfit expansion failed: ${err instanceof Error ? err.message : String(err)}`);
+  }
+
   console.log(
-    `[PromptGeneration] Generated ${characterPrompts.length + locationPrompts.length + itemPrompts.length} prompts (llm-polished=${llmPolished}, template-only=${templateOnly}, llm-fallback=${llmFallback})`
+    `[PromptGeneration] Generated ${characterPrompts.length + locationPrompts.length + itemPrompts.length} prompts (llm-polished=${llmPolished}, template-only=${templateOnly}, llm-fallback=${llmFallback}, outfit-polished=${outfitPolished})`
   );
 
   // 最终剥离：章节标注（第x章）是溯源元数据，只在中间链路中传递，
@@ -1014,6 +1177,9 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
     p.prompt = stripChapterRef(p.prompt);
     if (Array.isArray(p.variants)) {
       for (const v of p.variants) v.prompt = stripChapterRef(v.prompt);
+    }
+    if (Array.isArray(p.outfitVariants)) {
+      for (const v of p.outfitVariants) v.prompt = stripChapterRef(v.prompt);
     }
   }
   for (const p of locationPrompts) p.prompt = stripChapterRef(p.prompt);

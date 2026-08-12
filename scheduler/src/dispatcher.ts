@@ -373,6 +373,7 @@ export class TaskDispatcher {
               bookId,
               name: i.name,
               aliases: Array.isArray(i.aliases) ? i.aliases : [],
+              category: i.category || 'other',
               description: i.description || undefined,
               confidence: i.confidence || 0.7,
               chapterRef: i.chapterRef || undefined,
