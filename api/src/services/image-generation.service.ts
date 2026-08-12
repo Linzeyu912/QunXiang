@@ -150,7 +150,9 @@ async function readEntityPrompt(
       Array.isArray(hit.outfitVariants) ? hit.outfitVariants : [];
     const picked = outfitVariants.find((v) => v.scene === outfit)
       ?? outfitVariants.find((v) => v.description === outfit)
-      ?? outfitVariants.find((v) => typeof v.scene === 'string' && (v.scene as string).includes(outfit));
+      ?? outfitVariants.find((v) => typeof v.scene === 'string' && (v.scene as string).includes(outfit))
+      // 无 scene 标签的套系：前端会传描述前缀（slice(0,20)），按前缀匹配兼容
+      ?? outfitVariants.find((v) => typeof v.description === 'string' && (v.description as string).startsWith(outfit));
     if (!picked?.prompt) {
       throw new ImageGenerationError(
         `未在 ${file} 中找到“${entityName}”的服饰套系“${outfit}”提示词，请重新运行提示词生成阶段。`,

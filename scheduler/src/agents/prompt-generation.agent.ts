@@ -1070,11 +1070,16 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
   }
 
   let characterPrompts = characterPacks.map(p => {
+    // outfits 优先取 visual pack（prescan/视觉链路的原始证据）；入库的 character 实体
+    // 不持久化 outfits，仅在中间 payload 携带，只作回退来源。
+    const packOutfits = Array.isArray((p as any).outfits) && ((p as any).outfits as Outfit[]).length > 0
+      ? ((p as any).outfits as Outfit[])
+      : outfitMap.get(p.name) || [];
     const input = {
       ...p,
       tier: resolveTier(p.name),
       description: descMap.get(p.name) || '',
-      outfits: outfitMap.get(p.name) || [],
+      outfits: packOutfits,
       mentionCount: mentionMap.get(p.name) ?? 0,
       importanceScore: importanceMap.get(p.name) ?? 0,
     };

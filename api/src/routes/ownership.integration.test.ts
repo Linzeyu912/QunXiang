@@ -88,6 +88,8 @@ describe('公开路由所有权矩阵', () => {
     ['characters GET', '/characters?bookId=:id'],
     ['locations GET', '/locations?bookId=:id'],
     ['items GET', '/items?bookId=:id'],
+    ['items GET by category', '/items?bookId=:id&category=weapon'],
+    ['worldview GET', '/worldview?bookId=:id'],
     ['extract GET', '/books/:id/extract/stages'],
     ['export GET', '/export/:id'],
     ['images GET', '/books/:id/images/character/test'],
