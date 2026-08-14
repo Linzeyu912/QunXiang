@@ -296,11 +296,19 @@ function buildCharacterDesignSheet(pack: any, stage?: AgeStage, forcedOutfit?: O
   const body = stage ? STAGE_BODY[effStage] : (rawBody || '未详述');
   const ageHint = stage ? STAGE_LABEL[effStage] : buildAgeHint(tier, desc, statusMarkers);
 
-  // 标志性特征（原文依据）
+  // 标志性特征（原文依据）：切成短语、限 3 条。句子化/多特征堆砌的内容交给 polish 压缩成锚点。
+  const ANCHOR_SPLIT_RE = /[、，,；;。和与及或]/u;
+  const splitAnchors = (text: string, max: number): string[] =>
+    text
+      .replace(/（第[^）]*章）|\(第[^)]*章\)/gu, '')
+      .split(ANCHOR_SPLIT_RE)
+      .map((s) => s.trim())
+      .filter((s) => s && s !== '无' && s.length <= 16)
+      .slice(0, max);
   const signatureParts: string[] = [];
-  if (items && items !== '无') signatureParts.push(items);
-  if (ability) signatureParts.push(ability);
-  const signature = signatureParts.filter((s) => s && s !== '无').join('；') || '无突出标志性特征';
+  if (items && items !== '无') signatureParts.push(...splitAnchors(items, 2));
+  if (ability) signatureParts.push(...splitAnchors(ability, 1));
+  const signature = signatureParts.slice(0, 3).join('、') || '无突出标志性特征';
 
   // 面部（原文依据，片段去重）
   const faceFragments = [faceShape, eyes, nose, lips, skin]
@@ -741,7 +749,16 @@ templatePrompt 中每条视觉描写末尾的"（第x章）"是原文出处标�
 
 逐项要求（对主要人物 core/supporting，以及任何登场次数高的人物，必须全部充实到可生图程度）：
 
-★ 标志性特征：这是整张设定图最重要的一行。挑出 1-3 个**只有这个角色才有**的视觉锚点（如：手指上的黑色古戒、眸中的金色火焰、半透明的灵魂体、胸口的七星徽记、修长的长腿等）。如果模板已给出，确认它确实是最具辨识度的；如果模板是”无突出标志性特征”，从 description 和其他字段里找出真正独特的特征补上。
+★ 标志性特征：这是整张设定图最重要的一行，也是四视图一致性的关键。你必须输出**恰好 1-3 个凝练的视觉锚点短语**，用"、"分隔，每个短语是一个**具体可渲染的视觉元素**（标志性道具、独特体貌、特殊光效、服饰细节），每短语不超过 12 字。
+【格式硬性要求】
+1. 每个锚点是名词短语而非完整句子：行内只允许"、"分隔，禁止句号"。"、感叹号"！"、分号"；"。
+2. 只写具体可画的视觉元素（如：手指黑色古戒、眸中金色火焰、半透明灵魂体、胸口七星徽记）。禁止抽象/情绪/气势词（如"气势狂暴""眼神平静""阴鸷狠厉""锐利狂热"）。
+3. 禁止能力过程描述（如"运功时周身气劲波动""爆发强烈光芒""持剑"）——生图模型只能渲染静态元素，无法渲染过程。
+4. 禁止二选一或模糊词（"或""大概""可能"），每个锚点必须确定，避免四视图饰物不一致。
+5. 优先顺序：标志性道具/独特体貌 > 特殊光效 > 服饰细节（服饰细节若与"服装/配色"行重复，留给服装行）。
+如果模板已给出：把其中句子化、多特征堆砌的内容**压缩为短语**，只保留 1-3 个最具辨识度的。如果模板是"无突出标志性特征"：从 description/enhancedDescription 里找出真正独特、可画的特征补上。
+【正例】★ 标志性特征：手指黑色古戒、眸中金色火焰、半透明灵魂体
+【反例（禁止）】★ 标志性特征：腰悬短剑、数枚药瓶与七玄门腰牌，运功时周身有微弱气劲波动，眼神平静深处偶有精光闪过。
 
 - 服装/配色：必须具体到款式+颜色+材质+纹样+腰饰/靴子。如”萧家青色劲装，袖口绣暗纹，腰束玄色布带，脚踏黑色短靴”。不允许只写”青色衣衫”这类过于简略的描述。从 outfits/description 推断合理细节。
 
