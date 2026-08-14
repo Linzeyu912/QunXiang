@@ -8,6 +8,7 @@ export * from './review.repository.js';
 export * from './task.repository.js';
 export * from './noise-override.repository.js';
 export * from './entity-image.repository.js';
+export * from './visual-spec.repository.js';
 export * from './database-retry.js';
 export * from './prisma.js';
 export * from './refresh-session.repository.js';

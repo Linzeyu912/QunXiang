@@ -152,6 +152,30 @@ export interface User {
   createdAt: Date;
 }
 
+export type VisualSpecStatus = 'ACTIVE' | 'SUPERSEDED';
+export type VisualSpecEntityType = 'character' | 'location' | 'item';
+
+/** 可被下游钉死引用的视觉规格（prompt + 变体 + 版本 + 主图）。 */
+export interface VisualSpec {
+  id: string;
+  bookId: string;
+  entityType: VisualSpecEntityType;
+  entityName: string;
+  variantKey: string;
+  version: number;
+  status: VisualSpecStatus;
+  prompt: string;
+  promptSource: string;
+  quality?: string | null;
+  styleTags: string[];
+  model?: string | null;
+  primaryImageId?: string | null;
+  sourceChapters?: string | null;
+  payload: Record<string, unknown>;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface CharacterReview {
   id: string;
   characterId: string;

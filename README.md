@@ -68,7 +68,6 @@ YingHe 总仓库 ──► 保存项目定位、协作信息、阶段进度和�
 QunXiang/
 ├── api/                 # 后端接口、鉴权与业务编排
 ├── web/                 # 中文网页工作台
-├── agent/               # 高层代理与管线驱动
 ├── core/                # 领域核心与共享类型
 ├── entity-prescan/      # 书名、章节与噪声预扫描
 ├── entity-resolution/   # 实体消解与描述融合

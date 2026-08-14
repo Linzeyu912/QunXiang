@@ -1,10 +1,7 @@
 /**
  * 制片人 Producer 端到端运行脚本.
  *
- * 主 agent（ProducerAgent）跑 scheduler 的 7 阶段富管道：
- *   extractor → validator → entity-resolution → description-fusion
- *   → visual-description → prompt-generation → reviewer
- * （含 prescan、三类实体 character/location/item、story-arcs、importance、DB 入库）
+ * 主入口跑 scheduler 的提取管线（TaskDispatcher）。
  *
  * 用法：
  *   pnpm exec tsx run_producer.mjs [小说路径] [书名]
@@ -12,7 +9,7 @@
 import { readFileSync, statSync } from 'fs';
 import { resolve } from 'path';
 
-// ── 1. 必须在 import storage/agent/scheduler 之前设置 DATABASE_URL ──
+// ── 1. 必须在 import storage/scheduler 之前设置 DATABASE_URL ──
 if (!process.env.DATABASE_URL) {
   throw new Error('未配置 DATABASE_URL，制片人管道已停止');
 }
@@ -54,7 +51,7 @@ const {
   ItemRepository,
   closeDatabase,
 } = await import('@novel-agent/storage');
-const { ProducerAgent } = await import('@novel-agent/agent');
+const { TaskDispatcher, InMemoryTaskQueue, eventBus } = await import('@novel-agent/scheduler');
 
 const producerEmail = process.env.PRODUCER_USER_EMAIL;
 if (!producerEmail) {
@@ -89,8 +86,42 @@ for (const repo of [CharacterRepository, LocationRepository, ItemRepository]) {
 }
 
 // ── 4. 制片人跑整条管道 ──
-const producer = new ProducerAgent();
-const result = await producer.run(book.id, user.id);
+const stages = [];
+const startTimes = new Map();
+let terminal = null;
+const onEvent = (event) => {
+  if (event.type === 'stage_start' && event.stageId) {
+    startTimes.set(event.stageId, Date.now());
+  } else if (event.type === 'stage_complete' && event.stageId) {
+    stages.push({
+      agent: event.stageId,
+      name: event.stageName || event.stageId,
+      success: true,
+      durationMs: Date.now() - (startTimes.get(event.stageId) ?? Date.now()),
+      progress: event.progress,
+    });
+  } else if (event.type === 'completed') {
+    terminal = { success: true };
+  } else if (event.type === 'error') {
+    terminal = { success: false, message: event.message };
+  }
+};
+eventBus.on(book.id, onEvent);
+const dispatcher = new TaskDispatcher(new InMemoryTaskQueue());
+const t0 = Date.now();
+try {
+  await dispatcher.startExtraction(book.id, user.id);
+  await dispatcher.processNext('extractor');
+} catch (error) {
+  terminal = { success: false, message: error instanceof Error ? error.message : String(error) };
+}
+const result = {
+  success: terminal?.success ?? false,
+  stages,
+  totalDurationMs: Date.now() - t0,
+  message: terminal?.message,
+};
+eventBus.off(book.id, onEvent);
 
 // ── 5. 阶段报告 ──
 console.log('\n━━━━━━━━━━━━━━ 制片人阶段报告 ━━━━━━━━━━━━');

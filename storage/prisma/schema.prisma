@@ -44,6 +44,7 @@ model Book {
   tasks             Task[]
   noiseOverrides    NoiseOverride[]
   entityImages      EntityImage[]
+  visualSpecs       VisualSpec[]
   snapshots         AssetSnapshot[]     @relation("BookSnapshots")
   bookShares        BookShare[]         @relation("BookShares")
   artifacts         BookArtifact[]      @relation("BookArtifacts")
@@ -235,12 +236,41 @@ model EntityImage {
   aspectRatio String?
   source      String   @default("generated")
   stage       String?
-  isPrimary   Boolean  @default(false)
-  sortOrder   Int      @default(0)
-  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+  isPrimary     Boolean  @default(false)
+  sortOrder     Int      @default(0)
+  visualSpecId  String?  @db.Uuid
+  createdAt     DateTime @default(now()) @db.Timestamptz(3)
 
   @@index([bookId, entityType, entityName])
   @@index([bookId])
+  @@index([visualSpecId])
+}
+
+/// 可被下游钉死引用的视觉规格：prompt + 变体键 + 版本 + 主图。
+/// 稳定键是 bookId+entityType+entityName+variantKey，重提只 SUPERSEDE 不删历史。
+model VisualSpec {
+  id             String   @id @default(uuid()) @db.Uuid
+  bookId         String   @db.Uuid
+  book           Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  entityType     String
+  entityName     String
+  variantKey     String
+  version        Int
+  status         String   @default("ACTIVE")
+  prompt         String
+  promptSource   String
+  quality        String?
+  styleTags      Json     @default("[]")
+  model          String?
+  primaryImageId String?  @db.Uuid
+  sourceChapters String?
+  payload        Json     @default("{}")
+  createdAt      DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime @updatedAt @db.Timestamptz(3)
+
+  @@unique([bookId, entityType, entityName, variantKey, version])
+  @@index([bookId, entityType, entityName, status])
+  @@index([bookId, status])
 }
 
 model RefreshSession {

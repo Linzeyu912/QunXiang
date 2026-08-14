@@ -36,6 +36,7 @@ import {
   useProtectedImageUrl,
 } from '@/api/images';
 import { useUpdateArtifact } from '@/api/artifacts';
+import { useVisualSpecs } from '@/api/visual-specs';
 import { cn } from '@/lib/utils';
 import type { EntityArtifacts, EntityType, GenerationPromptEntry, OutfitVariantEntry } from '@/types';
 
@@ -595,6 +596,8 @@ export function EntityArtifactsSection({
 }) {
   const [stage, setStage] = useState<string | undefined>(undefined);
   const updateMutation = useUpdateArtifact(bookId, entityType, entityName);
+  const specsQ = useVisualSpecs(bookId, entityType, entityName);
+  const primarySpec = specsQ.data?.find((spec) => spec.variantKey === 'primary') ?? specsQ.data?.[0];
 
   // ── 编辑状态 ──
   const [editingDesc, setEditingDesc] = useState(false);
@@ -790,6 +793,12 @@ export function EntityArtifactsSection({
                 </Badge>
               )}
               {prompt.source && <Badge variant="outline">{prompt.source}</Badge>}
+              {primarySpec && (
+                <Badge variant="outline" title={primarySpec.id}>
+                  规格 v{primarySpec.version}
+                  {specsQ.data && specsQ.data.length > 1 ? ` · ${specsQ.data.length} 套` : ''}
+                </Badge>
+              )}
               <div className="ml-auto flex gap-1">
                 {editingPrompt ? (
                   <>

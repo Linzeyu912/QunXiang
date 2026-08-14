@@ -18,6 +18,7 @@ export interface EntityImageRow {
   stage: string | null; // 生图所用年龄阶段（仅 character 有值；item/location/null）
   isPrimary: boolean;
   sortOrder: number;
+  visualSpecId?: string | null;
   createdAt: Date;
 }
 
@@ -33,6 +34,7 @@ export interface CreateEntityImageData {
   aspectRatio?: string | null;
   source: EntityImageSource;
   stage?: string | null;
+  visualSpecId?: string | null;
 }
 
 /**
@@ -76,6 +78,7 @@ export function createEntityImageRepository(db: PrismaClient): EntityImageReposi
             aspectRatio: data.aspectRatio ?? null,
             source: data.source,
             stage: data.stage ?? null,
+            visualSpecId: data.visualSpecId ?? null,
             isPrimary: count === 0,
           },
         });

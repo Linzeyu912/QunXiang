@@ -2,10 +2,11 @@ import { readFile, unlink } from 'node:fs/promises';
 import { join } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { getDefaultImageProvider, getRuntimeImageConfig } from '@novel-agent/llm';
-import { BookRepository, EntityImageRepository, getSharedObjectStore, type EntityImageRow } from '@novel-agent/storage';
+import { BookRepository, EntityImageRepository, VisualSpecRepository, getSharedObjectStore, type EntityImageRow } from '@novel-agent/storage';
 import { listExtractionRuns } from './artifacts.service.js';
 import { readArtifactText } from './artifact-store.js';
 import { ENTITY_IMAGE_DIR } from '../lib/paths.js';
+import { pickActiveSpec } from '@novel-agent/scheduler';
 
 /**
  * 实体一键生图服务（多张画廊 + DB 持久化）。
@@ -112,16 +113,24 @@ async function resolveLatestRunDir(bookId: string, ownerId: string): Promise<str
   return latest.runDir;
 }
 
-/** 从 *-prompts.json 读出指定实体的 prompt（优先 BookArtifact + 对象存储，回退本机 output/）。
- * outfit 指定时优先取服饰套系变体（outfitVariants，按 scene/描述匹配）。 */
+/** 从 VisualSpec 或 *-prompts.json 读出指定实体的 prompt。
+ * outfit 指定时优先取服饰套系变体；stage 取年龄阶段。 */
 async function readEntityPrompt(
   bookId: string,
+  ownerId: string,
   runDir: string,
   entityType: EntityType,
   entityName: string,
   stage?: string,
   outfit?: string,
-): Promise<string> {
+): Promise<{ prompt: string; visualSpecId?: string }> {
+  const specs = await VisualSpecRepository.findOwnedActiveByEntity(bookId, ownerId, entityType, entityName);
+  const picked = pickActiveSpec(specs, { stage, outfit });
+  if (picked) {
+    const spec = specs.find((item) => item.variantKey === picked.variantKey);
+    return { prompt: picked.prompt, visualSpecId: spec?.id };
+  }
+
   const filename = PROMPTS_FILE[entityType];
   const file = join(OUTPUT_ROOT, runDir, 'entities', filename);
   const raw = await readArtifactText(bookId, `entities/${filename}`, file);
@@ -131,7 +140,7 @@ async function readEntityPrompt(
       'NO_PROMPTS_FILE'
     );
   }
-  let entries: any[];
+  let entries: PromptEntry[];
   try {
     entries = JSON.parse(raw);
   } catch {
@@ -144,29 +153,31 @@ async function readEntityPrompt(
       'NO_PROMPT_FOR_ENTITY'
     );
   }
-  // 服饰套系变体：按 scene/描述匹配 outfit；未命中时报错提示重跑提示词阶段
   if (outfit) {
     const outfitVariants: Array<{ scene?: string; description?: string; prompt?: string }> =
-      Array.isArray(hit.outfitVariants) ? hit.outfitVariants : [];
-    const picked = outfitVariants.find((v) => v.scene === outfit)
+      Array.isArray((hit as { outfitVariants?: unknown }).outfitVariants)
+        ? (hit as { outfitVariants: Array<{ scene?: string; description?: string; prompt?: string }> }).outfitVariants
+        : [];
+    const pickedOutfit = outfitVariants.find((v) => v.scene === outfit)
       ?? outfitVariants.find((v) => v.description === outfit)
-      ?? outfitVariants.find((v) => typeof v.scene === 'string' && (v.scene as string).includes(outfit))
-      // 无 scene 标签的套系：前端会传描述前缀（slice(0,20)），按前缀匹配兼容
-      ?? outfitVariants.find((v) => typeof v.description === 'string' && (v.description as string).startsWith(outfit));
-    if (!picked?.prompt) {
+      ?? outfitVariants.find((v) => typeof v.scene === 'string' && v.scene.includes(outfit))
+      ?? outfitVariants.find((v) => typeof v.description === 'string' && v.description.startsWith(outfit));
+    if (!pickedOutfit?.prompt) {
       throw new ImageGenerationError(
         `未在 ${file} 中找到“${entityName}”的服饰套系“${outfit}”提示词，请重新运行提示词生成阶段。`,
         'NO_PROMPT_FOR_OUTFIT'
       );
     }
-    return picked.prompt;
+    return { prompt: pickedOutfit.prompt };
   }
-  // 多年龄阶段版本：按 stage 选 variant；无 stage 取主 variant；再回退顶层 prompt（向后兼容旧产物）
-  const variants: any[] | undefined = Array.isArray(hit.variants) ? hit.variants : undefined;
+  const variants: Array<{ stage?: string; isPrimary?: boolean; prompt?: string }> | undefined =
+    Array.isArray((hit as { variants?: unknown }).variants)
+      ? (hit as { variants: Array<{ stage?: string; isPrimary?: boolean; prompt?: string }> }).variants
+      : undefined;
   if (variants) {
-    const picked = (stage ? variants.find((v) => v.stage === stage) : undefined)
+    const pickedVariant = (stage ? variants.find((v) => v.stage === stage) : undefined)
       ?? variants.find((v) => v.isPrimary);
-    if (picked?.prompt) return picked.prompt;
+    if (pickedVariant?.prompt) return { prompt: pickedVariant.prompt };
   }
   if (!hit.prompt) {
     throw new ImageGenerationError(
@@ -174,7 +185,7 @@ async function readEntityPrompt(
       'NO_PROMPT_FOR_ENTITY'
     );
   }
-  return hit.prompt;
+  return { prompt: hit.prompt };
 }
 
 function imageExtFromMime(mime: string): string {
@@ -195,6 +206,7 @@ async function persistImage(
   source: 'generated' | 'uploaded',
   aspectRatio?: string | null,
   stage?: string | null,
+  visualSpecId?: string | null,
 ): Promise<EntityImageMeta> {
   if (!(await BookRepository.findOwnedById(bookId, ownerId))) {
     throw new ImageGenerationError('书籍不存在或无权访问', 'NO_RUN');
@@ -227,7 +239,15 @@ async function persistImage(
     aspectRatio: aspectRatio ?? null,
     source,
     stage: stage ?? null,
+    visualSpecId: visualSpecId ?? null,
   });
+  if (visualSpecId) {
+    const owned = await VisualSpecRepository.findOwnedActiveByEntity(bookId, ownerId, entityType, entityName);
+    const target = owned.find((item) => item.id === visualSpecId);
+    if (target && !target.primaryImageId) {
+      await VisualSpecRepository.setPrimaryImage(visualSpecId, row.id);
+    }
+  }
   return toMeta(row);
 }
 
@@ -241,7 +261,7 @@ export async function generateEntityImage(
   opts: { aspectRatio?: string; stage?: string; outfit?: string } = {},
 ): Promise<EntityImageMeta> {
   const runDir = await resolveLatestRunDir(bookId, ownerId);
-  const prompt = await readEntityPrompt(bookId, runDir, entityType, entityName, opts.stage, opts.outfit);
+  const resolved = await readEntityPrompt(bookId, ownerId, runDir, entityType, entityName, opts.stage, opts.outfit);
   const aspectRatio = opts.aspectRatio || getDefaultRatio(entityType);
 
   // 调 provider 生图
@@ -255,13 +275,24 @@ export async function generateEntityImage(
 
   let generated: { buffer: Buffer; mime: string };
   try {
-    generated = await provider.generateImage(prompt, { aspectRatio });
+    generated = await provider.generateImage(resolved.prompt, { aspectRatio });
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error);
     throw new ImageGenerationError(`生成图片失败：${msg}`, 'GENERATION_FAILED');
   }
 
-  return persistImage(bookId, ownerId, entityType, entityName, generated.buffer, generated.mime, 'generated', aspectRatio, opts.outfit || opts.stage);
+  return persistImage(
+    bookId,
+    ownerId,
+    entityType,
+    entityName,
+    generated.buffer,
+    generated.mime,
+    'generated',
+    aspectRatio,
+    opts.outfit || opts.stage,
+    resolved.visualSpecId,
+  );
 }
 
 /** 用户上传一张图片并入库（画廊新增，source=uploaded，aspectRatio=null 按原图）。 */

@@ -28,6 +28,7 @@ const expectedModels = [
   'SnapshotObject',
   'Task',
   'User',
+  'VisualSpec',
   'WorldviewSetting',
 ];
 

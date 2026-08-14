@@ -25,27 +25,6 @@ importers:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@20.19.43)
 
-  agent:
-    dependencies:
-      '@novel-agent/core':
-        specifier: workspace:*
-        version: link:../core
-      '@novel-agent/extractors':
-        specifier: workspace:*
-        version: link:../extractors
-      '@novel-agent/import':
-        specifier: workspace:*
-        version: link:../import
-      '@novel-agent/scheduler':
-        specifier: workspace:*
-        version: link:../scheduler
-      '@novel-agent/storage':
-        specifier: workspace:*
-        version: link:../storage
-      '@novel-agent/validators':
-        specifier: workspace:*
-        version: link:../validators
-
   api:
     dependencies:
       '@fastify/cookie':

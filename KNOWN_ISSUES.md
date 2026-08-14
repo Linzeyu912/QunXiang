@@ -41,17 +41,11 @@ Tests:       556 passed (556)
 
 ## 与本仓库并列的 QunXiang
 
-QunXiang(`D:\QunXiang-main`)是同一作者的姐妹项目,也是这套代码的迭代主线。
-- 完整 README、PROJECT_STATUS、ENTITY_PRESCAN_FLOW 文档
-- 已修复相同的 workspace 依赖坑(check:workspace-deps 已运行通过)
-- 测试 76 passed(QunXiang 自有测试规模较小)
+QunXiang 是以后要迁过去的主仓；本仓库当前功能领先，本阶段不跟 QunXiang 双向同步。
 
-YingHe-entity 相比 QunXiang 的**唯一差异化亮点**:实体一键生图能力
-- `api/src/routes/images.ts`(POST/GET/DELETE)
-- `api/src/services/image-generation.service.ts`
-- 配置:`api/.env.example` 中的 `IMAGE_*` 变量
+**已落地（2026-08-14）**：`VisualSpec` 版本化视觉规格。提取入库后把 prompt / 年龄 / 服饰套系写成 ACTIVE spec；生图优先读 spec，旧书回退 `*-prompts.json`。
 
-**建议**:如果 YingHe-entity 是生图功能实验分支,可以把生图能力反向移植到 QunXiang;如果 YingHe-entity 是要长期维护的项目,建议同步 QunXiang 的成熟文档到 YingHe。
+**未做（有意推迟）**：Event 一等实体（等故事链路开工）、全类型审核历史、CI 摘 `continue-on-error`。
 
 ---
 

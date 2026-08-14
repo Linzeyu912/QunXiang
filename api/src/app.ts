@@ -22,6 +22,7 @@ import { storiesRoutes } from './routes/stories.js';
 import { directorRoutes } from './routes/director.js';
 import { artifactsRoutes } from './routes/artifacts.js';
 import { imageRoutes } from './routes/images.js';
+import { visualSpecRoutes } from './routes/visual-specs.js';
 import { snapshotRoutes } from './routes/snapshots.js';
 import { objectDownloadRoutes } from './routes/object-download.js';
 import { sharesRoutes } from './routes/shares.js';
@@ -162,6 +163,7 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
   await fastify.register(directorRoutes, { prefix: '/books' });
   await fastify.register(artifactsRoutes, { prefix: '/books' });
   await fastify.register(imageRoutes, { prefix: '/books' });
+  await fastify.register(visualSpecRoutes, { prefix: '/books' });
   await fastify.register(snapshotRoutes, { prefix: '/books' });
   await fastify.register(exportRoutes, { prefix: '/export' });
   await fastify.register(healthRoutes, { prefix: '/health' });

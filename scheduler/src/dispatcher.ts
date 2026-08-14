@@ -21,6 +21,7 @@ import {
 import { eventBus, type PipelineEvent } from './event-bus.js';
 import { writePipelineFinalSummary } from './pipeline-summary.js';
 import { summarizeExtractionResult, buildEmptyExtractionMessage } from './extraction-result-summary.js';
+import { persistVisualSpecsFromResult } from './visual-spec-writer.js';
 
 const DEFAULT_RETRY_CONFIG = {
   maxRetries: 3,
@@ -414,6 +415,15 @@ export class TaskDispatcher {
             })),
           );
           console.log(`[调度器] 已保存 ${worldviews.length} 条世界观设定`);
+        }
+
+        try {
+          const specCount = await persistVisualSpecsFromResult(bookId, result);
+          if (specCount > 0) {
+            console.log(`[Dispatcher] Persisted ${specCount} visual specs`);
+          }
+        } catch (err) {
+          console.error(`[Dispatcher] Failed to persist visual specs for ${bookId}:`, err);
         }
       }
 
