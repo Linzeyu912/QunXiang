@@ -9,6 +9,8 @@ status: 产品仓库 · 实体组与故事组成果的软件化集成
 
 # 群像 QunXiang
 
+> **许可说明：** 本项目采用自定义的[源代码可见参考许可证](LICENSE)，允许学习、修改、衍生及其他非商业使用；任何商业使用均须事先取得版权所有者的书面许可。本项目并非开源软件。
+
 [![CI](https://github.com/Linzeyu912/QunXiang/actions/workflows/ci.yml/badge.svg)](https://github.com/Linzeyu912/QunXiang/actions/workflows/ci.yml)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646cff?logo=vite)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-18.3-61dafb?logo=react)](https://react.dev/)
