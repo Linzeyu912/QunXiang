@@ -12,6 +12,7 @@ export interface ReviewRepository {
   }): Promise<CharacterReview>;
   findByCharacterId(characterId: string): Promise<CharacterReview[]>;
   findOwnedByCharacterId(characterId: string, ownerId: string): Promise<CharacterReview[]>;
+  findMergeRejectionsByOwnedBook(bookId: string, ownerId: string): Promise<CharacterReview[]>;
 }
 
 export function createReviewRepository(db: PrismaClient): ReviewRepository {
@@ -40,6 +41,13 @@ export function createReviewRepository(db: PrismaClient): ReviewRepository {
         userId: ownerId,
         character: { book: { userId: ownerId } },
       },
+      orderBy: [{ createdAt: 'desc' }, { id: 'asc' }],
+    }) as Promise<CharacterReview[]>;
+  },
+
+  async findMergeRejectionsByOwnedBook(bookId: string, ownerId: string): Promise<CharacterReview[]> {
+    return db.characterReview.findMany({
+      where: { action: 'MERGE_REJECTED', userId: ownerId, character: { bookId, book: { userId: ownerId } } },
       orderBy: [{ createdAt: 'desc' }, { id: 'asc' }],
     }) as Promise<CharacterReview[]>;
   },

@@ -6,6 +6,7 @@ import { useEntities, useUpdateEntity, useBatchUpdateStatus } from '@/api/entiti
 import { matchArtifacts, useExtractionArtifacts } from '@/api/artifacts';
 import { EntityListPanel } from '@/components/review/EntityListPanel';
 import { EntityDetailPanel } from '@/components/review/EntityDetailPanel';
+import { CharacterMergeCandidates } from '@/components/review/CharacterMergeCandidates';
 import { WorldviewSynthesisPanel } from '@/components/review/WorldviewSynthesisPanel';
 import { TierLegend } from '@/components/StatusBadge';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
@@ -263,6 +264,7 @@ export function EntityReviewPage({ type }: Props) {
 
   return (
     <div className="space-y-4">
+      {type === 'character' && <CharacterMergeCandidates bookId={bookId} />}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <h2 className="text-lg font-semibold">{TITLE[type]}</h2>

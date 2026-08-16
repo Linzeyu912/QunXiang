@@ -4,8 +4,61 @@ import { characterUpdateSchema } from '@novel-agent/schemas';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
+import { buildCharacterMergeCandidates } from '@novel-agent/entity-resolution';
+
+async function findActiveMergeCandidates(bookId: string, ownerId: string) {
+  const [characters, rejections] = await Promise.all([
+    CharacterRepository.findByOwnedBookId(bookId, ownerId),
+    ReviewRepository.findMergeRejectionsByOwnedBook(bookId, ownerId),
+  ]);
+  const rejectedPairs = new Set(rejections.map((review) => `${review.characterId}:${review.newValue}`));
+  return buildCharacterMergeCandidates(characters).filter(
+    (candidate) => !rejectedPairs.has(`${candidate.primaryId}:${candidate.secondaryId}`)
+  );
+}
 
 export async function charactersRoutes(fastify: FastifyInstance) {
+  fastify.get('/merge-candidates', async (request, reply) => {
+    const { bookId } = request.query as { bookId?: string };
+    if (!bookId) return reply.status(400).send({ error: '缺少 bookId 参数' });
+    const ownerId = await resolveOwnerId(request);
+    if (!(await loadOwnedBook(bookId, ownerId))) return sendBookNotFound(reply);
+    return { candidates: await findActiveMergeCandidates(bookId, ownerId!) };
+  });
+
+  fastify.post('/merge-candidates/:primaryId/accept', async (request, reply) => {
+    const { primaryId } = request.params as { primaryId: string };
+    const { secondaryId } = request.body as { secondaryId?: string };
+    if (!secondaryId) return reply.status(400).send({ error: 'secondaryId 为必填项' });
+    const ownerId = await resolveOwnerId(request);
+    const primary = ownerId ? await CharacterRepository.findOwnedById(primaryId, ownerId) : null;
+    if (!primary) return sendBookNotFound(reply);
+    const candidates = await findActiveMergeCandidates(primary.bookId, ownerId!);
+    if (!candidates.some((candidate) => candidate.primaryId === primaryId && candidate.secondaryId === secondaryId)) {
+      return reply.status(409).send({ error: '该角色对不是待审核的疑似重复项' });
+    }
+    const character = await CharacterRepository.mergeOwned(primaryId, secondaryId, ownerId!, request.user.userId);
+    if (!character) return sendBookNotFound(reply);
+    return { character };
+  });
+
+  fastify.post('/merge-candidates/:primaryId/reject', async (request, reply) => {
+    const { primaryId } = request.params as { primaryId: string };
+    const { secondaryId } = request.body as { secondaryId?: string };
+    if (!secondaryId) return reply.status(400).send({ error: 'secondaryId 为必填项' });
+    const ownerId = await resolveOwnerId(request);
+    const [primary, secondary] = ownerId ? await Promise.all([CharacterRepository.findOwnedById(primaryId, ownerId), CharacterRepository.findOwnedById(secondaryId, ownerId)]) : [null, null];
+    if (!primary || !secondary || primary.bookId !== secondary.bookId) return sendBookNotFound(reply);
+    const candidates = await findActiveMergeCandidates(primary.bookId, ownerId!);
+    if (!candidates.some((candidate) => candidate.primaryId === primaryId && candidate.secondaryId === secondaryId)) {
+      return reply.status(409).send({ error: '该角色对不是待审核的疑似重复项' });
+    }
+    if (!(await CharacterRepository.rejectMergeOwned(primaryId, secondaryId, ownerId!, request.user.userId))) {
+      return reply.status(409).send({ error: '该角色对不是待审核的疑似重复项' });
+    }
+    return { ok: true };
+  });
+
   // Get characters (optionally filtered by status)
   fastify.get('/', async (request, reply) => {
     const { bookId, status } = request.query as { bookId?: string; status?: string };

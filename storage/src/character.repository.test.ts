@@ -83,6 +83,21 @@ describe('CharacterRepository', () => {
     });
   });
 
+  describe('merge review decisions', () => {
+    it('records both sides of a rejected merge in one repository operation', async () => {
+      const primary = await charRepo.create({ bookId: testBook.id, name: '角色甲', aliases: [], confidence: 0.9 });
+      const secondary = await charRepo.create({ bookId: testBook.id, name: '角色乙', aliases: [], confidence: 0.8 });
+
+      const result = await charRepo.rejectMergeOwned(primary.id, secondary.id, testUser.id, testUser.id);
+
+      expect(result).toBe(true);
+      await expect(testPrisma.characterReview.findMany({
+        where: { characterId: { in: [primary.id, secondary.id] }, action: 'MERGE_REJECTED' },
+        orderBy: { characterId: 'asc' },
+      })).resolves.toHaveLength(2);
+    });
+  });
+
   describe('createMany', () => {
     it('should create multiple characters at once', async () => {
       const count = await charRepo.createMany([

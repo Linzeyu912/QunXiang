@@ -349,7 +349,7 @@ describe('extractEntities', () => {
     expect(result.characters[0].aliases).toContain('熏儿');
   });
 
-  it('merges variant-spelling characters when the canonical name changes during merge', async () => {
+  it('keeps variant-spelling characters separate for human review instead of auto-merging them', async () => {
     const { createExtractor } = await import('./extractor.js');
     chatExtract
       .mockResolvedValueOnce({
@@ -393,11 +393,10 @@ describe('extractEntities', () => {
 
     const result = await createExtractor()('斗破苍穹', chapters);
 
-    expect(result.characters).toHaveLength(1);
-    expect(result.characters[0].name).toBe('萧薰儿');
-    expect(result.characters[0].aliases).toContain('萧熏儿');
-    expect(result.characters[0].description).toContain('萧家少女');
-    expect(result.characters[0].description).toContain('背景神秘');
+    expect(result.characters).toHaveLength(2);
+    expect(result.characters.map((character) => character.name).sort()).toEqual(['萧熏儿', '萧薰儿']);
+    expect(result.characters.find((character) => character.name === '萧熏儿')?.description).toContain('萧家少女');
+    expect(result.characters.find((character) => character.name === '萧薰儿')?.description).toContain('背景神秘');
   });
 
   it('preserves complementary descriptions when the same character appears in multiple batches', async () => {

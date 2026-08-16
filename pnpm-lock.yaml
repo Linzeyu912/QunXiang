@@ -45,6 +45,9 @@ importers:
       '@novel-agent/core':
         specifier: workspace:*
         version: link:../core
+      '@novel-agent/entity-resolution':
+        specifier: workspace:*
+        version: link:../entity-resolution
       '@novel-agent/exporters':
         specifier: workspace:*
         version: link:../exporters

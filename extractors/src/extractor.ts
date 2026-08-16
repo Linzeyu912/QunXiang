@@ -14,8 +14,6 @@ import {
   implicitCharacterSignalAliases,
   isCollectiveCharacterAlias,
   isGenericCharacterAlias,
-  isSafeAliasMatch,
-  isSafeSharedAliasMatch,
   sanitizeCharacterAliases,
 } from '@novel-agent/entity-resolution';
 import { extractCharacterSignals } from './character-signals.js';
@@ -194,21 +192,15 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, label: str
 
 /**
  * Find an already-collected character that refers to the same entity as `char`.
- * Match on: same name (case-insensitive), one's name in the other's aliases,
- * or a shared alias. This is what lets "萧炎" and a stray "萧炎哥" entry merge.
+ * Only exact canonical names are safe to merge automatically. Alias, title,
+ * and address-form matches must remain separate for human review.
  */
 function findDuplicateCharacter(
   char: CharacterCandidate,
   map: Map<string, CharacterCandidate>
 ): { key: string; character: CharacterCandidate } | null {
   const nameKey = norm(char.name);
-  if (map.has(nameKey)) return { key: nameKey, character: map.get(nameKey)! };
-
-  for (const [key, existing] of map) {
-    if (isSafeAliasMatch(existing, char)) return { key, character: existing };
-    if (isSafeSharedAliasMatch(existing, char)) return { key, character: existing };
-  }
-  return null;
+  return map.has(nameKey) ? { key: nameKey, character: map.get(nameKey)! } : null;
 }
 
 function mergeCharacter(a: CharacterCandidate, b: CharacterCandidate): CharacterCandidate {

@@ -180,7 +180,7 @@ export interface CharacterReview {
   id: string;
   characterId: string;
   userId: string;
-  action: 'APPROVED' | 'REJECTED' | 'EDITED';
+  action: 'APPROVED' | 'REJECTED' | 'EDITED' | 'MERGE_ACCEPTED' | 'MERGE_REJECTED';
   previousValue?: string;
   newValue?: string;
   createdAt: Date;

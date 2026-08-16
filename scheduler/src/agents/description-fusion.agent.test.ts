@@ -103,10 +103,8 @@ describe('executeDescriptionFusion', () => {
       locations: [],
     });
 
-    expect(result.characters).toHaveLength(1);
-    expect(result.characters[0].name).toBe('萧薰儿');
-    expect(result.characters[0].aliases).toContain('萧熏儿');
-    expect(result.characters[0].description).toBe('萧家少女，与萧炎关系亲密，背景神秘，容貌清雅如青莲');
+    expect(result.characters).toHaveLength(2);
+    expect(result.characters.map((character) => character.name).sort()).toEqual(['萧熏儿', '萧薰儿']);
   });
 
   it('keeps fallback descriptions when an LLM fusion group fails', async () => {

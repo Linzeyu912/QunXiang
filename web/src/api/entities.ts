@@ -31,7 +31,39 @@ export const entitiesKey = {
   list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string }) =>
     ['entities', bookId, type, filters ?? {}] as const,
   reviews: (id: string) => ['character-reviews', id] as const,
+  mergeCandidates: (bookId: string) => ['character-merge-candidates', bookId] as const,
 };
+
+export interface CharacterMergeCandidate {
+  primaryId: string;
+  secondaryId: string;
+  reasons: string[];
+  primary: { id: string; name: string; aliases: string[]; description?: string; chapterAppearances: number[] };
+  secondary: { id: string; name: string; aliases: string[]; description?: string; chapterAppearances: number[] };
+}
+
+export function useCharacterMergeCandidates(bookId: string | undefined) {
+  return useQuery({
+    queryKey: bookId ? entitiesKey.mergeCandidates(bookId) : ['character-merge-candidates', 'none'],
+    queryFn: () => apiFetch<{ candidates: CharacterMergeCandidate[] }>(`/characters/merge-candidates?bookId=${encodeURIComponent(bookId!)}`).then((r) => r.candidates),
+    enabled: !!bookId,
+  });
+}
+
+function useCharacterMergeDecision(bookId: string, decision: 'accept' | 'reject') {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ primaryId, secondaryId }: { primaryId: string; secondaryId: string }) =>
+      apiFetch(`/characters/merge-candidates/${primaryId}/${decision}`, { method: 'POST', body: { secondaryId } }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: entitiesKey.all(bookId) });
+      qc.invalidateQueries({ queryKey: entitiesKey.mergeCandidates(bookId) });
+    },
+  });
+}
+
+export function useAcceptCharacterMerge(bookId: string) { return useCharacterMergeDecision(bookId, 'accept'); }
+export function useRejectCharacterMerge(bookId: string) { return useCharacterMergeDecision(bookId, 'reject'); }
 
 interface ListParams {
   status?: EntityStatus;

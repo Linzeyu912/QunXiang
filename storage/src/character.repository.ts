@@ -1,6 +1,6 @@
 import { prisma } from './prisma.js';
 import type { Character, Outfit } from '@novel-agent/core';
-import type { PrismaClient } from '@prisma/client';
+import type { Prisma, PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
 
 export interface CharacterRepository {
@@ -44,7 +44,41 @@ export interface CharacterRepository {
   updateOwned(id: string, ownerId: string, data: Partial<Character>): Promise<Character | null>;
   updateStatus(id: string, status: string): Promise<Character>;
   updateOwnedStatus(id: string, ownerId: string, status: string): Promise<Character | null>;
+  mergeOwned(primaryId: string, secondaryId: string, ownerId: string, reviewerId: string): Promise<Character | null>;
+  rejectMergeOwned(primaryId: string, secondaryId: string, ownerId: string, reviewerId: string): Promise<boolean>;
   deleteByBookId(bookId: string): Promise<void>;
+}
+
+async function lockCharacterPair(
+  tx: Prisma.TransactionClient,
+  primaryId: string,
+  secondaryId: string
+): Promise<boolean> {
+  const rows = await tx.$queryRaw<Array<{ id: string }>>`
+    SELECT "id" FROM "Character"
+    WHERE "id" IN (${primaryId}::uuid, ${secondaryId}::uuid)
+    ORDER BY "id" FOR UPDATE
+  `;
+  return rows.length === 2;
+}
+
+async function hasMergeRejection(
+  tx: Prisma.TransactionClient,
+  primaryId: string,
+  secondaryId: string,
+  reviewerId: string
+): Promise<boolean> {
+  return Boolean(await tx.characterReview.findFirst({
+    where: {
+      action: 'MERGE_REJECTED',
+      userId: reviewerId,
+      OR: [
+        { characterId: primaryId, newValue: secondaryId },
+        { characterId: secondaryId, newValue: primaryId },
+      ],
+    },
+    select: { id: true },
+  }));
 }
 
 function parseCharacter(dbChar: Record<string, unknown>): Character {
@@ -220,6 +254,93 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       if (result.count !== 1) return null;
       const updated = await db.character.findFirst({ where: { id, book: { userId: ownerId } } });
       return updated ? parseCharacter(updated as unknown as Record<string, unknown>) : null;
+    },
+
+    async mergeOwned(primaryId: string, secondaryId: string, ownerId: string, reviewerId: string): Promise<Character | null> {
+      if (primaryId === secondaryId) return null;
+      return db.$transaction(async (tx) => {
+        if (!(await lockCharacterPair(tx, primaryId, secondaryId))) return null;
+        const [primary, secondary] = await Promise.all([
+          tx.character.findFirst({ where: { id: primaryId, book: { userId: ownerId } } }),
+          tx.character.findFirst({ where: { id: secondaryId, book: { userId: ownerId } } }),
+        ]);
+        if (!primary || !secondary || primary.bookId !== secondary.bookId) return null;
+        if (await hasMergeRejection(tx, primary.id, secondary.id, reviewerId)) return null;
+        const aliases = [...new Set([...decodeJsonField<string[]>(primary.aliases, []), ...decodeJsonField<string[]>(secondary.aliases, []), secondary.name])]
+          .filter((alias) => alias.trim().toLowerCase() !== primary.name.trim().toLowerCase());
+        const mergedIdentityNames = new Set([primary.name, ...aliases].map((name) => name.trim().toLowerCase()));
+        const coCharacters = [...new Set([
+          ...decodeJsonField<string[]>(primary.coCharacters, []),
+          ...decodeJsonField<string[]>(secondary.coCharacters, []),
+        ])].filter((name) => !mergedIdentityNames.has(name.trim().toLowerCase()));
+        const chapters = [...new Set([...decodeJsonField<number[]>(primary.chapterAppearances, []), ...decodeJsonField<number[]>(secondary.chapterAppearances, [])])].sort((a, b) => a - b);
+        const firstChapters = [primary.firstChapter, secondary.firstChapter].filter(
+          (chapter): chapter is number => chapter != null
+        );
+        const lastChapters = [primary.lastChapter, secondary.lastChapter].filter(
+          (chapter): chapter is number => chapter != null
+        );
+        const updated = await tx.character.update({ where: { id: primary.id }, data: {
+          aliases: encodeJsonField(aliases),
+          description: [primary.description, secondary.description].filter(Boolean).join('; ') || null,
+          confidence: Math.max(primary.confidence, secondary.confidence),
+          // A merge is identity review, not content-status review: retain the
+          // surviving primary status and preserve the first available chapter reference.
+          chapterRef: primary.chapterRef ?? secondary.chapterRef,
+          firstChapter: [...firstChapters, ...chapters].length > 0
+            ? Math.min(...firstChapters, ...chapters)
+            : null,
+          lastChapter: [...lastChapters, ...chapters].length > 0
+            ? Math.max(...lastChapters, ...chapters)
+            : null,
+          chapterAppearances: encodeJsonField(chapters),
+          mentionCount: primary.mentionCount + secondary.mentionCount,
+          dialogueCount: primary.dialogueCount + secondary.dialogueCount,
+          coCharacters: encodeJsonField(coCharacters),
+          outfits: encodeJsonField([...decodeJsonField(primary.outfits, []), ...decodeJsonField(secondary.outfits, [])]),
+          ageStages: encodeJsonField([...new Set([...decodeJsonField<string[]>(primary.ageStages, []), ...decodeJsonField<string[]>(secondary.ageStages, [])])]),
+          primaryAgeStage: primary.primaryAgeStage ?? secondary.primaryAgeStage,
+        } });
+        // Keep the audit attached to the surviving record so the secondary
+        // record's cascade deletion cannot erase the accepted-merge history.
+        await tx.characterReview.create({
+          data: {
+            characterId: primary.id,
+            userId: reviewerId,
+            action: 'MERGE_ACCEPTED',
+            previousValue: secondary.id,
+            newValue: JSON.stringify({ primaryId: primary.id, secondaryId: secondary.id }),
+          },
+        });
+        // The relation cascades on delete, so preserve the secondary's prior
+        // review history by attaching it to the surviving character first.
+        await tx.characterReview.updateMany({
+          where: { characterId: secondary.id },
+          data: { characterId: primary.id },
+        });
+        await tx.character.delete({ where: { id: secondary.id } });
+        return parseCharacter(updated as unknown as Record<string, unknown>);
+      });
+    },
+
+    async rejectMergeOwned(primaryId: string, secondaryId: string, ownerId: string, reviewerId: string): Promise<boolean> {
+      if (primaryId === secondaryId) return false;
+      return db.$transaction(async (tx) => {
+        if (!(await lockCharacterPair(tx, primaryId, secondaryId))) return false;
+        const [primary, secondary] = await Promise.all([
+          tx.character.findFirst({ where: { id: primaryId, book: { userId: ownerId } } }),
+          tx.character.findFirst({ where: { id: secondaryId, book: { userId: ownerId } } }),
+        ]);
+        if (!primary || !secondary || primary.bookId !== secondary.bookId) return false;
+        if (await hasMergeRejection(tx, primary.id, secondary.id, reviewerId)) return false;
+        await tx.characterReview.createMany({
+          data: [
+            { characterId: primary.id, userId: reviewerId, action: 'MERGE_REJECTED', newValue: secondary.id },
+            { characterId: secondary.id, userId: reviewerId, action: 'MERGE_REJECTED', newValue: primary.id },
+          ],
+        });
+        return true;
+      });
     },
 
     async deleteByBookId(bookId: string): Promise<void> {

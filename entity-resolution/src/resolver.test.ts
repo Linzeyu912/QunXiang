@@ -27,24 +27,32 @@ describe('resolve', () => {
     expect(result.merged).toBe(1);
   });
 
-  it('merges when one character name is another character alias (regression: previously ignored by the mergedInto=nameKey bug)', () => {
+  it('keeps alias-name matches separate for human review', () => {
     const result = resolve([
       makeChar('药老', ['老师', '老者'], 0.9),
       makeChar('老者', [], 0.8),
     ]);
-    expect(result.characters).toHaveLength(1);
-    expect(result.characters[0].name).toBe('药老');
-    expect(result.merged).toBe(1);
+    expect(result.characters).toHaveLength(2);
+    expect(result.merged).toBe(0);
   });
 
-  it('merges Chinese address forms (萧炎哥 → 萧炎)', () => {
+  it('keeps Chinese address forms separate for human review', () => {
     const result = resolve([
       makeChar('萧炎', ['炎儿'], 0.95),
       makeChar('萧炎哥', [], 0.88),
     ]);
-    expect(result.characters).toHaveLength(1);
-    expect(result.characters[0].name).toBe('萧炎');
-    expect(result.merged).toBe(1);
+    expect(result.characters).toHaveLength(2);
+    expect(result.merged).toBe(0);
+  });
+
+  it('does not canonicalize an address form into an existing character name before review', () => {
+    const result = resolve([
+      makeChar('萧炎', [], 0.95),
+      makeChar('萧炎哥', ['萧炎'], 0.88),
+    ]);
+
+    expect(result.characters.map((character) => character.name).sort()).toEqual(['萧炎', '萧炎哥']);
+    expect(result.merged).toBe(0);
   });
 
   it('does not merge distinct names', () => {
@@ -73,16 +81,15 @@ describe('resolve', () => {
     expect(result.merged).toBe(0);
   });
 
-  it('still merges variant spellings and short nicknames for the same character', () => {
+  it('keeps variant spellings and short nicknames separate for human review', () => {
     const result = resolve([
       makeChar('萧薰儿', ['薰儿'], 0.95),
       makeChar('萧熏儿', ['熏儿'], 0.9),
       makeChar('薰儿', [], 0.85),
     ]);
 
-    expect(result.characters).toHaveLength(1);
-    expect(result.characters[0].name).toBe('萧薰儿');
-    expect(result.merged).toBe(2);
+    expect(result.characters).toHaveLength(3);
+    expect(result.merged).toBe(0);
   });
 
   it('promotes a short nickname primary name to a full proper alias', () => {
@@ -106,7 +113,7 @@ describe('resolve', () => {
     expect(result.characters[0].outfits).toEqual(outfits);
   });
 
-  it('unions outfits (by scene/description) when merging duplicate characters across alias forms', () => {
+  it('does not union outfits across an unreviewed address-form match', () => {
     const result = resolve([
       makeChar('萧炎', ['炎儿'], 0.95, [
         { description: '青色劲装', scene: '日常', firstChapter: 1, lastChapter: 50 },
@@ -117,13 +124,8 @@ describe('resolve', () => {
       ]),
     ]);
 
-    expect(result.characters).toHaveLength(1);
-    const outfits = result.characters[0].outfits;
-    // '青色劲装' merged by scene → chapter range unioned to 1-100; '宽大黑袍' appended.
-    expect(outfits).toHaveLength(2);
-    const everyday = outfits.find((o) => o.scene === '日常')!;
-    expect(everyday.firstChapter).toBe(1);
-    expect(everyday.lastChapter).toBe(100);
-    expect(outfits.some((o) => o.description === '宽大黑袍')).toBe(true);
+    expect(result.characters).toHaveLength(2);
+    expect(result.characters.find((character) => character.name === '萧炎')?.outfits).toHaveLength(1);
+    expect(result.characters.find((character) => character.name === '萧炎哥')?.outfits).toHaveLength(2);
   });
 });

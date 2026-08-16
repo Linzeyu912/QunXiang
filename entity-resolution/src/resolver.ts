@@ -1,12 +1,10 @@
 import type { Character } from './types.js';
 import type { ResolutionResult } from './types.js';
-import { isAliasMatch } from './detectors/alias-match.js';
 import {
   chooseCanonicalCharacterName,
   isCollectiveCharacterAlias,
   sanitizeCharacterAliases,
 } from './detectors/alias-safety.js';
-import { isSameChineseName } from './detectors/same-chinese-name.js';
 import { mergeCharacters } from './merger.js';
 
 type CharacterInput = Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>;
@@ -25,22 +23,14 @@ export function resolve(characters: CharacterInput[]): ResolutionResult {
   for (const character of characters) {
     if (isCollectiveCharacterAlias(character.name)) continue;
 
-    const nameKey = character.name.toLowerCase();
+    const nameKey = character.name.trim().toLowerCase();
 
-    // Find an already-seen character that refers to the same entity:
-    //   - same name (case-insensitive),
-    //   - alias mutual containment, or
-    //   - Chinese address-form normalization (e.g. 萧炎哥 → 萧炎).
-    // (Previously this set mergedInto to the *current* character's key, which
-    //  was never in the map yet — so alias matches were silently ignored.
-    //  Fixed: use the matched existing character's key.)
+    // Only exact canonical-name duplicates may merge without a reviewer.
+    // Address forms and aliases remain separate records and are surfaced by
+    // buildCharacterMergeCandidates() after persistence.
     let mergeTargetKey: string | null = null;
     for (const [existingKey, existingChar] of nameMap.entries()) {
-      if (
-        existingKey === nameKey ||
-        isAliasMatch(existingChar as CharacterInput, character) ||
-        isSameChineseName(existingChar.name, character.name)
-      ) {
+      if (existingKey === nameKey) {
         mergeTargetKey = existingKey;
         break;
       }
@@ -67,7 +57,18 @@ export function resolve(characters: CharacterInput[]): ResolutionResult {
   // Deduplicate and clean aliases within each character.
   const resolvedCharacters: CharacterOutput[] = Array.from(nameMap.values()).map(
     (char) => {
-      const canonicalName = chooseCanonicalCharacterName(char.name, char.aliases);
+      const originalName = char.name.trim();
+      const preferredCanonicalName = chooseCanonicalCharacterName(originalName, char.aliases);
+      // A per-record alias may be erroneous. Never turn it into another
+      // already-extracted character's name before a reviewer has confirmed
+      // the identity relationship.
+      const canonicalName = knownCharacterNames.some(
+        (knownName) =>
+          knownName.trim().toLowerCase() === preferredCanonicalName.trim().toLowerCase()
+          && knownName.trim().toLowerCase() !== originalName.toLowerCase()
+      )
+        ? originalName
+        : preferredCanonicalName;
       const aliasPool = canonicalName === char.name
         ? char.aliases
         : [...char.aliases, char.name];

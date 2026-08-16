@@ -1,7 +1,6 @@
 import type { Character } from '@novel-agent/core';
 import { mergeEntityDescriptions } from '@novel-agent/core';
 import type { EntityMention } from '@novel-agent/entity-prescan';
-import { isSameChineseName } from '@novel-agent/entity-resolution';
 
 type CharacterCandidate = Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>;
 
@@ -125,20 +124,6 @@ export function fuseCharactersWithPrescan(
       const arr = prescanByNames.get(name.toLowerCase());
       if (arr) for (const m of arr) matched.set(m.text, m);
     }
-    // Address-form normalization: a prescan mention like "萧炎哥" that the LLM
-    // didn't list as an alias still refers to the same character (萧炎) — merge
-    // it in (becomes an alias + contributes mention count/chapters). This is the
-    // "称呼肯定要合并" guarantee, with the LLM still authoritative for the set.
-    for (const m of prescanMentions) {
-      if (matched.has(m.text)) continue;
-      if (
-        isSameChineseName(m.text, character.name) ||
-        (character.aliases || []).some((a) => isSameChineseName(m.text, a))
-      ) {
-        matched.set(m.text, m);
-      }
-    }
-
     const enriched = mergePrescanIntoCharacter(character, [...matched.values()]);
     const mapKey = character.name.toLowerCase();
     const existing = fused.get(mapKey);

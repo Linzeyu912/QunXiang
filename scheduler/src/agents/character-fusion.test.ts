@@ -128,6 +128,46 @@ describe('fuseCharactersWithPrescan', () => {
     expect(fused[0].chapterAppearances).toEqual([2, 3, 8]);
   });
 
+  it('does not turn an address-form prescan mention into an unreviewed alias', () => {
+    const llmCharacters: CharacterCandidate[] = [
+      {
+        name: '萧炎',
+        aliases: [],
+        description: '萧家少年',
+        confidence: 0.92,
+        status: 'PENDING',
+        firstChapter: 1,
+        lastChapter: 1,
+        chapterAppearances: [1],
+        mentionCount: 4,
+        dialogueCount: 1,
+        coCharacters: [],
+      },
+    ];
+
+    const prescanMentions: EntityMention[] = [
+      {
+        text: '萧炎哥',
+        aliases: [],
+        chapterIndex: 2,
+        position: 8,
+        source: 'regex',
+        confidence: 0.95,
+        totalCount: 9,
+        allChapters: [2],
+      },
+    ];
+
+    const fused = fuseCharactersWithPrescan(llmCharacters, prescanMentions);
+
+    expect(fused[0]).toMatchObject({
+      name: '萧炎',
+      aliases: [],
+      chapterAppearances: [1],
+      mentionCount: 4,
+    });
+  });
+
   it('preserves complementary descriptions when duplicate LLM characters are fused', () => {
     const llmCharacters: CharacterCandidate[] = [
       {

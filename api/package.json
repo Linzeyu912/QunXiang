@@ -19,6 +19,7 @@
     "@fastify/multipart": "^8.1.0",
     "@fastify/rate-limit": "^9.1.0",
     "@novel-agent/core": "workspace:*",
+    "@novel-agent/entity-resolution": "workspace:*",
     "@novel-agent/exporters": "workspace:*",
     "@novel-agent/extractors": "workspace:*",
     "@novel-agent/import": "workspace:*",
