@@ -29,7 +29,7 @@ async function runLlmConnectionTest(): Promise<ConnectionTestResult> {
   try {
     const { z } = await import('zod');
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15秒超时
     try {
       await provider.chatExtract(
         'You are a test assistant. Respond with valid JSON only.',
@@ -42,22 +42,56 @@ async function runLlmConnectionTest(): Promise<ConnectionTestResult> {
     return { success: true, message: '连接成功，API Key 有效。' };
   } catch (chatErr) {
     const msg = chatErr instanceof Error ? chatErr.message : String(chatErr);
-    if (msg.includes('401') || msg.includes('auth') || msg.includes('API key') || msg.includes('Authentication')) {
-      return { success: false, message: '认证失败，请检查 API Key。' };
+    const lowerMsg = msg.toLowerCase();
+    
+    // 认证错误
+    if (lowerMsg.includes('401') || lowerMsg.includes('unauthorized') || lowerMsg.includes('invalid api key') || lowerMsg.includes('authentication')) {
+      return { success: false, message: 'API Key 无效或已过期，请检查密钥是否正确。' };
     }
-    if (msg.includes('404') || msg.includes('page not found')) {
-      // 纯文本/nginx 404 多半是接口地址路径不对（如缺少 /v1/chat/completions），
-      // 而非模型名——服务商 API 层的错误通常是 JSON。
-      return { success: false, message: '接口返回 404：通常是「接口地址」路径不对（如缺少 /v1），请到设置页核对；少数情况才是模型名错误。' };
+    
+    // 权限错误
+    if (lowerMsg.includes('403') || lowerMsg.includes('forbidden') || lowerMsg.includes('permission')) {
+      return { success: false, message: 'API Key 权限不足，请检查是否已开通该模型的访问权限。' };
     }
-    if (msg.includes('model')) {
-      return { success: false, message: '模型不存在，请检查模型名称。' };
+    
+    // 限流错误
+    if (lowerMsg.includes('429') || lowerMsg.includes('rate limit') || lowerMsg.includes('too many requests')) {
+      return { success: false, message: '请求频率超限，请稍后重试或检查账户额度。' };
     }
-    if (msg.includes('network') || msg.includes('fetch') || msg.includes('ECONNREFUSED') || msg.includes('abort')) {
-      return { success: false, message: `网络错误：${msg.substring(0, 100)}` };
+    
+    // 超时错误
+    if (lowerMsg.includes('timeout') || lowerMsg.includes('timed out') || lowerMsg.includes('abort')) {
+      return { success: false, message: '连接超时，请检查网络或稍后重试。' };
     }
-    // Other errors — connection works but something else failed
-    return { success: false, message: `测试失败：${msg.substring(0, 150)}` };
+    
+    // 网络错误
+    if (lowerMsg.includes('enotfound') || lowerMsg.includes('getaddrinfo') || lowerMsg.includes('dns')) {
+      return { success: false, message: '无法解析服务器地址，请检查网络连接。' };
+    }
+    if (lowerMsg.includes('econnrefused') || lowerMsg.includes('connection refused')) {
+      return { success: false, message: '服务器拒绝连接，请检查接口地址是否正确。' };
+    }
+    if (lowerMsg.includes('network') || lowerMsg.includes('fetch') || lowerMsg.includes('econnreset')) {
+      return { success: false, message: '网络连接失败，请检查网络设置。' };
+    }
+    
+    // 404 错误
+    if (lowerMsg.includes('404') || lowerMsg.includes('not found')) {
+      return { success: false, message: '接口地址错误（404），请检查接口地址是否正确。' };
+    }
+    
+    // 模型错误
+    if (lowerMsg.includes('model') && (lowerMsg.includes('not found') || lowerMsg.includes('does not exist') || lowerMsg.includes('invalid'))) {
+      return { success: false, message: '模型不存在或已下线，请选择其他模型。' };
+    }
+    
+    // 余额不足
+    if (lowerMsg.includes('balance') || lowerMsg.includes('quota') || lowerMsg.includes('insufficient')) {
+      return { success: false, message: '账户余额不足或配额已用完，请充值后重试。' };
+    }
+    
+    // 其他错误
+    return { success: false, message: `连接失败：${msg.substring(0, 100)}` };
   }
 }
 

@@ -20,13 +20,64 @@ export interface ProviderPreset {
 }
 
 export const PROVIDER_PRESETS: ProviderPreset[] = [
+  // ── 国内主流 ──
   {
     id: 'deepseek',
-    name: 'DeepSeek',
+    name: 'DeepSeek（深度求索）',
     baseUrl: 'https://api.deepseek.com/v1',
     models: [
       { id: 'deepseek-chat', name: 'DeepSeek Chat (V3)' },
       { id: 'deepseek-reasoner', name: 'DeepSeek Reasoner (R1)' },
+    ],
+  },
+  {
+    id: 'aliyun',
+    name: '阿里通义千问',
+    baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+    models: [
+      { id: 'qwen-plus', name: 'Qwen Plus（推荐）' },
+      { id: 'qwen-turbo', name: 'Qwen Turbo（快速）' },
+      { id: 'qwen-max', name: 'Qwen Max（最强）' },
+      { id: 'qwen-long', name: 'Qwen Long（长文本）' },
+    ],
+  },
+  {
+    id: 'zhipu',
+    name: '智谱 AI（GLM）',
+    baseUrl: 'https://open.bigmodel.cn/api/paas/v4',
+    models: [
+      { id: 'glm-4-plus', name: 'GLM-4 Plus（推荐）' },
+      { id: 'glm-4-flash', name: 'GLM-4 Flash（快速）' },
+      { id: 'glm-4-long', name: 'GLM-4 Long（长文本）' },
+    ],
+  },
+  {
+    id: 'moonshot',
+    name: 'Moonshot（Kimi）',
+    baseUrl: 'https://api.moonshot.cn/v1',
+    models: [
+      { id: 'moonshot-v1-8k', name: 'Kimi 8K' },
+      { id: 'moonshot-v1-32k', name: 'Kimi 32K' },
+      { id: 'moonshot-v1-128k', name: 'Kimi 128K（长文本）' },
+    ],
+  },
+  {
+    id: 'baidu',
+    name: '百度文心一言',
+    baseUrl: 'https://qianfan.baidubce.com/v2',
+    models: [
+      { id: 'ernie-4.0-turbo-8k', name: 'ERNIE 4.0 Turbo' },
+      { id: 'ernie-3.5-8k', name: 'ERNIE 3.5' },
+      { id: 'ernie-speed-8k', name: 'ERNIE Speed（快速）' },
+    ],
+  },
+  {
+    id: 'xunfei',
+    name: '讯飞星火',
+    baseUrl: 'https://spark-api-open.xf-yun.com/v1',
+    models: [
+      { id: 'generalv3.5', name: '星火 V3.5' },
+      { id: 'generalv3', name: '星火 V3.0' },
     ],
   },
   {
@@ -35,6 +86,50 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     baseUrl: 'https://api.minimaxi.com/v1',
     models: [
       { id: 'MiniMax-M2', name: 'MiniMax M2' },
+      { id: 'abab6.5s-chat', name: 'ABAB 6.5S' },
+    ],
+  },
+  {
+    id: 'siliconflow',
+    name: 'SiliconFlow（聚合）',
+    baseUrl: 'https://api.siliconflow.cn/v1',
+    models: [
+      { id: 'Qwen/Qwen2.5-72B-Instruct', name: 'Qwen2.5 72B' },
+      { id: 'deepseek-ai/DeepSeek-V3', name: 'DeepSeek V3' },
+      { id: 'deepseek-ai/DeepSeek-R1', name: 'DeepSeek R1' },
+      { id: 'THUDM/glm-4-9b-chat', name: 'GLM-4 9B' },
+    ],
+  },
+  // ── 国际主流 ──
+  {
+    id: 'openai',
+    name: 'OpenAI',
+    baseUrl: 'https://api.openai.com/v1',
+    models: [
+      { id: 'gpt-4o', name: 'GPT-4o（推荐）' },
+      { id: 'gpt-4o-mini', name: 'GPT-4o Mini（经济）' },
+      { id: 'gpt-4-turbo', name: 'GPT-4 Turbo' },
+      { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo' },
+    ],
+  },
+  {
+    id: 'anthropic',
+    name: 'Anthropic（Claude）',
+    baseUrl: 'https://api.anthropic.com/v1',
+    models: [
+      { id: 'claude-sonnet-4-20250514', name: 'Claude Sonnet 4（推荐）' },
+      { id: 'claude-haiku-4-5-20251001', name: 'Claude Haiku 4.5（快速）' },
+      { id: 'claude-opus-4-20250514', name: 'Claude Opus 4（最强）' },
+    ],
+  },
+  {
+    id: 'google',
+    name: 'Google（Gemini）',
+    baseUrl: 'https://generativelanguage.googleapis.com/v1beta',
+    models: [
+      { id: 'gemini-2.0-flash-exp', name: 'Gemini 2.0 Flash' },
+      { id: 'gemini-1.5-pro', name: 'Gemini 1.5 Pro' },
+      { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash' },
     ],
   },
   {
@@ -43,74 +138,6 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     baseUrl: 'https://api.minimax.io/v1',
     models: [
       { id: 'MiniMax-M2', name: 'MiniMax M2' },
-    ],
-  },
-  {
-    id: 'openai',
-    name: 'OpenAI',
-    baseUrl: 'https://api.openai.com/v1',
-    models: [
-      { id: 'gpt-4o', name: 'GPT-4o' },
-      { id: 'gpt-4o-mini', name: 'GPT-4o Mini' },
-      { id: 'gpt-4.1-mini', name: 'GPT-4.1 Mini' },
-      { id: 'gpt-4.1-nano', name: 'GPT-4.1 Nano' },
-    ],
-  },
-  {
-    id: 'siliconflow',
-    name: 'SiliconFlow',
-    baseUrl: 'https://api.siliconflow.cn/v1',
-    models: [
-      { id: 'Qwen/Qwen2.5-72B-Instruct', name: 'Qwen2.5 72B' },
-      { id: 'deepseek-ai/DeepSeek-V3', name: 'DeepSeek V3' },
-      { id: 'deepseek-ai/DeepSeek-R1', name: 'DeepSeek R1' },
-    ],
-  },
-  {
-    id: 'zhipu',
-    name: '智谱 AI',
-    baseUrl: 'https://open.bigmodel.cn/api/paas/v4',
-    models: [
-      { id: 'glm-4-flash', name: 'GLM-4 Flash' },
-      { id: 'glm-4-plus', name: 'GLM-4 Plus' },
-    ],
-  },
-  {
-    id: 'moonshot',
-    name: 'Moonshot (Kimi)',
-    baseUrl: 'https://api.moonshot.cn/v1',
-    models: [
-      { id: 'moonshot-v1-8k', name: 'Moonshot V1 8K' },
-      { id: 'moonshot-v1-32k', name: 'Moonshot V1 32K' },
-      { id: 'moonshot-v1-128k', name: 'Moonshot V1 128K' },
-    ],
-  },
-  {
-    id: 'baidu',
-    name: '百度千帆',
-    baseUrl: 'https://qianfan.baidubce.com/v2',
-    models: [
-      { id: 'ernie-4.0-turbo-8k', name: 'ERNIE 4.0 Turbo' },
-      { id: 'ernie-3.5-8k', name: 'ERNIE 3.5' },
-    ],
-  },
-  {
-    id: 'aliyun',
-    name: '阿里通义',
-    baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
-    models: [
-      { id: 'qwen-plus', name: 'Qwen Plus' },
-      { id: 'qwen-turbo', name: 'Qwen Turbo' },
-      { id: 'qwen-max', name: 'Qwen Max' },
-    ],
-  },
-  {
-    id: 'anthropic',
-    name: 'Anthropic (Claude)',
-    baseUrl: 'https://api.anthropic.com/v1',
-    models: [
-      { id: 'claude-sonnet-4-20250514', name: 'Claude Sonnet 4' },
-      { id: 'claude-haiku-4-5-20251001', name: 'Claude Haiku 4.5' },
     ],
   },
 ];

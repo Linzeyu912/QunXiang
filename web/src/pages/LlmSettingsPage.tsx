@@ -162,29 +162,51 @@ export function LlmSettingsPage() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
           <CardTitle>当前状态</CardTitle>
-          {status?.canExtract ? (
-            <Badge variant="success" className="gap-1">
-              <CheckCircle2 className="h-3 w-3" />
-              就绪
-            </Badge>
-          ) : (
-            <Badge variant="destructive" className="gap-1">
-              <XCircle className="h-3 w-3" />
-              未就绪
-            </Badge>
-          )}
+          <div className="flex items-center gap-2">
+            {status?.canExtract ? (
+              <Badge variant="success" className="gap-1">
+                <CheckCircle2 className="h-3 w-3" />
+                就绪
+              </Badge>
+            ) : (
+              <Badge variant="destructive" className="gap-1">
+                <XCircle className="h-3 w-3" />
+                未就绪
+              </Badge>
+            )}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={runTest}
+              disabled={test.isPending}
+              className="h-7 px-2 text-xs"
+            >
+              {test.isPending ? (
+                <Loader2 className="h-3 w-3 animate-spin" />
+              ) : (
+                '测试连接'
+              )}
+            </Button>
+          </div>
         </CardHeader>
-        <CardContent className="grid grid-cols-2 gap-3 text-sm">
-          <StatusRow label="服务商">{status?.provider ?? '-'}</StatusRow>
-          <StatusRow label="模型">{status?.model || '-'}</StatusRow>
-          <StatusRow label="接口地址">{status?.baseUrl || '-'}</StatusRow>
-          <StatusRow label="API 密钥">
-            {status?.keyCount
-              ? `${status.keyCount} 个（${status.keyHints?.join(' / ') || status.keyHint}）`
-              : '未设置'}
-          </StatusRow>
+        <CardContent className="space-y-3">
+          <div className="grid grid-cols-2 gap-3 text-sm">
+            <StatusRow label="服务商">{status?.provider ?? '-'}</StatusRow>
+            <StatusRow label="模型">{status?.model || '-'}</StatusRow>
+            <StatusRow label="API 密钥">
+              {status?.keyCount
+                ? `${status.keyCount} 个（${status.keyHints?.join(' / ') || status.keyHint}）`
+                : '未设置'}
+            </StatusRow>
+            <StatusRow label="接口地址">
+              <span className="text-muted-foreground">{status?.baseUrl || '-'}</span>
+            </StatusRow>
+          </div>
           {status?.error && (
-            <p className="col-span-2 text-xs text-destructive">{status.error}</p>
+            <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+              <p className="font-medium">配置错误</p>
+              <p className="mt-1 text-xs">{status.error}</p>
+            </div>
           )}
         </CardContent>
       </Card>
@@ -237,11 +259,6 @@ export function LlmSettingsPage() {
                   ))}
                 </SelectContent>
               </Select>
-              {activePreset && (
-                <p className="text-xs text-muted-foreground">
-                  接口地址：<code className="rounded bg-muted px-1">{activePreset.baseUrl}</code>
-                </p>
-              )}
             </div>
           )}
 
@@ -327,11 +344,7 @@ export function LlmSettingsPage() {
           <div className="flex items-center gap-2 pt-2">
             <Button onClick={save} disabled={setConfig.isPending}>
               {setConfig.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              保存
-            </Button>
-            <Button variant="outline" onClick={runTest} disabled={test.isPending}>
-              {test.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              测试连接
+              保存配置
             </Button>
           </div>
         </CardContent>
