@@ -136,6 +136,27 @@ export class TaskDispatcher {
   }
 
   /**
+   * 断点续传：从 resumeFrom 阶段开始重跑，跳过前面已完成的阶段。
+   *
+   * 工作线程只消费提取器类型的任务，因此必须从提取器入口进入，
+   * 再通过 resumeFrom 与 stageResults 跳过已完成阶段。
+   */
+  async resumeExtraction(
+    bookId: string,
+    userId: string,
+    resumeFrom: AgentType,
+    stageResults: Record<string, unknown>,
+  ): Promise<{ extractorTaskId: string }> {
+    const extractorTaskId = await this.queue.enqueue({
+      bookId,
+      agentType: 'extractor',
+      payload: { bookId, userId, resumeFrom, stageResults },
+      status: 'pending',
+    });
+    return { extractorTaskId };
+  }
+
+  /**
    * Start background workers that poll for pending extractor tasks.
    *
    * 多 worker 并发：count 个 worker 各自独立轮询队列，多本书可同时提取。
@@ -224,6 +245,29 @@ export class TaskDispatcher {
   async processNext(agentType: AgentType): Promise<string | undefined> {
     const task = await this.queue.dequeue(agentType);
     if (!task) return undefined;
+
+    // 断点续传：payload.resumeFrom 标记从哪个 stage 开始重跑。当前 agentType 在
+    // resumeFrom 之前 → 该 stage 在前一轮已完成过，跳过执行，复用 stageResults 里
+    // 保存的真实 result 标 completed，直接推进到下一 stage，直到 resumeFrom 才真正执行。
+    const resumePayload = (task.payload && typeof task.payload === 'object'
+      ? task.payload as Record<string, unknown>
+      : {}) as Record<string, unknown>;
+    const resumeFrom = resumePayload.resumeFrom as AgentType | undefined;
+    if (resumeFrom && EXTRACTION_PIPELINE.indexOf(agentType) < EXTRACTION_PIPELINE.indexOf(resumeFrom)) {
+      const stageResults = (resumePayload.stageResults ?? {}) as Record<string, unknown>;
+      await this.queue.complete(task.id, stageResults[agentType] ?? {});
+      const nextAgent = getNextAgent(agentType);
+      if (nextAgent) {
+        await this.queue.enqueue({
+          bookId: task.bookId,
+          agentType: nextAgent,
+          payload: resumePayload,
+          status: 'pending',
+        });
+        return await this.processNext(nextAgent);
+      }
+      return undefined;
+    }
 
     console.log(`[Dispatcher] Processing ${agentType} task ${task.id}, bookId: ${task.bookId}, payload:`, JSON.stringify(task.payload));
 

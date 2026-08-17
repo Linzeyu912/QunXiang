@@ -136,14 +136,14 @@ export async function startExtraction(bookId: string, ownerId: string) {
  * 断点续传：从第一个失败的 stage 开始重跑(成功 stage 复用 result)。
  *
  * 行为：
- * 1. 找第一个 status='failed' 的 stage — 若都成功,抛 NotFoundError(让用户用 getStages 自行查看)
- * 2. 清除该 stage 的 error 字段,status 重置 pending
- * 3. 删除该 stage 之后所有 stage 的 task 行(包括它们之前 pending/failed 的记录)
- * 4. 串好前序 stage 的 result(从 Task.result 反序列化)到 payload,enqueue 新 task
- * 5. worker 接管,后续 stage 由 dispatcher.processNext 链式 enqueue
+ * 1. 找第一个 status='failed' 的 stage — 若都成功,抛 ConflictError(让用户用 getStages 自行查看)
+ * 2. 按 stage 收集已完成 stage 的真实 result(Task.result 反序列化)
+ * 3. 清空该书所有 task 行(避免与本次续传的任务行混淆)
+ * 4. 委托 dispatcher.resumeExtraction —— 走 extractor 入口(worker 只消费 extractor),
+ *    payload 带 resumeFrom + stageResults,由 processNext 跳过前置 stage 直达失败点
  *
  * 幂等保证：
- * - 已 completed 的 stage 不重跑
+ * - 已 completed 的 stage 不重跑(跳过时复用 stageResults 里的 result 直接标 completed)
  * - 用户对已失败的 stage 之外的 stage 调 resume,行为是"从最早的失败点继续",
  *   避免误重跑已成功的昂贵 stage(如 visual-description 又烧一次 LLM 费)
  */
@@ -172,48 +172,32 @@ export async function resumeExtraction(bookId: string, userId: string) {
   }
 
   try {
-    // 1. 把 failed stage 本身重置为 pending(清 error)
-    await TaskRepository.updateStatus(firstFailed.id, 'pending');
-
-    // 2. 删除 failed stage 之后的所有 stage 行(包括之前 pending/failed 的)
-    const stagesAfterFailed = tasks.filter((t) => {
-      const idx = EXTRACTION_PIPELINE.indexOf(t.agentType as AgentType);
-      return idx > failedStageIndex;
-    });
-    for (const t of stagesAfterFailed) {
-      await TaskRepository.updateStatus(t.id, 'pending');
-    }
-
-    // 3. 构造 payload:从已完成 stage 的 result 拼起来
-    const completedResults: Record<string, unknown> = {};
+    // 1. 按 stage 收集已完成 stage 的真实 result。
+    //    跳过逻辑会把 stageResults[agentType] 原样写回，二次 resume 也不丢数据。
+    const stageResults: Record<string, unknown> = {};
     for (const t of tasks) {
       if (t.status === 'completed' && t.result) {
         // result 存在数据库里可能是字符串(serialize 的 JSON)或对象
         const r = typeof t.result === 'string' ? safeParseJson(t.result) : t.result;
         if (r && typeof r === 'object') {
-          Object.assign(completedResults, r);
+          stageResults[t.agentType] = r;
         }
       }
     }
 
-    const resumePayload = {
+    // 2. 清空该书所有 task 行，避免残留的历史任务(含之前卡死的孤儿 pending)干扰本次续传。
+    await TaskRepository.deleteByBookId(bookId);
+
+    // 3. 重置 book 状态 + 委托 dispatcher 续传。
+    await BookRepository.updateStatus(bookId, 'EXTRACTING');
+    const { extractorTaskId } = await dispatcher.resumeExtraction(
       bookId,
       userId,
-      ...completedResults,
-    };
+      failedStageId as AgentType,
+      stageResults,
+    );
 
-    // 4. 重置 book 状态 + enqueue 新 task
-    await BookRepository.updateStatus(bookId, 'EXTRACTING');
-    const resumeTaskId = await TaskRepository.create({
-      bookId,
-      agentType: failedStageId as AgentType,
-      payload: resumePayload,
-      status: 'pending',
-    });
-    // 不需要 dispatcher.startExtraction(那个会从 extractor 开始);
-    // 我们的 worker 每秒轮询,会自动捡起这个新 task。
-
-    return { taskId: resumeTaskId, resumedFrom: failedStageId };
+    return { taskId: extractorTaskId, resumedFrom: failedStageId };
   } catch (err) {
     await BookRepository.updateStatus(bookId, 'FAILED');
     throw err;
