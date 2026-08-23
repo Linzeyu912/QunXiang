@@ -28,8 +28,11 @@ const KEYS: Record<EntityType, string> = {
 
 export const entitiesKey = {
   all: (bookId: string) => ['entities', bookId] as const,
-  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string }) =>
-    ['entities', bookId, type, filters ?? {}] as const,
+  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string }) => {
+    // 将 filters 序列化为稳定字符串，避免对象引用变化导致缓存键不稳定
+    const filterKey = filters ? JSON.stringify(filters) : '';
+    return ['entities', bookId, type, filterKey] as const;
+  },
   reviews: (id: string) => ['character-reviews', id] as const,
   mergeCandidates: (bookId: string) => ['character-merge-candidates', bookId] as const,
 };

@@ -499,7 +499,6 @@ function ImageSettingsCard() {
       // size: 预设模式下自动从模型获取，自定义模式用手填值
       const matchedModel = activeModels.find((m) => m.id === selectedModelId);
       const effectiveSize = useCustom ? size.trim() : (matchedModel?.defaultSize || size.trim());
-      console.log('[image-config] save:', { useCustom, selectedModelId, matchedModel: matchedModel?.id, defaultSize: matchedModel?.defaultSize, effectiveSize });
       if (effectiveSize) patch.size = effectiveSize;
       if (characterRatio.trim()) patch.characterRatio = characterRatio.trim();
       if (itemRatio.trim()) patch.itemRatio = itemRatio.trim();

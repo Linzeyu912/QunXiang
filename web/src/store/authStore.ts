@@ -24,14 +24,17 @@ export const useAuthStore = create<AuthState>((set) => ({
   // 启动时只通过 HttpOnly Cookie 刷新会话，不从浏览器持久存储恢复令牌。
   bootstrapping: true,
   setAuth: async (token, user) => {
-    await transitionAccountQueryOwner(user.id);
+    // 先更新认证状态，再清理旧账号缓存。
+    // 若清缓存失败，用户状态已正确，不会影响登录态。
     set({ token, user, bootstrapping: false });
+    await transitionAccountQueryOwner(user.id);
   },
   setUser: (user) => set({ user, bootstrapping: false }),
   setBootstrapping: (v) => set({ bootstrapping: v }),
   logout: async () => {
-    await transitionAccountQueryOwner(null);
+    // 先清除认证状态，再清理缓存。
     set({ token: null, user: null, bootstrapping: false });
+    await transitionAccountQueryOwner(null);
   },
 }));
 

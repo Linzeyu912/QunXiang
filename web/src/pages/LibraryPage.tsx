@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { AlertCircle, CheckCircle2, FileText, Loader2, MoreVertical, Play, Settings, Share, Trash2, Upload } from 'lucide-react';
@@ -124,7 +124,7 @@ function EmptyState({ onUpload }: { onUpload: () => void }) {
   );
 }
 
-function BookRow({ book }: { book: Book }) {
+const BookRow = memo(function BookRow({ book }: { book: Book }) {
   const navigate = useNavigate();
   const del = useDeleteBook();
   const [shareOpen, setShareOpen] = useState(false);
@@ -269,4 +269,4 @@ function BookRow({ book }: { book: Book }) {
       <ShareDialog bookId={book.id} bookTitle={book.title} open={shareOpen} onOpenChange={setShareOpen} />
     </Card>
   );
-}
+});

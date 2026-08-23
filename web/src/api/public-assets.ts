@@ -8,8 +8,11 @@ export interface PublicAssetListResult {
 }
 
 export const publicAssetKeys = {
-  list: (params: { kind?: string; sort?: string; q?: string; tags?: string[] }) =>
-    ['public-assets', 'list', params] as const,
+  list: (params: { kind?: string; sort?: string; q?: string; tags?: string[] }) => {
+    // 将 params 序列化为稳定字符串，避免对象引用变化导致缓存键不稳定
+    const paramKey = JSON.stringify(params);
+    return ['public-assets', 'list', paramKey] as const;
+  },
   mine: ['public-assets', 'mine'] as const,
   tags: ['public-assets', 'tags'] as const,
   detail: (id: string) => ['public-assets', 'detail', id] as const,

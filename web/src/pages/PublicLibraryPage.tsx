@@ -1,5 +1,6 @@
-import { useState, useMemo } from 'react';
+import { memo, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 import { Search, Flame, Clock, X } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,6 +13,17 @@ import {
   useUnlistAsset,
   usePopularTags,
 } from '@/api/public-assets';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { GENRE_TAGS, isGenreTag } from '@/constants/genre-tags';
 import { useAuthStore } from '@/store/authStore';
 import type { PublicAssetListItem } from '@/types';
@@ -66,11 +78,11 @@ export function PublicLibraryPage() {
   };
 
   const handleUnlist = async (assetId: string) => {
-    if (!confirm('确定要下架这个素材吗？下架后其他用户将无法看到。')) return;
     try {
       await unlistMutation.mutateAsync(assetId);
+      toast.success('已下架');
     } catch (e) {
-      alert(`下架失败：${(e as Error).message}`);
+      toast.error(`下架失败：${(e as Error).message}`);
     }
   };
 
@@ -246,7 +258,7 @@ export function PublicLibraryPage() {
   );
 }
 
-function AssetCard({
+const AssetCard = memo(function AssetCard({
   item,
   onClick,
   isOwner,
@@ -306,19 +318,30 @@ function AssetCard({
       </div>
       {isOwner && item.status !== 'unlisted' && onUnlist && (
         <div className="border-t px-3 py-2">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="w-full text-xs text-destructive"
-            onClick={(e) => {
-              e.stopPropagation();
-              onUnlist();
-            }}
-          >
-            下架
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="w-full text-xs text-destructive"
+                onClick={(e) => e.stopPropagation()}
+              >
+                下架
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>下架「{item.name}」？</AlertDialogTitle>
+                <AlertDialogDescription>下架后其他用户将无法看到此素材。</AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>取消</AlertDialogCancel>
+                <AlertDialogAction onClick={onUnlist}>确认下架</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       )}
     </Card>
   );
-}
+});

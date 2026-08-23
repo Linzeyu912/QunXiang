@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import { toast } from 'sonner';
 import { Image, Loader2, Star, Trash2, Upload, ChevronDown, ChevronRight, Pencil, Save, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -217,9 +217,10 @@ function EntityImageGallery({
   const featured = images.find((i) => i.id === selectedId) ?? images.find((i) => i.isPrimary) ?? images[0];
 
   // 收集所有已有 stage 标签（去重 + 排序）
-  const stageTabs = Array.from(
-    new Set(allImages.map((i) => i.stage).filter((s): s is string => !!s)),
-  ).sort();
+  const stageTabs = useMemo(
+    () => Array.from(new Set(allImages.map((i) => i.stage).filter((s): s is string => !!s))).sort(),
+    [allImages],
+  );
 
   const handleGenerate = async () => {
     try {
@@ -507,7 +508,14 @@ function ProtectedEntityImage({
   ...props
 }: { bookId: string; imageId: string } & React.ImgHTMLAttributes<HTMLImageElement>) {
   const src = useProtectedImageUrl(bookId, imageId);
-  return <img {...props} src={src ?? undefined} />;
+  if (!src) {
+    return (
+      <div className={cn('flex items-center justify-center bg-muted/30', props.className)}>
+        <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+      </div>
+    );
+  }
+  return <img {...props} src={src} />;
 }
 
 /**

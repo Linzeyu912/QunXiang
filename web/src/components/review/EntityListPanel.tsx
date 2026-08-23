@@ -25,6 +25,10 @@ interface RowProps {
   onSelect: (id: string) => void;
   /** 虚拟列表给出的行偏移（px） */
   start: number;
+  /** 虚拟列表行号，用于动态测量实际高度 */
+  index: number;
+  /** 将按钮元素交给虚拟列表测量 */
+  measureElement: (node: HTMLButtonElement | null) => void;
 }
 
 /**
@@ -38,12 +42,16 @@ const EntityRow = memo(function EntityRow({
   hasArtifact,
   onSelect,
   start,
+  index,
+  measureElement,
 }: RowProps) {
   const aliases = parseAliases(entity.aliases);
   const hasTier = type !== 'character' && 'tier' in entity;
   const itemCategory = type === 'item' ? (entity as { category?: ItemCategory }).category : undefined;
   return (
     <button
+      ref={measureElement}
+      data-index={index}
       onClick={() => onSelect(entity.id)}
       style={{
         position: 'absolute',
@@ -97,6 +105,8 @@ function EntityListPanelInner({ entities, type, selectedId, onSelect, artifactId
     getScrollElement: () => parentRef.current,
     estimateSize: () => 68,
     overscan: 8,
+    // 动态测量实际行高，避免固定估值导致滚动位置错乱
+    measureElement: (el) => el.getBoundingClientRect().height,
   });
 
   // 选中项滚动跟随：J/K 快捷键移动或 A/R 审完自动跳下一个时，
@@ -138,6 +148,8 @@ function EntityListPanelInner({ entities, type, selectedId, onSelect, artifactId
               hasArtifact={artifactIds?.has(entity.id) ?? false}
               onSelect={onSelect}
               start={v.start}
+              index={v.index}
+              measureElement={virtualizer.measureElement}
             />
           );
         })}
