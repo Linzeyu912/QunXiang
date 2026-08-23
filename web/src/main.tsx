@@ -18,6 +18,16 @@ import './index.css';
  * - 仅作用于查询；变更（mutation）的错误仍由各调用点就地提示，不重复弹窗。
  */
 const recentErrorKeys = new Map<string, number>();
+
+// 定期清理过期的错误记录，避免长期运行内存泄漏
+const ERROR_KEY_TTL = 10 * 60 * 1000; // 10 分钟
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, ts] of recentErrorKeys) {
+    if (now - ts > ERROR_KEY_TTL) recentErrorKeys.delete(key);
+  }
+}, ERROR_KEY_TTL);
+
 function shouldReportError(error: unknown, queryKey: unknown): boolean {
   if (error instanceof ApiError && (error.status === 404 || error.message.includes('尚未提取'))) {
     return false;

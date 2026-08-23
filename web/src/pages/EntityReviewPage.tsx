@@ -345,35 +345,35 @@ export function EntityReviewPage({ type }: Props) {
       {type === 'worldview' ? (
         <WorldviewSynthesisPanel bookId={bookId} />
       ) : (
-      <div className="grid h-[calc(100vh-16rem)] grid-rows-1 grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] overflow-hidden rounded-lg border bg-card shadow-sm">
-        <div className="relative min-h-0 overflow-hidden border-r">
-          {query.isLoading ? (
-            <EntityListSkeleton />
-          ) : (
-            <EntityListPanel
-              entities={entities as AnyEntity[]}
-              type={type}
-              selectedId={selected?.id}
-              onSelect={handleSelect}
-              artifactIds={artifactNames}
-            />
-          )}
+        <div className="grid h-[calc(100vh-16rem)] grid-rows-1 grid-cols-1 overflow-hidden rounded-lg border bg-card shadow-sm md:grid-cols-[minmax(280px,2fr)_minmax(0,3fr)]">
+          <div className="relative min-h-0 overflow-hidden border-r">
+            {query.isLoading ? (
+              <EntityListSkeleton />
+            ) : (
+              <EntityListPanel
+                entities={entities as AnyEntity[]}
+                type={type}
+                selectedId={selected?.id}
+                onSelect={handleSelect}
+                artifactIds={artifactNames}
+              />
+            )}
+          </div>
+          <div className="min-h-0 overflow-hidden">
+            {selected ? (
+              <EntityDetailPanel
+                entity={selected}
+                type={type}
+                bookId={bookId}
+                onJumpToName={handleJumpToName}
+              />
+            ) : (
+              <div className="flex h-full items-center justify-center p-6 text-sm text-muted-foreground">
+                选择一个实体查看详情
+              </div>
+            )}
+          </div>
         </div>
-        <div className="min-h-0 overflow-hidden">
-          {selected ? (
-            <EntityDetailPanel
-              entity={selected}
-              type={type}
-              bookId={bookId}
-              onJumpToName={handleJumpToName}
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center p-6 text-sm text-muted-foreground">
-              选择一个实体查看详情
-            </div>
-          )}
-        </div>
-      </div>
       )}
     </div>
   );

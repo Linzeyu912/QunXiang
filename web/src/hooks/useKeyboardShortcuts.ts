@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 type Handler = (e: KeyboardEvent) => void;
 type Bindings = Record<string, Handler>;
@@ -12,12 +12,16 @@ function isEditable(el: Element | null): boolean {
 }
 
 export function useKeyboardShortcuts(bindings: Bindings, enabled = true) {
+  // 用 ref 存储最新 bindings，避免因对象引用变化导致 effect 反复挂载
+  const bindingsRef = useRef(bindings);
+  bindingsRef.current = bindings;
+
   useEffect(() => {
     if (!enabled) return;
     const onKey = (e: KeyboardEvent) => {
       if (isEditable(document.activeElement)) return;
       const key = e.key.toLowerCase();
-      const handler = bindings[key];
+      const handler = bindingsRef.current[key];
       if (handler) {
         e.preventDefault();
         handler(e);
@@ -25,5 +29,5 @@ export function useKeyboardShortcuts(bindings: Bindings, enabled = true) {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [bindings, enabled]);
+  }, [enabled]);
 }

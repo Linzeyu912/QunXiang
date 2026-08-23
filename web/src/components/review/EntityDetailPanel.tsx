@@ -71,12 +71,14 @@ export const EntityDetailPanel = memo(function EntityDetailPanel({
       ? 'ready'
       : 'no-run';
 
+  // 仅在切换实体时重置表单，避免同一实体引用变化导致不必要的重置
   useEffect(() => {
     setName(entity.name);
     setAliasesText(parseAliases(entity.aliases).join('，'));
     setDescription(entity.description ?? '');
     setEditing(false);
-  }, [entity.id, entity.aliases, entity.description, entity.name]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [entity.id]);
 
   const setStatus = async (status: EntityStatus) => {
     try {

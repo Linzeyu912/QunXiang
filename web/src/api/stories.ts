@@ -115,15 +115,23 @@ export function useSegmentationProgress(
     }
     setProgress({ active: true, message: '正在启动…' });
 
+    const controller = new AbortController();
+    let closed = false;
+    let pollTimer: ReturnType<typeof setInterval> | undefined;
+
+    const clearPoll = () => {
+      if (pollTimer) {
+        clearInterval(pollTimer);
+        pollTimer = undefined;
+      }
+    };
+
     const finish = (ok: boolean, error?: string) => {
+      clearPoll();
       qc.invalidateQueries({ queryKey: storiesKey.all(bookId) });
       setProgress({ active: false, error });
       finishedRef.current(ok, error);
     };
-
-    const controller = new AbortController();
-    let closed = false;
-    let pollTimer: ReturnType<typeof setInterval> | undefined;
 
     const startPolling = () => {
       if (closed || pollTimer) return;
@@ -185,7 +193,7 @@ export function useSegmentationProgress(
     return () => {
       closed = true;
       controller.abort();
-      if (pollTimer) clearInterval(pollTimer);
+      clearPoll();
     };
   }, [bookId, activeTaskId, qc]);
 

@@ -116,7 +116,7 @@ export function ChaptersPage() {
       )}
 
       {/* 双栏：左章节列表，右正文阅读视图。两栏独立滚动，互不影响高度。 */}
-      <div className="grid h-[calc(100vh-16rem)] grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] grid-rows-1 overflow-hidden rounded-lg border bg-card">
+      <div className="grid h-[calc(100vh-16rem)] grid-cols-1 md:grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] grid-rows-1 overflow-hidden rounded-lg border bg-card">
         <div className="flex h-full min-h-0 flex-col overflow-hidden border-r">
           <div className="grid grid-cols-[3.5rem_minmax(0,1fr)_minmax(5rem,16%)_4.5rem] items-center gap-2 border-b bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground">
             <span>章</span>

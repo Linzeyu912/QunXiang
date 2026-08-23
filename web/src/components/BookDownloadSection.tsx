@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Loader2, Download, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from './ui/button';
@@ -21,6 +21,14 @@ export function BookDownloadSection({ bookId }: { bookId: string }) {
   // 本地即时状态：点击后立刻反馈，服务器轮询跟上后自动让位
   const [prepareClicked, setPrepareClicked] = useState(false);
   const [downloading, setDownloading] = useState(false);
+  const downloadTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // 组件卸载时清理定时器，避免内存泄漏
+  useEffect(() => {
+    return () => {
+      if (downloadTimerRef.current) clearTimeout(downloadTimerRef.current);
+    };
+  }, []);
 
   // 服务器状态一旦脱离 not-prepared（已进入打包队列），本地提示就可以退场
   useEffect(() => {
@@ -51,7 +59,7 @@ export function BookDownloadSection({ bookId }: { bookId: string }) {
       a.click();
       a.remove();
       // 浏览器接管下载后无法监听完成，提示短暂停留后消失
-      window.setTimeout(() => setDownloading(false), 5000);
+      downloadTimerRef.current = setTimeout(() => setDownloading(false), 5000);
     } catch (e) {
       setDownloading(false);
       toast.error(`下载失败：${(e as Error).message}`);

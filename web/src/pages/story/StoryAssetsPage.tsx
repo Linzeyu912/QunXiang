@@ -225,7 +225,7 @@ function AssetPane({
   }
 
   return (
-    <div className="grid h-[calc(100vh-22rem)] grid-cols-[minmax(240px,1fr)_minmax(0,2fr)] overflow-hidden rounded-lg border bg-card">
+    <div className="grid h-[calc(100vh-22rem)] grid-cols-1 md:grid-cols-[minmax(240px,1fr)_minmax(0,2fr)] overflow-hidden rounded-lg border bg-card">
       <div className="overflow-y-auto border-r">
         {assets.map((a) => (
           <button
