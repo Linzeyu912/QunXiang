@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { GridSkeleton } from '@/components/ui/skeleton';
 import {
   usePublicAssets,
   useMyPublicAssets,
@@ -211,7 +212,7 @@ export function PublicLibraryPage() {
 
             {/* 卡片网格 */}
             {browseQuery.isLoading ? (
-              <p className="py-10 text-center text-sm text-muted-foreground">加载中…</p>
+              <GridSkeleton count={8} />
             ) : items.length === 0 ? (
               <Card className="p-10 text-center text-sm text-muted-foreground">
                 暂无公共素材
@@ -233,7 +234,7 @@ export function PublicLibraryPage() {
         {tab === 'mine' && (
           <div className="space-y-4">
             {mineQuery.isLoading ? (
-              <p className="py-10 text-center text-sm text-muted-foreground">加载中…</p>
+              <GridSkeleton count={4} />
             ) : items.length === 0 ? (
               <Card className="p-10 text-center text-sm text-muted-foreground">
                 你还没有发布过素材。在实体审核页点击"发布到公共库"即可分享。

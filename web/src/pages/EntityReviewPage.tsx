@@ -345,7 +345,7 @@ export function EntityReviewPage({ type }: Props) {
       {type === 'worldview' ? (
         <WorldviewSynthesisPanel bookId={bookId} />
       ) : (
-        <div className="grid h-[calc(100vh-16rem)] grid-rows-1 grid-cols-1 overflow-hidden rounded-lg border bg-card shadow-sm md:grid-cols-[minmax(280px,2fr)_minmax(0,3fr)]">
+        <div className="grid h-[calc(100vh-16rem)] grid-cols-1 grid-rows-[1fr_1fr] overflow-hidden rounded-lg border bg-card shadow-sm md:grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] md:grid-rows-1">
           <div className="relative min-h-0 overflow-hidden border-r">
             {query.isLoading ? (
               <EntityListSkeleton />

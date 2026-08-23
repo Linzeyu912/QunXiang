@@ -31,7 +31,7 @@ export function EditableTextBlock({
       <div className="flex items-center justify-between">
         <span className="text-xs font-medium text-muted-foreground">
           {label}
-          {needsRepair && <span className="ml-2 text-amber-600 dark:text-amber-400">⚠ 需修复</span>}
+          {needsRepair && <span className="ml-2 text-amber-600 dark:text-amber-400" role="img" aria-label="警告">⚠ 需修复</span>}
         </span>
         {!editing && (
           <Button variant="ghost" size="sm" className="h-6 px-2" onClick={() => setEditing(true)}>

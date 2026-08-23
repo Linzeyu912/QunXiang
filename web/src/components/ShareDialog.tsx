@@ -25,7 +25,15 @@ export function ShareDialog({
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
 
+  // 简单邮箱格式校验
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const canSubmit = emailValid && code.trim().length > 0;
+
   const submit = async () => {
+    if (!emailValid) {
+      toast.error('请输入有效的邮箱地址');
+      return;
+    }
     try {
       await create.mutateAsync({ recipientEmail: email, recipientShareCode: code });
       toast.success(`已分享《${bookTitle}》`);
@@ -70,7 +78,7 @@ export function ShareDialog({
           <DialogClose asChild>
             <Button variant="outline">取消</Button>
           </DialogClose>
-          <Button onClick={submit} disabled={create.isPending || !email || !code}>
+          <Button onClick={submit} disabled={create.isPending || !canSubmit}>
             确认分享
           </Button>
         </DialogFooter>

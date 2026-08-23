@@ -16,6 +16,12 @@ export function FileDropzone({ onFile, disabled, accept = '.txt,text/plain', max
 
   const validate = useCallback(
     (file: File) => {
+      // 验证文件类型（拖拽可绕过 accept 属性，需手动校验）
+      const isValidType = file.type === 'text/plain' || file.name.toLowerCase().endsWith('.txt');
+      if (!isValidType) {
+        setError('仅支持 TXT 文本文件');
+        return false;
+      }
       if (maxSizeMB && file.size > maxSizeMB * 1024 * 1024) {
         setError(`文件过大（${(file.size / 1024 / 1024).toFixed(1)}MB > ${maxSizeMB}MB）`);
         return false;

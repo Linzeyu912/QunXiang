@@ -30,7 +30,7 @@ export function ScriptReviewBar({ review }: { review: ScriptReview }) {
       {warnings.length > 0 && (
         <ul className="mt-1.5 space-y-0.5 text-xs text-amber-700 dark:text-amber-400">
           {warnings.map((i, idx) => (
-            <li key={idx}>⚠ {i.message}</li>
+            <li key={idx}><span role="img" aria-label="警告">⚠</span> {i.message}</li>
           ))}
         </ul>
       )}

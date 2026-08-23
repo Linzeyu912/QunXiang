@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 
-/** 加载占位骨架：用于列表/卡片加载中状态，比纯文字「加载中…」更接近最终布局。 */
+/** 加载占位骨架：用于列表、卡片和详情的加载状态。 */
 function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn('animate-pulse rounded-md bg-muted', className)} {...props} />;
 }
@@ -16,6 +16,19 @@ function PanelSkeleton({ lines = 4, className }: { lines?: number; className?: s
       {Array.from({ length: lines }).map((_, i) => (
         <Skeleton key={i} className={cn('h-4', LINE_WIDTHS[i % LINE_WIDTHS.length])} />
       ))}
+    </div>
+  );
+}
+
+/** 单个列表项骨架：图标 + 双行文本。 */
+function ListItemSkeleton() {
+  return (
+    <div className="flex items-center gap-4 rounded-lg border p-4">
+      <Skeleton className="h-10 w-10" />
+      <div className="flex-1 space-y-2">
+        <Skeleton className="h-4 w-1/3" />
+        <Skeleton className="h-3 w-1/4" />
+      </div>
     </div>
   );
 }
@@ -38,4 +51,52 @@ function RowListSkeleton({ rows = 3, className }: { rows?: number; className?: s
   );
 }
 
-export { Skeleton, PanelSkeleton, RowListSkeleton };
+/** 卡片骨架：标题 + 内容区。 */
+function CardSkeleton() {
+  return (
+    <div className="space-y-3 rounded-lg border p-4">
+      <Skeleton className="h-5 w-1/4" />
+      <Skeleton className="h-4 w-full" />
+      <Skeleton className="h-4 w-2/3" />
+    </div>
+  );
+}
+
+/** 详情页骨架：大标题 + 多行内容。 */
+function DetailSkeleton() {
+  return (
+    <div className="space-y-4 p-6">
+      <Skeleton className="h-8 w-1/3" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-3/4" />
+      </div>
+      <div className="space-y-2 pt-4">
+        <Skeleton className="h-4 w-1/2" />
+        <Skeleton className="h-4 w-2/3" />
+      </div>
+    </div>
+  );
+}
+
+/** 网格骨架：多个卡片占位。 */
+function GridSkeleton({ count = 6 }: { count?: number }) {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {Array.from({ length: count }, (_, i) => (
+        <CardSkeleton key={i} />
+      ))}
+    </div>
+  );
+}
+
+export {
+  Skeleton,
+  PanelSkeleton,
+  ListItemSkeleton,
+  RowListSkeleton,
+  CardSkeleton,
+  DetailSkeleton,
+  GridSkeleton,
+};

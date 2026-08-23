@@ -225,7 +225,7 @@ function AssetPane({
   }
 
   return (
-    <div className="grid h-[calc(100vh-22rem)] grid-cols-1 md:grid-cols-[minmax(240px,1fr)_minmax(0,2fr)] overflow-hidden rounded-lg border bg-card">
+    <div className="grid h-[calc(100vh-22rem)] grid-rows-[1fr_1fr] md:grid-rows-1 grid-cols-1 md:grid-cols-[minmax(240px,1fr)_minmax(0,2fr)] overflow-hidden rounded-lg border bg-card">
       <div className="overflow-y-auto border-r">
         {assets.map((a) => (
           <button
@@ -243,7 +243,7 @@ function AssetPane({
             <div className="flex items-center gap-2">
               <span className="min-w-0 flex-1 truncate text-sm font-medium">
                 {a.name}
-                {a.needsDescriptionRepair && <span className="ml-1 text-amber-500">⚠</span>}
+                {a.needsDescriptionRepair && <span className="ml-1 text-amber-500" role="img" aria-label="警告">⚠</span>}
               </span>
               <Badge variant={a.assetStatus === 'confirmed' ? 'success' : 'muted'}>
                 {a.assetStatus === 'confirmed' ? '确认' : '候选'}

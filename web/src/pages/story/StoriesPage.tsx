@@ -197,7 +197,7 @@ export function StoriesPage() {
       ) : stories.length === 0 ? (
         <EmptyState bookId={bookId} />
       ) : (
-        <div className="grid h-[calc(100vh-16rem)] grid-cols-1 md:grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] overflow-hidden rounded-lg border bg-card">
+        <div className="grid h-[calc(100vh-16rem)] grid-rows-[1fr_1fr] md:grid-rows-1 grid-cols-1 md:grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] overflow-hidden rounded-lg border bg-card">
           <div className="overflow-y-auto border-r">
             {stories.map((s) => (
               <StoryListItem

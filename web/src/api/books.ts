@@ -11,7 +11,7 @@ export const booksKey = {
 export function useBooks() {
   return useQuery({
     queryKey: booksKey.all,
-    queryFn: () => apiFetch<{ books: Book[] }>('/books').then((r) => r.books),
+    queryFn: () => apiFetch<{ books: Book[] }>('/books').then((r) => r.books ?? []),
   });
 }
 
