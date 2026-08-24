@@ -2,3 +2,13 @@
 # （中文乱码 / "'xxx' 不是内部或外部命令"）。autocrlf 不可靠，显式锁定。
 *.bat text eol=crlf
 *.cmd text eol=crlf
+
+# 正式二进制文档与交付附件须随版本保存时使用 Git LFS；运行产物仍应被 .gitignore 排除。
+docs/**/*.doc filter=lfs diff=lfs merge=lfs -text
+docs/**/*.docx filter=lfs diff=lfs merge=lfs -text
+docs/**/*.pdf filter=lfs diff=lfs merge=lfs -text
+docs/**/*.ppt filter=lfs diff=lfs merge=lfs -text
+docs/**/*.pptx filter=lfs diff=lfs merge=lfs -text
+docs/**/*.xls filter=lfs diff=lfs merge=lfs -text
+docs/**/*.xlsx filter=lfs diff=lfs merge=lfs -text
+docs/**/*.zip filter=lfs diff=lfs merge=lfs -text
