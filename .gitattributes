@@ -12,3 +12,7 @@ docs/**/*.pptx filter=lfs diff=lfs merge=lfs -text
 docs/**/*.xls filter=lfs diff=lfs merge=lfs -text
 docs/**/*.xlsx filter=lfs diff=lfs merge=lfs -text
 docs/**/*.zip filter=lfs diff=lfs merge=lfs -text
+
+# 兼容例外：以下文件在启用通配规则前已作为普通 Git blob 提交，不改写共享历史。
+docs/superpowers/specs/云端书库-账号资产与分享复制完整设计.docx -filter -diff -merge
+docs/superpowers/specs/云端书库阶段二-对象存储与完整下载设计.docx -filter -diff -merge
