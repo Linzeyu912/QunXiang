@@ -28,6 +28,8 @@ const manifestSchema = z.object({
     characters: z.number().int().nonnegative(),
     locations: z.number().int().nonnegative(),
     items: z.number().int().nonnegative(),
+    // 兼容已有 v1 书包；新书包会随实体带上世界观设定。
+    worldviews: z.number().int().nonnegative().default(0),
     images: z.number().int().nonnegative(),
   }),
 });
@@ -37,6 +39,7 @@ const entitiesSchema = z.object({
   characters: z.array(z.record(z.string(), z.unknown())),
   locations: z.array(z.record(z.string(), z.unknown())),
   items: z.array(z.record(z.string(), z.unknown())),
+  worldviews: z.array(z.record(z.string(), z.unknown())).default([]),
 });
 export type SeedEntities = z.infer<typeof entitiesSchema>;
 
@@ -79,6 +82,11 @@ const LOCATION_FIELDS = [
   'mentionCount', 'firstChapter', 'lastChapter', 'chapterAppearances',
 ] as const;
 const ITEM_FIELDS = [...LOCATION_FIELDS, 'owners'] as const;
+const WORLDVIEW_FIELDS = [
+  'name', 'aliases', 'category', 'description', 'confidence', 'chapterRef',
+  'importanceScore', 'tier', 'mentionCount', 'firstChapter', 'lastChapter',
+  'chapterAppearances',
+] as const;
 
 type SeedRow = Record<string, unknown>;
 
@@ -99,6 +107,9 @@ export function mapLocationRows(rows: SeedRow[], bookId: string): SeedRow[] {
 }
 export function mapItemRows(rows: SeedRow[], bookId: string): SeedRow[] {
   return rows.map((r) => ({ ...pickFields(r, ITEM_FIELDS), bookId, status: 'APPROVED' }));
+}
+export function mapWorldviewRows(rows: SeedRow[], bookId: string): SeedRow[] {
+  return rows.map((row) => ({ ...pickFields(row, WORLDVIEW_FIELDS), bookId, status: 'APPROVED' }));
 }
 
 /**
@@ -124,6 +135,7 @@ export function assertCountsMatch(
     characters: entities.characters.length,
     locations: entities.locations.length,
     items: entities.items.length,
+    worldviews: entities.worldviews.length,
     images: imageCount,
   };
   const mismatches = (Object.keys(actual) as (keyof typeof actual)[])
@@ -215,6 +227,9 @@ export async function materializeSeedBook(userId: string, seedDir: string): Prom
       if (entities.items.length > 0) {
         await tx.item.createMany({ data: mapItemRows(entities.items, id) as never });
       }
+      if (entities.worldviews.length > 0) {
+        await tx.worldviewSetting.createMany({ data: mapWorldviewRows(entities.worldviews, id) as never });
+      }
       if (imageRows.length > 0) {
         await tx.entityImage.createMany({
           data: imageRows.map((r) => ({ ...r, bookId: id })) as never,
@@ -232,6 +247,19 @@ export async function materializeSeedBook(userId: string, seedDir: string): Prom
         logicalPath: 'run-summary.json',
         category: 'run-summary',
         body: JSON.stringify(rewriteRunSummary(runSummary as SeedRow, bookId)),
+      });
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code !== 'ENOENT') throw err;
+    }
+    // 世界观梳理是根级书籍产物，不随某次提取运行归档。
+    try {
+      const body = await readFile(join(seedDir, 'worldview-synthesis.json'));
+      await persistBookArtifact({
+        bookId,
+        logicalPath: 'worldview-synthesis.json',
+        category: 'worldview-synthesis',
+        body,
+        mime: 'application/json',
       });
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code !== 'ENOENT') throw err;

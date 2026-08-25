@@ -20,6 +20,7 @@ import {
   CharacterRepository,
   LocationRepository,
   ItemRepository,
+  WorldviewRepository,
   ReviewRepository,
   NoiseOverrideRepository,
   EntityImageRepository,
@@ -250,15 +251,17 @@ export async function collectSnapshot(input: CollectSnapshotInput): Promise<Coll
   });
 
   // ===== entity（DB 权威）=====
-  const [characters, locations, itemsList] = await Promise.all([
+  const [characters, locations, itemsList, worldviews] = await Promise.all([
     CharacterRepository.findByBookId(book.id),
     LocationRepository.findByBookId(book.id),
     ItemRepository.findByBookId(book.id),
+    WorldviewRepository.findByBookId(book.id),
   ]);
   const entityBuckets = [
     { type: 'characters', data: characters },
     { type: 'locations', data: locations },
     { type: 'items', data: itemsList },
+    { type: 'worldviews', data: worldviews },
   ];
   for (const bucket of entityBuckets) {
     const list = bucket.data ?? [];

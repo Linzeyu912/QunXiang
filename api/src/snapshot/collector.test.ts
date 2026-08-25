@@ -188,6 +188,9 @@ vi.mock('@novel-agent/storage', () => {
     ItemRepository: {
       async findByBookId() { return mockState.items; },
     },
+    WorldviewRepository: {
+      async findByBookId() { return []; },
+    },
     ReviewRepository: {
       async findByCharacterId(characterId: string) {
         return mockState.reviewsByCharacter.get(characterId) ?? [];

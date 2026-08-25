@@ -11,6 +11,8 @@ export interface ExtractionResultSummary {
   characters: any[];
   locations: any[];
   items: any[];
+  /** 世界观/体系设定；不计入 totalCount 空结果守卫（仅有世界观不算有效产出）。 */
+  worldviews: any[];
   totalCount: number;
 }
 
@@ -19,10 +21,12 @@ export function summarizeExtractionResult(result: unknown): ExtractionResultSumm
   const characters = Array.isArray(r.characters) ? r.characters : [];
   const locations = Array.isArray(r.locations) ? r.locations : [];
   const items = Array.isArray(r.items) ? r.items : [];
+  const worldviews = Array.isArray(r.worldviews) ? r.worldviews : [];
   return {
     characters,
     locations,
     items,
+    worldviews,
     totalCount: characters.length + locations.length + items.length,
   };
 }

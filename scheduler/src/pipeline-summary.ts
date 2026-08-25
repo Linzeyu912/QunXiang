@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
-import { BookRepository, CharacterRepository, LocationRepository, ItemRepository, persistBookArtifact } from '@novel-agent/storage';
+import { BookRepository, CharacterRepository, LocationRepository, ItemRepository, WorldviewRepository, persistBookArtifact } from '@novel-agent/storage';
 import { bookSlug } from '@novel-agent/story-arcs';
 
 type NamedEntity = { name?: unknown };
@@ -38,6 +38,7 @@ export interface PipelineSummary {
     characters: number;
     locations: number;
     items: number;
+    worldviews: number;
   };
   outputs: {
     finalSummary: string;
@@ -48,6 +49,7 @@ export interface PipelineSummary {
     characters: string[];
     locations: string[];
     items: string[];
+    worldviews: string[];
   };
   reviewer: unknown;
 }
@@ -65,6 +67,7 @@ export function buildPipelineSummary(
   const characters = namesFrom(payload.characters);
   const locations = namesFrom(payload.locations);
   const items = namesFrom(payload.items);
+  const worldviews = namesFrom(payload.worldviews);
 
   return {
     bookId,
@@ -75,6 +78,7 @@ export function buildPipelineSummary(
       characters: characters.length,
       locations: locations.length,
       items: items.length,
+      worldviews: worldviews.length,
     },
     outputs: {
       finalSummary: `output/${dirName}/final/run-summary.json`,
@@ -85,6 +89,7 @@ export function buildPipelineSummary(
       characters,
       locations,
       items,
+      worldviews,
     },
     reviewer: reviewerResult,
   };
@@ -214,15 +219,18 @@ async function writeEntityOutput(
     const payloadCharacters = payloadEntitiesFrom<DbCharacter>(payload, 'characters');
     const payloadItems = payloadEntitiesFrom<DbEntity>(payload, 'items');
     const payloadLocations = payloadEntitiesFrom<DbEntity>(payload, 'locations');
+    const payloadWorldviews = payloadEntitiesFrom<DbEntity>(payload, 'worldviews');
 
-    const [dbCharacters, dbLocations, dbItems] = await Promise.all([
+    const [dbCharacters, dbLocations, dbItems, dbWorldviews] = await Promise.all([
       safeRepositoryRead<DbCharacter>('characters', () => CharacterRepository.findByBookId(bookId)),
       safeRepositoryRead<DbEntity>('locations', () => LocationRepository.findByBookId(bookId)),
       safeRepositoryRead<DbEntity>('items', () => ItemRepository.findByBookId(bookId)),
+      safeRepositoryRead<DbEntity>('worldviews', () => WorldviewRepository.findByBookId(bookId)),
     ]);
     const characters = preferPayloadEntities(dbCharacters, payloadCharacters);
     const items = preferPayloadEntities(dbItems, payloadItems);
     const locations = preferPayloadEntities(dbLocations, payloadLocations);
+    const worldviews = preferPayloadEntities(dbWorldviews, payloadWorldviews);
 
     // Prompt-generation outputs (optional — may not exist in older runs)
     const promptFiles = [
@@ -241,6 +249,7 @@ async function writeEntityOutput(
       writeJson('characters.json', characters),
       writeJson('items.json', items),
       writeJson('locations.json', locations),
+      writeJson('worldviews.json', worldviews),
       writeJson('events.json', events),
       writeText('summary.md', buildEntityMarkdown(bookTitle, characters, items, locations, events), 'text/markdown'),
       ...promptWrites,
@@ -249,7 +258,7 @@ async function writeEntityOutput(
       await writeText('all-prompts.md', promptMd, 'text/markdown');
     }
     const promptSummary = promptFiles.map((f) => `${f.key}=${(Array.isArray(payload[f.key]) ? (payload[f.key] as unknown[]).length : 0)}`).join(', ');
-    console.log(`[Pipeline] Entity output: ${entitiesDir}/ (characters=${characters.length}, items=${items.length}, locations=${locations.length}, events=${events.length}, prompts=${promptSummary})`);
+    console.log(`[处理流水线] 实体输出：${entitiesDir}/（角色=${characters.length}，道具=${items.length}，场景=${locations.length}，世界观=${worldviews.length}，事件=${events.length}，提示词=${promptSummary}）`);
   } catch (err) {
     console.error(`[Pipeline] Failed to write entity output: ${err instanceof Error ? err.message : err}`);
   }

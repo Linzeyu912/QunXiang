@@ -73,6 +73,7 @@ const DESCRIPTION_TITLE: Record<EntityType, string> = {
   character: '人物描写',
   location: '场景描写',
   item: '道具描写',
+  worldview: '世界观与体系说明',
 };
 
 // completionStatus / descriptionSource 的中文标签

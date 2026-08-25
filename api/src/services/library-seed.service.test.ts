@@ -5,6 +5,7 @@ import {
   mapCharacterRows,
   mapLocationRows,
   mapItemRows,
+  mapWorldviewRows,
   rewriteRunSummary,
 } from './library-seed.service.js';
 
@@ -15,7 +16,7 @@ const validManifest = {
   exportedAt: '2026-07-24T00:00:00.000Z',
   sourceFile: 'source.txt',
   fileSize: 12345,
-  counts: { characters: 1, locations: 1, items: 1, images: 2 },
+  counts: { characters: 1, locations: 1, items: 1, worldviews: 1, images: 2 },
 };
 
 describe('parseManifest', () => {
@@ -40,7 +41,7 @@ describe('assertCountsMatch', () => {
     expect(() =>
       assertCountsMatch(
         manifest,
-        { characters: [{}], locations: [{}], items: [{}] },
+        { characters: [{}], locations: [{}], items: [{}], worldviews: [{}] },
         2,
       ),
     ).not.toThrow();
@@ -48,7 +49,7 @@ describe('assertCountsMatch', () => {
 
   it('计数不符时抛出并指出差异项', () => {
     expect(() =>
-      assertCountsMatch(manifest, { characters: [{}, {}], locations: [{}], items: [] }, 1),
+      assertCountsMatch(manifest, { characters: [{}, {}], locations: [{}], items: [], worldviews: [] }, 1),
     ).toThrow(/计数不一致/);
   });
 });
@@ -100,6 +101,18 @@ describe('实体行映射（三表字段集差异）', () => {
     const [row] = mapItemRows([{ ...base, owners: ['萧炎'] }], 'bid');
     expect(row.owners).toEqual(['萧炎']);
     expect(row.status).toBe('APPROVED');
+  });
+
+  it('Worldview：保留世界观字段并统一标记为已审核', () => {
+    const [row] = mapWorldviewRows(
+      [{ ...base, category: 'power-system', importanceScore: 9, tier: 'core', chapterAppearances: [1, 2] }],
+      'bid',
+    );
+    expect(row.bookId).toBe('bid');
+    expect(row.status).toBe('APPROVED');
+    expect(row.category).toBe('power-system');
+    expect(row.chapterAppearances).toEqual([1, 2]);
+    expect(row.id).toBeUndefined();
   });
 
   it('缺失的可选字段不写入（交给 DB 默认值）', () => {

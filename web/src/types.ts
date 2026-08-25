@@ -1,4 +1,4 @@
-export type EntityType = 'character' | 'location' | 'item';
+export type EntityType = 'character' | 'location' | 'item' | 'worldview';
 
 export type BookStatus = 'UPLOADED' | 'EXTRACTING' | 'EXTRACTED' | 'FAILED';
 export type EntityStatus = 'PENDING' | 'APPROVED' | 'REJECTED';
@@ -94,7 +94,37 @@ export interface ItemEntity extends EntityBase {
   owners?: Owner[] | string;
 }
 
-export type AnyEntity = Character | LocationEntity | ItemEntity;
+/** 世界观/体系设定类别。 */
+export type WorldviewCategory = 'worldview' | 'power-system' | 'realm' | 'faction' | 'rule';
+
+/** 世界观与体系设定实体。 */
+export interface WorldviewEntity extends EntityBase {
+  category: WorldviewCategory;
+  importanceScore: number;
+  tier: Tier;
+}
+
+export type AnyEntity = Character | LocationEntity | ItemEntity | WorldviewEntity;
+
+/** 世界观体系梳理结果。 */
+export interface WorldviewSynthesis {
+  overview: string | null;
+  cultivationSystem: {
+    summary: string;
+    details?: string | null;
+    levels: Array<{ name: string; totalLevels?: string | null; description: string }>;
+  } | null;
+  factions: {
+    summary: string;
+    groups: Array<{ name: string; description: string; relation?: string | null }>;
+  } | null;
+  rules: { summary: string; items: string[] } | null;
+  geography: {
+    summary: string;
+    regions: Array<{ name: string; description: string }>;
+  } | null;
+  history: string | null;
+}
 
 export type AgentType =
   | 'extractor'

@@ -9,18 +9,21 @@ import type {
   ItemEntity,
   LocationEntity,
   Tier,
+  WorldviewSynthesis,
 } from '@/types';
 
 const PATHS: Record<EntityType, string> = {
   character: '/characters',
   location: '/locations',
   item: '/items',
+  worldview: '/worldview',
 };
 
 const KEYS: Record<EntityType, string> = {
   character: 'characters',
   location: 'locations',
   item: 'items',
+  worldview: 'worldviews',
 };
 
 export const entitiesKey = {
@@ -84,7 +87,13 @@ export function useUpdateEntity(type: EntityType, bookId: string) {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async ({ id, patch }: { id: string; patch: EntityPatch }) => {
-      const key = type === 'character' ? 'character' : type === 'location' ? 'location' : 'item';
+      const key = type === 'character'
+        ? 'character'
+        : type === 'location'
+          ? 'location'
+          : type === 'worldview'
+            ? 'worldview'
+            : 'item';
       const res = await apiFetch<Record<string, AnyEntity>>(`${PATHS[type]}/${id}`, {
         method: 'PATCH',
         body: patch,
@@ -118,5 +127,33 @@ export function useBatchUpdateStatus(type: EntityType, bookId: string) {
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: entitiesKey.all(bookId) });
     },
+  });
+}
+
+/** 让模型读取正文并生成结构化世界观梳理。 */
+export function useWorldviewSynthesis(bookId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: () => apiFetch<{ synthesis: WorldviewSynthesis }>('/worldview/synthesize', {
+      method: 'POST',
+      body: { bookId },
+    }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['worldview-synthesis', bookId] });
+    },
+  });
+}
+
+/** 获取已保存的世界观梳理结果。 */
+export function useWorldviewSynthesisResult(bookId: string | undefined) {
+  return useQuery({
+    queryKey: bookId ? ['worldview-synthesis', bookId] : ['worldview-synthesis', 'none'],
+    queryFn: async (): Promise<WorldviewSynthesis | null> => {
+      const result = await apiFetch<{ synthesis: WorldviewSynthesis | null }>(
+        `/worldview/synthesis?bookId=${bookId}`,
+      );
+      return result.synthesis ?? null;
+    },
+    enabled: !!bookId,
   });
 }

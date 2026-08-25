@@ -101,6 +101,7 @@ export function App() {
           <Route path="characters" element={<EntityReviewPage type="character" />} />
           <Route path="locations" element={<EntityReviewPage type="location" />} />
           <Route path="items" element={<EntityReviewPage type="item" />} />
+          <Route path="worldview" element={<EntityReviewPage type="worldview" />} />
           <Route path="export" element={<ExportPage />} />
           <Route path="stories" element={<StoriesPage />} />
           <Route path="stories/boundary-review" element={<BoundaryReviewPage />} />

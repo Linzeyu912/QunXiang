@@ -39,6 +39,7 @@ model Book {
   characters        Character[]
   locations         Location[]
   items             Item[]
+  worldviewSettings WorldviewSetting[]
   sessions          ExtractionSession[]
   tasks             Task[]
   noiseOverrides    NoiseOverride[]
@@ -131,6 +132,32 @@ model Item {
 
   @@index([bookId])
   @@index([tier])
+}
+
+/// 世界观与体系设定实体（灵气/斗气等能量体系、境界等级、组织势力、规则法则）。
+model WorldviewSetting {
+  id                 String   @id @default(uuid()) @db.Uuid
+  bookId             String   @db.Uuid
+  book               Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  name               String
+  aliases            Json     @default("[]")
+  category           String   @default("worldview") // worldview|power-system|realm|faction|rule
+  description        String?
+  confidence         Float    @default(0.5)
+  status             String   @default("PENDING")
+  chapterRef         String?
+  importanceScore    Float    @default(0)
+  tier               String   @default("candidate")
+  mentionCount       Int      @default(0)
+  firstChapter       Int?
+  lastChapter        Int?
+  chapterAppearances Json     @default("[]")
+  createdAt          DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt          DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([bookId])
+  @@index([bookId, status])
+  @@index([category])
 }
 
 model CharacterReview {

@@ -37,6 +37,17 @@ describe('summarizeExtractionResult (空结果守卫)', () => {
     expect(summarizeExtractionResult({ characters: [], locations: [], items: [{ name: '青莲地心火' }] }).totalCount).toBe(1);
   });
 
+  it('世界观结果会保留，但不替代角色、场景、道具的空结果守卫', () => {
+    const summary = summarizeExtractionResult({
+      characters: [],
+      locations: [],
+      items: [],
+      worldviews: [{ name: '斗气大陆' }],
+    });
+    expect(summary.worldviews).toEqual([{ name: '斗气大陆' }]);
+    expect(summary.totalCount).toBe(0);
+  });
+
   it('多类混合时正确累加', () => {
     const summary = summarizeExtractionResult({
       characters: [{ name: '萧炎' }, { name: '药老' }],

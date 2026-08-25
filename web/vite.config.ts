@@ -7,7 +7,7 @@ const API_TARGET = process.env.VITE_API_URL || 'http://localhost:3001';
 
 // 与 api/src/app.ts 的路由前缀保持一致；漏配的前缀不会走代理，
 // 会以 404/HTML 的形式落到 vite（曾导致 /account 轮换分享码、/shares 404）。
-const API_PREFIXES = ['/books', '/characters', '/locations', '/items', '/export', '/health', '/auth', '/account', '/shares', '/public-assets'];
+const API_PREFIXES = ['/books', '/characters', '/locations', '/items', '/worldview', '/export', '/health', '/auth', '/account', '/shares', '/public-assets'];
 
 export default defineConfig({
   plugins: [react()],

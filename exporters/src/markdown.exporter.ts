@@ -2,6 +2,15 @@ import type { ExportEntity, Book, EntityKind } from './types.js';
 import { KIND_LABEL } from './types.js';
 import { BaseExporter } from './base.js';
 
+/** 世界观/体系类别中文标签（导出展示用）。 */
+const WORLDVIEW_CATEGORY_LABEL: Record<string, string> = {
+  worldview: '世界观背景',
+  'power-system': '力量体系',
+  realm: '境界等级',
+  faction: '组织势力',
+  rule: '规则法则',
+};
+
 export class MarkdownExporter extends BaseExporter {
   export(entities: ExportEntity[], book: Book, kind: EntityKind): string {
     const lines: string[] = [];
@@ -51,6 +60,10 @@ export class MarkdownExporter extends BaseExporter {
         }
         if (e.coCharacters && e.coCharacters.length > 0) {
           lines.push(`| Co-Characters | ${e.coCharacters.join(', ')} |`);
+        }
+      } else if (kind === 'worldview') {
+        if (e.category) {
+          lines.push(`| 类别 | ${WORLDVIEW_CATEGORY_LABEL[e.category] ?? e.category} |`);
         }
       } else {
         if (e.tier) lines.push(`| Tier | ${e.tier} |`);

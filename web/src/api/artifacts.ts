@@ -84,10 +84,11 @@ export function useExtractionArtifacts(bookId: string | undefined) {
   });
 }
 
-const TYPE_BUCKET: Record<EntityType, keyof Pick<ExtractionArtifactsResponse, 'characters' | 'locations' | 'items'>> = {
+const TYPE_BUCKET: Partial<Record<EntityType, keyof Pick<ExtractionArtifactsResponse, 'characters' | 'locations' | 'items'>>> = {
   character: 'characters',
   location: 'locations',
   item: 'items',
+  // 世界观暂无描述融合、视觉描述或提示词产物桶。
 };
 
 /** 按实体名（fallback 别名）匹配富产物。 */
@@ -98,7 +99,9 @@ export function matchArtifacts(
   aliases: string[],
 ): EntityArtifacts | undefined {
   if (!data?.available) return undefined;
-  const bucket = data[TYPE_BUCKET[type]];
+  const bucketKey = TYPE_BUCKET[type];
+  if (!bucketKey) return undefined;
+  const bucket = data[bucketKey];
   if (bucket[name]) return bucket[name];
   for (const alias of aliases) {
     if (bucket[alias]) return bucket[alias];

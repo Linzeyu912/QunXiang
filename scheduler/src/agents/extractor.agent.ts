@@ -1,4 +1,4 @@
-import type { AgentType, Character, Location, Item, Owner } from '@novel-agent/core';
+import type { AgentType, Character, Location, Item, Owner, WorldviewSetting } from '@novel-agent/core';
 import { createExtractor } from '@novel-agent/extractors';
 import { BookRepository, getSharedAssetSourceResolver } from '@novel-agent/storage';
 import { parseTxtEnhanced } from '@novel-agent/import';
@@ -25,6 +25,7 @@ export interface ExtractorResult {
   characters: Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[];
   locations: Omit<Location, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[];
   items: Omit<Item, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[];
+  worldviews?: Omit<WorldviewSetting, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[];
   events?: import('@novel-agent/entity-prescan').EntityMention[];
   runDirName?: string;
   characterDescriptions?: CharacterDescriptionPack[];
@@ -216,10 +217,32 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
   const locationDescriptions = extractLocationDescriptionPacks(locations, chapters);
   console.log(`[Extractor] Entity descriptions: characters=${characterDescriptions.length}, items=${itemDescriptions.length}, locations=${locationDescriptions.length}`);
 
+  // 世界观/体系设定：LLM 主提取（extractors 已跨批去重），不参与 prescan 重要性打分，
+  // 中性 importance/tier，入库后由人工审核分级。mentionCount 取章节证据数。
+  const worldviews: Omit<WorldviewSetting, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[] = (
+    entityResult.worldviews || []
+  ).map((w) => ({
+    name: w.name,
+    aliases: Array.isArray(w.aliases) ? w.aliases : [],
+    category: w.category || 'worldview',
+    description: w.description,
+    confidence: w.confidence ?? 0.7,
+    status: 'PENDING' as const,
+    chapterRef: w.firstChapter != null ? `第${w.firstChapter}章` : undefined,
+    importanceScore: 0,
+    tier: 'candidate' as const,
+    mentionCount: (w.chapterAppearances || []).length,
+    firstChapter: w.firstChapter,
+    lastChapter: w.lastChapter,
+    chapterAppearances: w.chapterAppearances ?? [],
+  }));
+  console.log(`[实体提取] 世界观设定：${worldviews.length}`);
+
   return {
     characters,
     locations,
     items,
+    worldviews,
     events: enhanced.prescanResult?.event || [],
     runDirName,
     characterDescriptions,

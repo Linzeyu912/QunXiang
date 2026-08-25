@@ -18,6 +18,7 @@ import {
   CharacterRepository,
   LocationRepository,
   ItemRepository,
+  WorldviewRepository,
   EntityImageRepository,
   readBookArtifactText,
 } from '@novel-agent/storage';
@@ -38,6 +39,7 @@ const ARTIFACT_FILES = [
   'summary.md',
   'all-prompts.md',
 ] as const;
+const ROOT_ARTIFACT_FILES = ['worldview-synthesis.json'] as const;
 
 const SIZE_WARN_BYTES = 50 * 1024 * 1024; // repo 体积软上限 50MB
 
@@ -112,13 +114,14 @@ async function main() {
   await writeFile(join(outDir, 'source.txt'), sourceText, 'utf-8');
   totalBytes += Buffer.byteLength(sourceText, 'utf-8');
 
-  // ── 三类实体 ──
-  const [characters, locations, items] = await Promise.all([
+  // ── 实体（角色、场景、道具、世界观）──
+  const [characters, locations, items, worldviews] = await Promise.all([
     CharacterRepository.findByBookId(bookId),
     LocationRepository.findByBookId(bookId),
     ItemRepository.findByBookId(bookId),
+    WorldviewRepository.findByBookId(bookId),
   ]);
-  const allRows = [...characters, ...locations, ...items] as unknown as {
+  const allRows = [...characters, ...locations, ...items, ...worldviews] as unknown as {
     name: string; status: string;
   }[];
   const notApproved = allRows.filter((r) => r.status !== 'APPROVED');
@@ -133,6 +136,7 @@ async function main() {
       characters: characters.map((r) => stripRow(r as unknown as Record<string, unknown>)),
       locations: locations.map((r) => stripRow(r as unknown as Record<string, unknown>)),
       items: items.map((r) => stripRow(r as unknown as Record<string, unknown>)),
+      worldviews: worldviews.map((r) => stripRow(r as unknown as Record<string, unknown>)),
     },
     null,
     2,
@@ -149,6 +153,12 @@ async function main() {
     console.warn('⚠ 未找到 run-summary.json（BookArtifact 与 output/ 均无），产物区将不可用。');
   } else {
     await writeFile(join(outDir, 'run-summary.json'), runSummaryText, 'utf-8');
+  }
+
+  // 根级结构化产物不属于某次提取运行，单独随书包导出。
+  for (const file of ROOT_ARTIFACT_FILES) {
+    const text = await readBookArtifactText(bookId, file);
+    if (text) await writeFile(join(outDir, file), text, 'utf-8');
   }
 
   let artifactCount = 0;
@@ -211,6 +221,7 @@ async function main() {
       characters: characters.length,
       locations: locations.length,
       items: items.length,
+      worldviews: worldviews.length,
       images: imageRows.length,
     },
   };
@@ -219,7 +230,8 @@ async function main() {
   const mb = (totalBytes / 1024 / 1024).toFixed(1);
   console.log(
     `✓ 导出完成：seed-library/${slug}/（角色 ${characters.length} / 场景 ${locations.length} / ` +
-    `道具 ${items.length} / 图片 ${imageRows.length} / 产物 ${artifactCount}/${ARTIFACT_FILES.length}，共 ${mb} MB）`,
+    `道具 ${items.length} / 世界观 ${worldviews.length} / 图片 ${imageRows.length} / ` +
+    `产物 ${artifactCount}/${ARTIFACT_FILES.length}，共 ${mb} MB）`,
   );
   if (totalBytes > SIZE_WARN_BYTES) {
     console.warn(`⚠ 书包体积 ${mb} MB 超过 50MB 软上限，注意 git 仓库膨胀。`);

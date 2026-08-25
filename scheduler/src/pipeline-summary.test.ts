@@ -10,6 +10,7 @@ describe('pipeline summary', () => {
       characters: [{ name: '萧炎' }, { name: '萧战' }],
       locations: [{ name: '乌坦城' }],
       items: [{ name: '青木剑' }],
+      worldviews: [{ name: '斗气大陆' }],
     }, { count: 2 });
 
     expect(summary).toMatchObject({
@@ -20,6 +21,7 @@ describe('pipeline summary', () => {
         characters: 2,
         locations: 1,
         items: 1,
+        worldviews: 1,
       },
       outputs: {
         finalSummary: 'output/book-1/final/run-summary.json',
@@ -30,6 +32,7 @@ describe('pipeline summary', () => {
         characters: ['萧炎', '萧战'],
         locations: ['乌坦城'],
         items: ['青木剑'],
+        worldviews: ['斗气大陆'],
       },
     });
     expect(summary.outputs).not.toHaveProperty('storyAssets');

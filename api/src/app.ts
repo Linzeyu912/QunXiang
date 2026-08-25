@@ -12,6 +12,7 @@ import { booksRoutes } from './routes/books.js';
 import { charactersRoutes } from './routes/characters.js';
 import { locationRoutes } from './routes/locations.js';
 import { itemRoutes } from './routes/items.js';
+import { worldviewRoutes } from './routes/worldview.js';
 import { extractRoutes } from './routes/extract.js';
 import { exportRoutes } from './routes/export.js';
 import { authRoutes } from './routes/auth.js';
@@ -155,6 +156,7 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
   await fastify.register(charactersRoutes, { prefix: '/characters' });
   await fastify.register(locationRoutes, { prefix: '/locations' });
   await fastify.register(itemRoutes, { prefix: '/items' });
+  await fastify.register(worldviewRoutes, { prefix: '/worldview' });
   await fastify.register(extractRoutes, { prefix: '/books' });
   await fastify.register(storiesRoutes, { prefix: '/books' });
   await fastify.register(directorRoutes, { prefix: '/books' });

@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, BookOpen, Boxes, Clapperboard, Download, FileText, ListTree, MapPin, Users, Workflow } from 'lucide-react';
+import { ArrowLeft, BookOpen, Boxes, Clapperboard, Download, FileText, Globe2, ListTree, MapPin, Users, Workflow } from 'lucide-react';
 import { useBook } from '@/api/books';
 import { useStages } from '@/api/extraction';
 import { useStories } from '@/api/stories';
@@ -67,6 +67,13 @@ export function BookLayout() {
           disabled={!isComplete}
         >
           道具
+        </BookTab>
+        <BookTab
+          to={`/books/${bookId}/worldview`}
+          icon={<Globe2 className="h-4 w-4" />}
+          disabled={!isComplete}
+        >
+          世界观
         </BookTab>
         <BookTab
           to={`/books/${bookId}/export`}

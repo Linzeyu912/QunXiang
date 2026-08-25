@@ -2,7 +2,7 @@ import { apiFetch } from './client';
 import type { EntityType } from '@/types';
 
 export type ExportFormat = 'json' | 'markdown' | 'csv';
-export type ExportType = EntityType; // character | location | item
+export type ExportType = EntityType; // character | location | item | worldview
 
 export function getExportUrl(bookId: string, format: ExportFormat, type: ExportType = 'character'): string {
   const params = new URLSearchParams({ format, type });

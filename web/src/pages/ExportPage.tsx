@@ -26,6 +26,7 @@ const TYPES: { value: ExportType; label: string }[] = [
   { value: 'character', label: '角色' },
   { value: 'location', label: '场景' },
   { value: 'item', label: '道具' },
+  { value: 'worldview', label: '世界观与体系' },
 ];
 
 export function ExportPage() {

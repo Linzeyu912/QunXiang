@@ -10,7 +10,14 @@ import {
   executePromptGeneration,
   executeReviewer,
 } from './agents/index.js';
-import { CharacterRepository, LocationRepository, ItemRepository, BookRepository, TaskRepository } from '@novel-agent/storage';
+import {
+  CharacterRepository,
+  LocationRepository,
+  ItemRepository,
+  WorldviewRepository,
+  BookRepository,
+  TaskRepository,
+} from '@novel-agent/storage';
 import { eventBus, type PipelineEvent } from './event-bus.js';
 import { writePipelineFinalSummary } from './pipeline-summary.js';
 import { summarizeExtractionResult, buildEmptyExtractionMessage } from './extraction-result-summary.js';
@@ -275,7 +282,7 @@ export class TaskDispatcher {
       const nextAgent = getNextAgent(agentType);
       if (nextAgent === 'reviewer' && result && typeof result === 'object' && 'characters' in result) {
         const bookId = (task.payload as { bookId?: string }).bookId || task.bookId;
-        const { characters: chars, locations: locs, items: entityItems, totalCount } =
+        const { characters: chars, locations: locs, items: entityItems, worldviews, totalCount } =
           summarizeExtractionResult(result);
 
         // 空结果守卫：三类实体全为空，几乎等价于配置/输入有问题（LLM 没返回、
@@ -303,6 +310,7 @@ export class TaskDispatcher {
         await CharacterRepository.deleteByBookId(bookId);
         await LocationRepository.deleteByBookId(bookId);
         await ItemRepository.deleteByBookId(bookId);
+        await WorldviewRepository.deleteByBookId(bookId);
         // chars/locs/entityItems 已在上方统一解包并做过空结果守卫
         if (chars.length > 0) {
           await CharacterRepository.createMany(
@@ -383,6 +391,28 @@ export class TaskDispatcher {
             }))
           );
           console.log(`[Dispatcher] Persisted ${entityItems.length} items`);
+        }
+
+        // 保存世界观与体系设定。
+        if (worldviews.length > 0) {
+          await WorldviewRepository.createMany(
+            worldviews.map((worldview: any) => ({
+              bookId,
+              name: worldview.name,
+              aliases: Array.isArray(worldview.aliases) ? worldview.aliases : [],
+              category: worldview.category || 'worldview',
+              description: worldview.description || undefined,
+              confidence: worldview.confidence || 0.7,
+              chapterRef: worldview.chapterRef || undefined,
+              importanceScore: worldview.importanceScore ?? 0,
+              tier: worldview.tier ?? 'candidate',
+              mentionCount: worldview.mentionCount ?? 0,
+              firstChapter: worldview.firstChapter ?? undefined,
+              lastChapter: worldview.lastChapter ?? undefined,
+              chapterAppearances: worldview.chapterAppearances ?? [],
+            })),
+          );
+          console.log(`[调度器] 已保存 ${worldviews.length} 条世界观设定`);
         }
       }
 

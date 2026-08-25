@@ -85,6 +85,7 @@ export async function extractCharacters(
     characters: MOCK_CHARACTERS.map(c => ({ ...c })),
     items: [],
     locations: [],
+    worldviews: [],
     failedBatches: [],
     totalBatches,
     successfulBatches: totalBatches,

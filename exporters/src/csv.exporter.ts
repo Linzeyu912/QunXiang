@@ -27,9 +27,16 @@ const TIERED_COLS: Col[] = [
   { header: 'pillarTransition', get: (e) => (e.pillarTransition ?? 0).toString() },
 ];
 
+const WORLDVIEW_COLS: Col[] = [
+  { header: '类别', get: (e) => e.category ?? '' },
+];
+
 export class CsvExporter extends BaseExporter {
   export(entities: ExportEntity[], _book: Book, kind: EntityKind): string {
-    const cols = [...COMMON_COLS, ...(kind === 'character' ? CHARACTER_COLS : TIERED_COLS)];
+    const cols = [
+      ...COMMON_COLS,
+      ...(kind === 'character' ? CHARACTER_COLS : kind === 'worldview' ? WORLDVIEW_COLS : TIERED_COLS),
+    ];
     const lines: string[] = [];
 
     lines.push(cols.map((c) => c.header).join(','));

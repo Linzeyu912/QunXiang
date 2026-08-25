@@ -6,6 +6,7 @@ import { useEntities, useUpdateEntity, useBatchUpdateStatus } from '@/api/entiti
 import { matchArtifacts, useExtractionArtifacts } from '@/api/artifacts';
 import { EntityListPanel } from '@/components/review/EntityListPanel';
 import { EntityDetailPanel } from '@/components/review/EntityDetailPanel';
+import { WorldviewSynthesisPanel } from '@/components/review/WorldviewSynthesisPanel';
 import { TierLegend } from '@/components/StatusBadge';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { parseAliases } from '@/lib/utils';
@@ -54,6 +55,7 @@ const TITLE: Record<EntityType, string> = {
   character: '角色审核',
   location: '场景审核',
   item: '道具审核',
+  worldview: '世界观与体系审核',
 };
 
 type SortKey = 'confidence' | 'mentions' | 'firstChapter' | 'name';
@@ -98,7 +100,10 @@ export function EntityReviewPage({ type }: Props) {
   const tier = (sp.get('tier') as Tier | null) ?? undefined;
   const selectedId = sp.get('sel') ?? undefined;
 
-  const query = useEntities(type, bookId, { status, tier: type === 'character' ? undefined : tier });
+  const query = useEntities(type, bookId, {
+    status,
+    tier: type === 'location' || type === 'item' ? tier : undefined,
+  });
   const update = useUpdateEntity(type, bookId);
   const artifactsQ = useExtractionArtifacts(bookId);
 
@@ -268,7 +273,7 @@ export function EntityReviewPage({ type }: Props) {
               ))}
             </SelectContent>
           </Select>
-          {type !== 'character' && (
+          {(type === 'location' || type === 'item') && (
             <Select value={tier ?? 'ALL'} onValueChange={setTier}>
               <SelectTrigger className="w-28">
                 <SelectValue />
@@ -286,10 +291,13 @@ export function EntityReviewPage({ type }: Props) {
         </div>
       </div>
 
-      {type !== 'character' && (
+      {(type === 'location' || type === 'item') && (
         <TierLegend className="rounded-lg border bg-muted/30 px-3 py-2" />
       )}
 
+      {type === 'worldview' ? (
+        <WorldviewSynthesisPanel bookId={bookId} />
+      ) : (
       <div className="grid h-[calc(100vh-16rem)] grid-rows-1 grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] overflow-hidden rounded-lg border bg-card shadow-sm">
         <div className="relative min-h-0 overflow-hidden border-r">
           {query.isLoading ? (
@@ -319,6 +327,7 @@ export function EntityReviewPage({ type }: Props) {
           )}
         </div>
       </div>
+      )}
     </div>
   );
 }

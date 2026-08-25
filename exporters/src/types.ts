@@ -1,7 +1,7 @@
-// 通用实体导出形状：三类实体（角色/场景/道具）的并集，类型特有字段可选。
+// 通用实体导出形状：四类实体（角色/场景/道具/世界观体系）的并集，类型特有字段可选。
 // 存储层返回的对象经路由层归一化为该形状后送入 exporter。
 
-export type EntityKind = 'character' | 'location' | 'item';
+export type EntityKind = 'character' | 'location' | 'item' | 'worldview';
 
 export interface ExportEntity {
   id: string;
@@ -25,6 +25,8 @@ export interface ExportEntity {
   pillarCausal?: number;
   pillarUniqueness?: number;
   pillarTransition?: number;
+  // 世界观/体系特有：worldview|power-system|realm|faction|rule
+  category?: string;
 }
 
 export interface Book {
@@ -50,10 +52,12 @@ export const KIND_LABEL: Record<EntityKind, string> = {
   character: '角色',
   location: '场景',
   item: '道具',
+  worldview: '世界观与体系',
 };
 
 export const KIND_PLURAL_KEY: Record<EntityKind, string> = {
   character: 'characters',
   location: 'locations',
   item: 'items',
+  worldview: 'worldviews',
 };

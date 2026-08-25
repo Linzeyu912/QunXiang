@@ -112,6 +112,30 @@ export interface Item {
   updatedAt?: Date;
 }
 
+/** 世界观/体系设定类别：世界观背景、力量体系、境界等级、组织势力、规则法则。 */
+export type WorldviewCategory = 'worldview' | 'power-system' | 'realm' | 'faction' | 'rule';
+
+/** 世界观与体系设定实体。 */
+export interface WorldviewSetting {
+  id: string;
+  bookId: string;
+  name: string;
+  aliases: string[];
+  category: WorldviewCategory;
+  description?: string;
+  confidence: number;
+  status: 'PENDING' | 'APPROVED' | 'REJECTED';
+  chapterRef?: string;
+  importanceScore: number;
+  tier: 'core' | 'supporting' | 'candidate' | 'archived';
+  mentionCount: number;
+  firstChapter?: number;
+  lastChapter?: number;
+  chapterAppearances: number[];
+  createdAt: Date;
+  updatedAt?: Date;
+}
+
 export interface User {
   id: string;
   email: string;

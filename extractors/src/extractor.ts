@@ -6,6 +6,7 @@ import {
   type CharacterInputOutput,
   type ItemInputOutput,
   type LocationInputOutput,
+  type WorldviewInputOutput,
 } from '@novel-agent/schemas';
 import { getDefaultProvider } from '@novel-agent/llm';
 import {
@@ -40,6 +41,7 @@ export interface BatchResult {
   characters: CharacterInputOutput[];
   items: ItemInputOutput[];
   locations: LocationInputOutput[];
+  worldviews: WorldviewInputOutput[];
   error?: string;
 }
 
@@ -47,6 +49,7 @@ export interface ExtractResult {
   characters: CharacterCandidate[];
   items: ItemInputOutput[];
   locations: LocationInputOutput[];
+  worldviews: WorldviewInputOutput[];
   failedBatches: BatchResult[];
   totalBatches: number;
   successfulBatches: number;
@@ -56,6 +59,7 @@ interface ProcessBatchResult {
   batchCharacters: CharacterInputOutput[];
   batchItems: ItemInputOutput[];
   batchLocations: LocationInputOutput[];
+  batchWorldviews: WorldviewInputOutput[];
   batch: Chapter[];
   failedBatches?: BatchResult[];
   error?: string;
@@ -284,6 +288,34 @@ function dedupLocations(locations: LocationInputOutput[]): LocationInputOutput[]
   return [...map.values()];
 }
 
+/** 世界观/体系设定跨批去重：按名称（大小写不敏感）合并别名、章节区间与描述。 */
+function dedupWorldviews(worldviews: WorldviewInputOutput[]): WorldviewInputOutput[] {
+  const map = new Map<string, WorldviewInputOutput>();
+  for (const w of worldviews) {
+    const key = norm(w.name);
+    const existing = map.get(key);
+    if (!existing) {
+      map.set(key, { ...w, description: cleanEntityDescription(w.description) });
+    } else {
+      const chapters = unique([...(existing.chapterAppearances || []), ...(w.chapterAppearances || [])]).sort(
+        (x, y) => x - y
+      );
+      map.set(key, {
+        ...existing,
+        aliases: unique([...(existing.aliases || []), ...(w.aliases || [])]).filter(
+          (al) => al !== existing.name
+        ),
+        description: mergeEntityDescriptions(existing.description, w.description),
+        confidence: Math.max(existing.confidence ?? 0, w.confidence ?? 0),
+        firstChapter: chapters.length ? chapters[0] : existing.firstChapter,
+        lastChapter: chapters.length ? chapters[chapters.length - 1] : existing.lastChapter,
+        chapterAppearances: chapters,
+      });
+    }
+  }
+  return [...map.values()];
+}
+
 /**
  * Create an extractor that uses the configured LLM provider to extract both
  * characters and items in a single call per batch. Implements batch-level
@@ -300,6 +332,7 @@ export function createExtractor() {
     const allCharacters: CharacterInputOutput[] = [];
     const allItems: ItemInputOutput[] = [];
     const allLocations: LocationInputOutput[] = [];
+    const allWorldviews: WorldviewInputOutput[] = [];
     const failedBatches: BatchResult[] = [];
     const totalBatches = Math.ceil(chapters.length / BATCH_SIZE);
 
@@ -326,13 +359,14 @@ export function createExtractor() {
 
     for (const result of batchResults) {
       if (result.status === 'fulfilled') {
-        const { batchCharacters, batchItems, batchLocations, batch, failedBatches: recoveredFailures = [], error } = result.value;
+        const { batchCharacters, batchItems, batchLocations, batchWorldviews, batch, failedBatches: recoveredFailures = [], error } = result.value;
         if (error) {
-          failedBatches.push({ batch, characters: [], items: [], locations: [], error });
+          failedBatches.push({ batch, characters: [], items: [], locations: [], worldviews: [], error });
         } else {
           allCharacters.push(...batchCharacters);
           allItems.push(...batchItems);
           allLocations.push(...batchLocations);
+          allWorldviews.push(...batchWorldviews);
           failedBatches.push(...recoveredFailures);
         }
       } else {
@@ -341,6 +375,7 @@ export function createExtractor() {
           characters: [],
           items: [],
           locations: [],
+          worldviews: [],
           error: result.reason?.message || 'unknown',
         });
       }
@@ -376,12 +411,13 @@ export function createExtractor() {
             `Extractor batch ${batchNum}/${total}`
           );
           console.log(
-            `[Extractor] Batch ${batchNum}/${total} completed (${(result.characters || []).length} chars, ${(result.items || []).length} items, ${(result.locations || []).length} locs)`
+            `[实体提取] 批次 ${batchNum}/${total} 已完成（角色 ${(result.characters || []).length}，道具 ${(result.items || []).length}，场景 ${(result.locations || []).length}，世界观 ${(result.worldviews || []).length}）`
           );
           return {
             batchCharacters: (result.characters || []) as CharacterInputOutput[],
             batchItems: (result.items || []) as ItemInputOutput[],
             batchLocations: (result.locations || []) as LocationInputOutput[],
+            batchWorldviews: (result.worldviews || []) as WorldviewInputOutput[],
             batch,
           };
         } catch (error) {
@@ -395,11 +431,11 @@ export function createExtractor() {
             if (allowSplitRecovery && SPLIT_FAILED_BATCHES && batch.length > 1) {
               return recoverFailedBatch(provider, bookTitle, batch, batchNum, total, msg);
             }
-            return { batchCharacters: [], batchItems: [], batchLocations: [], batch, error: msg };
+            return { batchCharacters: [], batchItems: [], batchLocations: [], batchWorldviews: [], batch, error: msg };
           }
         }
       }
-      return { batchCharacters: [], batchItems: [], batchLocations: [], batch, error: 'unreachable' };
+      return { batchCharacters: [], batchItems: [], batchLocations: [], batchWorldviews: [], batch, error: 'unreachable' };
     }
 
     async function recoverFailedBatch(
@@ -417,6 +453,7 @@ export function createExtractor() {
       const batchCharacters: CharacterInputOutput[] = [];
       const batchItems: ItemInputOutput[] = [];
       const batchLocations: LocationInputOutput[] = [];
+      const batchWorldviews: WorldviewInputOutput[] = [];
       const failedChapters: Chapter[] = [];
       const errors: string[] = [];
 
@@ -436,6 +473,7 @@ export function createExtractor() {
             batchCharacters.push(...result.batchCharacters);
             batchItems.push(...result.batchItems);
             batchLocations.push(...result.batchLocations);
+            batchWorldviews.push(...result.batchWorldviews);
           }
         } else {
           failedChapters.push(chapter);
@@ -451,6 +489,7 @@ export function createExtractor() {
             characters: [],
             items: [],
             locations: [],
+            worldviews: [],
             error: `Original batch failed: ${originalError}; split recovery failed: ${errors.join(' | ')}`,
           }]
         : [];
@@ -459,6 +498,7 @@ export function createExtractor() {
         batchCharacters,
         batchItems,
         batchLocations,
+        batchWorldviews,
         batch,
         ...(failedBatches.length > 0 ? { failedBatches } : {}),
       };
@@ -558,11 +598,13 @@ export function createExtractor() {
 
     const items = dedupItems(allItems);
     const locations = dedupLocations(allLocations);
+    const worldviews = dedupWorldviews(allWorldviews);
 
     return {
       characters,
       items,
       locations,
+      worldviews,
       failedBatches,
       totalBatches: totalBatchesCount,
       successfulBatches: successfulBatchesCount,
