@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { buildApp } from '../app.js';
 import { prisma, getSharedObjectStore } from '@novel-agent/storage';
+import { setRuntimeProvider } from '@novel-agent/llm';
 import { testUserInput } from '../../../storage/src/test-fixtures.js';
 
 const ORIGIN = 'http://localhost:5173';
@@ -55,6 +56,9 @@ describe.runIf(dbAvailable)('公共素材库路由', () => {
     process.env.OBJECT_STORAGE_SIGN_SECRET = process.env.OBJECT_STORAGE_SIGN_SECRET ?? 'test-object-storage-sign-secret-pa';
     process.env.OBJECT_STORAGE_FS_ROOT = await mkdtemp(join(tmpdir(), 'pa-int-'));
     app = await buildApp({ logger: false });
+    // buildApp 内 loadPersistedConfig 可能从磁盘加载真实模型配置，
+    // 强制切回 mock：chatExtract 返回结构不匹配 → 标签识别确定性降级到关键词规则
+    setRuntimeProvider('mock');
 
     const suffix = randomUUID();
     const publisher = await prisma.user.create({ data: testUserInput(`pub-${suffix}@test`, '发布者') });
@@ -371,5 +375,49 @@ describe.runIf(dbAvailable)('公共素材库路由', () => {
     const xianxia = items.find((t) => t.tag === '仙侠');
     expect(xianxia).toBeTruthy();
     expect(xianxia!.count).toBeGreaterThanOrEqual(1);
+  });
+
+  // ── 标签智能识别（mock provider 返回结构不匹配 → 降级关键词规则） ──
+
+  it('17. 标签识别：简介含题材关键词时返回初步题材（关键词兜底）', async () => {
+    const xianXiuChar = await prisma.character.create({
+      data: {
+        bookId,
+        name: '测试修仙角色',
+        description: '七玄门弟子，筑基期剑修，一心求道盼飞升',
+        confidence: 0.9,
+        status: 'APPROVED',
+      },
+    });
+
+    const { status, body } = await authFetch(publisherToken, '/public-assets/suggest-tags', {
+      method: 'POST',
+      body: JSON.stringify({ bookId, entityType: 'character', entityId: xianXiuChar.id }),
+    });
+    expect(status).toBe(200);
+    expect(body.source).toBe('rule');
+    expect(body.genres as string[]).toContain('仙侠');
+    expect((body.genres as string[]).length).toBeLessThanOrEqual(2);
+    expect((body.message as string)).toContain('关键词');
+  });
+
+  it('18. 标签识别：无关键词命中返回空结果与提示', async () => {
+    const { status, body } = await authFetch(publisherToken, '/public-assets/suggest-tags', {
+      method: 'POST',
+      body: JSON.stringify({ bookId, entityType: 'character', entityId: characterId }),
+    });
+    expect(status).toBe(200);
+    expect(body.source).toBe('none');
+    expect(body.genres).toEqual([]);
+    expect(body.tags).toEqual([]);
+    expect((body.message as string)).toBeTruthy();
+  });
+
+  it('19. 标签识别：非本人实体返回 404', async () => {
+    const { status } = await authFetch(takerToken, '/public-assets/suggest-tags', {
+      method: 'POST',
+      body: JSON.stringify({ bookId, entityType: 'character', entityId: characterId }),
+    });
+    expect(status).toBe(404);
   });
 });

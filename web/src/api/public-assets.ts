@@ -66,6 +66,42 @@ export function usePublicAssetDetail(id: string | undefined) {
   });
 }
 
+/** 发布前标签智能识别结果 */
+export interface SuggestPublishTagsResult {
+  /** 题材标签（预置白名单内） */
+  genres: string[];
+  /** 自定义内容标签 */
+  tags: string[];
+  /** 识别来源：llm = 模型识别；rule = 关键词兜底；none = 未识别到 */
+  source: 'llm' | 'rule' | 'none';
+  /** 降级/未识别原因 */
+  message?: string;
+}
+
+/** 发布前标签智能识别（对话框打开时调用，失败不阻断发布流程） */
+export function useSuggestPublishTags(params: {
+  open: boolean;
+  bookId: string;
+  entityType: EntityType;
+  entityId: string;
+}) {
+  return useQuery({
+    queryKey: ['public-assets', 'suggest-tags', params.bookId, params.entityType, params.entityId],
+    queryFn: () =>
+      apiFetch<SuggestPublishTagsResult>('/public-assets/suggest-tags', {
+        method: 'POST',
+        body: {
+          bookId: params.bookId,
+          entityType: params.entityType,
+          entityId: params.entityId,
+        },
+      }),
+    enabled: params.open && !!params.bookId && !!params.entityId,
+    staleTime: 5 * 60 * 1000, // 5 分钟内重复打开同一实体的发布框不重复调模型
+    retry: false, // 模型调用失败不自动重试，避免无谓消耗；可手动点“重新识别”
+  });
+}
+
 /** 发布 */
 export function usePublishAsset() {
   const qc = useQueryClient();

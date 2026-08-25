@@ -3,6 +3,7 @@ import { resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import {
   publishAsset,
+  suggestPublishTags,
   listPublicAssets,
   listMyPublicAssets,
   listPopularTags,
@@ -57,6 +58,41 @@ export async function publicAssetRoutes(fastify: FastifyInstance) {
         showSource: body.showSource,
       });
       return { id: result.id };
+    } catch (err) {
+      if (err instanceof PublicAssetError) {
+        const statusCode = err.statusCode === 404 ? 404 : 400;
+        return reply.status(statusCode).send({ error: err.message });
+      }
+      return sendServerError(reply, err, request.log);
+    }
+  });
+
+  // ── 标签智能识别（发布前预填，结果仅供预选，用户可人工修改） ──
+  fastify.post('/suggest-tags', {
+    config: {
+      rateLimit: { max: 10, timeWindow: '1 minute' },
+    },
+  }, async (request, reply) => {
+    const ownerId = await resolveOwnerId(request);
+    if (!ownerId) return reply.status(401).send({ error: '请先登录' });
+
+    const body = (request.body ?? {}) as {
+      bookId?: string;
+      entityType?: string;
+      entityId?: string;
+    };
+
+    if (!body.bookId || !body.entityType || !body.entityId) {
+      return reply.status(400).send({ error: '缺少必要参数：bookId、entityType、entityId' });
+    }
+
+    try {
+      const result = await suggestPublishTags(ownerId, {
+        bookId: body.bookId,
+        entityType: body.entityType,
+        entityId: body.entityId,
+      });
+      return result;
     } catch (err) {
       if (err instanceof PublicAssetError) {
         const statusCode = err.statusCode === 404 ? 404 : 400;

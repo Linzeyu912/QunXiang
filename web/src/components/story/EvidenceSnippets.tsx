@@ -30,6 +30,14 @@ export function EvidenceSnippets({
     .filter((c): c is number => typeof c === 'number');
   const displayChapters = chapters && chapters.length > 0 ? chapters : snippetChapters;
 
+  // 章节号过多时压缩显示范围，避免标题行过长
+  const chapterLabel = (() => {
+    if (displayChapters.length === 0) return null;
+    const unique = [...new Set(displayChapters)].sort((a, b) => a - b);
+    if (unique.length <= 5) return `来源第 ${unique.join('、')} 章`;
+    return `来源第 ${unique[0]}-${unique[unique.length - 1]} 章（共 ${unique.length} 章）`;
+  })();
+
   return (
     <div className="space-y-1">
       <button
@@ -39,7 +47,7 @@ export function EvidenceSnippets({
       >
         {open ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
         证据片段 ({snippets.length})
-        {displayChapters.length > 0 && <span>· 来源第 {displayChapters.join('、')} 章</span>}
+        {chapterLabel && <span>· {chapterLabel}</span>}
       </button>
       {open && (
         <ul className="space-y-1.5">

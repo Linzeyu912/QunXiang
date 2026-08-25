@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { Check, Loader2, Pencil, X, Share2 } from 'lucide-react';
+import { Check, ChevronDown, ChevronRight, Loader2, Pencil, X, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -256,25 +256,35 @@ function CoCharactersSection({
   entity: Character;
   onJumpToName?: (name: string) => void;
 }) {
+  const [open, setOpen] = useState(false);
   const coCharacters = parseAliases(entity.coCharacters);
   if (coCharacters.length === 0) return null;
   return (
     <>
       <Separator />
       <div>
-        <h3 className="mb-2 text-sm font-medium">共现角色</h3>
-        <div className="flex flex-wrap gap-1">
-          {coCharacters.map((name) => (
-            <Badge
-              key={name}
-              variant="outline"
-              className={onJumpToName ? 'cursor-pointer hover:bg-accent' : undefined}
-              onClick={() => onJumpToName?.(name)}
-            >
-              {name}
-            </Badge>
-          ))}
-        </div>
+        <button
+          type="button"
+          className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-foreground/80"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+          共现角色 ({coCharacters.length})
+        </button>
+        {open && (
+          <div className="mt-2 flex flex-wrap gap-1">
+            {coCharacters.map((name) => (
+              <Badge
+                key={name}
+                variant="outline"
+                className={onJumpToName ? 'cursor-pointer hover:bg-accent' : undefined}
+                onClick={() => onJumpToName?.(name)}
+              >
+                {name}
+              </Badge>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

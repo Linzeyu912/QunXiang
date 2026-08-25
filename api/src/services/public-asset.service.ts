@@ -26,6 +26,12 @@ import {
   type EntityImageRow,
   type PublicAssetListItem,
 } from '@novel-agent/storage';
+import { z } from 'zod';
+import {
+  getDefaultProvider,
+  LLMError,
+  ProviderNotConfiguredError,
+} from '@novel-agent/llm';
 import { readArtifactJson } from './artifact-store.js';
 import type { VisualDescriptionEntry, GenerationPromptEntry } from './artifacts.service.js';
 
@@ -251,6 +257,211 @@ export async function publishAsset(
   });
 
   return { id: asset.id };
+}
+
+// ── 发布标签智能识别 ──
+
+/** 题材白名单（与前端 web/src/constants/genre-tags.ts 保持同步）。 */
+const GENRE_WHITELIST = new Set([
+  '都市', '玄幻', '仙侠', '武侠', '科幻', '奇幻',
+  '历史', '军事', '游戏', '体育', '悬疑', '灵异',
+  '现实', '言情', '轻小说',
+]);
+
+/**
+ * 题材关键词映射（模型不可用时的规则兜底）。
+ * 文本命中任意关键词即认为该题材候选，最多取 2 个。
+ */
+const GENRE_KEYWORDS: ReadonlyArray<readonly [string, readonly string[]]> = [
+  ['仙侠', ['修仙', '修真', '仙人', '灵根', '筑基', '金丹', '元婴', '化神', '渡劫', '飞升', '灵石', '灵气', '法诀', '剑修', '仙门', '道法']],
+  ['玄幻', ['斗气', '魔核', '武魂', '异火', '魔兽', '斗者', '斗师', '玄功', '功法']],
+  ['武侠', ['武林', '江湖', '内力', '武功', '剑法', '刀法', '掌门', '门派', '镖局', '大侠', '山庄', '硬功', '宗师']],
+  ['都市', ['都市', '总裁', '白领', '写字楼', '公寓']],
+  ['科幻', ['星际', '飞船', '机甲', '虫族', '基因', '人工智能', '机器人', '外星', '殖民星']],
+  ['历史', ['朝廷', '皇帝', '皇子', '公主', '宰相', '王朝', '江山', '登基', '科举', '县令']],
+  ['军事', ['军队', '士兵', '特种兵', '军团', '军衔', '教官', '战场']],
+  ['游戏', ['玩家', '副本', '经验值', '属性面板', '游戏系统']],
+  ['悬疑', ['侦探', '案件', '凶手', '线索', '推理', '破案', '失踪案']],
+  ['灵异', ['僵尸', '阴间', '驱邪', '灵异', '妖怪', '阴魂', '鬼宅']],
+  ['奇幻', ['精灵', '法师', '魔法师', '矮人', '龙骑士', '魔王', '圣剑']],
+  ['言情', ['恋爱', '婚约', '恋人', '情愫']],
+  ['体育', ['足球', '篮球', '锦标赛', '冠军', '运动员', '教练']],
+  ['现实', ['高考', '乡村教师', '进城务工', '下岗']],
+];
+
+/** 标签识别的返回结构（严格校验，缺字段即失败走规则兜底）。 */
+const suggestTagsSchema = z.object({
+  genres: z.array(z.string()),
+  tags: z.array(z.string()),
+});
+
+const SUGGEST_TAGS_SYSTEM_PROMPT = [
+  '你是小说实体素材的标签助手。根据提供的实体信息完成两项任务：',
+  '1. 从题材列表中选出最匹配的题材（最多 2 个，都不匹配则返回空数组）：',
+  '都市、玄幻、仙侠、武侠、科幻、奇幻、历史、军事、游戏、体育、悬疑、灵异、现实、言情、轻小说',
+  '2. 生成 2-4 个简短的内容标签，概括该实体的身份、流派或风格（每个 2-6 字，不得与题材名重复）。',
+  '只返回 JSON，格式：{"genres": ["..."], "tags": ["..."]}',
+].join('\n');
+
+const KIND_LABELS: Record<EntityType, string> = {
+  character: '角色',
+  location: '场景',
+  item: '道具',
+};
+
+export interface SuggestPublishTagsInput {
+  bookId: string;
+  entityType: string;
+  entityId: string;
+}
+
+export interface SuggestPublishTagsResult {
+  /** 题材标签（白名单内，最多 2 个） */
+  genres: string[];
+  /** 自定义内容标签（最多 6 个） */
+  tags: string[];
+  /** 识别来源：llm = 模型识别；rule = 关键词兜底；none = 未识别到 */
+  source: 'llm' | 'rule' | 'none';
+  /** 降级/未识别原因（有值时前端展示提示） */
+  message?: string;
+}
+
+/** 清洗模型返回的标签：题材过滤进白名单，内容标签去题材词、去重并限长限量。 */
+function sanitizeSuggestedTags(rawGenres: string[], rawTags: string[]): {
+  genres: string[];
+  tags: string[];
+} {
+  const genres = [...new Set(rawGenres.map((g) => g.trim()))]
+    .filter((g) => GENRE_WHITELIST.has(g))
+    .slice(0, 2);
+  const tags = [...new Set(rawTags.map((t) => t.trim()))]
+    .filter((t) => t.length > 0 && t.length <= 10 && !GENRE_WHITELIST.has(t))
+    .slice(0, 6);
+  return { genres, tags };
+}
+
+/** 关键词规则识别题材：按映射顺序命中即候选，最多取 2 个。 */
+function matchGenresByKeyword(text: string): string[] {
+  const matched: string[] = [];
+  for (const [genre, keywords] of GENRE_KEYWORDS) {
+    if (keywords.some((kw) => text.includes(kw))) {
+      matched.push(genre);
+      if (matched.length >= 2) break;
+    }
+  }
+  return matched;
+}
+
+/** 模型调用错误 → 用户友好的中文原因（识别是辅助功能，失败只降级提示，不阻断发布）。 */
+function friendlyLlmErrorMessage(err: unknown): string {
+  if (err instanceof ProviderNotConfiguredError) {
+    return '模型服务未配置';
+  }
+  if (err instanceof LLMError) {
+    switch (err.code) {
+      case 'AUTH_ERROR': return '模型服务认证失败（API Key 无效或权限不足）';
+      case 'RATE_LIMIT': return '模型服务请求过于频繁';
+      case 'TIMEOUT': return '模型服务响应超时';
+      case 'MODEL_NOT_FOUND': return '模型名称不存在';
+      case 'NETWORK_ERROR': return '模型服务网络连接失败';
+      case 'VALIDATION_ERROR': return '模型返回格式异常';
+      default: return '模型服务调用失败';
+    }
+  }
+  if (err instanceof Error && err.name === 'ZodError') {
+    return '模型返回格式异常';
+  }
+  return '模型服务不可用';
+}
+
+/**
+ * 发布前的初步标签识别。
+ *
+ * 优先用模型根据实体名称/别名/简介/书名识别题材与内容标签；
+ * 模型未配置或调用失败时按关键词规则兜底识别题材。
+ * 识别结果仅供发布对话框预填，用户可人工修改后再发布。
+ */
+export async function suggestPublishTags(
+  ownerId: string,
+  input: SuggestPublishTagsInput,
+): Promise<SuggestPublishTagsResult> {
+  validateKind(input.entityType);
+
+  const entity = await loadOwnedEntity(input.bookId, ownerId, input.entityType, input.entityId);
+  if (!entity) {
+    throw new PublicAssetError('实体不存在或无权访问', 404);
+  }
+
+  const book = await prisma.book.findUnique({
+    where: { id: input.bookId },
+    select: { title: true },
+  });
+  if (!book) {
+    throw new PublicAssetError('书籍不存在或无权访问', 404);
+  }
+
+  const aliases = normalizeAliases(entity.aliases);
+  const description = entity.description ?? '';
+  // 规则兜底的匹配文本（题材关键词主要出现在简介与书名中）
+  const ruleText = `${entity.name} ${aliases.join(' ')} ${description} ${book.title}`;
+
+  // 1) 模型识别（已配置才调用；失败不阻断，降级到关键词规则）
+  let llmUnavailableReason: string | undefined;
+  try {
+    const provider = await getDefaultProvider();
+    if (await provider.isConfigured()) {
+      const userPrompt = [
+        `实体类型：${KIND_LABELS[input.entityType]}`,
+        `实体名称：${entity.name}`,
+        `别名：${aliases.length > 0 ? aliases.join('、') : '无'}`,
+        `简介：${description || '无'}`,
+        `来源书名：${book.title}`,
+      ].join('\n');
+      const raw = await provider.chatExtract(
+        SUGGEST_TAGS_SYSTEM_PROMPT,
+        userPrompt,
+        suggestTagsSchema,
+      );
+      // 部分 provider（如 mock）不按契约校验 schema，这里再验一次结构
+      const parsed = suggestTagsSchema.safeParse(raw);
+      if (!parsed.success) {
+        llmUnavailableReason = '模型返回格式异常';
+      } else {
+        const { genres, tags } = sanitizeSuggestedTags(parsed.data.genres, parsed.data.tags);
+        if (genres.length > 0 || tags.length > 0) {
+          return { genres, tags, source: 'llm' };
+        }
+        // 模型判定没有合适标签：继续走关键词兜底，尽量给出初步题材
+      }
+    } else {
+      llmUnavailableReason = '模型服务未配置';
+    }
+  } catch (err) {
+    llmUnavailableReason = friendlyLlmErrorMessage(err);
+    console.warn(`[公共素材] 标签智能识别失败，已降级关键词规则：${llmUnavailableReason}`);
+  }
+
+  // 2) 关键词规则兜底（只识别题材，不生成内容标签）
+  const ruleGenres = matchGenresByKeyword(ruleText);
+  if (ruleGenres.length > 0) {
+    return {
+      genres: ruleGenres,
+      tags: [],
+      source: 'rule',
+      message: llmUnavailableReason
+        ? `${llmUnavailableReason}，已按关键词初步识别题材`
+        : '已按关键词初步识别题材',
+    };
+  }
+
+  return {
+    genres: [],
+    tags: [],
+    source: 'none',
+    message: llmUnavailableReason
+      ? `${llmUnavailableReason}，请手动选择标签`
+      : '未识别到合适的标签，请手动选择',
+  };
 }
 
 /** 读 artifacts JSON 并按实体名查找条目。 */

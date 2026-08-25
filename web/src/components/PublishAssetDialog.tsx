@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { toast } from 'sonner';
 import {
   Dialog,
@@ -12,9 +12,9 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { X } from 'lucide-react';
-import { usePublishAsset } from '@/api/public-assets';
-import { GENRE_TAGS } from '@/constants/genre-tags';
+import { Loader2, RefreshCw, Sparkles, X } from 'lucide-react';
+import { usePublishAsset, useSuggestPublishTags } from '@/api/public-assets';
+import { GENRE_TAGS, isGenreTag } from '@/constants/genre-tags';
 import type { EntityType } from '@/types';
 
 interface PublishAssetDialogProps {
@@ -41,6 +41,11 @@ export function PublishAssetDialog({
   const [tags, setTags] = useState<string[]>([]);
   const [showSource, setShowSource] = useState(true);
   const publishMutation = usePublishAsset();
+  const suggestQuery = useSuggestPublishTags({ open, bookId, entityType, entityId });
+  // 用户手动改过标签后，识别结果不再自动覆盖
+  const userEditedTagsRef = useRef(false);
+  // 题材标签的选择态在题材区体现，徽章区只展示真正的自定义标签
+  const customTags = tags.filter((tag) => !isGenreTag(tag));
 
   useEffect(() => {
     if (open) {
@@ -48,10 +53,20 @@ export function PublishAssetDialog({
       setTags([]);
       setTagInput('');
       setShowSource(true);
+      userEditedTagsRef.current = false;
     }
   }, [open, defaultSummary]);
 
+  // 识别结果自动预填（题材自动选中 + 自定义标签就位），用户手动编辑过则不打扰。
+  // 依赖 open：缓存有效期内重新打开时 data 引用不变，需靠 open 变化重新填充
+  useEffect(() => {
+    const data = suggestQuery.data;
+    if (!open || !data || userEditedTagsRef.current) return;
+    setTags([...data.genres, ...data.tags]);
+  }, [open, suggestQuery.data]);
+
   const toggleTag = (tag: string) => {
+    userEditedTagsRef.current = true;
     setTags((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
     );
@@ -60,13 +75,25 @@ export function PublishAssetDialog({
   const addTag = () => {
     const trimmed = tagInput.trim();
     if (trimmed && !tags.includes(trimmed)) {
+      userEditedTagsRef.current = true;
       setTags([...tags, trimmed]);
     }
     setTagInput('');
   };
 
   const removeTag = (tag: string) => {
+    userEditedTagsRef.current = true;
     setTags(tags.filter((t) => t !== tag));
+  };
+
+  const handleResuggest = async () => {
+    userEditedTagsRef.current = false;
+    // refetch 后主动应用结果：数据未变化时引用不变（structural sharing），
+    // 依赖 data 引用变化的 useEffect 不会触发，需在此直接填充
+    const result = await suggestQuery.refetch();
+    if (result.isSuccess && result.data) {
+      setTags([...result.data.genres, ...result.data.tags]);
+    }
   };
 
   const handlePublish = async () => {
@@ -111,6 +138,51 @@ export function PublishAssetDialog({
             />
           </div>
 
+          {/* 标签智能识别 */}
+          {suggestQuery.isFetching ? (
+            <div className="flex items-center gap-2 rounded-md border border-dashed px-3 py-2 text-xs text-muted-foreground">
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              正在识别初步标签…
+            </div>
+          ) : suggestQuery.data && (suggestQuery.data.genres.length > 0 || suggestQuery.data.tags.length > 0) ? (
+            <div className="flex items-center justify-between gap-2 rounded-md border border-emerald-300 bg-emerald-50/40 px-3 py-2 text-xs text-emerald-700 dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-300">
+              <span className="flex items-center gap-1.5">
+                <Sparkles className="h-3.5 w-3.5 shrink-0" />
+                {suggestQuery.data.source === 'llm'
+                  ? '已自动识别初步标签，可直接发布或点击修改'
+                  : suggestQuery.data.message || '已识别初步标签，可点击修改'}
+              </span>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="h-6 shrink-0 px-2 text-xs text-emerald-700 hover:text-emerald-800 dark:text-emerald-300 dark:hover:text-emerald-200"
+                onClick={handleResuggest}
+                disabled={suggestQuery.isFetching}
+              >
+                <RefreshCw className="mr-1 h-3 w-3" />
+                重新识别
+              </Button>
+            </div>
+          ) : suggestQuery.isError || suggestQuery.data ? (
+            <div className="flex items-center justify-between gap-2 rounded-md border border-dashed px-3 py-2 text-xs text-muted-foreground">
+              <span>
+                {suggestQuery.isError
+                  ? '标签识别服务暂不可用，可手动选择标签'
+                  : suggestQuery.data?.message || '未识别到合适的标签，请手动选择'}
+              </span>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="h-6 shrink-0 px-2 text-xs"
+                onClick={handleResuggest}
+                disabled={suggestQuery.isFetching}
+              >
+                <RefreshCw className="mr-1 h-3 w-3" />
+                重新识别
+              </Button>
+            </div>
+          ) : null}
+
           {/* 题材分类 */}
           <div className="space-y-1.5">
             <Label>题材分类</Label>
@@ -153,9 +225,9 @@ export function PublishAssetDialog({
                 添加
               </Button>
             </div>
-            {tags.length > 0 && (
+            {customTags.length > 0 && (
               <div className="flex flex-wrap gap-1 pt-1">
-                {tags.map((tag) => (
+                {customTags.map((tag) => (
                   <Badge key={tag} variant="secondary" className="cursor-pointer" onClick={() => removeTag(tag)}>
                     {tag}
                     <X className="ml-1 h-3 w-3" />
