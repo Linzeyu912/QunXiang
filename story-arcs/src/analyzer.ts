@@ -1,4 +1,4 @@
-import type { ParseResult } from '@novel-agent/import';
+import type { ParseResult } from '@qunxiang/import';
 import { ArcType, ArcPhase } from './arc-types.js';
 import type {
   ArcAnalysisResult,

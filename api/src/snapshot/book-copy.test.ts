@@ -42,7 +42,7 @@ const mockState = vi.hoisted(() => {
   };
 });
 
-vi.mock('@novel-agent/storage', () => ({
+vi.mock('@qunxiang/storage', () => ({
   prisma: {
     $transaction: async (fn: (tx: any) => Promise<any>) => {
       if (mockState.transactionError) throw mockState.transactionError;

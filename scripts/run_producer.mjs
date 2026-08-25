@@ -50,8 +50,8 @@ const {
   LocationRepository,
   ItemRepository,
   closeDatabase,
-} = await import('@novel-agent/storage');
-const { TaskDispatcher, InMemoryTaskQueue, eventBus } = await import('@novel-agent/scheduler');
+} = await import('@qunxiang/storage');
+const { TaskDispatcher, InMemoryTaskQueue, eventBus } = await import('@qunxiang/scheduler');
 
 const producerEmail = process.env.PRODUCER_USER_EMAIL;
 if (!producerEmail) {

@@ -1,5 +1,5 @@
-import type { EntityMention } from '@novel-agent/entity-prescan';
-import type { ParseResult, PrescanResult } from '@novel-agent/import';
+import type { EntityMention } from '@qunxiang/entity-prescan';
+import type { ParseResult, PrescanResult } from '@qunxiang/import';
 import type {
   NarrativeArc,
   NarrativeArcType,

@@ -1,5 +1,5 @@
 import type { PrismaClient, SnapshotObject } from '@prisma/client';
-import type { CreateSnapshotObjectItem } from '@novel-agent/core';
+import type { CreateSnapshotObjectItem } from '@qunxiang/core';
 import { prisma } from './prisma.js';
 
 export interface SnapshotObjectRepository {

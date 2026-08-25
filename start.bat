@@ -2,10 +2,10 @@
 chcp 65001 >nul 2>&1
 setlocal enabledelayedexpansion
 set "ROOT=%~dp0"
-set "DB_URL=postgresql://novel_agent:change_me_in_production@127.0.0.1:5432/novel_agent"
+set "DB_URL=postgresql://qunxiang:change_me_in_production@127.0.0.1:5432/qunxiang"
 
 echo ========================================
-echo   Novel Agent - 启动脚本
+echo   群像 - 启动脚本
 echo ========================================
 echo.
 
@@ -100,7 +100,7 @@ set "API_DIR=%~dp0api"
 if not exist "%API_DIR%\.env" (
     echo       正在创建 api/.env 文件...
 
-    set "JWT_SECRET=novel-agent-jwt-secret-key-2024"
+    set "JWT_SECRET=qunxiang-jwt-secret-key-2024"
 
     (echo # Auto-generated .env file
 echo PORT=3001
@@ -116,9 +116,9 @@ echo LLM_PROVIDER=custom
 echo LLM_API_KEY=
 echo LLM_BASE_URL=
 echo LLM_MODEL=
-echo KEY_VAULTS_SECRET=novel-agent-local-dev-key-change-before-production
+echo KEY_VAULTS_SECRET=qunxiang-local-dev-key-change-before-production
 echo OBJECT_STORAGE_PROVIDER=fs
-echo OBJECT_STORAGE_SIGN_SECRET=novel-agent-local-object-sign-secret-change-before-production) > "%API_DIR%\.env"
+echo OBJECT_STORAGE_SIGN_SECRET=qunxiang-local-object-sign-secret-change-before-production) > "%API_DIR%\.env"
 
     echo       已创建。
 ) else (
@@ -155,7 +155,7 @@ if errorlevel 1 (
 )
 findstr /B /I /C:"OBJECT_STORAGE_SIGN_SECRET=" "%API_DIR%\.env" >nul 2>&1
 if errorlevel 1 (
-    echo OBJECT_STORAGE_SIGN_SECRET=novel-agent-local-object-sign-secret-change-before-production >> "%API_DIR%\.env"
+    echo OBJECT_STORAGE_SIGN_SECRET=qunxiang-local-object-sign-secret-change-before-production >> "%API_DIR%\.env"
     echo       已补充 api/.env 的对象存储签名密钥。
 )
 echo       数据库配置检查完成。
@@ -205,7 +205,7 @@ echo.
 :: [5/6] Start API service
 echo [5/6] 启动 API 服务...
 cd /d "%~dp0api"
-start "Novel Agent API" cmd /k "chcp 65001>nul & pnpm dev"
+start "群像 API" cmd /k "chcp 65001>nul & pnpm dev"
 cd /d "%~dp0"
 echo       API 服务已启动：http://localhost:3001
 echo.
@@ -213,7 +213,7 @@ echo.
 :: [6/6] Start Web frontend
 echo [6/6] 启动 Web 前端...
 cd /d "%~dp0web"
-start "Novel Agent Web" cmd /k "chcp 65001>nul & pnpm dev"
+start "群像 Web" cmd /k "chcp 65001>nul & pnpm dev"
 cd /d "%~dp0"
 echo       Web 服务已启动：http://localhost:5173
 echo.

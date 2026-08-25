@@ -5,8 +5,8 @@ import {
   getSharedObjectStore,
   getSharedAssetSourceResolver,
   isTransientDatabaseBusyError,
-} from '@novel-agent/storage';
-import { parseTxt, decodeText } from '@novel-agent/import';
+} from '@qunxiang/storage';
+import { parseTxt, decodeText } from '@qunxiang/import';
 import { rm } from 'fs/promises';
 import { join } from 'path';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';

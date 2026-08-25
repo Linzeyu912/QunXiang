@@ -36,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 兜底扫描:任何漏声明的 @novel-agent/* workspace 依赖会立刻失败
+      # 兜底扫描:任何漏声明的 @qunxiang/* workspace 依赖会立刻失败
       # (脚本从 QunXiang 同步过来,逻辑:对比 src/ 里的 import 和 package.json 的 dependencies)
       - name: Check workspace deps
         run: pnpm check:workspace-deps
@@ -49,9 +49,9 @@ jobs:
         # 6 处 repository + defaultUser），llm 的 image-custom 有 undici Response 版本差异。
         # 都不影响运行，留作后续逐个补类型。
         run: |
-          pnpm --filter @novel-agent/api exec tsc --noEmit --pretty false
-          pnpm --filter @novel-agent/web exec tsc --noEmit --pretty false
-          pnpm --filter @novel-agent/llm exec tsc --noEmit --pretty false
+          pnpm --filter @qunxiang/api exec tsc --noEmit --pretty false
+          pnpm --filter @qunxiang/web exec tsc --noEmit --pretty false
+          pnpm --filter @qunxiang/llm exec tsc --noEmit --pretty false
         shell: bash
         continue-on-error: true
 

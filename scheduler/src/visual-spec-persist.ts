@@ -1,4 +1,4 @@
-import type { VisualSpec, VisualSpecEntityType } from '@novel-agent/core';
+import type { VisualSpec, VisualSpecEntityType } from '@qunxiang/core';
 
 export interface PromptVariantLike {
   stage?: string;

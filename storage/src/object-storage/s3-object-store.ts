@@ -24,7 +24,7 @@ import type {
   SignedDownload,
   SignedDownloadInput,
   StoredObject,
-} from '@novel-agent/core';
+} from '@qunxiang/core';
 import { buildObjectKey } from './object-key.js';
 
 export interface S3ObjectStoreOptions {

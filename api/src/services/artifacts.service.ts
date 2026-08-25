@@ -1,7 +1,8 @@
 import { readdir, readFile, writeFile, stat } from 'node:fs/promises';
 import { isAbsolute, join, resolve } from 'node:path';
-import { BookRepository, NoiseOverrideRepository, getSharedAssetSourceResolver } from '@novel-agent/storage';
-import { parseChapterOutline, getChapterCleanedContent, type ChapterOutlineResult, type ChapterContentResult } from '@novel-agent/import';
+import { BookRepository, NoiseOverrideRepository, getSharedAssetSourceResolver } from '@qunxiang/storage';
+import type { Book } from '@qunxiang/core';
+import { parseChapterOutline, getChapterCleanedContent, type ChapterOutlineResult, type ChapterContentResult } from '@qunxiang/import';
 import { readArtifactJson, readArtifactText } from './artifact-store.js';
 
 // 提取管线（description-fusion / visual-description / prompt-generation）把
@@ -373,7 +374,32 @@ export interface ChapterOutlineResponse extends ChapterOutlineResult {
   bookId: string;
 }
 
+// 大书原文和解析结果单条可达数 MB，使用有上限的 LRU，避免多书访问后持续占用内存。
+const CHAPTER_OUTLINE_CACHE_MAX = 32;
+const CHAPTER_CONTENT_CACHE_MAX = 128;
+const SOURCE_TEXT_CACHE_MAX = 8;
+
+function lruSet<K, V>(map: Map<K, V>, key: K, value: V, max: number): void {
+  map.delete(key);
+  map.set(key, value);
+  while (map.size > max) {
+    const oldest = map.keys().next().value;
+    if (oldest === undefined) break;
+    map.delete(oldest);
+  }
+}
+
 const chapterCache = new Map<string, { mtimeMs: number; outline: ChapterOutlineResponse }>();
+const chapterContentCache = new Map<string, ChapterContentResponse>();
+const sourceTextCache = new Map<string, string>();
+
+async function readSourceTextCached(book: Book, version: string): Promise<string> {
+  const hit = sourceTextCache.get(version);
+  if (hit !== undefined) return hit;
+  const content = await getSharedAssetSourceResolver().readSourceText(book);
+  lruSet(sourceTextCache, version, content, SOURCE_TEXT_CACHE_MAX);
+  return content;
+}
 
 export async function getChapterOutline(bookId: string, ownerId: string): Promise<ChapterOutlineResponse | null> {
   const book = await BookRepository.findOwnedById(bookId, ownerId);
@@ -395,12 +421,12 @@ export async function getChapterOutline(bookId: string, ownerId: string): Promis
   const cached = chapterCache.get(cacheKey);
   if (cached) return cached.outline;
 
-  const content = await getSharedAssetSourceResolver().readSourceText(book);
+  const content = await readSourceTextCached(book, version);
   const outline: ChapterOutlineResponse = {
     bookId,
     ...parseChapterOutline(content, book.title, keepLines),
   };
-  chapterCache.set(cacheKey, { mtimeMs: 0, outline });
+  lruSet(chapterCache, cacheKey, { mtimeMs: 0, outline }, CHAPTER_OUTLINE_CACHE_MAX);
   return outline;
 }
 
@@ -409,7 +435,7 @@ export interface ChapterContentResponse extends ChapterContentResult {
   bookId: string;
 }
 
-/** 读取单章正文（含被标记噪声行，供前端高亮阅读）。按章懒加载，不缓存。 */
+/** 读取单章正文（含被标记噪声行，供前端高亮阅读）。按章懒加载并缓存结果。 */
 export async function getChapterContent(
   bookId: string,
   ownerId: string,
@@ -418,13 +444,29 @@ export async function getChapterContent(
   const book = await BookRepository.findOwnedById(bookId, ownerId);
   if (!book) return null;
 
-  const content = await getSharedAssetSourceResolver().readSourceText(book).catch(() => null);
+  const keepLines = await NoiseOverrideRepository.listOwnedKeepLineNums(bookId, ownerId);
+
+  let version: string | null = null;
+  if (book.sourceObjectKey) {
+    version = book.sourceObjectKey;
+  } else if (book.filePath) {
+    const fileStat = await stat(book.filePath).catch(() => null);
+    version = fileStat ? `${book.filePath}:${fileStat.mtimeMs}` : null;
+  }
+  if (!version) return null;
+
+  const cacheKey = `${bookId}:${version}:${keepLines.size}:${chapterIndex}`;
+  const cached = chapterContentCache.get(cacheKey);
+  if (cached) return cached;
+
+  const content = await readSourceTextCached(book, version).catch(() => null);
   if (content === null) return null;
 
-  const keepLines = await NoiseOverrideRepository.listOwnedKeepLineNums(bookId, ownerId);
   const result = getChapterCleanedContent(content, book.title, chapterIndex, keepLines);
   if (!result) return null;
-  return { bookId, ...result };
+  const response: ChapterContentResponse = { bookId, ...result };
+  lruSet(chapterContentCache, cacheKey, response, CHAPTER_CONTENT_CACHE_MAX);
+  return response;
 }
 
 /** 找回（保留）某行噪声：写入覆盖标记，并失效该书的大纲缓存。 */
@@ -441,10 +483,13 @@ export async function unrestoreNoiseLine(bookId: string, ownerId: string, lineNu
   return changed;
 }
 
-/** 失效某书的全部章节大纲缓存条目（找回/取消找回后调用）。 */
+/** 失效某书的全部章节缓存条目（找回/取消找回后调用）。 */
 function invalidateChapterCache(bookId: string): void {
   for (const key of chapterCache.keys()) {
     if (key.startsWith(`${bookId}:`)) chapterCache.delete(key);
+  }
+  for (const key of chapterContentCache.keys()) {
+    if (key.startsWith(`${bookId}:`)) chapterContentCache.delete(key);
   }
 }
 

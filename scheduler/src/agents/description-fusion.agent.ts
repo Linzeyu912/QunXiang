@@ -1,8 +1,8 @@
-import type { AgentType, Character, Item, Location } from '@novel-agent/core';
-import { cleanEntityDescription, mergeEntityDescriptions } from '@novel-agent/core';
-import { resolve } from '@novel-agent/entity-resolution';
+import type { AgentType, Character, Item, Location } from '@qunxiang/core';
+import { cleanEntityDescription, mergeEntityDescriptions } from '@qunxiang/core';
+import { resolve } from '@qunxiang/entity-resolution';
 import { deduplicateEntities } from './entity-dedupe.js';
-import { getDefaultProvider } from '@novel-agent/llm';
+import { getDefaultProvider } from '@qunxiang/llm';
 import { z } from 'zod';
 import type { CharacterDescriptionPack, ItemDescriptionPack, LocationDescriptionPack } from './entity-descriptions.js';
 

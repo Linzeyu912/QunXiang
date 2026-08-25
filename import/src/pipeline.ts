@@ -1,11 +1,11 @@
-import { preprocess, normalize, detectNoise, type PreprocessReport, type FilterReport, type SuspectLine, type NoiseCategory } from '@novel-agent/preprocess';
+import { preprocess, normalize, detectNoise, type PreprocessReport, type FilterReport, type SuspectLine, type NoiseCategory } from '@qunxiang/preprocess';
 import { splitChapters, splitChaptersStructured, type ChapterInfo, type StructuredResult } from './chapter-splitter.js';
 import { type ParseResult } from './txt.js';
-import { prescanEntities, type PrescanResult } from '@novel-agent/entity-prescan';
+import { prescanEntities, type PrescanResult } from '@qunxiang/entity-prescan';
 
 export { type ChapterInfo, type ChapterNode, type LineType, type StructuredResult } from './chapter-splitter.js';
-export { type FilterReport as SanitizeReport, type SuspectLine, type NoiseCategory } from '@novel-agent/preprocess';
-export { type PrescanResult } from '@novel-agent/entity-prescan';
+export { type FilterReport as SanitizeReport, type SuspectLine, type NoiseCategory } from '@qunxiang/preprocess';
+export { type PrescanResult } from '@qunxiang/entity-prescan';
 
 export interface ParseOptions {
   /** Run text normalization (default: true) */

@@ -4,16 +4,16 @@
  * 注册钩子只覆盖新注册用户；本工具用于功能上线前已存在的账号。
  * 按书名去重——用户已有同名书则跳过，可安全重复执行。
  *
- * 用法：pnpm --filter @novel-agent/api seed:provision <email>
+ * 用法：pnpm --filter @qunxiang/api seed:provision <email>
  */
 import 'dotenv/config';
-import { closeDatabase, prisma } from '@novel-agent/storage';
+import { closeDatabase, prisma } from '@qunxiang/storage';
 import { provisionSeedLibrary } from '../src/services/library-seed.service.js';
 
 async function main() {
   const [email] = process.argv.slice(2);
   if (!email) {
-    console.error('用法：pnpm --filter @novel-agent/api seed:provision <email>');
+    console.error('用法：pnpm --filter @qunxiang/api seed:provision <email>');
     process.exitCode = 1;
     return;
   }

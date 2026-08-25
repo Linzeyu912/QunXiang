@@ -17,7 +17,7 @@ try {
   Invoke-Checked 'pnpm' @('test:postgres:up')
   Invoke-Checked 'pnpm' @('test:minio:up')
   if (-not $env:TEST_DATABASE_URL) {
-    $env:TEST_DATABASE_URL = 'postgresql://novel_agent_test:novel_agent_test@127.0.0.1:55432/novel_agent_test'
+    $env:TEST_DATABASE_URL = 'postgresql://qunxiang_test:qunxiang_test@127.0.0.1:55432/qunxiang_test'
   }
   $env:DATABASE_URL = $env:TEST_DATABASE_URL
   $env:DIRECT_DATABASE_URL = $env:TEST_DATABASE_URL

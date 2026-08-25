@@ -23,7 +23,7 @@ describe('数据库测试脚本安全', () => {
   it('数据库名不是 _test 后缀时拒绝执行', async () => {
     const { assertSafeTestDatabaseUrl } = await import('../../scripts/test-database-url.mjs');
     expect(() => assertSafeTestDatabaseUrl(
-      'postgresql://user:pass@127.0.0.1:55432/novel_agent',
+      'postgresql://user:pass@127.0.0.1:55432/qunxiang',
       [],
     )).toThrow('测试数据库名称必须以 _test 结尾');
   });
@@ -31,22 +31,22 @@ describe('数据库测试脚本安全', () => {
   it('与正式库主机和端口相同时拒绝执行', async () => {
     const { assertSafeTestDatabaseUrl } = await import('../../scripts/test-database-url.mjs');
     expect(() => assertSafeTestDatabaseUrl(
-      'postgresql://test:test@db.example.com:5432/novel_agent_test',
-      ['postgresql://prod:secret@db.example.com:5432/novel_agent'],
+      'postgresql://test:test@db.example.com:5432/qunxiang_test',
+      ['postgresql://prod:secret@db.example.com:5432/qunxiang'],
     )).toThrow('测试数据库不得与正式数据库共用主机和端口');
   });
 
   it('覆盖变量前捕获正式地址且忽略已指向测试库的变量', async () => {
     const { collectProductionDatabaseUrls } = await import('../../scripts/test-database-url.mjs');
-    const testUrl = 'postgresql://test:test@127.0.0.1:55432/novel_agent_test';
+    const testUrl = 'postgresql://test:test@127.0.0.1:55432/qunxiang_test';
     expect(collectProductionDatabaseUrls({
       TEST_DATABASE_URL: testUrl,
-      DATABASE_URL: 'postgresql://prod:secret@db.example.com:5432/novel_agent',
+      DATABASE_URL: 'postgresql://prod:secret@db.example.com:5432/qunxiang',
       DIRECT_DATABASE_URL: testUrl,
-      PRODUCTION_DATABASE_URLS: 'postgresql://prod:secret@db-2.example.com:5432/novel_agent',
+      PRODUCTION_DATABASE_URLS: 'postgresql://prod:secret@db-2.example.com:5432/qunxiang',
     }, testUrl)).toEqual([
-      'postgresql://prod:secret@db-2.example.com:5432/novel_agent',
-      'postgresql://prod:secret@db.example.com:5432/novel_agent',
+      'postgresql://prod:secret@db-2.example.com:5432/qunxiang',
+      'postgresql://prod:secret@db.example.com:5432/qunxiang',
     ]);
   });
 
@@ -54,7 +54,7 @@ describe('数据库测试脚本安全', () => {
     const { runTests } = await import('../../scripts/test-runner.mjs');
     let callCount = 0;
     await expect(runTests({
-      env: { TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/novel_agent' },
+      env: { TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/qunxiang' },
       argv: [],
       run: async () => { callCount += 1; },
     })).rejects.toThrow('测试数据库名称必须以 _test 结尾');
@@ -67,7 +67,7 @@ describe('数据库测试脚本安全', () => {
 
     await runTests({
       env: {
-        TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/novel_agent_test',
+        TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/qunxiang_test',
         KEEP_TEST_DB: '1',
       },
       argv: ['--', 'storage/src/database-scripts.test.ts'],
@@ -85,8 +85,8 @@ describe('数据库测试脚本安全', () => {
     expect(vitest?.env?.DIRECT_DATABASE_URL).toBe(vitest?.env?.TEST_DATABASE_URL);
     expect(calls.map(({ command, args }) => [command, ...args].join(' '))).toEqual([
       'docker compose -f docker-compose.test.yml up -d --wait postgres-test minio-test',
-      'pnpm --filter @novel-agent/storage exec prisma generate --schema=./prisma/schema.prisma',
-      'pnpm --filter @novel-agent/storage exec prisma migrate reset --force --skip-seed --schema=./prisma/schema.prisma',
+      'pnpm --filter @qunxiang/storage exec prisma generate --schema=./prisma/schema.prisma',
+      'pnpm --filter @qunxiang/storage exec prisma migrate reset --force --skip-seed --schema=./prisma/schema.prisma',
       'pnpm exec vitest run storage/src/database-scripts.test.ts',
     ]);
   });
@@ -95,7 +95,7 @@ describe('数据库测试脚本安全', () => {
     const { main } = await import('../../scripts/test.mjs');
     const result = await main({
       env: {
-        TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/novel_agent_test',
+        TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/qunxiang_test',
         KEEP_TEST_DB: '1',
       },
       argv: [],
@@ -110,7 +110,7 @@ describe('数据库测试脚本安全', () => {
 
     await expect(runTests({
       env: {
-        TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/novel_agent_test',
+        TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/qunxiang_test',
       },
       argv: [],
       run: async (command, args) => {

@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { closeDatabase, prisma } from '@novel-agent/storage';
+import { closeDatabase, prisma } from '@qunxiang/storage';
 import { buildApp } from '../app.js';
 
 const TRUSTED_ORIGIN = 'http://localhost:5173';

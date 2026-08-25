@@ -4,7 +4,7 @@ import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { buildApp } from '../app.js';
-import { prisma, getSharedObjectStore, readBookArtifactJson } from '@novel-agent/storage';
+import { prisma, getSharedObjectStore, readBookArtifactJson } from '@qunxiang/storage';
 import { getExtractionArtifacts } from '../services/artifacts.service.js';
 import { provisionSeedLibrary } from '../services/library-seed.service.js';
 

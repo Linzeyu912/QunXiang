@@ -1,5 +1,5 @@
 {
-  "name": "@novel-agent/storage",
+  "name": "@qunxiang/storage",
   "version": "0.1.0",
   "type": "module",
   "main": "./src/index.ts",
@@ -19,7 +19,8 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1090.0",
     "@aws-sdk/s3-request-presigner": "^3.1090.0",
-    "@novel-agent/core": "workspace:*",
+    "@qunxiang/core": "workspace:*",
+    "@qunxiang/import": "workspace:*",
     "@prisma/client": "^5.10.0"
   },
   "devDependencies": {

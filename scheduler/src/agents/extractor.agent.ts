@@ -1,9 +1,9 @@
-import type { AgentType, Character, Location, Item, Owner, WorldviewSetting } from '@novel-agent/core';
-import { createExtractor } from '@novel-agent/extractors';
-import { BookRepository, getSharedAssetSourceResolver } from '@novel-agent/storage';
-import { parseTxtEnhanced } from '@novel-agent/import';
-import { calcImportance, type EntityImportance, type EntityType } from '@novel-agent/entity-prescan';
-import { bookSlug } from '@novel-agent/story-arcs';
+import type { AgentType, Character, Location, Item, Owner, WorldviewSetting } from '@qunxiang/core';
+import { createExtractor } from '@qunxiang/extractors';
+import { BookRepository, getSharedAssetSourceResolver } from '@qunxiang/storage';
+import { parseTxtEnhanced } from '@qunxiang/import';
+import { calcImportance, type EntityImportance, type EntityType } from '@qunxiang/entity-prescan';
+import { bookSlug } from '@qunxiang/story-arcs';
 import { join } from 'path';
 import { fuseCharactersWithPrescan } from './character-fusion.js';
 import {
@@ -26,7 +26,7 @@ export interface ExtractorResult {
   locations: Omit<Location, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[];
   items: Omit<Item, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[];
   worldviews?: Omit<WorldviewSetting, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[];
-  events?: import('@novel-agent/entity-prescan').EntityMention[];
+  events?: import('@qunxiang/entity-prescan').EntityMention[];
   runDirName?: string;
   characterDescriptions?: CharacterDescriptionPack[];
   itemDescriptions?: ItemDescriptionPack[];
@@ -144,7 +144,7 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     content: ch.content,
   }));
 
-  type EntityMention = import('@novel-agent/entity-prescan').EntityMention;
+  type EntityMention = import('@qunxiang/entity-prescan').EntityMention;
 
   /** Build prescan mention map + LLM mention list + enrichment, then score importance. */
   function llmEntitiesWithPrescan(

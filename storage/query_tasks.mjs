@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient({ datasources: { db: { url: 'file:D:/ClaudeData/novel-agent/storage/prisma/prisma/dev.db' } } });
+const prisma = new PrismaClient({ datasources: { db: { url: 'file:D:/ClaudeData/qunxiang/storage/prisma/prisma/dev.db' } } });
 async function main() {
   const pending = await prisma.task.findMany({ where: { status: 'pending' } });
   console.log('Pending tasks:', pending.length);

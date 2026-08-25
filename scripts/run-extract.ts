@@ -5,9 +5,9 @@
 import 'dotenv/config';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { resolve } from 'path';
-import { getDefaultProvider } from '@novel-agent/llm';
+import { getDefaultProvider } from '@qunxiang/llm';
 import { z } from 'zod';
-import { CHARACTER_EXTRACTION_PROMPT, CHARACTER_BATCH_PROMPT } from '@novel-agent/prompts';
+import { CHARACTER_EXTRACTION_PROMPT, CHARACTER_BATCH_PROMPT } from '@qunxiang/prompts';
 import {
   chooseCanonicalCharacterName,
   implicitCharacterSignalAliases,
@@ -16,7 +16,7 @@ import {
   isSafeAliasMatch,
   isSafeSharedAliasMatch,
   sanitizeCharacterAliases,
-} from '@novel-agent/entity-resolution';
+} from '@qunxiang/entity-resolution';
 
 const characterSchema = z.object({
   name: z.string(), aliases: z.array(z.string()).optional().default([]),

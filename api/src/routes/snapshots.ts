@@ -2,7 +2,7 @@ import type { FastifyInstance } from 'fastify';
 import {
   AssetSnapshotRepository,
   SnapshotObjectRepository,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';

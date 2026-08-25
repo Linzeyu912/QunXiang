@@ -10,7 +10,7 @@ import {
   getSharedObjectStore,
   createFsDownloadToken,
   verifyFsDownloadToken,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 import { testUserInput } from '../../../storage/src/test-fixtures.js';
 
 const ORIGIN = 'http://localhost:5173';

@@ -1,4 +1,4 @@
-import type { Task, AgentType } from '@novel-agent/core';
+import type { Task, AgentType } from '@qunxiang/core';
 import type { TaskQueue } from '../task-queue.js';
 
 export class InMemoryTaskQueue implements TaskQueue {

@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { Location } from '@novel-agent/core';
+import type { Location } from '@qunxiang/core';
 import type { PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
 
@@ -44,6 +44,8 @@ export interface LocationRepository {
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Location[]>;
   findByOwnedBookId(bookId: string, ownerId: string): Promise<Location[]>;
+  /** 轻量计数：仅判空/统计用，避免全量拉取实体行。 */
+  countByOwnedBookId(bookId: string, ownerId: string): Promise<number>;
   findById(id: string): Promise<Location | null>;
   findOwnedById(id: string, ownerId: string): Promise<Location | null>;
   findByStatus(bookId: string, status: string): Promise<Location[]>;
@@ -132,6 +134,10 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
         orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
       });
       return locs.map(l => parseLocation(l as unknown as Record<string, unknown>));
+    },
+
+    async countByOwnedBookId(bookId: string, ownerId: string) {
+      return db.location.count({ where: { bookId, book: { userId: ownerId } } });
     },
 
     async findById(id: string) {

@@ -1,12 +1,12 @@
 import { readFile, unlink } from 'node:fs/promises';
 import { join } from 'node:path';
 import { randomUUID } from 'node:crypto';
-import { getDefaultImageProvider, getRuntimeImageConfig } from '@novel-agent/llm';
-import { BookRepository, EntityImageRepository, VisualSpecRepository, getSharedObjectStore, type EntityImageRow } from '@novel-agent/storage';
+import { getDefaultImageProvider, getRuntimeImageConfig } from '@qunxiang/llm';
+import { BookRepository, EntityImageRepository, VisualSpecRepository, getSharedObjectStore, type EntityImageRow } from '@qunxiang/storage';
 import { listExtractionRuns } from './artifacts.service.js';
 import { readArtifactText } from './artifact-store.js';
 import { ENTITY_IMAGE_DIR } from '../lib/paths.js';
-import { pickActiveSpec } from '@novel-agent/scheduler';
+import { pickActiveSpec } from '@qunxiang/scheduler';
 
 /**
  * 实体一键生图服务（多张画廊 + DB 持久化）。

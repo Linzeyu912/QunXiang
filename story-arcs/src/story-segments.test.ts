@@ -4,7 +4,7 @@ import { tmpdir } from 'os';
 import { describe, expect, it } from 'vitest';
 import { buildStorySegmentsFromParseResult } from './story-segments.js';
 import { extractAssetsForStories } from './story-assets.js';
-import type { ParseResult, PrescanResult } from '@novel-agent/import';
+import type { ParseResult, PrescanResult } from '@qunxiang/import';
 
 describe('automatic story segment creation', () => {
   it('groups a short connected chapter run into an approved story segment for story asset agents', async () => {

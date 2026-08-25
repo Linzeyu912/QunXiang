@@ -19,7 +19,6 @@ COPY validators/package.json validators/package.json
 COPY entity-resolution/package.json entity-resolution/package.json
 COPY entity-prescan/package.json entity-prescan/package.json
 COPY scheduler/package.json scheduler/package.json
-COPY agent/package.json agent/package.json
 COPY story-arcs/package.json story-arcs/package.json
 COPY llm/package.json llm/package.json
 COPY api/package.json api/package.json
@@ -40,7 +39,6 @@ COPY validators/ validators/
 COPY entity-resolution/ entity-resolution/
 COPY entity-prescan/ entity-prescan/
 COPY scheduler/ scheduler/
-COPY agent/ agent/
 COPY story-arcs/ story-arcs/
 COPY llm/ llm/
 COPY api/ api/
@@ -50,7 +48,7 @@ COPY preprocess/ preprocess/
 COPY seed-library/ seed-library/
 
 # 生成 Prisma client
-RUN pnpm --filter @novel-agent/storage exec prisma generate --schema=./prisma/schema.prisma
+RUN pnpm --filter @qunxiang/storage exec prisma generate --schema=./prisma/schema.prisma
 
 # 对象存储目录
 RUN mkdir -p /app/storage/objects

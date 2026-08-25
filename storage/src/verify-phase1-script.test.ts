@@ -122,7 +122,7 @@ describe('阶段一完成门脚本', () => {
           env: {
             ...withoutDatabaseOverrides(),
             PATH: `${tempDirectory}${delimiter}${process.env.PATH ?? ''}`,
-            TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/novel_agent',
+            TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/qunxiang',
             DATABASE_URL: '',
             DIRECT_DATABASE_URL: '',
             VERIFY_PHASE1_CALL_LOG: callLog,
@@ -148,7 +148,7 @@ describe('阶段一完成门脚本', () => {
       encoding: 'utf8',
       env: {
         ...withoutDatabaseOverrides(),
-        TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/novel_agent',
+        TEST_DATABASE_URL: 'postgresql://test:test@127.0.0.1:55432/qunxiang',
       },
     })
 

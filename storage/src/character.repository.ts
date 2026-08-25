@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { Character, Outfit } from '@novel-agent/core';
+import type { Character, Outfit } from '@qunxiang/core';
 import type { Prisma, PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
 
@@ -18,6 +18,8 @@ export interface CharacterRepository {
     dialogueCount?: number;
     coCharacters?: string[];
     outfits?: Outfit[];
+    ageStages?: string[];
+    primaryAgeStage?: string;
   }): Promise<Character>;
   createMany(characters: Array<{
     bookId: string;
@@ -33,9 +35,13 @@ export interface CharacterRepository {
     dialogueCount?: number;
     coCharacters?: string[];
     outfits?: Outfit[];
+    ageStages?: string[];
+    primaryAgeStage?: string;
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Character[]>;
   findByOwnedBookId(bookId: string, ownerId: string): Promise<Character[]>;
+  /** 轻量计数：仅判空/统计用，避免全量拉取实体行。 */
+  countByOwnedBookId(bookId: string, ownerId: string): Promise<number>;
   findById(id: string): Promise<Character | null>;
   findOwnedById(id: string, ownerId: string): Promise<Character | null>;
   findByStatus(bookId: string, status: string): Promise<Character[]>;
@@ -88,6 +94,7 @@ function parseCharacter(dbChar: Record<string, unknown>): Character {
     chapterAppearances: decodeJsonField(dbChar.chapterAppearances, []),
     coCharacters: decodeJsonField(dbChar.coCharacters, []),
     outfits: decodeJsonField(dbChar.outfits, []),
+    ageStages: decodeJsonField(dbChar.ageStages, []),
   } as unknown as Character;
 }
 
@@ -107,6 +114,8 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       dialogueCount?: number;
       coCharacters?: string[];
       outfits?: Outfit[];
+      ageStages?: string[];
+      primaryAgeStage?: string;
     }): Promise<Character> {
       const created = await db.character.create({
         data: {
@@ -123,6 +132,8 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
           dialogueCount: data.dialogueCount || 0,
           coCharacters: encodeJsonField(data.coCharacters || []),
           outfits: encodeJsonField(data.outfits || []),
+          ageStages: encodeJsonField(data.ageStages || []),
+          primaryAgeStage: data.primaryAgeStage,
         },
       });
       return parseCharacter(created);
@@ -142,6 +153,8 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       dialogueCount?: number;
       coCharacters?: string[];
       outfits?: Outfit[];
+      ageStages?: string[];
+      primaryAgeStage?: string;
     }>): Promise<number> {
       const result = await db.character.createMany({
         data: characters.map(c => ({
@@ -158,6 +171,8 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
           dialogueCount: c.dialogueCount || 0,
           coCharacters: encodeJsonField(c.coCharacters || []),
           outfits: encodeJsonField(c.outfits || []),
+          ageStages: encodeJsonField(c.ageStages || []),
+          primaryAgeStage: c.primaryAgeStage,
         })),
       });
       return result.count;
@@ -177,6 +192,10 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
         orderBy: { createdAt: 'asc' },
       });
       return chars.map(c => parseCharacter(c as unknown as Record<string, unknown>));
+    },
+
+    async countByOwnedBookId(bookId: string, ownerId: string): Promise<number> {
+      return db.character.count({ where: { bookId, book: { userId: ownerId } } });
     },
 
     async findById(id: string): Promise<Character | null> {
@@ -220,6 +239,9 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       if (data.outfits) {
         updateData.outfits = encodeJsonField(data.outfits);
       }
+      if (data.ageStages) {
+        updateData.ageStages = encodeJsonField(data.ageStages);
+      }
       const updated = await db.character.update({
         where: { id },
         data: updateData,
@@ -235,6 +257,7 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       if (data.chapterAppearances) updateData.chapterAppearances = encodeJsonField(data.chapterAppearances);
       if (data.coCharacters) updateData.coCharacters = encodeJsonField(data.coCharacters);
       if (data.outfits) updateData.outfits = encodeJsonField(data.outfits);
+      if (data.ageStages) updateData.ageStages = encodeJsonField(data.ageStages);
       const result = await db.character.updateMany({ where: { id, book: { userId: ownerId } }, data: updateData });
       if (result.count !== 1) return null;
       const updated = await db.character.findFirst({ where: { id, book: { userId: ownerId } } });

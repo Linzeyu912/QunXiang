@@ -1,6 +1,6 @@
 // 单一事实来源：story-arcs/src/types.ts（经 tsconfig paths 映射为
-// @novel-agent/story-arcs/types，只指向零依赖的纯类型文件）。
-// 禁止从 @novel-agent/story-arcs 包根导入：包根会拖入 Node fs 依赖的源码图。
+// @qunxiang/story-arcs/types，只指向零依赖的纯类型文件）。
+// 禁止从 @qunxiang/story-arcs 包根导入：包根会拖入 Node fs 依赖的源码图。
 export type {
   StorySegment,
   StoryConflictStatus,
@@ -25,9 +25,9 @@ export type {
   StoryboardFramePrompt,
   VideoPromptPack,
   VideoClipPrompt,
-} from '@novel-agent/story-arcs/types';
+} from '@qunxiang/story-arcs/types';
 
-import type { DirectorAssignment, ScriptEpisode, ScriptEpisodePlan, ScriptReview, StorySegment } from '@novel-agent/story-arcs/types';
+import type { DirectorAssignment, ScriptEpisode, ScriptEpisodePlan, ScriptReview, StorySegment } from '@qunxiang/story-arcs/types';
 
 // —— 以下为 API 层扩展类型，与 api/src/services/story.service.ts 一一对应 ——
 

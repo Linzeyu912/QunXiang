@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { UserRepository } from '@novel-agent/storage';
+import { UserRepository } from '@qunxiang/storage';
 import { createShareCode } from '../lib/share-code.js';
 
 export async function accountRoutes(fastify: FastifyInstance) {

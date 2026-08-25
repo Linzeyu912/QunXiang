@@ -1,5 +1,5 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import { getSharedObjectStore, verifyFsDownloadToken } from '@novel-agent/storage';
+import { getSharedObjectStore, verifyFsDownloadToken } from '@qunxiang/storage';
 
 /**
  * 内部对象下载路由（C1）：GET /objects/dl?t=<token>

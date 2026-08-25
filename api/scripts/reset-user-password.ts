@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { closeDatabase } from '@novel-agent/storage';
+import { closeDatabase } from '@qunxiang/storage';
 import { resetUserPasswordByAdmin } from '../src/services/admin-account.service.js';
 import {
   parseResetPasswordArgs,

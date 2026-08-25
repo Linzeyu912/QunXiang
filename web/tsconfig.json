@@ -21,11 +21,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@novel-agent/core": ["../core/src"],
-      "@novel-agent/core/*": ["../core/src/*"],
-      "@novel-agent/schemas": ["../schemas/src"],
-      "@novel-agent/schemas/*": ["../schemas/src/*"],
-      "@novel-agent/story-arcs/types": ["../story-arcs/src/types.ts"]
+      "@qunxiang/core": ["../core/src"],
+      "@qunxiang/core/*": ["../core/src/*"],
+      "@qunxiang/schemas": ["../schemas/src"],
+      "@qunxiang/schemas/*": ["../schemas/src/*"],
+      "@qunxiang/story-arcs/types": ["../story-arcs/src/types.ts"]
     }
   },
   "include": ["src"]

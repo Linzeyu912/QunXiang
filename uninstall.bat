@@ -8,7 +8,7 @@ set "FAILED=0"
 set "WORKSPACE_DIRS=agent api core entity-prescan entity-resolution exporters extractors import llm preprocess prompts scheduler schemas storage story-arcs validators web"
 
 echo ========================================
-echo   Novel Agent - 卸载与本地清理
+echo   群像 - 卸载与本地清理
 echo ========================================
 echo.
 echo 此脚本用于清理本项目生成的本地文件。

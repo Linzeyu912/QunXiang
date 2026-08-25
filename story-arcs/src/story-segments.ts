@@ -1,5 +1,5 @@
-import type { ParseResult, PrescanResult } from '@novel-agent/import';
-import type { EntityMention } from '@novel-agent/entity-prescan';
+import type { ParseResult, PrescanResult } from '@qunxiang/import';
+import type { EntityMention } from '@qunxiang/entity-prescan';
 import type { NarrativeEvent, StorySegment } from './types.js';
 import { buildNarrativeArcsFromEvents, extractNarrativeEvents } from './narrative-events.js';
 

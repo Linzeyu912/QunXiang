@@ -1,5 +1,5 @@
 import type { AssetObject, PrismaClient } from '@prisma/client';
-import type { PutAssetObjectInput } from '@novel-agent/core';
+import type { PutAssetObjectInput } from '@qunxiang/core';
 import { prisma } from './prisma.js';
 
 export interface AssetObjectRepository {

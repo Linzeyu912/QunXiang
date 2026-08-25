@@ -1,6 +1,6 @@
-import type { Chapter } from '@novel-agent/extractors/extractor';
+import type { Chapter } from '@qunxiang/extractors/extractor';
 import { RELATIONSHIP_INDICATORS } from './patterns.js';
-import type { Relationship, RelationshipType } from '@novel-agent/schemas';
+import type { Relationship, RelationshipType } from '@qunxiang/schemas';
 
 export interface RelationshipExtractorOptions {
   minConfidence: number;

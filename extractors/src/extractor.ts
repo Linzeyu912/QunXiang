@@ -1,26 +1,26 @@
-import type { Character, Outfit, Owner } from '@novel-agent/core';
-import { cleanEntityDescription, mergeEntityDescriptions } from '@novel-agent/core';
-import type { LLMProvider } from '@novel-agent/llm';
+import type { Character, Outfit, Owner } from '@qunxiang/core';
+import { cleanEntityDescription, mergeEntityDescriptions } from '@qunxiang/core';
+import type { LLMProvider } from '@qunxiang/llm';
 import {
   extractionResultSchema,
   type CharacterInputOutput,
   type ItemInputOutput,
   type LocationInputOutput,
   type WorldviewInputOutput,
-} from '@novel-agent/schemas';
-import { getDefaultProvider } from '@novel-agent/llm';
+} from '@qunxiang/schemas';
+import { getDefaultProvider } from '@qunxiang/llm';
 import {
   chooseCanonicalCharacterName,
   implicitCharacterSignalAliases,
   isCollectiveCharacterAlias,
   isGenericCharacterAlias,
   sanitizeCharacterAliases,
-} from '@novel-agent/entity-resolution';
+} from '@qunxiang/entity-resolution';
 import { extractCharacterSignals } from './character-signals.js';
 import {
   CHARACTER_EXTRACTION_PROMPT,
   CHARACTER_BATCH_PROMPT,
-} from '@novel-agent/prompts';
+} from '@qunxiang/prompts';
 
 export interface Chapter {
   index: number;

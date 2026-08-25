@@ -15,12 +15,13 @@ import {
   SnapshotObjectRepository,
   AssetObjectRepository,
   getSharedObjectStore,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 import { collectSnapshot } from '../snapshot/collector.js';
 import { copyShareToLibrary } from '../snapshot/book-copy.js';
 import { createArchiveZip } from '../lib/zip.js';
 
 const DEFAULT_INTERVAL_MS = 1000;
+const MAX_IDLE_INTERVAL_MS = 5000;
 const DEFAULT_LEASE_MS = 30_000;
 const HEARTBEAT_INTERVAL_MS = 10_000;
 const DEFAULT_WORKER_ID = 'snapshot-worker-1';
@@ -80,15 +81,29 @@ export function startSnapshotWorker(intervalMs: number = DEFAULT_INTERVAL_MS, op
 
   let isProcessing = false;
   let stopped = false;
-  const timer = setInterval(() => {
-    processOnce().catch((err) => {
-      console.error('快照后台任务异常：', err instanceof Error ? err.message : String(err));
-    });
-  }, intervalMs);
-  // setInterval 在 Node 中会阻止进程退出，但 worker 是常驻后台；测试统一 stop()。
-  if (typeof (timer as unknown as { unref?: () => void }).unref === 'function') {
-    (timer as unknown as { unref: () => void }).unref();
+  let currentInterval = intervalMs;
+  let timer: ReturnType<typeof setTimeout> | null = null;
+
+  // 命中任务后恢复基础间隔；空闲时逐步退避，减少无任务时的数据库轮询。
+  function scheduleNext(): void {
+    if (stopped) return;
+    timer = setTimeout(() => {
+      processOnce()
+        .then((processed) => {
+          currentInterval = processed
+            ? intervalMs
+            : Math.min(currentInterval * 2, MAX_IDLE_INTERVAL_MS);
+        })
+        .catch((err) => {
+          console.error('快照后台任务异常：', err instanceof Error ? err.message : String(err));
+        })
+        .finally(scheduleNext);
+    }, currentInterval);
+    if (typeof (timer as unknown as { unref?: () => void }).unref === 'function') {
+      (timer as unknown as { unref: () => void }).unref();
+    }
   }
+  scheduleNext();
   // 周期回收过期租约，避免心跳失败时任务卡在 running 直到进程重启（P1-5）
   const recoveryTimer = setInterval(() => {
     BackgroundJobRepository.recoverExpired({ now: now() }).catch(() => {});
@@ -154,7 +169,7 @@ export function startSnapshotWorker(intervalMs: number = DEFAULT_INTERVAL_MS, op
   return {
     stop() {
       stopped = true;
-      clearInterval(timer);
+      if (timer) clearTimeout(timer);
       clearInterval(recoveryTimer);
     },
     processOnce,

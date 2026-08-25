@@ -67,7 +67,7 @@
 
 ---
 
-## 三、novel-agent 提取进度方案
+## 三、qunxiang 提取进度方案
 
 ### 3.1 技术架构
 
@@ -315,4 +315,4 @@ fastify.get('/:id/extract/stream', async (request, reply) => {
 - 当前步骤有旋转动画
 - 下方折叠日志区域
 
-**推荐 novel-agent 采用**：Vercel 风格的水平步骤条 + GitHub Actions 风格的日志折叠面板。
+**推荐 qunxiang 采用**：Vercel 风格的水平步骤条 + GitHub Actions 风格的日志折叠面板。

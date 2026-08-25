@@ -816,7 +816,7 @@ Fixture tests:
 Verification commands:
 
 ```text
-pnpm --filter @novel-agent/story-arcs build
+pnpm --filter @qunxiang/story-arcs build
 pnpm test -- story-arcs
 ```
 

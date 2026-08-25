@@ -27,11 +27,11 @@
 
 **持久化文件为包装对象**（非裸数组）：`story-segments.json` = `{ bookId, generatedAt, segments }`；`story-boundary-review.json` = `{ bookId, items }`；`director-assignments.json` = `{ bookId, assignments }`（assignments 按时间倒序 unshift）。
 
-**前端类型接入方式**：web 的 tsconfig `paths` 增加了 `"@novel-agent/story-arcs/types": ["../story-arcs/src/types.ts"]`，`web/src/types/story.ts` 只从这个映射做 `export type` 重导出。**不能从包根 `@novel-agent/story-arcs` 导入**——包根 index 会把含 Node fs 依赖的整个源码图拉进浏览器端 tsc program（已踩坑验证）。
+**前端类型接入方式**：web 的 tsconfig `paths` 增加了 `"@qunxiang/story-arcs/types": ["../story-arcs/src/types.ts"]`，`web/src/types/story.ts` 只从这个映射做 `export type` 重导出。**不能从包根 `@qunxiang/story-arcs` 导入**——包根 index 会把含 Node fs 依赖的整个源码图拉进浏览器端 tsc program（已踩坑验证）。
 
 **冒烟测试结果**（书：《斗破苍穹》30 章样本）：切分 5 段 → 审批 → 资产 9 角色/1 场景/6 道具/16 提示词 → 导演任务 completed → 1 集剧本过审 → 4 分镜帧 + 4 视频片段；PATCH 修复描述后 quality 变 sufficient；错误路径 404/409/400 均正确。**未经运行时验证的路径**：`merge_with_previous` 合并裁决（该样本书所有段置信度 ≥0.82，队列为空；合并逻辑为纯数据操作，有需要时用无预扫事件的书触发 fallback 切分即可复现低置信段）。
 
-**已知存量问题（非本次引入）**：`pnpm --filter @novel-agent/api exec tsc --noEmit` 会报 8 个 `scheduler` 包的既有类型错误（`prompt-generation` 未加入 AgentType 联合）；api 用 tsx 跑 dev 不受影响。web 的 `pnpm lint` 因 devDependencies 缺 `@eslint/js` 本来就无法运行。
+**已知存量问题（非本次引入）**：`pnpm --filter @qunxiang/api exec tsc --noEmit` 会报 8 个 `scheduler` 包的既有类型错误（`prompt-generation` 未加入 AgentType 联合）；api 用 tsx 跑 dev 不受影响。web 的 `pnpm lint` 因 devDependencies 缺 `@eslint/js` 本来就无法运行。
 
 ---
 
@@ -51,7 +51,7 @@
 - 上传路由对 git-bash curl 的 multipart 文件名编码敏感（中文文件名会乱码入库）——浏览器上传不受影响，不修。
 
 **留给后续 agent 的事项（按优先级）**：
-1. **浏览器走查**：本次验证覆盖了 API 层端到端 + tsc/vite build，但五个新页面没有真人在浏览器里点过。跑 `pnpm --filter @novel-agent/api dev` + `pnpm --filter @novel-agent/web dev`，用 `D:\YH\YingHe-entity-dev\storage` 库里已有的《斗破苍穹》（bookId 549def18…）把 §4 用户流程走一遍，重点看：批量审批操作条、边界审核页（需要一本触发 fallback 的书，参考实施记录里的合成书方法）、资产描述编辑保存后的警告横幅刷新。
+1. **浏览器走查**：本次验证覆盖了 API 层端到端 + tsc/vite build，但五个新页面没有真人在浏览器里点过。跑 `pnpm --filter @qunxiang/api dev` + `pnpm --filter @qunxiang/web dev`，用 `D:\YH\YingHe-entity-dev\storage` 库里已有的《斗破苍穹》（bookId 549def18…）把 §4 用户流程走一遍，重点看：批量审批操作条、边界审核页（需要一本触发 fallback 的书，参考实施记录里的合成书方法）、资产描述编辑保存后的警告横幅刷新。
 2. **章节覆盖稀疏问题（需要产品决策）**：真实小说 30 章样本只切出 5 段（ch2/5-7/13/26/28-29），其余章节不属于任何故事段——这是 story-arcs 弧线切分「只挑高信号弧」的设计使然，不是 bug。若业务上要求全书章节全覆盖，需要在后端给弧线之间的空隙生成 fallback 段（改 `buildStorySegmentsFromParseResult`），或在前端明示「未覆盖章节」。建议先问用户预期。
 3. **前端 SSE 兜底轮询的可靠性**：`useSegmentationProgress` 的 EventSource + 轮询兜底逻辑只在正常路径下验证过，SSE 中断场景（服务器重启）未实测。
 4. 两个存量问题（见上）：scheduler 类型错误、eslint 依赖缺失——都与本功能无关，但迟早要清。
@@ -68,7 +68,7 @@
    - API hooks 范本：`web/src/api/extraction.ts`（含 SSE + 轮询兜底）
    - fetch 封装：`web/src/api/client.ts`（`apiFetch`，勿另造）
    - Tab 导航范本：`web/src/pages/BookLayout.tsx`
-5. **验证命令**：`pnpm --filter @novel-agent/web dev`（前端）、`pnpm --filter @novel-agent/api dev`（后端）、`pnpm --filter @novel-agent/web build`（类型检查）。
+5. **验证命令**：`pnpm --filter @qunxiang/web dev`（前端）、`pnpm --filter @qunxiang/api dev`（后端）、`pnpm --filter @qunxiang/web build`（类型检查）。
 6. 未决问题集中在 §13，实施中遇到即问用户，不要自行拍板。
 
 ---
@@ -252,7 +252,7 @@ output/{bookDirName}/
 
 ### 5.5 第一版后端实现说明（文件直读版）
 
-- 新建 `api/src/services/story.service.ts`：包装 `@novel-agent/story-arcs` 的纯函数 + `fs` 读写 §2.3 布局的 JSON；内存 Map 维护 taskId → 进度（与 `extraction.service.ts` 的做法一致）。
+- 新建 `api/src/services/story.service.ts`：包装 `@qunxiang/story-arcs` 的纯函数 + `fs` 读写 §2.3 布局的 JSON；内存 Map 维护 taskId → 进度（与 `extraction.service.ts` 的做法一致）。
 - 裁决与人工修复**直接改写对应 JSON 文件**（`story-boundary-review.json`、`stories/{storyId}/*.json`），保持文件是唯一事实来源，后续迁 Prisma 时前端契约不变。
 - 挂载：`api/src/index.ts` 里 `await fastify.register(storiesRoutes, { prefix: '/books' });` 与 `directorRoutes`。
 
@@ -273,13 +273,13 @@ export type {
   DirectorAssignment, ScriptEpisodePlan, ScriptEpisode, ScriptScene, ScriptDialogueLine,
   ScriptReview, StoryboardPromptPack, StoryboardFramePrompt,
   VideoPromptPack, VideoClipPrompt,
-} from '@novel-agent/story-arcs';
+} from '@qunxiang/story-arcs';
 
 // —— 以下为 API 层扩展类型（story-arcs 里没有，按本设计书 §5 定义）——
 
 /** 列表用摘要：StorySegment 去掉 sourceText */
 export type StorySummary = Omit<StorySegmentT, 'sourceText'>;
-type StorySegmentT = import('@novel-agent/story-arcs').StorySegment;
+type StorySegmentT = import('@qunxiang/story-arcs').StorySegment;
 
 export type BoundaryDecision = 'same_story' | 'new_story';
 
@@ -314,10 +314,10 @@ export interface AssignmentWithStatus extends DirectorAssignmentT {
   status: 'pending' | 'running' | 'completed' | 'failed';
   error?: string;
 }
-type DirectorAssignmentT = import('@novel-agent/story-arcs').DirectorAssignment;
+type DirectorAssignmentT = import('@qunxiang/story-arcs').DirectorAssignment;
 ```
 
-同时在 `web/package.json` 增加 `"@novel-agent/story-arcs": "workspace:*"`。
+同时在 `web/package.json` 增加 `"@qunxiang/story-arcs": "workspace:*"`。
 
 ---
 
@@ -514,7 +514,7 @@ SSE 集成沿用 `web/src/api/extraction.ts` 的成熟模式：`useEffect` 中�
 |---|---|
 | `web/src/App.tsx` | BookLayout 子路由新增 `stories`、`stories/boundary-review`、`stories/:storyId/assets`、`stories/:storyId/episodes`、`director` 5 条 |
 | `web/src/pages/BookLayout.tsx` | Tab 行新增「故事」（icon: `BookOpen`）与「导演」（icon: `Clapperboard`），**不加 `disabled={!isComplete}`**；「故事」Tab 显示待审边界红点徽章（数据来自 `useStories(bookId)` 的 `pendingBoundaryReviews`） |
-| `web/package.json` | 新增 `"@novel-agent/story-arcs": "workspace:*"` |
+| `web/package.json` | 新增 `"@qunxiang/story-arcs": "workspace:*"` |
 | `api/src/index.ts` | 注册 `storiesRoutes`、`directorRoutes` |
 | `web/src/types.ts` | 不动（故事类型独立放 `web/src/types/story.ts`，避免该文件膨胀） |
 
@@ -735,7 +735,7 @@ export async function storiesRoutes(fastify: FastifyInstance) {
 
 | 期 | 范围 | 验收标准 |
 |---|---|---|
-| **M1 只读** | API GET 端点（文件直读）+ P1 列表/详情（无审批按钮）+ P3 资产只读 + P5 全部 Tab 只读 + 路由/Tab 接入 | 对 `output/` 里已有的一次后端跑批结果，5 个页面全部能正确渲染；`pnpm --filter @novel-agent/web build` 零错误 |
+| **M1 只读** | API GET 端点（文件直读）+ P1 列表/详情（无审批按钮）+ P3 资产只读 + P5 全部 Tab 只读 + 路由/Tab 接入 | 对 `output/` 里已有的一次后端跑批结果，5 个页面全部能正确渲染；`pnpm --filter @qunxiang/web build` 零错误 |
 | **M2 写路径** | 边界裁决（P2 全部）+ 故事审批/批量审批 + 资产描述修复（PATCH） | 裁决→重组段→列表刷新闭环可用；审批门禁（未决边界 409）在 UI 正确呈现 |
 | **M3 触发与进度** | 切分触发 + 资产提取触发 + 导演任务创建（P4 全部）+ 两条 SSE 流 + 兜底轮询 | 从空书到拿到视频提示词的 §4 全流程在浏览器一次走通 |
 | **M4 打磨** | 提示词单条/整包复制与 JSON 下载、原文段落跳转、批量审批 UI、键盘快捷键完善、空态/错误态统一 | 全流程无 dead-end：每个空态/错误态都有下一步动作指引 |
@@ -760,4 +760,4 @@ export async function storiesRoutes(fastify: FastifyInstance) {
 2. 列表接口永不携带 `sourceText`；原文一律懒加载。
 3. 提示词类数据的 UI 铁律：**看得清、复制快、可整包导出**——它们的最终消费者是外部图像/视频工具。
 4. 所有异步触发遵循「POST → SSE → GET」三段式 + 轮询兜底，与实体提取管线同构，用户心智一致。
-5. 前端类型永远 `import type` 自 `@novel-agent/story-arcs`，API 扩展类型集中在 `web/src/types/story.ts`，不散落。
+5. 前端类型永远 `import type` 自 `@qunxiang/story-arcs`，API 扩展类型集中在 `web/src/types/story.ts`，不散落。

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildNarrativeArcsFromEvents, extractNarrativeEvents } from './narrative-events.js';
-import type { ParseResult, PrescanResult } from '@novel-agent/import';
+import type { ParseResult, PrescanResult } from '@qunxiang/import';
 
 const parseResult: ParseResult = {
   title: '斗破苍穹 1-10',

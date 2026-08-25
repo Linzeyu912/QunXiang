@@ -1,4 +1,4 @@
-import type { Character, Item, Location } from '@novel-agent/core';
+import type { Character, Item, Location } from '@qunxiang/core';
 
 export interface DescriptionChapter {
   index: number;

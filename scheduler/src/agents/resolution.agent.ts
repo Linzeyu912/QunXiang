@@ -1,5 +1,5 @@
-import type { AgentType, Character, Location, Item } from '@novel-agent/core';
-import { resolve } from '@novel-agent/entity-resolution';
+import type { AgentType, Character, Location, Item } from '@qunxiang/core';
+import { resolve } from '@qunxiang/entity-resolution';
 import type { CharacterDescriptionPack, ItemDescriptionPack, LocationDescriptionPack } from './entity-descriptions.js';
 
 export const resolutionAgentType: AgentType = 'entity-resolution';

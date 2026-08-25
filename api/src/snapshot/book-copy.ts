@@ -19,7 +19,7 @@ import {
   BookShareRepository,
   SnapshotObjectRepository,
   prisma,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 
 export interface CopyShareInput {
   shareId: string;

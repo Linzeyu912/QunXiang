@@ -1,5 +1,5 @@
 {
-  "name": "@novel-agent/web",
+  "name": "@qunxiang/web",
   "version": "0.2.0",
   "type": "module",
   "scripts": {
@@ -10,9 +10,9 @@
     "lint:fix": "eslint src --fix"
   },
   "dependencies": {
-    "@novel-agent/core": "workspace:*",
-    "@novel-agent/schemas": "workspace:*",
-    "@novel-agent/story-arcs": "workspace:*",
+    "@qunxiang/core": "workspace:*",
+    "@qunxiang/schemas": "workspace:*",
+    "@qunxiang/story-arcs": "workspace:*",
     "@radix-ui/react-alert-dialog": "^1.1.4",
     "@radix-ui/react-dialog": "^1.1.4",
     "@radix-ui/react-dropdown-menu": "^2.1.4",

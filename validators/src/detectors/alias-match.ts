@@ -1,4 +1,4 @@
-import type { Character } from '@novel-agent/core';
+import type { Character } from '@qunxiang/core';
 import type { ValidationResult, ValidationIssue } from '../types.js';
 
 export function detectAliasMatch(

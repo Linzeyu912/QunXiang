@@ -143,9 +143,9 @@ Run: `pnpm exec vitest run api/src/startup-account-safety.test.ts web/src/api/au
 
 Expected: PASS。
 
-Run: `pnpm --filter @novel-agent/api build`
+Run: `pnpm --filter @qunxiang/api build`
 
-Run: `pnpm --filter @novel-agent/web build`
+Run: `pnpm --filter @qunxiang/web build`
 
 Expected: 两个命令退出码均为 0。
 
@@ -217,13 +217,13 @@ services:
   postgres-test:
     image: postgres:15-alpine
     environment:
-      POSTGRES_DB: novel_agent_test
-      POSTGRES_USER: novel_agent_test
-      POSTGRES_PASSWORD: novel_agent_test
+      POSTGRES_DB: qunxiang_test
+      POSTGRES_USER: qunxiang_test
+      POSTGRES_PASSWORD: qunxiang_test
     ports:
       - "55432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U novel_agent_test -d novel_agent_test"]
+      test: ["CMD-SHELL", "pg_isready -U qunxiang_test -d qunxiang_test"]
       interval: 2s
       timeout: 2s
       retries: 30
@@ -244,9 +244,9 @@ services:
 
 ```json
 {
-  "db:migrate:dev": "pnpm --filter @novel-agent/storage exec prisma migrate dev --schema=./prisma/schema.prisma",
-  "db:migrate:deploy": "pnpm --filter @novel-agent/storage exec prisma migrate deploy --schema=./prisma/schema.prisma",
-  "db:migrate:status": "pnpm --filter @novel-agent/storage exec prisma migrate status --schema=./prisma/schema.prisma",
+  "db:migrate:dev": "pnpm --filter @qunxiang/storage exec prisma migrate dev --schema=./prisma/schema.prisma",
+  "db:migrate:deploy": "pnpm --filter @qunxiang/storage exec prisma migrate deploy --schema=./prisma/schema.prisma",
+  "db:migrate:status": "pnpm --filter @qunxiang/storage exec prisma migrate status --schema=./prisma/schema.prisma",
   "test:postgres:up": "docker compose -f docker-compose.test.yml up -d --wait postgres-test",
   "test:postgres:down": "docker compose -f docker-compose.test.yml down -v"
 }
@@ -445,7 +445,7 @@ model AuditLog {
 
 先完成完整 `schema.prisma`，再用以下确定性命令生成空库 baseline，严禁手写一份与 schema 漂移的“近似 SQL”：
 
-Run: `pnpm --filter @novel-agent/storage exec prisma migrate diff --from-empty --to-schema-datamodel ./prisma/schema.prisma --script > ./prisma/migrations/20260715_postgresql_baseline/migration.sql`
+Run: `pnpm --filter @qunxiang/storage exec prisma migrate diff --from-empty --to-schema-datamodel ./prisma/schema.prisma --script > ./prisma/migrations/20260715_postgresql_baseline/migration.sql`
 
 每次重新生成 migration 后，按固定顺序只追加一次以下 SQL；约束名称和值域是阶段一契约，不得自由改名：
 
@@ -628,7 +628,7 @@ Run: `pnpm test -- api/src/lib/email.test.ts api/src/lib/share-code.test.ts api/
 
 Expected: PASS；覆盖大小写重复注册、相同登录错误、轮换后旧分享码失效。
 
-Run: `pnpm --filter @novel-agent/api build`
+Run: `pnpm --filter @qunxiang/api build`
 
 Expected: 退出码 0。
 
@@ -742,7 +742,7 @@ Run: `pnpm test -- storage/src/refresh-session.repository.test.ts api/src/routes
 
 Expected: PASS；覆盖 Cookie 属性、并发轮换、重放、退出、Origin/CSRF 和管理员重置。
 
-Run: `pnpm --filter @novel-agent/api build`
+Run: `pnpm --filter @qunxiang/api build`
 
 Expected: 退出码 0。
 
@@ -837,11 +837,11 @@ Run: `pnpm test -- web/src/store/authStore.test.ts web/src/api/client.test.ts we
 
 Expected: PASS。
 
-Run: `pnpm --filter @novel-agent/web lint`
+Run: `pnpm --filter @qunxiang/web lint`
 
-Run: `pnpm --filter @novel-agent/web build`
+Run: `pnpm --filter @qunxiang/web build`
 
-Run: `pnpm --filter @novel-agent/api build`
+Run: `pnpm --filter @qunxiang/api build`
 
 Expected: 全部退出码 0。
 
@@ -1127,7 +1127,7 @@ function Invoke-Checked([string]$File, [string[]]$Arguments) {
 try {
   Invoke-Checked 'pnpm' @('test:postgres:up')
   if (-not $env:TEST_DATABASE_URL) {
-    $env:TEST_DATABASE_URL = 'postgresql://novel_agent_test:novel_agent_test@127.0.0.1:55432/novel_agent_test'
+    $env:TEST_DATABASE_URL = 'postgresql://qunxiang_test:qunxiang_test@127.0.0.1:55432/qunxiang_test'
   }
   $env:DATABASE_URL = $env:TEST_DATABASE_URL
   $env:DIRECT_DATABASE_URL = $env:TEST_DATABASE_URL

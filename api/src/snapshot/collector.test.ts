@@ -69,7 +69,7 @@ const mockState = vi.hoisted(() => {
   };
 });
 
-vi.mock('@novel-agent/storage', () => {
+vi.mock('@qunxiang/storage', () => {
   function makeObjectKey(sha256: string): string {
     return `obj/${sha256.slice(0, 2)}/${sha256.slice(2, 4)}/${sha256}`;
   }

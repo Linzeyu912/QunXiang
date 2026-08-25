@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { buildApp } from '../app.js';
-import { closeDatabase, prisma, UserRepository } from '@novel-agent/storage';
+import { closeDatabase, prisma, UserRepository } from '@qunxiang/storage';
 import { hashPassword } from '../lib/password.js';
 import { createShareCode, verifyShareCode } from '../lib/share-code.js';
 

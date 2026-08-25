@@ -5,10 +5,10 @@ setlocal enabledelayedexpansion
 set "ROOT=%~dp0"
 cd /d "%ROOT%"
 
-set "DB_URL=postgresql://novel_agent:change_me@127.0.0.1:5432/novel_agent"
+set "DB_URL=postgresql://qunxiang:change_me@127.0.0.1:5432/qunxiang"
 
 echo ========================================
-echo   Novel Agent - 首次安装
+echo   群像 - 首次安装
 echo ========================================
 echo.
 
@@ -50,7 +50,7 @@ if not exist "api\.env" (
     (
         echo PORT=3001
         echo NODE_ENV=development
-        echo JWT_SECRET=novel-agent-jwt-secret-key-2024
+        echo JWT_SECRET=qunxiang-jwt-secret-key-2024
         echo JWT_EXPIRES_IN=24h
         echo DATABASE_URL=!DB_URL!
         echo DIRECT_DATABASE_URL=!DB_URL!
@@ -61,9 +61,9 @@ if not exist "api\.env" (
         echo LLM_API_KEY=
         echo LLM_BASE_URL=
         echo LLM_MODEL=
-        echo KEY_VAULTS_SECRET=novel-agent-local-dev-key-change-before-production
+        echo KEY_VAULTS_SECRET=qunxiang-local-dev-key-change-before-production
         echo OBJECT_STORAGE_PROVIDER=fs
-        echo OBJECT_STORAGE_SIGN_SECRET=novel-agent-local-object-sign-secret-change-before-production
+        echo OBJECT_STORAGE_SIGN_SECRET=qunxiang-local-object-sign-secret-change-before-production
     ) > "api\.env"
     echo   已创建 api\.env
 ) else (
@@ -83,7 +83,7 @@ if not exist "api\.env" (
     )
     findstr /B /I /C:"OBJECT_STORAGE_SIGN_SECRET=" "api\.env" >nul 2>&1
     if errorlevel 1 (
-        echo OBJECT_STORAGE_SIGN_SECRET=novel-agent-local-object-sign-secret-change-before-production >> "api\.env"
+        echo OBJECT_STORAGE_SIGN_SECRET=qunxiang-local-object-sign-secret-change-before-production >> "api\.env"
     )
 )
 if not exist "storage\.env" (

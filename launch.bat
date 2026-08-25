@@ -4,22 +4,22 @@ setlocal
 
 set "ROOT=%~dp0"
 
-echo ÕýÔÚÆô¶¯ Novel Agent ·þÎñ...
+echo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ç¾¤åƒ ï¿½ï¿½ï¿½ï¿½...
 echo.
 
-start "Novel Agent - API" cmd /k "cd /d ""%ROOT%api"" && pnpm dev"
-start "Novel Agent - Web" cmd /k "cd /d ""%ROOT%web"" && pnpm dev"
+start "ç¾¤åƒ - API" cmd /k "cd /d ""%ROOT%api"" && pnpm dev"
+start "ç¾¤åƒ - Web" cmd /k "cd /d ""%ROOT%web"" && pnpm dev"
 
 echo   API: http://localhost:3001
 echo   Web: http://localhost:5173
 echo.
-echo µÈ´ý 5 Ãëºó´ò¿ªä¯ÀÀÆ÷...
+echo ï¿½È´ï¿½ 5 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...
 timeout /t 5 /nobreak >nul
 start http://localhost:5173
 
 echo.
-echo ÒÑ´ò¿ªÁ½¸öÐÂ´°¿ÚÔËÐÐ·þÎñ¡£
-echo ¹Ø±Õ¶ÔÓ¦´°¿Ú¼´¿ÉÍ£Ö¹·þÎñ¡£
+echo ï¿½Ñ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½
+echo ï¿½Ø±Õ¶ï¿½Ó¦ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½
 echo.
-echo °´ÈÎÒâ¼üÍË³ö...
+echo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½...
 pause >nul

@@ -21,7 +21,7 @@ import { dirname, join, resolve } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const CONTAINER = process.env.PG_CONTAINER || 'novel-agent-postgres';
+const CONTAINER = process.env.PG_CONTAINER || 'qunxiang-postgres';
 
 // ── 1. 读取 storage/.env 中的 DATABASE_URL（prisma 实际使用的连接串，作为唯一真相源）──
 const envPath = join(ROOT, 'storage', '.env');
@@ -50,9 +50,9 @@ if (!['postgres:', 'postgresql:'].includes(parsed.protocol)) {
   console.error(`[错误] DATABASE_URL 必须是 PostgreSQL 地址，当前协议为 ${parsed.protocol}`);
   process.exit(1);
 }
-const user = decodeURIComponent(parsed.username) || 'novel_agent';
+const user = decodeURIComponent(parsed.username) || 'qunxiang';
 const pass = decodeURIComponent(parsed.password);
-const dbName = decodeURIComponent(parsed.pathname.replace(/^\//, '')) || 'novel_agent';
+const dbName = decodeURIComponent(parsed.pathname.replace(/^\//, '')) || 'qunxiang';
 
 if (!pass) {
   console.error('[错误] DATABASE_URL 中未包含密码，无法同步。');

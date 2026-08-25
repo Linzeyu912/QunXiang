@@ -248,6 +248,11 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
           if (process.env.LLM_JSON_MODE === '1' || process.env.LLM_JSON_MODE === 'true') {
             requestBody.response_format = { type: 'json_object' };
           }
+          // 部分兼容接口默认启用深度推理，长文本任务可能先耗尽推理额度。
+          // 仅在部署方明确开启时发送关闭参数。
+          if (process.env.LLM_DISABLE_THINKING === '1' || process.env.LLM_DISABLE_THINKING === 'true') {
+            requestBody.thinking = { type: 'disabled' };
+          }
           response = await fetch(`${baseUrl}`, {
             method: 'POST',
             headers: {

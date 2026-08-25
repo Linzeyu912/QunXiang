@@ -4,7 +4,7 @@ import { mkdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { buildApp } from '../app.js';
 import { BOOK_NOT_FOUND_BODY } from '../lib/api-errors.js';
-import { prisma } from '@novel-agent/storage';
+import { prisma } from '@qunxiang/storage';
 import { testUserInput } from '../../../storage/src/test-fixtures.js';
 
 const ORIGIN = 'http://localhost:5173';

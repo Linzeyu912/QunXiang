@@ -10,7 +10,7 @@
 2. 导出书包（在 `api/` 目录下）：
 
    ```bash
-   pnpm --filter @novel-agent/api seed:export <bookId> <slug>
+   pnpm --filter @qunxiang/api seed:export <bookId> <slug>
    ```
 
    `slug` 为小写字母/数字/连字符，将成为本目录下的子目录名。
@@ -22,7 +22,8 @@
 <slug>/
   manifest.json            元信息 + 计数（物化时校验，不符则拒绝）
   source.txt               原文（UTF-8）
-  entities.json            三类实体（剥掉 id/bookId/status，物化统一 APPROVED）
+  entities.json            角色、场景、道具与世界观实体（物化时统一标记为已审核）
+  worldview-synthesis.json 世界观全文梳理（存在时随书包物化）
   run-summary.json         运行摘要（物化时改写 bookId）
   artifacts/entities/      描述/视觉设定/提示词等提取产物
   images/index.json + 图片  实体图片

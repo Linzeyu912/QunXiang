@@ -1,12 +1,12 @@
 {
-  "name": "@novel-agent/entity-prescan",
+  "name": "@qunxiang/entity-prescan",
   "version": "0.1.0",
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
-    "@novel-agent/core": "workspace:*",
-    "@novel-agent/llm": "workspace:*",
+    "@qunxiang/core": "workspace:*",
+    "@qunxiang/llm": "workspace:*",
     "zod": "^3.22.0"
   }
 }

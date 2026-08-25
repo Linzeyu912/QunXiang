@@ -4,7 +4,7 @@ services:
   # Ollama LLM service
   ollama:
     image: ollama/ollama:latest
-    container_name: novel-agent-ollama
+    container_name: qunxiang-ollama
     volumes:
       - ollama-data:/root/.ollama
     ports:
@@ -18,15 +18,15 @@ services:
       timeout: 10s
       retries: 3
     networks:
-      - novel-agent-net
+      - qunxiang-net
 
   # PostgreSQL database
   postgres:
     image: postgres:15-alpine
-    container_name: novel-agent-postgres
+    container_name: qunxiang-postgres
     environment:
-      POSTGRES_DB: novel_agent
-      POSTGRES_USER: novel_agent
+      POSTGRES_DB: qunxiang
+      POSTGRES_USER: qunxiang
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_in_production}
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -34,19 +34,19 @@ services:
       - "5432:5432"
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U novel_agent -d novel_agent"]
+      test: ["CMD-SHELL", "pg_isready -U qunxiang -d qunxiang"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
-      - novel-agent-net
+      - qunxiang-net
 
   # pgBouncer connection pooler
   pgbouncer:
     image: edoburu/pgbouncer:latest
-    container_name: novel-agent-pgbouncer
+    container_name: qunxiang-pgbouncer
     environment:
-      DATABASE_URL: "postgres://novel_agent:${POSTGRES_PASSWORD:-change_me_in_production}@postgres:5432/novel_agent"
+      DATABASE_URL: "postgres://qunxiang:${POSTGRES_PASSWORD:-change_me_in_production}@postgres:5432/qunxiang"
       POOL_MODE: transaction
       MAX_CLIENT_CONN: "100"
       DEFAULT_POOL_SIZE: "20"
@@ -57,7 +57,7 @@ services:
         condition: service_healthy
     restart: unless-stopped
     networks:
-      - novel-agent-net
+      - qunxiang-net
 
 volumes:
   ollama-data:
@@ -66,5 +66,5 @@ volumes:
     driver: local
 
 networks:
-  novel-agent-net:
+  qunxiang-net:
     driver: bridge

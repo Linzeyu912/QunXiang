@@ -71,11 +71,14 @@ model Character {
   dialogueCount      Int               @default(0)
   coCharacters       Json              @default("[]")
   outfits            Json              @default("[]")
+  ageStages          Json              @default("[]")
+  primaryAgeStage    String?
   createdAt          DateTime          @default(now()) @db.Timestamptz(3)
   updatedAt          DateTime          @updatedAt @db.Timestamptz(3)
   reviews            CharacterReview[]
 
   @@index([bookId])
+  @@index([bookId, status])
 }
 
 model Location {
@@ -104,6 +107,7 @@ model Location {
 
   @@index([bookId])
   @@index([tier])
+  @@index([bookId, status])
 }
 
 model Item {
@@ -205,6 +209,7 @@ model Task {
   @@index([status])
   @@index([agentType])
   @@index([bookId])
+  @@index([bookId, status])
 }
 
 /// 文本清洗的人工覆盖：标记某行被“找回”（不删除）。lineNum 为规范化后文本 1-based 行号。

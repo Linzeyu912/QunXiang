@@ -4,10 +4,11 @@ import cookie from '@fastify/cookie';
 import multipart from '@fastify/multipart';
 import fastifyJwt from '@fastify/jwt';
 import rateLimit from '@fastify/rate-limit';
-import { initializeDatabase, UserRepository } from '@novel-agent/storage';
-import { getDefaultProvider, loadPersistedConfig } from '@novel-agent/llm';
+import { initializeDatabase } from '@qunxiang/storage';
+import { getDefaultProvider, loadPersistedConfig } from '@qunxiang/llm';
 import { ACCESS_TOKEN_EXPIRES_IN, getAllowedOrigins } from './config/auth.js';
 import { assertTrustedMutation, RequestSecurityError } from './lib/request-security.js';
+import { findUserCached } from './lib/user-cache.js';
 import { booksRoutes } from './routes/books.js';
 import { charactersRoutes } from './routes/characters.js';
 import { locationRoutes } from './routes/locations.js';
@@ -141,7 +142,7 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
       return reply.status(401).send({ error: '登录已过期' });
     }
 
-    const user = await UserRepository.findById(payload.userId);
+    const user = await findUserCached(payload.userId);
     if (!user) {
       return reply.status(401).send({ error: '登录状态已失效，请重新登录' });
     }

@@ -4,8 +4,8 @@ import {
   LocationRepository,
   ItemRepository,
   WorldviewRepository,
-} from '@novel-agent/storage';
-import { exportEntities, type ExportFormat, type ExportEntity, type EntityKind, type Book as ExporterBook } from '@novel-agent/exporters';
+} from '@qunxiang/storage';
+import { exportEntities, type ExportFormat, type ExportEntity, type EntityKind, type Book as ExporterBook } from '@qunxiang/exporters';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';

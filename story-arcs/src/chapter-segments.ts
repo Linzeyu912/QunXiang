@@ -1,4 +1,4 @@
-import type { ParsedChapter, ParseResult } from '@novel-agent/import';
+import type { ParsedChapter, ParseResult } from '@qunxiang/import';
 import type { ChapterSegment, SegmentChapter } from './arc-types.js';
 import { v4 as uuidv4 } from 'uuid';
 

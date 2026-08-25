@@ -1,6 +1,6 @@
 import type { FastifyInstance, FastifyRequest } from 'fastify';
-import { ItemRepository, prisma } from '@novel-agent/storage';
-import { itemUpdateSchema } from '@novel-agent/schemas';
+import { ItemRepository, prisma } from '@qunxiang/storage';
+import { itemUpdateSchema } from '@qunxiang/schemas';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';

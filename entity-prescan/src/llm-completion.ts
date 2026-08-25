@@ -5,7 +5,7 @@
  *
  * Batches multiple chapters per API call to reduce latency.
  */
-import { getDefaultProvider } from '@novel-agent/llm';
+import { getDefaultProvider } from '@qunxiang/llm';
 import { z } from 'zod';
 import type { EntityMention, EntityType, ScanChapter, TypeStats } from './types.js';
 

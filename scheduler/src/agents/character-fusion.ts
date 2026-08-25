@@ -1,6 +1,6 @@
-import type { Character } from '@novel-agent/core';
-import { mergeEntityDescriptions } from '@novel-agent/core';
-import type { EntityMention } from '@novel-agent/entity-prescan';
+import type { Character } from '@qunxiang/core';
+import { mergeEntityDescriptions } from '@qunxiang/core';
+import type { EntityMention } from '@qunxiang/entity-prescan';
 
 type CharacterCandidate = Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>;
 

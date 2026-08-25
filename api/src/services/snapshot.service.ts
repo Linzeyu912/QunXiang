@@ -19,7 +19,7 @@ import {
   ItemRepository,
   NoiseOverrideRepository,
   getSharedObjectStore,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 import type { ContentRevisionInput } from '../lib/content-revision.js';
 import { computeContentRevision } from '../lib/content-revision.js';
 import { stableStringify } from '../lib/stable-json.js';

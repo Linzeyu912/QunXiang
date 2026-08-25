@@ -42,34 +42,34 @@ importers:
       '@fastify/rate-limit':
         specifier: ^9.1.0
         version: 9.1.0
-      '@novel-agent/core':
+      '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
-      '@novel-agent/entity-resolution':
+      '@qunxiang/entity-resolution':
         specifier: workspace:*
         version: link:../entity-resolution
-      '@novel-agent/exporters':
+      '@qunxiang/exporters':
         specifier: workspace:*
         version: link:../exporters
-      '@novel-agent/extractors':
+      '@qunxiang/extractors':
         specifier: workspace:*
         version: link:../extractors
-      '@novel-agent/import':
+      '@qunxiang/import':
         specifier: workspace:*
         version: link:../import
-      '@novel-agent/llm':
+      '@qunxiang/llm':
         specifier: workspace:*
         version: link:../llm
-      '@novel-agent/scheduler':
+      '@qunxiang/scheduler':
         specifier: workspace:*
         version: link:../scheduler
-      '@novel-agent/schemas':
+      '@qunxiang/schemas':
         specifier: workspace:*
         version: link:../schemas
-      '@novel-agent/storage':
+      '@qunxiang/storage':
         specifier: workspace:*
         version: link:../storage
-      '@novel-agent/story-arcs':
+      '@qunxiang/story-arcs':
         specifier: workspace:*
         version: link:../story-arcs
       dotenv:
@@ -99,10 +99,10 @@ importers:
 
   entity-prescan:
     dependencies:
-      '@novel-agent/core':
+      '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
-      '@novel-agent/llm':
+      '@qunxiang/llm':
         specifier: workspace:*
         version: link:../llm
       zod:
@@ -111,46 +111,46 @@ importers:
 
   entity-resolution:
     dependencies:
-      '@novel-agent/core':
+      '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
-      '@novel-agent/extractors':
+      '@qunxiang/extractors':
         specifier: workspace:*
         version: link:../extractors
-      '@novel-agent/schemas':
+      '@qunxiang/schemas':
         specifier: workspace:*
         version: link:../schemas
 
   exporters:
     dependencies:
-      '@novel-agent/core':
+      '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
 
   extractors:
     dependencies:
-      '@novel-agent/core':
+      '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
-      '@novel-agent/entity-resolution':
+      '@qunxiang/entity-resolution':
         specifier: workspace:*
         version: link:../entity-resolution
-      '@novel-agent/llm':
+      '@qunxiang/llm':
         specifier: workspace:*
         version: link:../llm
-      '@novel-agent/prompts':
+      '@qunxiang/prompts':
         specifier: workspace:*
         version: link:../prompts
-      '@novel-agent/schemas':
+      '@qunxiang/schemas':
         specifier: workspace:*
         version: link:../schemas
 
   import:
     dependencies:
-      '@novel-agent/entity-prescan':
+      '@qunxiang/entity-prescan':
         specifier: workspace:*
         version: link:../entity-prescan
-      '@novel-agent/preprocess':
+      '@qunxiang/preprocess':
         specifier: workspace:*
         version: link:../preprocess
       iconv-lite:
@@ -180,37 +180,37 @@ importers:
 
   prompts:
     dependencies:
-      '@novel-agent/core':
+      '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
 
   scheduler:
     dependencies:
-      '@novel-agent/core':
+      '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
-      '@novel-agent/entity-prescan':
+      '@qunxiang/entity-prescan':
         specifier: workspace:*
         version: link:../entity-prescan
-      '@novel-agent/entity-resolution':
+      '@qunxiang/entity-resolution':
         specifier: workspace:*
         version: link:../entity-resolution
-      '@novel-agent/extractors':
+      '@qunxiang/extractors':
         specifier: workspace:*
         version: link:../extractors
-      '@novel-agent/import':
+      '@qunxiang/import':
         specifier: workspace:*
         version: link:../import
-      '@novel-agent/llm':
+      '@qunxiang/llm':
         specifier: workspace:*
         version: link:../llm
-      '@novel-agent/storage':
+      '@qunxiang/storage':
         specifier: workspace:*
         version: link:../storage
-      '@novel-agent/story-arcs':
+      '@qunxiang/story-arcs':
         specifier: workspace:*
         version: link:../story-arcs
-      '@novel-agent/validators':
+      '@qunxiang/validators':
         specifier: workspace:*
         version: link:../validators
       zod:
@@ -231,12 +231,15 @@ importers:
       '@aws-sdk/s3-request-presigner':
         specifier: ^3.1090.0
         version: 3.1090.0
-      '@novel-agent/core':
-        specifier: workspace:*
-        version: link:../core
       '@prisma/client':
         specifier: ^5.10.0
         version: 5.22.0(prisma@5.22.0)
+      '@qunxiang/core':
+        specifier: workspace:*
+        version: link:../core
+      '@qunxiang/import':
+        specifier: workspace:*
+        version: link:../import
     devDependencies:
       better-sqlite3:
         specifier: ^11.0.0
@@ -250,10 +253,10 @@ importers:
 
   story-arcs:
     dependencies:
-      '@novel-agent/entity-prescan':
+      '@qunxiang/entity-prescan':
         specifier: workspace:*
         version: link:../entity-prescan
-      '@novel-agent/import':
+      '@qunxiang/import':
         specifier: workspace:*
         version: link:../import
       uuid:
@@ -266,19 +269,19 @@ importers:
 
   validators:
     dependencies:
-      '@novel-agent/core':
+      '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
 
   web:
     dependencies:
-      '@novel-agent/core':
+      '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
-      '@novel-agent/schemas':
+      '@qunxiang/schemas':
         specifier: workspace:*
         version: link:../schemas
-      '@novel-agent/story-arcs':
+      '@qunxiang/story-arcs':
         specifier: workspace:*
         version: link:../story-arcs
       '@radix-ui/react-alert-dialog':
@@ -2139,6 +2142,7 @@ packages:
   eslint@9.39.4:
     resolution: {integrity: sha512-XoMjdBOwe/esVgEvLmNsD3IRHkm7fbKIUGvrleloJXUZgDHig2IPWNniv+GwjyJXzuNqVjlr5+4yVUZjycJwfQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'

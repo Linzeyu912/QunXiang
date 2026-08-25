@@ -4,8 +4,8 @@ import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { buildApp } from '../app.js';
-import { prisma, getSharedObjectStore } from '@novel-agent/storage';
-import { setRuntimeProvider } from '@novel-agent/llm';
+import { prisma, getSharedObjectStore } from '@qunxiang/storage';
+import { setRuntimeProvider } from '@qunxiang/llm';
 import { testUserInput } from '../../../storage/src/test-fixtures.js';
 
 const ORIGIN = 'http://localhost:5173';

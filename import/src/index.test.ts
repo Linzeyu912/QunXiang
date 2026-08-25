@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { parseChapterOutline, parseTxtEnhanced } from './index.js';
 
-describe('@novel-agent/import runtime exports', () => {
+describe('@qunxiang/import runtime exports', () => {
   it('exports enhanced TXT parsing from the JavaScript runtime entrypoint', () => {
     expect(parseTxtEnhanced).toEqual(expect.any(Function));
   });

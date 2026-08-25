@@ -1,12 +1,12 @@
 {
-  "name": "@novel-agent/story-arcs",
+  "name": "@qunxiang/story-arcs",
   "version": "0.1.0",
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
-    "@novel-agent/entity-prescan": "workspace:*",
-    "@novel-agent/import": "workspace:*",
+    "@qunxiang/entity-prescan": "workspace:*",
+    "@qunxiang/import": "workspace:*",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

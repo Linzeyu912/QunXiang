@@ -34,13 +34,13 @@ export async function extractRoutes(fastify: FastifyInstance) {
     const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: 'Book not found' });
+      return sendBookNotFound(reply);
     }
     const userId = request.user!.userId;
 
     try {
       const result = await resumeExtraction(id, userId);
-      return { ...result, message: `Resumed from stage: ${result.resumedFrom}` };
+      return { ...result, message: `已从失败阶段继续：${result.resumedFrom}` };
     } catch (error) {
       if (error instanceof ConflictError) {
         return reply.status(409).send({ error: (error as Error).message });
@@ -98,6 +98,11 @@ export async function extractRoutes(fastify: FastifyInstance) {
       return sendBookNotFound(reply);
     }
 
+    const abortController = new AbortController();
+    const abortStream = () => abortController.abort();
+    request.raw.once('aborted', abortStream);
+    reply.raw.once('close', abortStream);
+
     // Set SSE headers
     reply.raw.writeHead(200, {
       'Content-Type': 'text/event-stream',
@@ -108,15 +113,21 @@ export async function extractRoutes(fastify: FastifyInstance) {
 
     // Stream events
     try {
-      for await (const chunk of createExtractionStream(bookId, ownerId!)) {
+      for await (const chunk of createExtractionStream(bookId, ownerId!, abortController.signal)) {
+        if (abortController.signal.aborted || reply.raw.destroyed || reply.raw.writableEnded) break;
         reply.raw.write(chunk);
       }
     } catch (err) {
       console.error('提取进度流发生错误：', err);
-      reply.raw.write(`event: error\ndata: ${JSON.stringify({ message: '获取提取进度失败', timestamp: Date.now() })}\n\n`);
+      if (!abortController.signal.aborted && !reply.raw.destroyed && !reply.raw.writableEnded) {
+        reply.raw.write(`event: error\ndata: ${JSON.stringify({ message: '获取提取进度失败', timestamp: Date.now() })}\n\n`);
+      }
+    } finally {
+      request.raw.removeListener('aborted', abortStream);
+      reply.raw.removeListener('close', abortStream);
+      if (!reply.raw.destroyed && !reply.raw.writableEnded) reply.raw.end();
     }
 
-    reply.raw.end();
     return reply;
   });
 }

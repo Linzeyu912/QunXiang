@@ -261,13 +261,13 @@ describe('PostgreSQL baseline', () => {
       windowsHide: true,
     };
     const deploy = await execAsync(
-      'pnpm --filter @novel-agent/storage exec prisma migrate deploy --schema=./prisma/schema.prisma',
+      'pnpm --filter @qunxiang/storage exec prisma migrate deploy --schema=./prisma/schema.prisma',
       options,
     );
     expect(deploy.stdout).toContain('No pending migrations to apply');
 
     const status = await execAsync(
-      'pnpm --filter @novel-agent/storage exec prisma migrate status --schema=./prisma/schema.prisma',
+      'pnpm --filter @qunxiang/storage exec prisma migrate status --schema=./prisma/schema.prisma',
       options,
     );
     expect(status.stdout).toContain('Database schema is up to date');

@@ -1,4 +1,4 @@
-import type { Relationship, RelationshipType } from '@novel-agent/schemas';
+import type { Relationship, RelationshipType } from '@qunxiang/schemas';
 
 export interface CharacterNode {
   id: string;

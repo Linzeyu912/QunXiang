@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
-import { BookRepository, CharacterRepository, LocationRepository, ItemRepository, WorldviewRepository, persistBookArtifact } from '@novel-agent/storage';
-import { bookSlug } from '@novel-agent/story-arcs';
+import { BookRepository, CharacterRepository, LocationRepository, ItemRepository, WorldviewRepository, persistBookArtifact } from '@qunxiang/storage';
+import { bookSlug } from '@qunxiang/story-arcs';
 
 type NamedEntity = { name?: unknown };
 type DescriptionPayload = {

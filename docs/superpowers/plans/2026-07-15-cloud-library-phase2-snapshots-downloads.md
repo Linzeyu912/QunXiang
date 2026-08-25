@@ -103,7 +103,7 @@
 - [ ] **Step 1：写失败测试** — `object-key.test.ts`（非法键全被拒）、`fs-object-store.test.ts`（put 返回 sha256/bytes/mime；同内容二次 put 复用不覆盖；head/get/range；delete；签名 token 过期/篡改被拒）。
 - [ ] **Step 2：确认失败** — `pnpm exec vitest run storage/src/object-storage/`。
 - [ ] **Step 3：实现** — 接口、对象键工具、`FsObjectStore`、`createObjectStoreFromEnv`、`config/storage.ts`（缺 secret 时中文中止）。`storage/src/index.ts` 再导出。
-- [ ] **Step 4：定向测试 + 构建** — vitest 通过；`pnpm --filter @novel-agent/storage build`（如适用）/ `pnpm --filter @novel-agent/api build` 退出码 0。
+- [ ] **Step 4：定向测试 + 构建** — vitest 通过；`pnpm --filter @qunxiang/storage build`（如适用）/ `pnpm --filter @qunxiang/api build` 退出码 0。
 - [ ] **Step 5：提交** — `feat(storage): 加入对象存储抽象与本地文件系统实现` / Constraint: 业务代码只依赖 ObjectStore 接口 / Confidence: high / Scope-risk: moderate。
 
 ### Task A2：S3ObjectStore + MinIO 测试环境

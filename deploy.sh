@@ -7,7 +7,7 @@
 set -euo pipefail
 
 cd "$(dirname "$0")"
-echo "=== Novel Agent 部署脚本 ==="
+echo "=== 群像 部署脚本 ==="
 
 COMPOSE="docker compose --env-file .env.docker -f docker-compose.prod.yml"
 
@@ -78,7 +78,7 @@ $COMPOSE up -d postgres
 echo "等待数据库就绪..."
 for i in $(seq 1 30); do
     if $COMPOSE exec -T postgres \
-        pg_isready -U novel_agent -d novel_agent &>/dev/null; then
+        pg_isready -U qunxiang -d qunxiang &>/dev/null; then
         echo "PostgreSQL 已就绪"
         break
     fi
@@ -89,7 +89,7 @@ done
 echo ""
 echo "=== 执行数据库迁移 ==="
 $COMPOSE run --rm --no-deps api \
-    pnpm --filter @novel-agent/storage exec prisma migrate deploy --schema=./prisma/schema.prisma
+    pnpm --filter @qunxiang/storage exec prisma migrate deploy --schema=./prisma/schema.prisma
 
 # ── 8. 启动全部服务 ──
 echo ""

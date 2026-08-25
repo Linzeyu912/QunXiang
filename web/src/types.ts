@@ -70,6 +70,9 @@ export interface Character extends EntityBase {
   coCharacters: string[] | string;
   /** 角色的多套服饰/装扮（与后端 core/types.ts Outfit 对齐） */
   outfits?: Outfit[] | string;
+  /** 年龄成长阶段（child/youth/young/middle/old，按原文证据识别） */
+  ageStages?: string[] | string;
+  primaryAgeStage?: string | null;
 }
 
 export interface LocationEntity extends EntityBase {

@@ -1,10 +1,10 @@
 import type { FastifyInstance } from 'fastify';
-import { CharacterRepository, ReviewRepository, prisma } from '@novel-agent/storage';
-import { characterUpdateSchema } from '@novel-agent/schemas';
+import { CharacterRepository, ReviewRepository, prisma } from '@qunxiang/storage';
+import { characterUpdateSchema } from '@qunxiang/schemas';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
-import { buildCharacterMergeCandidates } from '@novel-agent/entity-resolution';
+import { buildCharacterMergeCandidates } from '@qunxiang/entity-resolution';
 
 async function findActiveMergeCandidates(bookId: string, ownerId: string) {
   const [characters, rejections] = await Promise.all([

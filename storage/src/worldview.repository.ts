@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { WorldviewSetting } from '@novel-agent/core';
+import type { WorldviewSetting } from '@qunxiang/core';
 import type { PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
 

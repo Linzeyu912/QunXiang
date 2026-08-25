@@ -1,4 +1,4 @@
-import type { AgentType, Task } from '@novel-agent/core';
+import type { AgentType, Task } from '@qunxiang/core';
 import type { TaskQueue } from './task-queue.js';
 import { getNextAgent, EXTRACTION_PIPELINE } from './pipeline.js';
 import {
@@ -17,7 +17,7 @@ import {
   WorldviewRepository,
   BookRepository,
   TaskRepository,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 import { eventBus, type PipelineEvent } from './event-bus.js';
 import { writePipelineFinalSummary } from './pipeline-summary.js';
 import { summarizeExtractionResult, buildEmptyExtractionMessage } from './extraction-result-summary.js';
@@ -28,6 +28,7 @@ const DEFAULT_RETRY_CONFIG = {
   baseDelayMs: 1000,
   maxDelayMs: 30000,
 };
+const MAX_IDLE_POLL_INTERVAL_MS = 5000;
 
 interface RetryResult<T> {
   result?: T;
@@ -100,7 +101,12 @@ export class TaskDispatcher {
    * 任务消费是并发安全的——queue.dequeue 是"取走即标记 running"的原子操作，
    * 多个 worker 各自 dequeue 天然不会抢同一任务。
    */
-  private workers: { timer: ReturnType<typeof setInterval> | null; busy: boolean }[] = [];
+  private workers: {
+    timer: ReturnType<typeof setTimeout> | null;
+    busy: boolean;
+    active: boolean;
+    currentInterval: number;
+  }[] = [];
 
   private static readonly STAGE_NAMES: Record<AgentType, string> = {
     extractor: '角色提取',
@@ -163,33 +169,51 @@ export class TaskDispatcher {
    * 单 worker（count=1）退化为原有行为。调用前会先停掉旧 worker 池并回收
    * 上一进程遗留的 running 任务，因此可安全地多次调用以动态调整并发度。
    */
-  startWorkers(count = 1, intervalMs = 1000) {
+  startWorkers(count = 1, intervalMs = 1000, beforeTaskClaim?: () => void | Promise<void>) {
     this.stopWorkers();
     // 启动前回收上一进程遗留的 running 任务（不阻塞启动）
     void this.recoverInterruptedTasks().catch((err) =>
-      console.error('[Dispatcher] startup recovery failed:', err),
+      console.error('[调度器] 启动时恢复任务失败：', err),
     );
     const n = Math.max(1, Math.floor(count));
     for (let i = 0; i < n; i++) {
-      const workerIdx = i;
-      const worker = { timer: null as ReturnType<typeof setInterval> | null, busy: false };
-      worker.timer = setInterval(async () => {
-        if (worker.busy) return;
-        worker.busy = true;
-        try {
-          await this.processNext('extractor');
-        } finally {
-          worker.busy = false;
-        }
-      }, intervalMs);
+      const worker = {
+        timer: null as ReturnType<typeof setTimeout> | null,
+        busy: false,
+        active: true,
+        currentInterval: intervalMs,
+      };
       this.workers.push(worker);
+
+      const scheduleNext = () => {
+        if (!worker.active) return;
+        worker.timer = setTimeout(async () => {
+          if (!worker.active || worker.busy) return scheduleNext();
+          worker.busy = true;
+          let processed = false;
+          try {
+            await beforeTaskClaim?.();
+            processed = Boolean(await this.processNext('extractor'));
+          } catch (err) {
+            console.error('[调度器] 领取提取任务前准备失败：', err);
+          } finally {
+            worker.busy = false;
+            worker.currentInterval = processed
+              ? intervalMs
+              : Math.min(worker.currentInterval * 2, MAX_IDLE_POLL_INTERVAL_MS);
+            scheduleNext();
+          }
+        }, worker.currentInterval);
+        worker.timer.unref?.();
+      };
+      scheduleNext();
     }
-    console.log(`[Dispatcher] 启动 ${n} 个 worker（间隔 ${intervalMs}ms）`);
+    console.log(`[调度器] 启动 ${n} 个工作进程（间隔 ${intervalMs} 毫秒）`);
   }
 
   /** 单 worker 兼容入口（等价于 startWorkers(1)）。 */
-  startWorker(intervalMs = 1000) {
-    this.startWorkers(1, intervalMs);
+  startWorker(intervalMs = 1000, beforeTaskClaim?: () => void | Promise<void>) {
+    this.startWorkers(1, intervalMs, beforeTaskClaim);
   }
 
   /** 当前 worker 数量（供上层判断是否需要调整并发度）。 */
@@ -209,11 +233,11 @@ export class TaskDispatcher {
     const books = new Set<string>();
     for (const t of stuck) {
       try {
-        await this.queue.fail(t.id, 'Interrupted by server restart');
+        await this.queue.fail(t.id, '服务重启导致任务中断');
         books.add(t.bookId);
-        console.log(`[Dispatcher] recovered orphan task ${t.id} (book ${t.bookId}, ${t.agentType})`);
+        console.log(`[调度器] 已恢复孤立任务 ${t.id}（书籍 ${t.bookId}，阶段 ${t.agentType}）`);
       } catch (err) {
-        console.error(`[Dispatcher] failed to recover task ${t.id}:`, err);
+        console.error(`[调度器] 恢复任务 ${t.id} 失败：`, err);
       }
     }
     for (const bookId of books) {
@@ -222,9 +246,9 @@ export class TaskDispatcher {
         const reviewerDone = tasks.some((t) => t.agentType === 'reviewer' && t.status === 'completed');
         const status = reviewerDone ? 'EXTRACTED' : 'FAILED';
         await BookRepository.updateStatus(bookId, status);
-        console.log(`[Dispatcher] book ${bookId} status → ${status} after recovery`);
+        console.log(`[调度器] 恢复后将书籍 ${bookId} 状态更新为 ${status}`);
       } catch (err) {
-        console.error(`[Dispatcher] failed to re-derive status for book ${bookId}:`, err);
+        console.error(`[调度器] 重新推导书籍 ${bookId} 状态失败：`, err);
       }
     }
   }
@@ -232,7 +256,8 @@ export class TaskDispatcher {
   /** 停止全部 worker（动态调整并发度时先调它再 startWorkers(n)）。 */
   stopWorkers() {
     for (const w of this.workers) {
-      if (w.timer) clearInterval(w.timer);
+      w.active = false;
+      if (w.timer) clearTimeout(w.timer);
     }
     this.workers = [];
   }
@@ -269,7 +294,7 @@ export class TaskDispatcher {
       return undefined;
     }
 
-    console.log(`[Dispatcher] Processing ${agentType} task ${task.id}, bookId: ${task.bookId}, payload:`, JSON.stringify(task.payload));
+    console.log(`[调度器] 正在处理 ${agentType} 任务 ${task.id}，书籍：${task.bookId}，参数：`, JSON.stringify(task.payload));
 
     // Emit stage_start event
     eventBus.emit({
@@ -290,7 +315,7 @@ export class TaskDispatcher {
 
     const payloadBookId = (task.payload as { bookId?: string })?.bookId;
     if (!task.bookId || !payloadBookId) {
-      console.error(`[Dispatcher] FATAL: Task ${task.id} missing bookId! task.bookId=${task.bookId}, payload.bookId=${payloadBookId}`);
+      console.error(`[调度器] 严重错误：任务 ${task.id} 缺少书籍编号！task.bookId=${task.bookId}，payload.bookId=${payloadBookId}`);
     }
 
     try {
@@ -356,6 +381,26 @@ export class TaskDispatcher {
         await LocationRepository.deleteByBookId(bookId);
         await ItemRepository.deleteByBookId(bookId);
         await WorldviewRepository.deleteByBookId(bookId);
+
+        // 提示词阶段已按原文证据识别角色年龄变体，按角色名回写实体字段。
+        const stageByName = new Map<string, { stages: string[]; primary: string }>();
+        const characterPrompts = Array.isArray((result as { characterPrompts?: unknown }).characterPrompts)
+          ? (result as {
+              characterPrompts: Array<{
+                entityName?: string;
+                variants?: Array<{ stage?: string; isPrimary?: boolean }>;
+              }>;
+            }).characterPrompts
+          : [];
+        for (const prompt of characterPrompts) {
+          const variants = Array.isArray(prompt?.variants) ? prompt.variants : [];
+          if (!prompt?.entityName || variants.length === 0) continue;
+          const stages = variants.map((variant) => variant.stage).filter((stage): stage is string => Boolean(stage));
+          if (stages.length === 0) continue;
+          const primary = variants.find((variant) => variant.isPrimary)?.stage ?? stages[0];
+          stageByName.set(prompt.entityName, { stages, primary });
+        }
+
         // chars/locs/entityItems 已在上方统一解包并做过空结果守卫
         if (chars.length > 0) {
           await CharacterRepository.createMany(
@@ -374,6 +419,8 @@ export class TaskDispatcher {
               dialogueCount: c.dialogueCount ?? 0,
               coCharacters: c.coCharacters ?? [],
               outfits: Array.isArray(c.outfits) ? c.outfits : [],
+              ageStages: stageByName.get(c.name)?.stages ?? [],
+              primaryAgeStage: stageByName.get(c.name)?.primary,
               tier: c.tier || 'candidate',
               importanceScore: c.importanceScore ?? 0,
               storyScore: c.storyScore ?? 0,
@@ -408,7 +455,7 @@ export class TaskDispatcher {
               chapterAppearances: l.chapterAppearances ?? [],
             }))
           );
-          console.log(`[Dispatcher] Persisted ${locs.length} locations`);
+          console.log(`[调度器] 已保存 ${locs.length} 个场景`);
         }
 
         // Persist items
@@ -436,7 +483,7 @@ export class TaskDispatcher {
               owners: Array.isArray(i.owners) ? i.owners : [],
             }))
           );
-          console.log(`[Dispatcher] Persisted ${entityItems.length} items`);
+          console.log(`[调度器] 已保存 ${entityItems.length} 个道具`);
         }
 
         // 保存世界观与体系设定。
@@ -464,10 +511,10 @@ export class TaskDispatcher {
         try {
           const specCount = await persistVisualSpecsFromResult(bookId, result);
           if (specCount > 0) {
-            console.log(`[Dispatcher] Persisted ${specCount} visual specs`);
+            console.log(`[调度器] 已保存 ${specCount} 份视觉规格`);
           }
         } catch (err) {
-          console.error(`[Dispatcher] Failed to persist visual specs for ${bookId}:`, err);
+          console.error(`[调度器] 保存书籍 ${bookId} 的视觉规格失败：`, err);
         }
       }
 
@@ -501,7 +548,7 @@ export class TaskDispatcher {
     try {
       await BookRepository.updateStatus(bookId, outcome === 'completed' ? 'EXTRACTED' : 'FAILED');
     } catch (err) {
-      console.error(`[Dispatcher] Failed to update book status for ${bookId}:`, err);
+      console.error(`[调度器] 更新书籍 ${bookId} 状态失败：`, err);
     }
   }
 

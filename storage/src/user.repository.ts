@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { User } from '@novel-agent/core';
+import type { User } from '@qunxiang/core';
 import type { PrismaClient } from '@prisma/client';
 
 export interface CreateUserData {

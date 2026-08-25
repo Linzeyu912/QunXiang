@@ -41,6 +41,9 @@ api.env
 .db-password
 
 # Encrypted config (contains API keys)
+.qunxiang-config.encrypted
+.qunxiang-image-config.encrypted
+# 兼容旧版本地配置，禁止误提交。
 .novel-agent-config.encrypted
 .novel-agent-image-config.encrypted
 

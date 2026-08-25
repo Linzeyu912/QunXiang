@@ -14,7 +14,7 @@ const mockState = vi.hoisted(() => ({
 }));
 
 // storage：仅 stub writeJson 路径用到的 persistBookArtifact + BookRepository（鉴权）
-vi.mock('@novel-agent/storage', () => ({
+vi.mock('@qunxiang/storage', () => ({
   BookRepository: {
     async findOwnedById(bookId: string, _ownerId: string) {
       return { id: bookId, title: '测试书', userId: _ownerId };
@@ -44,7 +44,7 @@ vi.mock('node:fs/promises', () => ({
 }));
 
 import { resolveBoundaryReview } from './story.service.js';
-import { persistBookArtifact } from '@novel-agent/storage';
+import { persistBookArtifact } from '@qunxiang/storage';
 
 const BOOK_ID = '00000000-0000-4000-8000-000000000001';
 const OWNER_ID = '00000000-0000-4000-8000-000000000002';

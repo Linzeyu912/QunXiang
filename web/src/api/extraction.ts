@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient, type QueryClient } from '@tanstack/react-query';
 import { apiFetch, openAuthenticatedSse } from './client';
 import { booksKey } from './books';
 import { entitiesKey } from './entities';
@@ -105,6 +105,35 @@ function mergeEventIntoStages(
   };
 }
 
+/** 将一条进度流消息写入缓存；完整快照到达终态时同步刷新书籍与实体。 */
+export function applyExtractionStreamEvent(
+  qc: QueryClient,
+  bookId: string,
+  raw: string,
+  eventName?: string,
+) {
+  const data = JSON.parse(raw);
+  const key = extractionKey.stages(bookId);
+  if (!eventName && 'stages' in data) {
+    const snapshot = data as ExtractionStagesResult;
+    qc.setQueryData(key, snapshot);
+    if (snapshot.isComplete || snapshot.isFailed) {
+      qc.invalidateQueries({ queryKey: booksKey.all });
+      qc.invalidateQueries({ queryKey: entitiesKey.all(bookId) });
+    }
+    return;
+  }
+
+  const evt: PipelineEvent = { type: eventName ?? data.type ?? 'unknown', ...data };
+  qc.setQueryData<ExtractionStagesResult | undefined>(key, (prev) =>
+    mergeEventIntoStages(prev, evt),
+  );
+  if (evt.type === 'completed') {
+    qc.invalidateQueries({ queryKey: booksKey.all });
+    qc.invalidateQueries({ queryKey: entitiesKey.all(bookId) });
+  }
+}
+
 export function useExtractionStream(bookId: string | undefined, enabled: boolean) {
   const qc = useQueryClient();
 
@@ -116,24 +145,7 @@ export function useExtractionStream(bookId: string | undefined, enabled: boolean
 
     const applyEvent = (raw: string, eventName?: string) => {
       try {
-        const data = JSON.parse(raw);
-        // 首帧（无 event 名，纯 data:）是完整快照
-        if (!eventName && 'stages' in data) {
-          qc.setQueryData(key, data as ExtractionStagesResult);
-          return;
-        }
-        // 增量事件：合并
-        const evt: PipelineEvent = { type: eventName ?? data.type ?? 'unknown', ...data };
-        qc.setQueryData<ExtractionStagesResult | undefined>(key, (prev) =>
-          mergeEventIntoStages(prev, evt),
-        );
-
-        if (evt.type === 'completed' || evt.type === 'stage-completed') {
-          if (evt.type === 'completed') {
-            qc.invalidateQueries({ queryKey: booksKey.all });
-            qc.invalidateQueries({ queryKey: entitiesKey.all(bookId) });
-          }
-        }
+        applyExtractionStreamEvent(qc, bookId, raw, eventName);
       } catch (err) {
         console.warn('进度流解析失败：', err);
       }

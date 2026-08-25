@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import type { FastifyInstance, FastifyReply } from 'fastify';
-import { RefreshSessionRepository, UserRepository } from '@novel-agent/storage';
+import { RefreshSessionRepository, UserRepository } from '@qunxiang/storage';
 import {
   REFRESH_COOKIE_NAME,
   REFRESH_COOKIE_OPTIONS,

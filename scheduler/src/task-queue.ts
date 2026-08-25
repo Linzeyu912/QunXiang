@@ -1,4 +1,4 @@
-import type { Task, AgentType } from '@novel-agent/core';
+import type { Task, AgentType } from '@qunxiang/core';
 
 export interface TaskQueue {
   enqueue(task: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>): Promise<string>;

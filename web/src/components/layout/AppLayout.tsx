@@ -36,7 +36,7 @@ export function AppLayout() {
           <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-sm">
             <BookOpen className="h-4 w-4" />
           </span>
-          <span>QunXiang</span>
+          <span>群像</span>
           <span className="rounded bg-muted px-1.5 py-0.5 text-xs font-normal text-muted-foreground">
             实体提取
           </span>

@@ -1,4 +1,4 @@
-import type { Character } from '@novel-agent/core';
+import type { Character } from '@qunxiang/core';
 import type { Chapter } from './extractor.js';
 import type { ExtractResult } from './extractor.js';
 

@@ -1,6 +1,6 @@
-import type { Task, AgentType } from '@novel-agent/core';
+import type { Task, AgentType } from '@qunxiang/core';
 import type { TaskQueue } from '../task-queue.js';
-import { TaskRepository } from '@novel-agent/storage';
+import { TaskRepository } from '@qunxiang/storage';
 
 /**
  * Database-backed TaskQueue implementation

@@ -3,10 +3,10 @@ import { readdir, unlink } from 'fs/promises';
 import { resolve } from 'path';
 
 const prisma = new PrismaClient({
-  datasources: { db: { url: 'file:D:/ClaudeData/novel-agent/storage/prisma/prisma/dev.db' } }
+  datasources: { db: { url: 'file:D:/ClaudeData/qunxiang/storage/prisma/prisma/dev.db' } }
 });
 
-const UPLOAD_DIR = resolve('D:/ClaudeData/novel-agent/storage/uploads');
+const UPLOAD_DIR = resolve('D:/ClaudeData/qunxiang/storage/uploads');
 
 async function main() {
   // 1. 删除所有磁盘文件

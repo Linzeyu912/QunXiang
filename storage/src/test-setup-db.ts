@@ -8,7 +8,7 @@ import { join } from 'node:path'
 const execAsync = promisify(exec)
 
 // Generate a unique test database path
-const testDbPath = join(tmpdir(), `novel-agent-test-${randomUUID()}.db`)
+const testDbPath = join(tmpdir(), `qunxiang-test-${randomUUID()}.db`)
 const testDbUrl = `file:${testDbPath}`
 
 // Ensure tmpdir exists

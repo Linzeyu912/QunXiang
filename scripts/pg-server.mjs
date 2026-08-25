@@ -20,8 +20,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const PG_DATA = resolve(ROOT, 'storage', 'pgdata');
 const PG_PORT = 5432;
-const PG_DB = 'novel_agent';
-const PG_USER = 'novel_agent';
+const PG_DB = 'qunxiang';
+const PG_USER = 'qunxiang';
 const PG_PASS = 'change_me';
 
 // 通过 embedded-postgres 包获取二进制路径
@@ -112,7 +112,7 @@ async function start() {
   ], { ignoreError: true }).trim();
 
   if (dbExists !== '1') {
-    console.log('[PG] 创建数据库 novel_agent...');
+    console.log('[PG] 创建数据库 qunxiang...');
     exec(pgBins.createdb, ['-h', '127.0.0.1', '-p', String(PG_PORT), '-U', 'postgres', PG_DB]);
   }
 
@@ -124,7 +124,7 @@ async function start() {
   ], { ignoreError: true }).trim();
 
   if (userExists !== '1') {
-    console.log('[PG] 创建用户 novel_agent...');
+    console.log('[PG] 创建用户 qunxiang...');
     exec(pgBins.psql, [
       '-h', '127.0.0.1', '-p', String(PG_PORT),
       '-U', 'postgres',

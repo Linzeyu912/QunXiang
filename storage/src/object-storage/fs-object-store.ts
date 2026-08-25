@@ -21,7 +21,7 @@ import type {
   SignedDownload,
   SignedDownloadInput,
   StoredObject,
-} from '@novel-agent/core';
+} from '@qunxiang/core';
 import { buildObjectKey, resolveObjectPath, sha256FromObjectKey } from './object-key.js';
 
 export interface FsObjectStoreOptions {

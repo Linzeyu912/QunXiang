@@ -5,6 +5,7 @@ import { createCustomProvider } from './custom.js';
 describe('createCustomProvider', () => {
   afterEach(() => {
     delete process.env.LLM_JSON_MODE;
+    delete process.env.LLM_DISABLE_THINKING;
     vi.unstubAllGlobals();
   });
 
@@ -48,5 +49,24 @@ describe('createCustomProvider', () => {
     const callArgs = fetchMock.mock.calls[0] as unknown[];
     const body = JSON.parse(String((callArgs[1] as { body?: string } | undefined)?.body ?? '{}'));
     expect(body.response_format).toEqual({ type: 'json_object' });
+  });
+
+  it('仅在兼容接口开关启用时关闭隐藏推理', async () => {
+    process.env.LLM_DISABLE_THINKING = 'true';
+    const fetchMock = vi.fn(async () => new Response(JSON.stringify({
+      choices: [{ message: { content: '{"value":"ok"}' } }],
+    }), { status: 200 }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const provider = createCustomProvider({
+      apiKey: 'test-key',
+      baseUrl: 'https://example.test/v1/chat/completions',
+      model: 'test-model',
+    });
+    await provider.chatExtract('system', 'user', z.object({ value: z.string() }));
+
+    const callArgs = fetchMock.mock.calls[0] as unknown[];
+    const body = JSON.parse(String((callArgs[1] as { body?: string } | undefined)?.body ?? '{}'));
+    expect(body.thinking).toEqual({ type: 'disabled' });
   });
 });

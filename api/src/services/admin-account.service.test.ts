@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { afterAll, beforeEach, describe, expect, it } from 'vitest';
-import { prisma } from '@novel-agent/storage';
+import { prisma } from '@qunxiang/storage';
 import { createShareCode } from '../lib/share-code.js';
 import { hashPassword, verifyPassword } from '../lib/password.js';
 import { refreshTokenHash } from '../lib/refresh-token.js';

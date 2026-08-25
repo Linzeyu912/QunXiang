@@ -25,13 +25,13 @@ import {
   type CreatePublicAssetImageInput,
   type EntityImageRow,
   type PublicAssetListItem,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 import { z } from 'zod';
 import {
   getDefaultProvider,
   LLMError,
   ProviderNotConfiguredError,
-} from '@novel-agent/llm';
+} from '@qunxiang/llm';
 import { readArtifactJson } from './artifact-store.js';
 import type { VisualDescriptionEntry, GenerationPromptEntry } from './artifacts.service.js';
 

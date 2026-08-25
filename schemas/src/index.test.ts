@@ -6,7 +6,7 @@ import {
   locationSchema,
 } from './index.js';
 
-describe('@novel-agent/schemas runtime exports', () => {
+describe('@qunxiang/schemas runtime exports', () => {
   it('exports extraction, item, and location schemas from the JavaScript runtime entrypoint', () => {
     expect(extractionResultSchema).toEqual(expect.objectContaining({ parse: expect.any(Function) }));
     expect(itemSchema).toEqual(expect.objectContaining({ parse: expect.any(Function) }));

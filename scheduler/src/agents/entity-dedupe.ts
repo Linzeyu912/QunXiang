@@ -8,7 +8,7 @@
  *   - Chinese address-form normalization (薰→熏)
  *   - alias mutual containment (either entity's aliases contains the other's name)
  */
-import { isSameChineseName } from '@novel-agent/entity-resolution';
+import { isSameChineseName } from '@qunxiang/entity-resolution';
 
 type EntityLike = {
   name: string;

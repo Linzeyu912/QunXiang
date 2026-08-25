@@ -8,16 +8,16 @@ import {
 } from './test-database-url.mjs';
 
 export const DEFAULT_TEST_DATABASE_URL =
-  'postgresql://novel_agent_test:novel_agent_test@127.0.0.1:55432/novel_agent_test';
+  'postgresql://qunxiang_test:qunxiang_test@127.0.0.1:55432/qunxiang_test';
 
 // 对象存储集成测试默认指向本地 MinIO；逐个键允许外部环境覆盖。
 const DEFAULT_OBJECT_STORAGE = {
   PROVIDER: 's3',
   ENDPOINT: 'http://127.0.0.1:9000',
   REGION: 'us-east-1',
-  BUCKET: 'novel-agent-test',
-  ACCESS_KEY_ID: 'novel_agent_test',
-  SECRET_ACCESS_KEY: 'novel_agent_test',
+  BUCKET: 'qunxiang-test',
+  ACCESS_KEY_ID: 'qunxiang_test',
+  SECRET_ACCESS_KEY: 'qunxiang_test',
   S3_FORCE_PATH_STYLE: 'true',
   SIGN_SECRET: 'test-object-storage-sign-secret',
 };
@@ -25,7 +25,7 @@ const DEFAULT_OBJECT_STORAGE = {
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const WORKSPACE_PACKAGES = [
   'core', 'schemas', 'storage', 'import', 'extractors', 'validators',
-  'entity-resolution', 'scheduler', 'agent', 'preprocess', 'entity-prescan', 'llm',
+  'entity-resolution', 'scheduler', 'preprocess', 'entity-prescan', 'llm',
   'exporters', 'prompts', 'story-arcs',
 ];
 
@@ -76,7 +76,7 @@ export async function runTests({ env, argv, run }) {
   // 会被 Book_userId_fkey 外键挡住，且每个测试用户都白跑一遍物化。
   // 需要覆盖的测试（register-seed.integration）会自行设置 SEED_LIBRARY_DIR。
   const emptySeedLibraryDir =
-    env.SEED_LIBRARY_DIR ?? join(tmpdir(), 'novel-agent-empty-seed-library');
+    env.SEED_LIBRARY_DIR ?? join(tmpdir(), 'qunxiang-empty-seed-library');
   mkdirSync(emptySeedLibraryDir, { recursive: true });
 
   const childEnv = {
@@ -105,11 +105,11 @@ export async function runTests({ env, argv, run }) {
       'postgres-test', 'minio-test',
     ], commonOptions);
     await runChecked(run, 'pnpm', [
-      '--filter', '@novel-agent/storage', 'exec', 'prisma', 'generate',
+      '--filter', '@qunxiang/storage', 'exec', 'prisma', 'generate',
       '--schema=./prisma/schema.prisma',
     ], commonOptions);
     await runChecked(run, 'pnpm', [
-      '--filter', '@novel-agent/storage', 'exec', 'prisma', 'migrate', 'reset',
+      '--filter', '@qunxiang/storage', 'exec', 'prisma', 'migrate', 'reset',
       '--force', '--skip-seed', '--schema=./prisma/schema.prisma',
     ], commonOptions);
     await runChecked(run, 'pnpm', [

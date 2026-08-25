@@ -1,5 +1,5 @@
 import type { FastifyRequest } from 'fastify';
-import { BookRepository } from '@novel-agent/storage';
+import { BookRepository } from '@qunxiang/storage';
 
 type BookRow = NonNullable<Awaited<ReturnType<typeof BookRepository.findById>>>;
 

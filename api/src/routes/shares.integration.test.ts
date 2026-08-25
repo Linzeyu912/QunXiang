@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { buildApp } from '../app.js';
 import { BOOK_NOT_FOUND_BODY } from '../lib/api-errors.js';
-import { prisma, getSharedObjectStore } from '@novel-agent/storage';
+import { prisma, getSharedObjectStore } from '@qunxiang/storage';
 import { testUserInput } from '../../../storage/src/test-fixtures.js';
 import { copyShareToLibrary } from '../snapshot/book-copy.js';
 

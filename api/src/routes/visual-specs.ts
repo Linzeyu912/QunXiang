@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { VisualSpecRepository } from '@novel-agent/storage';
+import { VisualSpecRepository } from '@qunxiang/storage';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
 

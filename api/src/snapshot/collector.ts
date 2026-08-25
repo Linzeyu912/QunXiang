@@ -26,15 +26,15 @@ import {
   EntityImageRepository,
   getSharedObjectStore,
   getSharedAssetSourceResolver,
-} from '@novel-agent/storage';
-import { parseChapterOutline, getChapterCleanedContent } from '@novel-agent/import';
+} from '@qunxiang/storage';
+import { parseChapterOutline, getChapterCleanedContent } from '@qunxiang/import';
 import {
   buildManifest,
   assertSafeManifestPath,
   type ManifestFile,
   type ManifestAssetCategory,
 } from '../lib/manifest.js';
-import type { SnapshotObjectCategory, SnapshotObjectState } from '@novel-agent/core';
+import type { SnapshotObjectCategory, SnapshotObjectState } from '@qunxiang/core';
 import { stableStringify } from '../lib/stable-json.js';
 import { discoverCurrentRun } from './run-discovery.js';
 

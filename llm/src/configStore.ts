@@ -51,8 +51,11 @@ export function normalizeApiKeys(config: Pick<RuntimeLlmConfig, 'apiKey' | 'apiK
   return out;
 }
 
-const CONFIG_FILENAME = '.novel-agent-config.encrypted';
-const IMAGE_CONFIG_FILENAME = '.novel-agent-image-config.encrypted';
+const CONFIG_FILENAME = '.qunxiang-config.encrypted';
+const IMAGE_CONFIG_FILENAME = '.qunxiang-image-config.encrypted';
+// 仅用于无感读取升级前已存在的本地密钥文件；新配置一律写入群像文件名。
+const LEGACY_CONFIG_FILENAME = '.novel-agent-config.encrypted';
+const LEGACY_IMAGE_CONFIG_FILENAME = '.novel-agent-image-config.encrypted';
 
 /**
  * Runtime Image configuration (stored in memory + optionally persisted to encrypted file)
@@ -144,11 +147,21 @@ function getMasterSecret(): string {
   }
 }
 
+/** 获取加密配置目录；生产环境可挂载独立卷保存模型配置。 */
+function getConfigDirectory(): string {
+  const configuredDirectory = process.env.QUNXIANG_CONFIG_DIR?.trim();
+  return configuredDirectory ? resolve(configuredDirectory) : getProjectRoot();
+}
+
 /**
  * Get the config file path
  */
 function getConfigPath(): string {
-  return join(getProjectRoot(), CONFIG_FILENAME);
+  return join(getConfigDirectory(), CONFIG_FILENAME);
+}
+
+function getLegacyConfigPath(): string {
+  return join(getProjectRoot(), LEGACY_CONFIG_FILENAME);
 }
 
 /**
@@ -177,6 +190,7 @@ export function saveConfigToDisk(config: RuntimeLlmConfig): void {
   }
 
   const configPath = getConfigPath();
+  mkdirSync(getConfigDirectory(), { recursive: true });
   const jsonStr = JSON.stringify(persisted);
   const encrypted = encrypt(jsonStr, secret);
   writeFileSync(configPath, encrypted, 'utf8');
@@ -189,7 +203,8 @@ export function saveConfigToDisk(config: RuntimeLlmConfig): void {
  * 读取时同时兼容旧的单 key 文件（encryptedApiKey）和新的多 key 文件（encryptedApiKeys）。
  */
 export function loadConfigFromDisk(): RuntimeLlmConfig | null {
-  const configPath = getConfigPath();
+  const preferredPath = getConfigPath();
+  const configPath = existsSync(preferredPath) ? preferredPath : getLegacyConfigPath();
   if (!existsSync(configPath)) return null;
 
   try {
@@ -233,10 +248,9 @@ export function loadConfigFromDisk(): RuntimeLlmConfig | null {
  * Remove the encrypted config file
  */
 export function clearConfigFromDisk(): boolean {
-  const configPath = getConfigPath();
   try {
-    if (existsSync(configPath)) {
-      unlinkSync(configPath);
+    for (const configPath of [getConfigPath(), getLegacyConfigPath()]) {
+      if (existsSync(configPath)) unlinkSync(configPath);
     }
     return true;
   } catch {
@@ -247,7 +261,11 @@ export function clearConfigFromDisk(): boolean {
 // ── Image config persistence (separate file, same encryption) ──
 
 function getImageConfigPath(): string {
-  return join(getProjectRoot(), IMAGE_CONFIG_FILENAME);
+  return join(getConfigDirectory(), IMAGE_CONFIG_FILENAME);
+}
+
+function getLegacyImageConfigPath(): string {
+  return join(getProjectRoot(), LEGACY_IMAGE_CONFIG_FILENAME);
 }
 
 export function saveImageConfigToDisk(config: RuntimeImageConfig): void {
@@ -264,12 +282,14 @@ export function saveImageConfigToDisk(config: RuntimeImageConfig): void {
     persisted.encryptedApiKey = encrypt(config.apiKey, secret);
   }
   const jsonStr = JSON.stringify(persisted);
+  mkdirSync(getConfigDirectory(), { recursive: true });
   const encrypted = encrypt(jsonStr, secret);
   writeFileSync(getImageConfigPath(), encrypted, 'utf8');
 }
 
 export function loadImageConfigFromDisk(): RuntimeImageConfig | null {
-  const configPath = getImageConfigPath();
+  const preferredPath = getImageConfigPath();
+  const configPath = existsSync(preferredPath) ? preferredPath : getLegacyImageConfigPath();
   if (!existsSync(configPath)) return null;
   try {
     const secret = getMasterSecret();

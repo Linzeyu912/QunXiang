@@ -3,8 +3,8 @@ import { randomUUID } from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { mkdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
-import { BookArtifactRepository, BookRepository, getSharedAssetSourceResolver, persistBookArtifact } from '@novel-agent/storage';
-import { parseTxtEnhanced } from '@novel-agent/import';
+import { BookArtifactRepository, BookRepository, getSharedAssetSourceResolver, persistBookArtifact } from '@qunxiang/storage';
+import { parseTxtEnhanced } from '@qunxiang/import';
 import {
   buildStorySegmentsFromParseResult,
   buildStoryAssetBundle,
@@ -13,7 +13,7 @@ import {
   runDirectorPipelineForStory,
   storyAssetDirectory,
   writeStoryAssetFiles,
-} from '@novel-agent/story-arcs';
+} from '@qunxiang/story-arcs';
 import type {
   AssetWarning,
   CharacterInStory,
@@ -33,7 +33,7 @@ import type {
   StorySceneFile,
   StorySegment,
   VideoPromptPack,
-} from '@novel-agent/story-arcs';
+} from '@qunxiang/story-arcs';
 import { readArtifactJson } from './artifact-store.js';
 
 // 输出目录统一用 bookId 作为目录名（与 director-pipeline 内部的

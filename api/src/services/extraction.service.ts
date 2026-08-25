@@ -1,9 +1,9 @@
-import { BookRepository, TaskRepository } from '@novel-agent/storage';
-import { TaskDispatcher, DatabaseTaskQueue, eventBus, EXTRACTION_PIPELINE } from '@novel-agent/scheduler';
-import type { PipelineEvent } from '@novel-agent/scheduler';
-import { CharacterRepository, LocationRepository, ItemRepository, WorldviewRepository } from '@novel-agent/storage';
-import { getDefaultProvider, getApiKeyCount } from '@novel-agent/llm';
-import type { AgentType } from '@novel-agent/core';
+import { BookRepository, TaskRepository } from '@qunxiang/storage';
+import { TaskDispatcher, DatabaseTaskQueue, eventBus, EXTRACTION_PIPELINE } from '@qunxiang/scheduler';
+import type { PipelineEvent } from '@qunxiang/scheduler';
+import { CharacterRepository, LocationRepository, ItemRepository, WorldviewRepository } from '@qunxiang/storage';
+import { getDefaultProvider, getApiKeyCount } from '@qunxiang/llm';
+import type { AgentType } from '@qunxiang/core';
 import { ConflictError, NotFoundError } from '../lib/errors.js';
 
 const taskQueue = new DatabaseTaskQueue();
@@ -304,13 +304,13 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
   // 却在角色/场景页面看到空白（历史 bug）。
   const reviewerStage = stages.find((s) => s.id === 'reviewer');
   if (reviewerStage?.status === 'completed') {
-    const [chars, locs, items, worldviews] = await Promise.all([
-      CharacterRepository.findByOwnedBookId(bookId, ownerId),
-      LocationRepository.findByOwnedBookId(bookId, ownerId),
-      ItemRepository.findByOwnedBookId(bookId, ownerId),
-      WorldviewRepository.findByOwnedBookId(bookId, ownerId),
+    const [charCount, locCount, itemCount, worldviewCount] = await Promise.all([
+      CharacterRepository.countByOwnedBookId(bookId, ownerId),
+      LocationRepository.countByOwnedBookId(bookId, ownerId),
+      ItemRepository.countByOwnedBookId(bookId, ownerId),
+      WorldviewRepository.countByOwnedBookId(bookId, ownerId),
     ]);
-    if (chars.length === 0 && locs.length === 0 && items.length === 0 && worldviews.length === 0) {
+    if (charCount === 0 && locCount === 0 && itemCount === 0 && worldviewCount === 0) {
       // reviewer 任务状态仍是 completed（来自任务表），但语义上没有产出，
       // 在 stage 上标注原因，让前端 StageCard 能显示，且不进入 isComplete。
       reviewerStage.message = '审核入库完成，但未提取到任何角色、场景、道具或世界观';
@@ -325,13 +325,13 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
   // 否则前端 BookIndexRedirect 会把这类书判成"未提取"，入口重定向到 pipeline
   // 空白页，用户看不到任何提取结果。空实体时不判完成（与上面的防御一致）。
   if (!isComplete && tasks.length === 0 && book.status === 'EXTRACTED') {
-    const [chars, locs, items, worldviews] = await Promise.all([
-      CharacterRepository.findByOwnedBookId(bookId, ownerId),
-      LocationRepository.findByOwnedBookId(bookId, ownerId),
-      ItemRepository.findByOwnedBookId(bookId, ownerId),
-      WorldviewRepository.findByOwnedBookId(bookId, ownerId),
+    const [charCount, locCount, itemCount, worldviewCount] = await Promise.all([
+      CharacterRepository.countByOwnedBookId(bookId, ownerId),
+      LocationRepository.countByOwnedBookId(bookId, ownerId),
+      ItemRepository.countByOwnedBookId(bookId, ownerId),
+      WorldviewRepository.countByOwnedBookId(bookId, ownerId),
     ]);
-    if (chars.length + locs.length + items.length + worldviews.length > 0) {
+    if (charCount + locCount + itemCount + worldviewCount > 0) {
       for (const stage of stages) stage.status = 'completed';
       isComplete = true;
       overallProgress = 100;
@@ -360,9 +360,12 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
 export async function* createExtractionStream(
   bookId: string,
   ownerId: string,
+  signal?: AbortSignal,
 ): AsyncGenerator<string> {
+  if (signal?.aborted) return;
   // Send initial state (full stages snapshot)
   const initialState = await getExtractionStages(bookId, ownerId);
+  if (signal?.aborted) return;
   yield `data: ${JSON.stringify(initialState)}\n\n`;
 
   // If already complete or failed, close immediately
@@ -373,46 +376,42 @@ export async function* createExtractionStream(
   // 订阅该 bookId 的管线事件。用具名 handler + eventBus.off 精确退订——
   // 不要用 removeAllListeners（会拆掉其它 SSE 客户端的监听）。
   const eventQueue: PipelineEvent[] = [];
-  let resolveWaiter: (() => void) | null = null;
+  let wakeWaiter: (() => void) | null = null;
   const handler = (event: PipelineEvent) => {
     eventQueue.push(event);
-    if (resolveWaiter) {
-      resolveWaiter();
-      resolveWaiter = null;
-    }
+    wakeWaiter?.();
   };
   eventBus.on(bookId, handler);
 
   try {
     while (true) {
+      if (signal?.aborted) return;
       // Wait for next event or heartbeat timeout
-      const result = await new Promise<PipelineEvent | 'heartbeat'>((resolve) => {
+      const result = await new Promise<PipelineEvent | 'heartbeat' | 'aborted'>((resolve) => {
         // Drain any queued events immediately
         if (eventQueue.length > 0) {
           resolve(eventQueue.shift()!);
           return;
         }
-        // 心跳定时器：必须保存 id 并在 resolve 前 clear，
-        // 否则长连接（前端持续开着页面）会堆积大量已触发但未清理的定时器引用。
-        const heartbeatTimer = setTimeout(() => {
-          if (resolveWaiter) {
-            resolveWaiter = null;
-            clearTimeout(heartbeatTimer);
-            resolve('heartbeat');
-          }
-        }, 15000);
-        // Otherwise wait for new event or heartbeat
-        resolveWaiter = () => {
+        let settled = false;
+        const finish = (value: PipelineEvent | 'heartbeat' | 'aborted') => {
+          if (settled) return;
+          settled = true;
           clearTimeout(heartbeatTimer);
-          if (eventQueue.length > 0) {
-            resolve(eventQueue.shift()!);
-          } else {
-            resolve('heartbeat');
-          }
+          signal?.removeEventListener('abort', onAbort);
+          if (wakeWaiter === onEvent) wakeWaiter = null;
+          resolve(value);
         };
+        const onEvent = () => finish(eventQueue.shift() ?? 'heartbeat');
+        const onAbort = () => finish('aborted');
+        const heartbeatTimer = setTimeout(() => finish('heartbeat'), 15000);
+        wakeWaiter = onEvent;
+        signal?.addEventListener('abort', onAbort, { once: true });
       });
 
-      if (result === 'heartbeat') {
+      if (result === 'aborted') {
+        return;
+      } else if (result === 'heartbeat') {
         yield ': heartbeat\n\n';
       } else {
         const sseEvent = `event: ${result.type}\ndata: ${JSON.stringify(result)}\n\n`;
@@ -425,6 +424,7 @@ export async function* createExtractionStream(
       }
     }
   } finally {
+    wakeWaiter = null;
     eventBus.off(bookId, handler);
   }
 }

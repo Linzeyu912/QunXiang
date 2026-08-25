@@ -15,8 +15,8 @@
     "outDir": "./dist",
     "baseUrl": "..",
     "paths": {
-      "@novel-agent/core": ["core/src"],
-      "@novel-agent/core/*": ["core/src/*"]
+      "@qunxiang/core": ["core/src"],
+      "@qunxiang/core/*": ["core/src/*"]
     }
   },
   "include": ["src/**/*"]

@@ -1,6 +1,6 @@
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { ObjectStore, ObjectStoreProvider } from '@novel-agent/core';
+import type { ObjectStore, ObjectStoreProvider } from '@qunxiang/core';
 import { FsObjectStore } from './fs-object-store.js';
 import { S3ObjectStore } from './s3-object-store.js';
 

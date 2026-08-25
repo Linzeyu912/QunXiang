@@ -53,6 +53,11 @@ export interface Character {
 
   // 该角色的所有显著服饰套系（提取阶段结构化抓取，带章节区间）
   outfits: Outfit[];
+
+  // 年龄成长阶段（child/youth/young/middle/old）：按原文证据识别，
+  // ageStages 为跨越的全部阶段，primaryAgeStage 为当前主阶段。
+  ageStages?: string[];
+  primaryAgeStage?: string;
 }
 
 export interface Location {

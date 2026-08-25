@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { CharacterReview } from '@novel-agent/core';
+import type { CharacterReview } from '@qunxiang/core';
 import type { PrismaClient } from '@prisma/client';
 
 export interface ReviewRepository {

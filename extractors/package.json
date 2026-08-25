@@ -1,14 +1,14 @@
 {
-  "name": "@novel-agent/extractors",
+  "name": "@qunxiang/extractors",
   "version": "0.1.0",
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
-    "@novel-agent/core": "workspace:*",
-    "@novel-agent/entity-resolution": "workspace:*",
-    "@novel-agent/schemas": "workspace:*",
-    "@novel-agent/llm": "workspace:*",
-    "@novel-agent/prompts": "workspace:*"
+    "@qunxiang/core": "workspace:*",
+    "@qunxiang/entity-resolution": "workspace:*",
+    "@qunxiang/schemas": "workspace:*",
+    "@qunxiang/llm": "workspace:*",
+    "@qunxiang/prompts": "workspace:*"
   }
 }

@@ -10,6 +10,8 @@ output
 .env
 .env.local
 **/.env.local
+.qunxiang-config.encrypted
+.qunxiang-image-config.encrypted
 .novel-agent-config.encrypted
 .novel-agent-image-config.encrypted
 .omc
@@ -23,6 +25,8 @@ api/.intermediate
 storage/objects
 docs
 seed-library
+!seed-library/
+!seed-library/**
 README.md
 KNOWN_ISSUES.md
 AGENTS.md

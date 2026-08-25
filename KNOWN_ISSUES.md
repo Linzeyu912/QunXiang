@@ -104,7 +104,7 @@ QunXiang 是以后要迁过去的主仓；本仓库当前功能领先，本阶�
 - 时间线视图(按 `captured_at` 排序,主版本标记)
 - 增量存储(相同图片去重)+ 多分辨率(原图 + 多级缩略图)
 
-**建议**:新建独立 workspace 包 `@novel-agent/image-assets`,而不是堆到 `storage` 包。
+**建议**:新建独立 workspace 包 `@qunxiang/image-assets`,而不是堆到 `storage` 包。
 
 ---
 

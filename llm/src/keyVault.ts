@@ -10,6 +10,7 @@ const KEY_LENGTH = 32;
  */
 function deriveKey(secret: string): Buffer {
   // Use a fixed salt derived from the secret itself for consistency
+  // 保持既有派生盐，确保升级品牌名后仍能解密用户已经保存的模型密钥。
   const salt = scryptSync(secret, 'novel-agent-keyvault-salt', KEY_LENGTH);
   return scryptSync(secret, salt, KEY_LENGTH);
 }

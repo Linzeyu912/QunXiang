@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
-import type { ObjectStore } from '@novel-agent/core';
+import type { ObjectStore } from '@qunxiang/core';
+import { decodeText } from '@qunxiang/import';
 import { getSharedObjectStore } from './object-storage/index.js';
 
 export interface BookSourceRef {
@@ -35,7 +36,8 @@ export class AssetSourceResolver {
   }
 
   async readSourceText(book: BookSourceRef): Promise<string> {
-    return (await this.readSourceBuffer(book)).toString('utf-8');
+    // 原文上传时保留原始字节，读取时必须和导入阶段使用同一套编码识别。
+    return decodeText(await this.readSourceBuffer(book));
   }
 }
 

@@ -1,4 +1,4 @@
-import type { Character, Location, Item } from '@novel-agent/core';
+import type { Character, Location, Item } from '@qunxiang/core';
 
 export interface ValidationIssue {
   field: string;

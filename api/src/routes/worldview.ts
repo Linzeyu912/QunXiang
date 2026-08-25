@@ -4,9 +4,9 @@ import {
   getSharedAssetSourceResolver,
   persistBookArtifact,
   readBookArtifactText,
-} from '@novel-agent/storage';
-import { worldviewUpdateSchema, worldviewSynthesisSchema } from '@novel-agent/schemas';
-import { getDefaultProvider } from '@novel-agent/llm';
+} from '@qunxiang/storage';
+import { worldviewUpdateSchema, worldviewSynthesisSchema } from '@qunxiang/schemas';
+import { getDefaultProvider } from '@qunxiang/llm';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';

@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { Item, Owner } from '@novel-agent/core';
+import type { Item, Owner } from '@qunxiang/core';
 import type { PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
 
@@ -48,6 +48,8 @@ export interface ItemRepository {
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Item[]>;
   findByOwnedBookId(bookId: string, ownerId: string): Promise<Item[]>;
+  /** 轻量计数：仅判空/统计用，避免全量拉取实体行。 */
+  countByOwnedBookId(bookId: string, ownerId: string): Promise<number>;
   findById(id: string): Promise<Item | null>;
   findOwnedById(id: string, ownerId: string): Promise<Item | null>;
   findByStatus(bookId: string, status: string): Promise<Item[]>;
@@ -143,6 +145,10 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
         orderBy: [{ importanceScore: 'desc' }, { id: 'asc' }],
       });
       return items.map(i => parseItem(i as unknown as Record<string, unknown>));
+    },
+
+    async countByOwnedBookId(bookId: string, ownerId: string) {
+      return db.item.count({ where: { bookId, book: { userId: ownerId } } });
     },
 
     async findById(id: string) {

@@ -1,4 +1,4 @@
-import type { Character, Location, Item } from '@novel-agent/core';
+import type { Character, Location, Item } from '@qunxiang/core';
 import type { ValidationResult, CharacterValidator, EntityInput } from './types.js';
 import { validateLowConfidence } from './detectors/low-confidence.js';
 import { validateMissingFields } from './detectors/missing-fields.js';

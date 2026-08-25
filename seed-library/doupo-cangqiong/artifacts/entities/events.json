@@ -1,0 +1,695 @@
+[
+  {
+    "text": "纳兰嫣然要求解除婚约",
+    "source": "regex",
+    "position": 2415,
+    "confidence": 0.86,
+    "totalCount": 18,
+    "allChapters": [
+      3,
+      5,
+      6,
+      12,
+      181,
+      186,
+      285,
+      306,
+      332,
+      344,
+      346,
+      360,
+      413,
+      649,
+      657,
+      934,
+      1343,
+      1346
+    ],
+    "chapterIndex": 1346
+  },
+  {
+    "text": "葛叶提出退婚请求",
+    "source": "regex",
+    "position": 62,
+    "confidence": 0.84,
+    "totalCount": 1,
+    "allChapters": [
+      4
+    ],
+    "chapterIndex": 4
+  },
+  {
+    "text": "葛叶拿出聚气散",
+    "source": "regex",
+    "position": 2118,
+    "confidence": 0.84,
+    "totalCount": 1,
+    "allChapters": [
+      4
+    ],
+    "chapterIndex": 4
+  },
+  {
+    "text": "萧炎拒绝解除婚约",
+    "source": "regex",
+    "position": 613,
+    "confidence": 0.86,
+    "totalCount": 2,
+    "allChapters": [
+      5,
+      6
+    ],
+    "chapterIndex": 6
+  },
+  {
+    "text": "萧炎立下三年之约",
+    "source": "regex",
+    "position": 1855,
+    "confidence": 0.88,
+    "totalCount": 43,
+    "allChapters": [
+      6,
+      24,
+      25,
+      41,
+      52,
+      104,
+      147,
+      156,
+      178,
+      231,
+      270,
+      271,
+      279,
+      294,
+      306,
+      313,
+      322,
+      324,
+      327,
+      329,
+      330,
+      333,
+      334,
+      336,
+      337,
+      351,
+      355,
+      356,
+      360,
+      362,
+      372,
+      377,
+      411,
+      474,
+      540,
+      600,
+      606,
+      616,
+      618,
+      631,
+      632,
+      633,
+      883
+    ],
+    "chapterIndex": 883
+  },
+  {
+    "text": "药老从戒指中现身",
+    "source": "regex",
+    "position": 2412,
+    "confidence": 0.84,
+    "totalCount": 78,
+    "allChapters": [
+      8,
+      18,
+      19,
+      27,
+      58,
+      60,
+      63,
+      70,
+      86,
+      105,
+      106,
+      116,
+      117,
+      118,
+      119,
+      120,
+      127,
+      131,
+      136,
+      137,
+      138,
+      140,
+      147,
+      148,
+      152,
+      154,
+      156,
+      169,
+      172,
+      204,
+      205,
+      229,
+      234,
+      235,
+      260,
+      261,
+      270,
+      316,
+      323,
+      324,
+      376,
+      378,
+      380,
+      413,
+      453,
+      457,
+      499,
+      502,
+      508,
+      511,
+      535,
+      562,
+      564,
+      583,
+      584,
+      585,
+      586,
+      589,
+      623,
+      625,
+      656,
+      755,
+      910,
+      956,
+      989,
+      1119,
+      1154,
+      1155,
+      1162,
+      1163,
+      1164,
+      1209,
+      1217,
+      1303,
+      1329,
+      1331,
+      1373,
+      1456
+    ],
+    "chapterIndex": 1456
+  },
+  {
+    "text": "萧炎依靠拿出聚气散",
+    "source": "regex",
+    "position": 1854,
+    "confidence": 0.84,
+    "totalCount": 1,
+    "allChapters": [
+      62
+    ],
+    "chapterIndex": 62
+  },
+  {
+    "text": "萧炎所拿出聚气散",
+    "source": "regex",
+    "position": 233,
+    "confidence": 0.84,
+    "totalCount": 1,
+    "allChapters": [
+      75
+    ],
+    "chapterIndex": 75
+  },
+  {
+    "text": "萧炎开启炼药目标",
+    "source": "regex",
+    "position": 495,
+    "confidence": 0.78,
+    "totalCount": 6,
+    "allChapters": [
+      110,
+      148,
+      624,
+      712,
+      887,
+      1065
+    ],
+    "chapterIndex": 1065
+  },
+  {
+    "text": "萧炎这才开启炼药目标",
+    "source": "regex",
+    "position": 1492,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      286
+    ],
+    "chapterIndex": 286
+  },
+  {
+    "text": "萧炎只得开启炼药目标",
+    "source": "regex",
+    "position": 847,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      287
+    ],
+    "chapterIndex": 287
+  },
+  {
+    "text": "萧炎刚欲推进修炼目标",
+    "source": "regex",
+    "position": 667,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      324
+    ],
+    "chapterIndex": 324
+  },
+  {
+    "text": "葛叶请求解除婚约",
+    "source": "regex",
+    "position": 2711,
+    "confidence": 0.86,
+    "totalCount": 1,
+    "allChapters": [
+      331
+    ],
+    "chapterIndex": 331
+  },
+  {
+    "text": "萧炎如今推进修炼目标",
+    "source": "regex",
+    "position": 2745,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      364
+    ],
+    "chapterIndex": 364
+  },
+  {
+    "text": "方式也很开启炼药目标",
+    "source": "regex",
+    "position": 1722,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      376
+    ],
+    "chapterIndex": 376
+  },
+  {
+    "text": "萧炎甚至推进修炼目标",
+    "source": "regex",
+    "position": 2551,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      481
+    ],
+    "chapterIndex": 481
+  },
+  {
+    "text": "时间开启炼药目标",
+    "source": "regex",
+    "position": 1979,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      498
+    ],
+    "chapterIndex": 498
+  },
+  {
+    "text": "于刚刚突推进修炼目标",
+    "source": "regex",
+    "position": 2568,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      498
+    ],
+    "chapterIndex": 498
+  },
+  {
+    "text": "萧炎也并开启炼药目标",
+    "source": "regex",
+    "position": 809,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      508
+    ],
+    "chapterIndex": 508
+  },
+  {
+    "text": "萧炎竟然推进修炼目标",
+    "source": "regex",
+    "position": 1284,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      517
+    ],
+    "chapterIndex": 517
+  },
+  {
+    "text": "萧炎强推进修炼目标",
+    "source": "regex",
+    "position": 1264,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      521
+    ],
+    "chapterIndex": 521
+  },
+  {
+    "text": "萧炎明白推进修炼目标",
+    "source": "regex",
+    "position": 1436,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      531
+    ],
+    "chapterIndex": 531
+  },
+  {
+    "text": "安学院毕推进修炼目标",
+    "source": "regex",
+    "position": 440,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      541
+    ],
+    "chapterIndex": 541
+  },
+  {
+    "text": "萧炎进入推进修炼目标",
+    "source": "regex",
+    "position": 2660,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      546
+    ],
+    "chapterIndex": 546
+  },
+  {
+    "text": "方给那些开启炼药目标",
+    "source": "regex",
+    "position": 4366,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      572
+    ],
+    "chapterIndex": 572
+  },
+  {
+    "text": "于当初开启炼药目标",
+    "source": "regex",
+    "position": 4403,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      583
+    ],
+    "chapterIndex": 583
+  },
+  {
+    "text": "殷切目光开启炼药目标",
+    "source": "regex",
+    "position": 2189,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      588
+    ],
+    "chapterIndex": 588
+  },
+  {
+    "text": "萧炎这般推进修炼目标",
+    "source": "regex",
+    "position": 432,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      654
+    ],
+    "chapterIndex": 654
+  },
+  {
+    "text": "萧炎一愣开启炼药目标",
+    "source": "regex",
+    "position": 1357,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      702
+    ],
+    "chapterIndex": 702
+  },
+  {
+    "text": "萧炎惊讶开启炼药目标",
+    "source": "regex",
+    "position": 2726,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      712
+    ],
+    "chapterIndex": 712
+  },
+  {
+    "text": "萧炎这般开启炼药目标",
+    "source": "regex",
+    "position": 2368,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      752
+    ],
+    "chapterIndex": 752
+  },
+  {
+    "text": "许喜意推进修炼目标",
+    "source": "regex",
+    "position": 1963,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      765
+    ],
+    "chapterIndex": 765
+  },
+  {
+    "text": "萧灸那六开启炼药目标",
+    "source": "regex",
+    "position": 1986,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      768
+    ],
+    "chapterIndex": 768
+  },
+  {
+    "text": "于虚弱期推进修炼目标",
+    "source": "regex",
+    "position": 1909,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      798
+    ],
+    "chapterIndex": 798
+  },
+  {
+    "text": "于九星斗推进修炼目标",
+    "source": "regex",
+    "position": 2209,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      911
+    ],
+    "chapterIndex": 911
+  },
+  {
+    "text": "萧炎消失开启炼药目标",
+    "source": "regex",
+    "position": 887,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      930
+    ],
+    "chapterIndex": 930
+  },
+  {
+    "text": "金谷前辈推进修炼目标",
+    "source": "regex",
+    "position": 2039,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      943
+    ],
+    "chapterIndex": 943
+  },
+  {
+    "text": "安静推进修炼目标",
+    "source": "regex",
+    "position": 545,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1041
+    ],
+    "chapterIndex": 1041
+  },
+  {
+    "text": "萧炎依旧开启炼药目标",
+    "source": "regex",
+    "position": 470,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1062
+    ],
+    "chapterIndex": 1062
+  },
+  {
+    "text": "萧炎身后开启炼药目标",
+    "source": "regex",
+    "position": 1075,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1065
+    ],
+    "chapterIndex": 1065
+  },
+  {
+    "text": "萧炎推进修炼目标",
+    "source": "regex",
+    "position": 1440,
+    "confidence": 0.78,
+    "totalCount": 2,
+    "allChapters": [
+      1242,
+      1431
+    ],
+    "chapterIndex": 1431
+  },
+  {
+    "text": "萧炎默默推进修炼目标",
+    "source": "regex",
+    "position": 2695,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1245
+    ],
+    "chapterIndex": 1245
+  },
+  {
+    "text": "金刚琉璃推进修炼目标",
+    "source": "regex",
+    "position": 651,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1343
+    ],
+    "chapterIndex": 1343
+  },
+  {
+    "text": "萧炎虽开启炼药目标",
+    "source": "regex",
+    "position": 561,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1381
+    ],
+    "chapterIndex": 1381
+  },
+  {
+    "text": "萧炎面前开启炼药目标",
+    "source": "regex",
+    "position": 2279,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1382
+    ],
+    "chapterIndex": 1382
+  },
+  {
+    "text": "黄泉妖圣推进修炼目标",
+    "source": "regex",
+    "position": 1613,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1404
+    ],
+    "chapterIndex": 1404
+  },
+  {
+    "text": "萧炎兄弟推进修炼目标",
+    "source": "regex",
+    "position": 2752,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1422
+    ],
+    "chapterIndex": 1422
+  },
+  {
+    "text": "于他们开启炼药目标",
+    "source": "regex",
+    "position": 2309,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1429
+    ],
+    "chapterIndex": 1429
+  },
+  {
+    "text": "萧炎嘴角开启炼药目标",
+    "source": "regex",
+    "position": 2983,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1501
+    ],
+    "chapterIndex": 1501
+  },
+  {
+    "text": "于寻常开启炼药目标",
+    "source": "regex",
+    "position": 1696,
+    "confidence": 0.78,
+    "totalCount": 1,
+    "allChapters": [
+      1508
+    ],
+    "chapterIndex": 1508
+  }
+]

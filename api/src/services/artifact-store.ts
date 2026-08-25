@@ -11,7 +11,7 @@
  *   - 导演：stories/{storyId}/director/{filename}
  */
 import { readFile } from 'node:fs/promises';
-import { readBookArtifactJson, readBookArtifactText } from '@novel-agent/storage';
+import { readBookArtifactJson, readBookArtifactText } from '@qunxiang/storage';
 
 /**
  * 优先 BookArtifact + 对象存储读 JSON；失败回退 fsFallbackPath；都没有返回 null。

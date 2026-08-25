@@ -1,4 +1,4 @@
-import { prisma } from '@novel-agent/storage';
+import { prisma } from '@qunxiang/storage';
 import { normalizeEmail } from '../lib/email.js';
 import { hashPassword } from '../lib/password.js';
 

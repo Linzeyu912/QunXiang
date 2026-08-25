@@ -1,6 +1,6 @@
 import { prisma } from './prisma.js';
 import type { Prisma, PrismaClient } from '@prisma/client';
-import type { VisualSpec, VisualSpecEntityType, VisualSpecStatus } from '@novel-agent/core';
+import type { VisualSpec, VisualSpecEntityType, VisualSpecStatus } from '@qunxiang/core';
 import { encodeJsonField } from './json-field.js';
 
 export interface CreateVisualSpecData {

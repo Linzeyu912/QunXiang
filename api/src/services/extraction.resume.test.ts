@@ -6,13 +6,13 @@ const { resumeExtractionMock } = vi.hoisted(() => ({
   resumeExtractionMock: vi.fn(),
 }));
 
-vi.mock('@novel-agent/llm', () => ({
+vi.mock('@qunxiang/llm', () => ({
   getDefaultProvider: vi.fn(),
   getApiKeyCount: vi.fn(() => 1),
   LLM_PROVIDERS: {},
 }));
 
-vi.mock('@novel-agent/scheduler', () => ({
+vi.mock('@qunxiang/scheduler', () => ({
   TaskDispatcher: vi.fn().mockImplementation(() => ({
     startWorker: vi.fn(),
     startWorkers: vi.fn(),
@@ -45,7 +45,7 @@ import {
   BookRepository,
   UserRepository,
   TaskRepository,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 import { resumeExtraction } from './extraction.service.js';
 import { ConflictError, NotFoundError } from '../lib/errors.js';
 

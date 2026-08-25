@@ -4,7 +4,7 @@
 services:
   caddy:
     image: caddy:2-alpine
-    container_name: novel-agent-caddy
+    container_name: qunxiang-caddy
     ports:
       - "80:80"
       - "443:443"
@@ -17,61 +17,65 @@ services:
       - web
     restart: unless-stopped
     networks:
-      - novel-agent-net
+      - qunxiang-net
 
   api:
     build:
       context: .
       dockerfile: Dockerfile.api
-    container_name: novel-agent-api
+    container_name: qunxiang-api
     env_file:
       - api/.env.production
     environment:
       # postgres 密码从环境变量注入（compose 会合并 env_file 和 environment）
-      DATABASE_URL: postgresql://novel_agent:${POSTGRES_PASSWORD}@postgres:5432/novel_agent
-      DIRECT_DATABASE_URL: postgresql://novel_agent:${POSTGRES_PASSWORD}@postgres:5432/novel_agent
+      DATABASE_URL: postgresql://qunxiang:${POSTGRES_PASSWORD}@postgres:5432/qunxiang
+      DIRECT_DATABASE_URL: postgresql://qunxiang:${POSTGRES_PASSWORD}@postgres:5432/qunxiang
+      QUNXIANG_CONFIG_DIR: /app/config
+      LLM_DISABLE_THINKING: "true"
     volumes:
       - object-data:/app/storage/objects
+      - llm-config-data:/app/config
     depends_on:
       postgres:
         condition: service_healthy
     restart: unless-stopped
     networks:
-      - novel-agent-net
+      - qunxiang-net
 
   web:
     build:
       context: .
       dockerfile: Dockerfile.web
-    container_name: novel-agent-web
+    container_name: qunxiang-web
     restart: unless-stopped
     networks:
-      - novel-agent-net
+      - qunxiang-net
 
   postgres:
     image: postgres:15-alpine
-    container_name: novel-agent-postgres
+    container_name: qunxiang-postgres
     environment:
-      POSTGRES_DB: novel_agent
-      POSTGRES_USER: novel_agent
+      POSTGRES_DB: qunxiang
+      POSTGRES_USER: qunxiang
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U novel_agent -d novel_agent"]
+      test: ["CMD-SHELL", "pg_isready -U qunxiang -d qunxiang"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
-      - novel-agent-net
+      - qunxiang-net
 
 volumes:
   postgres-data:
   object-data:
+  llm-config-data:
   caddy-data:
   caddy-config:
 
 networks:
-  novel-agent-net:
+  qunxiang-net:
     driver: bridge

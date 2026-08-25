@@ -1,6 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
-import { EntityImageRepository } from '@novel-agent/storage';
+import { EntityImageRepository } from '@qunxiang/storage';
 import {
   generateEntityImage,
   uploadEntityImage,

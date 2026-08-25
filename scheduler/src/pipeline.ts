@@ -1,4 +1,4 @@
-import type { AgentType } from '@novel-agent/core';
+import type { AgentType } from '@qunxiang/core';
 
 export const EXTRACTION_PIPELINE: AgentType[] = [
   'extractor',

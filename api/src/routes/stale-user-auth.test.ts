@@ -23,7 +23,7 @@ const fileSystemMock = vi.hoisted(() => ({
   rm: vi.fn(),
 }));
 
-vi.mock('@novel-agent/storage', () => ({
+vi.mock('@qunxiang/storage', () => ({
   BookRepository: {
     create: storageMock.bookCreate,
     findAll: storageMock.bookFindAll,
@@ -78,7 +78,7 @@ function authenticatedUser() {
 }
 
 function multipartPayload(filename = 'test.txt', content = '第一章\n测试内容') {
-  const boundary = '----novel-agent-test-boundary';
+  const boundary = '----qunxiang-test-boundary';
   const body = Buffer.from(
     [
       `--${boundary}`,

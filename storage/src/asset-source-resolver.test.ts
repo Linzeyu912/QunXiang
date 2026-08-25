@@ -32,6 +32,15 @@ describe('AssetSourceResolver', () => {
     expect(text).toBe('旧书本机内容');
   });
 
+  it('从对象存储读取 GB18030 原文时正确解码', async () => {
+    const stored = await store.put({
+      body: Buffer.from([0xc4, 0xe3, 0xba, 0xc3]),
+      mime: 'text/plain',
+    });
+    const text = await resolver.readSourceText({ sourceObjectKey: stored.objectKey });
+    expect(text).toBe('你好');
+  });
+
   it('既无对象键也无路径抛中文错误', async () => {
     await expect(resolver.readSourceText({})).rejects.toThrow('没有可读的原始内容来源');
   });

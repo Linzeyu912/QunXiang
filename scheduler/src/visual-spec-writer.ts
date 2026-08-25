@@ -1,4 +1,4 @@
-import { VisualSpecRepository } from '@novel-agent/storage';
+import { VisualSpecRepository } from '@qunxiang/storage';
 import {
   buildVisualSpecDrafts,
   collectPromptsFromResult,

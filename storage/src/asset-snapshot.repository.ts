@@ -1,5 +1,5 @@
 import type { AssetSnapshot, PrismaClient } from '@prisma/client';
-import type { CreateAssetSnapshotInput } from '@novel-agent/core';
+import type { CreateAssetSnapshotInput } from '@qunxiang/core';
 import { prisma } from './prisma.js';
 
 export interface AssetSnapshotRepository {

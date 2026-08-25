@@ -1,5 +1,5 @@
 /**
- * @novel-agent/entity-prescan
+ * @qunxiang/entity-prescan
  *
  * Entity pre-scanning module. Sits between chapter-analysis and extractors
  * in the pipeline. Uses regex + LLM to extract 4 entity types:

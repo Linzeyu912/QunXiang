@@ -8,7 +8,7 @@ const mockState = vi.hoisted(() => ({
 }));
 
 // 优先层：BookArtifact + 对象存储（storage 层的 readBookArtifactText）
-vi.mock('@novel-agent/storage', () => ({
+vi.mock('@qunxiang/storage', () => ({
   readBookArtifactText: vi.fn(async (_bookId: string, _logicalPath: string) => mockState.storeText),
   readBookArtifactJson: vi.fn(async (bookId: string, logicalPath: string) => {
     if (mockState.storeText === null) return null;
@@ -29,7 +29,7 @@ vi.mock('node:fs/promises', () => ({
 }));
 
 import { readArtifactJson, readArtifactText } from './artifact-store.js';
-import { readBookArtifactText } from '@novel-agent/storage';
+import { readBookArtifactText } from '@qunxiang/storage';
 import { readFile } from 'node:fs/promises';
 
 const BOOK_ID = '00000000-0000-4000-8000-000000000001';

@@ -29,7 +29,7 @@ const mockState = vi.hoisted(() => {
   };
 });
 
-vi.mock('@novel-agent/storage', () => {
+vi.mock('@qunxiang/storage', () => {
   return {
     AssetSnapshotRepository: {
       async create(input: any) {

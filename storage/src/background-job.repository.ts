@@ -10,10 +10,10 @@ import {
   type HeartbeatBackgroundJobInput,
   type RecoveredBackgroundJob,
   type RecoverExpiredBackgroundJobsInput,
-} from '@novel-agent/core';
+} from '@qunxiang/core';
 import { prisma } from './prisma.js';
 
-export { BACKGROUND_JOB_BACKOFF_BASE_MS, BACKGROUND_JOB_MAX_ATTEMPTS } from '@novel-agent/core';
+export { BACKGROUND_JOB_BACKOFF_BASE_MS, BACKGROUND_JOB_MAX_ATTEMPTS } from '@qunxiang/core';
 
 export interface BackgroundJobRepository {
   enqueue(input: EnqueueBackgroundJobInput): Promise<BackgroundJob>;

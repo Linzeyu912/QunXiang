@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const chatExtract = vi.fn();
 
-vi.mock('@novel-agent/llm', () => ({
+vi.mock('@qunxiang/llm', () => ({
   getDefaultProvider: vi.fn(async () => ({ chatExtract })),
 }));
 

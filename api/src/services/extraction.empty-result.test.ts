@@ -1,9 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-// extraction.service.ts 顶部 import { getDefaultProvider } from '@novel-agent/llm'，
+// extraction.service.ts 顶部 import { getDefaultProvider } from '@qunxiang/llm'，
 // 该包通过 scheduler 间接依赖，vitest 在 api 包内单独解析时会找不到。这里 mock 掉
 // （本测试只关心 getExtractionStages 的 DB 校验逻辑，不涉及 LLM）。
-vi.mock('@novel-agent/llm', () => ({
+vi.mock('@qunxiang/llm', () => ({
   getDefaultProvider: vi.fn(),
   getApiKeyCount: vi.fn(() => 1),
   LLM_PROVIDERS: {},
@@ -11,7 +11,7 @@ vi.mock('@novel-agent/llm', () => ({
 
 // extraction.service.ts 顶层会 new TaskDispatcher 并 startWorkers，scheduler 包
 // 在 vitest 单跑时加载异常。mock 掉 scheduler，只保留 getExtractionStages 真实逻辑。
-vi.mock('@novel-agent/scheduler', () => ({
+vi.mock('@qunxiang/scheduler', () => ({
   TaskDispatcher: vi.fn().mockImplementation(() => ({
     startWorker: vi.fn(),
     startWorkers: vi.fn(),
@@ -29,7 +29,7 @@ vi.mock('@novel-agent/scheduler', () => ({
   eventBus: { emit: vi.fn() },
 }));
 
-import type { AgentType } from '@novel-agent/core';
+import type { AgentType } from '@qunxiang/core';
 import {
   prisma,
   BookRepository,
@@ -38,7 +38,7 @@ import {
   CharacterRepository,
   LocationRepository,
   ItemRepository,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 import { testUserInput } from '../../../storage/src/test-fixtures.js';
 import { getExtractionStages } from './extraction.service.js';
 

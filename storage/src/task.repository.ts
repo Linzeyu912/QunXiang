@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { Task, AgentType } from '@novel-agent/core';
+import type { Task, AgentType } from '@qunxiang/core';
 import { Prisma, type PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
 

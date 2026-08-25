@@ -33,6 +33,12 @@ describe('encoding（GBK/GB18030 支持）', () => {
     expect(detectEncoding(utf8Bytes)).toBe('utf-8');
   });
 
+  it('采样窗口截断汉字时仍识别为 UTF-8', () => {
+    const raw = Buffer.from(`${'a'.repeat(102399)}你`, 'utf8');
+    expect(detectEncoding(raw)).toBe('utf-8');
+    expect(decodeText(raw).endsWith('你')).toBe(true);
+  });
+
   it('detectEncoding 对 GBK 字节返回 gb18030', () => {
     const gbkBytes = iconv.encode('斗破苍穹', 'gbk');
     expect(detectEncoding(gbkBytes)).toBe('gb18030');

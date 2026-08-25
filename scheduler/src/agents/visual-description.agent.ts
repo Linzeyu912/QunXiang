@@ -1,5 +1,5 @@
-import type { AgentType, Character, Item, Location } from '@novel-agent/core';
-import { getDefaultProvider } from '@novel-agent/llm';
+import type { AgentType, Character, Item, Location } from '@qunxiang/core';
+import { getDefaultProvider } from '@qunxiang/llm';
 import { z } from 'zod';
 import type {
   CharacterDescriptionField,

@@ -1,6 +1,6 @@
 import type { FastifyInstance } from 'fastify';
-import { getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig, getDefaultImageProvider, getMaskedImageConfig, setRuntimeImageConfig, loadPersistedImageConfig, PROVIDER_PRESETS, IMAGE_PROVIDER_PRESETS } from '@novel-agent/llm';
-import type { RuntimeLlmConfig, RuntimeImageConfig } from '@novel-agent/llm';
+import { getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig, getDefaultImageProvider, getMaskedImageConfig, setRuntimeImageConfig, loadPersistedImageConfig, PROVIDER_PRESETS, IMAGE_PROVIDER_PRESETS } from '@qunxiang/llm';
+import type { RuntimeLlmConfig, RuntimeImageConfig } from '@qunxiang/llm';
 import { reconfigureWorkers, getConcurrencyStatus, type ConcurrencyMode } from '../services/extraction.service.js';
 
 interface ConnectionTestResult {

@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { Book } from '@novel-agent/core';
+import type { Book } from '@qunxiang/core';
 import type { PrismaClient } from '@prisma/client';
 import { unlink } from 'fs/promises';
 import { withDatabaseRetry } from './database-retry.js';

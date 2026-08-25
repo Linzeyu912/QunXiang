@@ -12,7 +12,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { z } from 'zod';
-import { prisma, getSharedObjectStore, persistBookArtifact } from '@novel-agent/storage';
+import { prisma, getSharedObjectStore, persistBookArtifact } from '@qunxiang/storage';
 import { PROJECT_ROOT } from '../lib/paths.js';
 
 // ---------- seed 包格式 ----------

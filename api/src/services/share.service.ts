@@ -12,7 +12,7 @@ import {
   BookShareRepository,
   UserRepository,
   prisma,
-} from '@novel-agent/storage';
+} from '@qunxiang/storage';
 import { normalizeEmail } from '../lib/email.js';
 import { verifyShareCode } from '../lib/share-code.js';
 

@@ -1,12 +1,12 @@
 {
-  "name": "@novel-agent/entity-resolution",
+  "name": "@qunxiang/entity-resolution",
   "version": "0.1.0",
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
-    "@novel-agent/core": "workspace:*",
-    "@novel-agent/extractors": "workspace:*",
-    "@novel-agent/schemas": "workspace:*"
+    "@qunxiang/core": "workspace:*",
+    "@qunxiang/extractors": "workspace:*",
+    "@qunxiang/schemas": "workspace:*"
   }
 }

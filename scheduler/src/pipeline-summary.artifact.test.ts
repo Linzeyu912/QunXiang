@@ -9,7 +9,7 @@ const mockState = vi.hoisted(() => ({
   reset() { this.persisted.length = 0; },
 }));
 
-vi.mock('@novel-agent/storage', () => ({
+vi.mock('@qunxiang/storage', () => ({
   // DB 不可用 → 走 payload 回退（不依赖真实数据库）
   BookRepository: { async findById() { return null; } },
   CharacterRepository: { async findByBookId() { return []; } },

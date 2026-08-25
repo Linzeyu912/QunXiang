@@ -1,5 +1,5 @@
 {
-  "name": "novel-agent",
+  "name": "qunxiang",
   "private": true,
   "workspaces": [
     "core",
@@ -21,12 +21,12 @@
   ],
   "scripts": {
     "dev": "pnpm --parallel -r dev",
-    "dev:api": "pnpm --filter @novel-agent/api dev",
-    "dev:web": "pnpm --filter @novel-agent/web dev",
+    "dev:api": "pnpm --filter @qunxiang/api dev",
+    "dev:web": "pnpm --filter @qunxiang/web dev",
     "build": "pnpm -r build",
-    "db:migrate:dev": "pnpm --filter @novel-agent/storage exec prisma migrate dev --schema=./prisma/schema.prisma",
-    "db:migrate:deploy": "pnpm --filter @novel-agent/storage exec prisma migrate deploy --schema=./prisma/schema.prisma",
-    "db:migrate:status": "pnpm --filter @novel-agent/storage exec prisma migrate status --schema=./prisma/schema.prisma",
+    "db:migrate:dev": "pnpm --filter @qunxiang/storage exec prisma migrate dev --schema=./prisma/schema.prisma",
+    "db:migrate:deploy": "pnpm --filter @qunxiang/storage exec prisma migrate deploy --schema=./prisma/schema.prisma",
+    "db:migrate:status": "pnpm --filter @qunxiang/storage exec prisma migrate status --schema=./prisma/schema.prisma",
     "db:sync-password": "node scripts/sync-db-password.mjs",
     "test": "node scripts/test.mjs",
     "test:watch": "node scripts/test.mjs --watch",

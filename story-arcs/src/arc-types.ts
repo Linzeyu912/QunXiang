@@ -1,4 +1,4 @@
-import type { ParsedChapter } from '@novel-agent/import';
+import type { ParsedChapter } from '@qunxiang/import';
 
 export enum ArcType {
   ACT_1_SETUP = 'ACT_1_SETUP',

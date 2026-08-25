@@ -2,7 +2,7 @@
  * 公共书库打包工具：把一本"做好的书"（提取+审核+生图完成）从当前 DB/对象存储
  * 导出为仓库内 seed-library/<slug>/ 书包，随 git 分发给新部署用户。
  *
- * 用法：pnpm --filter @novel-agent/api seed:export <bookId> <slug>
+ * 用法：pnpm --filter @qunxiang/api seed:export <bookId> <slug>
  *
  * 导出内容（格式与 library-seed.service.ts 的物化器一一对应）：
  *   manifest.json / source.txt(UTF-8) / entities.json / run-summary.json /
@@ -21,8 +21,8 @@ import {
   WorldviewRepository,
   EntityImageRepository,
   readBookArtifactText,
-} from '@novel-agent/storage';
-import { decodeText } from '@novel-agent/import';
+} from '@qunxiang/storage';
+import { decodeText } from '@qunxiang/import';
 import { PROJECT_ROOT } from '../src/lib/paths.js';
 
 const ARTIFACT_FILES = [
@@ -79,7 +79,7 @@ async function findLatestRunDir(bookId: string): Promise<string | null> {
 async function main() {
   const [bookId, slug] = process.argv.slice(2);
   if (!bookId || !slug) {
-    console.error('用法：pnpm --filter @novel-agent/api seed:export <bookId> <slug>');
+    console.error('用法：pnpm --filter @qunxiang/api seed:export <bookId> <slug>');
     process.exitCode = 1;
     return;
   }

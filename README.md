@@ -23,14 +23,16 @@ status: 产品仓库 · 实体组与故事组成果的软件化集成
 
 面向小说 IP 资产生产的中文软件。系统把 TXT 小说转换为可追溯、可审核、可分享和可下载的人物、地点、道具、技能、设定、叙事事件、视觉设定、生成提示词与图片资产，并逐步承接故事理解、筛选、生成和审核能力。
 
-**群像不是实体组或故事组的日常研发仓库，而是二者成果的软件化合体。** 内部私有仓库 `YingHe-entity` 和 `YingHe-story` 分别保存实体组、故事组的完整研发过程与工程代码；经过验证、达到产品交付标准的能力再整合到本仓库。群像保留公开产品所需的中文交互、账号与书库、多人分享、多密钥并发、文本编码兼容和管线稳定性能力。
+**群像是实体组与故事组成果的软件化集成主线和展示仓库。** `YingHe-entity` 与 `YingHe-story` 分别承载小组日常开发；小组成果先并入群像完成跨组整合与产品验证，再把群像中与该小组共享的完整基线同步回研发仓库，供下一轮开发继续使用。群像保留产品所需的中文交互、账号与书库、多人分享、多密钥并发、文本编码兼容和管线稳定性能力。
 
 ## 项目定位与仓库关系
 
 ```text
-YingHe-entity（实体组研发） ──┐
-                              ├──► QunXiang（群像软件）
-YingHe-story（故事组研发） ───┘
+YingHe-entity（实体组研发） ──► QunXiang（群像集成与展示主线）
+              ▲                         │
+              └────── 同步群像基线 ────┘
+
+YingHe-story（故事组研发）  ──► QunXiang（持续接入故事能力）
 
 YingHe-music + YingHe-storyboard-video ──► ShengYing（声影软件）
 YingHe 总仓库 ──► 保存项目定位、协作信息、阶段进度和稳定成果索引
@@ -40,7 +42,7 @@ YingHe 总仓库 ──► 保存项目定位、协作信息、阶段进度和�
 | --- | --- |
 | 实体组 | 从文本提取人物、地点、道具、技能、世界观与体系设定，并生产可复用数字资产；研发源为 `YingHe-entity`。 |
 | 故事组 | 与实体组对接，重构价值判断、故事切分、生成与审核流程，输出有价值的完整故事文本和故事资产；研发源为 `YingHe-story`。 |
-| 群像 | 把实体组和故事组通过验证的成果整合为面向用户的软件；本仓库是产品实现与发布源。 |
+| 群像 | 整合实体组和故事组的通过验证成果；本仓库是产品实现、展示、发布与跨组共享基线的权威来源。 |
 | 音频组 | 从视频一组取得剧本和分镜脚本，生产对白、角色音色、音效、环境音、配乐、混音及音频剧。 |
 | 视频合成一组 | 将故事文本裁剪、改编为剧本，再以专业术语写成画面主题、场景、镜头语言和机位运动明确的分镜脚本；不以二组当前能否实现为创作约束。 |
 | 视频合成二组 | 将一组的画面描述转换为模型可用提示词，调用实体与音频资产，完成镜头生成、过程记录、合成与成片。 |
@@ -130,8 +132,8 @@ cp api/.env.example api/.env
 创建 `storage/.env`，写入与 `api/.env` 相同的两个数据库连接：
 
 ```env
-DATABASE_URL=postgresql://novel_agent:change_me_in_production@127.0.0.1:5432/novel_agent
-DIRECT_DATABASE_URL=postgresql://novel_agent:change_me_in_production@127.0.0.1:5432/novel_agent
+DATABASE_URL=postgresql://qunxiang:change_me_in_production@127.0.0.1:5432/qunxiang
+DIRECT_DATABASE_URL=postgresql://qunxiang:change_me_in_production@127.0.0.1:5432/qunxiang
 ```
 
 默认本地配置使用文件系统对象存储，`OBJECT_STORAGE_SIGN_SECRET`、`JWT_SECRET` 和 `KEY_VAULTS_SECRET` 都必须设置。生产环境请分别换成独立的强随机值；`KEY_VAULTS_SECRET` 丢失后，网页保存的模型密钥将无法解密。
@@ -141,7 +143,7 @@ DIRECT_DATABASE_URL=postgresql://novel_agent:change_me_in_production@127.0.0.1:5
 ```bash
 docker compose up -d --wait postgres
 pnpm db:migrate:deploy
-pnpm --filter @novel-agent/storage exec prisma generate --schema=./prisma/schema.prisma
+pnpm --filter @qunxiang/storage exec prisma generate --schema=./prisma/schema.prisma
 ```
 
 分别启动后端和前端：
@@ -163,8 +165,8 @@ pnpm dev:web
 
 网页保存的文本与图片模型配置分别加密写入仓库根目录：
 
-- `.novel-agent-config.encrypted`
-- `.novel-agent-image-config.encrypted`
+- `.qunxiang-config.encrypted`
+- `.qunxiang-image-config.encrypted`
 
 它们和本地 `.env` 已被 Git 忽略。不要提交真实密钥。
 
@@ -214,8 +216,8 @@ API 容器通过 `tsx` 运行 TypeScript 源码，前端由 Nginx 托管静态�
 
 ```bash
 pnpm check:workspace-deps
-pnpm --filter @novel-agent/api exec tsc -p tsconfig.json --noEmit --rootDir .. --pretty false
-pnpm --filter @novel-agent/web build
+pnpm --filter @qunxiang/api exec tsc -p tsconfig.json --noEmit --rootDir .. --pretty false
+pnpm --filter @qunxiang/web build
 ```
 
 完整测试会启动隔离的 PostgreSQL 与 MinIO 测试容器、重置测试库并在结束后清理，不会连接或重置正式数据库：
@@ -240,7 +242,7 @@ API 能启动但不能提取：进入“模型设置”确认文本模型已经�
 
 ## 与分组仓库、统筹仓库的关系
 
-本仓库是群像产品代码、公共示例书包和产品文档的权威来源，但不是实体组或故事组完整研发现场的替代品。实体能力应先在 `YingHe-entity` 形成稳定成果，故事能力应先在 `YingHe-story` 完成重构、验证与评审，再按明确版本整合到群像。
+本仓库是群像产品代码、公共示例书包、产品文档和跨组共享基线的权威来源，但不替代小组研发现场。实体能力先在 `YingHe-entity` 形成稳定成果，故事能力先在 `YingHe-story` 完成开发与评审，再按明确版本整合到群像；群像完成验证后，将整合后的共享代码同步回相应小组仓库，避免小组基线落后或品牌分叉。
 
 `YingHe` 总仓库保存项目定位、跨组规范、阶段进度与稳定成果索引，不接收本仓库源码。音频组、视频合成两组通过稳定实体 ID、故事资产 ID、证据片段、视觉设定和版本引用群像上游成果。运行缓存不能替代正式资产版本。
 
@@ -252,4 +254,4 @@ API 能启动但不能提取：进入“模型设置”确认文本模型已经�
 
 ---
 
-*实体提取组维护 · 最近更新 2026-08-04*
+*群像团队维护 · 最近更新 2026-08-25*

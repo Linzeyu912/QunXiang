@@ -1,5 +1,5 @@
-import type { AgentType, Character, Location, Item } from '@novel-agent/core';
-import { validateCharacters, validateEntityBatch } from '@novel-agent/validators';
+import type { AgentType, Character, Location, Item } from '@qunxiang/core';
+import { validateCharacters, validateEntityBatch } from '@qunxiang/validators';
 import type { CharacterDescriptionPack, ItemDescriptionPack, LocationDescriptionPack } from './entity-descriptions.js';
 
 export const validatorAgentType: AgentType = 'validator';
