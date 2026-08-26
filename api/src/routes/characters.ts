@@ -4,18 +4,8 @@ import { characterUpdateSchema } from '@qunxiang/schemas';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
-import { buildCharacterMergeCandidates } from '@qunxiang/entity-resolution';
-
-async function findActiveMergeCandidates(bookId: string, ownerId: string) {
-  const [characters, rejections] = await Promise.all([
-    CharacterRepository.findByOwnedBookId(bookId, ownerId),
-    ReviewRepository.findMergeRejectionsByOwnedBook(bookId, ownerId),
-  ]);
-  const rejectedPairs = new Set(rejections.map((review) => `${review.characterId}:${review.newValue}`));
-  return buildCharacterMergeCandidates(characters).filter(
-    (candidate) => !rejectedPairs.has(`${candidate.primaryId}:${candidate.secondaryId}`)
-  );
-}
+import { isLowConfidenceEntity } from '@qunxiang/core';
+import { findActiveMergeCandidates, judgeMergeCandidates } from '../services/character-merge.service.js';
 
 export async function charactersRoutes(fastify: FastifyInstance) {
   fastify.get('/merge-candidates', async (request, reply) => {
@@ -24,6 +14,20 @@ export async function charactersRoutes(fastify: FastifyInstance) {
     const ownerId = await resolveOwnerId(request);
     if (!(await loadOwnedBook(bookId, ownerId))) return sendBookNotFound(reply);
     return { candidates: await findActiveMergeCandidates(bookId, ownerId!) };
+  });
+
+  fastify.post('/merge-candidates/llm-judge', {
+    config: { rateLimit: { max: 3, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
+    const body = (request.body ?? {}) as { bookId?: string };
+    if (!body.bookId) return reply.status(400).send({ error: '缺少 bookId 参数' });
+    const ownerId = await resolveOwnerId(request);
+    if (!(await loadOwnedBook(body.bookId, ownerId))) return sendBookNotFound(reply);
+    try {
+      return await judgeMergeCandidates(body.bookId, ownerId!, request.user.userId);
+    } catch (err) {
+      return sendServerError(reply, err, request.log);
+    }
   });
 
   fastify.post('/merge-candidates/:primaryId/accept', async (request, reply) => {
@@ -59,9 +63,9 @@ export async function charactersRoutes(fastify: FastifyInstance) {
     return { ok: true };
   });
 
-  // Get characters (optionally filtered by status)
+  // Get characters (optionally filtered by status or confidence)
   fastify.get('/', async (request, reply) => {
-    const { bookId, status } = request.query as { bookId?: string; status?: string };
+    const { bookId, status, confidence } = request.query as { bookId?: string; status?: string; confidence?: string };
 
     if (!bookId) {
       return reply.status(400).send({ error: '缺少 bookId 参数' });
@@ -79,6 +83,11 @@ export async function charactersRoutes(fastify: FastifyInstance) {
     } else {
       characters = await CharacterRepository.findByOwnedBookId(bookId, ownerId!);
     }
+
+    // 低置信度库：confidence=low 只取低置信度待审核实体；默认列表排除低置信度（APPROVED 不受影响）。
+    characters = confidence === 'low'
+      ? characters.filter((c) => isLowConfidenceEntity(c))
+      : characters.filter((c) => !isLowConfidenceEntity(c));
 
     return { characters };
   });

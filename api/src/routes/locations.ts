@@ -4,11 +4,12 @@ import { locationUpdateSchema } from '@qunxiang/schemas';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
+import { isLowConfidenceEntity } from '@qunxiang/core';
 
 export async function locationRoutes(fastify: FastifyInstance) {
   // Get locations (optionally filtered by status or tier)
   fastify.get('/', async (request, reply) => {
-    const { bookId, status, tier } = request.query as { bookId?: string; status?: string; tier?: string };
+    const { bookId, status, tier, confidence } = request.query as { bookId?: string; status?: string; tier?: string; confidence?: string };
 
     if (!bookId) {
       return reply.status(400).send({ error: '缺少 bookId 参数' });
@@ -30,6 +31,11 @@ export async function locationRoutes(fastify: FastifyInstance) {
     } else {
       locations = await LocationRepository.findByOwnedBookId(bookId, ownerId!);
     }
+
+    // 低置信度库：confidence=low 只取低置信度待审核实体；默认列表排除低置信度（APPROVED 不受影响）。
+    locations = confidence === 'low'
+      ? locations.filter((c) => isLowConfidenceEntity(c))
+      : locations.filter((c) => !isLowConfidenceEntity(c));
 
     return { locations };
   });

@@ -55,6 +55,11 @@ const NUMBERED_TITLE_RE = /^[大二三四五六七八九十]+长老$/u;
 const SCOPED_NUMBERED_TITLE_RE = /^[\u4e00-\u9fff]{1,10}[家族宗门阁派宫府院帮会教](?:族|门|院)?[大二三四五六七八九十]+长老$/u;
 const ORG_SCOPE_RE = /[\u4e00-\u9fff]{1,10}(?:家族|宗门|学院|家|族|宗|门|阁|派|宫|府|院|帮|会|教)/gu;
 
+/** 别名长度上限：超过几乎必是叙述片段而非称呼 */
+const MAX_ALIAS_LENGTH = 10;
+/** 单个别名数量上限：只保留真正常用的称呼，防止别名失控堆积 */
+const MAX_ALIASES_PER_CHARACTER = 12;
+
 const GENERIC_CHARACTER_ALIASES = new Set([
   // Pronouns — these refer to no one specifically
   '他',
@@ -753,6 +758,10 @@ export function sanitizeCharacterAliases(
     if (!normalized) continue;
     if (normalizeName(normalized) === normalizeName(characterName)) continue;
     if (seen.has(normalized)) continue;
+    // 收紧：称呼不会包含空白或标点，含这些字符的是叙述片段而非别名
+    if (/[\s，。、；：！？“”‘’《》（）()…·,.:;!?"'\-]/.test(normalized)) continue;
+    // 收紧：超长别名几乎必是描述性片段，丢弃
+    if (normalized.length > MAX_ALIAS_LENGTH) continue;
     if (isNarrativeAliasFragment(normalized)) continue;
     if (isGenericCharacterAlias(normalized)) continue;
     if (sourceText && !sourceText.includes(rawAlias) && !sourceText.includes(normalized)) continue;
@@ -791,6 +800,12 @@ export function sanitizeCharacterAliases(
 
     seen.add(normalized);
     cleanAliases.push(normalized);
+  }
+
+  // 收紧：数量超限时优先保留更短的称呼（短称呼通常是更常用的名字）
+  if (cleanAliases.length > MAX_ALIASES_PER_CHARACTER) {
+    cleanAliases.sort((a, b) => a.length - b.length);
+    cleanAliases.length = MAX_ALIASES_PER_CHARACTER;
   }
 
   return cleanAliases;

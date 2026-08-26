@@ -51,6 +51,9 @@ const EpisodesPage = lazy(() =>
 const DirectorPage = lazy(() =>
   import('./pages/story/DirectorPage').then((m) => ({ default: m.DirectorPage })),
 );
+const LowConfidencePage = lazy(() =>
+  import('./pages/LowConfidencePage').then((m) => ({ default: m.LowConfidencePage })),
+);
 
 /** 页面分包加载中的占位提示，避免路由切换时白屏。 */
 function PageLoading() {
@@ -102,6 +105,7 @@ export function App() {
           <Route path="locations" element={<EntityReviewPage type="location" />} />
           <Route path="items" element={<EntityReviewPage type="item" />} />
           <Route path="worldview" element={<EntityReviewPage type="worldview" />} />
+          <Route path="low-confidence" element={<LowConfidencePage />} />
           <Route path="export" element={<ExportPage />} />
           <Route path="stories" element={<StoriesPage />} />
           <Route path="stories/boundary-review" element={<BoundaryReviewPage />} />

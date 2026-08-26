@@ -76,4 +76,29 @@ describe('服饰套系提示词模板补写', () => {
     const prompt = result.characterPrompts[0];
     expect(prompt.outfitVariants ?? []).toHaveLength(0);
   });
+
+  it('低置信度角色不生成提示词（只保留名字防遗漏）', async () => {
+    const executePromptGeneration = await loadAgent();
+    const payload = buildPayload([
+      { description: '青色劲装，袖口绣暗纹', scene: '日常', firstChapter: 1, lastChapter: 100 },
+    ]);
+    // 追加一个低置信度角色及其视觉包；高置信度角色作为对照
+    payload.characters.push({
+      name: '守城士兵', aliases: [], confidence: 0.5, status: 'PENDING', tier: 'candidate', mentionCount: 1,
+    } as never);
+    payload.characterVisualDescriptions.push({
+      name: '守城士兵',
+      entityType: 'character',
+      sourceDescription: '城门口站岗的士兵',
+      visualFields: {},
+      visualDetails: {},
+      outfits: [],
+    } as never);
+
+    const result = await executePromptGeneration(payload);
+
+    const names = result.characterPrompts.map((p) => p.entityName);
+    expect(names).toContain('萧炎');
+    expect(names).not.toContain('守城士兵');
+  });
 });

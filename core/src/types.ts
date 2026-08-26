@@ -232,3 +232,15 @@ export interface PipelineConfig {
   maxRetries?: number;
   timeout?: number;
 }
+
+/**
+ * 低置信度实体阈值：置信度低于该值的待审核实体进入「低置信度库」，
+ * 不进入主审核列表，也不参与视觉补写/提示词生成等补写管线（只保留名字防遗漏）。
+ * 已通过（APPROVED）的实体不受影响。
+ */
+export const LOW_CONFIDENCE_THRESHOLD = 0.6;
+
+/** 判断实体是否属于低置信度库（低置信度且尚未人工通过）。 */
+export function isLowConfidenceEntity(entity: { confidence: number; status: string }): boolean {
+  return entity.confidence < LOW_CONFIDENCE_THRESHOLD && entity.status !== 'APPROVED';
+}

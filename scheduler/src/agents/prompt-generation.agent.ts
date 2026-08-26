@@ -1,3 +1,4 @@
+import { LOW_CONFIDENCE_THRESHOLD } from '@qunxiang/core';
 import type { AgentType, Character, Item, Location, Outfit, Owner } from '@qunxiang/core';
 import { getDefaultProvider } from '@qunxiang/llm';
 import { z } from 'zod';
@@ -1036,9 +1037,17 @@ ${JSON.stringify(payload, null, 2)}`,
 
 export async function executePromptGeneration(payload: unknown): Promise<PromptGenerationResult> {
   const source = payload as PromptGenerationPayload;
-  const characterPacks = source.characterVisualDescriptions || [];
-  const locationPacks = source.locationVisualDescriptions || [];
-  const itemPacks = source.itemVisualDescriptions || [];
+  // 低置信度实体只保留名字防遗漏，不生成提示词（与视觉补全的跳过策略一致）
+  const lowConfidenceNames = new Set<string>();
+  for (const entity of [...(source.characters || []), ...(source.items || []), ...(source.locations || [])]) {
+    if (entity.name && typeof (entity as { confidence?: number }).confidence === 'number'
+      && (entity as { confidence: number }).confidence < LOW_CONFIDENCE_THRESHOLD) {
+      lowConfidenceNames.add(entity.name);
+    }
+  }
+  const characterPacks = (source.characterVisualDescriptions || []).filter((p) => !lowConfidenceNames.has(p.name));
+  const locationPacks = (source.locationVisualDescriptions || []).filter((p) => !lowConfidenceNames.has(p.name));
+  const itemPacks = (source.itemVisualDescriptions || []).filter((p) => !lowConfidenceNames.has(p.name));
 
   // Build name→tier map from entity arrays (tier lives on entities, not on description packs)
   const tierMap = new Map<string, string>();

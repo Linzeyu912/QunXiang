@@ -28,7 +28,7 @@ const KEYS: Record<EntityType, string> = {
 
 export const entitiesKey = {
   all: (bookId: string) => ['entities', bookId] as const,
-  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string }) => {
+  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string; confidence?: 'low' }) => {
     // 将 filters 序列化为稳定字符串，避免对象引用变化导致缓存键不稳定
     const filterKey = filters ? JSON.stringify(filters) : '';
     return ['entities', bookId, type, filterKey] as const;
@@ -73,6 +73,8 @@ interface ListParams {
   tier?: Tier;
   /** 道具大类过滤（仅 item 类型有效） */
   category?: string;
+  /** 只取低置信度待审核实体（低置信度库） */
+  confidence?: 'low';
 }
 
 function buildQuery(bookId: string, params?: ListParams): string {
@@ -81,6 +83,7 @@ function buildQuery(bookId: string, params?: ListParams): string {
   if (params?.status) sp.set('status', params.status);
   if (params?.tier) sp.set('tier', params.tier);
   if (params?.category) sp.set('category', params.category);
+  if (params?.confidence) sp.set('confidence', params.confidence);
   return sp.toString();
 }
 
@@ -166,6 +169,34 @@ export function useBatchUpdateStatus(type: EntityType, bookId: string) {
       ),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: entitiesKey.all(bookId) });
+    },
+  });
+}
+
+/** LLM 智能裁决疑似重复角色对的结果。 */
+export interface MergeJudgeOutcome {
+  /** 判定同一角色，已自动合并 */
+  merged: Array<{ primary: string; secondary: string }>;
+  /** 判定不同角色，已自动排除 */
+  separated: Array<{ primary: string; secondary: string; reason?: string }>;
+  /** 无法确定，仍需人工判断 */
+  pending: Array<{ primary: string; secondary: string }>;
+  /** 降级/限制提示（模型未配置、候选过多等） */
+  message?: string;
+}
+
+/** 让模型智能裁决疑似重复角色对（高置信自动合并/排除，其余转人工）。 */
+export function useJudgeCharacterMerges(bookId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: () =>
+      apiFetch<MergeJudgeOutcome>('/characters/merge-candidates/llm-judge', {
+        method: 'POST',
+        body: { bookId },
+      }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: entitiesKey.all(bookId) });
+      qc.invalidateQueries({ queryKey: entitiesKey.mergeCandidates(bookId) });
     },
   });
 }

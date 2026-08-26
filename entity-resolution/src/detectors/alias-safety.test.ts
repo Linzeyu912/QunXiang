@@ -120,4 +120,31 @@ describe('sanitizeCharacterAliases', () => {
     expect(chooseCanonicalCharacterName('三长老', [], { sourceText })).toBe('萧家三长老');
     expect(sanitizeCharacterAliases('萧家三长老', ['三长老'], { sourceText })).toEqual([]);
   });
+
+  it('drops aliases containing punctuation or whitespace as narrative fragments', () => {
+    const aliases = sanitizeCharacterAliases('萧炎', ['炎儿', '炎儿，', '萧炎（少年）', '炎 儿'], {
+      sourceText: '炎儿回头。萧炎（少年）时期。',
+    });
+
+    expect(aliases).toEqual(['炎儿']);
+  });
+
+  it('drops over-long aliases beyond the length limit', () => {
+    const aliases = sanitizeCharacterAliases('药老', ['药老哥', '深不可测的神秘药老前辈高人'], {
+      sourceText: '药老哥说道。深不可测的神秘药老前辈高人现身。',
+    });
+
+    expect(aliases).not.toContain('深不可测的神秘药老前辈高人');
+    expect(aliases).toContain('药老哥');
+  });
+
+  it('caps alias count keeping shorter addresses when exceeding the limit', () => {
+    const many = Array.from({ length: 20 }, (_, i) => `称呼${i}号`);
+    const aliases = sanitizeCharacterAliases('萧炎', [...many, '炎儿'], {
+      sourceText: [...many, '炎儿'].join('。'),
+    });
+
+    expect(aliases.length).toBeLessThanOrEqual(12);
+    expect(aliases).toContain('炎儿');
+  });
 });

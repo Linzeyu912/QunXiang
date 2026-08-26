@@ -1,3 +1,4 @@
+import { LOW_CONFIDENCE_THRESHOLD } from '@qunxiang/core';
 import type { AgentType, Character, Item, Location } from '@qunxiang/core';
 import { getDefaultProvider } from '@qunxiang/llm';
 import { z } from 'zod';
@@ -965,9 +966,12 @@ function countInferred(packs: AnyEnhancedPack[]): number {
 
 export async function executeVisualDescription(payload: unknown): Promise<VisualDescriptionResult> {
   const source = payload as VisualDescriptionPayload;
-  const characters = source.characters || [];
-  const items = source.items || [];
-  const locations = source.locations || [];
+  // 低置信度实体只保留名字防遗漏，不参与视觉补写（与提示词生成的跳过策略一致）
+  const isLowConfidence = (entity: { confidence?: number }) =>
+    typeof entity.confidence === 'number' && entity.confidence < LOW_CONFIDENCE_THRESHOLD;
+  const characters = (source.characters || []).filter((e) => !isLowConfidence(e));
+  const items = (source.items || []).filter((e) => !isLowConfidence(e));
+  const locations = (source.locations || []).filter((e) => !isLowConfidence(e));
 
   const characterInputs = collectCompletionInputs(
     'characters',

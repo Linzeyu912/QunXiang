@@ -886,4 +886,30 @@ describe('executeVisualDescription', () => {
       inferred: 0,
     });
   });
+
+  it('skips LLM completion entirely for low-confidence entities (name-only retention)', async () => {
+    const { executeVisualDescription } = await import('./visual-description.agent.js');
+
+    const result = await executeVisualDescription({
+      characters: [{
+        name: '服务员的助手',
+        aliases: [],
+        description: '一闪而过的路人。',
+        confidence: 0.5,
+        status: 'PENDING',
+        chapterAppearances: [3],
+        mentionCount: 1,
+        dialogueCount: 0,
+        coCharacters: [],
+      }],
+      items: [],
+      locations: [],
+      characterDescriptions: [],
+    });
+
+    // 低置信度实体不参与补写：不产生视觉包，也不调用 LLM（只保留名字防遗漏）
+    expect(chatExtract).not.toHaveBeenCalled();
+    expect(result.characterVisualDescriptions).toEqual([]);
+    expect(result.visualDescription.requested).toBe(0);
+  });
 });
