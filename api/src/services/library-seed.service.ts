@@ -12,7 +12,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { z } from 'zod';
-import { prisma, getSharedObjectStore, persistBookArtifact } from '@qunxiang/storage';
+import { prisma, getSharedObjectStore, persistBookArtifact, BackgroundJobRepository } from '@qunxiang/storage';
 import { PROJECT_ROOT } from '../lib/paths.js';
 
 // ---------- seed 包格式 ----------
@@ -100,16 +100,16 @@ function pickFields(row: SeedRow, fields: readonly string[]): SeedRow {
 }
 
 export function mapCharacterRows(rows: SeedRow[], bookId: string): SeedRow[] {
-  return rows.map((r) => ({ ...pickFields(r, CHARACTER_FIELDS), bookId, status: 'APPROVED' }));
+  return rows.map((r) => ({ ...pickFields(r, CHARACTER_FIELDS), bookId, status: 'APPROVED', reviewSource: 'IMPORTED' }));
 }
 export function mapLocationRows(rows: SeedRow[], bookId: string): SeedRow[] {
-  return rows.map((r) => ({ ...pickFields(r, LOCATION_FIELDS), bookId, status: 'APPROVED' }));
+  return rows.map((r) => ({ ...pickFields(r, LOCATION_FIELDS), bookId, status: 'APPROVED', reviewSource: 'IMPORTED' }));
 }
 export function mapItemRows(rows: SeedRow[], bookId: string): SeedRow[] {
-  return rows.map((r) => ({ ...pickFields(r, ITEM_FIELDS), bookId, status: 'APPROVED' }));
+  return rows.map((r) => ({ ...pickFields(r, ITEM_FIELDS), bookId, status: 'APPROVED', reviewSource: 'IMPORTED' }));
 }
 export function mapWorldviewRows(rows: SeedRow[], bookId: string): SeedRow[] {
-  return rows.map((row) => ({ ...pickFields(row, WORLDVIEW_FIELDS), bookId, status: 'APPROVED' }));
+  return rows.map((row) => ({ ...pickFields(row, WORLDVIEW_FIELDS), bookId, status: 'APPROVED', reviewSource: 'IMPORTED' }));
 }
 
 /**
@@ -164,7 +164,11 @@ async function readJsonFile(path: string): Promise<unknown> {
  * 顺序：校验 → put source → put 图片 → 单事务建行 → persist artifacts（best-effort）。
  * 失败时 best-effort 删除已建 Book（Cascade 清子行）后 rethrow。
  */
-export async function materializeSeedBook(userId: string, seedDir: string): Promise<string> {
+export async function materializeSeedBook(
+  userId: string,
+  seedDir: string,
+  opts: { existingBookId?: string } = {},
+): Promise<string> {
   const manifest = parseManifest(await readJsonFile(join(seedDir, 'manifest.json')));
   const entities = entitiesSchema.parse(await readJsonFile(join(seedDir, 'entities.json')));
 
@@ -204,20 +208,54 @@ export async function materializeSeedBook(userId: string, seedDir: string): Prom
       });
     }
 
-    // 3. 单事务建 Book + 三表实体 + EntityImage（status 统一 APPROVED——"已审核好"）
+    // 3. 单事务建/补 Book + 三表实体 + EntityImage（status 统一 APPROVED——"已审核好"）
     const book = await prisma.$transaction(async (tx) => {
-      const created = await tx.book.create({
+      let id: string;
+      if (opts.existingBookId) {
+        // 异步补齐：注册时已建占位书行，这里补原文与状态
+        await tx.book.update({
+          where: { id: opts.existingBookId },
+          data: { status: 'EXTRACTED', sourceObjectKey: storedSource.objectKey },
+        });
+        id = opts.existingBookId;
+      } else {
+        const created = await tx.book.create({
+          data: {
+            title: manifest.title,
+            filePath: '',
+            fileSize: manifest.fileSize,
+            mimeType: 'text/plain',
+            status: 'EXTRACTED',
+            userId,
+            sourceObjectKey: storedSource.objectKey,
+            sourceType: 'SEED',
+            sourcePackageId: manifest.slug,
+            sourcePackageVersion: String(manifest.version),
+            onboardingFeatured: true,
+          },
+        });
+        id = created.id;
+      }
+      // 示例书补一条 kind=IMPORTED 的已完成运行，并指向它（真实清单/数量见 manifest）
+      const session = await tx.extractionSession.create({
         data: {
-          title: manifest.title,
-          filePath: '',
-          fileSize: manifest.fileSize,
-          mimeType: 'text/plain',
-          status: 'EXTRACTED',
+          bookId: id,
           userId,
-          sourceObjectKey: storedSource.objectKey,
+          kind: 'IMPORTED',
+          status: 'COMPLETED',
+          sourceRevision: 0,
+          startedAt: new Date(),
+          completedAt: new Date(),
+          promotedAt: new Date(),
+          manifest: {
+            slug: manifest.slug,
+            version: manifest.version,
+            counts: manifest.counts,
+            importedAt: new Date().toISOString(),
+          },
         },
       });
-      const id = created.id;
+      await tx.book.update({ where: { id }, data: { currentExtractionSessionId: session.id } });
       if (entities.characters.length > 0) {
         await tx.character.createMany({ data: mapCharacterRows(entities.characters, id) as never });
       }
@@ -235,7 +273,7 @@ export async function materializeSeedBook(userId: string, seedDir: string): Prom
           data: imageRows.map((r) => ({ ...r, bookId: id })) as never,
         });
       }
-      return created;
+      return await tx.book.findUniqueOrThrow({ where: { id } });
     });
     bookId = book.id;
 
@@ -341,4 +379,114 @@ export async function provisionSeedLibrary(
     }
   }
   return { provisioned, skipped: false };
+}
+
+
+// ---------- 异步初始化（实施包 B2） ----------
+
+/**
+ * 注册钩子（快速阶段）：同步只建占位书行（status=SEED_PREPARING）并入队后台任务。
+ * 用户注册后立即进书架看到「示例准备中」，实体由后台逐本物化，不阻塞注册。
+ */
+export async function provisionSeedLibraryAsync(userId: string): Promise<SeedProvisionResult> {
+  const dir = getSeedLibraryDir();
+  let entries;
+  try {
+    entries = await readdir(dir, { withFileTypes: true });
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
+      return { provisioned: [], skipped: false };
+    }
+    throw err;
+  }
+
+  const existing = await prisma.book.count({ where: { userId } });
+  if (existing > 0) {
+    return { provisioned: [], skipped: true };
+  }
+
+  const provisioned: string[] = [];
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    try {
+      const manifest = parseManifest(await readJsonFile(join(dir, entry.name, 'manifest.json')));
+      await prisma.book.create({
+        data: {
+          title: manifest.title,
+          filePath: '',
+          fileSize: manifest.fileSize,
+          mimeType: 'text/plain',
+          status: 'SEED_PREPARING',
+          userId,
+          sourceType: 'SEED',
+          sourcePackageId: manifest.slug,
+          sourcePackageVersion: String(manifest.version),
+          onboardingFeatured: true,
+        },
+      });
+      provisioned.push(entry.name);
+    } catch (err) {
+      console.error(
+        `[LibrarySeed] 预置书籍「${entry.name}」占位创建失败（userId=${userId}）：`,
+        err instanceof Error ? err.message : err,
+      );
+    }
+  }
+
+  if (provisioned.length > 0) {
+    await BackgroundJobRepository.enqueue({
+      kind: 'seed-provision',
+      uniqueKey: `seed-provision:${userId}`,
+      payload: { userId },
+      now: new Date(),
+    });
+  }
+  return { provisioned, skipped: false };
+}
+
+/**
+ * 后台任务（慢速阶段）：逐本物化 SEED_PREPARING 的示例书。
+ * 单本失败标记该本 FAILED 并继续；不重试整体（占位仍在，可手动补跑）。
+ */
+export async function processSeedProvisionJob(userId: string): Promise<void> {
+  const dir = getSeedLibraryDir();
+  const pendingBooks = await prisma.book.findMany({
+    where: { userId, sourceType: 'SEED', status: 'SEED_PREPARING' },
+    select: { id: true, sourcePackageId: true },
+  });
+  if (pendingBooks.length === 0) return;
+
+  let entries: Array<{ name: string; isDirectory: () => boolean }> = [];
+  try {
+    entries = await readdir(dir, { withFileTypes: true });
+  } catch {
+    entries = [];
+  }
+  // 以 manifest.slug（即 sourcePackageId）为键定位书包目录，目录名不要求与 slug 一致
+  const dirBySlug = new Map<string, string>();
+  for (const entry of entries.filter((e) => e.isDirectory())) {
+    try {
+      const manifest = parseManifest(await readJsonFile(join(dir, entry.name, 'manifest.json')));
+      dirBySlug.set(manifest.slug, join(dir, entry.name));
+    } catch {
+      // 无效书包：跳过
+    }
+  }
+
+  for (const book of pendingBooks) {
+    const seedDir = book.sourcePackageId ? dirBySlug.get(book.sourcePackageId) : undefined;
+    if (!seedDir) {
+      await prisma.book.update({ where: { id: book.id }, data: { status: 'FAILED' } });
+      continue;
+    }
+    try {
+      await materializeSeedBook(userId, seedDir, { existingBookId: book.id });
+    } catch (err) {
+      console.error(
+        `[LibrarySeed] 预置书籍「${book.sourcePackageId}」后台物化失败（userId=${userId}）：`,
+        err instanceof Error ? err.message : err,
+      );
+      await prisma.book.update({ where: { id: book.id }, data: { status: 'FAILED' } }).catch(() => {});
+    }
+  }
 }

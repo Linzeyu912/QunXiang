@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { toast } from 'sonner';
-import { CheckCheck, Loader2, Search } from 'lucide-react';
+import { CheckCheck, Loader2, Search, Archive } from 'lucide-react';
 import { useEntities, useUpdateEntity, useBatchUpdateStatus } from '@/api/entities';
 import { matchArtifacts, useExtractionArtifacts } from '@/api/artifacts';
 import { EntityListPanel } from '@/components/review/EntityListPanel';
@@ -272,6 +272,14 @@ export function EntityReviewPage({ type }: Props) {
             {entities.length} 条 · J/K 移动 · A 通过 · R 拒绝
           </p>
         </div>
+        {/* 低置信度库不占同级 Tab，从各审核页内进入 */}
+        <Link
+          to={`/books/${bookId}/low-confidence`}
+          className="flex items-center gap-1 text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
+        >
+          <Archive className="h-3.5 w-3.5" />
+          低置信度库
+        </Link>
         <div className="flex flex-wrap items-center gap-2">
           <div className="relative">
             <Search className="absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />

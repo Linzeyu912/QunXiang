@@ -1,23 +1,22 @@
 import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
-import { Archive, ArrowLeft, BookOpen, Boxes, Clapperboard, Download, FileText, Globe2, ListTree, MapPin, Users, Workflow } from 'lucide-react';
+import { ArrowLeft, Boxes, Download, FileText, Globe2, ListTree, MapPin, Users, Workflow } from 'lucide-react';
 import { useBook } from '@/api/books';
 import { useStages } from '@/api/extraction';
-import { useStories } from '@/api/stories';
 import { Button } from '@/components/ui/button';
 import { BookStatusBadge } from '@/components/StatusBadge';
 import { formatBytes } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 
+// 书籍导航固定 7 个同级 Tab：管道、章节、角色、场景、道具、世界观、导出。
+// 低置信度库通过各审核页内入口进入；故事/导演已退场（旧路由保留迁移周期重定向）。
 export function BookLayout() {
   const { bookId = '' } = useParams();
   const navigate = useNavigate();
   const bookQ = useBook(bookId);
   const stagesQ = useStages(bookId);
-  const storiesQ = useStories(bookId);
 
   const book = bookQ.data;
   const isComplete = stagesQ.data?.isComplete ?? false;
-  const pendingBoundaryReviews = storiesQ.data?.pendingBoundaryReviews ?? 0;
 
   return (
     <div className="space-y-4">
@@ -76,30 +75,11 @@ export function BookLayout() {
           世界观
         </BookTab>
         <BookTab
-          to={`/books/${bookId}/low-confidence`}
-          icon={<Archive className="h-4 w-4" />}
-          disabled={!isComplete}
-        >
-          低置信度库
-        </BookTab>
-        <BookTab
           to={`/books/${bookId}/export`}
           icon={<Download className="h-4 w-4" />}
           disabled={!isComplete}
         >
           导出
-        </BookTab>
-        {/* 故事管线独立于实体提取管线，不受 isComplete 门禁 */}
-        <BookTab to={`/books/${bookId}/stories`} icon={<BookOpen className="h-4 w-4" />}>
-          故事
-          {pendingBoundaryReviews > 0 && (
-            <span className="ml-1 rounded-full bg-red-500 px-1.5 text-[10px] leading-4 text-white">
-              {pendingBoundaryReviews}
-            </span>
-          )}
-        </BookTab>
-        <BookTab to={`/books/${bookId}/director`} icon={<Clapperboard className="h-4 w-4" />}>
-          导演
         </BookTab>
       </div>
 

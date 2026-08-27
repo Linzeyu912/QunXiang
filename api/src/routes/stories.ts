@@ -37,6 +37,17 @@ function sendError(reply: FastifyReply, err: unknown) {
 export async function storiesRoutes(fastify: FastifyInstance) {
   // 所有路由都以 :id 作为 bookId，统一在 preHandler 里校验归属。
   // preHandler 在路由 handler（含 SSE 的 writeHead）之前执行，未通过直接 404，
+
+  // 故事/导演功能退场（实施包 F4）：停止对外暴露生成与变更接口，历史数据只读。
+  // GET 保留一个迁移周期供查阅；所有写入与 SSE 生成流返回中文迁移提示并记录独立日志。
+  fastify.addHook('preHandler', async (request, reply) => {
+    const isGenerationStream = request.url.includes('/stories/segment/stream');
+    if (request.method !== 'GET' || isGenerationStream) {
+      request.log.warn({ url: request.url, method: request.method }, '[退场] 故事/导演旧接口被调用');
+      return reply.status(410).send({ error: '该功能已从当前流程中移除，历史数据仅供查阅' });
+    }
+  });
+
   // 避免无权连接进入 SSE 流。
   fastify.addHook('preHandler', async (request, reply) => {
     const { id } = request.params as { id?: string };

@@ -4,7 +4,7 @@ tags:
   - 群像
 created: 2026-06-20
 updated: 2026-08-25
-status: 产品仓库 · 小说 IP 数字资产与故事生产
+status: 产品仓库 · 小说 IP 资产审核与交付工作台
 ---
 
 # 群像 QunXiang

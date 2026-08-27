@@ -1,6 +1,6 @@
 export type EntityType = 'character' | 'location' | 'item' | 'worldview';
 
-export type BookStatus = 'UPLOADED' | 'EXTRACTING' | 'EXTRACTED' | 'FAILED';
+export type BookStatus = 'UPLOADED' | 'EXTRACTING' | 'EXTRACTED' | 'FAILED' | 'SEED_PREPARING';
 export type EntityStatus = 'PENDING' | 'APPROVED' | 'REJECTED';
 export type Tier = 'core' | 'supporting' | 'candidate' | 'archived';
 
@@ -14,6 +14,12 @@ export interface Book {
   userId: string;
   createdAt: string;
   updatedAt?: string;
+  /** 书籍来源：UPLOAD=普通上传 | SEED=示例书 | SHARED_COPY=分享副本 */
+  sourceType?: 'UPLOAD' | 'SEED' | 'SHARED_COPY';
+  sourcePackageId?: string | null;
+  sourcePackageVersion?: string | null;
+  /** 书架「体验示例」分区展示 */
+  onboardingFeatured?: boolean;
 }
 
 /** 完整数据包下载状态。 */

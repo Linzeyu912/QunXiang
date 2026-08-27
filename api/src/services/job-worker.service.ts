@@ -25,7 +25,7 @@ const MAX_IDLE_INTERVAL_MS = 5000;
 const DEFAULT_LEASE_MS = 30_000;
 const HEARTBEAT_INTERVAL_MS = 10_000;
 const DEFAULT_WORKER_ID = 'snapshot-worker-1';
-const SNAPSHOT_JOB_KINDS = ['asset-snapshot', 'snapshot-archive', 'book-copy', 'entity-enrichment'] as const;
+const SNAPSHOT_JOB_KINDS = ['asset-snapshot', 'snapshot-archive', 'book-copy', 'entity-enrichment', 'seed-provision'] as const;
 
 const DOWNLOAD_AUTH_TTL_SECONDS = 600;
 
@@ -185,6 +185,13 @@ async function dispatchSnapshotJob(kind: string, payload: unknown, opts: Snapsho
   }
   if (kind === 'book-copy') {
     return processBookCopyJob((payload as BookCopyJobPayload) ?? ({} as BookCopyJobPayload), opts);
+  }
+  if (kind === 'seed-provision') {
+    const { processSeedProvisionJob } = await import('./library-seed.service.js');
+    const payload0 = (payload ?? {}) as { userId?: string };
+    if (!payload0.userId) throw new NonRetryableJobError('示例书初始化任务缺少 userId');
+    await processSeedProvisionJob(payload0.userId);
+    return;
   }
   if (kind === 'entity-enrichment') {
     const { processEntityEnrichmentJob } = await import('./entity-enrichment.service.js');

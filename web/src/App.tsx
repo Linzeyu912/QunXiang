@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { AppLayout } from './components/layout/AppLayout';
 import { BookLayout } from './pages/BookLayout';
 import { AuthPage } from './pages/AuthPage';
@@ -9,6 +9,7 @@ import { PublicLibraryPage } from './pages/PublicLibraryPage';
 import { PublicAssetDetailPage } from './pages/PublicAssetDetailPage';
 import { useAuthStore } from './store/authStore';
 import { bootstrapSession } from './api/auth';
+import { toast } from 'sonner';
 
 // 路由级代码分割：各页面按需加载，首屏只下载登录页 + 布局骨架。
 // 具名导出通过 .then 适配成 lazy 需要的 default 导出。
@@ -36,21 +37,8 @@ const LlmSettingsPage = lazy(() =>
 const NotFoundPage = lazy(() =>
   import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
 );
-const StoriesPage = lazy(() =>
-  import('./pages/story/StoriesPage').then((m) => ({ default: m.StoriesPage })),
-);
-const BoundaryReviewPage = lazy(() =>
-  import('./pages/story/BoundaryReviewPage').then((m) => ({ default: m.BoundaryReviewPage })),
-);
-const StoryAssetsPage = lazy(() =>
-  import('./pages/story/StoryAssetsPage').then((m) => ({ default: m.StoryAssetsPage })),
-);
-const EpisodesPage = lazy(() =>
-  import('./pages/story/EpisodesPage').then((m) => ({ default: m.EpisodesPage })),
-);
-const DirectorPage = lazy(() =>
-  import('./pages/story/DirectorPage').then((m) => ({ default: m.DirectorPage })),
-);
+
+
 const LowConfidencePage = lazy(() =>
   import('./pages/LowConfidencePage').then((m) => ({ default: m.LowConfidencePage })),
 );
@@ -76,6 +64,17 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
     return <Navigate to="/login" replace state={{ from: location.pathname }} />;
   }
   return <>{children}</>;
+}
+
+/** 已退场功能的旧路由：显示中文提示并跳回书籍默认入口（保留一个迁移周期）。 */
+function RemovedFeatureRedirect() {
+  const { bookId = '' } = useParams();
+  const navigate = useNavigate();
+  useEffect(() => {
+    toast.info('该功能已从当前流程中移除');
+    navigate(`/books/${bookId}/pipeline`, { replace: true });
+  }, [bookId, navigate]);
+  return null;
 }
 
 export function App() {
@@ -107,11 +106,12 @@ export function App() {
           <Route path="worldview" element={<EntityReviewPage type="worldview" />} />
           <Route path="low-confidence" element={<LowConfidencePage />} />
           <Route path="export" element={<ExportPage />} />
-          <Route path="stories" element={<StoriesPage />} />
-          <Route path="stories/boundary-review" element={<BoundaryReviewPage />} />
-          <Route path="stories/:storyId/assets" element={<StoryAssetsPage />} />
-          <Route path="stories/:storyId/episodes" element={<EpisodesPage />} />
-          <Route path="director" element={<DirectorPage />} />
+          {/* 故事/导演已退场：旧路由保留一个迁移周期的中文提示重定向 */}
+          <Route path="stories" element={<RemovedFeatureRedirect />} />
+          <Route path="stories/boundary-review" element={<RemovedFeatureRedirect />} />
+          <Route path="stories/:storyId/assets" element={<RemovedFeatureRedirect />} />
+          <Route path="stories/:storyId/episodes" element={<RemovedFeatureRedirect />} />
+          <Route path="director" element={<RemovedFeatureRedirect />} />
         </Route>
         <Route path="/settings/llm" element={<LlmSettingsPage />} />
         <Route path="/shared" element={<SharedWithMePage />} />

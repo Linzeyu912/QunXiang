@@ -46,6 +46,9 @@ export function LibraryPage() {
   };
 
   const books = booksQ.data ?? [];
+  // 书架分区（实施包 B3）：我的项目 vs 体验示例（示例书标明为导入数据）
+  const seedBooks = books.filter((b) => b.sourceType === 'SEED');
+  const myBooks = books.filter((b) => b.sourceType !== 'SEED');
 
   return (
     <div className="space-y-6">
@@ -77,11 +80,31 @@ export function LibraryPage() {
       ) : books.length === 0 ? (
         <EmptyState onUpload={() => setShowUpload(true)} />
       ) : (
-        <div className="grid gap-3">
-          {books.map((b) => (
-            <BookRow key={b.id} book={b} />
-          ))}
-        </div>
+        <>
+          {myBooks.length > 0 && (
+            <section className="space-y-2">
+              <h2 className="text-sm font-semibold text-muted-foreground">我的项目</h2>
+              <div className="grid gap-3">
+                {myBooks.map((b) => (
+                  <BookRow key={b.id} book={b} />
+                ))}
+              </div>
+            </section>
+          )}
+          {seedBooks.length > 0 && (
+            <section className="space-y-2">
+              <h2 className="text-sm font-semibold text-muted-foreground">体验示例</h2>
+              <p className="text-xs text-muted-foreground">
+                示例数据 · 导入结果，未代表当前用户人工审核
+              </p>
+              <div className="grid gap-3">
+                {seedBooks.map((b) => (
+                  <BookRow key={b.id} book={b} isSeed />
+                ))}
+              </div>
+            </section>
+          )}
+        </>
       )}
     </div>
   );
@@ -124,7 +147,7 @@ function EmptyState({ onUpload }: { onUpload: () => void }) {
   );
 }
 
-const BookRow = memo(function BookRow({ book }: { book: Book }) {
+const BookRow = memo(function BookRow({ book, isSeed = false }: { book: Book; isSeed?: boolean }) {
   const navigate = useNavigate();
   const del = useDeleteBook();
   const [shareOpen, setShareOpen] = useState(false);
@@ -133,6 +156,7 @@ const BookRow = memo(function BookRow({ book }: { book: Book }) {
 
   const extractionGate = getExtractionStartGate(llm.data, llm.isLoading);
   const isRunning = book.status === 'EXTRACTING';
+  const isSeedPreparing = book.status === 'SEED_PREPARING';
   // 已成功提取过的书禁止在列表里重复触发；如需重新提取，去该书「管道」页二次确认。
   const isExtracted = book.status === 'EXTRACTED';
 
@@ -179,6 +203,7 @@ const BookRow = memo(function BookRow({ book }: { book: Book }) {
         </button>
         <p className="mt-0.5 text-xs text-muted-foreground">
           {formatBytes(book.fileSize)} · 上传于 {formatDate(book.createdAt)}
+          {isSeed && ' · 示例数据（导入结果，未经人工审核）'}
         </p>
       </div>
       <BookStatusBadge status={book.status} />
@@ -194,7 +219,7 @@ const BookRow = memo(function BookRow({ book }: { book: Book }) {
           variant="outline"
           size="sm"
           onClick={handleStart}
-          disabled={isRunning || isExtracted || start.isPending || !extractionGate.canStart}
+          disabled={isRunning || isExtracted || isSeedPreparing || start.isPending || !extractionGate.canStart}
           title={
             isExtracted
               ? '已提取完成；如需重新提取，请打开该书「管道」页'

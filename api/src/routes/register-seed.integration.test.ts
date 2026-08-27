@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { buildApp } from '../app.js';
 import { prisma, getSharedObjectStore, readBookArtifactJson } from '@qunxiang/storage';
 import { getExtractionArtifacts } from '../services/artifacts.service.js';
-import { provisionSeedLibrary } from '../services/library-seed.service.js';
+import { provisionSeedLibrary, processSeedProvisionJob } from '../services/library-seed.service.js';
 
 const ORIGIN = 'http://localhost:5173';
 
@@ -126,12 +126,27 @@ describe('公共书库：注册时物化预置书籍', () => {
   it('注册后书架出现预置书：EXTRACTED、实体 APPROVED、图片与产物可用', async () => {
     const userId = await register(`seed-ok-${randomUUID()}@seed.test`);
 
+    // 异步初始化（实施包 B2）：注册立即有占位书行（SEED_PREPARING，来源 SEED）
+    const placeholders = await prisma.book.findMany({ where: { userId } });
+    expect(placeholders).toHaveLength(1);
+    expect(placeholders[0].sourceType).toBe('SEED');
+
+    // 后台任务逐本物化；轮询等待完成（示例书禁止伪造提取阶段）
+    await processSeedProvisionJob(userId);
     const books = await prisma.book.findMany({ where: { userId } });
     expect(books).toHaveLength(1);
     const book = books[0];
     expect(book.title).toBe('预置演示书');
     expect(book.status).toBe('EXTRACTED');
     expect(book.sourceObjectKey).toBeTruthy();
+    expect(book.sourcePackageId).toBe('seed-demo');
+
+    // 示例书带一条 kind=IMPORTED 的已完成运行，真实清单写入 manifest
+    const sessions = await prisma.extractionSession.findMany({ where: { bookId: book.id } });
+    expect(sessions).toHaveLength(1);
+    expect(sessions[0].kind).toBe('IMPORTED');
+    expect(sessions[0].status).toBe('COMPLETED');
+    expect(book.currentExtractionSessionId).toBe(sessions[0].id);
 
     // 原文可从对象存储读回
     const stored = await getSharedObjectStore().get(book.sourceObjectKey!);
@@ -145,6 +160,7 @@ describe('公共书库：注册时物化预置书籍', () => {
     ]);
     expect(chars.map((c) => c.name)).toEqual(['萧炎']);
     expect(chars[0].status).toBe('APPROVED');
+    expect(chars[0].reviewSource).toBe('IMPORTED');
     expect(chars[0].dialogueCount).toBe(3);
     expect(locs[0].tier).toBe('core');
     expect(locs[0].status).toBe('APPROVED');

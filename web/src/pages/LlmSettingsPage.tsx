@@ -154,8 +154,8 @@ export function LlmSettingsPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">服务商设置</h1>
-        <p className="text-sm text-muted-foreground">配置 LLM 提取模型与文生图模型</p>
+        <h1 className="text-2xl font-semibold tracking-tight">模型与生成设置</h1>
+        <p className="text-sm text-muted-foreground">配置文本提取模型与文生图模型</p>
       </div>
 
       {/* ── 当前状态 ── */}

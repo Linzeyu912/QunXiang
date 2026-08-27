@@ -38,7 +38,7 @@ export function AppLayout() {
           </span>
           <span>群像</span>
           <span className="rounded bg-muted px-1.5 py-0.5 text-xs font-normal text-muted-foreground">
-            实体提取
+            小说 IP 资产审核与交付工作台
           </span>
         </button>
         <nav className="ml-6 flex items-center gap-1 text-sm" aria-label="主导航">
@@ -47,7 +47,7 @@ export function AppLayout() {
           <NavLinkItem to="/shared">分享给我</NavLinkItem>
           <NavLinkItem to="/settings/llm">
             <Settings className="mr-1 h-3.5 w-3.5" />
-            LLM 设置
+            模型与生成设置
           </NavLinkItem>
           <NavLinkItem to="/account">
             <UserRound className="mr-1 h-3.5 w-3.5" />

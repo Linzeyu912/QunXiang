@@ -76,7 +76,7 @@ export function AuthPage() {
           <BookOpen className="h-8 w-8 text-primary" />
           <div>
             <h1 className="text-xl font-semibold">群像</h1>
-            <p className="text-xs text-muted-foreground">小说实体提取与故事链路工作台</p>
+            <p className="text-xs text-muted-foreground">从小说原文中提取、审核并交付可复用的角色、场景、道具和世界观资产</p>
           </div>
         </div>
 

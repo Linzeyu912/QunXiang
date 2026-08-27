@@ -8,6 +8,7 @@ const BOOK: Record<BookStatus, { label: string; variant: 'info' | 'warning' | 's
   EXTRACTING: { label: '提取中', variant: 'warning' },
   EXTRACTED: { label: '已提取', variant: 'success' },
   FAILED: { label: '失败', variant: 'destructive' },
+  SEED_PREPARING: { label: '示例准备中', variant: 'info' },
 };
 
 const ENTITY: Record<EntityStatus, { label: string; variant: 'muted' | 'success' | 'destructive' }> = {

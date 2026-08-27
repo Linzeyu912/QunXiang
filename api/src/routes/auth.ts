@@ -12,7 +12,7 @@ import { hashPassword } from '../lib/password.js';
 import { createRefreshToken, refreshTokenHash } from '../lib/refresh-token.js';
 import { assertCsrfHeader, RequestSecurityError } from '../lib/request-security.js';
 import { createShareCode } from '../lib/share-code.js';
-import { provisionSeedLibrary } from '../services/library-seed.service.js';
+import { provisionSeedLibraryAsync } from '../services/library-seed.service.js';
 
 interface SessionUser {
   id: string;
@@ -115,10 +115,9 @@ export async function authRoutes(fastify: FastifyInstance) {
         throw error;
       }
 
-      // 公共书库：把仓库 seed-library/ 的预置书籍物化到新用户名下。
-      // 同步等待（保证首次进书架即见书），失败只记日志不阻断注册。
+      // 公共书库：注册只建占位书行（示例准备中）并入队后台任务，不阻塞注册。
       try {
-        await provisionSeedLibrary(user.id);
+        await provisionSeedLibraryAsync(user.id);
       } catch (err) {
         request.log.error(err, '公共书库初始化失败');
       }
