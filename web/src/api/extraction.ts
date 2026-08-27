@@ -3,10 +3,12 @@ import { useMutation, useQuery, useQueryClient, type QueryClient } from '@tansta
 import { apiFetch, openAuthenticatedSse } from './client';
 import { booksKey } from './books';
 import { entitiesKey } from './entities';
-import type { ExtractionStagesResult, StageStatus, AgentType } from '@/types';
+import type { ExtractionStagesResult, StageStatus, AgentType, ExtractionRunTasks, RunEstimate } from '@/types';
 
 export const extractionKey = {
   stages: (bookId: string) => ['extraction', bookId, 'stages'] as const,
+  estimate: (bookId: string) => ['extraction', bookId, 'estimate'] as const,
+  currentRun: (bookId: string) => ['extraction', bookId, 'current-run'] as const,
 };
 
 export function useStages(bookId: string | undefined) {
@@ -32,6 +34,64 @@ export function useStartExtraction(bookId: string) {
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: booksKey.all });
       qc.invalidateQueries({ queryKey: extractionKey.stages(bookId) });
+    },
+  });
+}
+
+/** 启动前估算（实施包 D5）：字数/预计调用/队列前方/历史耗时/上限。 */
+export function useRunEstimate(bookId: string | undefined, enabled: boolean) {
+  return useQuery({
+    queryKey: bookId ? extractionKey.estimate(bookId) : ['extraction', 'none', 'estimate'],
+    queryFn: () => apiFetch<{ estimate: RunEstimate }>(`/books/${bookId}/extraction-runs/estimate`).then((r) => r.estimate),
+    enabled: !!bookId && enabled,
+    staleTime: 30_000,
+  });
+}
+
+/** 当前/最近运行（实施包 D1）。 */
+export function useCurrentRun(bookId: string | undefined, enabled: boolean) {
+  return useQuery({
+    queryKey: bookId ? extractionKey.currentRun(bookId) : ['extraction', 'none', 'current-run'],
+    queryFn: () => apiFetch<ExtractionRunTasks>(`/books/${bookId}/extraction-runs/current`),
+    enabled: !!bookId && enabled,
+    refetchInterval: (q) => {
+      const status = q.state.data?.run?.status;
+      if (!status) return 10_000;
+      if (['COMPLETED', 'FAILED', 'CANCELLED'].includes(status)) return false;
+      return 5_000;
+    },
+  });
+}
+
+/** 创建并启动一次提取运行（实施包 D1，新前端入口）。 */
+export function useCreateRun(bookId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: () =>
+      apiFetch<{ runId: string; taskId: string; message: string }>(`/books/${bookId}/extraction-runs`, {
+        method: 'POST',
+        body: {},
+      }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: booksKey.all });
+      qc.invalidateQueries({ queryKey: extractionKey.stages(bookId) });
+      qc.invalidateQueries({ queryKey: extractionKey.currentRun(bookId) });
+    },
+  });
+}
+
+/** 运行控制：暂停 / 恢复 / 取消（实施包 D3）。 */
+export function useRunAction(bookId: string, action: 'pause' | 'resume' | 'cancel') {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (runId: string) =>
+      apiFetch<{ ok: boolean; message: string; resumedFrom?: string }>(
+        `/books/${bookId}/extraction-runs/${runId}/${action}`,
+        { method: 'POST', body: {} },
+      ),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: extractionKey.stages(bookId) });
+      qc.invalidateQueries({ queryKey: extractionKey.currentRun(bookId) });
     },
   });
 }

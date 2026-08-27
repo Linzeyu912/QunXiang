@@ -151,7 +151,29 @@ export async function startExtraction(bookId: string, ownerId: string) {
  * - 用户对已失败的 stage 之外的 stage 调 resume,行为是"从最早的失败点继续",
  *   避免误重跑已成功的昂贵 stage(如 visual-description 又烧一次 LLM 费)
  */
-export async function resumeExtraction(bookId: string, userId: string) {
+export async function resumeExtraction(
+  bookId: string,
+  userId: string,
+  explicit?: { resumeFrom: AgentType; stageResults: Record<string, unknown> },
+) {
+  // 显式续跑（运行暂停后恢复，实施包 D3）：直接从给定阶段恢复
+  if (explicit) {
+    try {
+      await TaskRepository.deleteByBookId(bookId);
+      await BookRepository.updateStatus(bookId, 'EXTRACTING');
+      const { extractorTaskId } = await dispatcher.resumeExtraction(
+        bookId,
+        userId,
+        explicit.resumeFrom,
+        explicit.stageResults,
+      );
+      return { taskId: extractorTaskId, resumedFrom: explicit.resumeFrom };
+    } catch (err) {
+      await BookRepository.updateStatus(bookId, 'FAILED');
+      throw err;
+    }
+  }
+
   const tasks = await TaskRepository.findByBookId(bookId);
   if (tasks.length === 0) {
     throw new NotFoundError('该书没有提取任务记录，请先触发 startExtraction');
@@ -268,6 +290,10 @@ export interface ExtractionStagesResult {
   isComplete: boolean;
   isFailed: boolean;
   stages: ExtractionStageInfo[];
+  /** 导入结果（示例书/分享副本）：没有本机提取阶段记录（实施包 D2） */
+  imported?: boolean;
+  /** 导入结果的提示文案 */
+  importedMessage?: string;
 }
 
 export async function getExtractionStages(bookId: string, ownerId: string): Promise<ExtractionStagesResult> {
@@ -278,6 +304,14 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
   let overallProgress = 0;
   let isComplete = false;
   let isFailed = false;
+
+  // 导入书（示例/分享副本）：阶段列表为空，展示导入结果说明（实施包 D2）
+  const imported =
+    (book.sourceType === 'SEED' || book.sourceType === 'SHARED_COPY')
+    && tasks.length === 0;
+  const importedMessage = imported
+    ? '这是导入结果，没有本机提取阶段记录。'
+    : undefined;
 
   const stages: ExtractionStageInfo[] = PIPELINE_STAGES.map((stage) => {
     const task = tasks.find((t) => t.agentType === stage.id);
@@ -354,6 +388,7 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
     isComplete,
     isFailed,
     stages,
+    ...(imported ? { imported: true, importedMessage } : {}),
   };
 }
 

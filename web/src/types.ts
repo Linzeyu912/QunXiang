@@ -171,6 +171,40 @@ export interface ExtractionStageInfo {
   message?: string;
 }
 
+export interface RunEstimate {
+  inputChars: number;
+  estimatedCalls: number;
+  queuedAhead: number;
+  historicalDurationMs: number | null;
+  maxCalls: number;
+  maxTokens: number | null;
+}
+
+export interface ExtractionRun {
+  id: string;
+  bookId: string;
+  userId: string;
+  status: string;
+  kind: string;
+  sourceRevision: number;
+  startedAt?: string | null;
+  completedAt?: string | null;
+  pauseRequestedAt?: string | null;
+  cancelledAt?: string | null;
+  failureReason?: string | null;
+  estimatedInputChars?: string | null;
+  estimatedCalls?: number | null;
+  maxCalls?: number | null;
+  maxTokens?: number | null;
+  promotedAt?: string | null;
+  createdAt: string;
+}
+
+export interface ExtractionRunTasks {
+  run: ExtractionRun | null;
+  tasks: Array<{ id: string; agentType: string; status: string; startedAt?: string | null; completedAt?: string | null; failedAt?: string | null; error?: string | null }>;
+}
+
 export interface ExtractionStagesResult {
   bookId: string;
   overallProgress: number;
@@ -178,6 +212,8 @@ export interface ExtractionStagesResult {
   isComplete: boolean;
   isFailed: boolean;
   stages: ExtractionStageInfo[];
+  imported?: boolean;
+  importedMessage?: string;
 }
 
 export interface CharacterReview {

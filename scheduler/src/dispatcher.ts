@@ -17,6 +17,8 @@ import {
   WorldviewRepository,
   BookRepository,
   TaskRepository,
+  prisma,
+  ExtractionSessionRepository,
 } from '@qunxiang/storage';
 import { eventBus, type PipelineEvent } from './event-bus.js';
 import { writePipelineFinalSummary } from './pipeline-summary.js';
@@ -374,13 +376,10 @@ export class TaskDispatcher {
           return undefined;
         }
 
-        // 重新提取：先把上一轮的旧实体清掉，再 createMany 新结果，避免重复入库。
-        // 放在 reviewer 入库前（而非管线起点）清，是为了让提取中途失败时旧实体仍可用。
-        // 注意：必须先通过上面的空结果守卫再清，否则空结果会把旧实体清空后留白。
-        await CharacterRepository.deleteByBookId(bookId);
-        await LocationRepository.deleteByBookId(bookId);
-        await ItemRepository.deleteByBookId(bookId);
-        await WorldviewRepository.deleteByBookId(bookId);
+        // 旧结果保护（实施包 D4）：不再先删后建。改为按稳定键对齐合并——
+        // 人工审核状态/锁定字段不被覆盖；新结果缺失但人工过的实体保留并标
+        // missingFromLatestRun；纯 AI 且不再出现的实体归档（archivedAt），不物理删除。
+        // 发布在单事务内执行，中途失败旧实体保持可用。
 
         // 提示词阶段已按原文证据识别角色年龄变体，按角色名回写实体字段。
         const stageByName = new Map<string, { stages: string[]; primary: string }>();
@@ -402,111 +401,7 @@ export class TaskDispatcher {
         }
 
         // chars/locs/entityItems 已在上方统一解包并做过空结果守卫
-        if (chars.length > 0) {
-          await CharacterRepository.createMany(
-            chars.map((c: any) => ({
-              bookId,
-              name: c.name,
-              aliases: Array.isArray(c.aliases) ? c.aliases : [],
-              description: c.description || null,
-              confidence: c.confidence || 0.5,
-              status: 'PENDING',
-              chapterRef: c.chapterRef || null,
-              firstChapter: c.firstChapter ?? null,
-              lastChapter: c.lastChapter ?? null,
-              chapterAppearances: c.chapterAppearances ?? [],
-              mentionCount: c.mentionCount ?? 0,
-              dialogueCount: c.dialogueCount ?? 0,
-              coCharacters: c.coCharacters ?? [],
-              outfits: Array.isArray(c.outfits) ? c.outfits : [],
-              ageStages: stageByName.get(c.name)?.stages ?? [],
-              primaryAgeStage: stageByName.get(c.name)?.primary,
-              tier: c.tier || 'candidate',
-              importanceScore: c.importanceScore ?? 0,
-              storyScore: c.storyScore ?? 0,
-              productionScore: c.productionScore ?? 0,
-              pillarCausal: c.pillarCausal ?? 0,
-              pillarUniqueness: c.pillarUniqueness ?? 0,
-              pillarTransition: c.pillarTransition ?? 0,
-            }))
-          );
-        }
-
-        // Persist locations
-        if (locs.length > 0) {
-          await LocationRepository.createMany(
-            locs.map((l: any) => ({
-              bookId,
-              name: l.name,
-              aliases: Array.isArray(l.aliases) ? l.aliases : [],
-              description: l.description || undefined,
-              confidence: l.confidence || 0.7,
-              chapterRef: l.chapterRef || undefined,
-              importanceScore: l.importanceScore ?? 0,
-              tier: l.tier ?? 'candidate',
-              storyScore: l.storyScore ?? 0,
-              productionScore: l.productionScore ?? 0,
-              pillarCausal: l.pillarCausal ?? 0,
-              pillarUniqueness: l.pillarUniqueness ?? 0,
-              pillarTransition: l.pillarTransition ?? 0,
-              mentionCount: l.mentionCount ?? 0,
-              firstChapter: l.firstChapter ?? undefined,
-              lastChapter: l.lastChapter ?? undefined,
-              chapterAppearances: l.chapterAppearances ?? [],
-            }))
-          );
-          console.log(`[调度器] 已保存 ${locs.length} 个场景`);
-        }
-
-        // Persist items
-        if (entityItems.length > 0) {
-          await ItemRepository.createMany(
-            entityItems.map((i: any) => ({
-              bookId,
-              name: i.name,
-              aliases: Array.isArray(i.aliases) ? i.aliases : [],
-              category: i.category || 'other',
-              description: i.description || undefined,
-              confidence: i.confidence || 0.7,
-              chapterRef: i.chapterRef || undefined,
-              importanceScore: i.importanceScore ?? 0,
-              tier: i.tier ?? 'candidate',
-              storyScore: i.storyScore ?? 0,
-              productionScore: i.productionScore ?? 0,
-              pillarCausal: i.pillarCausal ?? 0,
-              pillarUniqueness: i.pillarUniqueness ?? 0,
-              pillarTransition: i.pillarTransition ?? 0,
-              mentionCount: i.mentionCount ?? 0,
-              firstChapter: i.firstChapter ?? undefined,
-              lastChapter: i.lastChapter ?? undefined,
-              chapterAppearances: i.chapterAppearances ?? [],
-              owners: Array.isArray(i.owners) ? i.owners : [],
-            }))
-          );
-          console.log(`[调度器] 已保存 ${entityItems.length} 个道具`);
-        }
-
-        // 保存世界观与体系设定。
-        if (worldviews.length > 0) {
-          await WorldviewRepository.createMany(
-            worldviews.map((worldview: any) => ({
-              bookId,
-              name: worldview.name,
-              aliases: Array.isArray(worldview.aliases) ? worldview.aliases : [],
-              category: worldview.category || 'worldview',
-              description: worldview.description || undefined,
-              confidence: worldview.confidence || 0.7,
-              chapterRef: worldview.chapterRef || undefined,
-              importanceScore: worldview.importanceScore ?? 0,
-              tier: worldview.tier ?? 'candidate',
-              mentionCount: worldview.mentionCount ?? 0,
-              firstChapter: worldview.firstChapter ?? undefined,
-              lastChapter: worldview.lastChapter ?? undefined,
-              chapterAppearances: worldview.chapterAppearances ?? [],
-            })),
-          );
-          console.log(`[调度器] 已保存 ${worldviews.length} 条世界观设定`);
-        }
+        await publishEntitiesStable(bookId, { chars, locs, items: entityItems, worldviews }, stageByName);
 
         try {
           const specCount = await persistVisualSpecsFromResult(bookId, result);
@@ -521,6 +416,30 @@ export class TaskDispatcher {
       if (nextAgent) {
         const taskPayload = task.payload && typeof task.payload === 'object' ? task.payload as Record<string, unknown> : {};
         const resultPayload = result && typeof result === 'object' ? result as Record<string, unknown> : {};
+
+        // 阶段边界运行控制（实施包 D3）：当前阶段已完成（模型调用结束），
+        // 此处检查运行是否被请求暂停/取消。
+        const control = await checkRunControl(task.bookId);
+        if (control === 'cancel') {
+          console.log(`[调度器] 运行已被取消：书籍 ${task.bookId} 停止于 ${agentType} 之后，未发布候选结果`);
+          eventBus.emit({ type: 'error', bookId: task.bookId, message: '运行已取消，未发布结果；最近稳定结果保持不变', timestamp: Date.now() });
+          return task.id;
+        }
+        if (control === 'pause') {
+          // 不领取下一阶段：把续跑信息（下一阶段 + 已完成阶段结果）存进运行 manifest
+          const pausedSession = await ExtractionSessionRepository.findActiveByBook(task.bookId) as { id: string } | null;
+          if (pausedSession) {
+            await ExtractionSessionRepository.markPaused(
+              pausedSession.id,
+              nextAgent,
+              { ...taskPayload, ...resultPayload, bookId: task.bookId, userId: taskPayload.userId },
+            );
+          }
+          console.log(`[调度器] 运行已暂停：书籍 ${task.bookId} 将从 ${nextAgent} 恢复`);
+          eventBus.emit({ type: 'error', bookId: task.bookId, message: `运行已暂停，可从「${TaskDispatcher.STAGE_NAMES[nextAgent] ?? nextAgent}」恢复`, timestamp: Date.now() });
+          return task.id;
+        }
+
         await this.queue.enqueue({
           bookId: task.bookId,
           agentType: nextAgent,
@@ -532,15 +451,43 @@ export class TaskDispatcher {
 
       // Pipeline completed successfully
       await writePipelineFinalSummary(task.bookId, task.payload, result);
+      await this.finalizeRun(task.bookId, 'completed');
       await this.finalizePipeline(task.bookId, 'completed');
       eventBus.emit({ type: 'completed', bookId: task.bookId, progress: 100, timestamp: Date.now() });
       return task.id;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
       await this.queue.fail(task.id, errorMessage);
+      await this.finalizeRun(task.bookId, 'failed', errorMessage);
       await this.finalizePipeline(task.bookId, 'failed');
       eventBus.emit({ type: 'error', bookId: task.bookId, stageId: agentType, message: errorMessage, timestamp: Date.now() });
       return undefined;
+    }
+  }
+
+  /** 运行收敛（实施包 D1/D4）：把 ExtractionSession 置终态并在成功时发布为当前稳定结果。 */
+  private async finalizeRun(bookId: string, outcome: 'completed' | 'failed', reason?: string): Promise<void> {
+    try {
+      const active = await ExtractionSessionRepository.findActiveByBook(bookId) as { id: string } | null;
+      if (!active) return;
+      if (outcome === 'completed') {
+        // 发布为当前稳定结果：事务内完成 session 状态 + book 指针（发布失败旧结果仍在）
+        await prisma.$transaction(async (tx) => {
+          const now = new Date();
+          await tx.extractionSession.update({
+            where: { id: active.id },
+            data: { status: 'COMPLETED', completedAt: now, promotedAt: now },
+          });
+          await tx.book.update({
+            where: { id: bookId },
+            data: { currentExtractionSessionId: active.id },
+          });
+        });
+      } else {
+        await ExtractionSessionRepository.markFailed(active.id, reason ?? '提取失败');
+      }
+    } catch (err) {
+      console.error(`[调度器] 收敛运行状态失败（书籍 ${bookId}）：`, err);
     }
   }
 
@@ -554,5 +501,212 @@ export class TaskDispatcher {
 
   async getTaskStatus(taskId: string): Promise<Task | null> {
     return this.queue.getStatus(taskId);
+  }
+}
+
+// ═══ 稳定发布（实施包 D4）═══
+
+/** 实体稳定键：按归一化名称生成，跨运行保持不变。 */
+function deriveStableKey(name: string): string {
+  return `n:${name.trim().toLowerCase()}`;
+}
+
+interface PublishableRow {
+  name: string;
+  [key: string]: unknown;
+}
+
+/** 用户锁定字段：这些字段名不随重跑覆盖。 */
+const LOCKABLE_FIELDS = ['name', 'aliases', 'description', 'category', 'tier'] as const;
+
+function stripLocked(data: Record<string, unknown>, lockedFields: unknown): Record<string, unknown> {
+  const locked = Array.isArray(lockedFields) ? (lockedFields as string[]) : [];
+  const out = { ...data };
+  for (const f of locked) delete out[f];
+  return out;
+}
+
+/**
+ * 按 stableKey 对齐新旧实体并在单事务内发布：
+ * - 命中旧实体：更新非锁定字段；保留人工审核状态与 reviewSource，version+1
+ * - 新实体：创建（stableKey=归一化名称，PENDING/AI）
+ * - 新结果缺失：人工过（USER/APPROVED/REJECTED）保留并标 missingFromLatestRun；纯 AI 归档
+ * 发布失败抛错（旧实体保持原样，由上层标记运行失败）。
+ */
+async function publishEntitiesStable(
+  bookId: string,
+  incoming: {
+    chars: PublishableRow[];
+    locs: PublishableRow[];
+    items: PublishableRow[];
+    worldviews: PublishableRow[];
+  },
+  stageByName: Map<string, { stages: string[]; primary: string }>,
+): Promise<void> {
+  const now = new Date();
+
+  const charData = (c: PublishableRow) => ({
+    name: c.name,
+    aliases: Array.isArray(c.aliases) ? c.aliases : [],
+    description: (c.description as string) || null,
+    confidence: (c.confidence as number) || 0.5,
+    chapterRef: (c.chapterRef as string) || null,
+    firstChapter: (c.firstChapter as number) ?? null,
+    lastChapter: (c.lastChapter as number) ?? null,
+    chapterAppearances: (c.chapterAppearances as number[]) ?? [],
+    mentionCount: (c.mentionCount as number) ?? 0,
+    dialogueCount: (c.dialogueCount as number) ?? 0,
+    coCharacters: (c.coCharacters as string[]) ?? [],
+    outfits: Array.isArray(c.outfits) ? c.outfits : [],
+    ageStages: stageByName.get(c.name)?.stages ?? [],
+    primaryAgeStage: stageByName.get(c.name)?.primary ?? null,
+  });
+  const locData = (l: PublishableRow) => ({
+    name: l.name,
+    aliases: Array.isArray(l.aliases) ? l.aliases : [],
+    description: (l.description as string) || null,
+    confidence: (l.confidence as number) || 0.7,
+    chapterRef: (l.chapterRef as string) || null,
+    importanceScore: (l.importanceScore as number) ?? 0,
+    tier: (l.tier as string) ?? 'candidate',
+    storyScore: (l.storyScore as number) ?? 0,
+    productionScore: (l.productionScore as number) ?? 0,
+    pillarCausal: (l.pillarCausal as number) ?? 0,
+    pillarUniqueness: (l.pillarUniqueness as number) ?? 0,
+    pillarTransition: (l.pillarTransition as number) ?? 0,
+    mentionCount: (l.mentionCount as number) ?? 0,
+    firstChapter: (l.firstChapter as number) ?? null,
+    lastChapter: (l.lastChapter as number) ?? null,
+    chapterAppearances: (l.chapterAppearances as number[]) ?? [],
+  });
+  const itemData = (i: PublishableRow) => ({
+    ...locData(i),
+    category: (i.category as string) || 'other',
+    owners: Array.isArray(i.owners) ? i.owners : [],
+  });
+  const worldviewData = (w: PublishableRow) => ({
+    name: w.name,
+    aliases: Array.isArray(w.aliases) ? w.aliases : [],
+    category: (w.category as string) || 'worldview',
+    description: (w.description as string) || null,
+    confidence: (w.confidence as number) || 0.7,
+    chapterRef: (w.chapterRef as string) || null,
+    importanceScore: (w.importanceScore as number) ?? 0,
+    tier: (w.tier as string) ?? 'candidate',
+    mentionCount: (w.mentionCount as number) ?? 0,
+    firstChapter: (w.firstChapter as number) ?? null,
+    lastChapter: (w.lastChapter as number) ?? null,
+    chapterAppearances: (w.chapterAppearances as number[]) ?? [],
+  });
+
+  type ModelKey = 'character' | 'location' | 'item' | 'worldviewSetting';
+  const groups: Array<{
+    model: ModelKey;
+    rows: PublishableRow[];
+    map: (row: PublishableRow) => Record<string, unknown>;
+  }> = [
+    { model: 'character', rows: incoming.chars, map: charData },
+    { model: 'location', rows: incoming.locs, map: locData },
+    { model: 'item', rows: incoming.items, map: itemData },
+    { model: 'worldviewSetting', rows: incoming.worldviews, map: worldviewData },
+  ];
+
+  await prisma.$transaction(async (tx) => {
+    for (const { model, rows, map } of groups) {
+      const delegate = (tx as unknown as Record<ModelKey, {
+        findMany(args: unknown): Promise<Array<Record<string, unknown>>>;
+        create(args: { data: unknown }): Promise<unknown>;
+        update(args: { where: { id: string }; data: unknown }): Promise<unknown>;
+        updateMany(args: { where: unknown; data: unknown }): Promise<unknown>;
+      }>)[model];
+
+      const existing = await delegate.findMany({ where: { bookId } });
+      const byStable = new Map<string, Record<string, unknown>>();
+      for (const row of existing) {
+        const key = (row.stableKey as string) || deriveStableKey(String(row.name));
+        if (!byStable.has(key)) byStable.set(key, row);
+      }
+
+      const seenKeys = new Set<string>();
+      for (const row of rows) {
+        const key = deriveStableKey(row.name);
+        seenKeys.add(key);
+        const data = map(row);
+        const old = byStable.get(key);
+        if (old) {
+          // 命中旧实体：保留人工审核状态/来源/稳定键；锁定字段不覆盖
+          const merged = stripLocked(data, old.lockedFields);
+          const userTouched = old.reviewSource === 'USER' || old.status === 'APPROVED' || old.status === 'REJECTED';
+          await delegate.update({
+            where: { id: old.id as string },
+            data: {
+              ...merged,
+              ...(userTouched
+                ? { status: old.status, reviewSource: old.reviewSource }
+                : { status: 'PENDING', reviewSource: 'AI' }),
+              stableKey: old.stableKey ?? key,
+              version: { increment: 1 },
+              missingFromLatestRun: false,
+              archivedAt: null,
+            },
+          });
+        } else {
+          await delegate.create({
+            data: {
+              bookId,
+              ...data,
+              status: 'PENDING',
+              reviewSource: 'AI',
+              stableKey: key,
+              missingFromLatestRun: false,
+            },
+          });
+        }
+      }
+
+      // 新结果不再出现的旧实体
+      for (const [key, old] of byStable) {
+        if (seenKeys.has(key)) continue;
+        const userTouched = old.reviewSource === 'USER' || old.status === 'APPROVED' || old.status === 'REJECTED';
+        if (userTouched) {
+          // 人工审核过：保留并提示风险（新结果缺失）
+          await delegate.update({
+            where: { id: old.id as string },
+            data: { missingFromLatestRun: true },
+          });
+        } else if (!old.archivedAt) {
+          // 纯 AI 且不再出现：归档（不物理删除）
+          await delegate.update({
+            where: { id: old.id as string },
+            data: { archivedAt: now, missingFromLatestRun: true },
+          });
+        }
+      }
+    }
+  });
+}
+
+/** 阶段边界运行控制检查（实施包 D3）：返回 pause/cancel/continue。 */
+async function checkRunControl(bookId: string): Promise<'pause' | 'cancel' | 'continue'> {
+  try {
+    const session = await ExtractionSessionRepository.findActiveByBook(bookId) as
+      | { status: string; id: string }
+      | null;
+    if (!session) return 'continue';
+    if (session.status === 'CANCELLING') {
+      await ExtractionSessionRepository.markCancelled(session.id);
+      return 'cancel';
+    }
+    if (session.status === 'PAUSING' || session.status === 'PAUSED') {
+      return 'pause';
+    }
+    if (session.status === 'QUEUED') {
+      // 首个阶段开始执行时把运行置为 RUNNING
+      await ExtractionSessionRepository.markRunning(session.id);
+    }
+    return 'continue';
+  } catch (err) {
+    console.error(`[调度器] 检查运行控制失败（书籍 ${bookId}，按继续处理）：`, err);
+    return 'continue';
   }
 }

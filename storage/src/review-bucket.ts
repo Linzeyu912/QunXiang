@@ -32,16 +32,17 @@ const lowConfidencePending = {
 /**
  * 构造各实体模型 where 子句中的集合过滤部分。
  * 返回对象直接展开进 Prisma where；类型由调用方按各自模型收窄。
+ * 三个集合都排除已归档实体（实施包 D4：纯 AI 且新结果不再出现的实体归档不删）。
  */
 export function reviewBucketWhere(bucket: ReviewBucket): Record<string, unknown> {
   switch (bucket) {
     case 'LOW_CONFIDENCE':
-      return { ...lowConfidencePending };
+      return { ...lowConfidencePending, archivedAt: null };
     case 'REJECTED':
-      return { status: 'REJECTED' };
+      return { status: 'REJECTED', archivedAt: null };
     case 'MAIN':
     default:
-      return { status: { not: 'REJECTED' }, NOT: lowConfidencePending };
+      return { status: { not: 'REJECTED' }, archivedAt: null, NOT: lowConfidencePending };
   }
 }
 

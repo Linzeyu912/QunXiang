@@ -31,8 +31,13 @@ export function StageCard({ stage }: { stage: ExtractionStageInfo }) {
           <span className="text-xs text-muted-foreground">权重 {stage.weight}</span>
         </div>
         <p className="text-xs text-muted-foreground">
-          {stage.startedAt ? `开始于 ${formatDate(stage.startedAt)}` : '未开始'}
-          {stage.completedAt && ` · 完成于 ${formatDate(stage.completedAt)}`}
+          {stage.startedAt
+            ? `开始于 ${formatDate(stage.startedAt)}`
+            : stage.status === 'completed'
+              // 历史记录缺时间：不再出现「整体已完成、每阶段却显示未开始」（实施包 D2）
+              ? '已完成，历史记录未提供时间。'
+              : '未开始'}
+          {stage.startedAt && stage.completedAt && ` · 完成于 ${formatDate(stage.completedAt)}`}
         </p>
         {stage.message && stage.status === 'failed' && (
           <p className="text-xs text-destructive">{stage.message}</p>

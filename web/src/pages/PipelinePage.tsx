@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { AlertCircle, CheckCircle2, FileSearch, Loader2, Play } from 'lucide-react';
-import { useStages, useExtractionStream, useStartExtraction, useResumeExtraction } from '@/api/extraction';
+import { useStages, useExtractionStream, useStartExtraction, useResumeExtraction, useRunEstimate, useCreateRun, useCurrentRun, useRunAction } from '@/api/extraction';
 import { useExtractionArtifacts, useExtractionRuns, usePrescanArtifacts } from '@/api/artifacts';
 import { useLlmStatus } from '@/api/llm';
 import { Badge } from '@/components/ui/badge';
@@ -63,9 +63,19 @@ export function PipelinePage() {
   const llm = useLlmStatus();
   const start = useStartExtraction(bookId);
   const resume = useResumeExtraction(bookId);
+  const createRun = useCreateRun(bookId);
+  const pauseRun = useRunAction(bookId, 'pause');
+  const resumeRun = useRunAction(bookId, 'resume');
+  const cancelRun = useRunAction(bookId, 'cancel');
   const extractionGate = getExtractionStartGate(llm.data, llm.isLoading);
 
   const isRunning = stages.data?.isRunning && !stages.data?.isComplete;
+  const estimateQ = useRunEstimate(bookId, !isRunning && !stages.data?.isComplete);
+  const currentRunQ = useCurrentRun(bookId, true);
+  const activeRun = currentRunQ.data?.run
+    && ['QUEUED', 'RUNNING', 'PAUSING', 'PAUSED', 'CANCELLING'].includes(currentRunQ.data.run.status)
+    ? currentRunQ.data.run
+    : null;
   useExtractionStream(bookId, !!isRunning);
 
   // 用 ref 而非 state 做一次性哨兵：StrictMode 下 effect 会被双重调用，
@@ -98,8 +108,9 @@ export function PipelinePage() {
       return;
     }
     try {
-      await start.mutateAsync();
-      toast.success('已开始提取');
+      // 新前端走运行接口（实施包 D1）：创建会话（含预算估算）并启动
+      await createRun.mutateAsync();
+      toast.success('运行已创建并开始提取');
     } catch (e) {
       toast.error(`触发失败：${(e as Error).message}`);
     }
@@ -147,12 +158,60 @@ export function PipelinePage() {
 
       <LlmGateNotice gate={extractionGate} onSettings={() => navigate('/settings/llm')} />
 
+      {data?.imported && (
+        <Card className="border-sky-200 bg-sky-50/50 p-4 text-sm text-sky-700 dark:border-sky-500/40 dark:bg-sky-500/10 dark:text-sky-300">
+          {data.importedMessage ?? '这是导入结果，没有本机提取阶段记录。'}
+        </Card>
+      )}
+
+      {activeRun && activeRun.status !== 'COMPLETED' && (
+        <Card className="p-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="text-sm">
+              <span className="font-medium">当前运行</span>
+              <span className="ml-2 text-muted-foreground">
+                {activeRun.status === 'PAUSED' ? '已暂停' : activeRun.status === 'PAUSING' ? '暂停中（等待当前调用完成）' : activeRun.status === 'CANCELLING' ? '取消中' : '进行中'}
+                {activeRun.pauseRequestedAt && ' · 已请求暂停'}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              {['RUNNING', 'QUEUED', 'PAUSING'].includes(activeRun.status) && (
+                <Button size="sm" variant="outline" disabled={pauseRun.isPending}
+                  onClick={() => pauseRun.mutate(activeRun.id, { onSuccess: (r) => toast.success(r.message), onError: (e) => toast.error((e as Error).message) })}>
+                  暂停
+                </Button>
+              )}
+              {activeRun.status === 'PAUSED' && (
+                <Button size="sm" variant="outline" disabled={resumeRun.isPending}
+                  onClick={() => resumeRun.mutate(activeRun.id, { onSuccess: (r) => toast.success(r.message), onError: (e) => toast.error((e as Error).message) })}>
+                  恢复
+                </Button>
+              )}
+              {!['CANCELLED', 'COMPLETED', 'FAILED'].includes(activeRun.status) && (
+                <Button size="sm" variant="ghost" className="text-destructive" disabled={cancelRun.isPending}
+                  onClick={() => cancelRun.mutate(activeRun.id, { onSuccess: (r) => toast.success(r.message), onError: (e) => toast.error((e as Error).message) })}>
+                  取消
+                </Button>
+              )}
+            </div>
+          </div>
+        </Card>
+      )}
+
       {notStarted && (
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium">这本书还没开始提取</p>
               <p className="text-xs text-muted-foreground">点击开始运行 6 阶段管道</p>
+              {estimateQ.data && (
+                <p className="mt-1 text-xs text-muted-foreground">
+                  原文 {estimateQ.data.inputChars.toLocaleString()} 字 · 预计调用 {estimateQ.data.estimatedCalls} 次
+                  {estimateQ.data.queuedAhead > 0 && ` · 队列前方 ${estimateQ.data.queuedAhead} 个运行`}
+                  {estimateQ.data.historicalDurationMs != null && ` · 历史平均约 ${Math.round(estimateQ.data.historicalDurationMs / 60000)} 分钟`}
+                  {` · 本次调用上限 ${estimateQ.data.maxCalls} 次`}
+                </p>
+              )}
             </div>
             <Button onClick={handleStart} disabled={start.isPending || !extractionGate.canStart} className="gap-2">
               {start.isPending ? (
