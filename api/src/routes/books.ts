@@ -1,11 +1,13 @@
 import type { FastifyInstance } from 'fastify';
 import { BookRepository, UserRepository, getSharedObjectStore, getSharedAssetSourceResolver, isTransientDatabaseBusyError, prisma } from '@qunxiang/storage';
-import { parseTxt, decodeText } from '@qunxiang/import';
+import { parseTxt, decodeText, parseChapterOutline, normalize, detectNoise } from '@qunxiang/import';
 import { rm } from 'fs/promises';
 import { join } from 'path';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { bookImageDir } from '../services/image-generation.service.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
+import { persistBookArtifact } from '@qunxiang/storage';
+import type { Book } from '@qunxiang/core';
 
 export async function booksRoutes(fastify: FastifyInstance) {
   // 上传书籍（写入对象存储，不再依赖本机绝对路径）
@@ -96,6 +98,13 @@ export async function booksRoutes(fastify: FastifyInstance) {
       where: { id },
       data: { preprocessConfirmedRevision: book.sourceRevision ?? 0 },
     });
+    // 确认时保存版本化预处理产物（实施包 C4）：preprocess/{sourceRevision}/…
+    // 失败不回滚确认本身（best-effort，与产物双写语义一致）
+    try {
+      await persistPreprocessArtifacts(confirmed);
+    } catch (err) {
+      request.log.warn(err, '版本化预处理产物保存失败');
+    }
     return { book: confirmed, alreadyConfirmed: false };
   });
 
@@ -149,5 +158,58 @@ export async function booksRoutes(fastify: FastifyInstance) {
       request.log.error(err);
       return reply.status(500).send({ error: '删除书籍失败，请稍后重试' });
     }
+  });
+}
+
+/** 确认版本时落盘 4 个版本化预处理产物（实施包 C4）。 */
+async function persistPreprocessArtifacts(bookRow: { id: string; title: string; sourceRevision: number; sourceObjectKey: string | null; filePath: string }): Promise<void> {
+  const book = bookRow as unknown as Book;
+  const revision = book.sourceRevision ?? 0;
+  const content = await getSharedAssetSourceResolver().readSourceText(book);
+  const norm = normalize(content.trim());
+  const noiseReport = detectNoise(norm.text);
+  const outline = parseChapterOutline(content, book.title);
+  const prefix = `preprocess/${revision}`;
+
+  await persistBookArtifact({
+    bookId: book.id,
+    logicalPath: `${prefix}/outline.json`,
+    category: 'preprocess',
+    body: JSON.stringify(outline, null, 2),
+    sourceRevision: revision,
+  });
+  await persistBookArtifact({
+    bookId: book.id,
+    logicalPath: `${prefix}/normalized.txt`,
+    category: 'preprocess',
+    body: norm.text,
+    mime: 'text/plain',
+    sourceRevision: revision,
+  });
+  await persistBookArtifact({
+    bookId: book.id,
+    logicalPath: `${prefix}/report.json`,
+    category: 'preprocess',
+    body: JSON.stringify({
+      sourceRevision: revision,
+      generatedAt: new Date().toISOString(),
+      removedNoiseLines: outline.removedNoiseLines,
+      suspectLinesTotal: outline.suspectLinesTotal,
+      byCategory: outline.byCategory,
+      suspectLines: outline.suspectLines,
+    }, null, 2),
+    sourceRevision: revision,
+  });
+  await persistBookArtifact({
+    bookId: book.id,
+    logicalPath: `${prefix}/line-map.json`,
+    category: 'preprocess',
+    body: JSON.stringify({
+      sourceRevision: revision,
+      sourceLineCount: content.split('\n').length,
+      normalizedLineCount: norm.text.split('\n').length,
+      note: '规范化文本 1-based 行号与 detectNoise/noise-override 行号一致',
+    }, null, 2),
+    sourceRevision: revision,
   });
 }

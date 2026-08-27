@@ -32,6 +32,8 @@ export interface ParseOptions {
   storyWeight?: number;
   /** Weight for productionValue in importance formula (default: 0.3) */
   prodWeight?: number;
+  /** 无标题文本回退模式：whole-book（整本一章）或 by-length（按长度切分，默认） */
+  fallbackMode?: 'whole-book' | 'by-length';
 }
 
 export interface EnhancedParseResult extends ParseResult {
@@ -58,6 +60,8 @@ export interface ChapterOutlineResult {
   title: string;
   chapterMode: string;
   isFallback: boolean;
+  /** 原文中的替换字符（U+FFFD）数量：>0 说明解码时有信息丢失（实施包 C2） */
+  replacementCharCount: number;
   removedNoiseLines: number;
   /** 疑似噪声行总数（未截断），用于前端显示"共 N 条" */
   suspectLinesTotal: number;
@@ -72,16 +76,24 @@ export interface ChapterOutlineResult {
  * 轻量章节大纲：只走真实管线的前两步（预处理 + 结构化切章），
  * 不做实体预扫描、不写任何文件。供前端章节视图按需解析。
  * @param keepLines 人工「找回」的行号集合（规范化后 1-based），这些行保留不删。
+ * @param opts.fallbackMode 无标题文本回退模式：whole-book（整本一章）或 by-length（按长度切分）
  */
-export function parseChapterOutline(content: string, filename: string, keepLines?: Set<number>): ChapterOutlineResult {
+export function parseChapterOutline(
+  content: string,
+  filename: string,
+  keepLines?: Set<number>,
+  opts: { fallbackMode?: 'whole-book' | 'by-length' } = {},
+): ChapterOutlineResult {
   const title = filename.replace(/\.txt$/i, '');
   const { text, report } = preprocess(content.trim(), keepLines ? { keepLines } : {});
-  const structure = splitChaptersStructured(text, {});
+  const structure = splitChaptersStructured(text, { bookTitle: title, fallbackMode: opts.fallbackMode });
   const allSuspect = report.filter?.suspectLines ?? [];
+  const replacementCharCount = (text.match(/\uFFFD/g) ?? []).length;
   return {
     title,
     chapterMode: structure.matchedMode,
     isFallback: structure.isFallback,
+    replacementCharCount,
     removedNoiseLines: report.filter?.removedCount ?? 0,
     suspectLinesTotal: allSuspect.length,
     byCategory: { ...(report.filter?.byCategory ?? {}) },
@@ -142,7 +154,7 @@ export async function parseTxtEnhanced(
   text = preprocessed;
 
   // Step 2: Structured chapter splitting (hierarchy + line classification)
-  const structure = splitChaptersStructured(text, { protagonistNames });
+  const structure = splitChaptersStructured(text, { protagonistNames, bookTitle: title, fallbackMode: options.fallbackMode });
   const chapters = structure.flatList.map((ch) => ({
     index: ch.index,
     title: ch.title,

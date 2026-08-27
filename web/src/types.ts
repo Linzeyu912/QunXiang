@@ -292,6 +292,10 @@ export interface ExtractionArtifactsResponse {
   available: boolean;
   runDir?: string;
   generatedAt?: string;
+  /** 产物基于的原文版本与当前不一致时为 true（提示「基于旧版原文生成」） */
+  outdatedRevision?: boolean;
+  basedOnSourceRevision?: number;
+  currentSourceRevision?: number;
   summaryMd?: string;
   allPromptsMd?: string;
   events: NarrativeEventEntry[];
@@ -305,6 +309,8 @@ export interface ChapterOutlineResponse {
   title: string;
   chapterMode: string;
   isFallback: boolean;
+  /** 原文中的替换字符（U+FFFD）数量（实施包 C2） */
+  replacementCharCount?: number;
   removedNoiseLines: number;
   suspectLinesTotal: number;
   byCategory: Record<string, number>;
@@ -312,7 +318,7 @@ export interface ChapterOutlineResponse {
   chapters: Array<{ index: number; title?: string; wordCount: number }>;
 }
 
-export type NoiseCategory = 'url' | 'promo' | 'template' | 'decoration' | 'repeated' | 'garbled' | 'meta';
+export type NoiseCategory = 'url' | 'promo' | 'template' | 'decoration' | 'repeated' | 'garbled' | 'meta' | 'dialogue' | 'onomatopoeia' | 'short';
 
 export interface ChapterNoiseLine {
   lineNum: number;

@@ -9,6 +9,9 @@ export interface UpsertBookArtifactInput {
   sha256: string;
   bytes: bigint;
   mime: string;
+  /** 产物基于的原文版本（可选，实施包 C4） */
+  sourceRevision?: number;
+  extractionSessionId?: string;
 }
 
 export interface BookArtifactRepository {
@@ -31,6 +34,8 @@ export function createBookArtifactRepository(db: PrismaClient): BookArtifactRepo
           sha256: input.sha256,
           bytes: input.bytes,
           mime: input.mime,
+          ...(input.sourceRevision !== undefined ? { sourceRevision: input.sourceRevision } : {}),
+          ...(input.extractionSessionId !== undefined ? { extractionSessionId: input.extractionSessionId } : {}),
         },
         create: { ...input },
       });

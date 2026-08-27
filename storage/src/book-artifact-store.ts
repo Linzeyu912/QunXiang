@@ -25,6 +25,8 @@ export interface PersistBookArtifactInput {
   body: Uint8Array | string;
   /** 未传时默认 application/json。 */
   mime?: string;
+  /** 产物基于的原文版本（可选，实施包 C4） */
+  sourceRevision?: number;
 }
 
 const DEFAULT_JSON_MIME = 'application/json';
@@ -46,6 +48,8 @@ export async function persistBookArtifact(input: PersistBookArtifactInput): Prom
       sha256: stored.sha256,
       bytes: stored.bytes,
       mime,
+      // 版本化产物（实施包 C4）：记录基于的原文版本，与书不一致时前端提示「基于旧版原文生成」
+      ...(input.sourceRevision !== undefined ? { sourceRevision: input.sourceRevision } : {}),
     });
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);

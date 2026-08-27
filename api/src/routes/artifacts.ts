@@ -83,15 +83,19 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     }
   });
 
-  // 章节大纲（预处理+结构化切章的实时结果，带 mtime 缓存）
+  // 章节大纲（预处理+结构化切章的实时结果，带 mtime 缓存）。
+  // fallback=whole：无标题文本按整本一章返回（实施包 C2）。
   fastify.get('/:id/chapters', async (request, reply) => {
     const { id } = request.params as { id: string };
+    const { fallback } = request.query as { fallback?: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
       return sendBookNotFound(reply);
     }
     try {
-      const outline = await getChapterOutline(id, ownerId!);
+      const outline = await getChapterOutline(id, ownerId!, {
+        fallbackMode: fallback === 'whole' ? 'whole-book' : undefined,
+      });
       if (!outline) return reply.status(404).send({ error: '书籍或文件不存在' });
       return outline;
     } catch (err) {

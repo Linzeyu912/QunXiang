@@ -23,6 +23,9 @@ export const NOISE_LABEL: Record<NoiseCategory, string> = {
   repeated: '重复',
   garbled: '乱码',
   meta: '元信息',
+  dialogue: '对白标记',
+  onomatopoeia: '拟声词',
+  short: '短句',
 };
 
 const CHAPTER_MODE_LABEL: Record<string, string> = {
@@ -86,6 +89,7 @@ export function ChaptersPage() {
           </h2>
           <p className="text-xs text-muted-foreground">
             {outline.chapters.length} 章 · 共 {totalWords.toLocaleString()} 字
+            {(outline.replacementCharCount ?? 0) > 0 && ` · 检测到 ${outline.replacementCharCount} 个替换字符（原文编码可能受损）`}
             {outline.removedNoiseLines > 0 && ` · 预处理清理了 ${outline.removedNoiseLines} 行噪声`}
             {restoredCount > 0 && ` · 已找回 ${restoredCount} 行`}
           </p>

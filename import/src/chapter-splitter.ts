@@ -7,7 +7,7 @@ export interface ChapterInfo {
 
 export interface SplitResult {
   chapters: ChapterInfo[];
-  matchedMode: 'chapter_zh' | 'chapter_en' | 'heuristic' | 'fixed';
+  matchedMode: 'chapter_zh' | 'chapter_en' | 'heuristic' | 'fixed' | 'whole-book';
   isFallback: boolean;
 }
 
@@ -90,6 +90,28 @@ function cnToNumber(cn: string): string {
   return String(result);
 }
 
+/** 归一化书名：去掉文件名中的章节数/册数等元信息（如「斗破苍穹150章」「全书350回」），仅用于书名行比对。 */
+export function normalizeBookTitleForMatch(title: string): string {
+  return title
+    .replace(/\.txt$/i, '')
+    .replace(/[（\[【(]?\s*(?:全|共)?\s*\d+\s*[章回卷册部]\s*[）\]】)]?\s*$/, '')
+    .replace(/[（\[【(]?\s*(?:全|共)?\s*[零〇一二两三四五六七八九十百千万]+\s*[章回卷册部]\s*[）\]】)]?\s*$/, '')
+    .replace(/(?:完本|全本|全集|精校版|校对版|整理版)\s*$/, '')
+    .trim()
+    .toLowerCase();
+}
+
+/** 首块是否只是「书名行 + 少量前置内容」而非真实章节（前置内容不单独建章，正文并入下一章前丢弃）。 */
+function isTitleOnlyPreamble(firstBlockFirstLine: string, bookTitle: string | undefined): boolean {
+  if (!bookTitle) return false;
+  const line = firstBlockFirstLine.trim().toLowerCase();
+  const normalizedTitle = normalizeBookTitleForMatch(bookTitle);
+  if (!normalizedTitle) return false;
+  // 行内容等于书名（或去掉装饰符号后相等）
+  const stripped = line.replace(/^[\s《"「『]+|[\s》"」』]+$/g, '');
+  return stripped === normalizedTitle || line === normalizedTitle;
+}
+
 /**
  * Extract chapter number from title
  */
@@ -111,14 +133,14 @@ function extractChapterNum(title: string): number | null {
   }
 
   // 楔子/引子/序章 etc.
-  const structural = title.match(/(?:楔子|引子|序[言章曲]|后记|尾声|完本感言)/);
+  const structural = title.match(/(?:楔子|引子|前言|序[言章曲]|后记|尾声|完本感言)/);
   if (structural) return -1; // Special marker
 
   return null;
 }
 
 // Pattern 1: Chinese chapter titles
-const CHAPTER_ZH_RE = /^([\s]*)(?:第[零〇一二两三四五六七八九十百千万\d]+部.+?)?(?:第[零〇一二两三四五六七八九十百千万\d]+[章]|番外[零〇一二两三四五六七八九十百千万\d篇]*|楔子|引子|序[言章曲]|后记|尾声|完本感言)[\s：:，,]*(.*)$/im;
+const CHAPTER_ZH_RE = /^([\s]*)(?:第[零〇一二两三四五六七八九十百千万\d]+部.+?)?(?:第[零〇一二两三四五六七八九十百千万\d]+[章]|番外[零〇一二两三四五六七八九十百千万\d篇]*|楔子|引子|前言|序[言章曲]|后记|尾声|完本感言)[\s：:，,]*(.*)$/im;
 
 // Pattern 2: English chapter
 const CHAPTER_EN_RE = /^[\s]*(?:chapter|CHAPTER)[\s.:\-]*(?:\d+|[IVXLC]+)(.*)$/im;
@@ -190,7 +212,7 @@ function extractTitle(line: string): string | undefined {
   if (!trimmed) return undefined;
 
   // Chinese chapter pattern
-  let m = trimmed.match(/^(?:第[零〇一二两三四五六七八九十百千万\d]+部.+?)?(?:第[零〇一二两三四五六七八九十百千万\d]+[章]|番外[零〇一二两三四五六七八九十百千万\d篇]*|楔子|引子|序[言章曲]|后记|尾声|完本感言)[\s：:，,]*(.*)$/im);
+  let m = trimmed.match(/^(?:第[零〇一二两三四五六七八九十百千万\d]+部.+?)?(?:第[零〇一二两三四五六七八九十百千万\d]+[章]|番外[零〇一二两三四五六七八九十百千万\d篇]*|楔子|引子|前言|序[言章曲]|后记|尾声|完本感言)[\s：:，,]*(.*)$/im);
   if (m && m[1]) return m[1].trim();
   if (m) return trimmed;
 
@@ -209,7 +231,15 @@ function extractTitle(line: string): string | undefined {
 /**
  * Split text into chapters using multiple patterns
  */
-export function splitChapters(text: string): SplitResult {
+/** 无正式章节标题文本的回退切分模式（实施包 C2）。 */
+export interface SplitChaptersOptions {
+  /** 书名（来自文件名）：首行等于书名时不单独建章 */
+  bookTitle?: string;
+  /** 回退模式：whole-book=整本一章；by-length=按长度切分（默认） */
+  fallbackMode?: 'whole-book' | 'by-length';
+}
+
+export function splitChapters(text: string, options: SplitChaptersOptions = {}): SplitResult {
   const boundaries = findChapterBoundaries(text);
   const lines = text.split('\n');
 
@@ -238,9 +268,21 @@ export function splitChapters(text: string): SplitResult {
       });
     }
 
-    if (chapters.length > 0) {
+    // 首块只是书名行（且后续存在正式章节）时，不为它单独建章（实施包 C2）
+    const preambleDropped =
+      chapters.length > 1 && isTitleOnlyPreamble(chapters[0].content.split('\n')[0] ?? '', options.bookTitle);
+    const finalChapters = preambleDropped ? chapters.slice(1).map((c, i) => ({ ...c, index: i })) : chapters;
+    if (preambleDropped) {
+      // 前置内容并入第一章开头，避免丢失书名后的简介文字
+      finalChapters[0] = {
+        ...finalChapters[0],
+        content: chapters[0].content + '\n' + finalChapters[0].content,
+      };
+    }
+
+    if (finalChapters.length > 0) {
       return {
-        chapters,
+        chapters: finalChapters,
         matchedMode: 'chapter_zh',
         isFallback: false,
       };
@@ -276,12 +318,29 @@ export function splitChapters(text: string): SplitResult {
       });
     }
 
-    if (chapters.length > 0) {
-      return { chapters, matchedMode: 'chapter_en', isFallback: false };
+    const enPreambleDropped =
+      chapters.length > 1 && isTitleOnlyPreamble(chapters[0].content.split('\n')[0] ?? '', options.bookTitle);
+    const enFinal = enPreambleDropped ? chapters.slice(1).map((c, i) => ({ ...c, index: i })) : chapters;
+    if (enPreambleDropped) {
+      enFinal[0] = { ...enFinal[0], content: chapters[0].content + '\n' + enFinal[0].content };
+    }
+    if (enFinal.length > 0) {
+      return { chapters: enFinal, matchedMode: 'chapter_en', isFallback: false };
     }
   }
 
-  // Fallback: fixed-size chunking
+  // Fallback：无正式章节标题时按选项切分（实施包 C2）
+  if (options.fallbackMode === 'whole-book') {
+    const whole = text.trim();
+    return {
+      chapters: whole
+        ? [{ index: 0, title: undefined, content: whole, wordCount: whole.replace(/\s/g, '').length }]
+        : [],
+      matchedMode: 'whole-book',
+      isFallback: true,
+    };
+  }
+
   const chunkSize = 3000;
   const chapters: ChapterInfo[] = [];
   let offset = 0;
@@ -334,7 +393,7 @@ function classifyLineType(
 ): LineType {
   // Extra chapters, prologue, epilogue → always sub
   if (title) {
-    const subMarkers = /^(?:番外|楔子|引子|序[言章曲]|后记|尾声|完本感言)/;
+    const subMarkers = /^(?:番外|楔子|引子|前言|序[言章曲]|后记|尾声|完本感言)/;
     if (subMarkers.test(title)) return 'sub';
   }
 
@@ -360,6 +419,10 @@ function classifyLineType(
 export interface StructuredSplitOptions {
   protagonistNames?: string[];
   minMentions?: number;
+  /** 书名（来自文件名）：首行等于书名时不单独建章 */
+  bookTitle?: string;
+  /** 无标题文本回退模式：whole-book | by-length */
+  fallbackMode?: 'whole-book' | 'by-length';
 }
 
 /**
@@ -376,7 +439,7 @@ export function splitChaptersStructured(
   const { protagonistNames = [], minMentions = 3 } = options;
 
   // Step 1: Flat split
-  const flatResult = splitChapters(text);
+  const flatResult = splitChapters(text, { bookTitle: options.bookTitle, fallbackMode: options.fallbackMode });
   const lines = text.split('\n');
 
   // Step 2: Detect volume markers and their line positions

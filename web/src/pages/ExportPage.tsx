@@ -149,6 +149,11 @@ function ArtifactsExportCard({ bookId }: { bookId: string }) {
         <p className="text-xs text-muted-foreground">
           来自运行 {data.runDir} · 角色 {counts.characters} / 场景 {counts.locations} / 道具{' '}
           {counts.items}（含视觉设定与生成提示词）
+          {data.outdatedRevision && (
+            <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-amber-700">
+              基于旧版原文生成（产物版本 v{data.basedOnSourceRevision}，当前 v{data.currentSourceRevision}）
+            </span>
+          )}
         </p>
       </CardHeader>
       <CardContent className="flex flex-wrap gap-2">

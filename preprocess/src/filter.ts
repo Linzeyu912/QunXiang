@@ -1,5 +1,9 @@
 // ═══ Noise Categories ═══
-export type NoiseCategory = 'url' | 'promo' | 'template' | 'decoration' | 'repeated' | 'garbled' | 'meta';
+// 类别语义（实施包 C3 保守噪声策略）：
+// - url/promo/template/decoration/repeated/meta：确定性噪声，保守模式自动排除
+// - garbled：含 CJK 正文特征的乱码行只标记不删；纯符号乱码仍自动删
+// - dialogue/onomatopoeia/short：只标记，任何模式都不自动删除（confidence 0.5）
+export type NoiseCategory = 'url' | 'promo' | 'template' | 'decoration' | 'repeated' | 'garbled' | 'meta' | 'dialogue' | 'onomatopoeia' | 'short';
 
 export interface SuspectLine {
   lineNum: number;
@@ -166,10 +170,14 @@ function detectRepeatedTails(text: string, sections: string[]): SuspectLine[] {
   const lines = text.split('\n');
   for (let i = 0; i < lines.length; i++) {
     if (repeatedLines.has(lines[i].trim())) {
-      results.push({ lineNum: i + 1, content: lines[i].trim().slice(0, 100), category: 'repeated', confidence: 0.75 });
+      results.push({ lineNum: i + 1, content: lines[i].trim().slice(0, 100), category: 'repeated', confidence: 0.85 });
     }
   }
   return results;
+}
+
+function hasCjk(line: string): boolean {
+  return /[一-鿿]/.test(line);
 }
 
 function detectGarbled(lines: string[]): SuspectLine[] {
@@ -178,8 +186,43 @@ function detectGarbled(lines: string[]): SuspectLine[] {
     const line = lines[i].trim();
     if (!line) continue;
     if (isGarbled(line)) {
-      results.push({ lineNum: i + 1, content: line.slice(0, 100), category: 'garbled', confidence: 0.85 });
+      // 含 CJK 的疑似乱码行仍可能夹带正文，只标记不自动删（实施包 C3）
+      const confidence = hasCjk(line) ? 0.5 : 0.9;
+      results.push({ lineNum: i + 1, content: line.slice(0, 100), category: 'garbled', confidence });
     }
+  }
+  return results;
+}
+
+// ── 只标记类（实施包 C3）：省略号/纯标点对白、拟声词、超短句 ──
+const ELLIPSIS_DIALOGUE_RE = /^[\s"「『“'(（]*\s*(?:…+|\.{3,}|·{3,})\s*(?:[—－-]?\s*[！）)\]】”'“"]?\s*)$/;
+const ONOMATOPOEIA_RE = /^([哈啊嗯呀哇嘿嘻呼呜轰砰咔嘶叮咚噼啪]{2,8})[!！。～~]*$/;
+
+function detectDialogueMarks(lines: string[]): SuspectLine[] {
+  const results: SuspectLine[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line || line.length > 12) continue;
+    if (ELLIPSIS_DIALOGUE_RE.test(line)) {
+      results.push({ lineNum: i + 1, content: line.slice(0, 100), category: 'dialogue', confidence: 0.5 });
+      continue;
+    }
+    if (ONOMATOPOEIA_RE.test(line)) {
+      results.push({ lineNum: i + 1, content: line.slice(0, 100), category: 'onomatopoeia', confidence: 0.5 });
+    }
+  }
+  return results;
+}
+
+function detectShortLines(lines: string[]): SuspectLine[] {
+  const results: SuspectLine[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    // 超短行（≤4 字符、非章节标记、非标题序号）只标记，供人工判断
+    if (!line || line.length > 4) continue;
+    if (/^第.{1,8}[章节卷回部]$/.test(line)) continue;
+    if (/^[（(【\[]?[作者psPS：:\s]/i.test(line)) continue;
+    results.push({ lineNum: i + 1, content: line.slice(0, 100), category: 'short', confidence: 0.5 });
   }
   return results;
 }
@@ -238,6 +281,8 @@ export function detectNoise(text: string): FilterReport {
   allSuspects.push(...detectDecoration(lines));
   allSuspects.push(...detectGarbled(lines));
   allSuspects.push(...detectMeta(lines));
+  allSuspects.push(...detectDialogueMarks(lines));
+  allSuspects.push(...detectShortLines(lines));
 
   const roughSections = text.split('\n\n\n').filter(s => s.trim());
   allSuspects.push(...detectRepeatedTails(text, roughSections));
@@ -254,6 +299,7 @@ export function detectNoise(text: string): FilterReport {
 
   const byCategory = {
     url: 0, promo: 0, template: 0, decoration: 0, repeated: 0, garbled: 0, meta: 0,
+    dialogue: 0, onomatopoeia: 0, short: 0,
   } as Record<NoiseCategory, number>;
   for (const s of deduped) byCategory[s.category]++;
 

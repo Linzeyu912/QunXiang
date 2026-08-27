@@ -1,6 +1,6 @@
 import { readdir, readFile, writeFile, stat } from 'node:fs/promises';
 import { isAbsolute, join, resolve } from 'node:path';
-import { BookRepository, NoiseOverrideRepository, getSharedAssetSourceResolver } from '@qunxiang/storage';
+import { BookRepository, NoiseOverrideRepository, getSharedAssetSourceResolver, BookArtifactRepository } from '@qunxiang/storage';
 import type { Book } from '@qunxiang/core';
 import { parseChapterOutline, getChapterCleanedContent, type ChapterOutlineResult, type ChapterContentResult } from '@qunxiang/import';
 import { readArtifactJson, readArtifactText } from './artifact-store.js';
@@ -100,6 +100,10 @@ export interface ExtractionArtifactsResponse {
   available: boolean;
   runDir?: string;
   generatedAt?: string;
+  /** 产物基于的原文版本与当前不一致（实施包 C4）：前端提示「基于旧版原文生成」 */
+  basedOnSourceRevision?: number;
+  currentSourceRevision?: number;
+  outdatedRevision?: boolean;
   summaryMd?: string;
   allPromptsMd?: string;
   events: NarrativeEventEntry[];
@@ -401,7 +405,11 @@ async function readSourceTextCached(book: Book, version: string): Promise<string
   return content;
 }
 
-export async function getChapterOutline(bookId: string, ownerId: string): Promise<ChapterOutlineResponse | null> {
+export async function getChapterOutline(
+  bookId: string,
+  ownerId: string,
+  opts: { fallbackMode?: 'whole-book' | 'by-length' } = {},
+): Promise<ChapterOutlineResponse | null> {
   const book = await BookRepository.findOwnedById(bookId, ownerId);
   if (!book) return null;
 
@@ -416,15 +424,15 @@ export async function getChapterOutline(bookId: string, ownerId: string): Promis
   }
   if (!version) return null;
 
-  // 缓存 key 含 overrides 数量：找回/取消找回后数量变化即失效
-  const cacheKey = `${bookId}:${version}:${keepLines.size}`;
+  // 缓存 key 含 overrides 数量与回退模式：任一变化即失效
+  const cacheKey = `${bookId}:${version}:${keepLines.size}:${opts.fallbackMode ?? 'by-length'}`;
   const cached = chapterCache.get(cacheKey);
   if (cached) return cached.outline;
 
   const content = await readSourceTextCached(book, version);
   const outline: ChapterOutlineResponse = {
     bookId,
-    ...parseChapterOutline(content, book.title, keepLines),
+    ...parseChapterOutline(content, book.title, keepLines, { fallbackMode: opts.fallbackMode }),
   };
   lruSet(chapterCache, cacheKey, { mtimeMs: 0, outline }, CHAPTER_OUTLINE_CACHE_MAX);
   return outline;
@@ -536,10 +544,22 @@ export async function getExtractionArtifacts(bookId: string, ownerId: string): P
   const readEntityText = (filename: string) =>
     readArtifactText(bookId, `entities/${filename}`, join(entitiesDir, filename));
 
+  // 版本过期标记（实施包 C4）：登记过的产物版本与书籍当前 sourceRevision 不一致时提示
+  const bookRow = await BookRepository.findById(bookId);
+  const artifactRows = await BookArtifactRepository.findByBook(bookId);
+  const stamped = artifactRows.filter((a) => a.sourceRevision !== null && a.sourceRevision !== undefined);
+  const basedOnSourceRevision = stamped.length > 0 ? stamped[0].sourceRevision ?? undefined : undefined;
+  const currentSourceRevision = bookRow?.sourceRevision ?? 0;
+  const outdatedRevision =
+    basedOnSourceRevision !== undefined && basedOnSourceRevision !== currentSourceRevision;
+
   const response: ExtractionArtifactsResponse = {
     available: true,
     runDir: run.dir,
     generatedAt: run.generatedAt,
+    basedOnSourceRevision,
+    currentSourceRevision,
+    outdatedRevision,
     summaryMd: (await readEntityText('summary.md')) ?? undefined,
     allPromptsMd: (await readEntityText('all-prompts.md')) ?? undefined,
     events: (await readEntityJson<NarrativeEventEntry[]>('events.json')) ?? [],
