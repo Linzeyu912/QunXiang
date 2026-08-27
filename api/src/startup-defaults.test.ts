@@ -43,8 +43,8 @@ describe('startup LLM defaults', () => {
     const content = readRepoFile('api/src/routes/health.ts');
 
     expect(content).toContain("provider?: 'custom'");
-    expect(content).toContain('Missing required field: provider (custom)');
-    expect(content).toContain('Invalid provider. Must be "custom".');
+    expect(content).toContain('缺少必填字段：provider（custom）');
+    expect(content).toContain('provider 参数无效，只允许 custom');
     expect(content).not.toContain("'ollama' | 'custom' | 'mock'");
     expect(content).not.toContain("['ollama', 'custom', 'mock']");
   });

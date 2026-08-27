@@ -12,6 +12,8 @@ export interface BookRepository {
   updateStatus(id: string, status: string): Promise<Book>;
   setCurrentSnapshot(id: string, snapshotId: string | null): Promise<void>;
   updateOwnedStatus(id: string, ownerId: string, status: string): Promise<Book | null>;
+  /** 上传即确认初始原文版本（实施包 C1）：preprocessConfirmedRevision = sourceRevision。 */
+  confirmPreprocess(id: string): Promise<Book | null>;
   delete(id: string): Promise<void>;
   deleteOwned(id: string, ownerId: string): Promise<boolean>;
 }
@@ -66,6 +68,11 @@ export function createBookRepository(db: PrismaClient): BookRepository {
       const result = await db.book.updateMany({ where: { id, userId: ownerId }, data: { status } });
       if (result.count !== 1) return null;
       return db.book.findFirst({ where: { id, userId: ownerId } }) as Promise<Book | null>;
+    },
+    async confirmPreprocess(id: string): Promise<Book | null> {
+      const result = await db.book.updateMany({ where: { id }, data: { preprocessConfirmedRevision: 0 } });
+      if (result.count !== 1) return null;
+      return db.book.findUnique({ where: { id } }) as Promise<Book | null>;
     },
 
     async deleteOwned(id: string, ownerId: string): Promise<boolean> {

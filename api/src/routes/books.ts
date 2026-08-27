@@ -59,12 +59,9 @@ export async function booksRoutes(fastify: FastifyInstance) {
         sourceObjectKey: stored.objectKey,
       });
       // 上传即确认初始版本（实施包 C1）；此后噪声覆盖变化会使版本 +1 并要求重新确认
-      const confirmed = await prisma.book.update({
-        where: { id: book.id },
-        data: { preprocessConfirmedRevision: 0 },
-      });
+      const confirmed = await BookRepository.confirmPreprocess(book.id);
 
-      return { book: confirmed };
+      return { book: confirmed ?? book };
     } catch (err) {
       request.log.error(err);
       const message = err instanceof Error ? err.message : String(err);

@@ -9,6 +9,7 @@ const storageMock = vi.hoisted(() => ({
   bookFindAll: vi.fn(),
   bookFindById: vi.fn(),
   bookDelete: vi.fn(),
+  bookConfirmPreprocess: vi.fn(),
   userFindById: vi.fn(),
   isTransientDatabaseBusyError: vi.fn(),
   objectStorePut: vi.fn(),
@@ -29,6 +30,7 @@ vi.mock('@qunxiang/storage', () => ({
     findAll: storageMock.bookFindAll,
     findById: storageMock.bookFindById,
     delete: storageMock.bookDelete,
+    confirmPreprocess: storageMock.bookConfirmPreprocess,
   },
   UserRepository: {
     findById: storageMock.userFindById,
@@ -168,6 +170,7 @@ describe('stale user auth handling', () => {
     };
     storageMock.userFindById.mockResolvedValue(user);
     storageMock.bookCreate.mockResolvedValue(book);
+    storageMock.bookConfirmPreprocess.mockResolvedValue(book);
 
     const fastify = Fastify({ logger: false });
     fastify.addHook('onRequest', async (request) => {
