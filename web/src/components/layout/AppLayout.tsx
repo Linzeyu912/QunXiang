@@ -26,7 +26,7 @@ export function AppLayout() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-40 flex h-14 items-center gap-4 border-b bg-background/95 px-6 backdrop-blur">
+      <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b bg-background/95 px-3 backdrop-blur sm:px-6">
         <button
           onClick={() => navigate('/library')}
           className="flex items-center gap-2 font-semibold tracking-tight"
@@ -37,11 +37,11 @@ export function AppLayout() {
             <BookOpen className="h-4 w-4" />
           </span>
           <span>群像</span>
-          <span className="rounded bg-muted px-1.5 py-0.5 text-xs font-normal text-muted-foreground">
+          <span className="hidden rounded bg-muted px-1.5 py-0.5 text-xs font-normal text-muted-foreground lg:inline">
             小说 IP 资产审核与交付工作台
           </span>
         </button>
-        <nav className="ml-6 flex items-center gap-1 text-sm" aria-label="主导航">
+        <nav className="ml-2 flex items-center gap-1 overflow-x-auto text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:ml-6" aria-label="主导航">
           <NavLinkItem to="/library">书库</NavLinkItem>
           <NavLinkItem to="/public">公共素材库</NavLinkItem>
           <NavLinkItem to="/shared">分享给我</NavLinkItem>

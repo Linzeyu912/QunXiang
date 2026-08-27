@@ -166,7 +166,7 @@ export async function healthRoutes(fastify: FastifyInstance) {
 
     if (!mode || !['llm', 'mock', 'auto'].includes(mode)) {
       return reply.status(400).send({
-        error: 'Invalid provider value. Must be "llm", "mock", or "auto".',
+        error: 'provider 参数无效，只允许 llm、mock 或 auto',
       });
     }
 
@@ -212,13 +212,13 @@ export async function healthRoutes(fastify: FastifyInstance) {
 
     if (!body || !body.provider) {
       return reply.status(400).send({
-        error: 'Missing required field: provider (custom)',
+        error: '缺少必填字段：provider（custom）',
       });
     }
 
     if (body.provider !== 'custom') {
       return reply.status(400).send({
-        error: 'Invalid provider. Must be "custom".',
+        error: 'provider 参数无效，只允许 custom',
       });
     }
 
@@ -408,7 +408,7 @@ export async function healthRoutes(fastify: FastifyInstance) {
     } | undefined;
 
     if (!body) {
-      return reply.status(400).send({ error: 'Missing request body' });
+      return reply.status(400).send({ error: '缺少请求体' });
     }
 
     // Basic validation (same as LLM)

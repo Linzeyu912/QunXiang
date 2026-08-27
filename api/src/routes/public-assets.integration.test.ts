@@ -146,11 +146,30 @@ describe.runIf(dbAvailable)('公共素材库路由', () => {
         entityId: characterId,
         tags: ['古风', '少年'],
         showSource: true,
+        licenseType: 'original',
+        attributionRequired: true,
+        rightsConfirmed: true,
       }),
     });
     expect(status).toBe(200);
     expect(body.id).toBeTruthy();
     assetId = body.id as string;
+  });
+
+  it('1b. 未勾选权利确认或缺少版权声明时发布被拒绝（H2）', async () => {
+    const noConfirm = await authFetch(publisherToken, '/public-assets', {
+      method: 'POST',
+      body: JSON.stringify({ bookId, entityType: 'character', entityId: characterId, licenseType: 'original' }),
+    });
+    expect(noConfirm.status).toBe(400);
+    expect((noConfirm.body.error as string)).toContain('权利确认');
+
+    const noLicense = await authFetch(publisherToken, '/public-assets', {
+      method: 'POST',
+      body: JSON.stringify({ bookId, entityType: 'character', entityId: characterId, rightsConfirmed: true }),
+    });
+    expect(noLicense.status).toBe(400);
+    expect((noLicense.body.error as string)).toContain('版权声明');
   });
 
   it('2. 发布 PENDING 实体被拒绝', async () => {
@@ -224,7 +243,10 @@ describe.runIf(dbAvailable)('公共素材库路由', () => {
     });
     const pub2 = await authFetch(publisherToken, '/public-assets', {
       method: 'POST',
-      body: JSON.stringify({ bookId: book2.id, entityType: 'character', entityId: char2.id }),
+      body: JSON.stringify({
+        bookId: book2.id, entityType: 'character', entityId: char2.id,
+        licenseType: 'original', rightsConfirmed: true,
+      }),
     });
     const asset2Id = pub2.body.id as string;
 
@@ -306,6 +328,7 @@ describe.runIf(dbAvailable)('公共素材库路由', () => {
         entityId: characterId,
         tags: ['玄幻', '仙侠', '剑修'],
         showSource: true,
+        licenseType: 'original', rightsConfirmed: true,
       }),
     });
     expect(status).toBe(200);
@@ -320,6 +343,7 @@ describe.runIf(dbAvailable)('公共素材库路由', () => {
         entityType: 'character',
         entityId: characterId,
         tags: ['玄幻', '都市'],
+        licenseType: 'original', rightsConfirmed: true,
       }),
     });
     expect(status).toBe(200);

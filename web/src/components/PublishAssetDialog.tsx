@@ -40,6 +40,10 @@ export function PublishAssetDialog({
   const [tagInput, setTagInput] = useState('');
   const [tags, setTags] = useState<string[]>([]);
   const [showSource, setShowSource] = useState(true);
+  // 版权声明（实施包 H2）：发布必填
+  const [licenseType, setLicenseType] = useState<'original' | 'authorized' | 'public_domain' | ''>('');
+  const [attributionRequired, setAttributionRequired] = useState(false);
+  const [rightsConfirmed, setRightsConfirmed] = useState(false);
   const publishMutation = usePublishAsset();
   const suggestQuery = useSuggestPublishTags({ open, bookId, entityType, entityId });
   // 用户手动改过标签后，识别结果不再自动覆盖
@@ -53,6 +57,9 @@ export function PublishAssetDialog({
       setTags([]);
       setTagInput('');
       setShowSource(true);
+      setLicenseType('');
+      setAttributionRequired(false);
+      setRightsConfirmed(false);
       userEditedTagsRef.current = false;
     }
   }, [open, defaultSummary]);
@@ -105,6 +112,9 @@ export function PublishAssetDialog({
         summary: summary.trim() || undefined,
         tags: tags.length > 0 ? tags : undefined,
         showSource,
+        licenseType: licenseType || undefined,
+        attributionRequired,
+        rightsConfirmed,
       });
       toast.success(`已发布到公共素材库：${entityName}`);
       onOpenChange(false);
@@ -246,12 +256,54 @@ export function PublishAssetDialog({
             />
             展示来源书名（署名）
           </label>
+
+          <div className="space-y-1.5 rounded-md border p-3">
+            <p className="text-sm font-medium">版权声明（必填）</p>
+            <div className="flex flex-wrap gap-3 text-sm">
+              {([
+                ['original', '本人原创'],
+                ['authorized', '已获授权'],
+                ['public_domain', '公版内容'],
+              ] as const).map(([value, label]) => (
+                <label key={value} className="flex items-center gap-1">
+                  <input
+                    type="radio"
+                    name="publish-license"
+                    checked={licenseType === value}
+                    onChange={() => setLicenseType(value)}
+                  />
+                  {label}
+                </label>
+              ))}
+            </div>
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={attributionRequired}
+                onChange={(e) => setAttributionRequired(e.target.checked)}
+              />
+              要求署名（拿取方使用时需保留署名）
+            </label>
+            <label className="flex items-start gap-2 text-sm">
+              <input
+                type="checkbox"
+                className="mt-1"
+                checked={rightsConfirmed}
+                onChange={(e) => setRightsConfirmed(e.target.checked)}
+              />
+              我确认对发布内容拥有相应权利，发布不侵犯他人著作权
+            </label>
+          </div>
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             取消
           </Button>
-          <Button onClick={handlePublish} disabled={publishMutation.isPending}>
+          <Button
+            onClick={handlePublish}
+            disabled={publishMutation.isPending || !licenseType || !rightsConfirmed}
+            title={!licenseType ? '请选择版权声明' : !rightsConfirmed ? '请勾选权利确认' : undefined}
+          >
             {publishMutation.isPending ? '发布中…' : '确认发布'}
           </Button>
         </DialogFooter>

@@ -20,7 +20,7 @@ export function BookLayout() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-3">
         <Button variant="ghost" size="icon" onClick={() => navigate('/library')} aria-label="返回书库">
           <ArrowLeft className="h-4 w-4" />
         </Button>
@@ -38,7 +38,7 @@ export function BookLayout() {
         </div>
       </div>
 
-      <div className="flex items-center gap-1 border-b">
+      <div className="flex items-center gap-1 overflow-x-auto border-b px-1 py-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <BookTab to={`/books/${bookId}/pipeline`} icon={<Workflow className="h-4 w-4" />}>
           管道
         </BookTab>
@@ -115,7 +115,7 @@ function BookTab({
       to={to}
       className={({ isActive }) =>
         cn(
-          'flex items-center gap-1.5 border-b-2 px-3 py-2 text-sm transition-colors',
+          'flex shrink-0 items-center gap-1.5 whitespace-nowrap border-b-2 px-3 py-2 text-sm transition-colors',
           isActive
             ? 'border-primary text-foreground'
             : 'border-transparent text-muted-foreground hover:text-foreground',

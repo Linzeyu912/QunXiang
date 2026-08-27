@@ -570,4 +570,7 @@ export interface PublicAssetDetail {
   takenCount: number;
   createdAt: string;
   images: PublicAssetImage[];
+  /** 版权声明（实施包 H2） */
+  licenseType?: 'original' | 'authorized' | 'public_domain' | null;
+  attributionRequired?: boolean;
 }

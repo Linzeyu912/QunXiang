@@ -75,6 +75,9 @@ export interface PublicAssetDetailResponse {
   takenCount: number;
   createdAt: string;
   images: PublicAssetImageResponse[];
+  /** 版权声明（实施包 H2） */
+  licenseType?: 'original' | 'authorized' | 'public_domain' | null;
+  attributionRequired?: boolean;
 }
 
 export interface PublicAssetSummaryItem {
@@ -128,7 +131,17 @@ export interface PublishAssetInput {
   summary?: string;
   tags?: string[];
   showSource?: boolean;
+  /** 版权声明（实施包 H2）：original=本人原创 | authorized=已获授权 | public_domain=公版内容 */
+  licenseType?: 'original' | 'authorized' | 'public_domain';
+  /** 复用许可与署名要求的补充说明 */
+  licenseNote?: string;
+  /** 是否要求署名 */
+  attributionRequired?: boolean;
+  /** 权利确认勾选（必须为 true 才能发布） */
+  rightsConfirmed?: boolean;
 }
+
+const VALID_LICENSE_TYPES = new Set(['original', 'authorized', 'public_domain']);
 
 /**
  * 发布实体卡到公共池。
@@ -151,6 +164,14 @@ export async function publishAsset(
   }
   if (entity.status !== 'APPROVED') {
     throw new PublicAssetError('只有已审核通过的实体才能发布到公共库', 400);
+  }
+
+  // 版权声明为发布必填（实施包 H2）
+  if (!input.rightsConfirmed) {
+    throw new PublicAssetError('请先勾选权利确认：发布内容不侵犯他人著作权', 400);
+  }
+  if (!input.licenseType || !VALID_LICENSE_TYPES.has(input.licenseType)) {
+    throw new PublicAssetError('请选择版权声明：本人原创 / 已获授权 / 公版内容', 400);
   }
 
   // 查书名（署名用）
@@ -227,6 +248,10 @@ export async function publishAsset(
         tags,
         payload: payload as never,
         status: 'published',
+        licenseType: input.licenseType,
+        licenseNote: input.licenseNote?.slice(0, 500) ?? null,
+        attributionRequired: input.attributionRequired ?? false,
+        rightsConfirmedAt: new Date(),
       },
     });
     if (imageInputs.length > 0) {
@@ -386,7 +411,6 @@ export async function suggestPublishTags(
   input: SuggestPublishTagsInput,
 ): Promise<SuggestPublishTagsResult> {
   validateKind(input.entityType);
-
   const entity = await loadOwnedEntity(input.bookId, ownerId, input.entityType, input.entityId);
   if (!entity) {
     throw new PublicAssetError('实体不存在或无权访问', 404);
@@ -657,6 +681,8 @@ export async function getPublicAssetDetail(id: string): Promise<PublicAssetDetai
     takenCount: asset.takenCount,
     createdAt: asset.createdAt.toISOString(),
     images: imageResponses,
+    licenseType: (asset as { licenseType?: string | null }).licenseType as PublicAssetDetailResponse['licenseType'],
+    attributionRequired: (asset as { attributionRequired?: boolean }).attributionRequired ?? false,
   };
 }
 
@@ -741,6 +767,8 @@ export async function takeAsset(
           description,
           confidence: 0.5,
           status: 'PENDING',
+          // 拿取素材来源为导入（实施包 H2）：待审核，且不一定存在本书原文证据
+          reviewSource: 'IMPORTED',
         },
       });
       newEntityId = created.id;
@@ -753,6 +781,8 @@ export async function takeAsset(
           description,
           confidence: 0.5,
           status: 'PENDING',
+          // 拿取素材来源为导入（实施包 H2）：待审核，且不一定存在本书原文证据
+          reviewSource: 'IMPORTED',
         },
       });
       newEntityId = created.id;
@@ -765,6 +795,8 @@ export async function takeAsset(
           description,
           confidence: 0.5,
           status: 'PENDING',
+          // 拿取素材来源为导入（实施包 H2）：待审核，且不一定存在本书原文证据
+          reviewSource: 'IMPORTED',
         },
       });
       newEntityId = created.id;

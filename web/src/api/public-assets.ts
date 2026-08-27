@@ -116,6 +116,9 @@ export function usePublishAsset() {
       summary?: string;
       tags?: string[];
       showSource?: boolean;
+      licenseType?: 'original' | 'authorized' | 'public_domain';
+      attributionRequired?: boolean;
+      rightsConfirmed?: boolean;
     }) => apiFetch<{ id: string }>(`/public-assets`, { method: 'POST', body: input }),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['public-assets'] });

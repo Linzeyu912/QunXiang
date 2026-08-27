@@ -7,12 +7,27 @@ import {
 } from '@qunxiang/storage';
 import { exportEntities, type ExportFormat, type ExportEntity, type EntityKind, type Book as ExporterBook } from '@qunxiang/exporters';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
+import { getExportManifest } from '../services/entity-stats.service.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
 
 const VALID_TYPES: EntityKind[] = ['character', 'location', 'item', 'worldview'];
 
 export async function exportRoutes(fastify: FastifyInstance) {
+  // 导出清单（实施包 G2）：版本/运行/统计/缺失产物/风险警告
+  fastify.get('/:bookId/manifest', async (request, reply) => {
+    const { bookId } = request.params as { bookId: string };
+    const ownerId = await resolveOwnerId(request);
+    if (!ownerId) return reply.status(401).send({ error: '请先登录' });
+    try {
+      const manifest = await getExportManifest(bookId, ownerId);
+      if (!manifest) return sendBookNotFound(reply);
+      return manifest;
+    } catch (err) {
+      return sendServerError(reply, err, request.log);
+    }
+  });
+
   fastify.get<{
     Params: { bookId: string };
     Querystring: { format?: ExportFormat; type?: string };

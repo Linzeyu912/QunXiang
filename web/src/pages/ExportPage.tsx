@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Download, FileJson, FileText, Loader2, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
+import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -14,6 +15,7 @@ import {
 } from '@/components/ui/select';
 import { downloadExport, fetchExportPreview, type ExportFormat, type ExportType } from '@/api/export';
 import { useExtractionArtifacts } from '@/api/artifacts';
+import { apiFetch } from '@/api/client';
 import { downloadJson, downloadText } from '@/components/story/PromptCopyBlock';
 
 const FORMATS: { value: ExportFormat; label: string }[] = [
@@ -34,20 +36,44 @@ export function ExportPage() {
   const [format, setFormat] = useState<ExportFormat>('json');
   const [type, setType] = useState<ExportType>('character');
   const [preview, setPreview] = useState<string>('');
+  const [emptyReason, setEmptyReason] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  // 导出清单（G2）：统一数量口径 + 风险警告
+  const manifestQ = useQuery({
+    queryKey: ['export-manifest', bookId],
+    queryFn: () => apiFetch<ExportManifest>(`/export/${bookId}/manifest`),
+    enabled: !!bookId,
+  });
 
   const loadPreview = async (fmt: ExportFormat, t: ExportType = type) => {
     setFormat(fmt);
     setLoading(true);
     try {
       const text = await fetchExportPreview(bookId, fmt, t);
-      setPreview(text);
+      if (!text.trim()) {
+        // 空结果显示中文原因（G3）
+        setEmptyReason('当前筛选下没有可导出的实体（低置信度与已拒绝实体不计入有效数量）');
+        setPreview('');
+      } else {
+        setEmptyReason(null);
+        // 大文件仅截断展示，下载始终完整（G3）
+        setPreview(text.length > 80_000 ? `${text.slice(0, 80_000)}
+
+…（预览已截断，下载内容完整）` : text);
+      }
     } catch (e) {
-      toast.error(`加载预览失败：${(e as Error).message}`);
+      // 请求失败保留上一次预览（G3）
+      toast.error(`加载预览失败：${(e as Error).message}，仍显示上一次结果`);
     } finally {
       setLoading(false);
     }
   };
+
+  // 进入页面立即加载默认格式（G3：不再要求点击标签页）
+  useEffect(() => {
+    void loadPreview('json', 'character');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bookId]);
 
   const download = async () => {
     setLoading(true);
@@ -94,6 +120,35 @@ export function ExportPage() {
         </div>
       </div>
 
+      {manifestQ.data && (
+        <Card className="p-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
+            <div>
+              <span className="font-medium">导出清单</span>
+              <span className="ml-2 text-muted-foreground">
+                有效实体 {manifestQ.data.stats.totals.main}（角色 {manifestQ.data.stats.byType.character.main} · 场景{' '}
+                {manifestQ.data.stats.byType.location.main} · 道具 {manifestQ.data.stats.byType.item.main} · 世界观{' '}
+                {manifestQ.data.stats.byType.worldview.main}）
+              </span>
+              <span className="ml-2 text-muted-foreground">
+                低置信度待确认 {manifestQ.data.stats.totals.lowConfidence} · 已拒绝 {manifestQ.data.stats.totals.rejected}（不计入有效数量）
+              </span>
+            </div>
+            <span className="text-xs text-muted-foreground">
+              原文版本 v{manifestQ.data.sourceRevision}
+              {manifestQ.data.artifactsOutdated && ' · 部分产物基于旧版原文'}
+            </span>
+          </div>
+          {manifestQ.data.warnings.length > 0 && (
+            <ul className="mt-2 space-y-1 text-xs text-amber-600">
+              {manifestQ.data.warnings.map((w) => (
+                <li key={w}>· {w}</li>
+              ))}
+            </ul>
+          )}
+        </Card>
+      )}
+
       <Tabs value={format} onValueChange={(v) => loadPreview(v as ExportFormat)}>
         <TabsList>
           {FORMATS.map((f) => (
@@ -114,7 +169,9 @@ export function ExportPage() {
                 ) : preview ? (
                   <pre className="max-h-[60vh] overflow-auto p-4 text-xs">{preview}</pre>
                 ) : (
-                  <p className="p-6 text-sm text-muted-foreground">点击标签页预览</p>
+                  <p className="p-6 text-sm text-muted-foreground">
+                    {emptyReason ?? '正在加载预览…'}
+                  </p>
                 )}
               </CardContent>
             </Card>
@@ -125,6 +182,24 @@ export function ExportPage() {
       <ArtifactsExportCard bookId={bookId} />
     </div>
   );
+}
+
+/** 导出清单（G2）响应结构。 */
+interface ExportManifest {
+  bookId: string;
+  bookTitle: string;
+  sourceRevision: number;
+  currentExtractionSessionId: string | null;
+  artifactsOutdated: boolean;
+  stats: {
+    byType: Record<'character' | 'location' | 'item' | 'worldview', { main: number; lowConfidence: number; rejected: number }>;
+    totals: { main: number; lowConfidence: number; rejected: number };
+    reviewSource: { AI: number; IMPORTED: number; USER: number };
+    imageCount: number;
+    missingFromLatestRun: number;
+  };
+  missingArtifacts: string[];
+  warnings: string[];
 }
 
 /** 提取富产物导出：全部提示词 Markdown、结构化产物 JSON。无产物时不渲染。 */

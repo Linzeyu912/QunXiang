@@ -525,6 +525,14 @@ model PublicAsset {
   tags         Json     @default("[]") // string[]，发布者自填
   payload      Json     // 实体完整快照：字段集 + visualDetails + promptVariants
   status       String   @default("published") // published | unlisted（下架）| removed（管理员）
+  /// 版权声明（实施包 H2）：original=本人原创 | authorized=已获授权 | public_domain=公版内容
+  licenseType  String?
+  /// 复用许可与署名要求的补充说明（不公开大段原文）
+  licenseNote  String?
+  /// 是否要求署名
+  attributionRequired Boolean @default(false)
+  /// 权利确认勾选时间
+  rightsConfirmedAt    DateTime? @db.Timestamptz(3)
   takenCount   Int      @default(0)           // 冗余计数，排序用，由 PublicAssetTake 事务维护
   createdAt    DateTime @default(now()) @db.Timestamptz(3)
   updatedAt    DateTime @updatedAt @db.Timestamptz(3)

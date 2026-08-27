@@ -42,6 +42,10 @@ export async function publicAssetRoutes(fastify: FastifyInstance) {
       summary?: string;
       tags?: string[];
       showSource?: boolean;
+      licenseType?: 'original' | 'authorized' | 'public_domain';
+      licenseNote?: string;
+      attributionRequired?: boolean;
+      rightsConfirmed?: boolean;
     };
 
     if (!body.bookId || !body.entityType || !body.entityId) {
@@ -56,6 +60,10 @@ export async function publicAssetRoutes(fastify: FastifyInstance) {
         summary: body.summary,
         tags: body.tags,
         showSource: body.showSource,
+        licenseType: body.licenseType,
+        licenseNote: body.licenseNote,
+        attributionRequired: body.attributionRequired,
+        rightsConfirmed: body.rightsConfirmed,
       });
       return { id: result.id };
     } catch (err) {

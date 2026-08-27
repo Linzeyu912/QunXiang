@@ -129,6 +129,13 @@ export function PublicAssetDetailPage() {
             <span>发布者：{asset.publisherName || '匿名'}</span>
             <span>拿取次数：{asset.takenCount}</span>
             <span>发布时间：{formatDate(asset.createdAt)}</span>
+            {asset.licenseType && (
+              <span>
+                版权声明：
+                {asset.licenseType === 'original' ? '本人原创' : asset.licenseType === 'authorized' ? '已获授权' : '公版内容'}
+                {asset.attributionRequired ? '（要求署名）' : ''}
+              </span>
+            )}
           </div>
 
           {asset.tags.length > 0 && (
