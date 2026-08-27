@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { EntityStatusBadge, TierBadge } from '@/components/StatusBadge';
+import { EntityStatusBadge } from '@/components/StatusBadge';
 import { ConfidenceBar } from './ConfidenceBar';
 import { EntityArtifactsSection } from './EntityArtifactsSection';
 import { PublishAssetDialog } from '@/components/PublishAssetDialog';
@@ -107,8 +107,6 @@ export const EntityDetailPanel = memo(function EntityDetailPanel({
   };
 
   const aliases = parseAliases(entity.aliases);
-  const hasTier = type !== 'character' && 'tier' in entity;
-  const importance = 'importanceScore' in entity ? entity.importanceScore : undefined;
 
   return (
     <div className="flex h-full flex-col">
@@ -117,11 +115,6 @@ export const EntityDetailPanel = memo(function EntityDetailPanel({
           <div className="flex items-center gap-2">
             <h2 className="truncate text-lg font-semibold">{entity.name}</h2>
             <EntityStatusBadge status={entity.status} />
-            {hasTier && (
-              <TierBadge
-                tier={(entity as { tier: 'core' | 'supporting' | 'candidate' | 'archived' }).tier}
-              />
-            )}
             {type === 'worldview' && 'category' in entity && (
               <Badge variant="outline">
                 {WORLDVIEW_CATEGORY_LABEL[(entity as WorldviewEntity).category] ??
@@ -270,7 +263,6 @@ export const EntityDetailPanel = memo(function EntityDetailPanel({
               {type === 'character' && 'dialogueCount' in entity && (
                 <Row label="对话次数">{entity.dialogueCount}</Row>
               )}
-              {importance !== undefined && <Row label="重要性">{importance.toFixed(3)}</Row>}
             </dl>
           </div>
 

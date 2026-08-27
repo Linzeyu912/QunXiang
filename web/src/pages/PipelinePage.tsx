@@ -34,27 +34,6 @@ const PRESCAN_LABEL: Record<PrescanEntityType, string> = {
   event: '事件',
 };
 
-/** 重要性分层与分流的英文 key → 中文，用于翻译后端 importance.txt 产物。 */
-const TIER_LABEL: Record<string, string> = {
-  core: '核心',
-  supporting: '辅助',
-  candidate: '候选',
-  archived: '归档',
-};
-const ROUTE_LABEL: Record<string, string> = {
-  main: '主线',
-  staging: '暂存',
-  archive: '归档',
-};
-
-/** 把后端 summary 字符串里的英文 key（如 core/supporting/main/staging）替换为中文。 */
-function localizeSummary(summary: string | undefined): string | undefined {
-  if (!summary) return summary;
-  return summary.replace(/\b(core|supporting|candidate|archived|main|staging|archive)\b/g, (m) => {
-    return TIER_LABEL[m] ?? ROUTE_LABEL[m] ?? m;
-  });
-}
-
 export function PipelinePage() {
   const { bookId = '' } = useParams();
   const navigate = useNavigate();
@@ -323,14 +302,13 @@ function LlmGateNotice({ gate, onSettings }: { gate: ExtractionStartGate; onSett
   );
 }
 
-/** 实体预扫描中间产物（regex/LLM 命中、重要性评分），用于解释后续提取输入。 */
+/** 实体预扫描中间产物（regex/LLM 命中），用于解释后续提取输入。 */
 function PrescanArtifactsCard({ bookId }: { bookId: string }) {
   const prescanQ = usePrescanArtifacts(bookId);
   const data = prescanQ.data;
   if (!data?.available) return null;
 
   const total = PRESCAN_TYPES.reduce((sum, type) => sum + data.files[type].totalCount, 0);
-  const sections = data.importance?.sections ?? [];
 
   return (
     <Card>
@@ -351,52 +329,6 @@ function PrescanArtifactsCard({ bookId }: { bookId: string }) {
             <PrescanMentionBucket key={type} type={type} file={data.files[type]} />
           ))}
         </div>
-
-        {sections.length > 0 && (
-          <div className="space-y-2">
-            <p className="text-sm font-medium">重要性评分 Top</p>
-            <div className="grid gap-2 md:grid-cols-2">
-              {sections.map((section) => (
-                <div key={section.type} className="rounded-md border p-3">
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <span className="text-sm font-medium">{PRESCAN_LABEL[section.type]}</span>
-                    <Badge variant="muted">{section.rows.length} 条</Badge>
-                  </div>
-                  <div className="space-y-1">
-                    {section.rows.slice(0, 5).map((row) => (
-                      <div
-                        key={`${section.type}-${row.text}-${row.importance}`}
-                        className="grid grid-cols-[minmax(0,1fr)_4rem_5rem] gap-2 text-xs"
-                      >
-                        <span className="truncate">{row.text}</span>
-                        <span className="font-mono text-muted-foreground">{row.importance.toFixed(3)}</span>
-                        <Badge variant={row.route === 'main' ? 'success' : row.route === 'staging' ? 'info' : 'muted'}>
-                          {TIER_LABEL[row.tier] ?? row.tier}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                  {(section.tierSummary || section.routeSummary) && (
-                    <p className="mt-2 text-[11px] text-muted-foreground">
-                      {[localizeSummary(section.tierSummary), localizeSummary(section.routeSummary)]
-                        .filter(Boolean)
-                        .join(' · ')}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {data.importance?.rawPreview && (
-          <details className="rounded-md border">
-            <summary className="cursor-pointer px-3 py-2 text-sm font-medium">查看 importance.txt 原文片段</summary>
-            <pre className="max-h-80 overflow-y-auto whitespace-pre-wrap border-t bg-muted/40 p-3 text-xs leading-relaxed">
-              {data.importance.rawPreview}
-            </pre>
-          </details>
-        )}
       </CardContent>
     </Card>
   );

@@ -2,7 +2,7 @@ import { memo, useEffect, useMemo, useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { Sparkles, TriangleAlert } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { EntityStatusBadge, TierBadge } from '@/components/StatusBadge';
+import { EntityStatusBadge } from '@/components/StatusBadge';
 import { Badge } from '@/components/ui/badge';
 import { parseAliases } from '@/lib/utils';
 import { ITEM_CATEGORY_LABEL } from '@/types';
@@ -46,7 +46,6 @@ const EntityRow = memo(function EntityRow({
   measureElement,
 }: RowProps) {
   const aliases = parseAliases(entity.aliases);
-  const hasTier = type !== 'character' && 'tier' in entity;
   const itemCategory = type === 'item' ? (entity as { category?: ItemCategory }).category : undefined;
   return (
     <button
@@ -81,11 +80,6 @@ const EntityRow = memo(function EntityRow({
             <Badge variant="outline" className="px-1 text-[10px] font-normal">
               {ITEM_CATEGORY_LABEL[itemCategory] ?? itemCategory}
             </Badge>
-          )}
-          {hasTier && (
-            <TierBadge
-              tier={(entity as { tier: 'core' | 'supporting' | 'candidate' | 'archived' }).tier}
-            />
           )}
           <EntityStatusBadge status={entity.status} />
         </div>

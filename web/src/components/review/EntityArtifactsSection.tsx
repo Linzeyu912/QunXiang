@@ -25,8 +25,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { EvidenceSnippets } from '@/components/story/EvidenceSnippets';
-import { PromptCopyBlock } from '@/components/story/PromptCopyBlock';
+import { EvidenceSnippets } from '@/components/EvidenceSnippets';
+import { PromptCopyBlock } from '@/components/PromptCopyBlock';
 import {
   useEntityImages,
   useGenerateImage,

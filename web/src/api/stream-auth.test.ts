@@ -8,7 +8,7 @@ afterEach(() => {
 
 describe('流和受保护图片鉴权', () => {
   it('sse_uses_authorization_header_without_query_token', async () => {
-    const sources = await Promise.all(['extraction.ts', 'stories.ts'].map((name) =>
+    const sources = await Promise.all(['extraction.ts'].map((name) =>
       readFile(new URL(`./${name}`, import.meta.url), 'utf8')));
 
     expect(sources.join('\n')).not.toContain('access_token=');

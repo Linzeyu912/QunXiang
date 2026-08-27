@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Boxes, Download, FileText, Globe2, ListTree, MapPin, Users, Workflow } from 'lucide-react';
+import { Archive, ArrowLeft, Boxes, Download, FileText, Globe2, ListTree, MapPin, Users, Workflow } from 'lucide-react';
 import { useBook } from '@/api/books';
 import { useStages } from '@/api/extraction';
 import { Button } from '@/components/ui/button';
@@ -7,8 +7,6 @@ import { BookStatusBadge } from '@/components/StatusBadge';
 import { formatBytes } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 
-// 书籍导航固定 7 个同级 Tab：管道、章节、角色、场景、道具、世界观、导出。
-// 低置信度库通过各审核页内入口进入；故事/导演已退场（旧路由保留迁移周期重定向）。
 export function BookLayout() {
   const { bookId = '' } = useParams();
   const navigate = useNavigate();
@@ -78,6 +76,13 @@ export function BookLayout() {
           世界观
         </BookTab>
         <BookTab
+          to={`/books/${bookId}/low-confidence`}
+          icon={<Archive className="h-4 w-4" />}
+          disabled={!isComplete}
+        >
+          低置信度库
+        </BookTab>
+        <BookTab
           to={`/books/${bookId}/export`}
           icon={<Download className="h-4 w-4" />}
           disabled={!isComplete}
@@ -105,7 +110,7 @@ function BookTab({
   if (disabled) {
     return (
       <span
-        className="flex items-center gap-1.5 px-3 py-2 text-sm text-muted-foreground/50"
+        className="flex shrink-0 items-center gap-1.5 whitespace-nowrap px-3 py-2 text-sm text-muted-foreground/50"
         title="等待提取完成"
         aria-disabled="true"
       >

@@ -1,14 +1,13 @@
 import { useCallback, useMemo, useState } from 'react';
-import { useParams, useSearchParams, Link } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
-import { CheckCheck, Loader2, Search, Archive } from 'lucide-react';
+import { CheckCheck, Loader2, Search } from 'lucide-react';
 import { useEntities, useUpdateEntity, useBatchUpdateStatus } from '@/api/entities';
 import { matchArtifacts, useExtractionArtifacts } from '@/api/artifacts';
 import { EntityListPanel } from '@/components/review/EntityListPanel';
 import { EntityDetailPanel } from '@/components/review/EntityDetailPanel';
 import { CharacterMergeCandidates } from '@/components/review/CharacterMergeCandidates';
 import { WorldviewSynthesisPanel } from '@/components/review/WorldviewSynthesisPanel';
-import { TierLegend } from '@/components/StatusBadge';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { parseAliases } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -32,24 +31,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import type { AnyEntity, EntityStatus, EntityType, Tier } from '@/types';
+import type { AnyEntity, EntityStatus, EntityType } from '@/types';
 
 const STATUS_OPTIONS: (EntityStatus | 'ALL')[] = ['ALL', 'PENDING', 'APPROVED', 'REJECTED'];
-const TIER_OPTIONS: (Tier | 'ALL')[] = ['ALL', 'core', 'supporting', 'candidate', 'archived'];
 
 const STATUS_LABEL: Record<EntityStatus | 'ALL', string> = {
   ALL: '全部状态',
   PENDING: '待审核',
   APPROVED: '已通过',
   REJECTED: '已拒绝',
-};
-
-const TIER_LABEL: Record<Tier | 'ALL', string> = {
-  ALL: '全部层级',
-  core: '核心',
-  supporting: '支撑',
-  candidate: '候选',
-  archived: '归档',
 };
 
 // 道具大类筛选项（仅道具 Tab 展示）
@@ -72,11 +62,14 @@ const TITLE: Record<EntityType, string> = {
   worldview: '世界观与体系审核',
 };
 
-type SortKey = 'confidence' | 'mentions' | 'firstChapter' | 'name';
+// 默认按提及次数排序：置信度衡量“抽取结果是否可信”，
+// 由模型判断与提及次数、覆盖章节、角色对话次数共同校准；
+// 它不等于叙事重要性，因此列表优先使用提及次数。
+type SortKey = 'mentions' | 'confidence' | 'firstChapter' | 'name';
 
 const SORT_LABEL: Record<SortKey, string> = {
-  confidence: '按置信度',
   mentions: '按提及次数',
+  confidence: '按置信度',
   firstChapter: '按首现章节',
   name: '按名称',
 };
@@ -84,11 +77,11 @@ const SORT_LABEL: Record<SortKey, string> = {
 function sortEntities(list: AnyEntity[], sort: SortKey): AnyEntity[] {
   const sorted = [...list];
   switch (sort) {
-    case 'confidence':
-      sorted.sort((a, b) => b.confidence - a.confidence);
-      break;
     case 'mentions':
-      sorted.sort((a, b) => b.mentionCount - a.mentionCount);
+      sorted.sort((a, b) => b.mentionCount - a.mentionCount || b.confidence - a.confidence);
+      break;
+    case 'confidence':
+      sorted.sort((a, b) => b.confidence - a.confidence || b.mentionCount - a.mentionCount);
       break;
     case 'firstChapter':
       sorted.sort((a, b) => (a.firstChapter ?? 1e9) - (b.firstChapter ?? 1e9));
@@ -108,16 +101,14 @@ export function EntityReviewPage({ type }: Props) {
   const { bookId = '' } = useParams();
   const [sp, setSp] = useSearchParams();
   const [search, setSearch] = useState('');
-  const [sort, setSort] = useState<SortKey>('confidence');
+  const [sort, setSort] = useState<SortKey>('mentions');
 
   const status = (sp.get('status') as EntityStatus | null) ?? undefined;
-  const tier = (sp.get('tier') as Tier | null) ?? undefined;
   const category = sp.get('category') ?? undefined;
   const selectedId = sp.get('sel') ?? undefined;
 
   const query = useEntities(type, bookId, {
     status,
-    tier: type === 'location' || type === 'item' ? tier : undefined,
     category: type === 'item' ? category : undefined,
   });
   const update = useUpdateEntity(type, bookId);
@@ -160,22 +151,6 @@ export function EntityReviewPage({ type }: Props) {
           const next = new URLSearchParams(prev);
           if (v === 'ALL') next.delete('status');
           else next.set('status', v);
-          next.delete('sel');
-          return next;
-        },
-        { replace: true },
-      );
-    },
-    [setSp],
-  );
-
-  const setTier = useCallback(
-    (v: string) => {
-      setSp(
-        (prev) => {
-          const next = new URLSearchParams(prev);
-          if (v === 'ALL') next.delete('tier');
-          else next.set('tier', v);
           next.delete('sel');
           return next;
         },
@@ -272,14 +247,6 @@ export function EntityReviewPage({ type }: Props) {
             {entities.length} 条 · J/K 移动 · A 通过 · R 拒绝
           </p>
         </div>
-        {/* 低置信度库不占同级 Tab，从各审核页内进入 */}
-        <Link
-          to={`/books/${bookId}/low-confidence`}
-          className="flex items-center gap-1 text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
-        >
-          <Archive className="h-3.5 w-3.5" />
-          低置信度库
-        </Link>
         <div className="flex flex-wrap items-center gap-2">
           <div className="relative">
             <Search className="absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
@@ -315,20 +282,6 @@ export function EntityReviewPage({ type }: Props) {
               ))}
             </SelectContent>
           </Select>
-          {(type === 'location' || type === 'item') && (
-            <Select value={tier ?? 'ALL'} onValueChange={setTier}>
-              <SelectTrigger className="w-28" aria-label="层级筛选">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {TIER_OPTIONS.map((t) => (
-                  <SelectItem key={t} value={t}>
-                    {TIER_LABEL[t]}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
           {type === 'item' && (
             <Select value={category ?? 'ALL'} onValueChange={setCategory}>
               <SelectTrigger className="w-32" aria-label="道具大类筛选">
@@ -346,10 +299,6 @@ export function EntityReviewPage({ type }: Props) {
           <BatchApproveButton type={type} bookId={bookId} pending={pendingInView} />
         </div>
       </div>
-
-      {(type === 'location' || type === 'item') && (
-        <TierLegend className="rounded-lg border bg-muted/30 px-3 py-2" />
-      )}
 
       {type === 'worldview' ? (
         <WorldviewSynthesisPanel bookId={bookId} />
