@@ -203,11 +203,16 @@ export async function charactersRoutes(fastify: FastifyInstance) {
       const { id } = request.params as { id: string };
 
       const body = characterUpdateSchema.parse(request.body);
+      const { expectedVersion } = (request.body ?? {}) as { expectedVersion?: number };
 
       const ownerId = await resolveOwnerId(request);
       const character = ownerId ? await CharacterRepository.findOwnedById(id, ownerId) : null;
       if (!character) {
         return sendBookNotFound(reply);
+      }
+      // 乐观锁（实施包 E2）：调用方版本与当前不一致时拒绝，要求刷新后重试
+      if (typeof expectedVersion === 'number' && (character.version ?? 1) !== expectedVersion) {
+        return reply.status(409).send({ error: '该实体已被其他操作修改，请刷新后重试' });
       }
 
       // Record review action (semantically distinct from character status)

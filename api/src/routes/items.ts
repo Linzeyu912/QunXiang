@@ -90,12 +90,18 @@ export async function itemRoutes(fastify: FastifyInstance) {
   fastify.patch('/:id', async (request, reply) => {
     try {
       const { id } = request.params as { id: string };
-      const body = itemUpdateSchema.parse(request.body);
+      const rawBody = (request.body ?? {}) as Record<string, unknown>;
+      const body = itemUpdateSchema.parse(rawBody);
+      const expectedVersion = typeof rawBody.expectedVersion === 'number' ? rawBody.expectedVersion : undefined;
 
       const ownerId = await resolveOwnerId(request);
       const item = ownerId ? await ItemRepository.findOwnedById(id, ownerId) : null;
       if (!item) {
         return sendBookNotFound(reply);
+      }
+      // 乐观锁（实施包 E2）：版本冲突返回 409
+      if (expectedVersion !== undefined && (item.version ?? 1) !== expectedVersion) {
+        return reply.status(409).send({ error: '该实体已被其他操作修改，请刷新后重试' });
       }
 
       const updated = await ItemRepository.updateOwned(id, ownerId!, body);

@@ -12,10 +12,11 @@ import type { AnyEntity, EntityType } from '@/types';
 /** 低置信度库：置信度低于阈值的待审核实体只保留名字在此，防止遗漏；
  *  不参与补写管线。确认为真实实体可「转为正式」，误提取可「移除」。 */
 
-const KIND_LABEL: Record<Exclude<EntityType, 'worldview'>, string> = {
+const KIND_LABEL: Record<EntityType, string> = {
   character: '角色',
   location: '场景',
   item: '道具',
+  worldview: '世界观',
 };
 
 function LowConfidenceGroup({
@@ -24,7 +25,7 @@ function LowConfidenceGroup({
   entities,
   loading,
 }: {
-  type: Exclude<EntityType, 'worldview'>;
+  type: EntityType;
   bookId: string;
   entities: AnyEntity[];
   loading: boolean;
@@ -129,9 +130,11 @@ export function LowConfidencePage() {
   const charactersQ = useEntities('character', bookId, { reviewBucket: 'LOW_CONFIDENCE' });
   const locationsQ = useEntities('location', bookId, { reviewBucket: 'LOW_CONFIDENCE' });
   const itemsQ = useEntities('item', bookId, { reviewBucket: 'LOW_CONFIDENCE' });
+  const worldviewsQ = useEntities('worldview', bookId, { reviewBucket: 'LOW_CONFIDENCE' });
 
   const total =
-    (charactersQ.data?.length ?? 0) + (locationsQ.data?.length ?? 0) + (itemsQ.data?.length ?? 0);
+    (charactersQ.data?.length ?? 0) + (locationsQ.data?.length ?? 0) + (itemsQ.data?.length ?? 0)
+    + (worldviewsQ.data?.length ?? 0);
 
   return (
     <div className="space-y-4">
@@ -146,7 +149,7 @@ export function LowConfidencePage() {
         </p>
       </div>
 
-      {!charactersQ.isLoading && !locationsQ.isLoading && !itemsQ.isLoading && total === 0 && (
+      {!charactersQ.isLoading && !locationsQ.isLoading && !itemsQ.isLoading && !worldviewsQ.isLoading && total === 0 && (
         <Card className="p-10 text-center text-sm text-muted-foreground">
           当前没有低置信度实体
         </Card>
@@ -169,6 +172,12 @@ export function LowConfidencePage() {
         bookId={bookId}
         entities={itemsQ.data ?? []}
         loading={itemsQ.isLoading}
+      />
+      <LowConfidenceGroup
+        type="worldview"
+        bookId={bookId}
+        entities={worldviewsQ.data ?? []}
+        loading={worldviewsQ.isLoading}
       />
     </div>
   );

@@ -130,6 +130,17 @@ export interface WorldviewEntity extends EntityBase {
 
 export type AnyEntity = Character | LocationEntity | ItemEntity | WorldviewEntity;
 
+/** 实体公共审核字段（phase10）：所有实体类型都可能携带。 */
+export interface EntityAuditFields {
+  stableKey?: string;
+  reviewSource?: 'AI' | 'IMPORTED' | 'USER';
+  lockedFields?: string[];
+  version?: number;
+  /** 最新一轮提取未再出现该实体（人工审核过的实体保留时的风险提示） */
+  missingFromLatestRun?: boolean;
+  archivedAt?: string | null;
+}
+
 /** 世界观体系梳理结果。 */
 export interface WorldviewSynthesis {
   overview: string | null;

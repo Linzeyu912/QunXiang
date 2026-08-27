@@ -1,6 +1,6 @@
 import { memo, useEffect, useMemo, useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, TriangleAlert } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { EntityStatusBadge, TierBadge } from '@/components/StatusBadge';
 import { Badge } from '@/components/ui/badge';
@@ -94,6 +94,12 @@ const EntityRow = memo(function EntityRow({
         {aliases.length > 0 ? `别名: ${aliases.join('/')}` : '无别名'} · 置信度{' '}
         {(entity.confidence * 100).toFixed(0)}%
       </p>
+      {(entity as { missingFromLatestRun?: boolean }).missingFromLatestRun && (
+        <p className="mt-0.5 flex items-center gap-1 text-[11px] text-amber-600">
+          <TriangleAlert className="h-3 w-3" />
+          最新一轮提取未再出现该实体，请复核是否仍然有效
+        </p>
+      )}
     </button>
   );
 });

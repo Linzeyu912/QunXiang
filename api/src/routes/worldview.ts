@@ -122,10 +122,16 @@ export async function worldviewRoutes(fastify: FastifyInstance) {
   fastify.patch('/:id', async (request, reply) => {
     try {
       const { id } = request.params as { id: string };
-      const body = worldviewUpdateSchema.parse(request.body);
+      const rawBody = (request.body ?? {}) as Record<string, unknown>;
+      const body = worldviewUpdateSchema.parse(rawBody);
+      const expectedVersion = typeof rawBody.expectedVersion === 'number' ? rawBody.expectedVersion : undefined;
       const ownerId = await resolveOwnerId(request);
       const worldview = ownerId ? await WorldviewRepository.findOwnedById(id, ownerId) : null;
       if (!worldview) return sendBookNotFound(reply);
+      // 乐观锁（实施包 E2）：版本冲突返回 409
+      if (expectedVersion !== undefined && (worldview.version ?? 1) !== expectedVersion) {
+        return reply.status(409).send({ error: '该实体已被其他操作修改，请刷新后重试' });
+      }
 
       const updated = await WorldviewRepository.updateOwned(id, ownerId!, body);
       if (!updated) return sendBookNotFound(reply);
