@@ -1,11 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import {
-  BookRepository,
-  UserRepository,
-  getSharedObjectStore,
-  getSharedAssetSourceResolver,
-  isTransientDatabaseBusyError,
-} from '@qunxiang/storage';
+import { BookRepository, UserRepository, getSharedObjectStore, getSharedAssetSourceResolver, isTransientDatabaseBusyError, prisma } from '@qunxiang/storage';
 import { parseTxt, decodeText } from '@qunxiang/import';
 import { rm } from 'fs/promises';
 import { join } from 'path';
@@ -62,8 +56,13 @@ export async function booksRoutes(fastify: FastifyInstance) {
         userId,
         sourceObjectKey: stored.objectKey,
       });
+      // 上传即确认初始版本（实施包 C1）；此后噪声覆盖变化会使版本 +1 并要求重新确认
+      const confirmed = await prisma.book.update({
+        where: { id: book.id },
+        data: { preprocessConfirmedRevision: 0 },
+      });
 
-      return { book };
+      return { book: confirmed };
     } catch (err) {
       request.log.error(err);
       const message = err instanceof Error ? err.message : String(err);
@@ -82,6 +81,22 @@ export async function booksRoutes(fastify: FastifyInstance) {
         error: hasChinese ? message : '上传失败，请查看服务端日志',
       });
     }
+  });
+
+  // 确认当前原文版本（实施包 C1）：确认后才能启动提取
+  fastify.post('/:id/preprocess/confirm', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const ownerId = await resolveOwnerId(request);
+    const book = ownerId ? await BookRepository.findOwnedById(id, ownerId) : null;
+    if (!book) return sendBookNotFound(reply);
+    if (book.preprocessConfirmedRevision === book.sourceRevision) {
+      return { book, alreadyConfirmed: true };
+    }
+    const confirmed = await prisma.book.update({
+      where: { id },
+      data: { preprocessConfirmedRevision: book.sourceRevision ?? 0 },
+    });
+    return { book: confirmed, alreadyConfirmed: false };
   });
 
   // 列出书籍

@@ -11,6 +11,7 @@ import {
   type ArtifactPatch,
 } from '../services/artifacts.service.js';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
+import { prisma } from '@qunxiang/storage';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
 
@@ -131,7 +132,12 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     }
     try {
       if (!(await restoreNoiseLine(id, ownerId!, lineNum))) return sendBookNotFound(reply);
-      return { ok: true };
+      // 噪声覆盖变化：原文版本 +1，需重新确认后才能提取（实施包 C4）
+      await prisma.book.update({
+        where: { id },
+        data: { sourceRevision: { increment: 1 }, preprocessConfirmedRevision: null },
+      });
+      return { ok: true, needsReconfirm: true };
     } catch (err) {
       return sendServerError(reply, err, request.log);
     }
@@ -150,7 +156,11 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     }
     try {
       if (!(await unrestoreNoiseLine(id, ownerId!, lineNum))) return sendBookNotFound(reply);
-      return { ok: true };
+      await prisma.book.update({
+        where: { id },
+        data: { sourceRevision: { increment: 1 }, preprocessConfirmedRevision: null },
+      });
+      return { ok: true, needsReconfirm: true };
     } catch (err) {
       return sendServerError(reply, err, request.log);
     }

@@ -5,8 +5,16 @@ export interface Book {
   filePath: string;
   fileSize: number;
   mimeType: string;
-  status: 'UPLOADED' | 'EXTRACTING' | 'EXTRACTED' | 'FAILED';
+  status: 'UPLOADED' | 'EXTRACTING' | 'EXTRACTED' | 'FAILED' | 'SEED_PREPARING';
   userId: string;
+  /** 来源：UPLOAD | SEED | SHARED_COPY */
+  sourceType?: 'UPLOAD' | 'SEED' | 'SHARED_COPY';
+  /** 原文/噪声覆盖版本号，变化时 +1 */
+  sourceRevision?: number;
+  /** 等于 sourceRevision 才允许启动提取 */
+  preprocessConfirmedRevision?: number | null;
+  currentExtractionSessionId?: string | null;
+  onboardingFeatured?: boolean;
   sourceObjectKey?: string | null;
   currentSnapshotId?: string | null;
   createdAt: Date;

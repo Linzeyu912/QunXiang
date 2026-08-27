@@ -106,6 +106,10 @@ export async function startExtraction(bookId: string, ownerId: string) {
   // 因此运行期出现的 running/running 即视为真实进行中。）
   const book = await BookRepository.findOwnedById(bookId, ownerId);
   if (!book) throw new Error('书籍不存在或无权访问');
+  // 版本确认门禁（实施包 C1）：原文或噪声覆盖变化后必须先确认当前版本
+  if (book.preprocessConfirmedRevision !== book.sourceRevision) {
+    throw new ConflictError('原文或噪声设置已变更，请先在「章节」页确认当前版本后再提取');
+  }
   const existing = await TaskRepository.findByOwnedBookId(bookId, ownerId);
   if (existing.some((t) => t.status === 'pending' || t.status === 'running')) {
     throw new ConflictError('该书正在提取中，请等待当前运行结束');
