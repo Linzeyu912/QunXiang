@@ -88,3 +88,4 @@ output/
 
 # IDE session files
 .zcode/
+.tmp-*.py
