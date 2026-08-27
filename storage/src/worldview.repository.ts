@@ -1,7 +1,8 @@
 import { prisma } from './prisma.js';
 import type { WorldviewSetting } from '@qunxiang/core';
-import type { PrismaClient } from '@prisma/client';
+import type { Prisma, PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
+import { reviewBucketWhere, type ReviewBucketQuery, type ReviewBucketCounts } from './review-bucket.js';
 
 export interface WorldviewRepository {
   createMany(worldviews: Array<{
@@ -21,6 +22,10 @@ export interface WorldviewRepository {
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<WorldviewSetting[]>;
   findByOwnedBookId(bookId: string, ownerId: string): Promise<WorldviewSetting[]>;
+
+  /** 按审核集合查询（主列表/低置信度库/已拒绝列表），过滤、排序、分页、计数同条件。 */
+  findByReviewBucket(query: ReviewBucketQuery): Promise<{ worldviews: WorldviewSetting[]; total: number; nextCursor: string | null }>;
+  countReviewBuckets(bookId: string, ownerId: string): Promise<ReviewBucketCounts>;
   countByOwnedBookId(bookId: string, ownerId: string): Promise<number>;
   findOwnedById(id: string, ownerId: string): Promise<WorldviewSetting | null>;
   findByOwnedStatus(bookId: string, ownerId: string, status: string): Promise<WorldviewSetting[]>;
@@ -103,6 +108,39 @@ export function createWorldviewRepository(db: PrismaClient): WorldviewRepository
       return rows.map((row) => parseWorldview(row as unknown as Record<string, unknown>));
     },
 
+
+    async findByReviewBucket(query: ReviewBucketQuery): Promise<{ worldviews: WorldviewSetting[]; total: number; nextCursor: string | null }> {
+      const bucketWhere = reviewBucketWhere(query.bucket) as Prisma.WorldviewSettingWhereInput;
+      const where: Prisma.WorldviewSettingWhereInput = {
+        bookId: query.bookId,
+        book: { userId: query.ownerId },
+        ...bucketWhere,
+        ...(query.status ? { status: query.status } : {}),
+        ...(query.category ? { category: query.category } : {}),
+      };
+      const [total, rows] = await Promise.all([
+        db.worldviewSetting.count({ where }),
+        db.worldviewSetting.findMany({
+          where,
+          orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+          take: query.limit ?? 200,
+          ...(query.cursor ? { cursor: { id: query.cursor }, skip: 1 } : {}),
+        }),
+      ]);
+      const entities = rows.map((r) => parseWorldview(r as unknown as Record<string, unknown>));
+      const nextCursor = query.limit && entities.length === query.limit ? entities[entities.length - 1].id : null;
+      return { worldviews: entities, total, nextCursor };
+    },
+
+    async countReviewBuckets(bookId: string, ownerId: string): Promise<ReviewBucketCounts> {
+      const scope = { bookId, book: { userId: ownerId } } as Prisma.WorldviewSettingWhereInput;
+      const [main, lowConfidence, rejected] = await Promise.all([
+        db.worldviewSetting.count({ where: { ...scope, ...(reviewBucketWhere('MAIN') as Prisma.WorldviewSettingWhereInput) } }),
+        db.worldviewSetting.count({ where: { ...scope, ...(reviewBucketWhere('LOW_CONFIDENCE') as Prisma.WorldviewSettingWhereInput) } }),
+        db.worldviewSetting.count({ where: { ...scope, ...(reviewBucketWhere('REJECTED') as Prisma.WorldviewSettingWhereInput) } }),
+      ]);
+      return { MAIN: main, LOW_CONFIDENCE: lowConfidence, REJECTED: rejected };
+    },
     async updateOwned(id, ownerId, data) {
       const existing = await db.worldviewSetting.findFirst({ where: { id, book: { userId: ownerId } } });
       if (!existing) return null;

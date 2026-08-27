@@ -147,4 +147,47 @@ describe('sanitizeCharacterAliases', () => {
     expect(aliases.length).toBeLessThanOrEqual(12);
     expect(aliases).toContain('炎儿');
   });
+
+  it('keeps foreign aliases with spaces (Jean Grey)', () => {
+    const aliases = sanitizeCharacterAliases('Jean Grey', ['Jean', 'Grey'], {
+      sourceText: 'Jean Grey 出手。Jean 皱眉。',
+    });
+    expect(aliases).toContain('Jean');
+  });
+
+  it('keeps foreign aliases with hyphens (Jean-Paul)', () => {
+    const aliases = sanitizeCharacterAliases('Jean-Paul', ['Jean', 'Paul'], {
+      sourceText: 'Jean-Paul 说。Paul 点头。',
+    });
+    expect(aliases).toContain('Jean');
+    expect(aliases).toContain('Paul');
+  });
+
+  it('keeps foreign aliases with middots (A·B)', () => {
+    const aliases = sanitizeCharacterAliases('A·B', ['AB'], {
+      sourceText: 'A·B 是代号。AB 出现。',
+    });
+    expect(aliases).toContain('AB');
+  });
+
+  it("keeps foreign aliases with apostrophes (O'Brien)", () => {
+    const aliases = sanitizeCharacterAliases("O'Brien", ['Brien'], {
+      sourceText: "O'Brien 说。Brien 是简称。",
+    });
+    expect(aliases).toContain('Brien');
+  });
+
+  it('keeps a full foreign name alias that contains a space', () => {
+    const aliases = sanitizeCharacterAliases('Jean', ['Jean Grey'], {
+      sourceText: 'Jean Grey 是全名。Jean 简称。',
+    });
+    expect(aliases).toContain('Jean Grey');
+  });
+
+  it('drops foreign narrative fragments mixing digits or stray symbols', () => {
+    const aliases = sanitizeCharacterAliases('Jean', ['Jean 123', 'Jean!!!'], {
+      sourceText: 'Jean 123 出现。Jean!!! 喊道。',
+    });
+    expect(aliases).toEqual([]);
+  });
 });

@@ -58,6 +58,18 @@ export interface Character {
   // ageStages 为跨越的全部阶段，primaryAgeStage 为当前主阶段。
   ageStages?: string[];
   primaryAgeStage?: string;
+  // —— 审核与人工保护（phase10）——
+  /** 实体稳定键：跨提取运行保持不变 */
+  stableKey?: string;
+  /** 审核来源：AI | IMPORTED | USER */
+  reviewSource?: 'AI' | 'IMPORTED' | 'USER';
+  /** 用户编辑过、重新提取不得覆盖的字段名 */
+  lockedFields?: string[];
+  /** 乐观版本号，每次审核/编辑 +1 */
+  version?: number;
+  missingFromLatestRun?: boolean;
+  archivedAt?: Date | null;
+  lastSeenExtractionSessionId?: string | null;
 }
 
 export interface Location {
@@ -85,6 +97,18 @@ export interface Location {
 
   createdAt: Date;
   updatedAt?: Date;
+  // —— 审核与人工保护（phase10）——
+  /** 实体稳定键：跨提取运行保持不变 */
+  stableKey?: string;
+  /** 审核来源：AI | IMPORTED | USER */
+  reviewSource?: 'AI' | 'IMPORTED' | 'USER';
+  /** 用户编辑过、重新提取不得覆盖的字段名 */
+  lockedFields?: string[];
+  /** 乐观版本号，每次审核/编辑 +1 */
+  version?: number;
+  missingFromLatestRun?: boolean;
+  archivedAt?: Date | null;
+  lastSeenExtractionSessionId?: string | null;
 }
 
 export interface Item {
@@ -117,6 +141,18 @@ export interface Item {
 
   createdAt: Date;
   updatedAt?: Date;
+  // —— 审核与人工保护（phase10）——
+  /** 实体稳定键：跨提取运行保持不变 */
+  stableKey?: string;
+  /** 审核来源：AI | IMPORTED | USER */
+  reviewSource?: 'AI' | 'IMPORTED' | 'USER';
+  /** 用户编辑过、重新提取不得覆盖的字段名 */
+  lockedFields?: string[];
+  /** 乐观版本号，每次审核/编辑 +1 */
+  version?: number;
+  missingFromLatestRun?: boolean;
+  archivedAt?: Date | null;
+  lastSeenExtractionSessionId?: string | null;
 }
 
 /** 道具大类（提取时由 LLM 判定，可在审核时修改）。 */
@@ -144,6 +180,18 @@ export interface WorldviewSetting {
   chapterAppearances: number[];
   createdAt: Date;
   updatedAt?: Date;
+  // —— 审核与人工保护（phase10）——
+  /** 实体稳定键：跨提取运行保持不变 */
+  stableKey?: string;
+  /** 审核来源：AI | IMPORTED | USER */
+  reviewSource?: 'AI' | 'IMPORTED' | 'USER';
+  /** 用户编辑过、重新提取不得覆盖的字段名 */
+  lockedFields?: string[];
+  /** 乐观版本号，每次审核/编辑 +1 */
+  version?: number;
+  missingFromLatestRun?: boolean;
+  archivedAt?: Date | null;
+  lastSeenExtractionSessionId?: string | null;
 }
 
 export interface User {
@@ -240,7 +288,7 @@ export interface PipelineConfig {
  */
 export const LOW_CONFIDENCE_THRESHOLD = 0.6;
 
-/** 判断实体是否属于低置信度库（低置信度且尚未人工通过）。 */
+/** 判断实体是否属于低置信度库（低置信度且仍处于待审核 PENDING 状态）。 */
 export function isLowConfidenceEntity(entity: { confidence: number; status: string }): boolean {
-  return entity.confidence < LOW_CONFIDENCE_THRESHOLD && entity.status !== 'APPROVED';
+  return entity.confidence < LOW_CONFIDENCE_THRESHOLD && entity.status === 'PENDING';
 }

@@ -1,15 +1,17 @@
 import type { FastifyInstance, FastifyRequest } from 'fastify';
-import { LocationRepository, prisma } from '@qunxiang/storage';
+import { LocationRepository, prisma, parseReviewBucket, EntityReviewRepository } from '@qunxiang/storage';
 import { locationUpdateSchema } from '@qunxiang/schemas';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
-import { isLowConfidenceEntity } from '@qunxiang/core';
+import { isEnrichmentAvailable, requestEntityEnrichment } from '../services/entity-enrichment.service.js';
 
 export async function locationRoutes(fastify: FastifyInstance) {
-  // Get locations (optionally filtered by status or tier)
+  // Get locations (optionally filtered by review bucket / status / tier)
   fastify.get('/', async (request, reply) => {
-    const { bookId, status, tier, confidence } = request.query as { bookId?: string; status?: string; tier?: string; confidence?: string };
+    const { bookId, status, tier, reviewBucket, confidence, cursor, limit } = request.query as {
+      bookId?: string; status?: string; tier?: string; reviewBucket?: string; confidence?: string; cursor?: string; limit?: string;
+    };
 
     if (!bookId) {
       return reply.status(400).send({ error: '缺少 bookId 参数' });
@@ -23,21 +25,19 @@ export async function locationRoutes(fastify: FastifyInstance) {
       return sendBookNotFound(reply);
     }
 
-    let locations;
-    if (tier) {
-      locations = await LocationRepository.findByOwnedTier(bookId, ownerId!, tier);
-    } else if (status) {
-      locations = await LocationRepository.findByOwnedStatus(bookId, ownerId!, status);
-    } else {
-      locations = await LocationRepository.findByOwnedBookId(bookId, ownerId!);
+    // reviewBucket=MAIN|LOW_CONFIDENCE|REJECTED；confidence=low 保留为兼容别名。
+    const bucket = parseReviewBucket({ reviewBucket, confidence });
+    if (!bucket) {
+      return reply.status(400).send({ error: 'reviewBucket 必须为 MAIN、LOW_CONFIDENCE 或 REJECTED' });
     }
 
-    // 低置信度库：confidence=low 只取低置信度待审核实体；默认列表排除低置信度（APPROVED 不受影响）。
-    locations = confidence === 'low'
-      ? locations.filter((c) => isLowConfidenceEntity(c))
-      : locations.filter((c) => !isLowConfidenceEntity(c));
+    const parsedLimit = limit ? Math.min(Math.max(Number(limit) || 0, 1), 500) : undefined;
+    const [{ locations, total, nextCursor }, counts] = await Promise.all([
+      LocationRepository.findByReviewBucket({ bookId, ownerId: ownerId!, bucket, status, tier, cursor, limit: parsedLimit }),
+      LocationRepository.countReviewBuckets(bookId, ownerId!),
+    ]);
 
-    return { locations };
+    return { locations, total, nextCursor, counts };
   });
 
   // 批量改状态（审核通过/拒绝）。
@@ -94,9 +94,55 @@ export async function locationRoutes(fastify: FastifyInstance) {
 
       const updated = await LocationRepository.updateOwned(id, ownerId!, body);
       if (!updated) return sendBookNotFound(reply);
-      return { location: updated };
+
+      // 人工审核动作：标记 USER 来源、版本 +1，并写统一审核历史
+      const isReviewAction = body.status === 'APPROVED' || body.status === 'REJECTED';
+      if (isReviewAction) {
+        await prisma.location.updateMany({
+          where: { id },
+          data: { reviewSource: 'USER', version: { increment: 1 } },
+        });
+        await EntityReviewRepository.create({
+          bookId: location.bookId,
+          entityType: 'location',
+          entityId: id,
+          entityName: location.name,
+          actorId: request.user.userId,
+          actorType: 'USER',
+          action: body.status === 'APPROVED' ? 'APPROVE' : 'REJECT',
+          beforeValue: { status: location.status },
+          afterValue: { status: body.status },
+          changedFields: ['status'],
+        });
+      }
+      const enrichmentAvailable = body.status === 'APPROVED' && isEnrichmentAvailable(updated);
+      return { location: updated, enrichmentAvailable };
     } catch (err) {
       return sendServerError(reply, err, request.log);
     }
   });
+  // 人工通过后的独立补写（实施包 A3）：入队后台任务，失败不影响已通过的实体
+  fastify.post('/:id/enrichment', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const ownerId = await resolveOwnerId(request);
+    if (!ownerId) return reply.status(401).send({ error: '请先登录' });
+    const entity = await LocationRepository.findOwnedById(id, ownerId);
+    if (!entity) return sendBookNotFound(reply);
+    if (entity.status !== 'APPROVED') {
+      return reply.status(409).send({ error: '仅人工通过的实体可以补写' });
+    }
+    try {
+      const jobId = await requestEntityEnrichment({
+        bookId: entity.bookId,
+        ownerId,
+        entityType: 'location',
+        entityId: id,
+        actorId: request.user.userId,
+      });
+      return { queued: true, jobId };
+    } catch (err) {
+      return sendServerError(reply, err, request.log);
+    }
+  });
+
 }

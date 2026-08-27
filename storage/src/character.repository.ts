@@ -2,6 +2,8 @@ import { prisma } from './prisma.js';
 import type { Character, Outfit } from '@qunxiang/core';
 import type { Prisma, PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
+import { reviewBucketWhere, type ReviewBucketQuery } from './review-bucket.js';
+import type { ReviewBucketCounts } from './review-bucket.js';
 
 export interface CharacterRepository {
   create(data: {
@@ -46,6 +48,9 @@ export interface CharacterRepository {
   findOwnedById(id: string, ownerId: string): Promise<Character | null>;
   findByStatus(bookId: string, status: string): Promise<Character[]>;
   findByOwnedStatus(bookId: string, ownerId: string, status: string): Promise<Character[]>;
+  /** 按审核集合查询（主列表/低置信度库/已拒绝列表），过滤、排序、分页、计数同条件。 */
+  findByReviewBucket(query: ReviewBucketQuery): Promise<{ characters: Character[]; total: number; nextCursor: string | null }>;
+  countReviewBuckets(bookId: string, ownerId: string): Promise<ReviewBucketCounts>;
   update(id: string, data: Partial<Character>): Promise<Character>;
   updateOwned(id: string, ownerId: string, data: Partial<Character>): Promise<Character | null>;
   updateStatus(id: string, status: string): Promise<Character>;
@@ -223,6 +228,40 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
         orderBy: { createdAt: 'asc' },
       });
       return chars.map(c => parseCharacter(c as unknown as Record<string, unknown>));
+    },
+
+    async findByReviewBucket(query: ReviewBucketQuery): Promise<{ characters: Character[]; total: number; nextCursor: string | null }> {
+      const bucketWhere = reviewBucketWhere(query.bucket) as Prisma.CharacterWhereInput;
+      const where: Prisma.CharacterWhereInput = {
+        bookId: query.bookId,
+        book: { userId: query.ownerId },
+        ...bucketWhere,
+        ...(query.status ? { status: query.status } : {}),
+      };
+      const [total, chars] = await Promise.all([
+        db.character.count({ where }),
+        db.character.findMany({
+          where,
+          orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+          take: query.limit ?? 200,
+          ...(query.cursor ? { cursor: { id: query.cursor }, skip: 1 } : {}),
+        }),
+      ]);
+      const characters = chars.map(c => parseCharacter(c as unknown as Record<string, unknown>));
+      const nextCursor = query.limit && characters.length === query.limit
+        ? characters[characters.length - 1].id
+        : null;
+      return { characters, total, nextCursor };
+    },
+
+    async countReviewBuckets(bookId: string, ownerId: string): Promise<ReviewBucketCounts> {
+      const scope = { bookId, book: { userId: ownerId } } as Prisma.CharacterWhereInput;
+      const [main, lowConfidence, rejected] = await Promise.all([
+        db.character.count({ where: { ...scope, ...(reviewBucketWhere('MAIN') as Prisma.CharacterWhereInput) } }),
+        db.character.count({ where: { ...scope, ...(reviewBucketWhere('LOW_CONFIDENCE') as Prisma.CharacterWhereInput) } }),
+        db.character.count({ where: { ...scope, ...(reviewBucketWhere('REJECTED') as Prisma.CharacterWhereInput) } }),
+      ]);
+      return { MAIN: main, LOW_CONFIDENCE: lowConfidence, REJECTED: rejected };
     },
 
     async update(id: string, data: Partial<Character>): Promise<Character> {

@@ -1,6 +1,9 @@
 import type { FastifyInstance } from 'fastify';
 import {
   WorldviewRepository,
+  parseReviewBucket,
+  EntityReviewRepository,
+  prisma,
   getSharedAssetSourceResolver,
   persistBookArtifact,
   readBookArtifactText,
@@ -10,6 +13,7 @@ import { getDefaultProvider } from '@qunxiang/llm';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
+import { isEnrichmentAvailable, requestEntityEnrichment } from '../services/entity-enrichment.service.js';
 
 const VALID_CATEGORIES = new Set(['worldview', 'power-system', 'realm', 'faction', 'rule']);
 
@@ -61,24 +65,32 @@ const WORLDVIEW_SYNTHESIS_SYSTEM_PROMPT = `你是一位中文小说世界观分�
 
 /** 世界观与体系设定路由。 */
 export async function worldviewRoutes(fastify: FastifyInstance) {
-  // 列表（可按状态或类别过滤）
+  // 列表（可按审核集合 / 状态 / 类别过滤）
   fastify.get('/', async (request, reply) => {
-    const { bookId, status, category } = request.query as {
-      bookId?: string;
-      status?: string;
-      category?: string;
+    const { bookId, status, category, reviewBucket, confidence, cursor, limit } = request.query as {
+      bookId?: string; status?: string; category?: string; reviewBucket?: string; confidence?: string; cursor?: string; limit?: string;
     };
     if (!bookId) return reply.status(400).send({ error: '缺少书籍编号' });
 
     const ownerId = await resolveOwnerId(request);
     if (!(await loadOwnedBook(bookId, ownerId))) return sendBookNotFound(reply);
 
-    const worldviews = category && VALID_CATEGORIES.has(category)
-      ? await WorldviewRepository.findByOwnedCategory(bookId, ownerId!, category)
-      : status
-        ? await WorldviewRepository.findByOwnedStatus(bookId, ownerId!, status)
-        : await WorldviewRepository.findByOwnedBookId(bookId, ownerId!);
-    return { worldviews };
+    if (category && !VALID_CATEGORIES.has(category)) {
+      return reply.status(400).send({ error: '类别只允许 worldview、power-system、realm、faction 或 rule' });
+    }
+
+    // reviewBucket=MAIN|LOW_CONFIDENCE|REJECTED；confidence=low 保留为兼容别名。
+    const bucket = parseReviewBucket({ reviewBucket, confidence });
+    if (!bucket) {
+      return reply.status(400).send({ error: 'reviewBucket 必须为 MAIN、LOW_CONFIDENCE 或 REJECTED' });
+    }
+
+    const parsedLimit = limit ? Math.min(Math.max(Number(limit) || 0, 1), 500) : undefined;
+    const [{ worldviews, total, nextCursor }, counts] = await Promise.all([
+      WorldviewRepository.findByReviewBucket({ bookId, ownerId: ownerId!, bucket, status, category, cursor, limit: parsedLimit }),
+      WorldviewRepository.countReviewBuckets(bookId, ownerId!),
+    ]);
+    return { worldviews, total, nextCursor, counts };
   });
 
   // 批量改状态。
@@ -117,11 +129,57 @@ export async function worldviewRoutes(fastify: FastifyInstance) {
 
       const updated = await WorldviewRepository.updateOwned(id, ownerId!, body);
       if (!updated) return sendBookNotFound(reply);
-      return { worldview: updated };
+
+      // 人工审核动作：标记 USER 来源、版本 +1，并写统一审核历史
+      const isReviewAction = body.status === 'APPROVED' || body.status === 'REJECTED';
+      if (isReviewAction) {
+        await prisma.worldviewSetting.updateMany({
+          where: { id },
+          data: { reviewSource: 'USER', version: { increment: 1 } },
+        });
+        await EntityReviewRepository.create({
+          bookId: worldview.bookId,
+          entityType: 'worldview',
+          entityId: id,
+          entityName: worldview.name,
+          actorId: request.user.userId,
+          actorType: 'USER',
+          action: body.status === 'APPROVED' ? 'APPROVE' : 'REJECT',
+          beforeValue: { status: worldview.status },
+          afterValue: { status: body.status },
+          changedFields: ['status'],
+        });
+      }
+      const enrichmentAvailable = body.status === 'APPROVED' && isEnrichmentAvailable(updated);
+      return { worldview: updated, enrichmentAvailable };
     } catch (err) {
       return sendServerError(reply, err, request.log);
     }
   });
+  // 人工通过后的独立补写（实施包 A3）：入队后台任务，失败不影响已通过的实体
+  fastify.post('/:id/enrichment', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const ownerId = await resolveOwnerId(request);
+    if (!ownerId) return reply.status(401).send({ error: '请先登录' });
+    const entity = await WorldviewRepository.findOwnedById(id, ownerId);
+    if (!entity) return sendBookNotFound(reply);
+    if (entity.status !== 'APPROVED') {
+      return reply.status(409).send({ error: '仅人工通过的实体可以补写' });
+    }
+    try {
+      const jobId = await requestEntityEnrichment({
+        bookId: entity.bookId,
+        ownerId,
+        entityType: 'worldview',
+        entityId: id,
+        actorId: request.user.userId,
+      });
+      return { queued: true, jobId };
+    } catch (err) {
+      return sendServerError(reply, err, request.log);
+    }
+  });
+
 
   // 获取已保存的梳理结果。
   fastify.get('/synthesis', async (request, reply) => {

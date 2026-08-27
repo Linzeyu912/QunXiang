@@ -25,7 +25,7 @@ const MAX_IDLE_INTERVAL_MS = 5000;
 const DEFAULT_LEASE_MS = 30_000;
 const HEARTBEAT_INTERVAL_MS = 10_000;
 const DEFAULT_WORKER_ID = 'snapshot-worker-1';
-const SNAPSHOT_JOB_KINDS = ['asset-snapshot', 'snapshot-archive', 'book-copy'] as const;
+const SNAPSHOT_JOB_KINDS = ['asset-snapshot', 'snapshot-archive', 'book-copy', 'entity-enrichment'] as const;
 
 const DOWNLOAD_AUTH_TTL_SECONDS = 600;
 
@@ -185,6 +185,10 @@ async function dispatchSnapshotJob(kind: string, payload: unknown, opts: Snapsho
   }
   if (kind === 'book-copy') {
     return processBookCopyJob((payload as BookCopyJobPayload) ?? ({} as BookCopyJobPayload), opts);
+  }
+  if (kind === 'entity-enrichment') {
+    const { processEntityEnrichmentJob } = await import('./entity-enrichment.service.js');
+    await processEntityEnrichmentJob((payload ?? {}) as Parameters<typeof processEntityEnrichmentJob>[0]);
   }
   throw new NonRetryableJobError(`未知的快照任务类型：${kind}`);
 }

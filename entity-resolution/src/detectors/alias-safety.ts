@@ -758,8 +758,14 @@ export function sanitizeCharacterAliases(
     if (!normalized) continue;
     if (normalizeName(normalized) === normalizeName(characterName)) continue;
     if (seen.has(normalized)) continue;
-    // 收紧：称呼不会包含空白或标点，含这些字符的是叙述片段而非别名
-    if (/[\s，。、；：！？“”‘’《》（）()…·,.:;!?"'\-]/.test(normalized)) continue;
+    // 收紧：中文称呼不会包含空白或标点，含这些字符的是叙述片段而非别名；
+    // 外文称呼（如 Jean Grey、Jean-Paul、O'Brien、A·B）是合法带分隔符名称，需放行。
+    if (/[一-鿿]/.test(normalized)) {
+      if (/[\s，。、；：！？“”‘’《》（）()…·,.:;!?"'\-]/.test(normalized)) continue;
+    } else if (!/^[^\W\d_]+(?:[ '\-·.][^\W\d_]+)*$/u.test(normalized)) {
+      // 非中文且不是「字母（分隔符字母）*」形态的，视为叙述片段
+      continue;
+    }
     // 收紧：超长别名几乎必是描述性片段，丢弃
     if (normalized.length > MAX_ALIAS_LENGTH) continue;
     if (isNarrativeAliasFragment(normalized)) continue;

@@ -1,7 +1,8 @@
 import { prisma } from './prisma.js';
 import type { Item, Owner } from '@qunxiang/core';
-import type { PrismaClient } from '@prisma/client';
+import type { Prisma, PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
+import { reviewBucketWhere, type ReviewBucketQuery, type ReviewBucketCounts } from './review-bucket.js';
 
 export interface ItemRepository {
   create(data: {
@@ -48,6 +49,10 @@ export interface ItemRepository {
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Item[]>;
   findByOwnedBookId(bookId: string, ownerId: string): Promise<Item[]>;
+
+  /** 按审核集合查询（主列表/低置信度库/已拒绝列表），过滤、排序、分页、计数同条件。 */
+  findByReviewBucket(query: ReviewBucketQuery): Promise<{ items: Item[]; total: number; nextCursor: string | null }>;
+  countReviewBuckets(bookId: string, ownerId: string): Promise<ReviewBucketCounts>;
   /** 轻量计数：仅判空/统计用，避免全量拉取实体行。 */
   countByOwnedBookId(bookId: string, ownerId: string): Promise<number>;
   findById(id: string): Promise<Item | null>;
@@ -206,6 +211,40 @@ export function createItemRepository(db: PrismaClient): ItemRepository {
       return db.item.count({ where: { bookId, category, book: { userId: ownerId } } });
     },
 
+
+    async findByReviewBucket(query: ReviewBucketQuery): Promise<{ items: Item[]; total: number; nextCursor: string | null }> {
+      const bucketWhere = reviewBucketWhere(query.bucket) as Prisma.ItemWhereInput;
+      const where: Prisma.ItemWhereInput = {
+        bookId: query.bookId,
+        book: { userId: query.ownerId },
+        ...bucketWhere,
+        ...(query.status ? { status: query.status } : {}),
+        ...(query.tier ? { tier: query.tier } : {}),
+        ...(query.category ? { category: query.category } : {}),
+      };
+      const [total, rows] = await Promise.all([
+        db.item.count({ where }),
+        db.item.findMany({
+          where,
+          orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+          take: query.limit ?? 200,
+          ...(query.cursor ? { cursor: { id: query.cursor }, skip: 1 } : {}),
+        }),
+      ]);
+      const entities = rows.map((r) => parseItem(r as unknown as Record<string, unknown>));
+      const nextCursor = query.limit && entities.length === query.limit ? entities[entities.length - 1].id : null;
+      return { items: entities, total, nextCursor };
+    },
+
+    async countReviewBuckets(bookId: string, ownerId: string): Promise<ReviewBucketCounts> {
+      const scope = { bookId, book: { userId: ownerId } } as Prisma.ItemWhereInput;
+      const [main, lowConfidence, rejected] = await Promise.all([
+        db.item.count({ where: { ...scope, ...(reviewBucketWhere('MAIN') as Prisma.ItemWhereInput) } }),
+        db.item.count({ where: { ...scope, ...(reviewBucketWhere('LOW_CONFIDENCE') as Prisma.ItemWhereInput) } }),
+        db.item.count({ where: { ...scope, ...(reviewBucketWhere('REJECTED') as Prisma.ItemWhereInput) } }),
+      ]);
+      return { MAIN: main, LOW_CONFIDENCE: lowConfidence, REJECTED: rejected };
+    },
     async update(id: string, data: Partial<Item>) {
       const updateData: Record<string, unknown> = { ...data };
       if (data.aliases) {

@@ -1,11 +1,12 @@
 import type { FastifyInstance } from 'fastify';
-import { CharacterRepository, ReviewRepository, prisma } from '@qunxiang/storage';
+import { CharacterRepository, ReviewRepository, prisma, EntityReviewRepository } from '@qunxiang/storage';
 import { characterUpdateSchema } from '@qunxiang/schemas';
 import { loadOwnedBook, resolveOwnerId } from '../lib/authz.js';
 import { sendServerError } from '../lib/send-error.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
-import { isLowConfidenceEntity } from '@qunxiang/core';
-import { findActiveMergeCandidates, judgeMergeCandidates } from '../services/character-merge.service.js';
+import { parseReviewBucket } from '@qunxiang/storage';
+import { findActiveMergeCandidates, judgeMergeCandidates, buildMergePreview } from '../services/character-merge.service.js';
+import { isEnrichmentAvailable, requestEntityEnrichment } from '../services/entity-enrichment.service.js';
 
 export async function charactersRoutes(fastify: FastifyInstance) {
   fastify.get('/merge-candidates', async (request, reply) => {
@@ -13,7 +14,19 @@ export async function charactersRoutes(fastify: FastifyInstance) {
     if (!bookId) return reply.status(400).send({ error: '缺少 bookId 参数' });
     const ownerId = await resolveOwnerId(request);
     if (!(await loadOwnedBook(bookId, ownerId))) return sendBookNotFound(reply);
-    return { candidates: await findActiveMergeCandidates(bookId, ownerId!) };
+    const { candidates, suggestions } = await findActiveMergeCandidates(bookId, ownerId!);
+    return { candidates, suggestions };
+  });
+
+  // 合并字段预览：展示将保留与合并的字段，不执行合并（实施包 A4）
+  fastify.get('/merge-candidates/preview', async (request, reply) => {
+    const { primaryId, secondaryId } = request.query as { primaryId?: string; secondaryId?: string };
+    if (!primaryId || !secondaryId) return reply.status(400).send({ error: '缺少 primaryId 或 secondaryId 参数' });
+    const ownerId = await resolveOwnerId(request);
+    if (!ownerId) return reply.status(401).send({ error: '请先登录' });
+    const preview = await buildMergePreview(primaryId, secondaryId, ownerId);
+    if (!preview) return sendBookNotFound(reply);
+    return { preview };
   });
 
   fastify.post('/merge-candidates/llm-judge', {
@@ -32,17 +45,33 @@ export async function charactersRoutes(fastify: FastifyInstance) {
 
   fastify.post('/merge-candidates/:primaryId/accept', async (request, reply) => {
     const { primaryId } = request.params as { primaryId: string };
-    const { secondaryId } = request.body as { secondaryId?: string };
+    const { secondaryId, expectedVersion } = (request.body ?? {}) as { secondaryId?: string; expectedVersion?: number };
     if (!secondaryId) return reply.status(400).send({ error: 'secondaryId 为必填项' });
     const ownerId = await resolveOwnerId(request);
     const primary = ownerId ? await CharacterRepository.findOwnedById(primaryId, ownerId) : null;
     if (!primary) return sendBookNotFound(reply);
+    // 乐观锁：调用方传入的版本与当前不一致时拒绝，要求刷新后重试
+    if (typeof expectedVersion === 'number' && (primary.version ?? 1) !== expectedVersion) {
+      return reply.status(409).send({ error: '角色已被其他操作修改，请刷新后重试' });
+    }
     const candidates = await findActiveMergeCandidates(primary.bookId, ownerId!);
-    if (!candidates.some((candidate) => candidate.primaryId === primaryId && candidate.secondaryId === secondaryId)) {
+    if (!candidates.candidates.some((candidate) => candidate.primaryId === primaryId && candidate.secondaryId === secondaryId)) {
       return reply.status(409).send({ error: '该角色对不是待审核的疑似重复项' });
     }
     const character = await CharacterRepository.mergeOwned(primaryId, secondaryId, ownerId!, request.user.userId);
     if (!character) return sendBookNotFound(reply);
+    // 人工确认合并写入统一审核历史（模型建议不会落 USER 记录）
+    await EntityReviewRepository.create({
+      bookId: primary.bookId,
+      entityType: 'character',
+      entityId: primaryId,
+      entityName: primary.name,
+      actorId: request.user.userId,
+      actorType: 'USER',
+      action: 'MERGE_ACCEPTED',
+      afterValue: { primaryId, secondaryId },
+      changedFields: [],
+    });
     return { character };
   });
 
@@ -54,18 +83,31 @@ export async function charactersRoutes(fastify: FastifyInstance) {
     const [primary, secondary] = ownerId ? await Promise.all([CharacterRepository.findOwnedById(primaryId, ownerId), CharacterRepository.findOwnedById(secondaryId, ownerId)]) : [null, null];
     if (!primary || !secondary || primary.bookId !== secondary.bookId) return sendBookNotFound(reply);
     const candidates = await findActiveMergeCandidates(primary.bookId, ownerId!);
-    if (!candidates.some((candidate) => candidate.primaryId === primaryId && candidate.secondaryId === secondaryId)) {
+    if (!candidates.candidates.some((candidate) => candidate.primaryId === primaryId && candidate.secondaryId === secondaryId)) {
       return reply.status(409).send({ error: '该角色对不是待审核的疑似重复项' });
     }
     if (!(await CharacterRepository.rejectMergeOwned(primaryId, secondaryId, ownerId!, request.user.userId))) {
       return reply.status(409).send({ error: '该角色对不是待审核的疑似重复项' });
     }
+    await EntityReviewRepository.create({
+      bookId: primary.bookId,
+      entityType: 'character',
+      entityId: primaryId,
+      entityName: primary.name,
+      actorId: request.user.userId,
+      actorType: 'USER',
+      action: 'MERGE_REJECTED',
+      afterValue: { primaryId, secondaryId },
+      changedFields: [],
+    });
     return { ok: true };
   });
 
-  // Get characters (optionally filtered by status or confidence)
+  // Get characters (optionally filtered by review bucket / status)
   fastify.get('/', async (request, reply) => {
-    const { bookId, status, confidence } = request.query as { bookId?: string; status?: string; confidence?: string };
+    const { bookId, status, reviewBucket, confidence, cursor, limit } = request.query as {
+      bookId?: string; status?: string; reviewBucket?: string; confidence?: string; cursor?: string; limit?: string;
+    };
 
     if (!bookId) {
       return reply.status(400).send({ error: '缺少 bookId 参数' });
@@ -77,19 +119,19 @@ export async function charactersRoutes(fastify: FastifyInstance) {
       return sendBookNotFound(reply);
     }
 
-    let characters;
-    if (status) {
-      characters = await CharacterRepository.findByOwnedStatus(bookId, ownerId!, status);
-    } else {
-      characters = await CharacterRepository.findByOwnedBookId(bookId, ownerId!);
+    // reviewBucket=MAIN|LOW_CONFIDENCE|REJECTED；confidence=low 保留为兼容别名。
+    const bucket = parseReviewBucket({ reviewBucket, confidence });
+    if (!bucket) {
+      return reply.status(400).send({ error: 'reviewBucket 必须为 MAIN、LOW_CONFIDENCE 或 REJECTED' });
     }
 
-    // 低置信度库：confidence=low 只取低置信度待审核实体；默认列表排除低置信度（APPROVED 不受影响）。
-    characters = confidence === 'low'
-      ? characters.filter((c) => isLowConfidenceEntity(c))
-      : characters.filter((c) => !isLowConfidenceEntity(c));
+    const parsedLimit = limit ? Math.min(Math.max(Number(limit) || 0, 1), 500) : undefined;
+    const [{ characters, total, nextCursor }, counts] = await Promise.all([
+      CharacterRepository.findByReviewBucket({ bookId, ownerId: ownerId!, bucket, status, cursor, limit: parsedLimit }),
+      CharacterRepository.countReviewBuckets(bookId, ownerId!),
+    ]);
 
-    return { characters };
+    return { characters, total, nextCursor, counts };
   });
 
   // 批量改状态（审核通过/拒绝）。逐条记录 CharacterReview，与单条 PATCH 语义一致。
@@ -174,6 +216,7 @@ export async function charactersRoutes(fastify: FastifyInstance) {
         typeof v === 'string' && (validActions as readonly string[]).includes(v);
 
       if (isReviewAction(body.status)) {
+        // 旧角色审核表双写（兼容周期）；统一审核记录见下方 EntityReview
         await ReviewRepository.create({
           characterId: id,
           userId: request.user.userId,
@@ -184,10 +227,57 @@ export async function charactersRoutes(fastify: FastifyInstance) {
       }
 
       // Update character
-      const updated = await CharacterRepository.updateOwned(id, ownerId!, body);
+      let updated = await CharacterRepository.updateOwned(id, ownerId!, body);
       if (!updated) return sendBookNotFound(reply);
 
-      return { character: updated };
+      // 人工审核动作：标记 USER 来源、版本 +1，并写统一审核历史
+      if (isReviewAction(body.status)) {
+        await prisma.character.updateMany({
+          where: { id },
+          data: { reviewSource: 'USER', version: { increment: 1 } },
+        });
+        updated = { ...updated, reviewSource: 'USER', version: (updated.version ?? 1) + 1 };
+        await EntityReviewRepository.create({
+          bookId: character.bookId,
+          entityType: 'character',
+          entityId: id,
+          entityName: character.name,
+          actorId: request.user.userId,
+          actorType: 'USER',
+          action: body.status === 'APPROVED' ? 'APPROVE' : 'REJECT',
+          beforeValue: { status: character.status },
+          afterValue: { status: body.status },
+          changedFields: ['status'],
+        });
+      }
+
+      // 低置信度实体人工通过后提示可补写（描述缺失或过短）
+      const enrichmentAvailable = body.status === 'APPROVED' && isEnrichmentAvailable(updated);
+      return { character: updated, enrichmentAvailable };
+    } catch (err) {
+      return sendServerError(reply, err, request.log);
+    }
+  });
+
+  // 低置信度人工通过后的独立补写（实施包 A3）：入队后台任务，失败不影响已通过的实体
+  fastify.post('/:id/enrichment', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const ownerId = await resolveOwnerId(request);
+    if (!ownerId) return reply.status(401).send({ error: '请先登录' });
+    const character = await CharacterRepository.findOwnedById(id, ownerId);
+    if (!character) return sendBookNotFound(reply);
+    if (character.status !== 'APPROVED') {
+      return reply.status(409).send({ error: '仅人工通过的实体可以补写' });
+    }
+    try {
+      const jobId = await requestEntityEnrichment({
+        bookId: character.bookId,
+        ownerId,
+        entityType: 'character',
+        entityId: id,
+        actorId: request.user.userId,
+      });
+      return { queued: true, jobId };
     } catch (err) {
       return sendServerError(reply, err, request.log);
     }

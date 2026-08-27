@@ -1,4 +1,4 @@
-import { CharacterRepository, ReviewRepository } from '@qunxiang/storage';
+import { CharacterRepository, ReviewRepository, EntityReviewRepository } from '@qunxiang/storage';
 import { buildCharacterMergeCandidates, type CharacterMergeCandidate } from '@qunxiang/entity-resolution';
 import { z } from 'zod';
 import { getDefaultProvider } from '@qunxiang/llm';
@@ -6,19 +6,81 @@ import { getDefaultProvider } from '@qunxiang/llm';
 /** 单次裁决最多处理的角色对数量（控制 LLM 调用成本）。 */
 const MAX_JUDGE_PAIRS = 20;
 
-/** LLM 判定为高置信（可自动执行合并/排除）的最低置信度 */
-const AUTO_DECIDE_CONFIDENCE = 0.7;
+/** 建议的可信展示阈值：不低于该值的建议直接标注结论，低置信仍展示但标为不确定 */
+const SUGGESTION_DISPLAY_CONFIDENCE = 0.7;
 
 /** 查询当前待人工审核的疑似重复角色对（排除已被人工拒绝过的对）。 */
-export async function findActiveMergeCandidates(bookId: string, ownerId: string): Promise<CharacterMergeCandidate[]> {
-  const [characters, rejections] = await Promise.all([
+export interface MergeSuggestion {
+  primaryId: string;
+  secondaryId: string;
+  verdict: 'same' | 'different' | 'uncertain';
+  confidence: number;
+  reason?: string;
+}
+
+export async function findActiveMergeCandidates(
+  bookId: string,
+  ownerId: string,
+): Promise<{ candidates: CharacterMergeCandidate[]; suggestions: MergeSuggestion[] }> {
+  const [characters, rejections, reviews] = await Promise.all([
     CharacterRepository.findByOwnedBookId(bookId, ownerId),
     ReviewRepository.findMergeRejectionsByOwnedBook(bookId, ownerId),
+    EntityReviewRepository.findByBook(bookId, 500),
   ]);
   const rejectedPairs = new Set(rejections.map((review) => `${review.characterId}:${review.newValue}`));
-  return buildCharacterMergeCandidates(characters).filter(
+  const candidates = buildCharacterMergeCandidates(characters).filter(
     (candidate) => !rejectedPairs.has(`${candidate.primaryId}:${candidate.secondaryId}`)
   );
+  // 取每对最近一次模型建议（MERGE_SUGGESTED），供前端展示；不自动执行
+  const latest = new Map<string, MergeSuggestion>();
+  for (const review of reviews as Array<{ entityType: string; action: string; entityId: string; afterValue: unknown }>) {
+    if (review.entityType !== 'character' || review.action !== 'MERGE_SUGGESTED') continue;
+    const value = review.afterValue as { primaryId?: string; secondaryId?: string; verdict?: string; confidence?: number; reason?: string } | null;
+    if (!value?.primaryId || !value?.secondaryId || !value.verdict) continue;
+    latest.set(`${value.primaryId}:${value.secondaryId}`, {
+      primaryId: value.primaryId,
+      secondaryId: value.secondaryId,
+      verdict: value.verdict as MergeSuggestion['verdict'],
+      confidence: value.confidence ?? 0,
+      reason: value.reason,
+    });
+  }
+  const suggestions = candidates
+    .map((c) => latest.get(`${c.primaryId}:${c.secondaryId}`))
+    .filter((s): s is MergeSuggestion => Boolean(s));
+  return { candidates, suggestions };
+}
+
+/** 合并字段预览：不执行合并，展示将保留与合并的字段（实施包 A4）。 */
+export async function buildMergePreview(
+  primaryId: string,
+  secondaryId: string,
+  ownerId: string,
+): Promise<{
+  keep: { id: string; name: string; description?: string | null; status: string };
+  mergeInto: { id: string; name: string };
+  mergedFields: Array<{ field: string; strategy: string; value: string }>;
+} | null> {
+  const [primary, secondary] = await Promise.all([
+    CharacterRepository.findOwnedById(primaryId, ownerId),
+    CharacterRepository.findOwnedById(secondaryId, ownerId),
+  ]);
+  if (!primary || !secondary || primary.bookId !== secondary.bookId) return null;
+  const aliases = [...new Set([...primary.aliases, ...secondary.aliases, secondary.name])]
+    .filter((alias) => alias.trim().toLowerCase() !== primary.name.trim().toLowerCase());
+  const mergedFields = [
+    { field: '名称', strategy: '保留主角色', value: primary.name },
+    { field: '别名', strategy: '合并去重', value: aliases.join('、') || '无' },
+    { field: '描述', strategy: '拼接保留', value: [primary.description, secondary.description].filter(Boolean).join('; ') || '无' },
+    { field: '置信度', strategy: '取较高者', value: String(Math.max(primary.confidence, secondary.confidence)) },
+    { field: '出现章节', strategy: '合并去重', value: [...new Set([...primary.chapterAppearances, ...secondary.chapterAppearances])].sort((a, b) => a - b).join('、') || '未知' },
+    { field: '提及/对话次数', strategy: '相加', value: `${primary.mentionCount + secondary.mentionCount} / ${primary.dialogueCount + secondary.dialogueCount}` },
+  ];
+  return {
+    keep: { id: primary.id, name: primary.name, description: primary.description, status: primary.status },
+    mergeInto: { id: secondary.id, name: secondary.name },
+    mergedFields,
+  };
 }
 
 /** LLM 对单个角色对的裁决结果 */
@@ -51,28 +113,28 @@ function summarizeForPrompt(candidate: CharacterMergeCandidate, side: 'primary' 
 }
 
 export interface MergeJudgeOutcome {
-  /** LLM 高置信判定同一角色，已自动合并 */
-  merged: Array<{ primary: string; secondary: string }>;
-  /** LLM 高置信判定不同角色，已自动排除（不再出现在候选列表） */
-  separated: Array<{ primary: string; secondary: string; reason?: string }>;
-  /** LLM 无法确定或模型不可用，仍需人工判断 */
+  /** 模型建议「同一角色」的对（仅建议，等待人工确认合并） */
+  suggestedMerge: Array<{ primary: string; secondary: string; confidence: number; reason?: string }>;
+  /** 模型建议「不同角色」的对（仅建议，等待人工确认保持独立） */
+  suggestedSeparate: Array<{ primary: string; secondary: string; confidence: number; reason?: string }>;
+  /** 模型无法确定，仍需人工判断 */
   pending: Array<{ primary: string; secondary: string }>;
   /** 整体降级原因（模型未配置/格式异常时给出） */
   message?: string;
 }
 
 /**
- * LLM 智能裁决疑似重复角色对：
- * 高置信「同一角色」自动合并，高置信「不同角色」自动排除，
- * 其余留给前端人工确认。识别失败不阻断，全部回退为人工判断。
+ * 模型对疑似重复角色对只做建议（实施包 A4）：
+ * 输出建议 + 理由 + 置信度并写入统一审核历史（MERGE_SUGGESTED，actorType=SYSTEM），
+ * 不自动调用合并/排除；所有合并与排除必须由人工确认。
  */
 export async function judgeMergeCandidates(
   bookId: string,
   ownerId: string,
   reviewerId: string,
 ): Promise<MergeJudgeOutcome> {
-  const candidates = await findActiveMergeCandidates(bookId, ownerId);
-  const outcome: MergeJudgeOutcome = { merged: [], separated: [], pending: [] };
+  const { candidates } = await findActiveMergeCandidates(bookId, ownerId);
+  const outcome: MergeJudgeOutcome = { suggestedMerge: [], suggestedSeparate: [], pending: [] };
   if (candidates.length === 0) {
     outcome.message = '当前没有待裁决的疑似重复角色';
     return outcome;
@@ -124,27 +186,40 @@ export async function judgeMergeCandidates(
       verdict = null;
     }
 
-    if (!verdict || verdict.verdict === 'uncertain' || verdict.confidence < AUTO_DECIDE_CONFIDENCE) {
+    if (!verdict || verdict.verdict === 'uncertain' || verdict.confidence < SUGGESTION_DISPLAY_CONFIDENCE) {
       outcome.pending.push(pair);
       continue;
     }
 
+    // 只保存建议，不执行任何合并/排除
+    const suggestion = {
+      primary: candidate.primary.name,
+      secondary: candidate.secondary.name,
+      confidence: verdict.confidence,
+      reason: verdict.reason,
+    };
+    if (verdict.verdict === 'same') outcome.suggestedMerge.push(suggestion);
+    else outcome.suggestedSeparate.push(suggestion);
     try {
-      if (verdict.verdict === 'same') {
-        const merged = await CharacterRepository.mergeOwned(
-          candidate.primaryId, candidate.secondaryId, ownerId, reviewerId,
-        );
-        if (merged) outcome.merged.push(pair);
-        else outcome.pending.push(pair);
-      } else {
-        const rejected = await CharacterRepository.rejectMergeOwned(
-          candidate.primaryId, candidate.secondaryId, ownerId, reviewerId,
-        );
-        if (rejected) outcome.separated.push({ ...pair, reason: verdict.reason });
-        else outcome.pending.push(pair);
-      }
+      await EntityReviewRepository.create({
+        bookId,
+        entityType: 'character',
+        entityId: candidate.primaryId,
+        entityName: candidate.primary.name,
+        actorType: 'SYSTEM',
+        action: 'MERGE_SUGGESTED',
+        afterValue: {
+          primaryId: candidate.primaryId,
+          secondaryId: candidate.secondaryId,
+          verdict: verdict.verdict,
+          confidence: verdict.confidence,
+          reason: verdict.reason,
+        },
+        changedFields: [],
+        reason: verdict.reason ?? null,
+      });
     } catch {
-      outcome.pending.push(pair);
+      // 审核历史写入失败不阻断建议返回
     }
   }
 

@@ -22,6 +22,7 @@ describe.runIf(dbAvailable)('低置信度库路由', () => {
   let highId: string;
   let lowId: string;
   let lowApprovedId: string;
+  let lowRejectedId: string;
 
   const headers = () => ({ authorization: `Bearer ${token}` });
 
@@ -53,6 +54,10 @@ describe.runIf(dbAvailable)('低置信度库路由', () => {
     lowApprovedId = (await prisma.character.create({
       data: { bookId, name: '已通过的次要角色', confidence: 0.4, status: 'APPROVED', chapterAppearances: [3], mentionCount: 2 },
     })).id;
+    // 低置信度且已被拒绝：只应出现在已拒绝列表
+    lowRejectedId = (await prisma.character.create({
+      data: { bookId, name: '已拒绝的次要角色', confidence: 0.3, status: 'REJECTED', chapterAppearances: [4], mentionCount: 1 },
+    })).id;
   });
 
   afterAll(async () => {
@@ -65,7 +70,7 @@ describe.runIf(dbAvailable)('低置信度库路由', () => {
 
   async function getCharacterIds(url: string): Promise<string[]> {
     const res = await app.inject({ method: 'GET', url, headers: headers() });
-    expect(res.statusCode).toBe(200);
+    expect(res.statusCode, res.body).toBe(200);
     return (res.json().characters as Array<{ id: string }>).map((c) => c.id);
   }
 
@@ -94,5 +99,48 @@ describe.runIf(dbAvailable)('低置信度库路由', () => {
     expect(mainIds).toContain(lowId);
     const lowIds = await getCharacterIds(`/characters?bookId=${bookId}&confidence=low`);
     expect(lowIds).not.toContain(lowId);
+  });
+
+  it('4. 被拒绝的低置信度实体不再返回低置信度库，只出现在已拒绝列表', async () => {
+    const lowIds = await getCharacterIds(`/characters?bookId=${bookId}&reviewBucket=LOW_CONFIDENCE`);
+    expect(lowIds).not.toContain(lowRejectedId);
+    const rejectedIds = await getCharacterIds(`/characters?bookId=${bookId}&reviewBucket=REJECTED`);
+    expect(rejectedIds).toEqual([lowRejectedId]);
+  });
+
+  it('5. 被拒绝实体不出现在主列表，三集合互斥且计数一致', async () => {
+    const mainIds = await getCharacterIds(`/characters?bookId=${bookId}&reviewBucket=MAIN`);
+    const lowIds = await getCharacterIds(`/characters?bookId=${bookId}&reviewBucket=LOW_CONFIDENCE`);
+    const rejectedIds = await getCharacterIds(`/characters?bookId=${bookId}&reviewBucket=REJECTED`);
+    // 三集合两两不相交
+    const all = [...mainIds, ...lowIds, ...rejectedIds];
+    expect(new Set(all).size).toBe(all.length);
+    expect(mainIds).not.toContain(lowRejectedId);
+
+    const res = await app.inject({ method: 'GET', url: `/characters?bookId=${bookId}&reviewBucket=MAIN`, headers: headers() });
+    expect(res.statusCode, res.body).toBe(200);
+    const counts = res.json().counts as { MAIN: number; LOW_CONFIDENCE: number; REJECTED: number };
+    expect(counts.MAIN).toBe(mainIds.length);
+    expect(counts.LOW_CONFIDENCE).toBe(lowIds.length);
+    expect(counts.REJECTED).toBe(rejectedIds.length);
+  });
+
+  it('6. 世界观纳入统一审核集合查询', async () => {
+    await prisma.worldviewSetting.create({
+      data: { bookId, name: '低置信度体系', confidence: 0.3, category: 'power-system' },
+    });
+    const approvedWv = await prisma.worldviewSetting.create({
+      data: { bookId, name: '已通过体系', confidence: 0.9, status: 'APPROVED', category: 'worldview' },
+    });
+    const lowRes = await app.inject({ method: 'GET', url: `/worldview?bookId=${bookId}&reviewBucket=LOW_CONFIDENCE`, headers: headers() });
+    expect(lowRes.statusCode).toBe(200);
+    const lowNames = (lowRes.json().worldviews as Array<{ name: string }>).map((w) => w.name);
+    expect(lowNames).toContain('低置信度体系');
+    expect(lowNames).not.toContain('已通过体系');
+    const mainRes = await app.inject({ method: 'GET', url: `/worldview?bookId=${bookId}&reviewBucket=MAIN`, headers: headers() });
+    expect(mainRes.statusCode).toBe(200);
+    const mainIds = (mainRes.json().worldviews as Array<{ id: string }>).map((w) => w.id);
+    expect(mainIds).toContain(approvedWv.id);
+    expect(mainRes.json().counts.LOW_CONFIDENCE).toBe(lowNames.length);
   });
 });

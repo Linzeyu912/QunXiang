@@ -28,7 +28,7 @@ const KEYS: Record<EntityType, string> = {
 
 export const entitiesKey = {
   all: (bookId: string) => ['entities', bookId] as const,
-  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string; confidence?: 'low' }) => {
+  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string; confidence?: 'low'; reviewBucket?: 'MAIN' | 'LOW_CONFIDENCE' | 'REJECTED' }) => {
     // 将 filters 序列化为稳定字符串，避免对象引用变化导致缓存键不稳定
     const filterKey = filters ? JSON.stringify(filters) : '';
     return ['entities', bookId, type, filterKey] as const;
@@ -45,11 +45,33 @@ export interface CharacterMergeCandidate {
   secondary: { id: string; name: string; aliases: string[]; description?: string; chapterAppearances: number[] };
 }
 
+export interface MergeSuggestion {
+  primaryId: string;
+  secondaryId: string;
+  verdict: 'same' | 'different' | 'uncertain';
+  confidence: number;
+  reason?: string;
+}
+
 export function useCharacterMergeCandidates(bookId: string | undefined) {
   return useQuery({
     queryKey: bookId ? entitiesKey.mergeCandidates(bookId) : ['character-merge-candidates', 'none'],
-    queryFn: () => apiFetch<{ candidates: CharacterMergeCandidate[] }>(`/characters/merge-candidates?bookId=${encodeURIComponent(bookId!)}`).then((r) => r.candidates),
+    queryFn: () => apiFetch<{ candidates: CharacterMergeCandidate[]; suggestions: MergeSuggestion[] }>(`/characters/merge-candidates?bookId=${encodeURIComponent(bookId!)}`),
     enabled: !!bookId,
+  });
+}
+
+export interface MergePreview {
+  keep: { id: string; name: string; description?: string | null; status: string };
+  mergeInto: { id: string; name: string };
+  mergedFields: Array<{ field: string; strategy: string; value: string }>;
+}
+
+export function useMergePreview(bookId: string | undefined, primaryId?: string, secondaryId?: string) {
+  return useQuery({
+    queryKey: ['character-merge-preview', primaryId, secondaryId],
+    queryFn: () => apiFetch<{ preview: MergePreview }>(`/characters/merge-candidates/preview?primaryId=${primaryId}&secondaryId=${secondaryId}`).then((r) => r.preview),
+    enabled: !!bookId && !!primaryId && !!secondaryId,
   });
 }
 
@@ -73,8 +95,10 @@ interface ListParams {
   tier?: Tier;
   /** 道具大类过滤（仅 item 类型有效） */
   category?: string;
-  /** 只取低置信度待审核实体（低置信度库） */
+  /** 只取低置信度待审核实体（低置信度库，兼容别名） */
   confidence?: 'low';
+  /** 审核集合：主列表 / 低置信度库 / 已拒绝列表（新参数） */
+  reviewBucket?: 'MAIN' | 'LOW_CONFIDENCE' | 'REJECTED';
 }
 
 function buildQuery(bookId: string, params?: ListParams): string {
@@ -84,6 +108,7 @@ function buildQuery(bookId: string, params?: ListParams): string {
   if (params?.tier) sp.set('tier', params.tier);
   if (params?.category) sp.set('category', params.category);
   if (params?.confidence) sp.set('confidence', params.confidence);
+  if (params?.reviewBucket) sp.set('reviewBucket', params.reviewBucket);
   return sp.toString();
 }
 
@@ -158,6 +183,18 @@ export function useCharacterReviews(id: string | undefined) {
   });
 }
 
+/** 人工通过后的独立补写：入队后台任务生成描述（实施包 A3）。 */
+export function useRequestEnrichment(type: EntityType, bookId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) =>
+      apiFetch<{ queued: boolean; jobId: string }>(`${PATHS[type]}/${id}/enrichment`, { method: 'POST' }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: entitiesKey.all(bookId) });
+    },
+  });
+}
+
 /** 批量改实体状态（后端 POST /{type}/batch，一次请求替代 N 次 PATCH）。 */
 export function useBatchUpdateStatus(type: EntityType, bookId: string) {
   const qc = useQueryClient();
@@ -175,17 +212,17 @@ export function useBatchUpdateStatus(type: EntityType, bookId: string) {
 
 /** LLM 智能裁决疑似重复角色对的结果。 */
 export interface MergeJudgeOutcome {
-  /** 判定同一角色，已自动合并 */
-  merged: Array<{ primary: string; secondary: string }>;
-  /** 判定不同角色，已自动排除 */
-  separated: Array<{ primary: string; secondary: string; reason?: string }>;
+  /** 模型建议同一角色（仅建议，待人工确认合并） */
+  suggestedMerge: Array<{ primary: string; secondary: string; confidence: number; reason?: string }>;
+  /** 模型建议不同角色（仅建议，待人工确认保持独立） */
+  suggestedSeparate: Array<{ primary: string; secondary: string; confidence: number; reason?: string }>;
   /** 无法确定，仍需人工判断 */
   pending: Array<{ primary: string; secondary: string }>;
   /** 降级/限制提示（模型未配置、候选过多等） */
   message?: string;
 }
 
-/** 让模型智能裁决疑似重复角色对（高置信自动合并/排除，其余转人工）。 */
+/** 让模型对疑似重复角色对给出建议（不自动合并/排除，全部由人工确认）。 */
 export function useJudgeCharacterMerges(bookId: string) {
   const qc = useQueryClient();
   return useMutation({

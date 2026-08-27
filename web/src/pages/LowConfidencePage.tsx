@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { Check, Loader2, Trash2, Archive } from 'lucide-react';
-import { useEntities, useUpdateEntity } from '@/api/entities';
+import { useEntities, useUpdateEntity, useRequestEnrichment } from '@/api/entities';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
@@ -30,6 +30,7 @@ function LowConfidenceGroup({
   loading: boolean;
 }) {
   const update = useUpdateEntity(type, bookId);
+  const enrich = useRequestEnrichment(type, bookId);
   // 正在处理中的实体 id（防止重复点击）
   const [busyId, setBusyId] = useState<string | null>(null);
 
@@ -37,7 +38,26 @@ function LowConfidenceGroup({
     setBusyId(entity.id);
     try {
       await update.mutateAsync({ id: entity.id, patch: { status } });
-      toast.success(status === 'APPROVED' ? `「${entity.name}」已转为正式实体` : `「${entity.name}」已移除`);
+      if (status === 'APPROVED') {
+        toast.success(`「${entity.name}」已转为正式实体`);
+        // 人工通过且描述缺失/过短时，提示可发起独立补写（失败不影响已通过状态）
+        if (!entity.description || entity.description.trim().length < 30) {
+          toast.info(`「${entity.name}」缺少描述，可让模型根据原文补写`, {
+            duration: 10000,
+            action: {
+              label: '补写描述',
+              onClick: () => {
+                enrich.mutate(entity.id, {
+                  onSuccess: () => toast.success(`「${entity.name}」补写任务已提交，完成后自动更新`),
+                  onError: (e) => toast.error(`补写任务提交失败：${(e as Error).message}`),
+                });
+              },
+            },
+          });
+        }
+      } else {
+        toast.success(`「${entity.name}」已移除`);
+      }
     } catch (e) {
       toast.error(`操作失败：${(e as Error).message}`);
     } finally {
@@ -106,9 +126,9 @@ function LowConfidenceGroup({
 
 export function LowConfidencePage() {
   const { bookId = '' } = useParams();
-  const charactersQ = useEntities('character', bookId, { confidence: 'low' });
-  const locationsQ = useEntities('location', bookId, { confidence: 'low' });
-  const itemsQ = useEntities('item', bookId, { confidence: 'low' });
+  const charactersQ = useEntities('character', bookId, { reviewBucket: 'LOW_CONFIDENCE' });
+  const locationsQ = useEntities('location', bookId, { reviewBucket: 'LOW_CONFIDENCE' });
+  const itemsQ = useEntities('item', bookId, { reviewBucket: 'LOW_CONFIDENCE' });
 
   const total =
     (charactersQ.data?.length ?? 0) + (locationsQ.data?.length ?? 0) + (itemsQ.data?.length ?? 0);

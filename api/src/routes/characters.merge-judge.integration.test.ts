@@ -17,7 +17,7 @@ await Promise.race([
   new Promise((resolve) => setTimeout(resolve, 3000)),
 ]);
 
-describe.runIf(dbAvailable)('角色合并 LLM 智能裁决', () => {
+describe.runIf(dbAvailable)('角色合并模型建议（只建议不自动执行）', () => {
   let app: Awaited<ReturnType<typeof buildApp>>;
   let userId: string;
   let token: string;
@@ -87,8 +87,8 @@ describe.runIf(dbAvailable)('角色合并 LLM 智能裁决', () => {
   it('2. mock 模型返回结构不匹配时全部候选降级转人工，不自动合并', async () => {
     const { status, body } = await authPost('/characters/merge-candidates/llm-judge', { bookId });
     expect(status).toBe(200);
-    expect(body.merged).toEqual([]);
-    expect(body.separated).toEqual([]);
+    expect(body.suggestedMerge).toEqual([]);
+    expect(body.suggestedSeparate).toEqual([]);
     expect((body.pending as unknown[]).length).toBe(1);
     expect((body.pending as Array<{ primary: string; secondary: string }>)[0]).toMatchObject({
       primary: '萧炎',
@@ -105,13 +105,37 @@ describe.runIf(dbAvailable)('角色合并 LLM 智能裁决', () => {
     expect(candidates.json().candidates).toHaveLength(1);
   });
 
+  it('2b. 合并预览接口返回将保留与合并的字段', async () => {
+    const candidates = await app.inject({
+      method: 'GET',
+      url: `/characters/merge-candidates?bookId=${bookId}`,
+      headers: { authorization: `Bearer ${token}` },
+    });
+    const list = candidates.json().candidates as Array<{ primaryId: string; secondaryId: string }>;
+    const { primaryId, secondaryId } = list[0];
+    const preview = await app.inject({
+      method: 'GET',
+      url: `/characters/merge-candidates/preview?primaryId=${primaryId}&secondaryId=${secondaryId}`,
+      headers: { authorization: `Bearer ${token}` },
+    });
+    expect(preview.statusCode, preview.body).toBe(200);
+    const data = preview.json().preview as {
+      keep: { name: string };
+      mergeInto: { name: string };
+      mergedFields: Array<{ field: string; strategy: string; value: string }>;
+    };
+    expect(data.keep.name).toBe('萧炎');
+    expect(data.mergeInto.name).toBe('萧炎哥');
+    expect(data.mergedFields.some((f) => f.field === '名称' && f.value === '萧炎')).toBe(true);
+  });
+
   it('3. 无候选的书返回提示信息', async () => {
     const emptyBook = await prisma.book.create({
       data: { title: '空书', filePath: `D:/tmp/${randomUUID()}.txt`, fileSize: 1, mimeType: 'text/plain', userId },
     });
     const { status, body } = await authPost('/characters/merge-candidates/llm-judge', { bookId: emptyBook.id });
     expect(status).toBe(200);
-    expect(body.merged).toEqual([]);
+    expect(body.suggestedMerge).toEqual([]);
     expect(body.pending).toEqual([]);
     expect(typeof body.message).toBe('string');
   });

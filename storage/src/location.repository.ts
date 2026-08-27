@@ -1,7 +1,8 @@
 import { prisma } from './prisma.js';
 import type { Location } from '@qunxiang/core';
-import type { PrismaClient } from '@prisma/client';
+import type { Prisma, PrismaClient } from '@prisma/client';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
+import { reviewBucketWhere, type ReviewBucketQuery, type ReviewBucketCounts } from './review-bucket.js';
 
 export interface LocationRepository {
   create(data: {
@@ -44,6 +45,10 @@ export interface LocationRepository {
   }>): Promise<number>;
   findByBookId(bookId: string): Promise<Location[]>;
   findByOwnedBookId(bookId: string, ownerId: string): Promise<Location[]>;
+
+  /** 按审核集合查询（主列表/低置信度库/已拒绝列表），过滤、排序、分页、计数同条件。 */
+  findByReviewBucket(query: ReviewBucketQuery): Promise<{ locations: Location[]; total: number; nextCursor: string | null }>;
+  countReviewBuckets(bookId: string, ownerId: string): Promise<ReviewBucketCounts>;
   /** 轻量计数：仅判空/统计用，避免全量拉取实体行。 */
   countByOwnedBookId(bookId: string, ownerId: string): Promise<number>;
   findById(id: string): Promise<Location | null>;
@@ -183,6 +188,39 @@ export function createLocationRepository(db: PrismaClient): LocationRepository {
       return locs.map(l => parseLocation(l as unknown as Record<string, unknown>));
     },
 
+
+    async findByReviewBucket(query: ReviewBucketQuery): Promise<{ locations: Location[]; total: number; nextCursor: string | null }> {
+      const bucketWhere = reviewBucketWhere(query.bucket) as Prisma.LocationWhereInput;
+      const where: Prisma.LocationWhereInput = {
+        bookId: query.bookId,
+        book: { userId: query.ownerId },
+        ...bucketWhere,
+        ...(query.status ? { status: query.status } : {}),
+        ...(query.tier ? { tier: query.tier } : {}),
+      };
+      const [total, rows] = await Promise.all([
+        db.location.count({ where }),
+        db.location.findMany({
+          where,
+          orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+          take: query.limit ?? 200,
+          ...(query.cursor ? { cursor: { id: query.cursor }, skip: 1 } : {}),
+        }),
+      ]);
+      const entities = rows.map((r) => parseLocation(r as unknown as Record<string, unknown>));
+      const nextCursor = query.limit && entities.length === query.limit ? entities[entities.length - 1].id : null;
+      return { locations: entities, total, nextCursor };
+    },
+
+    async countReviewBuckets(bookId: string, ownerId: string): Promise<ReviewBucketCounts> {
+      const scope = { bookId, book: { userId: ownerId } } as Prisma.LocationWhereInput;
+      const [main, lowConfidence, rejected] = await Promise.all([
+        db.location.count({ where: { ...scope, ...(reviewBucketWhere('MAIN') as Prisma.LocationWhereInput) } }),
+        db.location.count({ where: { ...scope, ...(reviewBucketWhere('LOW_CONFIDENCE') as Prisma.LocationWhereInput) } }),
+        db.location.count({ where: { ...scope, ...(reviewBucketWhere('REJECTED') as Prisma.LocationWhereInput) } }),
+      ]);
+      return { MAIN: main, LOW_CONFIDENCE: lowConfidence, REJECTED: rejected };
+    },
     async update(id: string, data: Partial<Location>) {
       const updateData: Record<string, unknown> = { ...data };
       if (data.aliases) {
