@@ -21,6 +21,7 @@ model User {
   reviews         CharacterReview[]
   sessions        ExtractionSession[]
   refreshSessions RefreshSession[]
+  aiUsageRecords  AiUsageRecord[]
 }
 
 model Book {
@@ -40,7 +41,7 @@ model Book {
   locations         Location[]
   items             Item[]
   worldviewSettings WorldviewSetting[]
-  sessions          ExtractionSession[]
+  sessions         ExtractionSession[]    @relation("BookSessions")
   tasks             Task[]
   noiseOverrides    NoiseOverride[]
   entityImages      EntityImage[]
@@ -50,6 +51,22 @@ model Book {
   artifacts         BookArtifact[]      @relation("BookArtifacts")
   sourceBookId      String?             @db.Uuid
   sourceShareId     String?             @db.Uuid
+
+  /// 书籍来源：UPLOAD=普通上传 | SEED=示例书 | SHARED_COPY=分享副本
+  sourceType                 String             @default("UPLOAD")
+  sourcePackageId            String?
+  sourcePackageVersion       String?
+  /// 原文或噪声覆盖变化时 +1
+  sourceRevision             Int                @default(0)
+  /// 等于 sourceRevision 才能启动提取；null 表示从未确认
+  preprocessConfirmedRevision Int?
+  /// 只指向最近一次成功发布的结果
+  currentExtractionSessionId String?            @db.Uuid
+  onboardingFeatured         Boolean            @default(false)
+
+  currentExtractionSession ExtractionSession?          @relation("CurrentExtractionSession", fields: [currentExtractionSessionId], references: [id], onDelete: SetNull)
+  entityReviews            EntityReview[]
+  aiUsageRecords           AiUsageRecord[]
 
   @@index([userId])
 }
@@ -77,8 +94,20 @@ model Character {
   updatedAt          DateTime          @updatedAt @db.Timestamptz(3)
   reviews            CharacterReview[]
 
+  /// 实体稳定键：跨提取运行保持不变，用于成果对齐与人工保护
+  stableKey                    String    @default(uuid())
+  /// 审核来源：AI | IMPORTED | USER
+  reviewSource                 String    @default("AI")
+  /// 用户编辑过的字段名，重新提取不得覆盖
+  lockedFields                 Json      @default("[]")
+  version                      Int       @default(1)
+  missingFromLatestRun         Boolean   @default(false)
+  archivedAt                   DateTime? @db.Timestamptz(3)
+  lastSeenExtractionSessionId  String?   @db.Uuid
+
   @@index([bookId])
   @@index([bookId, status])
+  @@index([bookId, stableKey])
 }
 
 model Location {
@@ -105,9 +134,18 @@ model Location {
   createdAt          DateTime @default(now()) @db.Timestamptz(3)
   updatedAt          DateTime @updatedAt @db.Timestamptz(3)
 
+  stableKey                    String    @default(uuid())
+  reviewSource                 String    @default("AI")
+  lockedFields                 Json      @default("[]")
+  version                      Int       @default(1)
+  missingFromLatestRun         Boolean   @default(false)
+  archivedAt                   DateTime? @db.Timestamptz(3)
+  lastSeenExtractionSessionId  String?   @db.Uuid
+
   @@index([bookId])
   @@index([tier])
   @@index([bookId, status])
+  @@index([bookId, stableKey])
 }
 
 model Item {
@@ -136,10 +174,19 @@ model Item {
   createdAt          DateTime @default(now()) @db.Timestamptz(3)
   updatedAt          DateTime @updatedAt @db.Timestamptz(3)
 
+  stableKey                    String    @default(uuid())
+  reviewSource                 String    @default("AI")
+  lockedFields                 Json      @default("[]")
+  version                      Int       @default(1)
+  missingFromLatestRun         Boolean   @default(false)
+  archivedAt                   DateTime? @db.Timestamptz(3)
+  lastSeenExtractionSessionId  String?   @db.Uuid
+
   @@index([bookId])
   @@index([tier])
   @@index([bookId, status])
   @@index([bookId, category])
+  @@index([bookId, stableKey])
 }
 
 /// 世界观与体系设定实体（灵气/斗气等能量体系、境界等级、组织势力、规则法则）。
@@ -163,9 +210,18 @@ model WorldviewSetting {
   createdAt          DateTime @default(now()) @db.Timestamptz(3)
   updatedAt          DateTime @updatedAt @db.Timestamptz(3)
 
+  stableKey                    String    @default(uuid())
+  reviewSource                 String    @default("AI")
+  lockedFields                 Json      @default("[]")
+  version                      Int       @default(1)
+  missingFromLatestRun         Boolean   @default(false)
+  archivedAt                   DateTime? @db.Timestamptz(3)
+  lastSeenExtractionSessionId  String?   @db.Uuid
+
   @@index([bookId])
   @@index([bookId, status])
   @@index([category])
+  @@index([bookId, stableKey])
 }
 
 model CharacterReview {
@@ -180,15 +236,38 @@ model CharacterReview {
   createdAt     DateTime  @default(now()) @db.Timestamptz(3)
 }
 
+/// 提取运行批次。一本书同时最多一个活动运行，由迁移中的部分唯一索引
+/// ExtractionSession_book_active_unique（status IN 活动态时 bookId 唯一）约束。
 model ExtractionSession {
   id          String    @id @default(uuid()) @db.Uuid
   bookId      String    @db.Uuid
-  book        Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  book        Book      @relation("BookSessions", fields: [bookId], references: [id], onDelete: Cascade)
   userId      String    @db.Uuid
   user        User      @relation(fields: [userId], references: [id], onDelete: Restrict)
+  /// QUEUED | RUNNING | PAUSING | PAUSED | CANCELLING | CANCELLED | COMPLETED | FAILED
   status      String    @default("RUNNING")
+  /// LIVE=真实运行 | IMPORTED=导入 | LEGACY_IMPORTED=旧数据补建
+  kind        String    @default("LIVE")
+  /// 创建该运行时的书籍 sourceRevision
+  sourceRevision Int    @default(0)
+  startedAt   DateTime? @db.Timestamptz(3)
+  pauseRequestedAt   DateTime? @db.Timestamptz(3)
+  cancelRequestedAt  DateTime? @db.Timestamptz(3)
+  cancelledAt DateTime? @db.Timestamptz(3)
+  failureReason String?
+  estimatedInputChars BigInt?
+  estimatedCalls Int?
+  maxCalls    Int?
+  maxTokens   Int?
+  manifest    Json?
+  usageSummary Json?
+  /// 结果发布为当前稳定版本的时间
+  promotedAt  DateTime? @db.Timestamptz(3)
   createdAt   DateTime  @default(now()) @db.Timestamptz(3)
   completedAt DateTime? @db.Timestamptz(3)
+
+  currentForBooks Book[] @relation("CurrentExtractionSession")
+  tasks           Task[]
 }
 
 model Task {
@@ -197,14 +276,21 @@ model Task {
   book         Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
   agentType    String
   payload      Json      @default("{}")
+  /// pending | running | completed | failed | cancelled
   status       String    @default("pending")
   result       Json?
   error        String?
   retryCount   Int       @default(0)
   deadLettered Boolean   @default(false)
   failedAt     DateTime? @db.Timestamptz(3)
+  extractionSessionId String? @db.Uuid
+  startedAt    DateTime? @db.Timestamptz(3)
+  completedAt  DateTime? @db.Timestamptz(3)
+  cancelledAt  DateTime? @db.Timestamptz(3)
   createdAt    DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt    DateTime  @updatedAt @db.Timestamptz(3)
+
+  extractionSession ExtractionSession? @relation(fields: [extractionSessionId], references: [id], onDelete: SetNull)
 
   @@index([status])
   @@index([agentType])
@@ -417,11 +503,15 @@ model BookArtifact {
   sha256      String
   bytes       BigInt
   mime        String
-  createdAt   DateTime @default(now()) @db.Timestamptz(3)
-  updatedAt   DateTime @updatedAt @db.Timestamptz(3)
+  /// 产物基于的书籍 sourceRevision；与当前不一致时显示"基于旧版原文生成"
+  sourceRevision Int?
+  extractionSessionId String? @db.Uuid
+  createdAt    DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime  @updatedAt @db.Timestamptz(3)
 
   @@unique([bookId, logicalPath])
   @@index([bookId])
+  @@index([bookId, sourceRevision])
 }
 
 /// 公共素材：实体卡的不可变快照。payload 自包含，不依赖源书/源实体存活。
@@ -479,4 +569,57 @@ model PublicAssetTake {
   @@index([takerId])
   @@index([publicAssetId])
   @@index([takerId, targetBookId, publicAssetId])
+}
+
+/// 统一审核历史：四类实体（character | location | item | worldview）的创建/编辑/通过/拒绝/合并等动作记录。
+/// 旧 CharacterReview 保留一个兼容周期并双写。
+model EntityReview {
+  id           String   @id @default(uuid()) @db.Uuid
+  bookId       String   @db.Uuid
+  book         Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  /// character | location | item | worldview
+  entityType   String
+  entityId     String   @db.Uuid
+  entityName   String
+  actorId      String?  @db.Uuid
+  /// USER | SYSTEM | IMPORT
+  actorType    String
+  /// CREATE | EDIT | APPROVE | REJECT | RESTORE_FIELD | AI_REFRESH | MERGE_SUGGESTED | MERGE_ACCEPTED | MERGE_REJECTED | ARCHIVE
+  action       String
+  beforeValue  Json?
+  afterValue   Json?
+  changedFields Json    @default("[]")
+  reason       String?
+  createdAt    DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([bookId, entityType, entityId, createdAt])
+  @@index([bookId, createdAt])
+}
+
+/// 模型调用账本：按用户/书籍/运行记录每次模型调用的用量与状态，不做价格配置。
+model AiUsageRecord {
+  id                  String   @id @default(uuid()) @db.Uuid
+  userId              String   @db.Uuid
+  user                User     @relation(fields: [userId], references: [id], onDelete: Restrict)
+  bookId              String?  @db.Uuid
+  book                Book?    @relation(fields: [bookId], references: [id], onDelete: SetNull)
+  extractionSessionId String?  @db.Uuid
+  /// TEXT_EXTRACTION | IMAGE_GENERATION | MERGE_JUDGEMENT | ENTITY_ENRICHMENT | TAG_SUGGESTION
+  operation           String
+  provider            String?
+  model               String?
+  promptTokens        Int?
+  completionTokens    Int?
+  totalTokens         Int?
+  unitCount           Int      @default(1)
+  durationMs          Int      @default(0)
+  /// PROVIDER | ESTIMATED | UNAVAILABLE
+  usageSource         String   @default("UNAVAILABLE")
+  /// SUCCEEDED | FAILED | CANCELLED
+  status              String   @default("SUCCEEDED")
+  createdAt           DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([userId, createdAt])
+  @@index([bookId, createdAt])
+  @@index([extractionSessionId])
 }
