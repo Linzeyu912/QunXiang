@@ -1,4 +1,5 @@
 import type { AgentType, Character, Location, Item, Owner, WorldviewSetting } from '@qunxiang/core';
+import { calibrateConfidence, inferItemCategory } from '@qunxiang/core';
 import { createExtractor } from '@qunxiang/extractors';
 import { BookRepository, getSharedAssetSourceResolver } from '@qunxiang/storage';
 import { parseTxtEnhanced } from '@qunxiang/import';
@@ -41,12 +42,13 @@ interface EntityEnrichment {
   confidence?: number;
   aliases?: string[];
   description?: string;
-  category?: string;
+  category?: Item['category'];
 }
 
 /** Map EntityImportance[] into DB-ready objects. The optional `enrich` map lets
- *  LLM-sourced entities (items) keep their LLM confidence/aliases/description
- *  instead of the prescan defaults (confidence 0.7, empty aliases). */
+ *  LLM-sourced entities (items) keep their LLM aliases/description instead of
+ *  the prescan defaults. Confidence is always evidence-calibrated — the raw
+ *  LLM self-report clusters at 0.85+ regardless of entity prominence. */
 function mapEntitiesToDb(
   importances: EntityImportance[],
   descriptions: Map<string, string> = new Map(),
@@ -59,7 +61,10 @@ function mapEntitiesToDb(
       aliases: e?.aliases ?? ([] as string[]),
       category: e?.category,
       description: e?.description ?? descriptions.get(imp.text) ?? undefined,
-      confidence: e?.confidence ?? 0.7,
+      confidence: calibrateConfidence(e?.confidence, {
+        mentionCount: imp.mentionCount,
+        chapterCount: imp.chapters.length,
+      }),
       status: 'PENDING' as const,
       chapterRef: imp.chapters.length > 0 ? `第${imp.chapters[0]}章` : undefined,
       importanceScore: imp.importance,
@@ -126,7 +131,18 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
 
   // Filter out LLM-hallucinated characters: 0 mentions + 0 dialogue means the
   // character doesn't appear in the text at all (LLM made them up).
-  const characters = fusedCharacters.filter((c) => c.mentionCount > 0 || c.dialogueCount > 0);
+  // 置信度统一做证据校准：LLM 自报值对主角和一次性的路人角色都给 0.85+，
+  // 不校准的话低置信度库形同虚设（库为空的根因）。
+  const characters = fusedCharacters
+    .filter((c) => c.mentionCount > 0 || c.dialogueCount > 0)
+    .map((c) => ({
+      ...c,
+      confidence: calibrateConfidence(c.confidence, {
+        mentionCount: c.mentionCount || 0,
+        chapterCount: (c.chapterAppearances || []).length,
+        dialogueCount: c.dialogueCount || 0,
+      }),
+    }));
   const droppedChars = fusedCharacters.filter((c) => c.mentionCount === 0 && c.dialogueCount === 0);
   if (droppedChars.length > 0) {
     console.log(`[Extractor] Filtered ${droppedChars.length} hallucinated characters: ${droppedChars.map((c) => c.name).join('、')}`);
@@ -146,12 +162,17 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
 
   type EntityMention = import('@qunxiang/entity-prescan').EntityMention;
 
+  /** Location 形状 + 可选 category（道具行有、场景行无），与 mapEntitiesToDb 的实际产出一致 */
+  type PrescanEnrichedEntity = Omit<Location, 'id' | 'bookId' | 'createdAt' | 'updatedAt'> & {
+    category?: Item['category'];
+  };
+
   /** Build prescan mention map + LLM mention list + enrichment, then score importance. */
   function llmEntitiesWithPrescan(
-    llmEntities: { name: string; aliases?: string[]; description?: string; confidence?: number; category?: string; firstChapter?: number; lastChapter?: number; chapterAppearances?: number[] }[],
+    llmEntities: { name: string; aliases?: string[]; description?: string; confidence?: number; category?: Item['category']; firstChapter?: number; lastChapter?: number; chapterAppearances?: number[] }[],
     prescanMentions: EntityMention[],
     entityType: EntityType,
-  ): Omit<Location, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>[] {
+  ): PrescanEnrichedEntity[] {
     const prescanByName = new Map<string, EntityMention>();
     for (const m of prescanMentions) {
       for (const n of [m.text, ...(m.aliases || [])]) {
@@ -203,16 +224,32 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     // Locations: LLM-primary, enriched with prescan mention count/chapter coverage.
     locations = llmEntitiesWithPrescan(entityResult.locations, enhanced.prescanResult.location, 'location');
     // Items: LLM-primary, enriched with prescan.
-    items = llmEntitiesWithPrescan(entityResult.items, enhanced.prescanResult.item, 'item').map((it) => ({ ...it, owners: [] as Owner[] }));
+    // 末端兜底：即使 enrich 映射意外丢失 category（或值为 other），
+    // 也按名称+描述再推断一次，保证入库道具不会成片落在"其他物品"。
+    items = llmEntitiesWithPrescan(entityResult.items, enhanced.prescanResult.item, 'item').map((it) => ({
+      ...it,
+      category:
+        it.category && it.category !== 'other'
+          ? it.category
+          : inferItemCategory(it.name, it.description),
+      owners: [] as Owner[],
+    }));
     console.log(`[Extractor] Locations (LLM): ${locations.length}; Items (LLM): ${items.length}`);
   } else {
     // No prescan: entities still come from LLM, with neutral importance.
     const noPrescanMap = (
-      ents: { name: string; aliases?: string[]; description?: string; confidence?: number; category?: string; firstChapter?: number; lastChapter?: number; chapterAppearances?: number[] }[],
+      ents: { name: string; aliases?: string[]; description?: string; confidence?: number; category?: Item['category']; firstChapter?: number; lastChapter?: number; chapterAppearances?: number[] }[],
       entityType: EntityType,
     ) => llmEntitiesWithPrescan(ents, [], entityType);
     locations = noPrescanMap(entityResult.locations, 'location');
-    items = noPrescanMap(entityResult.items, 'item').map((it) => ({ ...it, owners: [] as Owner[] }));
+    items = noPrescanMap(entityResult.items, 'item').map((it) => ({
+      ...it,
+      category:
+        it.category && it.category !== 'other'
+          ? it.category
+          : inferItemCategory(it.name, it.description),
+      owners: [] as Owner[],
+    }));
   }
 
   const characterDescriptions = extractCharacterDescriptionPacks(characters, chapters);
@@ -229,7 +266,11 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     aliases: Array.isArray(w.aliases) ? w.aliases : [],
     category: w.category || 'worldview',
     description: w.description,
-    confidence: w.confidence ?? 0.7,
+    // 世界观无独立提及计数，用章节证据数近似；世界观列表不过滤低置信度，仅统一指标口径
+    confidence: calibrateConfidence(w.confidence, {
+      mentionCount: (w.chapterAppearances || []).length,
+      chapterCount: (w.chapterAppearances || []).length,
+    }),
     status: 'PENDING' as const,
     chapterRef: w.firstChapter != null ? `第${w.firstChapter}章` : undefined,
     importanceScore: 0,

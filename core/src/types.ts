@@ -300,3 +300,36 @@ export const LOW_CONFIDENCE_THRESHOLD = 0.6;
 export function isLowConfidenceEntity(entity: { confidence: number; status: string }): boolean {
   return entity.confidence < LOW_CONFIDENCE_THRESHOLD && entity.status === 'PENDING';
 }
+
+/** 证据校准的输入信号（dialogueCount 仅角色有）。 */
+export interface ConfidenceEvidence {
+  /** 全文提及次数（主名 + 别名合计） */
+  mentionCount: number;
+  /** 出现的不同章节数 */
+  chapterCount: number;
+  /** 对话次数（仅角色） */
+  dialogueCount?: number;
+}
+
+/**
+ * 用文本证据校准 LLM 自报置信度。
+ *
+ * 背景：LLM 自报置信度普遍虚高且缺乏区分度——实测主角和仅出现一次的
+ * 路人角色都集中在 0.85~0.95，直接落库会让「低置信度库」几乎永远为空。
+ * 这里把自报值（作为先验，压缩到 [0.3, 0.95]）与证据分按 45:55 混合：
+ * 证据分由提及次数（对数饱和，16 次封顶）、出现章节数（10 章封顶）、
+ * 对话次数（8 次封顶，仅角色）加权得出。校准后：
+ * - 仅出现 1~2 次的边缘实体即使自报 0.9 也会落到 0.6 以下，进入低置信度库；
+ * - 高频、跨章的核心实体仍维持在 0.85+。
+ */
+export function calibrateConfidence(llm: number | undefined, ev: ConfidenceEvidence): number {
+  const mention = Math.min(1, Math.log2(1 + Math.max(0, ev.mentionCount)) / Math.log2(17));
+  const chapter = Math.min(1, Math.max(0, ev.chapterCount) / 10);
+  const evidence =
+    ev.dialogueCount != null
+      ? mention * 0.45 + chapter * 0.25 + (Math.min(1, Math.max(0, ev.dialogueCount) / 8)) * 0.3
+      : mention * 0.6 + chapter * 0.4;
+  const base = Math.min(0.95, Math.max(0.3, llm ?? 0.7));
+  // 保留三位小数，避免落库出现 0.6499999 这类浮点尾数
+  return Math.round((base * 0.45 + evidence * 0.55) * 1000) / 1000;
+}

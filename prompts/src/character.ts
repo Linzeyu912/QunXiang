@@ -93,6 +93,12 @@ export const CHARACTER_EXTRACTION_PROMPT = `你是一位从小说中提取实体
 注意：description 字段必须使用与小说原文相同的语言（中文小说用中文）。description 是基于原文证据的概括，不是背景设定补写；不确定的信息不要写入。
 description 必须输出完整句或完整短语，不能以半截句、连接词、数字残片结尾；如果某个信息无法完整表达，宁可去掉该残片，也不要输出未完成的句子。
 
+⚠️ confidence 校准（极重要）：置信度必须按证据强度拉开差距，绝不能所有实体都报 0.85+。按以下标准给分：
+- 0.9 以上：贯穿大量章节、驱动剧情的核心实体（主角、主要配角、关键道具/场景/体系设定）
+- 0.7~0.9：出现在多个章节、对剧情有实际作用的实体
+- 0.5~0.7：仅出现 1~2 章、提及次数很少的边缘实体
+- 0.5 以下：仅一次性提及、疑似称呼误判或概括性名词的实体
+
 只返回 JSON 对象。示例：
 {"characters":[{"name":"萧炎","aliases":["萧炎哥","萧炎哥哥","炎儿","三少爷"],"description":"主角，萧家三少爷，曾为天才少年，功力倒退后重新崛起，身怀神秘黑色古戒","confidence":0.95,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3,4,5,6,7,8,9,10],"outfits":[{"description":"青色劲装，袖口绣有暗纹","scene":"日常","firstChapter":1,"lastChapter":10},{"description":"宽大黑袍与大黑斗篷，遮掩面容","scene":"伪装炼药师/拍卖场","firstChapter":3,"lastChapter":8}]}],"items":[{"name":"黑色古戒","aliases":["古朴戒指","戒指"],"category":"treasure","description":"萧炎母亲遗物，内藏神秘灵魂体药老，曾吸取萧炎三年斗之气","confidence":0.9,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,8,9],"owners":[{"name":"萧炎母亲","note":"遗物"},{"name":"萧炎","firstChapter":1,"lastChapter":10,"note":"佩戴于左手无名指"}]}],"locations":[{"name":"乌坦城","aliases":["乌坦"],"description":"加玛帝国东部的一座城市，萧家所在地","confidence":0.85,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3]}],"worldviews":[{"name":"斗气","aliases":[],"description":"斗气大陆通行的能量体系，修炼者通过修炼斗气提升实力，斗气等级决定修炼者地位","category":"power-system","confidence":0.9,"firstChapter":1,"lastChapter":10,"chapterAppearances":[1,2,3,5]},{"name":"斗之气三段","aliases":[],"description":"斗气修炼的基础境界之一，萧炎曾经的天赋水准，分为一至九段","category":"realm","confidence":0.85,"firstChapter":1,"lastChapter":2,"chapterAppearances":[1,2]}]}`;
 

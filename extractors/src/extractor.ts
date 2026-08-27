@@ -1,5 +1,5 @@
 import type { Character, Outfit, Owner } from '@qunxiang/core';
-import { cleanEntityDescription, mergeEntityDescriptions } from '@qunxiang/core';
+import { cleanEntityDescription, inferItemCategory, mergeEntityDescriptions } from '@qunxiang/core';
 import type { LLMProvider } from '@qunxiang/llm';
 import {
   extractionResultSchema,
@@ -223,41 +223,16 @@ function mergeCharacter(a: CharacterCandidate, b: CharacterCandidate): Character
   };
 }
 
-/** 根据道具名称推断分类（作为 LLM 未返回 category 时的兜底） */
-function inferItemCategory(name: string): 'weapon' | 'skill' | 'food' | 'pill' | 'treasure' | 'other' {
-  const n = name.toLowerCase();
-  
-  // 武器类关键词
-  const weaponKeywords = ['剑', '刀', '枪', '棍', '棒', '矛', '盾', '弓', '箭', '弩', '斧', '锤', '鞭', '锏', '钩', '叉', '匕首', '短剑', '长剑', '重尺', '玄重尺'];
-  if (weaponKeywords.some(k => n.includes(k))) return 'weapon';
-  
-  // 技能/功法类关键词
-  const skillKeywords = ['功', '诀', '法', '术', '技', '式', '招', '心法', '口诀', '秘籍', '剑谱', '掌', '拳', '腿', '指', '爪', '身法', '步法'];
-  if (skillKeywords.some(k => n.includes(k))) return 'skill';
-  
-  // 丹药/消耗品类关键词
-  const pillKeywords = ['丹', '丸', '散', '药', '液', '露', '膏', '剂', '草', '灵药', '仙丹', '灵丹'];
-  if (pillKeywords.some(k => n.includes(k))) return 'pill';
-  
-  // 食物类关键词
-  const foodKeywords = ['果', '茶', '酒', '饭', '菜', '食', '饼', '糕', '汤'];
-  if (foodKeywords.some(k => n.includes(k))) return 'food';
-  
-  // 法宝/器物类关键词（通常是"X宝"、"X符"、"X镜"等）
-  const treasureKeywords = ['宝', '符', '镜', '珠', '玉', '印', '令', '旗', '图', '卷', '瓶', '葫', '炉', '鼎', '钟', '琴', '棋', '灯', '戒', '镯', '佩', '环', '簪', '冠', '袍', '甲', '靴', '带', '囊', '袋', '盒', '箱'];
-  if (treasureKeywords.some(k => n.includes(k))) return 'treasure';
-  
-  return 'other';
-}
-
 /** Deduplicate items by name (case-insensitive), merging aliases. */
 function dedupItems(items: ItemInputOutput[]): ItemInputOutput[] {
   const map = new Map<string, ItemCandidate>();
   for (const item of items) {
     const key = norm(item.name);
     const existing = map.get(key);
-    // 如果 LLM 没有返回 category 或返回了 other，尝试根据名称推断
-    const inferredCategory = (!item.category || item.category === 'other') ? inferItemCategory(item.name) : item.category;
+    // 如果 LLM 没有返回 category 或返回了 other，尝试根据名称+描述推断
+    const inferredCategory = (!item.category || item.category === 'other')
+      ? inferItemCategory(item.name, item.description)
+      : item.category;
     if (!existing) {
       map.set(key, { ...item, category: inferredCategory, description: cleanEntityDescription(item.description) });
     } else {
