@@ -34,7 +34,7 @@ import {
   type ManifestFile,
   type ManifestAssetCategory,
 } from '../lib/manifest.js';
-import type { SnapshotObjectCategory, SnapshotObjectState } from '@qunxiang/core';
+import type { SnapshotObjectCategory, SnapshotObjectState, CharacterReview } from '@qunxiang/core';
 import { stableStringify } from '../lib/stable-json.js';
 import { discoverCurrentRun } from './run-discovery.js';
 
@@ -277,12 +277,23 @@ export async function collectSnapshot(input: CollectSnapshotInput): Promise<Coll
   }
 
   // ===== review（DB 聚合）=====
-  const reviewBuckets = await Promise.all(
-    (characters ?? []).map(async (c) => ({
-      characterId: (c as { id: string }).id,
-      reviews: await ReviewRepository.findByCharacterId((c as { id: string }).id),
-    })),
-  );
+  // 单条 IN 批量查询替代逐角色 N+1：此前每个角色一次全表扫描式查询
+  // （CharacterReview 无 characterId 以外的高效过滤路径），角色数多时
+  // 快照收集会放大成数百次数据库往返。
+  const characterRows = (characters ?? []) as Array<{ id: string }>;
+  const reviewsByCharacter = new Map<string, CharacterReview[]>();
+  if (characterRows.length > 0) {
+    const allReviewRows = await ReviewRepository.findByCharacterIds(characterRows.map((c) => c.id));
+    for (const review of allReviewRows) {
+      const bucket = reviewsByCharacter.get(review.characterId);
+      if (bucket) bucket.push(review);
+      else reviewsByCharacter.set(review.characterId, [review]);
+    }
+  }
+  const reviewBuckets = characterRows.map((c) => ({
+    characterId: c.id,
+    reviews: reviewsByCharacter.get(c.id) ?? [],
+  }));
   const allReviews = reviewBuckets.flatMap((r) => r.reviews);
   const reviewState = allReviews.length === 0 ? 'empty' : 'present';
   const reviewReason = reviewState === 'empty' ? '尚无审核记录' : undefined;

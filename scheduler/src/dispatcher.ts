@@ -64,6 +64,32 @@ function isRetryableError(err: unknown): boolean {
   return true;
 }
 
+/**
+ * 把续跑 stageResults 还原成 agent 期望的顶层累积 payload。
+ *
+ * 历史上存在两种形态，都必须兼容：
+ * 1) 按阶段键：服务层 resumeExtraction 从 Task.result 收集（{ extractor: {...}, validator: {...} }），
+ *    按管线顺序逐段合并，等价于正常运行时逐阶段 spread 的累积结果。
+ * 2) 扁平累积对象：运行暂停恢复时 manifest.stageResults 存的是「已合并 payload」
+ *    （dispatcher 暂停分支写入），直接整体使用。
+ * 判定依据：任一管线阶段键命中非数组对象即视为形态 1。
+ */
+export function mergeResumeStageResults(stageResults: Record<string, unknown>): Record<string, unknown> {
+  const merged: Record<string, unknown> = {};
+  let stageKeyed = false;
+  for (const stage of EXTRACTION_PIPELINE) {
+    const stageResult = stageResults[stage];
+    if (stageResult && typeof stageResult === 'object' && !Array.isArray(stageResult)) {
+      stageKeyed = true;
+      Object.assign(merged, stageResult as Record<string, unknown>);
+    }
+  }
+  if (!stageKeyed) {
+    Object.assign(merged, stageResults);
+  }
+  return merged;
+}
+
 async function withRetry<T>(
   fn: () => Promise<T>,
   config = DEFAULT_RETRY_CONFIG
@@ -109,6 +135,14 @@ export class TaskDispatcher {
     active: boolean;
     currentInterval: number;
   }[] = [];
+
+  /**
+   * worker 池是否已在本进程内启动过。
+   * 只有进程首次启动才需要 recoverInterruptedTasks（回收上一进程孤儿任务）；
+   * 热重载（保存模型配置/切换并发模式）时在跑任务属于本进程的在途 agent，
+   * 此时按孤儿回收会把活任务误标失败、书误标 FAILED。
+   */
+  private workersEverStarted = false;
 
   private static readonly STAGE_NAMES: Record<AgentType, string> = {
     extractor: '角色提取',
@@ -173,10 +207,15 @@ export class TaskDispatcher {
    */
   startWorkers(count = 1, intervalMs = 1000, beforeTaskClaim?: () => void | Promise<void>) {
     this.stopWorkers();
-    // 启动前回收上一进程遗留的 running 任务（不阻塞启动）
-    void this.recoverInterruptedTasks().catch((err) =>
-      console.error('[调度器] 启动时恢复任务失败：', err),
-    );
+    // 仅进程首次启动时回收上一进程遗留的 running 任务；热重载时在跑任务
+    // 属于本进程在途 agent，不能按孤儿回收（避免误杀活任务）。
+    const isFirstStart = !this.workersEverStarted;
+    this.workersEverStarted = true;
+    if (isFirstStart) {
+      void this.recoverInterruptedTasks().catch((err) =>
+        console.error('[调度器] 启动时恢复任务失败：', err),
+      );
+    }
     const n = Math.max(1, Math.floor(count));
     for (let i = 0; i < n; i++) {
       const worker = {
@@ -282,8 +321,13 @@ export class TaskDispatcher {
     const resumeFrom = resumePayload.resumeFrom as AgentType | undefined;
     if (resumeFrom && EXTRACTION_PIPELINE.indexOf(agentType) < EXTRACTION_PIPELINE.indexOf(resumeFrom)) {
       const stageResults = (resumePayload.stageResults ?? {}) as Record<string, unknown>;
-      await this.queue.complete(task.id, stageResults[agentType] ?? {});
       const nextAgent = getNextAgent(agentType);
+      // 扁平形态（暂停恢复的 manifest）没有分阶段数据可写回；在最后一个被跳过
+      // 阶段写入完整累积 payload，保证此后再次失败续跑时能从任务行重建输入。
+      const fallbackResult = nextAgent && nextAgent === resumeFrom
+        ? mergeResumeStageResults(stageResults)
+        : {};
+      await this.queue.complete(task.id, stageResults[agentType] ?? fallbackResult);
       if (nextAgent) {
         await this.queue.enqueue({
           bookId: task.bookId,
@@ -296,7 +340,20 @@ export class TaskDispatcher {
       return undefined;
     }
 
-    console.log(`[调度器] 正在处理 ${agentType} 任务 ${task.id}，书籍：${task.bookId}，参数：`, JSON.stringify(task.payload));
+    // 续跑入口阶段（agentType === resumeFrom）的 agent 从 payload 顶层解构输入
+    // （characters/locations 等），而 resume 任务 payload 只带 resumeFrom +
+    // stageResults——必须先把 stageResults 还原成顶层累积 payload 再执行，
+    // 否则续跑阶段拿到空输入。resumeFrom 之后的阶段 payload 已按正常流程
+    // 逐阶段合并，直接使用原始 payload，避免过期 stageResults 覆盖新结果。
+    const agentPayload = resumeFrom && agentType === resumeFrom
+      ? {
+          ...resumePayload,
+          ...mergeResumeStageResults((resumePayload.stageResults ?? {}) as Record<string, unknown>),
+        }
+      : task.payload;
+
+    // 不打印 payload 全文：其中可能携带整包实体结果（大 JSON），只留定位信息。
+    console.log(`[调度器] 正在处理 ${agentType} 任务 ${task.id}，书籍：${task.bookId}，resumeFrom：${resumeFrom ?? '无'}`);
 
     // Emit stage_start event
     eventBus.emit({
@@ -310,6 +367,7 @@ export class TaskDispatcher {
     const agent = this.agents.get(agentType);
     if (!agent) {
       await this.queue.fail(task.id, `Unknown agent type: ${agentType}`);
+      await this.finalizeRun(task.bookId, 'failed', `Unknown agent type: ${agentType}`);
       await this.finalizePipeline(task.bookId, 'failed');
       eventBus.emit({ type: 'error', bookId: task.bookId, stageId: agentType, message: `Unknown agent type: ${agentType}`, timestamp: Date.now() });
       return undefined;
@@ -322,7 +380,7 @@ export class TaskDispatcher {
 
     try {
       const { result, error, attempts } = await withRetry(
-        () => agent(task.payload)
+        () => agent(agentPayload)
       );
 
       if (error) {
@@ -331,6 +389,9 @@ export class TaskDispatcher {
         } else {
           await this.queue.fail(task.id, error);
         }
+        // 失败路径必须同步收敛运行会话：否则活动会话（含 QUEUED）残留，
+        // 一书被「一书一活动运行」约束永久锁死，无法再新建运行。
+        await this.finalizeRun(task.bookId, 'failed', error);
         await this.finalizePipeline(task.bookId, 'failed');
         eventBus.emit({ type: 'error', bookId: task.bookId, stageId: agentType, message: error, timestamp: Date.now() });
         return undefined;
@@ -365,6 +426,7 @@ export class TaskDispatcher {
           // 避免用户只拿到"可能是配置问题"的猜测式文案而误判失败环节。
           const emptyMessage = buildEmptyExtractionMessage(result);
           await this.queue.fail(task.id, emptyMessage);
+          await this.finalizeRun(task.bookId, 'failed', emptyMessage);
           await this.finalizePipeline(task.bookId, 'failed');
           eventBus.emit({
             type: 'error',

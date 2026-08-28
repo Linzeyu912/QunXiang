@@ -118,7 +118,7 @@ describe('账号注册、登录和分享码', () => {
     const token = login.json().token;
     const response = await app.inject({
       method: 'POST', url: '/account/share-code/rotate',
-      headers: { authorization: `Bearer ${token}`, origin: TRUSTED_ORIGIN },
+      headers: { authorization: `Bearer ${token}`, origin: TRUSTED_ORIGIN, 'x-csrf-token': '1' },
     });
     expect(response.statusCode).toBe(200);
     expect(response.headers['cache-control']).toBe('no-store');
@@ -171,7 +171,7 @@ describe('账号注册、登录和分享码', () => {
 
     const responses = await Promise.all([
       app.inject({ method: 'GET', url: '/auth/me', headers: { authorization } }),
-      app.inject({ method: 'POST', url: '/account/share-code/rotate', headers: { authorization, origin: TRUSTED_ORIGIN } }),
+      app.inject({ method: 'POST', url: '/account/share-code/rotate', headers: { authorization, origin: TRUSTED_ORIGIN, 'x-csrf-token': '1' } }),
       app.inject({
         method: 'POST',
         url: '/auth/session/refresh',

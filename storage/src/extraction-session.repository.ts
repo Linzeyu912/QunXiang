@@ -26,7 +26,8 @@ export interface ExtractionSessionRepository {
   }): Promise<{ id: string }>;
   markRunning(id: string): Promise<void>;
   markPaused(id: string, resumeFrom?: string, stageResults?: unknown): Promise<void>;
-  markResumed(id: string): Promise<void>;
+  /** 仅 PAUSED 可恢复；条件更新，竞态下（如已取消）返回 false 不覆写。 */
+  markResumed(id: string): Promise<boolean>;
   markCancelling(id: string): Promise<void>;
   markCancelled(id: string): Promise<void>;
   markCompleted(id: string, usageSummary?: unknown): Promise<void>;
@@ -98,8 +99,9 @@ export function createExtractionSessionRepository(db: PrismaClient): ExtractionS
       });
     },
     async markPaused(id, resumeFrom, stageResults) {
-      await db.extractionSession.update({
-        where: { id },
+      // 条件更新：仅活动态可暂停落盘；会话已被并发取消/完成时不覆写终态。
+      await db.extractionSession.updateMany({
+        where: { id, status: { in: [...ACTIVE_SESSION_STATUSES] } },
         data: {
           status: 'PAUSED',
           manifest: {
@@ -111,10 +113,11 @@ export function createExtractionSessionRepository(db: PrismaClient): ExtractionS
       });
     },
     async markResumed(id) {
-      await db.extractionSession.update({
-        where: { id },
+      const updated = await db.extractionSession.updateMany({
+        where: { id, status: 'PAUSED' },
         data: { status: 'RUNNING' },
       });
+      return updated.count === 1;
     },
     async markCancelling(id) {
       await db.extractionSession.updateMany({

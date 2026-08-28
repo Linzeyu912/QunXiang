@@ -94,20 +94,35 @@ export async function extractionRunRoutes(fastify: FastifyInstance) {
     } catch {
       return sendBookNotFound(reply);
     }
+
+    // 客户端断开必须中止生成器：否则 eventBus 监听器与心跳轮询要等到
+    // 终态事件才释放，反复断开重连会持续累积监听器。
+    const abortController = new AbortController();
+    const abortStream = () => abortController.abort();
+    request.raw.once('aborted', abortStream);
+    reply.raw.once('close', abortStream);
+
     reply.raw.writeHead(200, {
       'content-type': 'text/event-stream',
       'cache-control': 'no-cache, no-transform',
       connection: 'keep-alive',
     });
-    const stream = createExtractionStream(bookId, ownerId!);
     try {
-      for await (const chunk of stream) {
+      for await (const chunk of createExtractionStream(bookId, ownerId!, abortController.signal)) {
+        if (abortController.signal.aborted || reply.raw.destroyed || reply.raw.writableEnded) break;
         reply.raw.write(chunk);
       }
-    } catch {
-      // 客户端断开等
+    } catch (err) {
+      request.log.error(err);
+      if (!abortController.signal.aborted && !reply.raw.destroyed && !reply.raw.writableEnded) {
+        reply.raw.write(`event: error\ndata: ${JSON.stringify({ message: '获取运行事件流失败', timestamp: Date.now() })}\n\n`);
+      }
+    } finally {
+      request.raw.removeListener('aborted', abortStream);
+      reply.raw.removeListener('close', abortStream);
+      if (!reply.raw.destroyed && !reply.raw.writableEnded) reply.raw.end();
     }
-    reply.raw.end();
+    return reply;
   });
 
   const runAction = (action: 'pause' | 'resume' | 'cancel') => async (request: FastifyRequest, reply: FastifyReply) => {

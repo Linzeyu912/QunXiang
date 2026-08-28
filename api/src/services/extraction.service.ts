@@ -1,4 +1,4 @@
-import { BookRepository, TaskRepository } from '@qunxiang/storage';
+import { BookRepository, TaskRepository, prisma } from '@qunxiang/storage';
 import { TaskDispatcher, DatabaseTaskQueue, eventBus, EXTRACTION_PIPELINE } from '@qunxiang/scheduler';
 import type { PipelineEvent } from '@qunxiang/scheduler';
 import { CharacterRepository, LocationRepository, ItemRepository, WorldviewRepository } from '@qunxiang/storage';
@@ -116,21 +116,43 @@ export async function startExtraction(bookId: string, ownerId: string) {
   }
 
   try {
-    // Update book status
-    await BookRepository.updateOwnedStatus(bookId, ownerId, 'EXTRACTING');
-
-    // 清掉上一轮的遗留任务，确保 getExtractionStages / 进度反映的是本次运行，
-    // 而不是上一次 completed/failed 的历史任务（否则重跑会瞬间显示"已完成"）。
-    await TaskRepository.deleteOwnedByBookId(bookId, ownerId);
-
     // Validate provider is available (will throw if not configured)
     const provider = await getDefaultProvider();
 
-    // Enqueue extraction task; actual processing happens in the background worker
-    const { extractorTaskId } = await dispatcher.startExtraction(bookId, ownerId);
+    // 书级咨询锁 + 单事务：并发触发时后到者在锁内复检，拿到与顺序调用一致的
+    // 409，修复「检查→删除→入队」check-then-act 竞态导致的同书双管线双计费。
+    const { extractorTaskId } = await prisma.$transaction(async (tx) => {
+      await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${bookId}, 0))`;
+      const active = await tx.task.findFirst({
+        where: { bookId, status: { in: ['pending', 'running'] } },
+        select: { id: true },
+      });
+      if (active) {
+        throw new ConflictError('该书正在提取中，请等待当前运行结束');
+      }
+      await tx.book.updateMany({
+        where: { id: bookId, userId: ownerId },
+        data: { status: 'EXTRACTING' },
+      });
+      // 清掉上一轮的遗留任务，确保 getExtractionStages / 进度反映的是本次运行，
+      // 而不是上一次 completed/failed 的历史任务（否则重跑会瞬间显示"已完成"）。
+      await tx.task.deleteMany({ where: { bookId } });
+      const created = await tx.task.create({
+        data: {
+          bookId,
+          agentType: 'extractor',
+          payload: { bookId, userId: ownerId },
+          status: 'pending',
+        },
+        select: { id: true },
+      });
+      return { extractorTaskId: created.id };
+    });
 
     return { taskId: extractorTaskId, provider: provider.name };
   } catch (err) {
+    // 竞态复检命中的冲突不是失败：另一请求的管线正常在跑，不动书状态
+    if (err instanceof ConflictError) throw err;
     await BookRepository.updateOwnedStatus(bookId, ownerId, 'FAILED');
     throw err;
   }

@@ -3,19 +3,20 @@
 > 本文档记录当前仓库已知的未解决问题,与测试状态对应。
 > 每次修一个 issue,把它从本文件移到 git commit message。
 
-最后更新:2026-07-27
+最后更新:2026-08-28
 
 ---
 
-## 测试状态
+## 测试状态（2026-08-28 模型B 后端等价优化后复核）
 
 ```
-Test Files:  96 passed (96)
-Tests:       556 passed (556)
-通过率:       100%
+单元+服务层套件: 566 个测试, 563 通过
+含集成测试全量:  709 个测试, 657 通过（20 个 fs 存储模式下跳过）
+失败均为预存问题, 与本轮后端改动无关（已用 git stash 基线对照 + 隔离复跑双重验证）
 ```
 
 运行方式:`node scripts/test.mjs`(自动起 docker postgres-test + minio-test,跑前 `prisma migrate reset`,跑完清理容器)。
+无 Docker 环境的替代验证: `node scripts/pg-server.mjs start`(55432 隔离库) + `prisma migrate reset` + 直接 `pnpm exec vitest run`(OBJECT_STORAGE_PROVIDER=fs)。
 
 ### 已修复(2026-07-27 会话)
 
@@ -33,9 +34,74 @@ Tests:       556 passed (556)
 
 ---
 
-## 当前未修复的测试
+## 当前未修复的测试（预存,与 2026-08-28 后端等价优化无关）
 
-无。
+> 以下失败在优化前的干净基线（git stash 对照 + 隔离复跑）上同样出现;
+> CI 中 vitest 为 `continue-on-error: true`,因此长期未被发现。
+
+| # | 失败测试 | 根因 | 修复方向 |
+|---|---|---|---|
+| T1 | `postgresql-entrypoints.test.ts` ×3（setup/start/start-mock.bat） | 断言 .bat 中的旧版 SQLite 提示文案,脚本文案已改 | 同步测试断言或恢复脚本文案,二选一 |
+| T2 | `postgresql-baseline.integration.test.ts` 「包含全部 Prisma 模型」 | 硬编码 19 个模型清单,DB 已 25 个模型（后续阶段新增） | 更新模型清单断言 |
+| T3 | `postgresql-baseline.integration.test.ts` 「拥有书籍的账号不能被直接删除」 | Prisma 5.22 把外键 RESTRICT 报为 PrismaClientUnknownRequestError（无 code）,测试期望 P2003 | 断言改为匹配错误消息/或捕获 unknown 类型 |
+| T4 | `ownership.integration.test.ts` ×3（stories/director 410、找回噪声行 needsReconfirm） | stories/director 路由 410 退场 preHandler 先于归属校验;噪声找回响应新增 needsReconfirm 字段,测试断言未同步 | 需先确认「410 先于 404」是否为预期契约（产品语义决策）,再同步断言 |
+| T5 | 全量混跑时 asset-object / asset-snapshot / book-share / book / snapshot-object / task / shares / snapshots 等仓储与集成测试互相污染 | singleFork 单进程单库下,前序文件的 `PublicAssetImage`/`AssetObject`/`Task` 残留行阻塞后序文件清理或触发 objectKey 唯一冲突;单独运行均通过 | 各集成测试 beforeEach 补全关联表清理;或官方 test-runner 按文件分组重置 |
+
+---
+
+## 后端等价优化遗留待办（2026-08-28 模型B,按优先级推动）
+
+> 背景:本轮等价优化已完成可靠性/安全/性能修复（见提交记录）。
+> 以下问题在「接口契约冻结、不改用户链路」约束下**无法安全修复**,
+> 需要产品决策或单独立项后实施。每完成一项,把它移到 git commit message。
+
+### 🔴 P0 — 数据一致性 / 权限（建议尽快立项）
+
+- [ ] **ISSUE-B1 产物人工编辑被对象存储旧副本遮蔽**
+  `artifacts.service.ts` 的 `updateArtifact` 只写本机 `output/{runDir}/entities/*.json`,
+  而 `getExtractionArtifacts` 读取时优先对象存储（BookArtifact）——
+  一旦 scheduler 已双写产物到对象存储,用户 PATCH 的编辑会「静默丢失」。
+  修复方向:编辑路径接入 `persistBookArtifact` 双写 + revision 递增。涉及数据写入语义,需立项。
+- [ ] **ISSUE-B2 全局模型配置无角色隔离**
+  `PATCH /health/llm/config`、`/health/image/config` 等只需任意登录 JWT,
+  多用户部署时任一账号可改写全局 API Key/Base URL/并发模式。
+  修复方向:引入 admin 角色或按账号隔离配置（改动鉴权模型,需立项）。
+- [ ] **ISSUE-B3 对象存储孤儿对象无回收**
+  `AssetObjectRepository.deleteIfUnreferenced`/`countReferences` 在生产代码零调用（死代码）;
+  收集失败残留对象、生图 DB 写失败对象、`deleteEntityImageById` 不删对象存储。
+  修复方向:落地引用计数 GC 后台任务（涉及删除语义,需谨慎设计）。
+
+### 🟡 P1 — 可靠性补强
+
+- [ ] **ISSUE-B4 边界取消后书籍状态停留 EXTRACTING**
+  `checkRunControl` 取消分支只收敛会话不更新 Book.status（与 PAUSED 取消路径置 UPLOADED 不一致）。
+  改状态属可观测行为变化,需产品确认取消后书籍应显示的状态后修复。
+- [ ] **ISSUE-B5 KEY_VAULTS_SECRET 硬编码兜底**
+  `configStore.ts` 在 .env 不可写时用公开常量加密落盘,磁盘上密钥文件等于公开可解。
+  修复方向:生产环境（NODE_ENV=production）改为拒绝启动;开发环境保留警告。
+- [ ] **ISSUE-B6 SSE 心跳不回查数据库**
+  数据库与内存事件不同步时（如进程异常）SSE 只发心跳不收敛,依赖前端轮询兜底。
+  修复方向:心跳周期内加一次终态 DB 复查。
+- [ ] **ISSUE-B7 提取 Task 无租约/死信无出口**
+  agent 执行期间任务无心跳;`dead_lettered` 任务无自动重试或告警,靠用户重新触发清理。
+- [ ] **ISSUE-B8 用户缓存 15 秒失效窗口**
+  `invalidateUserCache` 是死代码;停用/改密后旧 JWT 最长 15 秒内仍通过校验（有界,可接受）。
+  修复方向:改密/停用路径接入缓存失效。
+
+### 🟢 P2 — 性能 / 运维（证据已记录,实施需测量）
+
+- [ ] **ISSUE-B9 download-state 轮询端点全目录扫描 + 全实体序列化**
+  `getDownloadState` 每次轮询执行 `discoverCurrentRun`（readdir 整个 output/ + 逐目录读 run-summary）
+  和三张实体表全量 `findByBookId` 仅为算 contentRevision。修复方向:run→book 索引表或短 TTL 缓存（注意失效正确性）。
+- [ ] **ISSUE-B10 collector 每章全量重解析原文**
+  `getChapterCleanedContent` 每章都对全书 normalize/detectNoise/splitChapters,O(章节数×全书)。
+  修复方向:单次收集内按原文内容缓存规范化结果。
+- [ ] **ISSUE-B11 签名 URL 即 HEAD**
+  fs/s3 的 `createDownloadUrl` 先 head 再签名,公共素材列表页每图一次 HEAD（s3 下 20 次/页网络请求）。
+- [ ] **ISSUE-B12 PublicAsset 标签/搜索无 GIN/trigram 索引**
+  `tags array_contains` 与 `q contains` 全扫 published 集;`aggregateTags` 每请求展开全部素材。
+- [ ] **ISSUE-B13 404 文案不统一**
+  `artifacts.ts` 用「书籍不存在」而非统一的「书籍不存在或无权访问」;改文案属响应体变化,需与前端确认后统一。
 
 ---
 

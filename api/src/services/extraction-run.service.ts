@@ -94,28 +94,50 @@ export async function createRun(bookId: string, ownerId: string, opts: CreateRun
   const provider = await getDefaultProvider();
   const estimates = await estimateRun(bookId, ownerId, opts);
 
-  const { id: runId } = await ExtractionSessionRepository.create({
-    bookId,
-    userId: ownerId,
-    kind: 'LIVE',
-    status: 'QUEUED',
-    sourceRevision: book.sourceRevision ?? 0,
-    estimatedInputChars: BigInt(estimates.inputChars),
-    estimatedCalls: estimates.estimatedCalls,
-    maxCalls: estimates.maxCalls,
-    maxTokens: estimates.maxTokens ?? undefined,
-    manifest: {
-      provider: provider.name,
-      apiKeys: getApiKeyCount(),
-      estimatedAt: new Date().toISOString(),
-    },
-  });
+  let runId: string;
+  try {
+    const { id } = await ExtractionSessionRepository.create({
+      bookId,
+      userId: ownerId,
+      kind: 'LIVE',
+      status: 'QUEUED',
+      sourceRevision: book.sourceRevision ?? 0,
+      estimatedInputChars: BigInt(estimates.inputChars),
+      estimatedCalls: estimates.estimatedCalls,
+      maxCalls: estimates.maxCalls,
+      maxTokens: estimates.maxTokens ?? undefined,
+      manifest: {
+        provider: provider.name,
+        apiKeys: getApiKeyCount(),
+        estimatedAt: new Date().toISOString(),
+      },
+    });
+    runId = id;
+  } catch (err) {
+    // 并发创建撞上「一书一活动运行」部分唯一索引：语义与前置检查一致，返回 409
+    if ((err as { code?: string }).code === 'P2002') {
+      throw new ConflictError('该书已有进行中的运行，请先等待完成、暂停或取消');
+    }
+    throw err;
+  }
 
-  // 启动管线（复用旧入口的全部校验与清理逻辑）
-  const { taskId } = await startExtraction(bookId, ownerId);
-  // 任务绑定运行（实施包第五节 Task.extractionSessionId）
-  await prisma.task.updateMany({ where: { id: taskId }, data: { extractionSessionId: runId } });
-  return { runId, taskId };
+  // 启动管线（复用旧入口的全部校验与清理逻辑）。
+  // 启动失败（如模型未配置）必须把会话收敛为 FAILED——否则 QUEUED 会话属于
+  // 活动态，一书被唯一索引锁死，后续 createRun 永远 409。
+  try {
+    const { taskId } = await startExtraction(bookId, ownerId);
+    // 任务绑定运行（实施包第五节 Task.extractionSessionId）
+    await prisma.task.updateMany({ where: { id: taskId }, data: { extractionSessionId: runId } });
+    return { runId, taskId };
+  } catch (err) {
+    await ExtractionSessionRepository.markFailed(
+      runId,
+      err instanceof Error ? err.message : String(err),
+    ).catch(() => {
+      // 收敛失败仅记录，不掩盖原始错误
+    });
+    throw err;
+  }
 }
 
 /** 运行详情：会话 + 阶段任务。 */
@@ -170,10 +192,15 @@ export async function pauseRun(bookId: string, ownerId: string, runId: string): 
   if (!['QUEUED', 'RUNNING', 'PAUSING'].includes(run.status)) {
     throw new ConflictError('该运行不在可暂停状态');
   }
-  await prisma.extractionSession.update({
-    where: { id: run.id },
+  // 条件更新：检查与写入之间运行可能恰好完成/取消，此时不得把终态覆写成 PAUSING
+  //（否则会话重新变回活动态，一书被永久锁死）。
+  const updated = await prisma.extractionSession.updateMany({
+    where: { id: run.id, status: { in: ['QUEUED', 'RUNNING', 'PAUSING'] } },
     data: { status: 'PAUSING', pauseRequestedAt: new Date() },
   });
+  if (updated.count === 0) {
+    throw new ConflictError('该运行已结束，无法暂停');
+  }
 }
 
 /** 恢复：从 manifest.resumeFrom 续跑（复用断点续传机制）。 */
@@ -182,8 +209,13 @@ export async function resumeRun(bookId: string, ownerId: string, runId: string):
   if (run.status !== 'PAUSED') {
     throw new ConflictError('仅已暂停的运行可以恢复');
   }
+  // 条件更新：与并发取消竞态时（PAUSED→CANCELLING/CANCELLED），不得把已取消
+  // 的运行复活成 RUNNING。
+  const resumed = await ExtractionSessionRepository.markResumed(run.id);
+  if (!resumed) {
+    throw new ConflictError('该运行不在可恢复状态');
+  }
   const manifest = (run.manifest ?? {}) as { resumeFrom?: string; stageResults?: unknown };
-  await ExtractionSessionRepository.markResumed(run.id);
   if (manifest.resumeFrom) {
     await resumeExtraction(bookId, ownerId, {
       resumeFrom: manifest.resumeFrom as Parameters<typeof resumeExtraction>[2] extends infer R ? R extends { resumeFrom: infer F } ? F : never : never,

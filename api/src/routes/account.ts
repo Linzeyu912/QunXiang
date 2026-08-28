@@ -17,6 +17,12 @@ interface SessionRow {
 
 export async function accountRoutes(fastify: FastifyInstance) {
   fastify.post('/share-code/rotate', async (request, reply) => {
+    // 与同文件其他会话敏感操作保持一致的 CSRF 头校验
+    try {
+      assertCsrfHeader(request);
+    } catch {
+      return reply.status(403).send({ error: '缺少必要的安全校验头，请刷新页面后重试' });
+    }
     const user = await UserRepository.findById(request.user.userId);
     if (!user) {
       return reply.status(401).send({ error: '登录状态已失效，请重新登录' });

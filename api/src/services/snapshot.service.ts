@@ -99,6 +99,7 @@ export async function prepareSnapshot(book: SnapshotServiceBook, ownerId: string
     }
   }
 
+  let createdSnapshotId: string | null = null;
   try {
     const snapshot = await AssetSnapshotRepository.create({
       bookId: book.id,
@@ -106,6 +107,7 @@ export async function prepareSnapshot(book: SnapshotServiceBook, ownerId: string
       contentRevision,
       now,
     });
+    createdSnapshotId = snapshot.id;
 
     await BackgroundJobRepository.enqueue({
       kind: 'asset-snapshot',
@@ -123,6 +125,16 @@ export async function prepareSnapshot(book: SnapshotServiceBook, ownerId: string
       if (concurrent && concurrent.status !== 'failed') {
         const state: PrepareSnapshotResult['state'] = concurrent.status === 'ready' ? 'ready' : 'preparing';
         return { snapshotId: concurrent.id, state };
+      }
+    }
+    // 快照已创建但任务入队失败：把快照标为 failed，让下一次 prepare 走
+    // 「失败快照删除重建」路径（P0-2），避免 building 快照无任务、下载状态
+    // 永久停留在 preparing 且无自愈入口。
+    if (createdSnapshotId) {
+      try {
+        await AssetSnapshotRepository.markFailed(createdSnapshotId, '快照任务入队失败，请重试');
+      } catch {
+        // 收敛失败不掩盖原始错误
       }
     }
     throw err;

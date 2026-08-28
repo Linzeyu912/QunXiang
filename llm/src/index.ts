@@ -11,12 +11,14 @@ export interface LLMProvider {
   isConfigured(): boolean | Promise<boolean>;
 
   /**
-   * Extract structured data using chat-based LLM call
+   * Extract structured data using chat-based LLM call.
+   * @param options.signal 调用方中止信号（可选）；中止时请求立即失败并映射为超时错误。
    */
   chatExtract<T>(
     systemPrompt: string,
     userPrompt: string,
-    schema: z.ZodSchema<T>
+    schema: z.ZodSchema<T>,
+    options?: { signal?: AbortSignal }
   ): Promise<T>;
 }
 

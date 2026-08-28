@@ -18,7 +18,8 @@ export function createMockProvider(): LLMProvider {
     async chatExtract<T>(
       _systemPrompt: string,
       _userPrompt: string,
-      _schema: ZodSchema<T>
+      _schema: ZodSchema<T>,
+      _options?: { signal?: AbortSignal }
     ): Promise<T> {
       const enabled = process.env.LLM_MOCK_ENABLED === 'true' || process.env.LLM_PROVIDER === 'mock';
       if (!enabled) {

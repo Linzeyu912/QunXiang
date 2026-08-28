@@ -234,6 +234,8 @@ model CharacterReview {
   previousValue String?
   newValue      String?
   createdAt     DateTime  @default(now()) @db.Timestamptz(3)
+
+  @@index([characterId, createdAt], map: "CharacterReview_characterId_createdAt_idx")
 }
 
 /// 提取运行批次。一本书同时最多一个活动运行，由迁移中的部分唯一索引
@@ -296,6 +298,7 @@ model Task {
   @@index([agentType])
   @@index([bookId])
   @@index([bookId, status])
+  @@index([agentType, status, createdAt], map: "Task_agentType_status_createdAt_idx")
 }
 
 /// 文本清洗的人工覆盖：标记某行被“找回”（不删除）。lineNum 为规范化后文本 1-based 行号。

@@ -195,6 +195,10 @@ vi.mock('@qunxiang/storage', () => {
       async findByCharacterId(characterId: string) {
         return mockState.reviewsByCharacter.get(characterId) ?? [];
       },
+      // 批量版本：与逐条版本语义一致（组内保持插入顺序），供 collector 使用
+      async findByCharacterIds(characterIds: string[]) {
+        return characterIds.flatMap((id) => mockState.reviewsByCharacter.get(id) ?? []);
+      },
     },
     NoiseOverrideRepository: {
       async listKeepLineNums() { return new Set(mockState.keepLineNums); },

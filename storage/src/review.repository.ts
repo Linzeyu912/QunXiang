@@ -11,6 +11,8 @@ export interface ReviewRepository {
     newValue?: string;
   }): Promise<CharacterReview>;
   findByCharacterId(characterId: string): Promise<CharacterReview[]>;
+  /** 批量按角色查询：单条 IN 查询替代逐角色 N+1，组内保持 createdAt DESC、id ASC。 */
+  findByCharacterIds(characterIds: string[]): Promise<CharacterReview[]>;
   findOwnedByCharacterId(characterId: string, ownerId: string): Promise<CharacterReview[]>;
   findMergeRejectionsByOwnedBook(bookId: string, ownerId: string): Promise<CharacterReview[]>;
 }
@@ -31,6 +33,16 @@ export function createReviewRepository(db: PrismaClient): ReviewRepository {
     return db.characterReview.findMany({
       where: { characterId },
       orderBy: [{ createdAt: 'desc' }, { id: 'asc' }],
+    }) as Promise<CharacterReview[]>;
+  },
+
+  async findByCharacterIds(characterIds: string[]): Promise<CharacterReview[]> {
+    if (characterIds.length === 0) return [];
+    // characterId 排序只为结果分组稳定；调用方按 characters 数组顺序重组，
+    // 组内顺序与 findByCharacterId 一致（createdAt DESC、id ASC）。
+    return db.characterReview.findMany({
+      where: { characterId: { in: characterIds } },
+      orderBy: [{ characterId: 'asc' }, { createdAt: 'desc' }, { id: 'asc' }],
     }) as Promise<CharacterReview[]>;
   },
 

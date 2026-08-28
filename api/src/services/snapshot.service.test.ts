@@ -15,6 +15,7 @@ const mockState = vi.hoisted(() => {
     objectStoreHeadBytes: BigInt(123),
     objectStoreUrl: '/objects/dl?t=abc',
     objectStoreGetBody: Buffer.from('archive'),
+    enqueueFails: false,
     reset() {
       this.snapshots.clear();
       this.jobsByUniqueKey.clear();
@@ -23,8 +24,9 @@ const mockState = vi.hoisted(() => {
       this.locations = [];
       this.items = [];
       this.keepLineNums = new Set();
-      this.run = { runDir: 'run-x', generatedAt: '2026-07-19T00:00.000Z' };
+      this.run = { runDir: 'run-x', generatedAt: '2026-07-19T00:00:00.000Z' };
       this.storySegmentsExists = false;
+      this.enqueueFails = false;
     },
   };
 });
@@ -71,6 +73,16 @@ vi.mock('@qunxiang/storage', () => {
         );
         return s ? { ...s } : null;
       },
+      async deleteById(id: string) {
+        mockState.snapshots.delete(id);
+      },
+      async markFailed(id: string, reason: string) {
+        const s = mockState.snapshots.get(id);
+        if (!s) return null;
+        s.status = 'failed';
+        s.failureReason = reason;
+        return { ...s };
+      },
     },
     AssetObjectRepository: {
       async findById(id: string) {
@@ -79,6 +91,9 @@ vi.mock('@qunxiang/storage', () => {
     },
     BackgroundJobRepository: {
       async enqueue(input: any) {
+        if (mockState.enqueueFails) {
+          throw new Error('数据库暂时不可用（模拟入队失败）');
+        }
         mockState.enqueued.push(input);
         const existing = mockState.jobsByUniqueKey.get(input.uniqueKey);
         if (existing) return existing;
@@ -222,6 +237,21 @@ describe('prepareSnapshot', () => {
     mockState.characters = [{ id: 'c1', name: '少年' }];
     const second = await prepareSnapshot(bookFixture(), OWNER_ID);
     expect(second.snapshotId).not.toBe(first.snapshotId);
+  });
+
+  it('任务入队失败时把新快照标为 failed，下次 prepare 删除重建（不再永久 preparing）', async () => {
+    mockState.enqueueFails = true;
+    await expect(prepareSnapshot(bookFixture(), OWNER_ID)).rejects.toThrow('入队失败');
+    const failed = [...mockState.snapshots.values()].find((s) => s.bookId === BOOK_ID);
+    expect(failed?.status).toBe('failed');
+    expect(failed?.failureReason).toContain('入队失败');
+
+    // 入队恢复后：失败快照被清除并重建（P0-2 路径），任务成功投递
+    mockState.enqueueFails = false;
+    const retried = await prepareSnapshot(bookFixture(), OWNER_ID);
+    expect(retried.state).toBe('preparing');
+    expect(mockState.snapshots.get(retried.snapshotId)?.status).toBe('building');
+    expect(mockState.enqueued.filter((e) => e.kind === 'asset-snapshot')).toHaveLength(1);
   });
 });
 

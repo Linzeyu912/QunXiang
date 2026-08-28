@@ -31,10 +31,13 @@ async function runLlmConnectionTest(): Promise<ConnectionTestResult> {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 15000); // 15秒超时
     try {
+      // 信号传入 provider：中止时底层 fetch 立即失败，而不是挂满 provider
+      // 自身的 600 秒超时（此前的 AbortController 是无效的死代码）。
       await provider.chatExtract(
         'You are a test assistant. Respond with valid JSON only.',
         'Respond with: {"ok": true}',
-        z.object({ ok: z.boolean() })
+        z.object({ ok: z.boolean() }),
+        { signal: controller.signal },
       );
     } finally {
       clearTimeout(timeoutId);
@@ -59,8 +62,8 @@ async function runLlmConnectionTest(): Promise<ConnectionTestResult> {
       return { success: false, message: '请求频率超限，请稍后重试或检查账户额度。' };
     }
     
-    // 超时错误
-    if (lowerMsg.includes('timeout') || lowerMsg.includes('timed out') || lowerMsg.includes('abort')) {
+    // 超时错误（含 provider 抛出的中文「超时/中止」消息）
+    if (lowerMsg.includes('timeout') || lowerMsg.includes('timed out') || lowerMsg.includes('abort') || msg.includes('超时') || msg.includes('中止')) {
       return { success: false, message: '连接超时，请检查网络或稍后重试。' };
     }
     
@@ -470,7 +473,10 @@ export async function healthRoutes(fastify: FastifyInstance) {
   });
 
   // ── Test image generation connection ──
-  fastify.post('/image/test', async (request, reply) => {
+  // 限流：与 /llm/test 对齐——测试会真实调用生图服务（计费），严格限制频率。
+  fastify.post('/image/test', {
+    config: { rateLimit: { max: 3, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
     try {
       const provider = getDefaultImageProvider();
       const isConfigured = await provider.isConfigured();

@@ -1,4 +1,5 @@
 import Fastify, { type FastifyInstance, type FastifyRequest } from 'fastify';
+import { randomUUID } from 'node:crypto';
 import cors from '@fastify/cors';
 import cookie from '@fastify/cookie';
 import multipart from '@fastify/multipart';
@@ -182,7 +183,13 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
   if (!process.env.OBJECT_STORAGE_SIGN_SECRET) {
     throw new Error('未配置对象存储签名密钥（OBJECT_STORAGE_SIGN_SECRET），服务无法启动');
   }
-  startSnapshotWorker(1000);
+  // 每个应用实例使用唯一 workerId：租约按该字符串判定归属，固定 ID 在
+  // 多实例/测试同进程多 buildApp 时会互相 complete/fail 对方刚抢到的任务。
+  const snapshotWorker = startSnapshotWorker(1000, { workerId: `snapshot-worker-${randomUUID()}` });
+  // 应用关闭时停止 worker 的轮询与回收定时器，避免定时器与数据库轮询泄漏
+  fastify.addHook('onClose', async () => {
+    snapshotWorker.stop();
+  });
 
   return fastify;
 }

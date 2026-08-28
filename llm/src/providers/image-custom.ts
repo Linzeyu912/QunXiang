@@ -1,5 +1,6 @@
 import { LLMError, ProviderNotConfiguredError } from '../errors.js';
 import { normalizeApiUrl } from './custom.js';
+import { assertSafeOutboundUrl } from './net-guard.js';
 // 必须用 undici 自己的 fetch（不能用全局 fetch）：ProxyAgent 是 undici 的 dispatcher，
 // 和 Node 内置 undici 的全局 fetch 版本不兼容（报 invalid onRequestStart method）。
 import { fetch as undiciFetch, ProxyAgent, Agent, buildConnector } from 'undici';
@@ -19,6 +20,22 @@ export interface ImageCustomConfig {
 }
 
 const DEFAULT_TIMEOUT = 120000; // 2 minutes for image generation
+
+/** 二跳下载图片的大小上限（与 API 上传限制对齐，防止无限响应占尽内存）。 */
+const MAX_IMAGE_DOWNLOAD_BYTES = 50 * 1024 * 1024;
+
+/** 脱敏代理 URL：隐藏 userinfo 凭据后才能进日志。 */
+function maskProxyUrl(proxyUrl: string): string {
+  try {
+    const parsed = new URL(proxyUrl);
+    if (parsed.username || parsed.password) {
+      return `${parsed.protocol}//***:***@${parsed.host}`;
+    }
+    return proxyUrl;
+  } catch {
+    return '（无法解析的代理地址）';
+  }
+}
 
 // ── SOCKS5 代理自动检测 ──
 
@@ -177,7 +194,8 @@ async function getProxyDispatcher(): Promise<{ dispatcher?: Dispatcher }> {
       } else {
         cachedProxyDispatcher = new ProxyAgent(envProxy);
       }
-      console.log(`[image-provider] 图片请求走代理: ${envProxy}`);
+      // 代理 URL 可能携带用户名/密码，必须脱敏后才能写日志
+      console.log(`[image-provider] 图片请求走代理: ${maskProxyUrl(envProxy)}`);
     } catch (e) {
       console.warn(
         '[image-provider] IMAGE_PROXY 创建代理失败:',
@@ -310,8 +328,13 @@ export function createImageProvider(config?: ImageCustomConfig): ImageProvider {
           if (process.env.IMAGE_B64_INLINE === '1') {
             requestBody.response_format = 'b64_json';
           }
+          // 出站目标防护：拦截链路本地/云元数据等 SSRF 目标（本机/局域网服务不受影响）
+          try {
+            assertSafeOutboundUrl(baseUrl, '生图服务接口地址被拒绝');
+          } catch (err) {
+            throw new LLMError(err instanceof Error ? err.message : String(err), 'custom', 'UNKNOWN', false);
+          }
           console.log(`[image-provider] 请求: POST ${baseUrl}`);
-          console.log(`[image-provider] Body:`, JSON.stringify(requestBody).slice(0, 300));
           const proxyDispatcher = await getProxyDispatcher();
           const headers = {
             'Content-Type': 'application/json',
@@ -402,6 +425,12 @@ export function createImageProvider(config?: ImageCustomConfig): ImageProvider {
       // Otherwise fetch from the returned URL
       if (item.url) {
         try {
+          // 二跳下载防护：协议白名单（拒绝 data:/file: 等）+ SSRF 目标拦截 + 大小上限
+          try {
+            assertSafeOutboundUrl(item.url, '图片下载地址被拒绝');
+          } catch (err) {
+            throw new LLMError(err instanceof Error ? err.message : String(err), 'custom', 'IMAGE_DOWNLOAD', false);
+          }
           const proxyDispatcher = await getProxyDispatcher();
           const dlSignal = AbortSignal.timeout(timeout);
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -416,17 +445,25 @@ export function createImageProvider(config?: ImageCustomConfig): ImageProvider {
           }
           if (!imgResp.ok) {
             throw new LLMError(
-              `Failed to download image from ${item.url}: HTTP ${imgResp.status}`,
+              `Failed to download image: HTTP ${imgResp.status}`,
               'custom', 'IMAGE_DOWNLOAD', true
             );
           }
           const mime = imgResp.headers.get('content-type') || 'image/png';
-          const arrayBuffer = await imgResp.arrayBuffer();
+          const contentLength = Number(imgResp.headers.get('content-length') || '0');
+          if (contentLength > MAX_IMAGE_DOWNLOAD_BYTES) {
+            throw new LLMError(
+              `图片下载超过大小上限（${MAX_IMAGE_DOWNLOAD_BYTES / 1024 / 1024}MB）`,
+              'custom', 'IMAGE_DOWNLOAD', false
+            );
+          }
+          // 流式读取并计数：无 Content-Length 的超大响应也会在超限时中止
+          const arrayBuffer = await readBodyWithLimit(imgResp, MAX_IMAGE_DOWNLOAD_BYTES);
           return { buffer: Buffer.from(arrayBuffer), mime };
         } catch (error) {
           if (error instanceof LLMError) throw error;
           throw new LLMError(
-            `Failed to download image from ${item.url}: ${error instanceof Error ? error.message : String(error)}`,
+            `Failed to download image: ${error instanceof Error ? error.message : String(error)}`,
             'custom', 'IMAGE_DOWNLOAD', true
           );
         }
@@ -446,4 +483,47 @@ async function safeReadText(response: { text(): Promise<string> }): Promise<stri
   } catch {
     return '';
   }
+}
+
+/**
+ * 流式读取响应体并限制总字节数：超限时中止下载并抛出中文错误，
+ * 防止无 Content-Length 的无限响应把内存耗尽。
+ */
+async function readBodyWithLimit(
+  response: { body?: unknown },
+  limitBytes: number,
+): Promise<ArrayBuffer> {
+  const body = response.body as
+    | { getReader(): { read(): Promise<{ done: boolean; value?: Uint8Array }>; cancel(): Promise<void> } }
+    | null
+    | undefined;
+  if (!body?.getReader) {
+    // 无流式接口（理论上不可达）：退化为整体读取，调用方已有 Content-Length 预检
+    return (response as { arrayBuffer(): Promise<ArrayBuffer> }).arrayBuffer();
+  }
+  const reader = body.getReader();
+  const chunks: Uint8Array[] = [];
+  let received = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    if (value) {
+      received += value.byteLength;
+      if (received > limitBytes) {
+        await reader.cancel().catch(() => {});
+        throw new LLMError(
+          `图片下载超过大小上限（${Math.round(limitBytes / 1024 / 1024)}MB）`,
+          'custom', 'IMAGE_DOWNLOAD', false,
+        );
+      }
+      chunks.push(value);
+    }
+  }
+  const out = new Uint8Array(received);
+  let offset = 0;
+  for (const chunk of chunks) {
+    out.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return out.buffer;
 }

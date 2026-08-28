@@ -1,6 +1,12 @@
 import type { z } from 'zod';
 import { LLMError, mapProviderError, ProviderNotConfiguredError } from '../errors.js';
 import type { LLMProvider } from '../index.js';
+import { assertSafeOutboundUrl } from './net-guard.js';
+
+export interface ChatExtractOptions {
+  /** 调用方中止信号（如连接测试的短超时）。中止时请求立即失败并映射为超时错误。 */
+  signal?: AbortSignal;
+}
 
 export interface CustomConfig {
   apiKey?: string;
@@ -215,7 +221,8 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
     async chatExtract<T>(
       systemPrompt: string,
       userPrompt: string,
-      schema: z.ZodSchema<T>
+      schema: z.ZodSchema<T>,
+      options?: ChatExtractOptions
     ): Promise<T> {
       if (keys.length === 0) {
         throw new ProviderNotConfiguredError('custom');
@@ -226,12 +233,25 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
         throw new LLMError('所有 API Key 都处于冷却中，请稍后重试或增加更多 Key。', 'custom', 'RATE_LIMIT', true);
       }
 
+      // 出站目标防护：拦截链路本地/云元数据等只可能被 SSRF 利用的地址。
+      // 本机与局域网服务是合法配置，不在拦截范围。
+      try {
+        assertSafeOutboundUrl(baseUrl, '模型服务接口地址被拒绝');
+      } catch (err) {
+        throw new LLMError(err instanceof Error ? err.message : String(err), 'custom', 'UNKNOWN', false);
+      }
+
       const envMaxTokens = parseInt(process.env.LLM_MAX_TOKENS || '', 10);
 
       let response: Response;
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeout);
+        // 组合调用方中止信号（如连接测试的 15 秒短超时）
+        const externalSignal = options?.signal;
+        const onExternalAbort = () => controller.abort();
+        if (externalSignal?.aborted) controller.abort();
+        externalSignal?.addEventListener('abort', onExternalAbort, { once: true });
         try {
           // max_tokens only sent when LLM_MAX_TOKENS is set — keeps default
           // behavior unchanged (avoids under/over-shooting the model's limit)
@@ -264,6 +284,7 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
           });
         } finally {
           clearTimeout(timeoutId);
+          externalSignal?.removeEventListener('abort', onExternalAbort);
         }
 
         if (!response.ok) {
@@ -331,8 +352,11 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
         // 单独映射为 TIMEOUT，避免被 mapProviderError 当成普通网络错误。
         if (error instanceof Error && error.name === 'AbortError') {
           markKeyFail(chosenKey, true); // 超时视为瞬态，多 key 下次换 key
+          const externallyAborted = options?.signal?.aborted === true;
           throw new LLMError(
-            `请求超时（${Math.round(timeout / 1000)}s）。可能是网络不可达，或 Base URL 指向了错误的地址。`,
+            externallyAborted
+              ? '请求被调用方中止（连接测试超时或上游取消）。可能是网络不可达，或 Base URL 指向了错误的地址。'
+              : `请求超时（${Math.round(timeout / 1000)}s）。可能是网络不可达，或 Base URL 指向了错误的地址。`,
             'custom', 'TIMEOUT', true,
           );
         }
