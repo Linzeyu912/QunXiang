@@ -394,9 +394,10 @@ function EntityImageGallery({
                     <button
                       type="button"
                       title="设为主图"
+                      aria-label="设为主图"
                       disabled={setPrimary.isPending}
                       onClick={() => handleSetPrimary(img.id)}
-                      className="absolute left-0.5 top-0.5 rounded bg-background/80 p-0.5 text-muted-foreground opacity-0 transition-opacity hover:text-amber-500 group-hover:opacity-100"
+                      className="absolute left-0.5 top-0.5 rounded bg-background/80 p-0.5 text-muted-foreground opacity-0 transition-opacity hover:text-amber-500 focus-visible:opacity-100 group-hover:opacity-100"
                     >
                       <Star className="h-3 w-3" />
                     </button>
@@ -406,8 +407,9 @@ function EntityImageGallery({
                       <button
                         type="button"
                         title="删除"
+                        aria-label="删除图片"
                         disabled={del.isPending}
-                        className="absolute right-0.5 top-0.5 rounded bg-background/80 p-0.5 text-muted-foreground opacity-0 transition-opacity hover:text-destructive group-hover:opacity-100"
+                        className="absolute right-0.5 top-0.5 rounded bg-background/80 p-0.5 text-muted-foreground opacity-0 transition-opacity hover:text-destructive focus-visible:opacity-100 group-hover:opacity-100"
                       >
                         <Trash2 className="h-3 w-3" />
                       </button>

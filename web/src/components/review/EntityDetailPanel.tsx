@@ -217,16 +217,17 @@ export const EntityDetailPanel = memo(function EntityDetailPanel({
             {editing ? (
               <div className="space-y-3">
                 <div className="space-y-1">
-                  <Label>名称</Label>
-                  <Input value={name} onChange={(e) => setName(e.target.value)} />
+                  <Label htmlFor={`entity-name-${entity.id}`}>名称</Label>
+                  <Input id={`entity-name-${entity.id}`} value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                  <Label>别名（逗号分隔）</Label>
-                  <Input value={aliasesText} onChange={(e) => setAliasesText(e.target.value)} />
+                  <Label htmlFor={`entity-aliases-${entity.id}`}>别名（逗号分隔）</Label>
+                  <Input id={`entity-aliases-${entity.id}`} value={aliasesText} onChange={(e) => setAliasesText(e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                  <Label>描述</Label>
+                  <Label htmlFor={`entity-desc-${entity.id}`}>描述</Label>
                   <Textarea
+                    id={`entity-desc-${entity.id}`}
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     rows={4}
@@ -332,16 +333,23 @@ function CoCharactersSection({
         </button>
         {open && (
           <div className="mt-2 flex flex-wrap gap-1">
-            {coCharacters.map((name) => (
-              <Badge
-                key={name}
-                variant="outline"
-                className={onJumpToName ? 'cursor-pointer hover:bg-accent' : undefined}
-                onClick={() => onJumpToName?.(name)}
-              >
-                {name}
-              </Badge>
-            ))}
+            {coCharacters.map((name) =>
+              onJumpToName ? (
+                // 可点击跳转的徽标必须是真实按钮，键盘用户才能触发
+                <button
+                  key={name}
+                  type="button"
+                  onClick={() => onJumpToName(name)}
+                  className="inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {name}
+                </button>
+              ) : (
+                <Badge key={name} variant="outline">
+                  {name}
+                </Badge>
+              ),
+            )}
           </div>
         )}
       </div>

@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Skeleton, DetailSkeleton } from '@/components/ui/skeleton';
 import {
   Dialog,
   DialogContent,
@@ -33,7 +34,12 @@ export function PublicAssetDetailPage() {
   const [targetBookId, setTargetBookId] = useState('');
 
   if (detailQuery.isLoading) {
-    return <div className="py-10 text-center text-sm text-muted-foreground">加载中…</div>;
+    return (
+      <div className="space-y-6" aria-label="素材详情加载中">
+        <Skeleton className="h-8 w-24" />
+        <DetailSkeleton />
+      </div>
+    );
   }
 
   if (detailQuery.isError || !detailQuery.data) {
@@ -237,7 +243,7 @@ export function PublicAssetDetailPage() {
               选择一本你的书，该素材将以待审核状态进入该书：
             </p>
             <Select value={targetBookId} onValueChange={setTargetBookId}>
-              <SelectTrigger>
+              <SelectTrigger aria-label="选择目标书">
                 <SelectValue placeholder="选择目标书…" />
               </SelectTrigger>
               <SelectContent>

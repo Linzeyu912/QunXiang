@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 export function ConfidenceBar({ value }: { value: number }) {
   const pct = Math.max(0, Math.min(1, value)) * 100;
   const color =
-    value >= 0.8 ? 'bg-emerald-500' : value >= 0.5 ? 'bg-amber-500' : 'bg-destructive';
+    value >= 0.8 ? 'bg-success' : value >= 0.5 ? 'bg-warning' : 'bg-destructive';
   return (
     <div className="space-y-1">
       <div className="flex items-center justify-between text-xs">

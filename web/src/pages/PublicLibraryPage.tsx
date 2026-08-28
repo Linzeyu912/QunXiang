@@ -5,9 +5,10 @@ import { Search, Flame, Clock, X } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
+import { Badge, badgeVariants } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { GridSkeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 import {
   usePublicAssets,
   useMyPublicAssets,
@@ -141,8 +142,9 @@ export function PublicLibraryPage() {
                   onChange={(e) => setSearchInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                   className="w-48"
+                  aria-label="搜索名称或简介"
                 />
-                <Button size="sm" variant="outline" onClick={handleSearch}>
+                <Button size="sm" variant="outline" onClick={handleSearch} aria-label="搜索" title="搜索">
                   <Search className="h-4 w-4" />
                 </Button>
               </div>
@@ -154,14 +156,18 @@ export function PublicLibraryPage() {
               {GENRE_TAGS.map((genre) => {
                 const active = selectedTags.includes(genre);
                 return (
-                  <Badge
+                  <button
                     key={genre}
-                    variant={active ? 'default' : 'outline'}
-                    className="cursor-pointer"
+                    type="button"
+                    aria-pressed={active}
                     onClick={() => toggleTag(genre)}
+                    className={cn(
+                      badgeVariants({ variant: active ? 'default' : 'outline' }),
+                      'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    )}
                   >
                     {genre}
-                  </Badge>
+                  </button>
                 );
               })}
             </div>
@@ -171,15 +177,19 @@ export function PublicLibraryPage() {
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-xs font-medium text-muted-foreground">热门：</span>
                 {customPopularTags.slice(0, 15).map((t) => (
-                  <Badge
+                  <button
                     key={t.tag}
-                    variant={selectedTags.includes(t.tag) ? 'default' : 'secondary'}
-                    className="cursor-pointer"
+                    type="button"
+                    aria-pressed={selectedTags.includes(t.tag)}
                     onClick={() => toggleTag(t.tag)}
+                    className={cn(
+                      badgeVariants({ variant: selectedTags.includes(t.tag) ? 'default' : 'secondary' }),
+                      'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    )}
                   >
                     {t.tag}
                     <span className="ml-1 text-xs opacity-60">×{t.count}</span>
-                  </Badge>
+                  </button>
                 ))}
               </div>
             )}
@@ -189,15 +199,19 @@ export function PublicLibraryPage() {
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-xs font-medium text-muted-foreground">已选：</span>
                 {selectedTags.map((tag) => (
-                  <Badge
+                  <button
                     key={tag}
-                    variant="default"
-                    className="cursor-pointer"
+                    type="button"
                     onClick={() => toggleTag(tag)}
+                    aria-label={`移除筛选「${tag}」`}
+                    className={cn(
+                      badgeVariants({ variant: 'default' }),
+                      'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    )}
                   >
                     {tag}
                     <X className="ml-1 h-3 w-3" />
-                  </Badge>
+                  </button>
                 ))}
                 <Button
                   size="sm"
@@ -215,7 +229,9 @@ export function PublicLibraryPage() {
               <GridSkeleton count={8} />
             ) : items.length === 0 ? (
               <Card className="p-10 text-center text-sm text-muted-foreground">
-                暂无公共素材
+                {search || kind || selectedTags.length > 0
+                  ? '没有符合当前筛选或搜索条件的素材，可调整条件后再试'
+                  : '暂时还没有用户发布公共素材'}
               </Card>
             ) : (
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -271,52 +287,61 @@ const AssetCard = memo(function AssetCard({
   onUnlist?: () => void;
 }) {
   return (
-    <Card className="group cursor-pointer overflow-hidden p-0 transition-shadow hover:shadow-md" >
-      <div className="relative aspect-[3/4] overflow-hidden bg-muted" onClick={onClick}>
-        {item.primaryImageUrl ? (
-          <img
-            src={item.primaryImageUrl}
-            alt={item.name}
-            className="h-full w-full object-cover transition-transform group-hover:scale-105"
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center text-muted-foreground">
-            <span className="text-xs">无图片</span>
+    <Card className="group overflow-hidden p-0 transition-shadow hover:shadow-md">
+      {/* 整张卡片是一个真实按钮：鼠标、触屏、键盘都能打开详情 */}
+      <button
+        type="button"
+        onClick={onClick}
+        className="block w-full cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+        aria-label={`查看素材「${item.name}」详情`}
+      >
+        <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+          {item.primaryImageUrl ? (
+            <img
+              src={item.primaryImageUrl}
+              alt={item.name}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center text-muted-foreground">
+              <span className="text-xs">无图片</span>
+            </div>
+          )}
+          <div className="absolute left-2 top-2">
+            <Badge variant="default">{KIND_LABELS[item.kind] ?? item.kind}</Badge>
           </div>
-        )}
-        <div className="absolute left-2 top-2">
-          <Badge variant="default">{KIND_LABELS[item.kind] ?? item.kind}</Badge>
+          {item.status === 'unlisted' && (
+            <div className="absolute right-2 top-2">
+              <Badge variant="muted">已下架</Badge>
+            </div>
+          )}
         </div>
-        {item.status === 'unlisted' && (
-          <div className="absolute right-2 top-2">
-            <Badge variant="muted">已下架</Badge>
+        <div className="space-y-1 p-3">
+          <p className="truncate text-sm font-medium">{item.name}</p>
+          <p className="line-clamp-2 text-xs text-muted-foreground">
+            {item.summary || '暂无简介'}
+          </p>
+          <div className="flex items-center justify-between pt-1">
+            <span className="text-xs text-muted-foreground">
+              {item.publisherName || '匿名'}
+            </span>
+            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+              <Flame className="h-3 w-3" />
+              {item.takenCount}
+            </span>
           </div>
-        )}
-      </div>
-      <div className="space-y-1 p-3" onClick={onClick}>
-        <p className="truncate text-sm font-medium">{item.name}</p>
-        <p className="line-clamp-2 text-xs text-muted-foreground">
-          {item.summary || '暂无简介'}
-        </p>
-        <div className="flex items-center justify-between pt-1">
-          <span className="text-xs text-muted-foreground">
-            {item.publisherName || '匿名'}
-          </span>
-          <span className="flex items-center gap-1 text-xs text-muted-foreground">
-            <Flame className="h-3 w-3" />
-            {item.takenCount}
-          </span>
+          {item.tags.length > 0 && (
+            <div className="flex flex-wrap gap-1 pt-1">
+              {item.tags.slice(0, 3).map((tag) => (
+                <Badge key={tag} variant="outline" className="text-xs">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          )}
         </div>
-        {item.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 pt-1">
-            {item.tags.slice(0, 3).map((tag) => (
-              <Badge key={tag} variant="outline" className="text-xs">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        )}
-      </div>
+      </button>
       {isOwner && item.status !== 'unlisted' && onUnlist && (
         <div className="border-t px-3 py-2">
           <AlertDialog>

@@ -17,7 +17,7 @@ function SuggestionBadge({ suggestion }: { suggestion?: MergeSuggestion }) {
   const pct = Math.round(suggestion.confidence * 100);
   const label = suggestion.verdict === 'same' ? '模型建议：同一角色' : '模型建议：不同角色';
   return (
-    <p className="text-xs text-violet-600">
+    <p className="text-xs text-violet-600 dark:text-violet-400">
       {label}（{pct}%）{suggestion.reason ? `——${suggestion.reason}` : ''}
     </p>
   );
@@ -67,7 +67,7 @@ export function CharacterMergeCandidates({ bookId }: { bookId: string }) {
   );
 
   return (
-    <section className="space-y-3 rounded-md border border-amber-300 bg-amber-50 p-3">
+    <section className="space-y-3 rounded-md border border-warning/40 bg-warning/10 p-3">
       <div>
         <h3 className="font-medium">疑似重复角色（{candidates.data.candidates.length}）</h3>
         <p className="text-xs text-muted-foreground">

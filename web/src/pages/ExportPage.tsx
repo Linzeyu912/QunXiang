@@ -95,14 +95,14 @@ export function ExportPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <h2 className="text-lg font-semibold">导出实体</h2>
           <p className="text-xs text-muted-foreground">选择实体类型与格式，预览后下载</p>
         </div>
         <div className="flex items-center gap-2">
           <Select value={type} onValueChange={onTypeChange}>
-            <SelectTrigger className="w-28">
+            <SelectTrigger className="w-28" aria-label="导出实体类型">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -140,7 +140,7 @@ export function ExportPage() {
             </span>
           </div>
           {manifestQ.data.warnings.length > 0 && (
-            <ul className="mt-2 space-y-1 text-xs text-amber-600">
+            <ul className="mt-2 space-y-1 text-xs text-warning">
               {manifestQ.data.warnings.map((w) => (
                 <li key={w}>· {w}</li>
               ))}
@@ -225,7 +225,7 @@ function ArtifactsExportCard({ bookId }: { bookId: string }) {
           来自运行 {data.runDir} · 角色 {counts.characters} / 场景 {counts.locations} / 道具{' '}
           {counts.items}（含视觉设定与生成提示词）
           {data.outdatedRevision && (
-            <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-amber-700">
+            <span className="ml-2 rounded bg-warning/15 px-1.5 py-0.5 text-warning">
               基于旧版原文生成（产物版本 v{data.basedOnSourceRevision}，当前 v{data.currentSourceRevision}）
             </span>
           )}

@@ -26,8 +26,9 @@ export function ChapterReader({ bookId, chapterIndex }: { bookId: string; chapte
 
   if (contentQ.isLoading) {
     return (
-      <div className="flex h-full items-center justify-center">
-        <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
+      <div className="flex h-full items-center justify-center" role="status">
+        <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" aria-hidden />
+        <span className="sr-only">章节内容加载中…</span>
       </div>
     );
   }
@@ -88,8 +89,8 @@ export function ChapterReader({ bookId, chapterIndex }: { bookId: string; chapte
                 className={
                   'group flex items-start gap-2 rounded px-2 py-1 ' +
                   (isRestored
-                    ? 'bg-emerald-100 dark:bg-emerald-500/15'
-                    : 'bg-red-100 dark:bg-red-500/15')
+                    ? 'bg-success/15'
+                    : 'bg-destructive/10')
                 }
               >
                 <div className="min-w-0 flex-1">
@@ -102,14 +103,14 @@ export function ChapterReader({ bookId, chapterIndex }: { bookId: string; chapte
                       置信度 {noise.confidence.toFixed(2)}
                     </span>
                     {isRestored && (
-                      <span className="text-[11px] text-emerald-700 dark:text-emerald-400">已找回</span>
+                      <span className="text-[11px] text-success">已找回</span>
                     )}
                   </div>
                 </div>
                 <Button
                   size="sm"
                   variant="ghost"
-                  className="h-7 shrink-0 px-2 opacity-60 group-hover:opacity-100"
+                  className="h-7 shrink-0 px-2"
                   disabled={restoreM.isPending}
                   onClick={() => handleToggle(fullLineNum, !!isRestored)}
                   title={isRestored ? '取消找回' : '找回此行'}

@@ -30,8 +30,8 @@ export function PromptCopyBlock({
     <div className="space-y-1">
       <div className="flex items-center justify-between">
         {label && <span className="text-xs font-medium text-muted-foreground">{label}</span>}
-        <Button variant="ghost" size="sm" className="h-6 px-2" onClick={copy}>
-          {copied ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
+        <Button variant="ghost" size="sm" className="h-6 px-2" onClick={copy} aria-label="复制提示词" title="复制提示词">
+          {copied ? <Check className="h-3.5 w-3.5 text-success" /> : <Copy className="h-3.5 w-3.5" />}
         </Button>
       </div>
       <pre className="whitespace-pre-wrap rounded-md bg-muted p-3 text-xs leading-relaxed">{prompt}</pre>

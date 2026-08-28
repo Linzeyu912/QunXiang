@@ -11,9 +11,10 @@ const badgeVariants = cva(
         secondary: 'border-transparent bg-secondary text-secondary-foreground',
         destructive: 'border-transparent bg-destructive text-destructive-foreground',
         outline: 'text-foreground',
-        success: 'border-transparent bg-emerald-100 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300',
-        warning: 'border-transparent bg-amber-100 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300',
-        info: 'border-transparent bg-sky-100 text-sky-800 dark:bg-sky-500/15 dark:text-sky-300',
+        // 语义状态一律取自设计令牌（index.css），不在组件里散落具体色板
+        success: 'border-success/20 bg-success/10 text-success',
+        warning: 'border-warning/20 bg-warning/10 text-warning',
+        info: 'border-info/20 bg-info/10 text-info',
         muted: 'border-transparent bg-muted text-muted-foreground',
       },
     },

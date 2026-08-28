@@ -189,15 +189,15 @@ const BookRow = memo(function BookRow({ book, isSeed = false }: { book: Book; is
   };
 
   return (
-    <Card className="flex items-center gap-4 p-4 transition-shadow hover:shadow-md">
+    <Card className="flex flex-wrap items-center gap-x-4 gap-y-2 p-4 transition-shadow hover:shadow-md">
       {/* 书籍图标放进灰底方块，与顶栏品牌块的视觉语言一致 */}
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted">
         <FileText className="h-5 w-5 text-muted-foreground" />
       </div>
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1 basis-48">
         <button
           onClick={() => navigate(`/books/${book.id}`)}
-          className="block truncate text-left text-sm font-medium hover:underline"
+          className="block max-w-full truncate rounded-sm text-left text-sm font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           {book.title}
         </button>
@@ -208,7 +208,7 @@ const BookRow = memo(function BookRow({ book, isSeed = false }: { book: Book; is
       </div>
       <BookStatusBadge status={book.status} />
       {book.status === 'EXTRACTED' && <BookDownloadSection bookId={book.id} />}
-      <div className="flex items-center gap-1">
+      <div className="flex flex-wrap items-center gap-1">
         {!extractionGate.canStart && extractionGate.reason === 'llm-not-configured' && (
           <Button variant="secondary" size="sm" onClick={() => navigate('/settings/llm')} className="gap-1">
             <Settings className="h-3.5 w-3.5" />
@@ -253,6 +253,7 @@ const BookRow = memo(function BookRow({ book, isSeed = false }: { book: Book; is
               size="icon"
               disabled={isRunning}
               aria-label={`删除《${book.title}》`}
+              title="删除"
             >
               <Trash2 className="h-4 w-4 text-destructive" />
             </Button>
@@ -278,7 +279,7 @@ const BookRow = memo(function BookRow({ book, isSeed = false }: { book: Book; is
           onClick={() => setShareOpen(true)}
           disabled={book.status !== 'EXTRACTED'}
           aria-label={`分享《${book.title}》`}
-          title="分享"
+          title={book.status !== 'EXTRACTED' ? '提取完成后才能分享' : '分享'}
         >
           <Share className="h-4 w-4" />
         </Button>
@@ -287,6 +288,7 @@ const BookRow = memo(function BookRow({ book, isSeed = false }: { book: Book; is
           size="icon"
           onClick={() => navigate(`/books/${book.id}`)}
           aria-label={`打开《${book.title}》详情`}
+          title="打开详情"
         >
           <MoreVertical className="h-4 w-4" />
         </Button>

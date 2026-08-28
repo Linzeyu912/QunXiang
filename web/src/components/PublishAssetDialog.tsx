@@ -11,8 +11,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
+import { badgeVariants } from '@/components/ui/badge';
 import { Loader2, RefreshCw, Sparkles, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { usePublishAsset, useSuggestPublishTags } from '@/api/public-assets';
 import { GENRE_TAGS, isGenreTag } from '@/constants/genre-tags';
 import type { EntityType } from '@/types';
@@ -155,7 +156,7 @@ export function PublishAssetDialog({
               正在识别初步标签…
             </div>
           ) : suggestQuery.data && (suggestQuery.data.genres.length > 0 || suggestQuery.data.tags.length > 0) ? (
-            <div className="flex items-center justify-between gap-2 rounded-md border border-emerald-300 bg-emerald-50/40 px-3 py-2 text-xs text-emerald-700 dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-300">
+            <div className="flex items-center justify-between gap-2 rounded-md border border-success/40 bg-success/10 px-3 py-2 text-xs text-success">
               <span className="flex items-center gap-1.5">
                 <Sparkles className="h-3.5 w-3.5 shrink-0" />
                 {suggestQuery.data.source === 'llm'
@@ -165,7 +166,7 @@ export function PublishAssetDialog({
               <Button
                 size="sm"
                 variant="ghost"
-                className="h-6 shrink-0 px-2 text-xs text-emerald-700 hover:text-emerald-800 dark:text-emerald-300 dark:hover:text-emerald-200"
+                className="h-6 shrink-0 px-2 text-xs text-success hover:text-success"
                 onClick={handleResuggest}
                 disabled={suggestQuery.isFetching}
               >
@@ -201,14 +202,19 @@ export function PublishAssetDialog({
               {GENRE_TAGS.map((genre) => {
                 const selected = tags.includes(genre);
                 return (
-                  <Badge
+                  // 可选中的题材标签必须是真实按钮，键盘用户才能切换
+                  <button
                     key={genre}
-                    variant={selected ? 'default' : 'outline'}
-                    className="cursor-pointer"
+                    type="button"
+                    aria-pressed={selected}
                     onClick={() => toggleTag(genre)}
+                    className={cn(
+                      badgeVariants({ variant: selected ? 'default' : 'outline' }),
+                      'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    )}
                   >
                     {genre}
-                  </Badge>
+                  </button>
                 );
               })}
             </div>
@@ -238,10 +244,19 @@ export function PublishAssetDialog({
             {customTags.length > 0 && (
               <div className="flex flex-wrap gap-1 pt-1">
                 {customTags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="cursor-pointer" onClick={() => removeTag(tag)}>
+                  <button
+                    key={tag}
+                    type="button"
+                    onClick={() => removeTag(tag)}
+                    aria-label={`移除标签「${tag}」`}
+                    className={cn(
+                      badgeVariants({ variant: 'secondary' }),
+                      'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    )}
+                  >
                     {tag}
                     <X className="ml-1 h-3 w-3" />
-                  </Badge>
+                  </button>
                 ))}
               </div>
             )}

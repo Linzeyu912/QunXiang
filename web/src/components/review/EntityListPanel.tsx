@@ -61,7 +61,7 @@ const EntityRow = memo(function EntityRow({
         transform: `translateY(${start}px)`,
       }}
       className={cn(
-        'w-full border-b border-border/60 px-4 py-3 text-left transition-colors hover:bg-accent/60',
+        'w-full border-b border-border/60 px-4 py-3 text-left transition-colors hover:bg-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring',
         // 选中行用左侧主色指示条 + 浅底，扫长列表时视线定位更快
         isSelected && 'bg-accent shadow-[inset_2px_0_0_0_hsl(var(--primary))]',
       )}
@@ -95,7 +95,7 @@ const EntityRow = memo(function EntityRow({
         {(entity.confidence * 100).toFixed(0)}%
       </p>
       {(entity as { missingFromLatestRun?: boolean }).missingFromLatestRun && (
-        <p className="mt-0.5 flex items-center gap-1 text-[11px] text-amber-600">
+        <p className="mt-0.5 flex items-center gap-1 text-[11px] text-warning">
           <TriangleAlert className="h-3 w-3" />
           最新一轮提取未再出现该实体，请复核是否仍然有效
         </p>

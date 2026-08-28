@@ -105,6 +105,36 @@
 
 ---
 
+## 前端 UI 优化遗留待办（2026-08-28 模型1，web/ 范围）
+
+> 背景:本轮前端优化完成设计令牌统一（靛蓝主色 + success/warning/info 语义色）、
+> 状态体验、无障碍与 LlmSettingsPage 拆分（见 `docs/模型1-前端优化交付报告.md`）。
+> 以下问题在「不改业务链路、不改接口契约」约束下未安全解决,或需要真实运行环境验证。
+
+### 🟡 P1 — 需要运行环境验证
+
+- [ ] **ISSUE-F1 截图级视觉回归未覆盖**
+  品牌主色由黑白改为靛蓝后,缺少四档视口（360×800 / 768×1024 / 1280×800 / 1440×900）
+  明暗双主题的截图回归;富产物 Sparkles 图标与 Tier 四档色板仍用琥珀/天蓝作非状态装饰色,为有意保留。
+  修复方向:dev 环境起后端后按视口人工过一遍登录、书库、管道、审核、设置页并留档截图。
+
+### 🟢 P2 — 下轮可安全修复
+
+- [ ] **ISSUE-F2 图片设置区表单回填可能覆盖编辑中内容**
+  `components/settings/ImageModelSection.tsx` 初始化 effect 未加哨兵,`status` 引用每次变化
+  （如保存后 refetch）都会重填全部字段,可能覆盖用户正在编辑的内容;文本模型区已有
+  `initialized` ref 防护。本轮为保持「不改变保存时机」原样保留。
+  修复方向:给图片区加同样的 `initialized` 哨兵（纯前端行为微调,无契约变化）。
+- [ ] **ISSUE-F3 设置页缺运行时组件级测试**
+  LlmSettingsPage 拆分（777 行 → 组合根 + settings/ 7 文件）目前只有源码级断言与
+  tsc/build 保障。修复方向:用 React Testing Library 补保存流程特征测试
+  （预设/自定义分支、密钥留空保留、warning toast）。
+- [ ] **ISSUE-F4 前端 lint 存量 warning**
+  `pnpm --filter @qunxiang/web lint` 有 10 个 warning（react-refresh 仅导出组件、
+  exhaustive-deps 逻辑表达式依赖）,多为既有代码模式;不阻塞构建,可逐步清理。
+
+---
+
 ## 与本仓库并列的 QunXiang
 
 QunXiang 是以后要迁过去的主仓；本仓库当前功能领先，本阶段不跟 QunXiang 双向同步。

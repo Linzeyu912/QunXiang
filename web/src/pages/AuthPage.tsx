@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { BookOpen, Loader2 } from 'lucide-react';
+import { AlertCircle, BookOpen, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -28,6 +28,9 @@ export function AuthPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  // 提交级错误内联展示并与密码字段关联，避免只有顶部一闪而过的 Toast
+  const [formError, setFormError] = useState<string | null>(null);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,8 +38,9 @@ export function AuthPage() {
       toast.error('正在恢复登录状态，请稍候');
       return;
     }
+    setFormError(null);
     const handleErr = (err: unknown) =>
-      toast.error(err instanceof Error ? err.message : '操作失败');
+      setFormError(err instanceof Error ? err.message : '操作失败，请稍后重试');
     if (mode === 'login') {
       login.mutate(
         { email: email.trim(), password },
@@ -82,7 +86,7 @@ export function AuthPage() {
 
         <Card>
           <CardHeader>
-            <Tabs value={mode} onValueChange={(v) => setMode(v as 'login' | 'register')}>
+            <Tabs value={mode} onValueChange={(v) => { setMode(v as 'login' | 'register'); setFormError(null); }}>
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="login">登录</TabsTrigger>
                 <TabsTrigger value="register">注册</TabsTrigger>
@@ -116,7 +120,7 @@ export function AuthPage() {
                   id="auth-email"
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => { setEmail(e.target.value); setFormError(null); }}
                   placeholder="请输入邮箱"
                   autoComplete="email"
                   required
@@ -124,16 +128,40 @@ export function AuthPage() {
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="auth-password">密码</Label>
-                <Input
-                  id="auth-password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder={mode === 'register' ? '至少 6 位' : '密码'}
-                  autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-                  required
-                />
+                <div className="relative">
+                  <Input
+                    id="auth-password"
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => { setPassword(e.target.value); setFormError(null); }}
+                    placeholder={mode === 'register' ? '至少 6 位' : '密码'}
+                    autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+                    required
+                    className="pr-10"
+                    aria-invalid={formError ? true : undefined}
+                    aria-describedby={formError ? 'auth-form-error' : undefined}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((v) => !v)}
+                    className="absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    aria-label={showPassword ? '隐藏密码' : '显示密码'}
+                    title={showPassword ? '隐藏密码' : '显示密码'}
+                  >
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
               </div>
+              {formError && (
+                <p
+                  id="auth-form-error"
+                  role="alert"
+                  className="flex items-start gap-1.5 rounded-md bg-destructive/10 px-3 py-2 text-xs text-destructive"
+                >
+                  <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />
+                  {formError}
+                </p>
+              )}
               <Button type="submit" className="w-full" disabled={pending}>
                 {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 {mode === 'login' ? '登录' : '注册并登录'}

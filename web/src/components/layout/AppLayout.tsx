@@ -26,10 +26,17 @@ export function AppLayout() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* 键盘用户可一键跳过导航，直接进入主内容 */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-sm focus:text-primary-foreground"
+      >
+        跳到主要内容
+      </a>
       <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b bg-background/95 px-3 backdrop-blur sm:px-6">
         <button
           onClick={() => navigate('/library')}
-          className="flex items-center gap-2 font-semibold tracking-tight"
+          className="flex items-center gap-2 rounded-md font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           aria-label="返回书库首页"
         >
           {/* 品牌图标做成主色实心方块，比裸图标更有辨识度 */}
@@ -80,7 +87,7 @@ export function AppLayout() {
           </Button>
         </div>
       </header>
-      <main className="mx-auto max-w-7xl px-6 py-6">
+      <main id="main-content" tabIndex={-1} className="mx-auto max-w-7xl px-4 py-6 outline-none sm:px-6">
         <Outlet />
       </main>
     </div>
@@ -93,7 +100,7 @@ function NavLinkItem({ to, children }: { to: string; children: React.ReactNode }
       to={to}
       className={({ isActive }) =>
         cn(
-          'flex items-center rounded-md px-3 py-1.5 transition-colors',
+          'flex shrink-0 items-center whitespace-nowrap rounded-md px-3 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
           isActive
             ? 'bg-secondary font-medium text-secondary-foreground shadow-sm'
             : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground',

@@ -7,6 +7,17 @@ import { apiFetch } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { useAuthStore } from '@/store/authStore';
 import { clearPendingShareCode, peekPendingShareCode } from '@/lib/one-time-share-code';
 import { formatDate } from '@/lib/utils';
@@ -55,9 +66,25 @@ function SessionsCard() {
           登录会话
         </CardTitle>
         {sessions.some((s) => !s.isCurrent) && (
-          <Button size="sm" variant="outline" disabled={revokeOthers.isPending} onClick={() => revokeOthers.mutate()}>
-            撤销其他会话
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button size="sm" variant="outline" disabled={revokeOthers.isPending}>
+                撤销其他会话
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>撤销其他所有会话？</AlertDialogTitle>
+                <AlertDialogDescription>
+                  除当前设备外，其他所有已登录设备将立即退出，需要重新登录。当前设备不受影响。
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>取消</AlertDialogCancel>
+                <AlertDialogAction onClick={() => revokeOthers.mutate()}>确认撤销</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         )}
       </CardHeader>
       <CardContent className="space-y-2 text-sm">
@@ -75,9 +102,25 @@ function SessionsCard() {
                 </p>
               </div>
               {!s.isCurrent && (
-                <Button size="sm" variant="ghost" className="text-destructive" disabled={revoke.isPending} onClick={() => revoke.mutate(s.id)}>
-                  撤销
-                </Button>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button size="sm" variant="ghost" className="text-destructive" disabled={revoke.isPending}>
+                      撤销
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>撤销该会话？</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        「{s.deviceSummary}」将立即退出登录，该设备需要重新登录才能继续使用。
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>取消</AlertDialogCancel>
+                      <AlertDialogAction onClick={() => revoke.mutate(s.id)}>确认撤销</AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               )}
             </div>
           ))
@@ -175,7 +218,7 @@ export function AccountPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           {shareCode ? (
-            <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-4">
+            <div className="rounded-md border border-warning/40 bg-warning/10 p-4">
               <p className="text-sm font-medium">分享码只显示这一次，请立即安全保存。</p>
               <code className="mt-3 block break-all rounded bg-background p-3 text-sm">
                 {shareCode}
@@ -202,11 +245,11 @@ export function AccountPage() {
           <p className="text-xs text-muted-foreground">修改成功后将撤销全部登录会话，需要重新登录。</p>
           <div className="space-y-1">
             <label className="text-xs text-muted-foreground" htmlFor="current-password">当前密码</label>
-            <Input id="current-password" type="password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} />
+            <Input id="current-password" type="password" autoComplete="current-password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} />
           </div>
           <div className="space-y-1">
             <label className="text-xs text-muted-foreground" htmlFor="new-password">新密码（至少 8 位）</label>
-            <Input id="new-password" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+            <Input id="new-password" type="password" autoComplete="new-password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
           </div>
           <Button
             size="sm"

@@ -128,24 +128,27 @@ export function PipelinePage() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
           <CardTitle>整体进度</CardTitle>
-          {data?.isComplete ? (
-            <span className="flex items-center gap-1 text-sm text-emerald-600 dark:text-emerald-400">
-              <CheckCircle2 className="h-4 w-4" />
-              已完成
-            </span>
-          ) : data?.isFailed ? (
-            <span className="flex items-center gap-1 text-sm text-destructive">
-              <AlertCircle className="h-4 w-4" />
-              失败
-            </span>
-          ) : isRunning ? (
-            <span className="flex items-center gap-1 text-sm text-sky-600 dark:text-sky-400">
-              <Loader2 className="h-4 w-4 animate-spin" />
-              进行中
-            </span>
-          ) : (
-            <span className="text-sm text-muted-foreground">未开始</span>
-          )}
+          {/* 运行状态对屏幕阅读器可见，但不逐字播报进度数字 */}
+          <div aria-live="polite">
+            {data?.isComplete ? (
+              <span className="flex items-center gap-1 text-sm text-success">
+                <CheckCircle2 className="h-4 w-4" />
+                已完成
+              </span>
+            ) : data?.isFailed ? (
+              <span className="flex items-center gap-1 text-sm text-destructive">
+                <AlertCircle className="h-4 w-4" />
+                失败
+              </span>
+            ) : isRunning ? (
+              <span className="flex items-center gap-1 text-sm text-info">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                进行中
+              </span>
+            ) : (
+              <span className="text-sm text-muted-foreground">未开始</span>
+            )}
+          </div>
         </CardHeader>
         <CardContent className="space-y-2">
           <Progress value={data?.overallProgress ?? 0} />
@@ -159,7 +162,7 @@ export function PipelinePage() {
       <LlmGateNotice gate={extractionGate} onSettings={() => navigate('/settings/llm')} />
 
       {data?.imported && (
-        <Card className="border-sky-200 bg-sky-50/50 p-4 text-sm text-sky-700 dark:border-sky-500/40 dark:bg-sky-500/10 dark:text-sky-300">
+        <Card className="border-info/40 bg-info/10 p-4 text-sm text-info">
           {data.importedMessage ?? '这是导入结果，没有本机提取阶段记录。'}
         </Card>
       )}
@@ -200,7 +203,7 @@ export function PipelinePage() {
 
       {notStarted && (
         <Card className="p-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="text-sm font-medium">这本书还没开始提取</p>
               <p className="text-xs text-muted-foreground">点击开始运行 6 阶段管道</p>
@@ -230,11 +233,11 @@ export function PipelinePage() {
       </div>
 
       {data?.isComplete && (
-        <Card className="border-emerald-300 bg-emerald-50/40 p-6 dark:border-emerald-500/40 dark:bg-emerald-500/10">
-          <div className="flex items-center justify-between gap-3">
+        <Card className="border-success/40 bg-success/10 p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">提取完成</p>
-              <p className="text-xs text-emerald-700/80 dark:text-emerald-400/80">可以开始审核角色/场景/道具</p>
+              <p className="text-sm font-medium text-success">提取完成</p>
+              <p className="text-xs text-success/80">可以开始审核角色/场景/道具</p>
             </div>
             <div className="flex items-center gap-2">
               <AlertDialog>
@@ -303,13 +306,13 @@ function LlmGateNotice({ gate, onSettings }: { gate: ExtractionStartGate; onSett
   if (gate.canStart) return null;
 
   return (
-    <Card className="border-amber-300 bg-amber-50/70 p-4 dark:border-amber-500/40 dark:bg-amber-500/10">
+    <Card className="border-warning/40 bg-warning/10 p-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700 dark:text-amber-400" />
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-warning" />
           <div>
-            <p className="text-sm font-medium text-amber-900 dark:text-amber-200">{gate.title}</p>
-            <p className="mt-0.5 text-xs text-amber-800/80 dark:text-amber-300/80">{gate.description}</p>
+            <p className="text-sm font-medium text-warning">{gate.title}</p>
+            <p className="mt-0.5 text-xs text-warning/80">{gate.description}</p>
           </div>
         </div>
         <Button variant="outline" size="sm" onClick={onSettings} className="shrink-0">

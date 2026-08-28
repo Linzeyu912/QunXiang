@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Loader2 } from 'lucide-react';
 import { AppLayout } from './components/layout/AppLayout';
 import { BookLayout } from './pages/BookLayout';
 import { AuthPage } from './pages/AuthPage';
@@ -45,7 +46,12 @@ const LowConfidencePage = lazy(() =>
 
 /** 页面分包加载中的占位提示，避免路由切换时白屏。 */
 function PageLoading() {
-  return <div className="p-10 text-sm text-muted-foreground">页面加载中…</div>;
+  return (
+    <div className="flex min-h-[40vh] items-center justify-center gap-2 p-10 text-sm text-muted-foreground">
+      <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+      页面加载中…
+    </div>
+  );
 }
 
 /**
@@ -58,7 +64,12 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
   const token = useAuthStore((s) => s.token);
   const bootstrapping = useAuthStore((s) => s.bootstrapping);
   if (bootstrapping) {
-    return <div className="p-10 text-sm text-muted-foreground">校验登录态…</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center gap-2 p-10 text-sm text-muted-foreground">
+        <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+        校验登录态…
+      </div>
+    );
   }
   if (!token) {
     return <Navigate to="/login" replace state={{ from: location.pathname }} />;

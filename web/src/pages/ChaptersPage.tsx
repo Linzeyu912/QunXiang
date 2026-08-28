@@ -5,6 +5,7 @@ import { AlertTriangle, ListTree, RotateCcw, Undo2, Zap } from 'lucide-react';
 import { useChapterOutline, useExtractionArtifacts, useRestoreNoiseLine } from '@/api/artifacts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { ChapterReader } from '@/components/chapter/ChapterReader';
 import {
   Tooltip,
@@ -71,10 +72,15 @@ export function ChaptersPage() {
   );
 
   if (outlineQ.isLoading) {
-    return <p className="p-6 text-sm text-muted-foreground">解析章节结构…</p>;
+    return <ChaptersSkeleton />;
   }
   if (!outline) {
-    return <p className="p-6 text-sm text-muted-foreground">无法解析该书的章节结构。</p>;
+    return (
+      <div className="flex flex-col items-center gap-2 rounded-lg border border-dashed p-10 text-center">
+        <p className="text-sm font-medium">无法解析该书的章节结构</p>
+        <p className="text-xs text-muted-foreground">请确认书籍文件完整上传，稍后刷新重试</p>
+      </div>
+    );
   }
 
   const selChapter = selectedChapter ?? 0;
@@ -138,6 +144,7 @@ export function ChaptersPage() {
                     key={ch.index}
                     type="button"
                     onClick={() => setSelectedChapter(ch.index)}
+                    aria-current={active ? 'true' : undefined}
                     className={cn(
                       'grid w-full grid-cols-[3.5rem_minmax(0,1fr)_minmax(5rem,16%)_4.5rem] items-center gap-2 border-b px-3 py-2 text-left text-sm last:border-b-0',
                       active ? 'bg-accent' : 'hover:bg-accent/30',
@@ -174,7 +181,7 @@ export function ChaptersPage() {
                     </span>
                     <span className="h-1.5 rounded-full bg-secondary">
                       <span
-                        className="block h-full rounded-full bg-sky-400"
+                        className="block h-full rounded-full bg-info"
                         style={{ width: `${Math.max(2, (ch.wordCount / maxWords) * 100)}%` }}
                       />
                     </span>
@@ -190,6 +197,34 @@ export function ChaptersPage() {
 
         {/* 右栏：正文阅读视图 */}
         <ChapterReader bookId={bookId} chapterIndex={selChapter} />
+      </div>
+    </div>
+  );
+}
+
+/** 章节页加载骨架：头部统计 + 双栏占位，贴合真实布局。 */
+function ChaptersSkeleton() {
+  return (
+    <div className="space-y-4" aria-label="章节结构加载中">
+      <div className="flex items-center justify-between gap-2">
+        <div className="space-y-2">
+          <Skeleton className="h-5 w-32" />
+          <Skeleton className="h-3 w-56" />
+        </div>
+        <Skeleton className="h-5 w-24" />
+      </div>
+      <div className="grid h-[calc(100vh-16rem)] grid-cols-1 grid-rows-[1fr_1fr] overflow-hidden rounded-lg border md:grid-cols-[minmax(280px,2fr)_minmax(0,3fr)] md:grid-rows-1">
+        <div className="space-y-2 border-r p-3">
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <Skeleton key={i} className="h-8 w-full" />
+          ))}
+        </div>
+        <div className="space-y-3 p-6">
+          <Skeleton className="h-6 w-1/3" />
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-3/4" />
+        </div>
       </div>
     </div>
   );
@@ -227,7 +262,7 @@ function NoiseLinesPanel({
   return (
     <details className="overflow-hidden rounded-lg border bg-card" open={totalRemoved > 0}>
       <summary className="flex cursor-pointer flex-wrap items-center gap-2 border-b bg-muted/30 px-4 py-2 text-sm font-medium">
-        <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+        <AlertTriangle className="h-4 w-4 text-warning" />
         噪声过滤明细
         <Badge variant="warning">{totalRemoved} 行已移除</Badge>
         {retainedTotal > 0 && <Badge variant="muted">{retainedTotal} 行仅标记</Badge>}

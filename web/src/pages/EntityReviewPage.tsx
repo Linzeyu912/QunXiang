@@ -287,11 +287,12 @@ export function EntityReviewPage({ type }: Props) {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="搜索名称/别名"
+              aria-label="搜索名称或别名"
               className="h-9 w-40 pl-7"
             />
           </div>
           <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-32" aria-label="排序方式">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -303,7 +304,7 @@ export function EntityReviewPage({ type }: Props) {
             </SelectContent>
           </Select>
           <Select value={status ?? 'ALL'} onValueChange={setStatus}>
-            <SelectTrigger className="w-28">
+            <SelectTrigger className="w-28" aria-label="状态筛选">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -316,7 +317,7 @@ export function EntityReviewPage({ type }: Props) {
           </Select>
           {(type === 'location' || type === 'item') && (
             <Select value={tier ?? 'ALL'} onValueChange={setTier}>
-              <SelectTrigger className="w-28">
+              <SelectTrigger className="w-28" aria-label="层级筛选">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -330,7 +331,7 @@ export function EntityReviewPage({ type }: Props) {
           )}
           {type === 'item' && (
             <Select value={category ?? 'ALL'} onValueChange={setCategory}>
-              <SelectTrigger className="w-32">
+              <SelectTrigger className="w-32" aria-label="道具大类筛选">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
