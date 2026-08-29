@@ -17,8 +17,8 @@ describe('PostgreSQL 启动入口', () => {
       expect(content).toContain('DIRECT_DATABASE_URL=');
       expect(content).toContain('prisma migrate deploy');
       expect(content).toContain('findstr /B /I /C:"DATABASE_URL=file:"');
-      expect(content).toContain('检测到旧版 SQLite 配置。为避免数据丢失，脚本不会自动覆盖');
-      expect(content).toContain('缺少 DIRECT_DATABASE_URL');
+      expect(content).toContain('自动修正');
+      expect(content).toContain('echo DIRECT_DATABASE_URL=!DB_URL! >>');
       expect(content).not.toMatch(/echo DATABASE_URL=file:/i);
       expect(content).not.toContain('prisma db push');
       expect(content).not.toContain('%API_DIR%.env');
