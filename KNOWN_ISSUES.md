@@ -3,7 +3,7 @@
 > 本文档记录当前仓库已知的未解决问题,与测试状态对应。
 > 每次修一个 issue,把它从本文件移到 git commit message。
 
-最后更新:2026-08-28
+最后更新:2026-08-29
 
 ---
 
@@ -14,6 +14,20 @@
 含集成测试全量:  709 个测试, 657 通过（20 个 fs 存储模式下跳过）
 失败均为预存问题, 与本轮后端改动无关（已用 git stash 基线对照 + 隔离复跑双重验证）
 ```
+
+### 已修复(2026-08-29 会话)
+
+| # | 问题 | 根因 | 修法 |
+|---|---|---|---|
+| T1 | `postgresql-entrypoints.test.ts` ×3 | 断言 .bat 旧版「不覆盖/缺少」文案,脚本已改为自动修正 SQLite 配置并自动补充 DIRECT_DATABASE_URL | 断言同步为「自动修正」与自动追加行为 |
+| T2 | `postgresql-baseline.integration.test.ts` 「包含全部 Prisma 模型」 | 硬编码 19 个模型清单,DB 已 25 个模型 | 清单同步为 25 个(新增 AiUsageRecord/EntityReview/PublicAsset 系列) |
+| T3 | `postgresql-baseline.integration.test.ts` 「拥有书籍的账号不能被直接删除」 | Prisma 5.22 把外键 RESTRICT 报为无 code 的 UnknownRequestError | 断言改为 `/foreign key/i` 消息匹配,兼容两种形态 |
+| B13 | artifacts.ts 404 文案不统一 | PATCH 路由内联「书籍不存在」,与统一响应体不一致 | 改用 `sendBookNotFound`,越权/不存在响应体一致 |
+| B5 | KEY_VAULTS_SECRET 硬编码兜底 | .env 不可写时用公开常量加密落盘 | 生产环境(NODE_ENV=production)拒绝启动;开发保留警告 |
+| B8 | `invalidateUserCache` 死代码 | 改名/改密后缓存最长 15 秒不失效 | `/account/profile`、`/account/change-password` 写后立即失效;管理员 CLI 跨进程由 TTL 兜底 |
+| F2 | 图片设置区表单回填覆盖编辑中内容 | 初始化 effect 无哨兵 | `ImageModelSection` 加 `initialized` ref,与文本模型区一致 |
+| F4 | 前端 lint 存量 10 warning | 工具函数/常量从组件文件导出、派生值作 effect 依赖 | 下载工具与 NOISE_LABEL 迁至 `web/src/lib/`;4 处派生值 useMemo 化;shadcn ui 文件按惯例豁免 |
+| ISSUE-8 | LLM 代理配置无文档 | 设置页无代理场景说明 | 设置页底部新增「需要代理？」折叠帮助,两种 Base URL 填法与 404 排查,与 `normalizeApiUrl` 规则一致 |
 
 运行方式:`node scripts/test.mjs`(自动起 docker postgres-test + minio-test,跑前 `prisma migrate reset`,跑完清理容器)。
 无 Docker 环境的替代验证: `node scripts/pg-server.mjs start`(55432 隔离库) + `prisma migrate reset` + 直接 `pnpm exec vitest run`(OBJECT_STORAGE_PROVIDER=fs)。
@@ -36,14 +50,11 @@
 
 ## 当前未修复的测试（预存,与 2026-08-28 后端等价优化无关）
 
-> 以下失败在优化前的干净基线（git stash 对照 + 隔离复跑）上同样出现;
+> T1/T2/T3 已于 2026-08-29 修复（见上表）;以下失败在优化前的干净基线上同样出现;
 > CI 中 vitest 为 `continue-on-error: true`,因此长期未被发现。
 
 | # | 失败测试 | 根因 | 修复方向 |
 |---|---|---|---|
-| T1 | `postgresql-entrypoints.test.ts` ×3（setup/start/start-mock.bat） | 断言 .bat 中的旧版 SQLite 提示文案,脚本文案已改 | 同步测试断言或恢复脚本文案,二选一 |
-| T2 | `postgresql-baseline.integration.test.ts` 「包含全部 Prisma 模型」 | 硬编码 19 个模型清单,DB 已 25 个模型（后续阶段新增） | 更新模型清单断言 |
-| T3 | `postgresql-baseline.integration.test.ts` 「拥有书籍的账号不能被直接删除」 | Prisma 5.22 把外键 RESTRICT 报为 PrismaClientUnknownRequestError（无 code）,测试期望 P2003 | 断言改为匹配错误消息/或捕获 unknown 类型 |
 | T4 | `ownership.integration.test.ts` ×3（stories/director 410、找回噪声行 needsReconfirm） | stories/director 路由 410 退场 preHandler 先于归属校验;噪声找回响应新增 needsReconfirm 字段,测试断言未同步 | 需先确认「410 先于 404」是否为预期契约（产品语义决策）,再同步断言 |
 | T5 | 全量混跑时 asset-object / asset-snapshot / book-share / book / snapshot-object / task / shares / snapshots 等仓储与集成测试互相污染 | singleFork 单进程单库下,前序文件的 `PublicAssetImage`/`AssetObject`/`Task` 残留行阻塞后序文件清理或触发 objectKey 唯一冲突;单独运行均通过 | 各集成测试 beforeEach 补全关联表清理;或官方 test-runner 按文件分组重置 |
 
@@ -73,22 +84,20 @@
 
 ### 🟡 P1 — 可靠性补强
 
+> B5(密钥兜底)、B8(缓存失效)已于 2026-08-29 修复(见上表)。
+
 - [ ] **ISSUE-B4 边界取消后书籍状态停留 EXTRACTING**
   `checkRunControl` 取消分支只收敛会话不更新 Book.status（与 PAUSED 取消路径置 UPLOADED 不一致）。
   改状态属可观测行为变化,需产品确认取消后书籍应显示的状态后修复。
-- [ ] **ISSUE-B5 KEY_VAULTS_SECRET 硬编码兜底**
-  `configStore.ts` 在 .env 不可写时用公开常量加密落盘,磁盘上密钥文件等于公开可解。
-  修复方向:生产环境（NODE_ENV=production）改为拒绝启动;开发环境保留警告。
 - [ ] **ISSUE-B6 SSE 心跳不回查数据库**
   数据库与内存事件不同步时（如进程异常）SSE 只发心跳不收敛,依赖前端轮询兜底。
   修复方向:心跳周期内加一次终态 DB 复查。
 - [ ] **ISSUE-B7 提取 Task 无租约/死信无出口**
   agent 执行期间任务无心跳;`dead_lettered` 任务无自动重试或告警,靠用户重新触发清理。
-- [ ] **ISSUE-B8 用户缓存 15 秒失效窗口**
-  `invalidateUserCache` 是死代码;停用/改密后旧 JWT 最长 15 秒内仍通过校验（有界,可接受）。
-  修复方向:改密/停用路径接入缓存失效。
 
 ### 🟢 P2 — 性能 / 运维（证据已记录,实施需测量）
+
+> B13(404 文案)已于 2026-08-29 修复(见上表)。
 
 - [ ] **ISSUE-B9 download-state 轮询端点全目录扫描 + 全实体序列化**
   `getDownloadState` 每次轮询执行 `discoverCurrentRun`（readdir 整个 output/ + 逐目录读 run-summary）
@@ -100,8 +109,6 @@
   fs/s3 的 `createDownloadUrl` 先 head 再签名,公共素材列表页每图一次 HEAD（s3 下 20 次/页网络请求）。
 - [ ] **ISSUE-B12 PublicAsset 标签/搜索无 GIN/trigram 索引**
   `tags array_contains` 与 `q contains` 全扫 published 集;`aggregateTags` 每请求展开全部素材。
-- [ ] **ISSUE-B13 404 文案不统一**
-  `artifacts.ts` 用「书籍不存在」而非统一的「书籍不存在或无权访问」;改文案属响应体变化,需与前端确认后统一。
 
 ---
 
@@ -120,18 +127,12 @@
 
 ### 🟢 P2 — 下轮可安全修复
 
-- [ ] **ISSUE-F2 图片设置区表单回填可能覆盖编辑中内容**
-  `components/settings/ImageModelSection.tsx` 初始化 effect 未加哨兵,`status` 引用每次变化
-  （如保存后 refetch）都会重填全部字段,可能覆盖用户正在编辑的内容;文本模型区已有
-  `initialized` ref 防护。本轮为保持「不改变保存时机」原样保留。
-  修复方向:给图片区加同样的 `initialized` 哨兵（纯前端行为微调,无契约变化）。
+> F2(表单回填哨兵)、F4(lint 存量 warning)已于 2026-08-29 修复(见上表);当前 `pnpm --filter @qunxiang/web lint` 零警告。
+
 - [ ] **ISSUE-F3 设置页缺运行时组件级测试**
   LlmSettingsPage 拆分（777 行 → 组合根 + settings/ 7 文件）目前只有源码级断言与
   tsc/build 保障。修复方向:用 React Testing Library 补保存流程特征测试
   （预设/自定义分支、密钥留空保留、warning toast）。
-- [ ] **ISSUE-F4 前端 lint 存量 warning**
-  `pnpm --filter @qunxiang/web lint` 有 10 个 warning（react-refresh 仅导出组件、
-  exhaustive-deps 逻辑表达式依赖）,多为既有代码模式;不阻塞构建,可逐步清理。
 
 ---
 
@@ -265,18 +266,7 @@ QunXiang 是以后要迁过去的主仓；本仓库当前功能领先，本阶�
 
 #### ISSUE-8: LLM 代理(Reve / 国内访问)配置无文档
 
-**现象**:使用 Reve 等国内 LLM 服务需要代理,但 `LLM 设置` 页面没说怎么配。
-
-**根因**:`web/src/components/LlmSettings.tsx` 只暴露了 API Key、Model、Base URL,没有"代理场景说明"。
-
-**影响**:国内用户首次配置容易卡住。
-
-**修复方向**:
-- 在 `LLM 设置` 页面加 "需要代理?" 折叠帮助(说明把代理 URL 填到 Base URL 即可)
-- 区分"自定义代理 URL" 与 "完整 /chat/completions URL" 的两种填法
-- 给出常见服务(OpenAI / Azure / 国内代理)示例
-
-**风险**:零,纯文档/UX 改动。
+**状态**:✅ 已完成(2026-08-29)——设置页底部新增「需要代理？」折叠帮助(`web/src/components/settings/BaseUrlHelp.tsx`),说明中转服务 Base URL 两种填法与 404 排查,规则与后端 `normalizeApiUrl` 一致。
 
 ---
 
@@ -308,7 +298,7 @@ QunXiang 是以后要迁过去的主仓；本仓库当前功能领先，本阶�
 | 🔴 P0 | ISSUE-5 章节查询 | 1 天 | 无 | 独立可做 |
 | 🔴 P0 | ISSUE-6 持久化保障 | 1 天 | ISSUE-3,4 | |
 | 🟡 P1 | ISSUE-7 管线断点续传 | 3 天 | 无 | scheduler 改动 |
-| 🟢 P2 | ISSUE-8 LLM 代理 UX | 0.5 天 | 无 | 纯文档 |
+| 🟢 P2 | ISSUE-8 LLM 代理 UX | 0.5 天 | 无 | ✅ 完成(2026-08-29) |
 | 🟢 P2 | ISSUE-9 视觉片段显示 | 1 天 | 测试 ISSUE-1 修了之后 | |
 
 ## 下一步行动
@@ -329,5 +319,5 @@ QunXiang 是以后要迁过去的主仓；本仓库当前功能领先，本阶�
    - api: resumeExtraction service + POST /:id/extract/resume 路由
    - web: useResumeExtraction hook + PipelinePage "从失败处继续"按钮
    - 测试:6 个 case(无任务/运行中/全成功/从失败继续/不重跑上游/重置下游)
-6. ⏳ 剩余:ISSUE-8 (LLM 代理 UX,0.5 天)+ ISSUE-9 (视觉片段,1 天)
+6. ⏳ 剩余:ISSUE-9 (视觉片段,1 天);ISSUE-8 已于 2026-08-29 完成
 7. ⏳ CI 中 `vitest` 与 `tsc` 仍是 `continue-on-error: true`:CI 环境没有 docker,集成测试跑不了;后续可给 CI 加 services(postgres/minio)后摘掉 continue-on-error
