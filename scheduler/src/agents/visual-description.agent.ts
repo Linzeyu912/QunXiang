@@ -1067,6 +1067,10 @@ export async function executeVisualDescription(payload: unknown): Promise<Visual
     ...source,
     // 实体列表不在本阶段过滤：characters/items/locations 随 source 原样传递，
     // 保证低置信度实体能到达入库阶段（进低置信度库），而非在此消失。
+    // locations/items 在输入侧是可选的，这里归一化为数组，与 VisualDescriptionResult 的
+    // 非可选声明一致；下游本就以 Array.isArray 守卫，归一化不改变行为。
+    locations: source.locations ?? [],
+    items: source.items ?? [],
     characterVisualDescriptions,
     itemVisualDescriptions,
     locationVisualDescriptions,
