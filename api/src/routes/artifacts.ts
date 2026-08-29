@@ -38,7 +38,7 @@ export async function artifactsRoutes(fastify: FastifyInstance) {
     }
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
-      return reply.status(404).send({ error: '书籍不存在' });
+      return sendBookNotFound(reply);
     }
     const patch = request.body as ArtifactPatch;
     if (!patch || (!patch.visual && !patch.prompt)) {
