@@ -139,7 +139,14 @@ function getMasterSecret(): string {
     process.env.KEY_VAULTS_SECRET = newSecret;
     return newSecret;
   } catch {
-    // Fallback: use a deterministic secret for this session only
+    // 生产环境拒绝启动：用仓库内公开常量加密落盘，等于磁盘上的密钥文件公开可解
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error(
+        '[configStore] 无法将 KEY_VAULTS_SECRET 写入 api/.env，生产环境拒绝使用兜底密钥启动。' +
+          '请手工在 api/.env 配置 KEY_VAULTS_SECRET（可用 openssl rand -hex 32 生成），并确认目录可写后重启。',
+      );
+    }
+    // 开发环境保留会话内兜底（重启后加密配置失效，仅提示）
     console.warn('[configStore] Could not persist KEY_VAULTS_SECRET to .env. Encrypted config will not survive restarts.');
     const fallbackSecret = 'novel-agent-fallback-secret-do-not-use-in-production';
     process.env.KEY_VAULTS_SECRET = fallbackSecret;
