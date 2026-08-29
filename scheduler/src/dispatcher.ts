@@ -484,6 +484,14 @@ export class TaskDispatcher {
         const control = await checkRunControl(task.bookId);
         if (control === 'cancel') {
           console.log(`[调度器] 运行已被取消：书籍 ${task.bookId} 停止于 ${agentType} 之后，未发布候选结果`);
+          // ISSUE-B4：与「已暂停后取消」路径对齐——清理残留 pending 任务，
+          // 并按是否有已发布稳定结果把书籍状态收敛为 EXTRACTED / UPLOADED，
+          // 否则书会永久停留 EXTRACTING，书库页开始/删除按钮被永久禁用。
+          await prisma.task.updateMany({
+            where: { bookId: task.bookId, status: 'pending' },
+            data: { status: 'cancelled', cancelledAt: new Date() },
+          });
+          await BookRepository.settleStatusAfterCancel(task.bookId);
           eventBus.emit({ type: 'error', bookId: task.bookId, message: '运行已取消，未发布结果；最近稳定结果保持不变', timestamp: Date.now() });
           return task.id;
         }

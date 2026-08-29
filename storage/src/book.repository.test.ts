@@ -132,6 +132,45 @@ describe('BookRepository', () => {
     });
   });
 
+  describe('settleStatusAfterCancel（ISSUE-B4 方案 B）', () => {
+    it('无已发布稳定结果：EXTRACTING 收敛为 UPLOADED', async () => {
+      const book = await bookRepo.create({ title: 'Cancel No Result', filePath: '/tmp/c1.txt', fileSize: 1, mimeType: 'text/plain', userId: testUser.id });
+      await bookRepo.updateStatus(book.id, 'EXTRACTING');
+
+      await bookRepo.settleStatusAfterCancel(book.id);
+
+      expect((await bookRepo.findById(book.id))?.status).toBe('UPLOADED');
+    });
+
+    it('有已发布稳定结果：EXTRACTING 收敛为 EXTRACTED', async () => {
+      const book = await bookRepo.create({ title: 'Cancel With Result', filePath: '/tmp/c2.txt', fileSize: 1, mimeType: 'text/plain', userId: testUser.id });
+      const session = await testPrisma.extractionSession.create({
+        data: { bookId: book.id, userId: testUser.id, status: 'COMPLETED', promotedAt: new Date() },
+      });
+      await testPrisma.book.update({
+        where: { id: book.id },
+        data: { currentExtractionSessionId: session.id, status: 'EXTRACTING' },
+      });
+
+      await bookRepo.settleStatusAfterCancel(book.id);
+
+      expect((await bookRepo.findById(book.id))?.status).toBe('EXTRACTED');
+    });
+
+    it('非 EXTRACTING 状态不改写（避免覆盖其他终态）', async () => {
+      const book = await bookRepo.create({ title: 'Cancel Failed', filePath: '/tmp/c3.txt', fileSize: 1, mimeType: 'text/plain', userId: testUser.id });
+      await bookRepo.updateStatus(book.id, 'FAILED');
+
+      await bookRepo.settleStatusAfterCancel(book.id);
+
+      expect((await bookRepo.findById(book.id))?.status).toBe('FAILED');
+    });
+
+    it('书籍不存在时静默返回', async () => {
+      await expect(bookRepo.settleStatusAfterCancel(randomUUID())).resolves.toBeUndefined();
+    });
+  });
+
   describe('delete', () => {
     it('should delete a book by id', async () => {
       const book = await bookRepo.create({ title: 'To Delete', filePath: '/tmp/test.txt', fileSize: 1024, mimeType: 'text/plain', userId: testUser.id });

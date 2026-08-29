@@ -243,7 +243,8 @@ export async function cancelRun(bookId: string, ownerId: string, runId: string):
       where: { bookId, status: 'pending' },
       data: { status: 'cancelled', cancelledAt: new Date() },
     });
-    await BookRepository.updateOwnedStatus(bookId, ownerId, 'UPLOADED');
+    // ISSUE-B4：与边界取消路径同一规则——有已发布稳定结果回「已提取」，否则回「待提取」
+    await BookRepository.settleStatusAfterCancel(bookId);
     return;
   }
   await ExtractionSessionRepository.markCancelling(run.id);

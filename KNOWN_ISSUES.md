@@ -28,6 +28,7 @@
 | F2 | 图片设置区表单回填覆盖编辑中内容 | 初始化 effect 无哨兵 | `ImageModelSection` 加 `initialized` ref,与文本模型区一致 |
 | F4 | 前端 lint 存量 10 warning | 工具函数/常量从组件文件导出、派生值作 effect 依赖 | 下载工具与 NOISE_LABEL 迁至 `web/src/lib/`;4 处派生值 useMemo 化;shadcn ui 文件按惯例豁免 |
 | ISSUE-8 | LLM 代理配置无文档 | 设置页无代理场景说明 | 设置页底部新增「需要代理？」折叠帮助,两种 Base URL 填法与 404 排查,与 `normalizeApiUrl` 规则一致 |
+| B4 | 边界取消后 Book.status 停留 EXTRACTING,书库页开始/删除按钮被永久禁用 | 取消两条路径不一致:PAUSED 取消置 UPLOADED,边界取消不更新书状态 | 新增 `BookRepository.settleStatusAfterCancel`（方案 B:有已发布稳定结果回 EXTRACTED,否则回 UPLOADED,仅 EXTRACTING 时改写）;dispatcher 边界取消与 `cancelRun` PAUSED 分支共用同一规则,并补清残留 pending 任务;4 个仓储测试覆盖分流/终态保护 |
 | F5 | 管道页开始/重新提取按钮可重复创建运行 | 按钮 disabled/spinner 接的是已不再触发的 `useStartExtraction`,实际触发的是 `createRun`,连点或弹窗确认可并发创建多个运行 | 全部改用 `createRun.isPending`,移除遗留 hook;`handleStart` 入口加防重入兜底(确认弹窗不受按钮 disabled 约束) |
 | F6 | `StageIndicator` 状态色硬编码 green/blue/red/gray | 未走设计令牌,与全站 success/info/destructive 语义色不一致 | 图标/连线/文字色全部改用 success/info/destructive/muted 令牌 |
 | F7 | AuthPage `autoComplete` 用 `['current','password'].join('-')` 混淆写法 | 运行期与字面量完全等价,但可读性差、易被误改 | 还原为 `'current-password' / 'new-password'` 字面量 |
@@ -87,11 +88,8 @@
 
 ### 🟡 P1 — 可靠性补强
 
-> B5(密钥兜底)、B8(缓存失效)已于 2026-08-29 修复(见上表)。
+> B4(取消后书状态)、B5(密钥兜底)、B8(缓存失效)已于 2026-08-29 修复(见上表)。
 
-- [ ] **ISSUE-B4 边界取消后书籍状态停留 EXTRACTING**
-  `checkRunControl` 取消分支只收敛会话不更新 Book.status（与 PAUSED 取消路径置 UPLOADED 不一致）。
-  改状态属可观测行为变化,需产品确认取消后书籍应显示的状态后修复。
 - [ ] **ISSUE-B6 SSE 心跳不回查数据库**
   数据库与内存事件不同步时（如进程异常）SSE 只发心跳不收敛,依赖前端轮询兜底。
   修复方向:心跳周期内加一次终态 DB 复查。

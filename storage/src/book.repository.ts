@@ -12,6 +12,12 @@ export interface BookRepository {
   updateStatus(id: string, status: string): Promise<Book>;
   setCurrentSnapshot(id: string, snapshotId: string | null): Promise<void>;
   updateOwnedStatus(id: string, ownerId: string, status: string): Promise<Book | null>;
+  /**
+   * 取消收敛（ISSUE-B4 方案 B）：有已发布稳定结果（currentExtractionSessionId 非空）的书
+   * 回到「已提取」，首次提取就被取消的书回到「待提取」。
+   * 仅当书仍处于 EXTRACTING 时改写，避免覆盖其他终态。
+   */
+  settleStatusAfterCancel(id: string): Promise<void>;
   /** 上传即确认初始原文版本（实施包 C1）：preprocessConfirmedRevision = sourceRevision。 */
   confirmPreprocess(id: string): Promise<Book | null>;
   delete(id: string): Promise<void>;
@@ -68,6 +74,16 @@ export function createBookRepository(db: PrismaClient): BookRepository {
       const result = await db.book.updateMany({ where: { id, userId: ownerId }, data: { status } });
       if (result.count !== 1) return null;
       return db.book.findFirst({ where: { id, userId: ownerId } }) as Promise<Book | null>;
+    },
+
+    async settleStatusAfterCancel(id: string): Promise<void> {
+      const book = await db.book.findUnique({
+        where: { id },
+        select: { currentExtractionSessionId: true },
+      });
+      if (!book) return;
+      const target = book.currentExtractionSessionId ? 'EXTRACTED' : 'UPLOADED';
+      await db.book.updateMany({ where: { id, status: 'EXTRACTING' }, data: { status: target } });
     },
     async confirmPreprocess(id: string): Promise<Book | null> {
       const result = await db.book.updateMany({ where: { id }, data: { preprocessConfirmedRevision: 0 } });
