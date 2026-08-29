@@ -403,9 +403,26 @@ export class TaskDispatcher {
     }
 
     try {
-      const { result, error, attempts } = await withRetry(
-        () => agent(agentPayload)
-      );
+      // 长阶段心跳：简介融合/提示词润色等纯内存 LLM 循环跑完才写一次任务行，
+      // 不刷心跳会被 30 分钟超时回收误判卡死（改回 pending 重跑 → 再超时死循环）。
+      // 执行期间每 5 分钟刷新 updatedAt，完成/失败后停止。
+      const HEARTBEAT_INTERVAL_MS = 5 * 60_000;
+      let result: unknown;
+      let error: string | undefined;
+      let attempts: number;
+      const heartbeatTimer = setInterval(() => {
+        void this.queue.heartbeat(task.id).catch((err) => {
+          console.warn(`[调度器] 任务 ${task.id} 心跳刷新失败：`, err);
+        });
+      }, HEARTBEAT_INTERVAL_MS);
+      heartbeatTimer.unref?.();
+      try {
+        ({ result, error, attempts } = await withRetry(
+          () => agent(agentPayload)
+        ));
+      } finally {
+        clearInterval(heartbeatTimer);
+      }
 
       if (error) {
         if (attempts > DEFAULT_RETRY_CONFIG.maxRetries) {

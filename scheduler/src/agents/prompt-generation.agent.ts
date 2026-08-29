@@ -95,6 +95,13 @@ const USE_LLM = process.env.PROMPT_GEN_USE_LLM !== '0';
 const LLM_MIN_TIER = process.env.PROMPT_GEN_LLM_MIN_TIER || 'supporting';
 const MAX_CHARS = Number(process.env.PROMPT_GEN_MAX_CHARS || 24000);
 
+// ── 标志性特征锚点过滤 ──
+// 上游 signatureItems/abilityVisuals 是正则扫原文抓的句子证据，锚点必须筛出
+// 名词性视觉元素，排除动作句片段（"从身上利索的摸出了一个腰牌"）与含实体名/代词的半截句。
+const ANCHOR_VISUAL_NOUN_RE = /(戒指|古戒|玉佩|佩剑|长剑|短剑|宝剑|软剑|令牌|腰牌|项链|耳坠|面具|斗笠|药鼎|丹炉|卷轴|玉简|储物袋|斗气|灵气|真气|火焰|异火|雷光|剑光|刀光|光芒|黑雾|法力|法宝|斗技|功法|气息|气势|威压|灵光|符箓)/u;
+const ANCHOR_ACTION_NOISE_RE = /(摸出|掏出|取出|拿出|抽出|拔出|挥出|递给|架在|握着|拿着|持着|佩戴|戴着|挂在|藏在|收入|斩下|刺向|运行|施展|放出|发出|冲向|飞向|已|正在|之后|而后|之时)/u;
+const ANCHOR_PERSON_RE = /(他|她|自己|此人|对方|那人)/u;
+
 const TIER_ORDER: Record<string, number> = {
   core: 0,
   supporting: 1,
@@ -299,12 +306,19 @@ function buildCharacterDesignSheet(pack: any, stage?: AgeStage, forcedOutfit?: O
 
   // 标志性特征（原文依据）：切成短语、限 3 条。句子化/多特征堆砌的内容交给 polish 压缩成锚点。
   const ANCHOR_SPLIT_RE = /[、，,；;。和与及或]/u;
+  const selfName = pack.name || '';
+  const isVisualAnchor = (s: string): boolean => {
+    if (!s || s === '无' || s.length > 16) return false;
+    if (ANCHOR_ACTION_NOISE_RE.test(s) || ANCHOR_PERSON_RE.test(s)) return false;
+    if (selfName && s.includes(selfName)) return false;
+    return ANCHOR_VISUAL_NOUN_RE.test(s);
+  };
   const splitAnchors = (text: string, max: number): string[] =>
     text
       .replace(/（第[^）]*章）|\(第[^)]*章\)/gu, '')
       .split(ANCHOR_SPLIT_RE)
       .map((s) => s.trim())
-      .filter((s) => s && s !== '无' && s.length <= 16)
+      .filter(isVisualAnchor)
       .slice(0, max);
   const signatureParts: string[] = [];
   if (items && items !== '无') signatureParts.push(...splitAnchors(items, 2));
@@ -824,23 +838,24 @@ async function polishWithLlm(prompts: GenerationPrompt[]): Promise<Map<string, s
   if (prompts.length === 0) return result;
 
   const provider = await getDefaultProvider();
-  const chars = prompts.filter(p => p.entityType === 'character');
-  const others = prompts.filter(p => p.entityType !== 'character');
 
-  // Polish characters with dedicated prompt
-  if (chars.length > 0) {
+  // 组级容错：一次调用要返回整组实体的完整润色文本，长输出易被截断导致整组丢失。
+  // 调用失败或 LLM 漏返部分实体时，把缺口拆半重试；单实体组失败保留模板版（llm-fallback）。
+  const POLISH_SPLIT_DEPTH = 3;
+
+  const runCall = async (targets: GenerationPrompt[], isCharacter: boolean): Promise<GenerationPrompt[]> => {
+    if (targets.length === 0) return [];
     try {
       const payload = {
-        prompts: chars.map(p => ({
+        prompts: targets.map(p => ({
           name: p.entityName, entityType: p.entityType, tier: p.tier,
           templatePrompt: p.prompt,
           description: (p as any).description || '',
           enhancedDescription: p.enhancedDescription || '',
         })),
       };
-      const llmResult = await provider.chatExtract(
-        POLISH_CHARACTER_PROMPT,
-        `请润色以下角色设定图。每个实体的 templatePrompt 是模板生成的初版，你必须返回润色后的完整四视图文本。
+      const instruction = isCharacter
+        ? `请润色以下角色设定图。每个实体的 templatePrompt 是模板生成的初版，你必须返回润色后的完整四视图文本。
 
 输出格式（严格遵守，不要回显输入字段）：
 {
@@ -850,36 +865,8 @@ async function polishWithLlm(prompts: GenerationPrompt[]): Promise<Map<string, s
 }
 
 输入数据：
-${JSON.stringify(payload, null, 2)}`,
-        polishSchema
-      );
-      const all = [...(llmResult.prompts ?? []), ...(llmResult.characters ?? [])];
-      let ok = 0;
-      for (const entry of all) {
-        const text = extractPolished(entry);
-        if (text && entry.name) { result.set(entry.name, text); ok++; }
-      }
-      console.log(`[PromptGeneration] Character polish: ${ok}/${chars.length} succeeded`);
-    } catch (error) {
-      const msg = error instanceof Error ? `${error.message}\n${error.stack?.slice(0, 500) || ''}` : String(error);
-      console.warn(`[PromptGeneration] Character polish failed for ${chars.length} chars: ${msg}`);
-    }
-  }
-
-  // Polish items/locations
-  if (others.length > 0) {
-    try {
-      const payload = {
-        prompts: others.map(p => ({
-          name: p.entityName, entityType: p.entityType, tier: p.tier,
-          templatePrompt: p.prompt,
-          description: (p as any).description || '',
-          enhancedDescription: p.enhancedDescription || '',
-        })),
-      };
-      const llmResult = await provider.chatExtract(
-        POLISH_ITEM_LOCATION_PROMPT,
-        `请润色以下生图提示词。每个实体的 templatePrompt 是模板生成的初版，你必须返回润色后的完整文本。
+${JSON.stringify(payload, null, 2)}`
+        : `请润色以下生图提示词。每个实体的 templatePrompt 是模板生成的初版，你必须返回润色后的完整文本。
 
 输出格式（严格遵守，不要回显输入字段）：
 {
@@ -889,21 +876,41 @@ ${JSON.stringify(payload, null, 2)}`,
 }
 
 输入数据：
-${JSON.stringify(payload, null, 2)}`,
+${JSON.stringify(payload, null, 2)}`;
+      const llmResult = await provider.chatExtract(
+        isCharacter ? POLISH_CHARACTER_PROMPT : POLISH_ITEM_LOCATION_PROMPT,
+        instruction,
         polishSchema
       );
-      const all = [...(llmResult.prompts ?? []), ...(llmResult.items ?? []), ...(llmResult.locations ?? [])];
+      const all = [...(llmResult.prompts ?? []), ...(isCharacter ? (llmResult.characters ?? []) : [...(llmResult.items ?? []), ...(llmResult.locations ?? [])])];
+      const got = new Set<string>();
       let ok = 0;
       for (const entry of all) {
         const text = extractPolished(entry);
-        if (text && entry.name) { result.set(entry.name, text); ok++; }
+        if (text && entry.name) { result.set(entry.name, text); got.add(entry.name); ok++; }
       }
-      console.log(`[PromptGeneration] Item/location polish: ${ok}/${others.length} succeeded`);
+      console.log(`[PromptGeneration] ${isCharacter ? 'Character' : 'Item/location'} polish: ${ok}/${targets.length} succeeded`);
+      return targets.filter(p => !got.has(p.entityName));
     } catch (error) {
-      console.warn(`[PromptGeneration] Item/location polish failed: ${error instanceof Error ? error.message : String(error)}`);
+      console.warn(`[PromptGeneration] ${isCharacter ? 'Character' : 'Item/location'} polish failed for ${targets.length} entities: ${error instanceof Error ? error.message : String(error)}`);
+      return targets;
     }
-  }
+  };
 
+  const polishSubgroup = async (group: GenerationPrompt[], depth: number): Promise<void> => {
+    if (group.length === 0) return;
+    const missing = [
+      ...(await runCall(group.filter(p => p.entityType === 'character'), true)),
+      ...(await runCall(group.filter(p => p.entityType !== 'character'), false)),
+    ];
+    if (missing.length > 0 && group.length > 1 && depth < POLISH_SPLIT_DEPTH) {
+      const mid = Math.ceil(missing.length / 2);
+      await polishSubgroup(missing.slice(0, mid), depth + 1);
+      await polishSubgroup(missing.slice(mid), depth + 1);
+    }
+  };
+
+  await polishSubgroup(prompts, 0);
   return result;
 }
 

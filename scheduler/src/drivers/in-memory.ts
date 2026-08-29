@@ -69,6 +69,13 @@ export class InMemoryTaskQueue implements TaskQueue {
     if (index > -1) pending.splice(index, 1);
   }
 
+  async heartbeat(taskId: string): Promise<void> {
+    const task = this.tasks.get(taskId);
+    if (!task || task.status !== 'running') return;
+    task.updatedAt = new Date();
+    this.tasks.set(taskId, task);
+  }
+
   async getStatus(taskId: string): Promise<Task | null> {
     return this.tasks.get(taskId) || null;
   }

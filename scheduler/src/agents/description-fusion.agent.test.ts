@@ -133,6 +133,87 @@ describe('executeDescriptionFusion', () => {
     expect(result.descriptionFusion).toEqual({ requested: 1, fused: 0, skipped: 1 });
   });
 
+  it('splits and retries when a multi-entity fusion group fails once', async () => {
+    const { executeDescriptionFusion } = await import('./description-fusion.agent.js');
+    // 第一次整组失败 → 拆半成两个单实体组 → 各自成功
+    chatExtract
+      .mockRejectedValueOnce(new Error('output truncated'))
+      .mockResolvedValueOnce({
+        characters: [{ name: '韩立', description: '谨慎的乡村少年，七玄门神手谷弟子，修炼无名口诀，拥有神秘小瓶。' }],
+        items: [],
+        locations: [],
+      })
+      .mockResolvedValueOnce({
+        characters: [{ name: '墨大夫', description: '七玄门供奉，医术高深，收韩立为亲传弟子。' }],
+        items: [],
+        locations: [],
+      });
+
+    const base = {
+      confidence: 0.95,
+      status: 'PENDING' as const,
+      firstChapter: 1,
+      lastChapter: 100,
+      chapterAppearances: [1, 100],
+      mentionCount: 200,
+      dialogueCount: 20,
+      coCharacters: [],
+    };
+    const result = await executeDescriptionFusion({
+      characters: [
+        { ...base, name: '韩立', aliases: [], description: '主角，乡村少年；主角，七玄门弟子；主角，拥有神秘小瓶' },
+        { ...base, name: '墨大夫', aliases: [], description: '七玄门供奉，医术高深；神手谷主人，收韩立为徒' },
+      ],
+      items: [],
+      locations: [],
+    });
+
+    expect(result.characters.find((c) => c.name === '韩立')?.description).toContain('谨慎的乡村少年');
+    expect(result.characters.find((c) => c.name === '墨大夫')?.description).toContain('七玄门供奉');
+    expect(result.descriptionFusion).toEqual({ requested: 2, fused: 2, skipped: 0 });
+    expect(chatExtract).toHaveBeenCalledTimes(3);
+  });
+
+  it('retries only the entities an LLM response missed instead of the whole group', async () => {
+    const { executeDescriptionFusion } = await import('./description-fusion.agent.js');
+    // 第一次调用只返回了韩立，漏掉墨大夫 → 仅对墨大夫重试
+    chatExtract
+      .mockResolvedValueOnce({
+        characters: [{ name: '韩立', description: '谨慎的乡村少年，七玄门弟子。' }],
+        items: [],
+        locations: [],
+      })
+      .mockResolvedValueOnce({
+        characters: [{ name: '墨大夫', description: '七玄门供奉，神手谷主人。' }],
+        items: [],
+        locations: [],
+      });
+
+    const base = {
+      confidence: 0.95,
+      status: 'PENDING' as const,
+      firstChapter: 1,
+      lastChapter: 100,
+      chapterAppearances: [1, 100],
+      mentionCount: 200,
+      dialogueCount: 20,
+      coCharacters: [],
+    };
+    const result = await executeDescriptionFusion({
+      characters: [
+        { ...base, name: '韩立', aliases: [], description: '主角，乡村少年；主角，七玄门弟子' },
+        { ...base, name: '墨大夫', aliases: [], description: '七玄门供奉；神手谷主人' },
+      ],
+      items: [],
+      locations: [],
+    });
+
+    expect(result.characters.find((c) => c.name === '韩立')?.description).toContain('谨慎的乡村少年');
+    expect(result.characters.find((c) => c.name === '墨大夫')?.description).toContain('神手谷主人');
+    expect(result.descriptionFusion).toEqual({ requested: 2, fused: 2, skipped: 0 });
+    expect(chatExtract).toHaveBeenCalledTimes(2);
+  });
+
   it('compresses repeated protagonist labels in fallback descriptions when LLM fusion fails', async () => {
     const { executeDescriptionFusion } = await import('./description-fusion.agent.js');
     chatExtract.mockRejectedValueOnce(new Error('fusion timeout'));

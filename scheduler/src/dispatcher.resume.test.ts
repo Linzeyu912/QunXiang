@@ -91,6 +91,9 @@ function createRecordingQueue(tasks: Array<Partial<Task> & { agentType: AgentTyp
       const row = rows.find((t) => t.id === id);
       if (row) row.status = 'failed';
     },
+    async heartbeat() {
+      // 测试内无需真实心跳
+    },
     async getStatus() {
       return null;
     },
@@ -287,6 +290,9 @@ describe.skipIf(!isGuardedTestDb)('processNext 失败路径收敛运行会话', 
       },
       async fail(id, error) {
         await TaskRepository.updateStatus(id, 'failed', undefined, error);
+      },
+      async heartbeat(id) {
+        await TaskRepository.heartbeat(id);
       },
       async getStatus(id) {
         return TaskRepository.findById(id);

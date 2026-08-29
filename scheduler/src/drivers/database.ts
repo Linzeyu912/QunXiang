@@ -32,6 +32,10 @@ export class DatabaseTaskQueue implements TaskQueue {
     await TaskRepository.updateStatus(taskId, 'failed', undefined, error);
   }
 
+  async heartbeat(taskId: string): Promise<void> {
+    await TaskRepository.heartbeat(taskId);
+  }
+
   async getStatus(taskId: string): Promise<Task | null> {
     return TaskRepository.findById(taskId);
   }

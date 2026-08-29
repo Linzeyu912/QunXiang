@@ -8,6 +8,7 @@ function createQueue(): TaskQueue {
     dequeue: async () => null,
     complete: async () => undefined,
     fail: async () => undefined,
+    heartbeat: async () => undefined,
     getStatus: async () => null,
     getPending: async () => [],
     addToDeadLetter: async () => undefined,

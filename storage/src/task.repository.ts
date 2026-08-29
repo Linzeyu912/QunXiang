@@ -34,6 +34,8 @@ export interface TaskRepository {
   findStuckTasks(thresholdMs: number): Promise<Task[]>;
   recoverStuckTask(taskId: string): Promise<Task>;
   incrementRetryCount(taskId: string): Promise<Task>;
+  /** 任务心跳：刷新 updatedAt，表明任务仍在活跃执行（防长阶段被超时回收误判）。 */
+  heartbeat(taskId: string): Promise<void>;
 }
 
 function parseTask(task: Record<string, unknown>): Task {
@@ -208,9 +210,10 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
       const tasks = await db.task.findMany({
         where: {
           status: 'running',
-          // 以 startedAt（领取心跳）判断卡死：重启孤儿回收用 threshold=0 全收，
-          // 超时回收用阈值区分真卡死与热重载在途任务
-          startedAt: { lt: cutoff },
+          // 以 updatedAt（心跳）判断卡死：重启孤儿回收用 threshold=0 全收，
+          // 超时回收用阈值区分真卡死与长阶段在途任务（dispatcher 在 agent 执行期间
+          // 定期 heartbeat 刷新 updatedAt；纯内存长计算若一直无心跳才会被回收）
+          updatedAt: { lt: cutoff },
         },
       });
       return tasks.map(task => parseTask(task as unknown as Record<string, unknown>));
@@ -226,6 +229,14 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
           failedAt: null,
         },
       }) as Promise<Task>;
+    },
+
+    /** 任务心跳：刷新 updatedAt，表明任务仍在活跃执行（防长阶段被超时回收误判）。 */
+    async heartbeat(taskId: string): Promise<void> {
+      await db.task.updateMany({
+        where: { id: taskId, status: 'running' },
+        data: { updatedAt: new Date() },
+      });
     },
 
     async incrementRetryCount(taskId: string): Promise<Task> {

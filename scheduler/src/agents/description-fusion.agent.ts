@@ -74,6 +74,7 @@ const DESCRIPTION_FUSION_SYSTEM_PROMPT = `你是小说实体简介融合 agent�
 - 如果信息互补，合并保留；如果信息冲突，采用更具体、更有上下文的一版，并避免武断扩写。
 - 不要把亲属、下属、宗门或家族的行为转移给实体本人；如果输入写的是"其女/其子/族人/弟子"，输出也必须保留真实动作主体。
 - 次要实体可以短一些，但不能丢掉输入中唯一的关键信息。
+- 融合结果是概括式简介，必须明显短于输入：通常 60~250 字；只有信息量极大的核心主角可以放宽，最多约 400 字。绝不逐段拼接输入。
 
 只返回 JSON：
 {
@@ -197,19 +198,27 @@ function collectFusionInputs<T extends { name: string; aliases?: string[]; descr
 
 function groupInputs(inputs: FusionInputEntity[]): FusionInputEntity[][] {
   const maxChars = Number(process.env.DESCRIPTION_FUSION_MAX_CHARS || 24000);
+  // 超长实体（高提及主角/核心道具，描述常超 2000 字）单独成组：
+  // 整次调用只需返回一个实体的简介，输出 token 压力最小，避免长输出截断导致回退拼接
+  const soloThreshold = Number(process.env.DESCRIPTION_FUSION_SOLO_CHARS || 2500);
   const groups: FusionInputEntity[][] = [];
   let current: FusionInputEntity[] = [];
   let currentChars = 0;
 
   for (const input of inputs) {
     const estimated = input.currentDescription.length + input.name.length + input.aliases.join('').length + 80;
-    if (current.length > 0 && currentChars + estimated > maxChars) {
+    if (current.length > 0 && (currentChars + estimated > maxChars || estimated > soloThreshold)) {
       groups.push(current);
       current = [];
       currentChars = 0;
     }
     current.push(input);
     currentChars += estimated;
+    if (estimated > soloThreshold) {
+      groups.push(current);
+      current = [];
+      currentChars = 0;
+    }
   }
   if (current.length > 0) groups.push(current);
   return groups;
@@ -306,7 +315,12 @@ export async function executeDescriptionFusion(payload: unknown): Promise<Descri
   const provider = await getDefaultProvider();
   const fused = new Map<string, string>();
 
-  for (const group of groupInputs(inputs)) {
+  // 组级容错：整组调用失败或 LLM 漏返部分实体时，把缺口拆半重试（单实体组失败不重试）。
+  // 此前一组失败即整组回退本地拼接，高提及主角（输入超长）几乎必然命中，产出分号长串。
+  const FUSION_SPLIT_DEPTH = 3;
+  const fuseGroup = async (group: FusionInputEntity[], depth: number): Promise<void> => {
+    if (group.length === 0) return;
+    let missing: FusionInputEntity[] = [];
     try {
       const result = await provider.chatExtract(
         DESCRIPTION_FUSION_SYSTEM_PROMPT,
@@ -314,20 +328,47 @@ export async function executeDescriptionFusion(payload: unknown): Promise<Descri
         fusionSchema
       );
 
+      const byKey = new Map<string, string>();
       for (const entity of result.characters ?? []) {
-        fused.set(outputKey('characters', entity.name), entity.description ?? '');
+        byKey.set(outputKey('characters', entity.name), entity.description ?? '');
       }
       for (const entity of result.items ?? []) {
-        fused.set(outputKey('items', entity.name), entity.description ?? '');
+        byKey.set(outputKey('items', entity.name), entity.description ?? '');
       }
       for (const entity of result.locations ?? []) {
-        fused.set(outputKey('locations', entity.name), entity.description ?? '');
+        byKey.set(outputKey('locations', entity.name), entity.description ?? '');
+      }
+      for (const entity of group) {
+        const cleaned = cleanEntityDescription(byKey.get(outputKey(entity.kind, entity.name)));
+        if (cleaned) fused.set(outputKey(entity.kind, entity.name), cleaned);
+        else missing.push(entity);
       }
     } catch (error) {
-      console.warn(
-        `[DescriptionFusion] LLM fusion group failed, using fallback descriptions for ${group.length} entities: ${error instanceof Error ? error.message : String(error)}`
-      );
+      // 整组异常：可拆则拆半重试，不可拆则留给 fallback 拼接
+      if (group.length > 1 && depth < FUSION_SPLIT_DEPTH) {
+        console.warn(
+          `[DescriptionFusion] LLM fusion failed for group of ${group.length}, splitting and retrying: ${error instanceof Error ? error.message : String(error)}`
+        );
+        missing = group;
+      } else {
+        console.warn(
+          `[DescriptionFusion] LLM fusion group failed, using fallback descriptions for ${group.length} entities: ${error instanceof Error ? error.message : String(error)}`
+        );
+        return;
+      }
     }
+    if (missing.length > 0 && group.length > 1 && depth < FUSION_SPLIT_DEPTH) {
+      if (missing.length < group.length) {
+        console.warn(`[DescriptionFusion] ${missing.length}/${group.length} entities missing fused results, retrying`);
+      }
+      const mid = Math.ceil(missing.length / 2);
+      await fuseGroup(missing.slice(0, mid), depth + 1);
+      await fuseGroup(missing.slice(mid), depth + 1);
+    }
+  };
+
+  for (const group of groupInputs(inputs)) {
+    await fuseGroup(group, 0);
   }
 
   const fusedCount = [...fused.values()].filter((description) => cleanEntityDescription(description)).length;
