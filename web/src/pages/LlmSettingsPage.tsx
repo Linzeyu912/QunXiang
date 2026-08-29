@@ -4,6 +4,7 @@ import { useLlmStatus } from '@/api/llm';
 import { TextModelSection } from '@/components/settings/TextModelSection';
 import { ConcurrencySection } from '@/components/settings/ConcurrencySection';
 import { ImageModelSection } from '@/components/settings/ImageModelSection';
+import { BaseUrlHelp } from '@/components/settings/BaseUrlHelp';
 
 /**
  * 模型与生成设置：按「文本模型 → 并发策略 → 文生图模型」分区。
@@ -26,6 +27,7 @@ export function LlmSettingsPage() {
       <TextModelSection />
       <ConcurrencySection />
       <ImageModelSection />
+      <BaseUrlHelp />
     </div>
   );
 }
