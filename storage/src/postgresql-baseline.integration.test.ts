@@ -10,6 +10,7 @@ const db = new PrismaClient();
 const execAsync = promisify(exec);
 
 const expectedModels = [
+  'AiUsageRecord',
   'AssetObject',
   'AssetSnapshot',
   'AuditLog',
@@ -20,10 +21,14 @@ const expectedModels = [
   'Character',
   'CharacterReview',
   'EntityImage',
+  'EntityReview',
   'ExtractionSession',
   'Item',
   'Location',
   'NoiseOverride',
+  'PublicAsset',
+  'PublicAssetImage',
+  'PublicAssetTake',
   'RefreshSession',
   'SnapshotObject',
   'Task',
@@ -181,8 +186,10 @@ describe('PostgreSQL baseline', () => {
       mimeType: 'text/plain', userId: user.id,
     } });
     try {
+      // Prisma 5.22 起外键 RESTRICT 可能报为无 code 的 UnknownRequestError，
+      // 因此按消息匹配外键约束失败，兼容 P2003 与 unknown 两种形态
       await expect(db.user.delete({ where: { id: user.id } }))
-        .rejects.toMatchObject({ code: 'P2003' });
+        .rejects.toThrow(/foreign key/i);
     } finally {
       await db.book.deleteMany({ where: { id: book.id } });
       await db.user.deleteMany({ where: { id: user.id } });
