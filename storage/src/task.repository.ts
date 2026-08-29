@@ -137,9 +137,10 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
 
       // 2. 原子抢占：只有当该任务仍为 pending 时才改为 running。
       //    并发的另一 worker 若先抢，这里 status 已是 running，count===0。
+      //    顺手记录 startedAt 心跳：超时回收据此区分真卡死与热重载在途任务。
       const result = await db.task.updateMany({
         where: { id: pending.id, status: 'pending' },
-        data: { status: 'running' },
+        data: { status: 'running', startedAt: new Date() },
       });
       if (result.count === 0) {
         // 被别的 worker 抢走了；调用方应再次轮询。这里返回 null 表示本次无任务可处理。
@@ -207,7 +208,9 @@ export function createTaskRepository(db: PrismaClient): TaskRepository {
       const tasks = await db.task.findMany({
         where: {
           status: 'running',
-          updatedAt: { lt: cutoff },
+          // 以 startedAt（领取心跳）判断卡死：重启孤儿回收用 threshold=0 全收，
+          // 超时回收用阈值区分真卡死与热重载在途任务
+          startedAt: { lt: cutoff },
         },
       });
       return tasks.map(task => parseTask(task as unknown as Record<string, unknown>));

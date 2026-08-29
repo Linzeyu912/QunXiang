@@ -184,6 +184,8 @@ export interface ExtractionStageInfo {
   startedAt?: string;
   completedAt?: string;
   message?: string;
+  /** 阶段内进度详情（如提取阶段的批次进度："第 3/5 批"） */
+  detail?: string;
 }
 
 export interface RunEstimate {

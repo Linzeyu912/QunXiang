@@ -217,6 +217,16 @@ export class TaskDispatcher {
       );
     }
     const n = Math.max(1, Math.floor(count));
+    // 超时回收：running 任务心跳超过 30 分钟判死（真卡死/进程被杀），改回 pending 重领。
+    // 开发热重载的在途任务不受影响——它们每批完成会触碰 updatedAt，心跳不会超阈。
+    const STUCK_RECOVERY_INTERVAL_MS = 60_000;
+    const STUCK_TASK_THRESHOLD_MS = 30 * 60_000;
+    const stuckRecoveryTimer = setInterval(() => {
+      void this.recoverStuckTasks(STUCK_TASK_THRESHOLD_MS).catch((err) =>
+        console.error('[调度器] 超时回收失败：', err),
+      );
+    }, STUCK_RECOVERY_INTERVAL_MS);
+    stuckRecoveryTimer.unref?.();
     for (let i = 0; i < n; i++) {
       const worker = {
         timer: null as ReturnType<typeof setTimeout> | null,
@@ -260,6 +270,20 @@ export class TaskDispatcher {
   /** 当前 worker 数量（供上层判断是否需要调整并发度）。 */
   getWorkerCount(): number {
     return this.workers.length;
+  }
+
+  /** 超时回收：心跳超阈值的 running 任务改回 pending 供重领（区别于重启孤儿回收） */
+  private async recoverStuckTasks(thresholdMs: number): Promise<void> {
+    const stuck = await this.queue.findStuckTasks(thresholdMs);
+    if (stuck.length === 0) return;
+    for (const t of stuck) {
+      try {
+        await this.queue.recoverStuckTask(t.id);
+        console.log(`[调度器] 已回收卡死任务 ${t.id}（书籍 ${t.bookId}，阶段 ${t.agentType}）`);
+      } catch (err) {
+        console.error(`[调度器] 回收任务 ${t.id} 失败：`, err);
+      }
+    }
   }
 
   /**

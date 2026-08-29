@@ -28,6 +28,30 @@ describe('提取进度完整快照', () => {
     expect(queryClient.getQueryState(entitiesKey.all(bookId))?.isInvalidated).toBe(true);
   });
 
+  it('stage_progress 事件只更新批次 detail，不切换阶段状态', () => {
+    const queryClient = new QueryClient();
+    const bookId = 'book-p1';
+    queryClient.setQueryData(extractionKey.stages(bookId), {
+      isComplete: false,
+      isFailed: false,
+      stages: [{ id: 'extractor', name: '角色提取', weight: 1, status: 'running' }],
+    });
+
+    applyExtractionStreamEvent(queryClient, bookId, JSON.stringify({
+      type: 'stage_progress',
+      bookId,
+      stageId: 'extractor',
+      detail: '第 2/5 批',
+      timestamp: Date.now(),
+    }), 'stage_progress');
+
+    const stage = queryClient
+      .getQueryData<any>(extractionKey.stages(bookId))
+      ?.stages?.find((s: any) => s.id === 'extractor');
+    expect(stage?.status).toBe('running');
+    expect(stage?.detail).toBe('第 2/5 批');
+  });
+
   it('失败快照也会刷新书籍与实体缓存', () => {
     const queryClient = new QueryClient();
     const bookId = 'book-2';

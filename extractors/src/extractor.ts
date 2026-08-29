@@ -324,7 +324,18 @@ function dedupWorldviews(worldviews: WorldviewInputOutput[]): WorldviewInputOutp
  * fault tolerance and alias-aware character dedup (so address forms like
  * "萧炎哥" merge into "萧炎" rather than surviving as separate entities).
  */
-export function createExtractor() {
+/** 提取进度回调：批次完成时上报（供管道阶段卡显示"第 X/N 批"） */
+export interface ExtractionProgress {
+  completedBatches: number;
+  totalBatches: number;
+  bookTitle: string;
+}
+
+export interface ExtractorOptions {
+  onProgress?: (progress: ExtractionProgress) => void;
+}
+
+export function createExtractor(options: ExtractorOptions = {}) {
   return async function extractEntities(
     bookTitle: string,
     chapters: Chapter[]
@@ -381,6 +392,9 @@ export function createExtractor() {
           error: result.reason?.message || 'unknown',
         });
       }
+      // 每批落定（成功或失败）都上报一次进度
+      const completedBatches = batchResults.length;
+      options.onProgress?.({ completedBatches, totalBatches, bookTitle });
     }
 
     // Process a single batch with retry logic

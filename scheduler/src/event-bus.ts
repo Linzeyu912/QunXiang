@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 
-export type PipelineEventType = 'stage_start' | 'stage_complete' | 'completed' | 'error';
+export type PipelineEventType = 'stage_start' | 'stage_progress' | 'stage_complete' | 'completed' | 'error';
 
 export interface PipelineEvent {
   type: PipelineEventType;
@@ -8,6 +8,8 @@ export interface PipelineEvent {
   stageId?: string;
   stageName?: string;
   progress?: number;
+  /** 阶段内进度详情（如提取阶段的批次进度："第 3/5 批"） */
+  detail?: string;
   message?: string;
   timestamp: number;
 }

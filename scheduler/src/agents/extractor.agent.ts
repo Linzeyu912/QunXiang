@@ -5,6 +5,7 @@ import { BookRepository, getSharedAssetSourceResolver } from '@qunxiang/storage'
 import { parseTxtEnhanced } from '@qunxiang/import';
 import { calcImportance, type EntityImportance, type EntityType } from '@qunxiang/entity-prescan';
 import { bookSlug } from '@qunxiang/story-arcs';
+import { eventBus } from '../event-bus.js';
 import { join } from 'path';
 import { fuseCharactersWithPrescan } from './character-fusion.js';
 import {
@@ -50,7 +51,8 @@ function findFirstMentionSnippet(
   chaptersList: Array<{ index: number; content: string }>,
   names: string[],
 ): string | undefined {
-  const distinct = [...new Set(names.map((s) => s.trim()).filter((s) => s.length >= 2))];
+  // 与全文计数同口径：2 字以下通用名词不参与片段匹配（避免"手机"匹配到任意章节）
+  const distinct = [...new Set(names.map((s) => s.trim()).filter((s) => s.length >= 3))];
   for (const ch of chaptersList) {
     for (const n of distinct) {
       const idx = ch.content.indexOf(n);
@@ -136,7 +138,20 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
   }));
 
   // LLM extraction of characters + items in a single call per batch
-  const extractEntities = createExtractor();
+  // 批进度透传：每批落定发 stage_progress 事件，管道页可显示"第 X/N 批"
+  const extractEntities = createExtractor({
+    onProgress: ({ completedBatches, totalBatches, bookTitle }) => {
+      eventBus.emit({
+        type: 'stage_progress',
+        bookId,
+        stageId: 'extractor',
+        stageName: '角色提取',
+        detail: `第 ${completedBatches}/${totalBatches} 批`,
+        timestamp: Date.now(),
+      });
+      console.log(`[Extractor] 《${bookTitle}》批次进度 ${completedBatches}/${totalBatches}`);
+    },
+  });
   const entityResult = await extractEntities(enhanced.title, chapters);
 
   console.log(`[Extractor] Batches: ${entityResult.successfulBatches}/${entityResult.totalBatches} successful`);
@@ -206,12 +221,16 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     // 全文计数回填：预扫描正则按玄幻题材设计，现代都市书的场景/道具名几乎抓不到，
     // 提及次数会被记成 LLM 声明的章节数（1-2 次），证据被严重低估、置信度成片
     // 落进低置信度库。这里用「名称+别名全文子串计数」作为兜底证据，取三者最大值。
+    // 过滤 2 字以下的通用词与高频泛名词（如"手机""手机"单独计数会把置信度虚高）。
+    const GENERIC_MENTION_STOPWORDS = new Set([
+      '手机', '电脑', '笔记本', '电话', '相机', '照片', '信', '文件', '车', '门', '路', '灯', '衣',
+    ]);
     const textMentionCache = new Map<string, { count: number; chapters: number[] }>();
     function countInText(names: string[]): { count: number; chapters: number[] } {
       const key = names.join('\u0000');
       const cached = textMentionCache.get(key);
       if (cached) return cached;
-      const distinct = [...new Set(names.map((s) => s.trim()).filter((s) => s.length >= 2))];
+      const distinct = [...new Set(names.map((s) => s.trim()).filter((s) => s.length >= 3 || !GENERIC_MENTION_STOPWORDS.has(s)))];
       let count = 0;
       const chaptersHit: number[] = [];
       for (const ch of prescanChapters) {

@@ -119,9 +119,13 @@ interface PipelineEvent {
   type: string;
   bookId?: string;
   agentType?: AgentType;
+  /** 后端 stage_progress 事件携带的阶段 ID */
+  stageId?: string;
   taskId?: string;
   status?: StageStatus;
   message?: string;
+  /** 阶段内进度详情（如提取阶段的批次进度："第 3/5 批"） */
+  detail?: string;
   timestamp?: number;
 }
 
@@ -131,12 +135,16 @@ function mergeEventIntoStages(
 ): ExtractionStagesResult | undefined {
   if (!prev) return prev;
   const stages = prev.stages.map((s) => {
-    if (s.id !== event.agentType) return s;
+    // 后端 stage_progress 事件携带 stageId；与 agentType 兼容匹配
+    if (s.id !== event.agentType && s.id !== event.stageId) return s;
     const next = { ...s };
-    if (event.type === 'stage-started' || event.status === 'running') {
+    if (event.type === 'stage-started' || event.type === 'stage_start' || event.status === 'running') {
       next.status = 'running';
       next.startedAt = event.timestamp ? new Date(event.timestamp).toISOString() : new Date().toISOString();
-    } else if (event.type === 'stage-completed' || event.status === 'completed') {
+    } else if (event.type === 'stage_progress' && event.detail) {
+      // 阶段内进度（提取批次等）：不切换状态，仅更新 detail 供阶段卡展示"第 X/N 批"
+      next.detail = event.detail;
+    } else if (event.type === 'stage-completed' || event.type === 'stage_complete' || event.status === 'completed') {
       next.status = 'completed';
       next.completedAt = event.timestamp ? new Date(event.timestamp).toISOString() : new Date().toISOString();
     } else if (event.type === 'stage-failed' || event.status === 'failed') {
