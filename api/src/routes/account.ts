@@ -5,6 +5,7 @@ import { hashPassword, verifyPassword } from '../lib/password.js';
 import { REFRESH_COOKIE_NAME, REFRESH_COOKIE_OPTIONS } from '../config/auth.js';
 import { refreshTokenHash } from '../lib/refresh-token.js';
 import { assertCsrfHeader } from '../lib/request-security.js';
+import { invalidateUserCache } from '../lib/user-cache.js';
 
 /** 会话行（不含原始 IP——H1 规则：原始 IP 不落库，设备摘要按令牌族区分）。 */
 interface SessionRow {
@@ -56,6 +57,8 @@ export async function accountRoutes(fastify: FastifyInstance) {
       data: { name },
       select: { id: true, email: true, name: true },
     });
+    // 立即失效鉴权缓存，避免后续请求的 request.user.name 滞后 15 秒
+    invalidateUserCache(user.id);
     return { user };
   });
 
@@ -85,6 +88,8 @@ export async function accountRoutes(fastify: FastifyInstance) {
     await UserRepository.updatePasswordHash(user.id, await hashPassword(newPassword));
     // 撤销全部会话，清除刷新 Cookie，要求重新登录
     await RefreshSessionRepository.revokeAllForUser(user.id);
+    // 改密后失效鉴权缓存；管理员 CLI 重置走独立进程，无法触达本进程缓存，由 TTL 兜底
+    invalidateUserCache(user.id);
     reply.clearCookie(REFRESH_COOKIE_NAME, { path: REFRESH_COOKIE_OPTIONS.path });
     return { ok: true, message: '密码已修改，全部会话已撤销，请重新登录' };
   });
