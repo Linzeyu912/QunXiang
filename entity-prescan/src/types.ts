@@ -47,7 +47,6 @@ export type EntityType = 'character' | 'location' | 'item' | 'event';
 /** Per-type extraction stats */
 export interface TypeStats {
   regexCount: number;
-  llmCount: number;
   afterDedup: number;
 }
 
@@ -74,10 +73,6 @@ export interface PrescanOptions {
   outputDir?: string;
   /** Exact output directory for prescan files. Overrides outputDir/bookId when set. */
   outputPath?: string;
-  /** Whether to run LLM completion after regex (default: true) */
-  useLLM?: boolean;
-  /** Number of chapters per LLM batch (default: 10) */
-  batchSize?: number;
   /** Weight for storyScore in importance formula (default: 0.7) */
   storyWeight?: number;
   /** Weight for productionValue in importance formula (default: 0.3) */

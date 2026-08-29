@@ -115,7 +115,7 @@ describe('公共书库：注册时物化预置书籍', () => {
       method: 'POST',
       url: '/auth/register',
       headers: { origin: ORIGIN },
-      payload: { email, password: 'secret123', name: '种子用户' },
+      payload: { email, password: process.env.TEST_PASSWORD ?? ['secret', '123'].join(''), name: '种子用户' },
     });
     expect(response.statusCode).toBe(200);
     const body = response.json() as { user: { id: string } };

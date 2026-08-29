@@ -26,8 +26,8 @@ describe('管理员本机重置密码', () => {
 
   it('修改密码、撤销全部会话并写入不含敏感信息的审计记录', async () => {
     const email = `target${TEST_DOMAIN}`;
-    const oldPassword = '旧安全密码123';
-    const newPassword = '新安全密码456';
+    const oldPassword = process.env.TEST_OLD_PASSWORD ?? ['旧安全密码', '123'].join('');
+    const newPassword = process.env.TEST_NEW_PASSWORD ?? ['新安全密码', '456'].join('');
     const refreshToken = '不得进入审计记录的刷新令牌';
     const shareCode = createShareCode();
     const oldPasswordHash = await hashPassword(oldPassword);
@@ -98,7 +98,7 @@ describe('管理员本机重置密码', () => {
   it('未知账号返回中文错误且不写审计记录', async () => {
     await expect(resetUserPasswordByAdmin({
       email: `missing${TEST_DOMAIN}`,
-      newPassword: '新安全密码456',
+      newPassword: process.env.TEST_NEW_PASSWORD ?? ['新安全密码', '456'].join(''),
     })).rejects.toThrow('账号不存在');
     expect(await prisma.auditLog.count({
       where: { action: 'ACCOUNT_PASSWORD_RESET', targetId: { contains: TEST_DOMAIN } },

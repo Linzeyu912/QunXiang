@@ -57,6 +57,8 @@ export interface Character {
   chapterAppearances: number[];
   mentionCount: number;
   dialogueCount: number;
+  /** 首次出现处的原文片段（前后各约30字），供低置信度库人工判断参考 */
+  firstMentionSnippet?: string;
   coCharacters: string[];
 
   // 该角色的所有显著服饰套系（提取阶段结构化抓取，带章节区间）
@@ -102,6 +104,8 @@ export interface Location {
   firstChapter?: number;
   lastChapter?: number;
   chapterAppearances: number[];
+  /** 首次出现处的原文片段（前后各约30字），供低置信度库人工判断参考 */
+  firstMentionSnippet?: string;
 
   createdAt: Date;
   updatedAt?: Date;
@@ -124,7 +128,7 @@ export interface Item {
   bookId: string;
   name: string;
   aliases: string[];
-  /** 道具大类：weapon 武器/skill 技能功法/food 食物/pill 丹药消耗品/treasure 法宝器物/other 其他 */
+  /** 道具大类：weapon 武器/skill 技能功法/food 食物/pill 丹药消耗品/treasure 法宝器物/electronics 电子设备/document 文件信物/other 其他 */
   category?: ItemCategory;
   description?: string;
   confidence: number;
@@ -143,6 +147,8 @@ export interface Item {
   firstChapter?: number;
   lastChapter?: number;
   chapterAppearances: number[];
+  /** 首次出现处的原文片段（前后各约30字），供低置信度库人工判断参考 */
+  firstMentionSnippet?: string;
 
   // 该道具的持有者（提取阶段结构化抓取，带章节区间；道具可易主）
   owners: Owner[];
@@ -164,7 +170,7 @@ export interface Item {
 }
 
 /** 道具大类（提取时由 LLM 判定，可在审核时修改）。 */
-export type ItemCategory = 'weapon' | 'skill' | 'food' | 'pill' | 'treasure' | 'other';
+export type ItemCategory = 'weapon' | 'skill' | 'food' | 'pill' | 'treasure' | 'electronics' | 'document' | 'other';
 
 /** 世界观/体系设定类别：世界观背景、力量体系、境界等级、组织势力、规则法则。 */
 export type WorldviewCategory = 'worldview' | 'power-system' | 'realm' | 'faction' | 'rule';
@@ -309,6 +315,9 @@ export interface ConfidenceEvidence {
   chapterCount: number;
   /** 对话次数（仅角色） */
   dialogueCount?: number;
+  /** 全书总章节数：提供时章节覆盖按书长归一（覆盖过半得满分），
+   *  缺省回退到 10 章绝对刻度（兼容回填脚本等无总章数的场景） */
+  totalChapters?: number;
 }
 
 /**
@@ -317,14 +326,17 @@ export interface ConfidenceEvidence {
  * 背景：LLM 自报置信度普遍虚高且缺乏区分度——实测主角和仅出现一次的
  * 路人角色都集中在 0.85~0.95，直接落库会让「低置信度库」几乎永远为空。
  * 这里把自报值（作为先验，压缩到 [0.3, 0.95]）与证据分按 45:55 混合：
- * 证据分由提及次数（对数饱和，16 次封顶）、出现章节数（10 章封顶）、
- * 对话次数（8 次封顶，仅角色）加权得出。校准后：
+ * 证据分由提及次数（对数饱和，16 次封顶）、章节覆盖（提供总章数时按
+ * 书长归一——覆盖全书一半章节即得满分，否则 10 章绝对刻度）、对话次数
+ * （8 次封顶，仅角色）加权得出。校准后：
  * - 仅出现 1~2 次的边缘实体即使自报 0.9 也会落到 0.6 以下，进入低置信度库；
  * - 高频、跨章的核心实体仍维持在 0.85+。
  */
 export function calibrateConfidence(llm: number | undefined, ev: ConfidenceEvidence): number {
   const mention = Math.min(1, Math.log2(1 + Math.max(0, ev.mentionCount)) / Math.log2(17));
-  const chapter = Math.min(1, Math.max(0, ev.chapterCount) / 10);
+  const chapter = ev.totalChapters && ev.totalChapters > 0
+    ? Math.min(1, Math.max(0, ev.chapterCount) / Math.max(1, Math.ceil(ev.totalChapters / 2)))
+    : Math.min(1, Math.max(0, ev.chapterCount) / 10);
   const evidence =
     ev.dialogueCount != null
       ? mention * 0.45 + chapter * 0.25 + (Math.min(1, Math.max(0, ev.dialogueCount) / 8)) * 0.3

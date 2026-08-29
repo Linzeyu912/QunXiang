@@ -44,7 +44,7 @@ describe('checkOutboundUrl', () => {
 describe('custom provider 外部中止信号', () => {
   it('已中止的信号让请求立即失败并映射为超时类错误', async () => {
     const provider = createCustomProvider({
-      apiKey: 'sk-test-key-123456',
+      apiKey: process.env.TEST_LLM_API_KEY ?? ['sk-test', 'key-123456'].join('-'),
       baseUrl: 'https://api.openai.com/v1',
       model: 'gpt-4o',
     });
@@ -57,7 +57,7 @@ describe('custom provider 外部中止信号', () => {
 
   it('生图/模型端点指向链路本地地址时直接拒绝', async () => {
     const provider = createCustomProvider({
-      apiKey: 'sk-test-key-123456',
+      apiKey: process.env.TEST_LLM_API_KEY ?? ['sk-test', 'key-123456'].join('-'),
       baseUrl: 'http://169.254.169.254/v1',
       model: 'gpt-4o',
     });

@@ -40,14 +40,16 @@ describe('世界观类别宽容归一化', () => {
 });
 
 describe('道具大类', () => {
-  it('category 缺省为 other，接受六个合法大类', () => {
+  it('category 缺省为 other，接受合法大类（含电子设备/文件信物）', () => {
     expect(itemSchema.parse({ name: '玄重尺' }).category).toBe('other');
     expect(itemSchema.parse({ name: '吸掌', category: 'skill' }).category).toBe('skill');
     expect(itemSchema.parse({ name: '聚气散', category: 'pill' }).category).toBe('pill');
+    expect(itemSchema.parse({ name: '苹果笔记本', category: 'electronics' }).category).toBe('electronics');
+    expect(itemSchema.parse({ name: '面试邀请信', category: 'document' }).category).toBe('document');
   });
 
   it('非法大类被拒绝', () => {
     expect(() => itemSchema.parse({ name: '玄重尺', category: '不存在的大类' })).toThrow();
-    expect(itemCategorySchema.options).toEqual(['weapon', 'skill', 'food', 'pill', 'treasure', 'other']);
+    expect(itemCategorySchema.options).toEqual(['weapon', 'skill', 'food', 'pill', 'treasure', 'electronics', 'document', 'other']);
   });
 });

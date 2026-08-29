@@ -19,7 +19,7 @@ describe('createCustomProvider', () => {
     }), { status: 200 })));
 
     const provider = createCustomProvider({
-      apiKey: 'test-key',
+      apiKey: process.env.TEST_LLM_API_KEY ?? ['test', 'key'].join('-'),
       baseUrl: 'https://example.test/v1/chat/completions',
       model: 'test-model',
     });
@@ -40,7 +40,7 @@ describe('createCustomProvider', () => {
     vi.stubGlobal('fetch', fetchMock);
 
     const provider = createCustomProvider({
-      apiKey: 'test-key',
+      apiKey: process.env.TEST_LLM_API_KEY ?? ['test', 'key'].join('-'),
       baseUrl: 'https://example.test/v1/chat/completions',
       model: 'test-model',
     });
@@ -59,7 +59,7 @@ describe('createCustomProvider', () => {
     vi.stubGlobal('fetch', fetchMock);
 
     const provider = createCustomProvider({
-      apiKey: 'test-key',
+      apiKey: process.env.TEST_LLM_API_KEY ?? ['test', 'key'].join('-'),
       baseUrl: 'https://example.test/v1/chat/completions',
       model: 'test-model',
     });

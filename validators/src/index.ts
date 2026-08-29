@@ -69,12 +69,13 @@ export function validateEntity(entity: EntityInput): ValidationResult {
   const nameResult = validateInvalidName(entity);
   allIssues.push(...nameResult.issues);
 
-  // Adapt low-confidence check for entity (threshold 0.4 for prescan results)
+  // 置信度不足只记警告、不拒绝：证据校准后低分=边缘实体，应进低置信度库
+  // 供人工裁决而非丢弃（幻觉实体由提取阶段的提及数过滤负责）。
   if (entity.confidence < 0.4) {
     allIssues.push({
       field: 'confidence',
       message: `Confidence ${entity.confidence} is below threshold 0.4`,
-      severity: 'error' as const,
+      severity: 'warning' as const,
     });
   }
 

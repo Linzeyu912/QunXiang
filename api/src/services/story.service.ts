@@ -361,7 +361,6 @@ async function runSegmentation(
   const enhanced = await parseTxtEnhanced(content, title, {
     bookId,
     prescanOutputPath: join('.intermediate', 'story', bookId, 'prescan'),
-    useLLM: false,
   });
   stageDone('chapter-analysis', `共 ${enhanced.chapters.length} 章`);
 

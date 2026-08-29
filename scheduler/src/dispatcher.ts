@@ -619,6 +619,7 @@ async function publishEntitiesStable(
     mentionCount: (c.mentionCount as number) ?? 0,
     dialogueCount: (c.dialogueCount as number) ?? 0,
     coCharacters: (c.coCharacters as string[]) ?? [],
+    firstMentionSnippet: (c.firstMentionSnippet as string) || null,
     outfits: Array.isArray(c.outfits) ? c.outfits : [],
     ageStages: stageByName.get(c.name)?.stages ?? [],
     primaryAgeStage: stageByName.get(c.name)?.primary ?? null,
@@ -640,6 +641,7 @@ async function publishEntitiesStable(
     firstChapter: (l.firstChapter as number) ?? null,
     lastChapter: (l.lastChapter as number) ?? null,
     chapterAppearances: (l.chapterAppearances as number[]) ?? [],
+    firstMentionSnippet: (l.firstMentionSnippet as string) || null,
   });
   const itemData = (i: PublishableRow) => ({
     ...locData(i),

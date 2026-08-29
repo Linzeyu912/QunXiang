@@ -43,10 +43,6 @@ describe('automatic story segment creation', () => {
       ],
       event: [],
       stats: {
-        character: { regexCount: 5, llmCount: 0, afterDedup: 5 },
-        location: { regexCount: 2, llmCount: 0, afterDedup: 2 },
-        item: { regexCount: 1, llmCount: 0, afterDedup: 1 },
-        event: { regexCount: 0, llmCount: 0, afterDedup: 0 },
         durationMs: 1,
       },
     };
@@ -99,10 +95,6 @@ describe('automatic story segment creation', () => {
       item: [],
       event: [],
       stats: {
-        character: { regexCount: 1, llmCount: 0, afterDedup: 1 },
-        location: { regexCount: 0, llmCount: 0, afterDedup: 0 },
-        item: { regexCount: 0, llmCount: 0, afterDedup: 0 },
-        event: { regexCount: 0, llmCount: 0, afterDedup: 0 },
         durationMs: 1,
       },
     };
@@ -169,10 +161,6 @@ describe('automatic story segment creation', () => {
         { text: '药老从戒指中现身', chapterIndex: 9, position: 0, source: 'regex', confidence: 0.84 },
       ],
       stats: {
-        character: { regexCount: 4, llmCount: 0, afterDedup: 4 },
-        location: { regexCount: 1, llmCount: 0, afterDedup: 1 },
-        item: { regexCount: 2, llmCount: 0, afterDedup: 2 },
-        event: { regexCount: 6, llmCount: 0, afterDedup: 6 },
         durationMs: 1,
       },
     };

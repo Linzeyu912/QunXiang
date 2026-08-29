@@ -23,22 +23,26 @@ async function main() {
   console.log(dryRun ? '[预览模式] 不写库，仅统计' : '[回填模式] 将更新数据库');
 
   const items = await prisma.item.findMany({
-    where: { category: 'other' },
-    select: { id: true, name: true, description: true },
+    select: { id: true, name: true, description: true, category: true },
   });
-  console.log(`category=other 的道具共 ${items.length} 个`);
+  console.log(`道具共 ${items.length} 个`);
 
-  const stats: Record<string, number> = { weapon: 0, skill: 0, food: 0, pill: 0, treasure: 0, unchanged: 0 };
+  const stats: Record<string, number> = { weapon: 0, skill: 0, food: 0, pill: 0, treasure: 0, electronics: 0, document: 0, unchanged: 0 };
   const samples: string[] = [];
 
   for (const item of items) {
     const inferred = inferItemCategory(item.name, item.description ?? undefined);
-    if (inferred === 'other') {
+    // 只改判两类情况：other → 具体类别；旧类别 → 新增类别（electronics/document，
+    // 修复"苹果笔记本→食物"这类历史关键词误判）。旧类别之间不互相覆盖（保留 LLM 判断）。
+    const shouldApply =
+      inferred !== item.category &&
+      (item.category === 'other' || inferred === 'electronics' || inferred === 'document');
+    if (inferred === 'other' || !shouldApply) {
       stats.unchanged++;
       continue;
     }
     stats[inferred]++;
-    if (samples.length < 30) samples.push(`${item.name} -> ${inferred}`);
+    if (samples.length < 30) samples.push(`${item.name}: ${item.category} -> ${inferred}`);
     if (!dryRun) {
       await prisma.item.update({ where: { id: item.id }, data: { category: inferred } });
     }

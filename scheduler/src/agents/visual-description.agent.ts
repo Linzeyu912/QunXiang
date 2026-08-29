@@ -966,31 +966,33 @@ function countInferred(packs: AnyEnhancedPack[]): number {
 
 export async function executeVisualDescription(payload: unknown): Promise<VisualDescriptionResult> {
   const source = payload as VisualDescriptionPayload;
-  // 低置信度实体只保留名字防遗漏，不参与视觉补写（与提示词生成的跳过策略一致）
+  // 低置信度实体只保留名字防遗漏，不参与视觉补写（与提示词生成的跳过策略一致）。
+  // 注意：这里只过滤「补写输入」，载荷中的实体列表原样向后传递——
+  // 低置信度实体要进低置信度库供人工裁决，若在此从载荷删除会导致它们彻底消失。
   const isLowConfidence = (entity: { confidence?: number }) =>
     typeof entity.confidence === 'number' && entity.confidence < LOW_CONFIDENCE_THRESHOLD;
-  const characters = (source.characters || []).filter((e) => !isLowConfidence(e));
-  const items = (source.items || []).filter((e) => !isLowConfidence(e));
-  const locations = (source.locations || []).filter((e) => !isLowConfidence(e));
+  const completionCharacters = (source.characters || []).filter((e) => !isLowConfidence(e));
+  const completionItems = (source.items || []).filter((e) => !isLowConfidence(e));
+  const completionLocations = (source.locations || []).filter((e) => !isLowConfidence(e));
 
   const characterInputs = collectCompletionInputs(
     'characters',
     'character',
-    characters,
+    completionCharacters,
     source.characterDescriptions || [],
     CHARACTER_FIELD_ORDER
   );
   const itemInputs = collectCompletionInputs(
     'items',
     'item',
-    items,
+    completionItems,
     source.itemDescriptions || [],
     ITEM_FIELD_ORDER
   );
   const locationInputs = collectCompletionInputs(
     'locations',
     'location',
-    locations,
+    completionLocations,
     source.locationDescriptions || [],
     LOCATION_FIELD_ORDER
   );
@@ -1063,9 +1065,8 @@ export async function executeVisualDescription(payload: unknown): Promise<Visual
 
   return {
     ...source,
-    characters,
-    items,
-    locations,
+    // 实体列表不在本阶段过滤：characters/items/locations 随 source 原样传递，
+    // 保证低置信度实体能到达入库阶段（进低置信度库），而非在此消失。
     characterVisualDescriptions,
     itemVisualDescriptions,
     locationVisualDescriptions,

@@ -86,13 +86,20 @@ function LowConfidenceGroup({
           {entities.map((entity) => {
             const busy = busyId === entity.id || update.isPending;
             return (
-              <li key={entity.id} className="flex items-center gap-3 py-2">
+              <li key={entity.id} className="flex items-start gap-3 py-2">
                 <div className="min-w-0 flex-1">
-                  <span className="text-sm font-medium">{entity.name}</span>
-                  <span className="ml-2 text-xs text-muted-foreground">
-                    置信度 {(entity.confidence * 100).toFixed(0)}%
-                    {entity.firstChapter != null && ` · 首现第 ${entity.firstChapter} 章`}
-                  </span>
+                  <div>
+                    <span className="text-sm font-medium">{entity.name}</span>
+                    <span className="ml-2 text-xs text-muted-foreground">
+                      置信度 {(entity.confidence * 100).toFixed(0)}%
+                      {entity.firstChapter != null && ` · 首现第 ${entity.firstChapter} 章`}
+                    </span>
+                  </div>
+                  {entity.firstMentionSnippet && (
+                    <p className="mt-0.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground/80">
+                      {entity.firstMentionSnippet}
+                    </p>
+                  )}
                 </div>
                 <Button
                   size="sm"

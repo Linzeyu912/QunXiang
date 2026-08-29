@@ -911,5 +911,9 @@ describe('executeVisualDescription', () => {
     expect(chatExtract).not.toHaveBeenCalled();
     expect(result.characterVisualDescriptions).toEqual([]);
     expect(result.visualDescription.requested).toBe(0);
+    // 但必须随载荷继续传递：低置信度实体要进低置信度库供人工裁决，
+    // 在此从载荷删除会导致它们彻底消失（曾导致新一轮提取道具全丢）。
+    expect(result.characters).toHaveLength(1);
+    expect(result.characters[0].name).toBe('服务员的助手');
   });
 });

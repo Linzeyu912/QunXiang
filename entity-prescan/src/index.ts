@@ -2,11 +2,14 @@
  * @qunxiang/entity-prescan
  *
  * Entity pre-scanning module. Sits between chapter-analysis and extractors
- * in the pipeline. Uses regex + LLM to extract 4 entity types:
+ * in the pipeline. Uses regex to extract 4 entity types:
  * character, location, item, event.
  *
- * Pipeline: regex scan → role discovery merge → LLM completion →
+ * Pipeline: regex scan → role discovery merge →
  * alias canonicalization → confidence filter → importance analysis → write files
+ *
+ * 说明：曾有 LLM 补全模式（粗筛）作为可选步骤，主管道改为 LLM 主提取后
+ * 即被旁路（避免双重 LLM 调用），现已彻底移除，预扫描固定为纯正则。
  */
 
 export { scanCharacterEntities, scanFrequentCharacterEntities } from './scanners/character.js';
@@ -14,7 +17,6 @@ export { scanLocationEntities } from './scanners/location.js';
 export { scanItemEntities } from './scanners/item.js';
 export { scanEventEntities } from './scanners/event.js';
 export { discoverFullTextCharacterMentions, canonicalizeCharacterMentions } from './role-discovery.js';
-export { llmComplete } from './llm-completion.js';
 export { writeEntityFiles, writeEntityFilesToDir, readEntityFiles } from './writer.js';
 export { filterByConfidence, type ConfidenceOptions } from './confidence.js';
 export { calcImportance, type EntityImportance, type PillarScores, type ProductionValue, type ImportanceOptions } from './importance.js';
@@ -35,7 +37,6 @@ import { scanLocationEntities } from './scanners/location.js';
 import { scanItemEntities } from './scanners/item.js';
 import { scanEventEntities } from './scanners/event.js';
 import { discoverFullTextCharacterMentions, canonicalizeCharacterMentions } from './role-discovery.js';
-import { llmComplete } from './llm-completion.js';
 import { formatEntityText, writeEntityFiles, writeEntityFilesToDir } from './writer.js';
 import { filterByConfidence } from './confidence.js';
 import { calcImportance, type EntityImportance } from './importance.js';
@@ -70,7 +71,7 @@ export async function prescanEntities(
   options: PrescanOptions
 ): Promise<PrescanResult> {
   const startTime = Date.now();
-  const { bookId, outputDir = 'output', outputPath, useLLM = true, batchSize = 10, storyWeight = 0.7, prodWeight = 0.3 } = options;
+  const { bookId, outputDir = 'output', outputPath, storyWeight = 0.7, prodWeight = 0.3 } = options;
 
   // ── Step 1: Regex scan ──
 
@@ -117,29 +118,7 @@ export async function prescanEntities(
   allRegexMentions.get('character')!.push(...roleDiscovery.mentions);
   regexTotals.set('character', regexTotals.get('character')! + roleDiscovery.mentions.length);
 
-  // ── Step 2: LLM completion (optional) ──
-
-  let llmTotals: Map<EntityType, number> = new Map([
-    ['character', 0], ['location', 0], ['item', 0], ['event', 0],
-  ]);
-
   const mergedResults = new Map<EntityType, EntityMention[]>(allRegexMentions);
-
-  if (useLLM) {
-    try {
-      const { mentions: llmMentions } = await llmComplete(chapters, regexResults, batchSize);
-
-      // Merge LLM results into final
-      for (const [type, mentions] of llmMentions) {
-        const existing = mergedResults.get(type) || [];
-        existing.push(...mentions);
-        mergedResults.set(type, existing);
-        llmTotals.set(type, mentions.length);
-      }
-    } catch (error) {
-      console.warn(`[entity-prescan] LLM completion skipped: ${error instanceof Error ? error.message : error}`);
-    }
-  }
 
   const characterMentions = mergedResults.get('character') || [];
   mergedResults.set(
@@ -255,7 +234,6 @@ export async function prescanEntities(
 
   const buildTypeStats = (type: EntityType): TypeStats => ({
     regexCount: regexTotals.get(type) || 0,
-    llmCount: llmTotals.get(type) || 0,
     afterDedup: outputResults.get(type)?.length || 0,
   });
 

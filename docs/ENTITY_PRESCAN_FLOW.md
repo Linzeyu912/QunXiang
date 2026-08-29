@@ -29,7 +29,7 @@ flowchart TD
   H --> I["合并进 character 实体池"]
   G2 --> I
 
-  I --> J["LLM 补全（可选）"]
+  I --> J["别名归一化"]
   G1 --> J
   G3 --> J
   G4 --> J
@@ -251,31 +251,12 @@ entity-prescan/src/scanners/event.ts
 普通动作描写
 ```
 
-## 8. LLM 补全
+## 8. LLM 补全（已移除）
 
-实体预扫描保留了 LLM 补全入口：
-
-```text
-entity-prescan/src/llm-completion.ts
-```
-
-流程位置：
-
-```text
-regex 结果
-→ LLM 补全（可选）
-→ 合并
-→ 别名归一化
-→ 置信度过滤
-```
-
-当前端到端样例中配置为：
-
-```js
-useLLM: false
-```
-
-因此当前样例输出主要来自本地规则。
+预扫描曾保留 LLM 补全（粗筛）入口：正则结果送 LLM 找漏。主管道改为
+LLM 主提取（extractor 一次调用直接产出四类实体）后，该步骤因双重 LLM
+调用被旁路（`useLLM: false`），现已彻底移除——预扫描固定为纯正则，
+实体级语义判断由主管道的 LLM 融合层（实体消解阶段）承担。
 
 ## 9. 置信度过滤与去重
 

@@ -24,10 +24,6 @@ export interface ParseOptions {
   outputDir?: string;
   /** Exact directory for prescan files, used when prescan is an intermediate pipeline artifact */
   prescanOutputPath?: string;
-  /** Whether to run LLM completion after regex prescan (default: true) */
-  useLLM?: boolean;
-  /** Chapters per LLM prescan batch (default: 10) */
-  prescanBatchSize?: number;
   /** Weight for storyScore in importance formula (default: 0.7) */
   storyWeight?: number;
   /** Weight for productionValue in importance formula (default: 0.3) */
@@ -138,8 +134,6 @@ export async function parseTxtEnhanced(
     bookId,
     outputDir = 'output',
     prescanOutputPath,
-    useLLM = true,
-    prescanBatchSize = 10,
   } = options;
 
   const title = filename.replace(/\.txt$/i, '');
@@ -162,7 +156,7 @@ export async function parseTxtEnhanced(
     wordCount: ch.wordCount,
   }));
 
-  // Step 3: Entity pre-scanning (regex + LLM → output/{bookId}/)
+  // Step 3: Entity pre-scanning (regex → 中间产物目录)
   let prescanResult: PrescanResult | undefined;
   if (bookId && chapters.length > 0) {
     const scanChapters = chapters.map((ch) => ({
@@ -176,8 +170,6 @@ export async function parseTxtEnhanced(
         bookId,
         outputDir,
         outputPath: prescanOutputPath,
-        useLLM,
-        batchSize: prescanBatchSize,
         storyWeight: options.storyWeight,
         prodWeight: options.prodWeight,
       });

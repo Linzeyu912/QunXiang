@@ -94,7 +94,13 @@ export async function readEntityFiles(
   bookId: string,
   outputDir: string = 'output'
 ): Promise<Map<EntityType, EntityMention[]>> {
-  const bookDir = path.resolve(outputDir, bookId);
+  // 路径穿越加固：bookId 经 basename 净化（剥离任何路径段）。
+  // 允许空 bookId：直写目录模式（outputPath/目录直传）下它不参与路径拼接。
+  const safeBookId = path.basename(String(bookId ?? ''));
+  if (safeBookId === '.' || safeBookId === '..') {
+    throw new Error(`非法 bookId：${bookId}`);
+  }
+  const bookDir = path.resolve(outputDir, safeBookId);
   const results = new Map<EntityType, EntityMention[]>();
 
   for (const type of ENTITY_TYPES) {

@@ -84,6 +84,7 @@ model Character {
   firstChapter       Int?
   lastChapter        Int?
   chapterAppearances Json              @default("[]")
+  firstMentionSnippet String?
   mentionCount       Int               @default(0)
   dialogueCount      Int               @default(0)
   coCharacters       Json              @default("[]")
@@ -131,6 +132,7 @@ model Location {
   firstChapter       Int?
   lastChapter        Int?
   chapterAppearances Json     @default("[]")
+  firstMentionSnippet String?
   createdAt          DateTime @default(now()) @db.Timestamptz(3)
   updatedAt          DateTime @updatedAt @db.Timestamptz(3)
 
@@ -170,6 +172,7 @@ model Item {
   firstChapter       Int?
   lastChapter        Int?
   chapterAppearances Json     @default("[]")
+  firstMentionSnippet String?
   owners             Json     @default("[]")
   createdAt          DateTime @default(now()) @db.Timestamptz(3)
   updatedAt          DateTime @updatedAt @db.Timestamptz(3)

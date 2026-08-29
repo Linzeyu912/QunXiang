@@ -14,6 +14,16 @@ describe('inferItemCategory', () => {
     expect(inferItemCategory('呼延力头部魂骨')).toBe('treasure');
   });
 
+  it('现代题材：电子设备与文件信物优先于单字误伤', () => {
+    // 曾经的误判："苹果笔记本"被"果"判成食物、"面试邀请信"落 other
+    expect(inferItemCategory('苹果笔记本')).toBe('electronics');
+    expect(inferItemCategory('N96手机')).toBe('electronics');
+    expect(inferItemCategory('老式IBM笔记本')).toBe('electronics');
+    expect(inferItemCategory('面试邀请信')).toBe('document');
+    expect(inferItemCategory('乔薇尼的信')).toBe('document');
+    expect(inferItemCategory('父母的照片')).toBe('document');
+  });
+
   it('名称判不出时按描述归类', () => {
     expect(inferItemCategory('诺玛', '一种可以服用的丹药，服用后恢复魂力')).toBe('pill');
     expect(inferItemCategory('奇怪的大蒜', '烤熟后是美味的食物，可以充饥')).toBe('food');
@@ -26,9 +36,9 @@ describe('inferItemCategory', () => {
   });
 
   it('两个通道都判不出时返回 other', () => {
-    expect(inferItemCategory('申请表')).toBe('other');
-    expect(inferItemCategory('面试通知书', '卡塞尔学院寄来的普通信函')).toBe('other');
-    expect(inferItemCategory('N96手机', '路明非使用的旧手机')).toBe('other');
+    expect(inferItemCategory('神秘的它')).toBe('other');
+    expect(inferItemCategory('面试通知书', '卡塞尔学院寄来的普通信函')).toBe('document');
+    expect(inferItemCategory('N96手机', '路明非使用的旧手机')).toBe('electronics');
   });
 
   it('描述为空字符串时等同于无描述', () => {

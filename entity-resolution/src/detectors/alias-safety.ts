@@ -1,6 +1,7 @@
 import type { Character } from '../types.js';
 import { isSameChineseName, normalizeChineseName } from './same-chinese-name.js';
 import { normalizeName } from './same-name.js';
+import { isKinshipEquivalentName } from '../kinship.js';
 
 type CharacterInput = Omit<Character, 'id' | 'bookId' | 'createdAt' | 'updatedAt'>;
 
@@ -617,6 +618,9 @@ function isPersonalAddressAlias(alias: string): boolean {
 function isAliasCompatibleWithCharacterName(alias: string, characterName: string): boolean {
   if (isSameChineseName(alias, characterName)) return true;
   if (isKnownAliasPair(alias, characterName)) return true;
+  // 亲属称谓变体（"X的妈妈"≡"X的母亲"）指同一人，视为兼容；
+  // 所有权词根提取对两者不对称（妈妈在称呼后缀表、母亲不在），不补这条会误判为他人别名
+  if (isKinshipEquivalentName(alias, characterName)) return true;
 
   const aliasRoot = aliasOwnershipRoot(alias);
   const nameRoot = aliasOwnershipRoot(characterName);

@@ -7,7 +7,7 @@ import { sendBookNotFound } from '../lib/api-errors.js';
 import { isEnrichmentAvailable, requestEntityEnrichment } from '../services/entity-enrichment.service.js';
 
 // 合法道具大类（与 schemas itemCategorySchema 保持一致）
-const VALID_ITEM_CATEGORIES = new Set(['weapon', 'skill', 'food', 'pill', 'treasure', 'other']);
+const VALID_ITEM_CATEGORIES = new Set(['weapon', 'skill', 'food', 'pill', 'treasure', 'electronics', 'document', 'other']);
 
 export async function itemRoutes(fastify: FastifyInstance) {
   // Get items (optionally filtered by review bucket / status / tier / category)
@@ -29,7 +29,7 @@ export async function itemRoutes(fastify: FastifyInstance) {
     }
 
     if (category && !VALID_ITEM_CATEGORIES.has(category)) {
-      return reply.status(400).send({ error: 'category 必须为 weapon、skill、food、pill、treasure 或 other' });
+      return reply.status(400).send({ error: 'category 必须为 weapon、skill、food、pill、treasure、electronics、document 或 other' });
     }
 
     // reviewBucket=MAIN|LOW_CONFIDENCE|REJECTED；confidence=low 保留为兼容别名。

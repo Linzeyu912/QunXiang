@@ -12,6 +12,7 @@ export {
   sanitizeCharacterAliases,
 } from './detectors/alias-safety.js';
 export { isSameChineseName, normalizeChineseName } from './detectors/same-chinese-name.js';
+export { kinshipNormalize, isKinshipEquivalentName, isKinshipCollectiveName, isKinshipName, KINSHIP_COLLECTIVE } from './kinship.js';
 export { mergeCharacters } from './merger.js';
 export { buildCharacterMergeCandidates, mergeCharacterRecords } from './review-candidates.js';
 export type { CharacterMergeCandidate, CharacterMergeReason, CharacterReviewSummary } from './review-candidates.js';

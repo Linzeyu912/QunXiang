@@ -43,6 +43,17 @@ describe('calibrateConfidence', () => {
     expect(mid).toBeLessThan(strong);
   });
 
+  it('提供总章数时章节覆盖按书长归一：同样 5 章，短书得高分、长书得低分', () => {
+    const short = calibrateConfidence(0.85, { mentionCount: 8, chapterCount: 5, totalChapters: 17 });
+    const long = calibrateConfidence(0.85, { mentionCount: 8, chapterCount: 5, totalChapters: 2000 });
+    expect(short).toBeGreaterThan(long);
+    // 覆盖过半章节得满分：17 章的书出现 9 章 ≥ ceil(17/2)
+    const half = calibrateConfidence(0.85, { mentionCount: 8, chapterCount: 9, totalChapters: 17 });
+    const full = calibrateConfidence(0.85, { mentionCount: 50, chapterCount: 17, totalChapters: 17 });
+    expect(half).toBeGreaterThan(0.7);
+    expect(full).toBeGreaterThanOrEqual(0.85);
+  });
+
   it('结果保留三位小数，避免浮点尾数', () => {
     const c = calibrateConfidence(0.87, { mentionCount: 7, chapterCount: 4, dialogueCount: 3 });
     expect(Number(c.toFixed(3))).toBe(c);

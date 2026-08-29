@@ -43,7 +43,7 @@ const STATUS_LABEL: Record<EntityStatus | 'ALL', string> = {
 };
 
 // 道具大类筛选项（仅道具 Tab 展示）
-const ITEM_CATEGORY_OPTIONS = ['ALL', 'weapon', 'skill', 'food', 'pill', 'treasure', 'other'] as const;
+const ITEM_CATEGORY_OPTIONS = ['ALL', 'weapon', 'skill', 'food', 'pill', 'treasure', 'electronics', 'document', 'other'] as const;
 
 const ITEM_CATEGORY_LABEL: Record<(typeof ITEM_CATEGORY_OPTIONS)[number], string> = {
   ALL: '全部大类',
@@ -52,6 +52,8 @@ const ITEM_CATEGORY_LABEL: Record<(typeof ITEM_CATEGORY_OPTIONS)[number], string
   food: '食物',
   pill: '丹药消耗品',
   treasure: '法宝器物',
+  electronics: '电子设备',
+  document: '文件信物',
   other: '其他物品',
 };
 

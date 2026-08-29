@@ -14,6 +14,7 @@ import {
   implicitCharacterSignalAliases,
   isCollectiveCharacterAlias,
   isGenericCharacterAlias,
+  kinshipNormalize,
   sanitizeCharacterAliases,
 } from '@qunxiang/entity-resolution';
 import { extractCharacterSignals } from './character-signals.js';
@@ -192,14 +193,16 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, label: str
 
 /**
  * Find an already-collected character that refers to the same entity as `char`.
- * Only exact canonical names are safe to merge automatically. Alias, title,
- * and address-form matches must remain separate for human review.
+ * Exact canonical names merge automatically; 亲属称谓归一后的键（"X的妈妈"≡"X的母亲"）
+ * 同样安全合并。Alias, title, and address-form matches must remain separate for
+ * human review.（亲属词表与等价判定见 @qunxiang/entity-resolution 的 kinship.ts，
+ * 与别名清洗共用同一份规则。）
  */
 function findDuplicateCharacter(
   char: CharacterCandidate,
   map: Map<string, CharacterCandidate>
 ): { key: string; character: CharacterCandidate } | null {
-  const nameKey = norm(char.name);
+  const nameKey = norm(kinshipNormalize(char.name));
   return map.has(nameKey) ? { key: nameKey, character: map.get(nameKey)! } : null;
 }
 
@@ -508,6 +511,7 @@ export function createExtractor() {
 
     // Alias-aware character dedup (replaces the old exact-name-only dedup)
     const charMap = new Map<string, CharacterCandidate>();
+    const kinKey = (name: string) => norm(kinshipNormalize(name));
     const sourceText = chapters.map((chapter) => chapter.content).join('\n');
     const knownCharacterNames = allCharacters.map((character) => character.name).filter(Boolean);
     const knownAliasesByCharacter = Object.fromEntries(
@@ -516,11 +520,13 @@ export function createExtractor() {
     for (const c of allCharacters) {
       if (isCollectiveCharacterAlias(c.name)) continue;
 
-      const canonicalName = chooseCanonicalCharacterName(c.name, c.aliases ?? [], {
+      const chosen = chooseCanonicalCharacterName(c.name, c.aliases ?? [], {
         sourceText,
         knownCharacterNames,
       });
-      if (isCollectiveCharacterAlias(canonicalName) || isGenericCharacterAlias(canonicalName)) continue;
+      if (isCollectiveCharacterAlias(chosen) || isGenericCharacterAlias(chosen)) continue;
+      // 亲属称谓归一："X的妈妈"统一命名为"X的母亲"，原写法收进别名，跨批变体才能合并
+      const canonicalName = kinshipNormalize(chosen);
       const aliasPool = canonicalName === c.name
         ? c.aliases ?? []
         : [...(c.aliases ?? []), c.name];
@@ -548,12 +554,22 @@ export function createExtractor() {
       if (dup) {
         const merged = mergeCharacter(dup.character, candidate);
         charMap.delete(dup.key);
-        charMap.set(norm(merged.name), merged);
+        charMap.set(kinKey(merged.name), merged);
       } else {
-        charMap.set(norm(candidate.name), candidate);
+        charMap.set(kinKey(candidate.name), candidate);
       }
     }
-    const characters = Array.from(charMap.values());
+    let characters = Array.from(charMap.values());
+
+    // 集合称谓去冗余："X的父母"在"X的父亲"与"X的母亲"都已单独存在时是重复行，丢弃
+    const kinKeySet = new Set(characters.map((ch) => kinKey(ch.name)));
+    characters = characters.filter((ch) => {
+      const n = kinshipNormalize(ch.name);
+      const idx = n.lastIndexOf('的');
+      if (idx <= 0 || n.slice(idx + 1) !== '父母') return true;
+      const prefix = n.slice(0, idx);
+      return !(kinKeySet.has(norm(`${prefix}的父亲`)) && kinKeySet.has(norm(`${prefix}的母亲`)));
+    });
 
     // Signals (mention/dialogue/co-occurrence) computed from consolidated names+aliases.
     // Sum across main name + ALL aliases so mentionCount reflects total presence

@@ -14,7 +14,7 @@ export const ownerSchema = z.object({
 });
 
 /** 道具大类：武器/技能功法/食物/丹药消耗品/法宝器物/其他物品 */
-export const itemCategorySchema = z.enum(['weapon', 'skill', 'food', 'pill', 'treasure', 'other']);
+export const itemCategorySchema = z.enum(['weapon', 'skill', 'food', 'pill', 'treasure', 'electronics', 'document', 'other']);
 
 export const itemSchema = z.object({
   name: z.string().min(1),

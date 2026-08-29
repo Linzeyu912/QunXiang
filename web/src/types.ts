@@ -67,6 +67,8 @@ interface EntityBase {
   lastChapter?: number | null;
   chapterAppearances: number[] | string;
   mentionCount: number;
+  /** 首次出现处的原文片段（低置信度库人工判断参考） */
+  firstMentionSnippet?: string | null;
   createdAt: string;
   updatedAt?: string;
 }
@@ -92,7 +94,7 @@ export interface LocationEntity extends EntityBase {
 }
 
 /** 道具大类（提取时由 LLM 判定，可在审核时修改） */
-export type ItemCategory = 'weapon' | 'skill' | 'food' | 'pill' | 'treasure' | 'other';
+export type ItemCategory = 'weapon' | 'skill' | 'food' | 'pill' | 'treasure' | 'electronics' | 'document' | 'other';
 
 /** 道具大类中文标签（列表/详情/筛选共用） */
 export const ITEM_CATEGORY_LABEL: Record<ItemCategory, string> = {
@@ -101,6 +103,8 @@ export const ITEM_CATEGORY_LABEL: Record<ItemCategory, string> = {
   food: '食物',
   pill: '丹药消耗品',
   treasure: '法宝器物',
+  electronics: '电子设备',
+  document: '文件信物',
   other: '其他物品',
 };
 

@@ -45,6 +45,25 @@ interface EntityEnrichment {
   category?: Item['category'];
 }
 
+/** 首次出现处的原文片段（前后各约30字），供低置信度库人工判断参考 */
+function findFirstMentionSnippet(
+  chaptersList: Array<{ index: number; content: string }>,
+  names: string[],
+): string | undefined {
+  const distinct = [...new Set(names.map((s) => s.trim()).filter((s) => s.length >= 2))];
+  for (const ch of chaptersList) {
+    for (const n of distinct) {
+      const idx = ch.content.indexOf(n);
+      if (idx < 0) continue;
+      const start = Math.max(0, idx - 30);
+      const end = Math.min(ch.content.length, idx + n.length + 30);
+      const snippet = ch.content.slice(start, end).replace(/\s+/g, ' ').trim();
+      return `第${ch.index}章：…${snippet}…`;
+    }
+  }
+  return undefined;
+}
+
 /** Map EntityImportance[] into DB-ready objects. The optional `enrich` map lets
  *  LLM-sourced entities (items) keep their LLM aliases/description instead of
  *  the prescan defaults. Confidence is always evidence-calibrated — the raw
@@ -52,7 +71,8 @@ interface EntityEnrichment {
 function mapEntitiesToDb(
   importances: EntityImportance[],
   descriptions: Map<string, string> = new Map(),
-  enrich?: Map<string, EntityEnrichment>
+  enrich?: Map<string, EntityEnrichment>,
+  totalChapters?: number,
 ) {
   return importances.map(imp => {
     const e = enrich?.get(imp.text);
@@ -64,6 +84,7 @@ function mapEntitiesToDb(
       confidence: calibrateConfidence(e?.confidence, {
         mentionCount: imp.mentionCount,
         chapterCount: imp.chapters.length,
+        totalChapters,
       }),
       status: 'PENDING' as const,
       chapterRef: imp.chapters.length > 0 ? `第${imp.chapters[0]}章` : undefined,
@@ -106,7 +127,6 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
   const enhanced = await parseTxtEnhanced(content, book.title, {
     bookId,
     prescanOutputPath: join('.intermediate', runDirName, 'prescan'),
-    useLLM: false, // Avoid double LLM call — extractor does its own pass
   });
 
   const chapters = enhanced.chapters.map(ch => ({
@@ -141,7 +161,9 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
         mentionCount: c.mentionCount || 0,
         chapterCount: (c.chapterAppearances || []).length,
         dialogueCount: c.dialogueCount || 0,
+        totalChapters: chapters.length,
       }),
+      firstMentionSnippet: findFirstMentionSnippet(chapters, [c.name, ...(c.aliases || [])]),
     }));
   const droppedChars = fusedCharacters.filter((c) => c.mentionCount === 0 && c.dialogueCount === 0);
   if (droppedChars.length > 0) {
@@ -181,20 +203,54 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
       }
     }
 
+    // 全文计数回填：预扫描正则按玄幻题材设计，现代都市书的场景/道具名几乎抓不到，
+    // 提及次数会被记成 LLM 声明的章节数（1-2 次），证据被严重低估、置信度成片
+    // 落进低置信度库。这里用「名称+别名全文子串计数」作为兜底证据，取三者最大值。
+    const textMentionCache = new Map<string, { count: number; chapters: number[] }>();
+    function countInText(names: string[]): { count: number; chapters: number[] } {
+      const key = names.join('\u0000');
+      const cached = textMentionCache.get(key);
+      if (cached) return cached;
+      const distinct = [...new Set(names.map((s) => s.trim()).filter((s) => s.length >= 2))];
+      let count = 0;
+      const chaptersHit: number[] = [];
+      for (const ch of prescanChapters) {
+        let perChapter = 0;
+        for (const n of distinct) {
+          let from = 0;
+          for (;;) {
+            const idx = ch.content.indexOf(n, from);
+            if (idx < 0) break;
+            perChapter++;
+            from = idx + n.length;
+          }
+        }
+        if (perChapter > 0) chaptersHit.push(ch.index);
+        count += perChapter;
+      }
+      const result = { count, chapters: chaptersHit };
+      textMentionCache.set(key, result);
+      return result;
+    }
+
     const llmMentions: EntityMention[] = [];
     const enrich = new Map<string, EntityEnrichment>();
     for (const ent of llmEntities) {
       const matchKeys = [ent.name, ...(ent.aliases || [])].map((s) => s.toLowerCase());
       const matched = matchKeys.map((k) => prescanByName.get(k)).filter((m): m is EntityMention => Boolean(m));
+      const textMention = countInText([ent.name, ...(ent.aliases || [])]);
       const chapters = [
         ...new Set([
           ...(ent.chapterAppearances || []),
           ...matched.flatMap((m) => m.allChapters && m.allChapters.length ? m.allChapters : [m.chapterIndex]),
+          ...textMention.chapters,
         ]),
       ].sort((a, b) => a - b);
-      const totalCount = matched.length
-        ? Math.max(...matched.map((m) => m.totalCount || 1))
-        : ent.chapterAppearances?.length || 1;
+      const totalCount = Math.max(
+        matched.length ? Math.max(...matched.map((m) => m.totalCount || 1)) : 0,
+        ent.chapterAppearances?.length || 0,
+        textMention.count,
+      );
 
       llmMentions.push({
         text: ent.name,
@@ -217,7 +273,10 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     const entityMap = new Map<EntityType, EntityMention[]>();
     entityMap.set(entityType, llmMentions);
     const importances = calcImportance(entityMap, prescanChapters).get(entityType) || [];
-    return mapEntitiesToDb(importances, new Map(), enrich);
+    return mapEntitiesToDb(importances, new Map(), enrich, prescanChapters.length).map((row) => ({
+      ...row,
+      firstMentionSnippet: findFirstMentionSnippet(prescanChapters, [row.name, ...(row.aliases || [])]),
+    }));
   }
 
   if (enhanced.prescanResult) {
@@ -270,6 +329,7 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     confidence: calibrateConfidence(w.confidence, {
       mentionCount: (w.chapterAppearances || []).length,
       chapterCount: (w.chapterAppearances || []).length,
+      totalChapters: chapters.length,
     }),
     status: 'PENDING' as const,
     chapterRef: w.firstChapter != null ? `第${w.firstChapter}章` : undefined,

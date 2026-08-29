@@ -19,6 +19,83 @@ describe('extractEntities', () => {
     vi.useRealTimers();
   });
 
+  it('跨批亲属称谓变体合并："X的妈妈"与"X的母亲"是同一角色，"X的父母"在父母都存在时去冗余', async () => {
+    const { createExtractor } = await import('./extractor.js');
+    chatExtract
+      .mockResolvedValueOnce({
+        characters: [
+          {
+            name: '路明非的妈妈',
+            aliases: [],
+            description: '路明非的母亲',
+            confidence: 0.9,
+            firstChapter: 1,
+            lastChapter: 1,
+            chapterAppearances: [1],
+          },
+          {
+            name: '路明非的爸爸',
+            aliases: [],
+            description: '路明非的父亲',
+            confidence: 0.9,
+            firstChapter: 1,
+            lastChapter: 1,
+            chapterAppearances: [1],
+          },
+        ],
+        items: [],
+        locations: [],
+      })
+      .mockResolvedValueOnce({
+        characters: [
+          {
+            name: '路明非的母亲',
+            aliases: [],
+            description: '路明非的母亲',
+            confidence: 0.8,
+            firstChapter: 31,
+            lastChapter: 31,
+            chapterAppearances: [31],
+          },
+          {
+            name: '路明非的父亲',
+            aliases: [],
+            description: '路明非的父亲',
+            confidence: 0.8,
+            firstChapter: 31,
+            lastChapter: 31,
+            chapterAppearances: [31],
+          },
+          {
+            name: '路明非的父母',
+            aliases: [],
+            description: '路明非的双亲',
+            confidence: 0.7,
+            firstChapter: 31,
+            lastChapter: 31,
+            chapterAppearances: [31],
+          },
+        ],
+        items: [],
+        locations: [],
+      });
+
+    const chapters = [
+      ...Array.from({ length: 30 }, (_, index) => ({
+        index: index + 1,
+        content: index === 0 ? '路明非的妈妈和路明非的爸爸在家里。' : '路明非的日常。',
+      })),
+      { index: 31, content: '路明非的母亲、路明非的父亲与路明非的父母通话。' },
+    ];
+
+    const result = await createExtractor()('龙族', chapters);
+
+    const names = result.characters.map((character) => character.name).sort();
+    expect(names).toEqual(['路明非的母亲', '路明非的父亲']);
+    const mother = result.characters.find((c) => c.name === '路明非的母亲')!;
+    expect(mother.aliases).toContain('路明非的妈妈');
+  });
+
   it('does not merge distinct proper-name characters because one alias accidentally names the other', async () => {
     const { createExtractor } = await import('./extractor.js');
     chatExtract

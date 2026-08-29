@@ -12,6 +12,27 @@ import {
 import { testUserInput } from '../../storage/src/test-fixtures.js';
 
 /**
+ * 安全防护：下面的「失败路径收敛」用例会清空所连数据库的业务表。
+ * 官方测试入口（scripts/test-runner.mjs）会把 TEST_DATABASE_URL 与
+ * DATABASE_URL 都指向测试库；直接裸跑 vitest 时没有这层隔离，prisma
+ * 连的就是开发/生产库——必须跳过，防止误清生产数据（已发生过一次事故）。
+ */
+const dbUrl = process.env.TEST_DATABASE_URL || process.env.DATABASE_URL || '';
+const dbName = (() => {
+  try {
+    return new URL(dbUrl).pathname.replace(/^\//, '').split('?')[0];
+  } catch {
+    return '';
+  }
+})();
+const isGuardedTestDb = /test/i.test(dbName);
+if (!isGuardedTestDb) {
+  console.warn(
+    `[dispatcher.resume.test] 未检测到测试库（当前库名「${dbName || '未知'}」不含 test），跳过会清库的收敛用例。请通过 pnpm test 运行。`,
+  );
+}
+
+/**
  * 断点续传契约测试：
  * 1. stageResults 两种历史形态（按阶段键 / 暂停恢复的扁平对象）都能还原成
  *    agent 期望的顶层累积 payload——修复续跑阶段拿到空输入直接 TypeError 的缺陷。
@@ -215,7 +236,7 @@ describe('processNext 续跑 payload 契约', () => {
   });
 });
 
-describe('processNext 失败路径收敛运行会话', () => {
+describe.skipIf(!isGuardedTestDb)('processNext 失败路径收敛运行会话', () => {
   let bookId: string;
   let userId: string;
 

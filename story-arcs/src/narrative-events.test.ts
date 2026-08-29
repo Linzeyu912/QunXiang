@@ -34,10 +34,6 @@ const prescanResult: PrescanResult = {
     { text: '药老从戒指中现身', chapterIndex: 9, position: 0, source: 'regex', confidence: 0.85 },
   ],
   stats: {
-    character: { regexCount: 5, llmCount: 0, afterDedup: 5 },
-    location: { regexCount: 0, llmCount: 0, afterDedup: 0 },
-    item: { regexCount: 2, llmCount: 0, afterDedup: 2 },
-    event: { regexCount: 5, llmCount: 0, afterDedup: 5 },
     durationMs: 1,
   },
 };
