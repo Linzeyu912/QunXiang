@@ -20,6 +20,7 @@ describe('extractCharacterDescriptionPacks', () => {
         mentionCount: 10,
         dialogueCount: 2,
         coCharacters: [],
+        outfits: [],
       }],
       [
         {
@@ -67,6 +68,7 @@ describe('extractCharacterDescriptionPacks', () => {
         mentionCount: 3,
         dialogueCount: 0,
         coCharacters: [],
+        outfits: [],
       }],
       [{ index: 1, content: '纳兰嫣然说道：“今日前来，是为退婚。”' }]
     );
@@ -99,6 +101,7 @@ describe('extractCharacterDescriptionPacks', () => {
           mentionCount: 5,
           dialogueCount: 0,
           coCharacters: ['薰儿'],
+            outfits: [],
         },
         {
           name: '薰儿',
@@ -110,6 +113,7 @@ describe('extractCharacterDescriptionPacks', () => {
           mentionCount: 5,
           dialogueCount: 0,
           coCharacters: ['萧炎'],
+          outfits: [],
         },
       ],
       [{
@@ -136,6 +140,7 @@ describe('extractCharacterDescriptionPacks', () => {
           mentionCount: 5,
           dialogueCount: 0,
           coCharacters: ['萧熏儿'],
+            outfits: [],
         },
         {
           name: '萧熏儿',
@@ -147,6 +152,7 @@ describe('extractCharacterDescriptionPacks', () => {
           mentionCount: 5,
           dialogueCount: 0,
           coCharacters: ['萧炎'],
+          outfits: [],
         },
       ],
       [{
@@ -175,6 +181,7 @@ describe('extractCharacterDescriptionPacks', () => {
         mentionCount: 20,
         dialogueCount: 0,
         coCharacters: [],
+        outfits: [],
       }],
       [{
         index: 1,
@@ -208,6 +215,7 @@ describe('extractCharacterDescriptionPacks', () => {
         firstChapter: 3,
         lastChapter: 3,
         chapterAppearances: [3],
+        owners: [],
       }],
       [
         {

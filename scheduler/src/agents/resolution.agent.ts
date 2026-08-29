@@ -146,6 +146,8 @@ function fuseMergeCharacters(primary: PipelineCharacter, secondary: PipelineChar
     ...merged,
     dialogueCount: Math.max(primary.dialogueCount || 0, secondary.dialogueCount || 0),
     coCharacters: [...new Set([...(primary.coCharacters || []), ...(secondary.coCharacters || [])])],
+    // 服饰套系并集：主从两方的 outfits 都保留（LLM 分组的从属角色可能有独特装扮）
+    outfits: [...new Set([...(primary.outfits || []), ...(secondary.outfits || [])])],
   };
 }
 

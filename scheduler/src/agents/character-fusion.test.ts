@@ -20,6 +20,7 @@ describe('fuseCharactersWithPrescan', () => {
         mentionCount: 12,
         dialogueCount: 3,
         coCharacters: [],
+        outfits: [],
       },
     ];
 
@@ -57,6 +58,7 @@ describe('fuseCharactersWithPrescan', () => {
         mentionCount: 20,
         dialogueCount: 4,
         coCharacters: ['魏渊'],
+        outfits: [],
       },
     ];
 
@@ -87,6 +89,7 @@ describe('fuseCharactersWithPrescan', () => {
       mentionCount: 33,
       dialogueCount: 4,
       coCharacters: ['魏渊'],
+        outfits: [],
     });
   });
 
@@ -104,6 +107,7 @@ describe('fuseCharactersWithPrescan', () => {
         mentionCount: 9,
         dialogueCount: 1,
         coCharacters: [],
+        outfits: [],
       },
     ];
 
@@ -142,6 +146,7 @@ describe('fuseCharactersWithPrescan', () => {
         mentionCount: 4,
         dialogueCount: 1,
         coCharacters: [],
+        outfits: [],
       },
     ];
 
@@ -182,6 +187,7 @@ describe('fuseCharactersWithPrescan', () => {
         mentionCount: 8,
         dialogueCount: 1,
         coCharacters: [],
+        outfits: [],
       },
       {
         name: '萧炎',
@@ -195,6 +201,7 @@ describe('fuseCharactersWithPrescan', () => {
         mentionCount: 6,
         dialogueCount: 2,
         coCharacters: [],
+        outfits: [],
       },
     ];
 
@@ -233,6 +240,7 @@ describe('fuseCharactersWithPrescan', () => {
         mentionCount: 5,
         dialogueCount: 1,
         coCharacters: [],
+        outfits: [],
       },
       {
         name: '纳兰嫣然',
@@ -246,6 +254,7 @@ describe('fuseCharactersWithPrescan', () => {
         mentionCount: 4,
         dialogueCount: 1,
         coCharacters: [],
+        outfits: [],
       },
     ];
 
