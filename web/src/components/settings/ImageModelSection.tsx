@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { CheckCircle2, Loader2, XCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -23,7 +23,7 @@ export function ImageModelSection() {
   const setConfig = useSetImageConfig();
   const test = useTestImageConnection();
 
-  const presets = presetsData?.presets ?? [];
+  const presets = useMemo(() => presetsData?.presets ?? [], [presetsData]);
 
   // ── 预设选择模式 ──
   const [selectedProviderId, setSelectedProviderId] = useState<string>('');
@@ -40,13 +40,15 @@ export function ImageModelSection() {
   const [characterRatio, setCharacterRatio] = useState('');
   const [itemRatio, setItemRatio] = useState('');
   const [locationRatio, setLocationRatio] = useState('');
+  // 初始化只做一次：保存后 status 引用变化（refetch）不得覆盖用户正在编辑的内容
+  const initialized = useRef(false);
 
   const activePreset = presets.find((p) => p.id === selectedProviderId);
   const activeModels = activePreset?.models ?? [];
 
   // 初始化：根据已保存的 baseUrl/model 反推预设
   useEffect(() => {
-    if (!status || presets.length === 0) return;
+    if (!status || presets.length === 0 || initialized.current) return;
     const savedUrl = status.baseUrl || '';
     const savedModel = status.model || '';
     const match = matchPreset(presets, savedUrl, savedModel);
@@ -63,6 +65,7 @@ export function ImageModelSection() {
     setCharacterRatio(status.characterRatio || '');
     setItemRatio(status.itemRatio || '');
     setLocationRatio(status.locationRatio || '');
+    initialized.current = true;
   }, [status, presets]);
 
   const onProviderChange = (providerId: string) => {
