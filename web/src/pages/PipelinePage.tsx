@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { AlertCircle, CheckCircle2, FileSearch, Loader2, Play } from 'lucide-react';
-import { useStages, useExtractionStream, useStartExtraction, useResumeExtraction, useRunEstimate, useCreateRun, useCurrentRun, useRunAction } from '@/api/extraction';
+import { useStages, useExtractionStream, useResumeExtraction, useRunEstimate, useCreateRun, useCurrentRun, useRunAction } from '@/api/extraction';
 import { useExtractionArtifacts, useExtractionRuns, usePrescanArtifacts } from '@/api/artifacts';
 import { useLlmStatus } from '@/api/llm';
 import { Badge } from '@/components/ui/badge';
@@ -40,7 +40,6 @@ export function PipelinePage() {
   const [sp, setSp] = useSearchParams();
   const stages = useStages(bookId);
   const llm = useLlmStatus();
-  const start = useStartExtraction(bookId);
   const resume = useResumeExtraction(bookId);
   const createRun = useCreateRun(bookId);
   const pauseRun = useRunAction(bookId, 'pause');
@@ -77,6 +76,8 @@ export function PipelinePage() {
   }, [llm.isLoading, sp, setSp, stages.data?.isRunning, stages.isLoading]);
 
   async function handleStart() {
+    // 防重入：确认弹窗的「确认重新提取」不受按钮 disabled 约束，这里兜底
+    if (createRun.isPending) return;
     if (!extractionGate.canStart) {
       toast.error(extractionGate.title ?? 'LLM 服务商未配置', {
         description: extractionGate.description,
@@ -195,8 +196,8 @@ export function PipelinePage() {
                 </p>
               )}
             </div>
-            <Button onClick={handleStart} disabled={start.isPending || !extractionGate.canStart} className="gap-2">
-              {start.isPending ? (
+            <Button onClick={handleStart} disabled={createRun.isPending || !extractionGate.canStart} className="gap-2">
+              {createRun.isPending ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
                 <Play className="h-4 w-4" />
@@ -223,7 +224,7 @@ export function PipelinePage() {
                 <AlertDialogTrigger asChild>
                   <Button
                     variant="outline"
-                    disabled={start.isPending || !extractionGate.canStart}
+                    disabled={createRun.isPending || !extractionGate.canStart}
                     title="重新运行完整管道，生成新一轮产物并设为当前生效运行"
                   >
                     重新提取
@@ -265,12 +266,12 @@ export function PipelinePage() {
               <Button
                 variant="outline"
                 onClick={() => resume.mutate()}
-                disabled={resume.isPending || start.isPending || !extractionGate.canStart}
+                disabled={resume.isPending || createRun.isPending || !extractionGate.canStart}
                 title="从第一个失败的 stage 继续，已成功的 stage 不重跑"
               >
                 {resume.isPending ? '恢复中…' : '从失败处继续'}
               </Button>
-              <Button variant="destructive" onClick={handleStart} disabled={start.isPending || resume.isPending || !extractionGate.canStart}>
+              <Button variant="destructive" onClick={handleStart} disabled={createRun.isPending || resume.isPending || !extractionGate.canStart}>
                 重新开始
               </Button>
             </div>

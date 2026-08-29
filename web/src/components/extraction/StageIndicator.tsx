@@ -17,26 +17,26 @@ interface StageIndicatorProps {
 function StageIcon({ status }: { status: string }) {
   switch (status) {
     case 'completed':
-      return <CheckCircle size={18} className="text-green-500" />;
+      return <CheckCircle size={18} className="text-success" />;
     case 'running':
-      return <Loader2 size={18} className="text-blue-500 animate-spin" />;
+      return <Loader2 size={18} className="animate-spin text-info" />;
     case 'failed':
-      return <XCircle size={18} className="text-red-500" />;
+      return <XCircle size={18} className="text-destructive" />;
     default:
-      return <Circle size={18} className="text-gray-300" />;
+      return <Circle size={18} className="text-muted-foreground/40" />;
   }
 }
 
 function StageColor(status: string): string {
   switch (status) {
     case 'completed':
-      return 'bg-green-500';
+      return 'bg-success';
     case 'running':
-      return 'bg-blue-500';
+      return 'bg-info';
     case 'failed':
-      return 'bg-red-500';
+      return 'bg-destructive';
     default:
-      return 'bg-gray-200';
+      return 'bg-muted';
   }
 }
 
@@ -54,7 +54,7 @@ export default function StageIndicator({ stages, currentStageId, compact = false
               {!compact && (
                 <span
                   className={`text-xs font-medium ${
-                    isActive ? 'text-blue-600' : stage.status === 'completed' ? 'text-green-600' : 'text-gray-400'
+                    isActive ? 'text-info' : stage.status === 'completed' ? 'text-success' : 'text-muted-foreground'
                   }`}
                 >
                   {stage.name}

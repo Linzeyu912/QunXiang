@@ -135,7 +135,7 @@ export function AuthPage() {
                     value={password}
                     onChange={(e) => { setPassword(e.target.value); setFormError(null); }}
                     placeholder={mode === 'register' ? '至少 6 位' : '密码'}
-                    autoComplete={mode === 'login' ? ['current', 'password'].join('-') : ['new', 'password'].join('-')}
+                    autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
                     required
                     className="pr-10"
                     aria-invalid={formError ? true : undefined}

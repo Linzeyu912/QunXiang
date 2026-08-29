@@ -28,6 +28,9 @@
 | F2 | 图片设置区表单回填覆盖编辑中内容 | 初始化 effect 无哨兵 | `ImageModelSection` 加 `initialized` ref,与文本模型区一致 |
 | F4 | 前端 lint 存量 10 warning | 工具函数/常量从组件文件导出、派生值作 effect 依赖 | 下载工具与 NOISE_LABEL 迁至 `web/src/lib/`;4 处派生值 useMemo 化;shadcn ui 文件按惯例豁免 |
 | ISSUE-8 | LLM 代理配置无文档 | 设置页无代理场景说明 | 设置页底部新增「需要代理？」折叠帮助,两种 Base URL 填法与 404 排查,与 `normalizeApiUrl` 规则一致 |
+| F5 | 管道页开始/重新提取按钮可重复创建运行 | 按钮 disabled/spinner 接的是已不再触发的 `useStartExtraction`,实际触发的是 `createRun`,连点或弹窗确认可并发创建多个运行 | 全部改用 `createRun.isPending`,移除遗留 hook;`handleStart` 入口加防重入兜底(确认弹窗不受按钮 disabled 约束) |
+| F6 | `StageIndicator` 状态色硬编码 green/blue/red/gray | 未走设计令牌,与全站 success/info/destructive 语义色不一致 | 图标/连线/文字色全部改用 success/info/destructive/muted 令牌 |
+| F7 | AuthPage `autoComplete` 用 `['current','password'].join('-')` 混淆写法 | 运行期与字面量完全等价,但可读性差、易被误改 | 还原为 `'current-password' / 'new-password'` 字面量 |
 
 运行方式:`node scripts/test.mjs`(自动起 docker postgres-test + minio-test,跑前 `prisma migrate reset`,跑完清理容器)。
 无 Docker 环境的替代验证: `node scripts/pg-server.mjs start`(55432 隔离库) + `prisma migrate reset` + 直接 `pnpm exec vitest run`(OBJECT_STORAGE_PROVIDER=fs)。
@@ -133,6 +136,8 @@
   LlmSettingsPage 拆分（777 行 → 组合根 + settings/ 7 文件）目前只有源码级断言与
   tsc/build 保障。修复方向:用 React Testing Library 补保存流程特征测试
   （预设/自定义分支、密钥留空保留、warning toast）。
+  阻塞点:web/ 无 `@testing-library` 依赖,而工作指南冻结依赖（禁止新增依赖/改锁文件）,
+  需产品批准新增 devDependency 后方可实施。
 
 ---
 
