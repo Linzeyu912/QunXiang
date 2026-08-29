@@ -16,7 +16,7 @@ import {
 import { downloadExport, fetchExportPreview, type ExportFormat, type ExportType } from '@/api/export';
 import { useExtractionArtifacts } from '@/api/artifacts';
 import { apiFetch } from '@/api/client';
-import { downloadJson, downloadText } from '@/components/PromptCopyBlock';
+import { downloadJson, downloadText } from '@/lib/download';
 
 const FORMATS: { value: ExportFormat; label: string }[] = [
   { value: 'json', label: 'JSON' },

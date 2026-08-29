@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components -- shadcn 生成文件，导出 variants 供其他模块组合样式，是社区惯例 */
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';

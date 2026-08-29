@@ -13,21 +13,10 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { NOISE_LABEL } from '@/lib/noise';
 import { cn } from '@/lib/utils';
 import type { ChapterNoiseLine, NarrativeEventEntry, NoiseCategory } from '@/types';
 
-export const NOISE_LABEL: Record<NoiseCategory, string> = {
-  url: '链接',
-  promo: '推广',
-  template: '模板',
-  decoration: '装饰',
-  repeated: '重复',
-  garbled: '乱码',
-  meta: '元信息',
-  dialogue: '对白标记',
-  onomatopoeia: '拟声词',
-  short: '短句',
-};
 
 const CHAPTER_MODE_LABEL: Record<string, string> = {
   chapter_zh: '中文章节标记',

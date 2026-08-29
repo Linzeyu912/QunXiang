@@ -57,11 +57,10 @@ export function PublicLibraryPage() {
   const unlistMutation = useUnlistAsset();
   const popularTagsQuery = usePopularTags();
 
-  const popularTags = popularTagsQuery.data?.items ?? [];
   // 热门标签里排除已是题材标签的，只显示自定义热门
   const customPopularTags = useMemo(
-    () => popularTags.filter((t) => !isGenreTag(t.tag)),
-    [popularTags],
+    () => (popularTagsQuery.data?.items ?? []).filter((t) => !isGenreTag(t.tag)),
+    [popularTagsQuery.data],
   );
 
   const toggleTag = (tag: string) => {

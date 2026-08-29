@@ -4,7 +4,7 @@ import { Loader2, RotateCcw, Undo2 } from 'lucide-react';
 import { useChapterContent, useRestoreNoiseLine } from '@/api/artifacts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { NOISE_LABEL } from '@/pages/ChaptersPage';
+import { NOISE_LABEL } from '@/lib/noise';
 import type { ChapterNoiseLine } from '@/types';
 
 /**

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { CheckCircle2, Loader2, Plus, Trash2, XCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -21,7 +21,7 @@ export function TextModelSection() {
   const setConfig = useSetLlmConfig();
   const test = useTestLlmConnection();
 
-  const presets = presetsData?.presets ?? [];
+  const presets = useMemo(() => presetsData?.presets ?? [], [presetsData]);
 
   // ── 预设选择模式 ──
   const [selectedProviderId, setSelectedProviderId] = useState<string>('');

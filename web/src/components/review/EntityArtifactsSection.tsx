@@ -210,7 +210,7 @@ function EntityImageGallery({
     setStageFilter(s);
   };
 
-  const allImages = q.data ?? [];
+  const allImages = useMemo(() => q.data ?? [], [q.data]);
   // 按 stage 过滤
   const images = stageFilter ? allImages.filter((i) => i.stage === stageFilter) : allImages;
   // 当前大图：手动选中优先，否则主图，否则首张
