@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 import { startExtraction, resumeExtraction, pollExtractionStatus, getExtractionStages, createExtractionStream } from '../services/extraction.service.js';
+import { retryFailedChapters } from '../services/retry-failed-chapters.service.js';
 import { ownsBook, resolveOwnerId } from '../lib/authz.js';
 import { ConflictError, NotFoundError } from '../lib/errors.js';
 import { sendBookNotFound } from '../lib/api-errors.js';
@@ -29,9 +30,31 @@ export async function extractRoutes(fastify: FastifyInstance) {
     }
   });
 
-  // ISSUE-7 断点续传：从第一个失败 stage 继续
-  fastify.post('/:id/extract/resume', async (request, reply) => {
+  // 失败章节增量补跑：只对提取阶段彻底失败的章节重新提取并增量合并入库，
+  // 不重跑全书管道；全部补成功后丢章警告自动消失。
+  fastify.post('/:id/extract/retry-failed-chapters', {
+    config: { rateLimit: { max: 3, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
     const { id } = request.params as { id: string };
+    const ownerId = await resolveOwnerId(request);
+    if (!(await ownsBook(id, ownerId))) {
+      return sendBookNotFound(reply);
+    }
+
+    try {
+      const result = await retryFailedChapters(id, ownerId!);
+      return result;
+    } catch (error) {
+      if (error instanceof ConflictError) {
+        return reply.status(409).send({ error: (error as Error).message });
+      }
+      request.log.error(error);
+      return reply.status(500).send({ error: (error as Error).message || '失败章节补跑失败，请查看服务端日志' });
+    }
+  });
+
+  // ISSUE-7 断点续传：从第一个失败 stage 继续
+  fastify.post('/:id/extract/resume', async (request, reply) => {    const { id } = request.params as { id: string };
     const ownerId = await resolveOwnerId(request);
     if (!(await ownsBook(id, ownerId))) {
       return sendBookNotFound(reply);

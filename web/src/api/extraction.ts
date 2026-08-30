@@ -38,6 +38,25 @@ export function useStartExtraction(bookId: string) {
   });
 }
 
+/** 失败章节增量补跑：只重提取丢章并增量合并，全部补成功后丢章警告消失。 */
+export function useRetryFailedChapters(bookId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: () =>
+      apiFetch<{
+        retriedChapters: number[];
+        newEntities: number;
+        mergedEntities: number;
+        stillFailedChapters: number[];
+        message: string;
+      }>(`/books/${bookId}/extract/retry-failed-chapters`, { method: 'POST' }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: booksKey.all });
+      qc.invalidateQueries({ queryKey: extractionKey.stages(bookId) });
+    },
+  });
+}
+
 /** 启动前估算（实施包 D5）：字数/预计调用/队列前方/历史耗时/上限。 */
 export function useRunEstimate(bookId: string | undefined, enabled: boolean) {
   return useQuery({

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { AlertCircle, CheckCircle2, FileSearch, Loader2, Play } from 'lucide-react';
-import { useStages, useExtractionStream, useResumeExtraction, useRunEstimate, useCreateRun, useCurrentRun, useRunAction } from '@/api/extraction';
+import { useStages, useExtractionStream, useResumeExtraction, useRunEstimate, useCreateRun, useCurrentRun, useRunAction, useRetryFailedChapters } from '@/api/extraction';
 import { useExtractionArtifacts, useExtractionRuns, usePrescanArtifacts } from '@/api/artifacts';
 import { useLlmStatus } from '@/api/llm';
 import { Badge } from '@/components/ui/badge';
@@ -41,6 +41,7 @@ export function PipelinePage() {
   const stages = useStages(bookId);
   const llm = useLlmStatus();
   const resume = useResumeExtraction(bookId);
+  const retryFailed = useRetryFailedChapters(bookId);
   const createRun = useCreateRun(bookId);
   const pauseRun = useRunAction(bookId, 'pause');
   const resumeRun = useRunAction(bookId, 'resume');
@@ -159,9 +160,31 @@ export function PipelinePage() {
               <li key={i}>{w}</li>
             ))}
           </ul>
-          <p className="mt-2 text-xs text-muted-foreground">
-            这些章节在多次重试和逐章降级后仍未成功，可稍后重新提取以补全。
-          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              disabled={retryFailed.isPending || isRunning}
+              onClick={async () => {
+                try {
+                  const r = await retryFailed.mutateAsync();
+                  if (r.stillFailedChapters.length > 0) {
+                    toast.warning(r.message, { description: `仍失败章节：${r.stillFailedChapters.join('、')}` });
+                  } else {
+                    toast.success(r.message);
+                  }
+                } catch (e) {
+                  toast.error(`补跑失败：${(e as Error).message}`);
+                }
+              }}
+            >
+              {retryFailed.isPending && <Loader2 className="mr-1 h-4 w-4 animate-spin" />}
+              补跑失败章节
+            </Button>
+            <span className="text-xs text-muted-foreground">
+              只重新提取失败章节并合并入库；补全实体的完整描述与提示词需全量重新提取
+            </span>
+          </div>
         </Card>
       )}
 
