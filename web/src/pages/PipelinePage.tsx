@@ -147,6 +147,24 @@ export function PipelinePage() {
         </Card>
       )}
 
+      {/* 提取批次彻底失败（重试+拆章降级均未成功）：对应章节实体缺失，显式告知而非静默丢失 */}
+      {data?.extractionWarnings && data.extractionWarnings.length > 0 && (
+        <Card className="border-warning/40 bg-warning/10 p-4 text-sm">
+          <div className="flex items-start gap-2 font-medium text-warning">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+            部分章节提取失败，实体可能缺失
+          </div>
+          <ul className="mt-2 list-disc space-y-1 pl-6 text-muted-foreground">
+            {data.extractionWarnings.map((w, i) => (
+              <li key={i}>{w}</li>
+            ))}
+          </ul>
+          <p className="mt-2 text-xs text-muted-foreground">
+            这些章节在多次重试和逐章降级后仍未成功，可稍后重新提取以补全。
+          </p>
+        </Card>
+      )}
+
       {activeRun && activeRun.status !== 'COMPLETED' && (
         <Card className="p-4">
           <div className="flex flex-wrap items-center justify-between gap-2">

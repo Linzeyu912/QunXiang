@@ -38,6 +38,33 @@ describe('pipeline summary', () => {
     expect(summary.outputs).not.toHaveProperty('storyAssets');
   });
 
+  it('carries extractor failed batches (with chapter ranges) into the summary', () => {
+    const summary = buildPipelineSummary('book-1', {
+      characters: [{ name: '萧炎' }],
+      locations: [],
+      items: [],
+      failedBatches: [
+        { batch: 0, error: 'timeout', chapterFrom: 12, chapterTo: 15 },
+        { batch: 1, error: 'parse error', chapterFrom: 30, chapterTo: 30 },
+      ],
+    }, {});
+
+    expect(summary.failedBatches).toEqual([
+      { batch: 0, error: 'timeout', chapterFrom: 12, chapterTo: 15 },
+      { batch: 1, error: 'parse error', chapterFrom: 30, chapterTo: 30 },
+    ]);
+  });
+
+  it('omits failedBatches field when extraction had no failures', () => {
+    const summary = buildPipelineSummary('book-1', {
+      characters: [{ name: '萧炎' }],
+      locations: [],
+      items: [],
+    }, {});
+
+    expect(summary).not.toHaveProperty('failedBatches');
+  });
+
   it('writes final summary under the final output directory', async () => {
     const outputRoot = await mkdtemp(join(tmpdir(), 'pipeline-summary-'));
 

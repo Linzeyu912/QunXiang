@@ -33,7 +33,7 @@ export interface ExtractorResult {
   characterDescriptions?: CharacterDescriptionPack[];
   itemDescriptions?: ItemDescriptionPack[];
   locationDescriptions?: LocationDescriptionPack[];
-  failedBatches?: { batch: number; error: string }[];
+  failedBatches?: { batch: number; error: string; chapterFrom?: number; chapterTo?: number }[];
   totalBatches?: number;
   successfulBatches?: number;
 }
@@ -374,6 +374,9 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     failedBatches: entityResult.failedBatches.map((b, i) => ({
       batch: i,
       error: b.error || 'Unknown error',
+      // 章节范围供前端/运行摘要展示"哪些章节的实体可能缺失"（拆章降级后为单章）
+      chapterFrom: b.batch.length > 0 ? b.batch[0].index : undefined,
+      chapterTo: b.batch.length > 0 ? b.batch[b.batch.length - 1].index : undefined,
     })),
     totalBatches: entityResult.totalBatches,
     successfulBatches: entityResult.successfulBatches,

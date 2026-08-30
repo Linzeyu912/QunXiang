@@ -231,6 +231,8 @@ export interface ExtractionStagesResult {
   stages: ExtractionStageInfo[];
   imported?: boolean;
   importedMessage?: string;
+  /** 提取阶段彻底失败的批次：对应章节实体缺失（如"第 12–15 章提取失败…"） */
+  extractionWarnings?: string[];
 }
 
 export interface CharacterReview {

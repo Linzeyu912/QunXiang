@@ -316,6 +316,26 @@ export interface ExtractionStagesResult {
   imported?: boolean;
   /** 导入结果的提示文案 */
   importedMessage?: string;
+  /** 提取阶段彻底失败的批次（重试+拆章降级均未成功）：对应章节实体缺失，向用户显式提示 */
+  extractionWarnings?: string[];
+}
+
+/** 把失败批次转成用户可读的丢章警告 */
+export function buildExtractionWarnings(
+  failedBatches: Array<{ error?: unknown; chapterFrom?: unknown; chapterTo?: unknown }>,
+): string[] {
+  return failedBatches.slice(0, 10).map((b) => {
+    const from = typeof b.chapterFrom === 'number' ? b.chapterFrom : undefined;
+    const to = typeof b.chapterTo === 'number' ? b.chapterTo : undefined;
+    const range =
+      from != null && to != null
+        ? from === to
+          ? `第 ${from} 章`
+          : `第 ${from}–${to} 章`
+        : '部分章节';
+    const reason = typeof b.error === 'string' && b.error ? `（${b.error.slice(0, 80)}）` : '';
+    return `${range}提取失败${reason}，这些章节的角色、场景、道具可能缺失`;
+  });
 }
 
 export async function getExtractionStages(bookId: string, ownerId: string): Promise<ExtractionStagesResult> {
@@ -403,6 +423,18 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
   // 导致前端对它挂一条永不停的 SSE 心跳。
   const hasActiveTask = tasks.some((t) => t.status === 'pending' || t.status === 'running');
 
+  // 提取阶段的失败批次（重试+拆章降级均未成功）→ 用户可读警告。
+  // 这些章节的实体已静默缺失，不提示会让用户误以为全书提取完整。
+  const extractorTask = tasks.find((t) => t.agentType === 'extractor' && t.status === 'completed');
+  let extractionWarnings: string[] | undefined;
+  if (extractorTask) {
+    const result = extractorTask.result as { failedBatches?: unknown } | undefined;
+    const failed = Array.isArray(result?.failedBatches) ? (result!.failedBatches as Array<Record<string, unknown>>) : [];
+    if (failed.length > 0) {
+      extractionWarnings = buildExtractionWarnings(failed);
+    }
+  }
+
   return {
     bookId,
     overallProgress: Math.round(overallProgress),
@@ -411,6 +443,7 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
     isFailed,
     stages,
     ...(imported ? { imported: true, importedMessage } : {}),
+    ...(extractionWarnings ? { extractionWarnings } : {}),
   };
 }
 

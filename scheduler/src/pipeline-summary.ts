@@ -29,6 +29,13 @@ function descriptionPacksFromPayload(
   });
 }
 
+export interface FailedBatchInfo {
+  batch: number;
+  error: string;
+  chapterFrom?: number;
+  chapterTo?: number;
+}
+
 export interface PipelineSummary {
   bookId: string;
   status: 'completed';
@@ -51,6 +58,8 @@ export interface PipelineSummary {
     items: string[];
     worldviews: string[];
   };
+  /** 提取阶段彻底失败（重试+拆章降级均未成功）的批次：对应章节实体缺失，静默丢失会误导用户 */
+  failedBatches?: FailedBatchInfo[];
   reviewer: unknown;
 }
 
@@ -68,6 +77,14 @@ export function buildPipelineSummary(
   const locations = namesFrom(payload.locations);
   const items = namesFrom(payload.items);
   const worldviews = namesFrom(payload.worldviews);
+
+  // 提取阶段的失败批次随 payload 一路传到 reviewer——非空时写入运行摘要，
+  // 让"部分章节实体缺失"从静默变为可查（此前只进服务端日志）
+  const failedBatches = Array.isArray(payload.failedBatches)
+    ? (payload.failedBatches as FailedBatchInfo[]).filter(
+        (b) => b && typeof b === 'object' && typeof b.error === 'string'
+      )
+    : [];
 
   return {
     bookId,
@@ -91,6 +108,7 @@ export function buildPipelineSummary(
       items,
       worldviews,
     },
+    ...(failedBatches.length > 0 ? { failedBatches } : {}),
     reviewer: reviewerResult,
   };
 }
