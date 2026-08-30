@@ -68,6 +68,46 @@ describe('失败章节增量补跑', () => {
     }
   }
 
+  it('补跑实体名命中库内实体的别名时合并而非新建（防重复实体）', async () => {
+    await seedExtractorTask([{ batch: 0, error: 'x', chapterFrom: 1, chapterTo: 2 }]);
+    // 库内实体正名"七玄门魁梧汉子"，别名含"汉子"
+    await prisma.character.create({
+      data: {
+        bookId,
+        name: '七玄门魁梧汉子',
+        aliases: ['汉子'],
+        description: '已融合描述',
+        confidence: 0.9,
+        status: 'PENDING',
+        mentionCount: 79,
+        chapterAppearances: [82, 86, 87],
+        stableKey: 'n:七玄门魁梧汉子',
+      },
+    });
+    // 补跑提取用别名"汉子"指代同一人
+    fakeExtract.mockResolvedValue({
+      characters: [
+        { name: '汉子', aliases: [], description: '补跑粗稿', confidence: 0.8, mentionCount: 4, dialogueCount: 1, chapterAppearances: [86, 87], firstChapter: 86, lastChapter: 87, coCharacters: [] },
+      ],
+      items: [],
+      locations: [],
+      worldviews: [],
+      failedBatches: [],
+      successfulBatches: 1,
+      totalBatches: 1,
+    });
+
+    const result = await retryFailedChapters(bookId, ownerId);
+    expect(result.mergedEntities).toBe(1);
+    expect(result.newEntities).toBe(0);
+    const merged = await prisma.character.findFirst({ where: { bookId, name: '七玄门魁梧汉子' } });
+    expect(merged?.mentionCount).toBe(83);
+    expect(merged?.description).toBe('已融合描述');
+    // 不应产生名为"汉子"的重复实体
+    const dup = await prisma.character.findFirst({ where: { bookId, name: '汉子' } });
+    expect(dup).toBeNull();
+  });
+
   it('从 failedBatches 展开章节号（闭区间并集、排序去重）', async () => {
     await seedExtractorTask([
       { batch: 0, error: 'x', chapterFrom: 12, chapterTo: 15 },

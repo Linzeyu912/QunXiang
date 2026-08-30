@@ -21,7 +21,8 @@
 import { prisma, BookRepository, getSharedAssetSourceResolver, TaskRepository } from '@qunxiang/storage';
 import { parseTxtEnhanced } from '@qunxiang/import';
 import { createExtractor } from '@qunxiang/extractors';
-import { inferItemCategory } from '@qunxiang/core';
+import { inferItemCategory, calibrateConfidence } from '@qunxiang/core';
+import { NotFoundError, ConflictError } from '../lib/errors.js';
 import type { Chapter } from '@qunxiang/extractors';
 
 export interface RetryFailedChaptersResult {
@@ -82,6 +83,8 @@ function mergeIncremental(
   fresh: Record<string, unknown>,
 ): Record<string, unknown> {
   const merged: Record<string, unknown> = { ...fresh };
+  // 正名保持库内既有：别名命中合并时，补跑的简称/别名不能反向覆盖正名
+  merged.name = oldRow.name;
   for (const key of ['mentionCount', 'dialogueCount'] as const) {
     if (!(key in fresh)) continue;
     const oldValue = typeof oldRow[key] === 'number' ? (oldRow[key] as number) : 0;
@@ -141,12 +144,19 @@ async function mergeEntitiesIntoDb(
     }>)[model];
 
     const existing = await delegate.findMany({ where: { bookId } });
-    const byName = new Map<string, Record<string, unknown>>();
+    // 合并键包含旧实体的正名与别名（首见优先，与全量入库 stableKey 的语义一致）：
+    // 补跑提取常用简称/别名指称呼叫实体（库内"七玄门魁梧汉子"、补跑提出"汉子"），
+    // 仅按正名匹配会错误创建重复实体
+    const byKey = new Map<string, Record<string, unknown>>();
     for (const row of existing) {
-      byName.set(String(row.name), row);
+      if (!byKey.has(String(row.name))) byKey.set(String(row.name), row);
+      for (const alias of Array.isArray(row.aliases) ? (row.aliases as unknown[]) : []) {
+        const aliasKey = String(alias);
+        if (aliasKey && !byKey.has(aliasKey)) byKey.set(aliasKey, row);
+      }
     }
     for (const entry of entries) {
-      const old = byName.get(entry.name);
+      const old = byKey.get(entry.name);
       if (old) {
         await delegate.update({
           where: { id: old.id as string },
@@ -172,12 +182,12 @@ async function mergeEntitiesIntoDb(
 
 export async function retryFailedChapters(bookId: string, ownerId: string): Promise<RetryFailedChaptersResult> {
   const book = await BookRepository.findOwnedById(bookId, ownerId);
-  if (!book) throw new Error('书籍不存在或无权访问');
+  if (!book) throw new NotFoundError('书籍不存在或无权访问');
 
   // 与 startExtraction 相同的互斥保护：有进行中任务时拒绝
   const tasks = await TaskRepository.findByOwnedBookId(bookId, ownerId);
   if (tasks.some((t) => t.status === 'pending' || t.status === 'running')) {
-    throw new Error('该书正在提取中，请等待当前运行结束');
+    throw new ConflictError('该书正在提取中，请等待当前运行结束');
   }
 
   const failedChapters = await collectFailedChapterNumbers(bookId);
@@ -210,6 +220,8 @@ export async function retryFailedChapters(bookId: string, ownerId: string): Prom
 
   // 幻觉过滤：0 提及 + 0 对白的角色是 LLM 编造
   const characters = entityResult.characters.filter((c) => (c.mentionCount ?? 0) > 0 || (c.dialogueCount ?? 0) > 0);
+  // 新实体的置信度走与主提取一致的证据校准（补跑只有本批证据，校准后偏保守是合理语义）
+  const totalChapters = allChapters.length;
   const incoming: Array<{ model: EntityModel; name: string; row: Record<string, unknown> }> = [
     ...characters.map((c) => ({
       model: 'character' as EntityModel,
@@ -218,7 +230,12 @@ export async function retryFailedChapters(bookId: string, ownerId: string): Prom
         name: c.name,
         aliases: Array.isArray(c.aliases) ? c.aliases : [],
         description: c.description || null,
-        confidence: c.confidence ?? 0.5,
+        confidence: calibrateConfidence(c.confidence ?? 0.5, {
+          mentionCount: c.mentionCount ?? 0,
+          chapterCount: (c.chapterAppearances ?? []).length,
+          dialogueCount: c.dialogueCount ?? 0,
+          totalChapters,
+        }),
         chapterRef: c.chapterRef ?? null,
         firstChapter: c.firstChapter ?? null,
         lastChapter: c.lastChapter ?? null,

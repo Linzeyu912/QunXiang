@@ -48,6 +48,9 @@ export async function extractRoutes(fastify: FastifyInstance) {
       if (error instanceof ConflictError) {
         return reply.status(409).send({ error: (error as Error).message });
       }
+      if (error instanceof NotFoundError) {
+        return reply.status(404).send({ error: (error as Error).message });
+      }
       request.log.error(error);
       return reply.status(500).send({ error: (error as Error).message || '失败章节补跑失败，请查看服务端日志' });
     }
