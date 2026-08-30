@@ -79,6 +79,57 @@ function jsonContentFromResponse(content: string): string {
 }
 
 /**
+ * 截断 JSON 自愈：输出被 max_tokens 截断时（finish_reason=length），
+ * 从尾部向前找最后一个完整的值边界，补齐未闭合的容器后重试解析。
+ * 救回已完成的部分（如 {"characters":[完整1,完整2,截断3 → [完整1,完整2]），
+ * 丢掉的只是最后半个实体——由调用方的拆章降级再兜底。
+ * 无法救回（无完整边界/补全后仍非法）返回 undefined。
+ */
+export function salvageTruncatedJson(text: string): unknown | undefined {
+  for (let end = text.length - 1; end >= 0; end -= 1) {
+    const ch = text[end];
+    if (ch !== '}' && ch !== ']') continue;
+    const candidate = text.slice(0, end + 1);
+    // 原样可解析（截断恰好落在完整值之后，如尾随逗号被截掉）
+    try {
+      return JSON.parse(candidate);
+    } catch {
+      // 继续尝试补全
+    }
+    // 计算未闭合的容器并补齐
+    const stack: string[] = [];
+    let inString = false;
+    let escaped = false;
+    let salvageable = true;
+    for (let i = 0; i < candidate.length; i += 1) {
+      const c = candidate[i];
+      if (inString) {
+        if (escaped) escaped = false;
+        else if (c === '\\') escaped = true;
+        else if (c === '"') inString = false;
+        continue;
+      }
+      if (c === '"') { inString = true; continue; }
+      if (c === '{') stack.push('}');
+      else if (c === '[') stack.push(']');
+      else if (c === '}' || c === ']') {
+        if (stack.pop() !== c) { salvageable = false; break; }
+      }
+    }
+    if (!salvageable || inString || stack.length === 0) continue;
+    // 去掉尾部悬挂逗号后补闭合符：栈是外→内入栈，闭合需内→外（逆序）
+    const trimmed = candidate.replace(/[\s,]+$/u, '');
+    const completed = trimmed + [...stack].reverse().join('');
+    try {
+      return JSON.parse(completed);
+    } catch {
+      continue;
+    }
+  }
+  return undefined;
+}
+
+/**
  * Create a custom OpenAI-compatible LLM provider
  * Uses LLM_API_KEY, LLM_BASE_URL, LLM_MODEL, LLM_TIMEOUT environment variables
  */
@@ -338,10 +389,17 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
         }
 
         let parsed: unknown;
+        const jsonText = jsonContentFromResponse(content);
         try {
-          parsed = JSON.parse(jsonContentFromResponse(content));
+          parsed = JSON.parse(jsonText);
         } catch {
-          throw new LLMError(`Failed to parse LLM response as JSON: ${content.substring(0, 200)}`, 'custom', 'VALIDATION_ERROR', true);
+          // 输出被截断时的自愈：救回完整前缀，只丢最后半个实体（拆章降级兜底）
+          const salvaged = salvageTruncatedJson(jsonText);
+          if (salvaged === undefined) {
+            throw new LLMError(`Failed to parse LLM response as JSON: ${content.substring(0, 200)}`, 'custom', 'VALIDATION_ERROR', true);
+          }
+          console.warn('[custom] LLM 输出 JSON 疑似截断，已救回完整前缀');
+          parsed = salvaged;
         }
 
         // 成功：重置该 key 的失败计数与冷却

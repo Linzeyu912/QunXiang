@@ -16,6 +16,7 @@ describe('extractEntities', () => {
     delete process.env.EXTRACTOR_BATCH_TIMEOUT_MS;
     delete process.env.EXTRACTOR_MAX_RETRIES;
     delete process.env.EXTRACTOR_SPLIT_FAILED_BATCHES;
+    delete process.env.EXTRACTOR_MAX_BATCH_CHARS;
     vi.useRealTimers();
   });
 
@@ -646,5 +647,30 @@ describe('extractEntities', () => {
     expect(result.characters.map((character) => character.name).sort()).toEqual(['墨大夫', '韩立']);
     expect(result.items.map((item) => item.name)).toEqual(['小瓶']);
     expect(result.locations.map((location) => location.name)).toEqual(['七玄门']);
+  });
+
+  it('超长章节按字符上限提前切批，防单批输出爆炸截断', async () => {
+    vi.resetModules();
+    process.env.EXTRACTOR_BATCH_SIZE = '10';
+    process.env.EXTRACTOR_MAX_BATCH_CHARS = '2000';
+    const empty = { characters: [], items: [], locations: [] };
+    chatExtract.mockResolvedValue(empty);
+
+    const { createExtractor } = await import('./extractor.js');
+    // 4 章：3 章短文（合计 < 2000 字符）+ 1 章超长（> 2000 字符）
+    const chapters = [
+      { index: 1, title: '一', content: 'a'.repeat(100) },
+      { index: 2, title: '二', content: 'b'.repeat(100) },
+      { index: 3, title: '三', content: 'c'.repeat(100) },
+      { index: 4, title: '四', content: 'd'.repeat(2500) },
+    ];
+    await createExtractor()('测试书', chapters);
+
+    // 前三章一批 + 超长章独立一批 = 2 次调用（BATCH_SIZE=10 未超，按字符上限切）
+    expect(chatExtract).toHaveBeenCalledTimes(2);
+    const firstBatchText = (chatExtract.mock.calls[0] as unknown[])[1] as string;
+    expect(firstBatchText).toContain('Chapter 1');
+    expect(firstBatchText).toContain('Chapter 3');
+    expect(firstBatchText).not.toContain('Chapter 4');
   });
 });

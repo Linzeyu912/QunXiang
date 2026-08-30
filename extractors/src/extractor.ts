@@ -347,16 +347,29 @@ export function createExtractor(options: ExtractorOptions = {}) {
     const allLocations: LocationInputOutput[] = [];
     const allWorldviews: WorldviewInputOutput[] = [];
     const failedBatches: BatchResult[] = [];
-    const totalBatches = Math.ceil(chapters.length / BATCH_SIZE);
 
     // Build batch tasks
+    // 双上限切批：章数上限（BATCH_SIZE）+ 字符数上限（EXTRACTOR_MAX_BATCH_CHARS）。
+    // 固定章数切批对超长章节的书不稳：一章 3 万字 × 10 章 = 30 万字/批，
+    // 输出随之爆炸必然截断。字符上限让批次输出规模可预期（单章超限则自成一批）。
+    const MAX_BATCH_CHARS = envNumber('EXTRACTOR_MAX_BATCH_CHARS', 30_000);
     const batchTasks: Array<{ batch: Chapter[]; batchNum: number }> = [];
-    for (let i = 0; i < chapters.length; i += BATCH_SIZE) {
-      batchTasks.push({
-        batch: chapters.slice(i, i + BATCH_SIZE),
-        batchNum: Math.floor(i / BATCH_SIZE) + 1,
-      });
+    let currentBatch: Chapter[] = [];
+    let currentChars = 0;
+    for (const chapter of chapters) {
+      const size = chapter.content.length + 100;
+      if (currentBatch.length > 0 && (currentBatch.length >= BATCH_SIZE || currentChars + size > MAX_BATCH_CHARS)) {
+        batchTasks.push({ batch: currentBatch, batchNum: batchTasks.length + 1 });
+        currentBatch = [];
+        currentChars = 0;
+      }
+      currentBatch.push(chapter);
+      currentChars += size;
     }
+    if (currentBatch.length > 0) {
+      batchTasks.push({ batch: currentBatch, batchNum: batchTasks.length + 1 });
+    }
+    const totalBatches = batchTasks.length;
 
     // Execute batches with a concurrency cap.
     const batchResults: Array<PromiseSettledResult<Awaited<ReturnType<typeof processBatch>>>> = [];
