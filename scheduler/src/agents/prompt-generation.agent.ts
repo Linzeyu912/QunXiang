@@ -93,7 +93,9 @@ export interface PromptGenerationResult extends PromptGenerationPayload {
 
 const USE_LLM = process.env.PROMPT_GEN_USE_LLM !== '0';
 const LLM_MIN_TIER = process.env.PROMPT_GEN_LLM_MIN_TIER || 'supporting';
-const MAX_CHARS = Number(process.env.PROMPT_GEN_MAX_CHARS || 24000);
+// 分组预算按"输入+输出同量级"估算：一次要返回全组完整润色文本，
+// 组越大输出越容易截断（JSON 解析失败整组丢失）。12000 字符 ≈ 每组 6~10 个实体。
+const MAX_CHARS = Number(process.env.PROMPT_GEN_MAX_CHARS || 12000);
 
 // ── 标志性特征锚点过滤 ──
 // 上游 signatureItems/abilityVisuals 是正则扫原文抓的句子证据，锚点必须筛出
@@ -840,8 +842,10 @@ async function polishWithLlm(prompts: GenerationPrompt[]): Promise<Map<string, s
   const provider = await getDefaultProvider();
 
   // 组级容错：一次调用要返回整组实体的完整润色文本，长输出易被截断导致整组丢失。
-  // 调用失败或 LLM 漏返部分实体时，把缺口拆半重试；单实体组失败保留模板版（llm-fallback）。
-  const POLISH_SPLIT_DEPTH = 3;
+  // 失败/漏返的缺口先拆半重试，缩小到少量实体后逐个单试（单实体输出极小，几乎必成），
+  // 单实体连续两次失败才保留模板版（llm-fallback）。
+  const POLISH_SPLIT_DEPTH = 5;
+  const POLISH_SINGLE_BUDGET = 4;
 
   const runCall = async (targets: GenerationPrompt[], isCharacter: boolean): Promise<GenerationPrompt[]> => {
     if (targets.length === 0) return [];
@@ -897,17 +901,29 @@ ${JSON.stringify(payload, null, 2)}`;
     }
   };
 
+  // 单实体逐个兜底：失败原样重试一次，两次失败放弃（保留模板版）
+  const polishSingle = async (target: GenerationPrompt, attempt = 0): Promise<void> => {
+    const missing = await runCall([target], target.entityType === 'character');
+    if (missing.length === 0 || attempt > 0) return;
+    console.warn(`[PromptGeneration] 单实体润色未成功，重试一次（${target.entityName}）`);
+    await polishSingle(target, 1);
+  };
+
   const polishSubgroup = async (group: GenerationPrompt[], depth: number): Promise<void> => {
     if (group.length === 0) return;
     const missing = [
       ...(await runCall(group.filter(p => p.entityType === 'character'), true)),
       ...(await runCall(group.filter(p => p.entityType !== 'character'), false)),
     ];
-    if (missing.length > 0 && group.length > 1 && depth < POLISH_SPLIT_DEPTH) {
-      const mid = Math.ceil(missing.length / 2);
-      await polishSubgroup(missing.slice(0, mid), depth + 1);
-      await polishSubgroup(missing.slice(mid), depth + 1);
+    if (missing.length === 0) return;
+    if (missing.length <= POLISH_SINGLE_BUDGET || depth >= POLISH_SPLIT_DEPTH) {
+      // 缺口已小或拆半深度用尽：逐实体单试兜底
+      for (const target of missing) await polishSingle(target);
+      return;
     }
+    const mid = Math.ceil(missing.length / 2);
+    await polishSubgroup(missing.slice(0, mid), depth + 1);
+    await polishSubgroup(missing.slice(mid), depth + 1);
   };
 
   await polishSubgroup(prompts, 0);

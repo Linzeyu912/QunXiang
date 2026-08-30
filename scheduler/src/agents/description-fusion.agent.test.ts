@@ -133,6 +133,41 @@ describe('executeDescriptionFusion', () => {
     expect(result.descriptionFusion).toEqual({ requested: 1, fused: 0, skipped: 1 });
   });
 
+  it('retries once when a solo-entity fusion call fails before falling back', async () => {
+    const { executeDescriptionFusion } = await import('./description-fusion.agent.js');
+    // 超长实体单独成组：首次失败 → 重试一次成功
+    const longDescription = Array.from({ length: 40 }, (_, i) => `第${i}批：韩立在七玄门修炼并发现神秘小瓶`).join('；');
+    chatExtract
+      .mockRejectedValueOnce(new Error('solo timeout'))
+      .mockResolvedValueOnce({
+        characters: [{ name: '韩立', description: '谨慎机敏的乡村少年，七玄门神手谷弟子，拥有神秘小瓶。' }],
+        items: [],
+        locations: [],
+      });
+
+    const result = await executeDescriptionFusion({
+      characters: [
+        {
+          name: '韩立',
+          aliases: [],
+          description: longDescription,
+          confidence: 0.99,
+          status: 'PENDING',
+          chapterAppearances: [1],
+          mentionCount: 3000,
+          dialogueCount: 30,
+          coCharacters: [],
+        },
+      ],
+      items: [],
+      locations: [],
+    });
+
+    expect(result.characters[0].description).toContain('谨慎机敏的乡村少年');
+    expect(result.descriptionFusion).toEqual({ requested: 1, fused: 1, skipped: 0 });
+    expect(chatExtract).toHaveBeenCalledTimes(2);
+  });
+
   it('splits and retries when a multi-entity fusion group fails once', async () => {
     const { executeDescriptionFusion } = await import('./description-fusion.agent.js');
     // 第一次整组失败 → 拆半成两个单实体组 → 各自成功

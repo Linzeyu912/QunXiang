@@ -315,10 +315,12 @@ export async function executeDescriptionFusion(payload: unknown): Promise<Descri
   const provider = await getDefaultProvider();
   const fused = new Map<string, string>();
 
-  // 组级容错：整组调用失败或 LLM 漏返部分实体时，把缺口拆半重试（单实体组失败不重试）。
-  // 此前一组失败即整组回退本地拼接，高提及主角（输入超长）几乎必然命中，产出分号长串。
+  // 组级容错：整组调用失败或 LLM 漏返部分实体时，把缺口拆半重试；
+  // 单实体组（超长主角/核心道具单独成组）失败时原样重试一次，
+  // 两次都失败才留给 fallback 拼接——此前单实体一次失败即放弃，
+  // 高提及实体（铁奴/无名口诀级）的长描述几乎必然残留拼接态。
   const FUSION_SPLIT_DEPTH = 3;
-  const fuseGroup = async (group: FusionInputEntity[], depth: number): Promise<void> => {
+  const fuseGroup = async (group: FusionInputEntity[], depth: number, attempt = 0): Promise<void> => {
     if (group.length === 0) return;
     let missing: FusionInputEntity[] = [];
     try {
@@ -344,26 +346,32 @@ export async function executeDescriptionFusion(payload: unknown): Promise<Descri
         else missing.push(entity);
       }
     } catch (error) {
-      // 整组异常：可拆则拆半重试，不可拆则留给 fallback 拼接
+      const reason = error instanceof Error ? error.message : String(error);
+      // 整组异常：可拆则拆半重试；单实体组重试一次；再失败留给 fallback 拼接
       if (group.length > 1 && depth < FUSION_SPLIT_DEPTH) {
-        console.warn(
-          `[DescriptionFusion] LLM fusion failed for group of ${group.length}, splitting and retrying: ${error instanceof Error ? error.message : String(error)}`
-        );
+        console.warn(`[DescriptionFusion] LLM fusion failed for group of ${group.length}, splitting and retrying: ${reason}`);
         missing = group;
+      } else if (group.length === 1 && attempt === 0) {
+        console.warn(`[DescriptionFusion] 单实体融合失败，重试一次（${group[0].name}）：${reason}`);
+        await fuseGroup(group, depth, 1);
+        return;
       } else {
-        console.warn(
-          `[DescriptionFusion] LLM fusion group failed, using fallback descriptions for ${group.length} entities: ${error instanceof Error ? error.message : String(error)}`
-        );
+        console.warn(`[DescriptionFusion] LLM fusion group failed, using fallback descriptions for ${group.length} entities: ${reason}`);
         return;
       }
     }
-    if (missing.length > 0 && group.length > 1 && depth < FUSION_SPLIT_DEPTH) {
-      if (missing.length < group.length) {
-        console.warn(`[DescriptionFusion] ${missing.length}/${group.length} entities missing fused results, retrying`);
+    if (missing.length > 0) {
+      if (group.length > 1 && depth < FUSION_SPLIT_DEPTH) {
+        if (missing.length < group.length) {
+          console.warn(`[DescriptionFusion] ${missing.length}/${group.length} entities missing fused results, retrying`);
+        }
+        const mid = Math.ceil(missing.length / 2);
+        await fuseGroup(missing.slice(0, mid), depth + 1);
+        await fuseGroup(missing.slice(mid), depth + 1);
+      } else if (group.length === 1 && attempt === 0) {
+        // LLM 返回了但漏掉该实体：重试一次
+        await fuseGroup(group, depth, 1);
       }
-      const mid = Math.ceil(missing.length / 2);
-      await fuseGroup(missing.slice(0, mid), depth + 1);
-      await fuseGroup(missing.slice(mid), depth + 1);
     }
   };
 
