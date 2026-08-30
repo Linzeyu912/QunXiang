@@ -16,7 +16,8 @@
     "db:migrate-data": "tsx scripts/migrate-data.ts",
     "db:rollback": "tsx scripts/rollback.ts",
     "db:recalibrate-confidence": "tsx scripts/recalibrate-confidence.ts",
-    "db:backfill-item-categories": "tsx scripts/backfill-item-categories.ts"
+    "db:backfill-item-categories": "tsx scripts/backfill-item-categories.ts",
+    "db:cleanup-residue": "tsx scripts/cleanup-run-residue.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1090.0",

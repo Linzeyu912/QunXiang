@@ -28,3 +28,4 @@ export * from './book-artifact-store.js';
 export * from './public-asset.repository.js';
 export * from './public-asset-image.repository.js';
 export * from './public-asset-take.repository.js';
+export * from './extraction-residue-cleanup.js';

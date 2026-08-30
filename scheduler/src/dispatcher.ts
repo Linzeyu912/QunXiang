@@ -20,6 +20,7 @@ import {
   TaskRepository,
   prisma,
   ExtractionSessionRepository,
+  createExtractionResidueCleanup,
 } from '@qunxiang/storage';
 import { eventBus, type PipelineEvent } from './event-bus.js';
 import { writePipelineFinalSummary } from './pipeline-summary.js';
@@ -823,6 +824,19 @@ async function publishEntitiesStable(
   });
   if (cleanedAliasCount > 0) {
     console.log(`[入库] 已剔除 ${cleanedAliasCount} 个脏别名（撞其它实体正名或集体称谓）`);
+  }
+
+  // 入库后清理本轮残留（旧 version 视觉设定 + 本轮归档实体），防止重跑逐轮累积；
+  // 清理失败不影响主管道（下一轮入库或维护脚本会再次收敛）
+  try {
+    const residue = await createExtractionResidueCleanup(prisma).cleanup(bookId);
+    if (residue.supersededSpecs + residue.archivedEntities > 0) {
+      console.log(
+        `[入库] 已清理本轮残留：旧版视觉设定 ${residue.supersededSpecs} 行、归档实体 ${residue.archivedEntities} 个（孤儿图片 ${residue.orphanImages} 条）`
+      );
+    }
+  } catch (err) {
+    console.warn('[入库] 残留清理失败（不影响本次提取结果）：', err instanceof Error ? err.message : String(err));
   }
 }
 
