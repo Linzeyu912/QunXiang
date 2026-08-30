@@ -943,8 +943,21 @@ const POLISH_OUTFIT_PROMPT = `你是服饰套系设定图补写 agent。任务�
 
 只返回 JSON。`;
 
+// 服饰补写条目：指令要求返回 {"key": "角色::场景", "polishedPrompt": "..."}（无 name）。
+// 元素字段全部可选——此前沿用主润色 schema 的 name 必填，与 key 指令冲突，
+// LLM 按指令返回 key 时 zod 校验必然失败（该功能上线以来 0 成功的根因）。
+const outfitPolishEntrySchema = z.object({
+  name: z.string().optional(),
+  key: z.string().optional(),
+  polishedPrompt: z.string().optional(),
+  prompt: z.string().optional(),
+  polished: z.string().optional(),
+  output: z.string().optional(),
+  content: z.string().optional(),
+}).passthrough();
+
 const outfitPolishSchema = z.object({
-  prompts: z.array(polishEntitySchemaRaw.extend({ key: z.string().optional() })).optional().default([]),
+  prompts: z.array(outfitPolishEntrySchema).optional().default([]),
 }).passthrough();
 
 /**
@@ -1005,7 +1018,8 @@ async function expandCharacterOutfitVariants(
   if (current.length > 0) groups.push(current);
 
   let polishedCount = 0;
-  for (const group of groups) {
+  const polishOutfitGroup = async (group: typeof pending, attempt = 0): Promise<void> => {
+    let missing: typeof pending = [];
     try {
       const payload = {
         prompts: group.map((g) => ({
@@ -1034,23 +1048,40 @@ ${JSON.stringify(payload, null, 2)}`,
       const byKey = new Map<string, string>();
       for (const entry of llmResult.prompts ?? []) {
         const text = extractPolished(entry);
-        const key = (entry as { key?: string }).key;
-        if (text && key) byKey.set(key, text);
+        if (!text) continue;
+        // LLM 偶发不回 key 只回 name/characterName：同时登记，匹配时兜底
+        if (entry.key) byKey.set(entry.key, text);
+        if (entry.name && !byKey.has(entry.name)) byKey.set(entry.name, text);
       }
       for (const g of group) {
-        const text = byKey.get(g.key);
+        const text = byKey.get(g.key) ?? byKey.get(g.entityName);
         if (text) {
           g.variant.prompt = text;
           g.variant.source = 'llm-polished';
           polishedCount++;
         } else {
-          g.variant.source = 'llm-fallback';
+          missing.push(g);
         }
       }
     } catch (error) {
       console.warn(`[PromptGeneration] Outfit polish failed for ${group.length} outfits: ${error instanceof Error ? error.message : String(error)}`);
-      for (const g of group) g.variant.source = 'llm-fallback';
+      missing = group;
     }
+    if (missing.length > 0) {
+      if (group.length > 1) {
+        // 与主润色同款容错：缺口拆半重试
+        const mid = Math.ceil(missing.length / 2);
+        await polishOutfitGroup(missing.slice(0, mid));
+        await polishOutfitGroup(missing.slice(mid));
+      } else if (attempt === 0) {
+        await polishOutfitGroup(group, 1);
+      } else {
+        for (const g of missing) g.variant.source = 'llm-fallback';
+      }
+    }
+  };
+  for (const group of groups) {
+    await polishOutfitGroup(group);
   }
   console.log(`[PromptGeneration] Outfit polish: ${polishedCount}/${pending.length} succeeded`);
   return polishedCount;

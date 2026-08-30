@@ -346,7 +346,25 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
 
         // 成功：重置该 key 的失败计数与冷却
         markKeyOk(chosenKey);
-        return schema.parse(parsed);
+        try {
+          return schema.parse(parsed);
+        } catch (schemaError) {
+          // zod 校验失败的原始 message 是 issues 的 JSON 数组，日志里不可读；
+          // 提炼成"哪个字段不符合预期"，否则像服饰补写这类 schema 与指令
+          // 不一致的问题（key 必填 name）极难定位。
+          const issues =
+            typeof schemaError === 'object' && schemaError !== null && 'issues' in schemaError
+              ? (schemaError as { issues: Array<{ path: (string | number)[]; message: string }> }).issues
+              : [];
+          const summary = issues
+            .slice(0, 5)
+            .map((issue) => `${issue.path.join('.') || '(根)'}: ${issue.message}`)
+            .join('; ');
+          throw new LLMError(
+            `LLM 返回结构不符合预期${summary ? `（${summary}）` : ''}`,
+            'custom', 'VALIDATION_ERROR', true,
+          );
+        }
       } catch (error) {
         // AbortController 触发的超时：fetch 抛 AbortError（name==='AbortError'），
         // 单独映射为 TIMEOUT，避免被 mapProviderError 当成普通网络错误。

@@ -89,4 +89,47 @@ describe('提示词润色拆半与逐实体兜底', () => {
     // 8 实体一组：首次组失败 1 次 → 拆半 4+4 各失败 2 次 → 每实体单试+重试 4×2×2=16 次 = 19 次
     expect(chatExtract).toHaveBeenCalledTimes(19);
   });
+
+  it('服饰补写按指令返回 key（无 name）也能通过校验并写入变体', async () => {
+    const executePromptGeneration = await loadAgent();
+    chatExtract.mockImplementation(async (_sys: string, user: string) => {
+      // 主润色调用：返回 name 格式；服饰补写调用（payload 含 key 字段）：
+      // 按指令只返回 key（旧 schema 必失败的场景）
+      if (user.includes('"key"')) {
+        return {
+          prompts: [
+            { key: '萧炎::伪装炼药师', polishedPrompt: '四视图角色设定图 —— 萧炎（伪装炼药师服饰·补写版）' },
+          ],
+        };
+      }
+      return {
+        prompts: [{ name: '萧炎', polishedPrompt: '四视图角色设定图 —— 萧炎（润色版）' }],
+      };
+    });
+
+    const result = await executePromptGeneration({
+      characters: [{ name: '萧炎', aliases: [], confidence: 0.9, status: 'PENDING', tier: 'core', mentionCount: 120 }],
+      locations: [],
+      items: [],
+      characterVisualDescriptions: [{
+        name: '萧炎',
+        entityType: 'character',
+        sourceDescription: '天才少年',
+        visualFields: {},
+        visualDetails: {},
+        outfits: [
+          { description: '青色劲装', scene: '日常', firstChapter: 1, lastChapter: 100 },
+          { description: '宽大黑袍与斗篷', scene: '伪装炼药师', firstChapter: 20, lastChapter: 75 },
+        ],
+      }],
+      locationVisualDescriptions: [],
+      itemVisualDescriptions: [],
+    });
+
+    const prompt = result.characterPrompts[0];
+    const variant = prompt.outfitVariants?.[0];
+    expect(variant).toBeTruthy();
+    expect(variant!.source).toBe('llm-polished');
+    expect(variant!.prompt).toContain('伪装炼药师服饰·补写版');
+  });
 });
