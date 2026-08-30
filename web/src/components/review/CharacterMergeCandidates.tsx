@@ -18,7 +18,8 @@ function SuggestionBadge({ suggestion }: { suggestion?: MergeSuggestion }) {
   const label = suggestion.verdict === 'same' ? '模型建议：同一角色' : '模型建议：不同角色';
   return (
     <p className="text-xs text-violet-600 dark:text-violet-400">
-      {label}（{pct}%）{suggestion.reason ? `——${suggestion.reason}` : ''}
+      {label}（置信 {pct}%，已按别名互证与章节重叠做证据校准）
+      {suggestion.reason ? `——${suggestion.reason}` : ''}
     </p>
   );
 }
@@ -94,6 +95,8 @@ export function CharacterMergeCandidates({ bookId }: { bookId: string }) {
   const accept = useAcceptCharacterMerge(bookId);
   const reject = useRejectCharacterMerge(bookId);
   const judge = useJudgeCharacterMerges(bookId);
+  // 本轮会话是否已生成过模型建议：已生成但卡片无建议 = 模型判不确定/低置信，需人工判断
+  const [judgeRan, setJudgeRan] = useState(false);
 
   if (!candidates.data?.candidates.length) return null;
 
@@ -116,10 +119,11 @@ export function CharacterMergeCandidates({ bookId }: { bookId: string }) {
         onClick={() =>
           judge.mutate(undefined, {
             onSuccess: (outcome) => {
+              setJudgeRan(true);
               if (outcome.message) toast.info(outcome.message);
               if (outcome.suggestedMerge.length || outcome.suggestedSeparate.length) {
                 toast.success(
-                  `模型建议合并 ${outcome.suggestedMerge.length} 对、保持独立 ${outcome.suggestedSeparate.length} 对，请人工确认；另有 ${outcome.pending.length} 对无法判断`
+                  `模型建议合并 ${outcome.suggestedMerge.length} 对、保持独立 ${outcome.suggestedSeparate.length} 对，请人工确认；另有 ${outcome.pending.length} 对模型无法判断（已标注，请人工对比）`
                 );
               } else if (outcome.pending.length) {
                 toast.info(`模型均无法确定，${outcome.pending.length} 对需人工判断`);
@@ -146,6 +150,11 @@ export function CharacterMergeCandidates({ bookId }: { bookId: string }) {
           </div>
 
           <SuggestionBadge suggestion={suggestionBy.get(`${candidate.primaryId}:${candidate.secondaryId}`)} />
+          {judgeRan && !suggestionBy.get(`${candidate.primaryId}:${candidate.secondaryId}`) && (
+            <p className="text-xs text-muted-foreground">
+              模型未能确定这一对（证据不足或置信度过低），请人工对比下方信息后决策。
+            </p>
+          )}
 
           {/* 两栏并排对比：决策依据（描述/别名/章节）分列呈现，取代斜杠拼接 */}
           <div className="grid grid-cols-2 gap-2">
