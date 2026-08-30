@@ -1,6 +1,7 @@
 import type { AgentType, Task } from '@qunxiang/core';
 import type { TaskQueue } from './task-queue.js';
 import { getNextAgent, EXTRACTION_PIPELINE } from './pipeline.js';
+import { isCollectiveCharacterAlias } from '@qunxiang/entity-resolution';
 import {
   executeExtractor,
   executeValidator,
@@ -656,9 +657,32 @@ async function publishEntitiesStable(
 ): Promise<void> {
   const now = new Date();
 
+  // 入库前别名统一清洗（最后一道防线，覆盖所有阶段的别名来源——
+  // 提取出口的过滤拦不住消解/融合阶段新产生的脏别名）：
+  // 1) 与本轮其它实体的正名相同 → 剔除（如"张铁.七绝上人"），两者保持独立交人工决策
+  // 2) 集体称谓（"三位师叔"类）→ 剔除，避免与成员个体生成错误合并候选
+  // 3) 与自身正名相同 → 剔除
+  const allPublishNames = new Set<string>();
+  for (const list of [incoming.chars, incoming.locs, incoming.items, incoming.worldviews]) {
+    for (const row of list) if (row.name) allPublishNames.add(String(row.name));
+  }
+  let cleanedAliasCount = 0;
+  const cleanAliases = (selfName: string, aliases: unknown): string[] => {
+    if (!Array.isArray(aliases)) return [];
+    const cleaned = aliases
+      .map((a) => String(a))
+      .filter((a) => {
+        if (!a || a === selfName) return false;
+        if (allPublishNames.has(a)) { cleanedAliasCount++; return false; }
+        if (isCollectiveCharacterAlias(a)) { cleanedAliasCount++; return false; }
+        return true;
+      });
+    return [...new Set(cleaned)];
+  };
+
   const charData = (c: PublishableRow) => ({
     name: c.name,
-    aliases: Array.isArray(c.aliases) ? c.aliases : [],
+    aliases: cleanAliases(c.name, c.aliases),
     description: (c.description as string) || null,
     confidence: (c.confidence as number) || 0.5,
     chapterRef: (c.chapterRef as string) || null,
@@ -675,7 +699,7 @@ async function publishEntitiesStable(
   });
   const locData = (l: PublishableRow) => ({
     name: l.name,
-    aliases: Array.isArray(l.aliases) ? l.aliases : [],
+    aliases: cleanAliases(l.name, l.aliases),
     description: (l.description as string) || null,
     confidence: (l.confidence as number) || 0.7,
     chapterRef: (l.chapterRef as string) || null,
@@ -699,7 +723,7 @@ async function publishEntitiesStable(
   });
   const worldviewData = (w: PublishableRow) => ({
     name: w.name,
-    aliases: Array.isArray(w.aliases) ? w.aliases : [],
+    aliases: cleanAliases(w.name, w.aliases),
     category: (w.category as string) || 'worldview',
     description: (w.description as string) || null,
     confidence: (w.confidence as number) || 0.7,
@@ -797,6 +821,9 @@ async function publishEntitiesStable(
       }
     }
   });
+  if (cleanedAliasCount > 0) {
+    console.log(`[入库] 已剔除 ${cleanedAliasCount} 个脏别名（撞其它实体正名或集体称谓）`);
+  }
 }
 
 /** 阶段边界运行控制检查（实施包 D3）：返回 pause/cancel/continue。 */

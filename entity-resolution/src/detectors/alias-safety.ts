@@ -281,6 +281,13 @@ const COLLECTIVE_ROLE_QUANTIFIERS = [
   '各位',
   '众',
   '一众',
+  '三大',
+  '两大',
+  '四大',
+  '五大',
+  '六大',
+  '七大',
+  '八大',
 ];
 
 const COLLECTIVE_ROLE_NOUNS = [
@@ -306,6 +313,31 @@ const COLLECTIVE_ROLE_NOUNS = [
   '女人',
   '男人',
   '之人',
+  '师叔',
+  '师伯',
+  '师尊',
+  '师兄弟',
+  '同门',
+  '护法',
+  '堂主',
+  '高手',
+  '强者',
+  '修士',
+  '道人',
+  '僧人',
+  '父母',
+  '双亲',
+  '兄弟',
+  '姐妹',
+  '兄妹',
+  '姐弟',
+  '父子',
+  '母女',
+  '爷孙',
+  '夫妻',
+  '夫妇',
+  '婆媳',
+  '叔侄',
 ];
 
 function aliasPairKey(a: string, b: string): string {
@@ -335,6 +367,8 @@ export function isCollectiveCharacterAlias(alias: string): boolean {
   const normalized = alias.trim();
   if (!normalized) return false;
   if (/(他们|她们|它们)$/.test(normalized)) return true;
+  // 本身即复数的亲属/关系称谓，无需量词前缀（如"韩立父母""X师兄弟"）
+  if (normalized.length <= 8 && /(父母|双亲|爹娘|二老|全家|一家人|师兄弟|同门师兄弟)$/.test(normalized)) return true;
 
   return COLLECTIVE_ROLE_QUANTIFIERS.some((quantifier) =>
     COLLECTIVE_ROLE_NOUNS.some((role) => {

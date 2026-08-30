@@ -54,6 +54,41 @@ function MergePreviewPanel({ bookId, primaryId, secondaryId }: { bookId: string;
   );
 }
 
+/** 候选对实体信息（并排对比用） */
+interface CandidateEntity {
+  name: string;
+  aliases: string[];
+  description?: string;
+  chapterAppearances: number[];
+}
+
+/** 实体对比单元格：名称/别名/章节/描述的紧凑呈现 */
+function EntityCell({ entity, highlight }: { entity: CandidateEntity; highlight?: boolean }) {
+  const chapters = entity.chapterAppearances;
+  const chapterSummary = chapters.length === 0
+    ? '未知'
+    : chapters.length > 12
+      ? `${chapters[0]}–${chapters[chapters.length - 1]} 章（共 ${chapters.length} 章）`
+      : chapters.join('、');
+  return (
+    <div className="space-y-1.5 text-xs">
+      <p className={`text-sm font-medium ${highlight ? 'text-primary' : ''}`}>{entity.name}</p>
+      <p className="text-muted-foreground">
+        <span className="text-foreground/60">别名：</span>
+        {entity.aliases.join('、') || '无'}
+      </p>
+      <p className="text-muted-foreground">
+        <span className="text-foreground/60">出现章节：</span>
+        {chapterSummary}
+      </p>
+      <p className="whitespace-pre-wrap leading-relaxed">
+        <span className="text-foreground/60">描述：</span>
+        {entity.description || '无描述'}
+      </p>
+    </div>
+  );
+}
+
 export function CharacterMergeCandidates({ bookId }: { bookId: string }) {
   const candidates = useCharacterMergeCandidates(bookId);
   const accept = useAcceptCharacterMerge(bookId);
@@ -102,7 +137,7 @@ export function CharacterMergeCandidates({ bookId }: { bookId: string }) {
       {candidates.data.candidates.map((candidate) => (
         <div
           key={`${candidate.primaryId}-${candidate.secondaryId}`}
-          className="space-y-1 rounded border bg-background p-2 text-sm"
+          className="space-y-2 rounded border bg-background p-3 text-sm"
         >
           <div>
             <b>{candidate.primary.name}</b> 与 <b>{candidate.secondary.name}</b>
@@ -112,23 +147,15 @@ export function CharacterMergeCandidates({ bookId }: { bookId: string }) {
 
           <SuggestionBadge suggestion={suggestionBy.get(`${candidate.primaryId}:${candidate.secondaryId}`)} />
 
-          <p className="text-xs text-muted-foreground">
-            别名：{candidate.primary.aliases.join('、') || '无'}
-            {' / '}
-            {candidate.secondary.aliases.join('、') || '无'}
-          </p>
-
-          <p className="text-xs text-muted-foreground">
-            章节：{candidate.primary.chapterAppearances.join('、') || '未知'}
-            {' / '}
-            {candidate.secondary.chapterAppearances.join('、') || '未知'}
-          </p>
-
-          <p className="text-xs text-muted-foreground">
-            {candidate.primary.description || '无描述'}
-            {' / '}
-            {candidate.secondary.description || '无描述'}
-          </p>
+          {/* 两栏并排对比：决策依据（描述/别名/章节）分列呈现，取代斜杠拼接 */}
+          <div className="grid grid-cols-2 gap-2">
+            <div className="rounded border bg-muted/30 p-2">
+              <EntityCell entity={candidate.primary} highlight />
+            </div>
+            <div className="rounded border bg-muted/30 p-2">
+              <EntityCell entity={candidate.secondary} />
+            </div>
+          </div>
 
           <MergePreviewPanel bookId={bookId} primaryId={candidate.primaryId} secondaryId={candidate.secondaryId} />
 

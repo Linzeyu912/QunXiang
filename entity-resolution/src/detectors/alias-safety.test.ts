@@ -45,6 +45,23 @@ describe('sanitizeCharacterAliases', () => {
     expect(isCollectiveCharacterAlias('三长老')).toBe(false);
   });
 
+  it('detects collective kinship and sect titles without quantifier prefixes', () => {
+    expect(isCollectiveCharacterAlias('王绝楚的三位师叔')).toBe(true);
+    expect(isCollectiveCharacterAlias('三位师叔')).toBe(true);
+    expect(isCollectiveCharacterAlias('韩立父母')).toBe(true);
+    expect(isCollectiveCharacterAlias('韩立的父母')).toBe(true);
+    expect(isCollectiveCharacterAlias('韩立双亲')).toBe(true);
+    expect(isCollectiveCharacterAlias('七玄门三大高手')).toBe(true);
+    expect(isCollectiveCharacterAlias('落云宗两大道人')).toBe(true);
+  });
+
+  it('does not misjudge singular individuals as collectives', () => {
+    expect(isCollectiveCharacterAlias('韩立的三叔')).toBe(false);
+    expect(isCollectiveCharacterAlias('魁梧汉子')).toBe(false);
+    expect(isCollectiveCharacterAlias('墨大夫')).toBe(false);
+    expect(isCollectiveCharacterAlias('张师叔')).toBe(false);
+  });
+
   it('drops aliases that belong to another known character', () => {
     const aliases = sanitizeCharacterAliases('萧炎', ['萧薰儿', '薰儿', '萧炎哥'], {
       sourceText: '萧炎哥说道，薰儿笑了，萧薰儿也点头。',

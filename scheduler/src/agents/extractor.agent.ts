@@ -4,6 +4,7 @@ import { createExtractor } from '@qunxiang/extractors';
 import { BookRepository, getSharedAssetSourceResolver } from '@qunxiang/storage';
 import { parseTxtEnhanced } from '@qunxiang/import';
 import { calcImportance, type EntityImportance, type EntityType } from '@qunxiang/entity-prescan';
+import { isCollectiveCharacterAlias } from '@qunxiang/entity-resolution';
 import { bookSlug } from '@qunxiang/story-arcs';
 import { eventBus } from '../event-bus.js';
 import { join } from 'path';
@@ -168,8 +169,30 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
   // character doesn't appear in the text at all (LLM made them up).
   // 置信度统一做证据校准：LLM 自报值对主角和一次性的路人角色都给 0.85+，
   // 不校准的话低置信度库形同虚设（库为空的根因）。
-  const characters = fusedCharacters
-    .filter((c) => c.mentionCount > 0 || c.dialogueCount > 0)
+  const hallucinationFiltered = fusedCharacters.filter(
+    (c) => c.mentionCount > 0 || c.dialogueCount > 0
+  );
+  // 集体称谓（"三位师叔""韩立父母"）不是单个角色，混入角色库会与
+  // 成员个体（如"魁梧汉子"）生成错误合并候选
+  const collectiveDropped = hallucinationFiltered.filter((c) => isCollectiveCharacterAlias(c.name));
+  if (collectiveDropped.length > 0) {
+    console.log(`[Extractor] Filtered ${collectiveDropped.length} collective-name characters: ${collectiveDropped.map((c) => c.name).join('、')}`);
+  }
+  const nameFiltered = hallucinationFiltered.filter((c) => !isCollectiveCharacterAlias(c.name));
+
+  // 别名撞独立实体正名时剔除该别名：跨批融合/LLM 会把另一实体名错挂为别名
+  //（如张铁.aliases=[七绝上人]），下游据此生成语义错误的合并候选。
+  // 剔除后两者保持独立，由人工合并流程决策。
+  const allNames = new Set(nameFiltered.map((c) => c.name));
+  let conflictingAliases = 0;
+  const characters = nameFiltered
+    .map((c) => {
+      const aliases = (c.aliases || []).filter((a) => {
+        if (allNames.has(a)) { conflictingAliases++; return false; }
+        return true;
+      });
+      return { ...c, aliases };
+    })
     .map((c) => ({
       ...c,
       confidence: calibrateConfidence(c.confidence, {
@@ -180,6 +203,9 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
       }),
       firstMentionSnippet: findFirstMentionSnippet(chapters, [c.name, ...(c.aliases || [])]),
     }));
+  if (conflictingAliases > 0) {
+    console.log(`[Extractor] Removed ${conflictingAliases} aliases conflicting with standalone entity names`);
+  }
   const droppedChars = fusedCharacters.filter((c) => c.mentionCount === 0 && c.dialogueCount === 0);
   if (droppedChars.length > 0) {
     console.log(`[Extractor] Filtered ${droppedChars.length} hallucinated characters: ${droppedChars.map((c) => c.name).join('、')}`);
