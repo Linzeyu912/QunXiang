@@ -286,7 +286,7 @@ export async function retryFailedChapters(bookId: string, ownerId: string): Prom
         description: w.description || null,
         confidence: w.confidence ?? 0.5,
         chapterRef: w.chapterRef ?? null,
-        mentionCount: w.mentionCount ?? 0,
+        mentionCount: (w as { mentionCount?: number }).mentionCount ?? 0,
       },
     })),
   ];

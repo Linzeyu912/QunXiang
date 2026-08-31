@@ -488,13 +488,12 @@ export class TaskDispatcher {
 
         // 提示词阶段已按原文证据识别角色年龄变体，按角色名回写实体字段。
         const stageByName = new Map<string, { stages: string[]; primary: string }>();
-        const characterPrompts = Array.isArray((result as { characterPrompts?: unknown }).characterPrompts)
-          ? (result as {
-              characterPrompts: Array<{
-                entityName?: string;
-                variants?: Array<{ stage?: string; isPrimary?: boolean }>;
-              }>;
-            }).characterPrompts
+        const rawCharacterPrompts = (result as { characterPrompts?: unknown }).characterPrompts;
+        const characterPrompts = Array.isArray(rawCharacterPrompts)
+          ? (rawCharacterPrompts as Array<{
+              entityName?: string;
+              variants?: Array<{ stage?: string; isPrimary?: boolean }>;
+            }>)
           : [];
         for (const prompt of characterPrompts) {
           const variants = Array.isArray(prompt?.variants) ? prompt.variants : [];

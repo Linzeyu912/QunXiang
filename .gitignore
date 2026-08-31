@@ -72,6 +72,8 @@ test_*.mjs
 startup_log*.txt
 test_results.txt
 test/
+# vitest 全局测试库防护需入库（根 vitest.config.ts setupFiles 引用）
+!test/ensure-test-db.ts
 
 # Uploads and runtime data
 storage/uploads/

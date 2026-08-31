@@ -36,11 +36,10 @@ export function createExtractionResidueCleanup(db: PrismaClient) {
   return {
     async cleanup(bookId: string | null, options: ResidueCleanupOptions = {}): Promise<ResidueCleanupResult> {
       const dryRun = options.dryRun === true;
-      const specWhere = bookId ? { where: { bookId } } : {};
 
       // 1. VisualSpec：分组保留最新 version
       const specs = (await db.visualSpec.findMany({
-        ...specWhere,
+        where: bookId ? { bookId } : undefined,
         select: { id: true, bookId: true, entityType: true, entityName: true, variantKey: true, version: true },
       })) as Array<{ id: string; bookId: string; entityType: string; entityName: string; variantKey: string; version: number }>;
       const latestIds = new Set<string>();
