@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient, type QueryClient } from '@tansta
 import { apiFetch, openAuthenticatedSse } from './client';
 import { booksKey } from './books';
 import { entitiesKey } from './entities';
+import { artifactsKey } from './artifacts';
 import type { ExtractionStagesResult, StageStatus, AgentType, ExtractionRunTasks, RunEstimate } from '@/types';
 
 export const extractionKey = {
@@ -212,12 +213,25 @@ export function applyExtractionStreamEvent(
   }
 
   const evt: PipelineEvent = { type: eventName ?? data.type ?? 'unknown', ...data };
-  qc.setQueryData<ExtractionStagesResult | undefined>(key, (prev) =>
+  const merged = qc.setQueryData<ExtractionStagesResult | undefined>(key, (prev) =>
     mergeEventIntoStages(prev, evt),
   );
-  if (evt.type === 'completed') {
+
+  // 终态事件（completed/error）：本地 merge 不一定还原服务端权威状态
+  //（error 事件常不带 stageId，合并逻辑无从更新阶段），失效相关查询让
+  // 下一次拉取拿到真实终态，避免 stages 缓存永远停在"进行中"。
+  if (evt.type === 'completed' || evt.type === 'error') {
+    qc.invalidateQueries({ queryKey: key });
+    qc.invalidateQueries({ queryKey: extractionKey.currentRun(bookId) });
+  }
+
+  // 一到终态就刷新书籍/实体/产物缓存。不能只依赖 completed 事件：
+  // reviewer 的 stage_complete 一到，isComplete 即翻 true、SSE 随即断开，
+  // 后端稍后发出的 completed 事件前端可能收不到。
+  if (evt.type === 'completed' || evt.type === 'error' || merged?.isComplete || merged?.isFailed) {
     qc.invalidateQueries({ queryKey: booksKey.all });
     qc.invalidateQueries({ queryKey: entitiesKey.all(bookId) });
+    qc.invalidateQueries({ queryKey: artifactsKey.all(bookId) });
   }
 }
 

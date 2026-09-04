@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiFetch } from './client';
+import { extractionKey } from './extraction';
 import type {
   ChapterOutlineResponse,
   ChapterContentResponse,
@@ -7,6 +8,7 @@ import type {
   EntityType,
   ExtractionArtifactsResponse,
   ExtractionRunInfo,
+  ExtractionStagesResult,
   PrescanArtifactsResponse,
 } from '@/types';
 
@@ -75,12 +77,32 @@ export function usePrescanArtifacts(bookId: string | undefined) {
   });
 }
 
+/**
+ * 提取刚完成的落盘窗口内（秒级），产物接口可能返回旧一轮 run 的数据或空桶：
+ * 实体在 reviewer 前就入了库，但提示词等富产物文件是完成事件之后才写盘的。
+ * 这里在 stages 判定完成后的 1 分钟内每 5 秒补拉，确保审核页提示词尽快出现。
+ */
+const ARTIFACT_SETTLE_WINDOW_MS = 60_000;
+const ARTIFACT_SETTLE_POLL_MS = 5_000;
+
 export function useExtractionArtifacts(bookId: string | undefined) {
+  const qc = useQueryClient();
   return useQuery({
     queryKey: bookId ? artifactsKey.all(bookId) : ['artifacts', 'none'],
     queryFn: () => apiFetch<ExtractionArtifactsResponse>(`/books/${bookId}/extraction-artifacts`),
     enabled: !!bookId,
     staleTime: 60_000, // 产物只随提取运行变化，无需频繁刷新
+    refetchInterval: () => {
+      if (!bookId) return false;
+      const stagesState = qc.getQueryState(extractionKey.stages(bookId));
+      if (!stagesState) return false;
+      const stages = stagesState.data as ExtractionStagesResult | undefined;
+      // 有 stages 缓存且刚判定完成 → 窗口内短轮询；其余情况不轮询（含无产物旧书）
+      if (!stages?.isComplete) return false;
+      return Date.now() - stagesState.dataUpdatedAt < ARTIFACT_SETTLE_WINDOW_MS
+        ? ARTIFACT_SETTLE_POLL_MS
+        : false;
+    },
   });
 }
 

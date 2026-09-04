@@ -160,4 +160,18 @@ describe('getExtractionStages — 空结果不再误报"已完成"', () => {
     const result = await getExtractionStages(bookId, ownerId);
     expect(result.isComplete).toBe(false);
   });
+
+  it('dead_lettered 任务映射为失败 → isFailed=true，前端不再陷入"三不沾"死局', async () => {
+    // 重试超限转入死信：若不映射为 failed，isRunning/isComplete/isFailed 全为 false，
+    // 管道页没有任何操作入口，刷新后永久卡住（历史 bug）。
+    await TaskRepository.create({ bookId, agentType: 'extractor', payload: { bookId }, status: 'dead_lettered' });
+
+    const result = await getExtractionStages(bookId, ownerId);
+
+    expect(result.isFailed, '死信任务语义上就是失败').toBe(true);
+    expect(result.isRunning).toBe(false);
+    const extractor = result.stages.find((s) => s.id === 'extractor');
+    expect(extractor?.status, '前端 StageStatus 无 dead_lettered 枚举，必须映射').toBe('failed');
+    expect(extractor?.message).toMatch(/死信/);
+  });
 });

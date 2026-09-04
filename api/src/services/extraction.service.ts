@@ -357,7 +357,12 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
 
   const stages: ExtractionStageInfo[] = PIPELINE_STAGES.map((stage) => {
     const task = tasks.find((t) => t.agentType === stage.id);
-    const status = task ? task.status : 'pending';
+    // dead_lettered（重试超限转入死信）语义上就是失败；前端 StageStatus 也没有该枚举，
+    // 不映射的话 isFailed 永远不亮，管道页会落入"既非运行中也非完成/失败"的死局，
+    // 用户刷新后停在半路进度且没有任何操作入口（历史 bug）。
+    const status = task
+      ? task.status === 'dead_lettered' ? 'failed' : task.status
+      : 'pending';
 
     if (status === 'completed') {
       overallProgress += stage.weight;
@@ -374,7 +379,8 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
       status,
       startedAt: task?.createdAt ? task.createdAt.toISOString() : undefined,
       completedAt: task?.updatedAt ? task.updatedAt.toISOString() : undefined,
-      message: task?.error || undefined,
+      message: task?.error
+        || (task?.status === 'dead_lettered' ? '多次重试仍失败，已转入死信队列' : undefined),
     };
   });
 

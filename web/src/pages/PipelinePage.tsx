@@ -253,6 +253,32 @@ export function PipelinePage() {
         {data?.stages.map((s) => <StageCard key={s.id} stage={s} />)}
       </div>
 
+      {data && !notStarted && !data.isComplete && !data.isFailed && !isRunning && (
+        <Card className="border-warning/40 bg-warning/5 p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm font-medium text-warning">提取未完成</p>
+              <p className="text-xs text-muted-foreground">
+                运行已停止但未正常收敛（可能由服务重启、运行取消或历史中断造成）。可以重新开始，或从已停止的阶段继续。
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={() => resume.mutate()}
+                disabled={resume.isPending || createRun.isPending || !extractionGate.canStart}
+                title="从第一个失败的 stage 继续，已成功的 stage 不重跑"
+              >
+                {resume.isPending ? '恢复中…' : '从停止处继续'}
+              </Button>
+              <Button onClick={handleStart} disabled={createRun.isPending || resume.isPending || !extractionGate.canStart}>
+                重新开始
+              </Button>
+            </div>
+          </div>
+        </Card>
+      )}
+
       {data?.isComplete && (
         <Card className="border-success/40 bg-success/10 p-6">
           <div className="flex flex-wrap items-center justify-between gap-3">

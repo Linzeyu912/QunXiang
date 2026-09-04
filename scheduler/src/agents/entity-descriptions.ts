@@ -270,6 +270,42 @@ const OBSERVE_VERBS = '看向|望向|望着|盯着|瞧着|瞥向|扫向|打量|�
 const RECIPIENT_VERBS = '对着|朝着|冲着|向着|面向';
 const GENERIC_PERSON_PATTERN = '少女|女孩|女子|女人|男子|青年|少年|老人|老者|美人|妇人|丫头|她|他|对方|此女|此人|那人';
 
+// ── 他人衣物守卫 ──
+// 原文提到过的服装不一定是人物穿过的：遗物/收藏/摆卖/赠予句式里的衣物
+//（"母亲留下的红嫁衣""柜中收藏着师傅的旧道袍"）挂在别人名下，不能作为
+// 目标角色的服饰证据；目标本人确有穿着动作（含穿上他人衣物）时除外。
+const KINSHIP_OWNER_RE = /(?:母亲|娘亲|亲娘|娘|父亲|爹爹|亲爹|爹|爹娘|祖母|奶奶|爷爷|祖父|外公|外祖父|外婆|外祖母|兄长|哥哥|姐姐|妹妹|弟弟|叔叔|婶婶|姨母|姨妈|舅舅|师父|师娘|师尊|丈夫|妻子|夫君|娘子)/u;
+const OTHER_PERSON_RE = /(?:别人|旁人|他人|路人|众人|有人|掌柜|商贩|老板|侍女|侍从|客人|买家|绣娘|铺子|店铺|柜台|橱窗)/u;
+const GARMENT_RE = /(?:衣|袍|衫|裙|裳|披风|斗篷|甲胄|盔甲|华服|锦衣)/u;
+const GARMENT_POSSESSION_CUE_RE = /(?:的|留下|遗留|留传|传下|遗物|赠|送给|递给|交给|传给|传予|卖给|买下|购得|珍藏|收藏|收着|存着|摆着|挂着|取出|拿出)/u;
+const WEAR_VERB_PATTERN = '穿着|穿上|身着|身披|披上|戴上|换上|套上|一袭|穿|披着|戴着';
+const PRONOUN_WEARING_RE = /(?:她|他)(?:穿着|穿上|身着|身披|披上|戴上|换上|套上)/u;
+
+/** 分句中的衣物是否挂在他人名下（目标本人未穿着）——见上方"他人衣物守卫"说明。 */
+function isOtherOwnedGarmentClause(clause: string, evidence: DescriptionEvidenceSnippet<string>): boolean {
+  if (!GARMENT_RE.test(clause)) return false;
+  const hasOtherOwner = KINSHIP_OWNER_RE.test(clause)
+    || OTHER_PERSON_RE.test(clause)
+    || (evidence.otherMatchedNames || []).some((name) => clause.includes(name));
+  if (!hasOtherOwner) return false;
+  if (!GARMENT_POSSESSION_CUE_RE.test(clause)) return false;
+
+  const targetNames = sentenceNames(clause, evidence.matchedNames);
+  // 目标实体本身就是服饰类（作为道具提取的嫁衣、披风等）：句子写的就是它自己
+  if (targetNames.some((name) => GARMENT_RE.test(name))) return false;
+  // 目标本人穿着：点名穿着（含"给X套上"的被动穿着）或代词紧邻穿着动词
+  if (targetNames.length > 0) {
+    const alt = nameAlternation(targetNames);
+    const targetWearing = new RegExp(
+      `(?:${alt}).{0,12}(?:${WEAR_VERB_PATTERN})|(?:${WEAR_VERB_PATTERN}).{0,12}(?:${alt})`,
+      'u'
+    );
+    if (targetWearing.test(clause)) return false;
+  }
+  if (PRONOUN_WEARING_RE.test(clause)) return false;
+  return true;
+}
+
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -336,7 +372,14 @@ function clauseOwner<Field extends string>(
   return previousOwner;
 }
 
-function clauseBelongsToCurrentEntity(owner: ClauseOwner, evidence: DescriptionEvidenceSnippet<string>): boolean {
+function clauseBelongsToCurrentEntity(
+  owner: ClauseOwner,
+  evidence: DescriptionEvidenceSnippet<string>,
+  clause: string
+): boolean {
+  // 他人衣物守卫：分句描述的是挂在别人名下且目标未穿着的服饰（遗物/收藏/摆卖），
+  // 即使主语判定归属目标（如"萧炎想起母亲留下的红嫁衣"）也不算他的服饰证据。
+  if (isOtherOwnedGarmentClause(clause, evidence)) return false;
   return owner === 'target' || (owner === 'unknown' && (evidence.otherMatchedNames || []).length === 0);
 }
 
@@ -358,7 +401,7 @@ function ownedFieldsInSentence<Field extends string>(
 
   for (const clause of splitClauses(sentence)) {
     owner = clauseOwner(clause, evidence, owner);
-    if (!clauseBelongsToCurrentEntity(owner, evidence)) continue;
+    if (!clauseBelongsToCurrentEntity(owner, evidence, clause)) continue;
     if (isNonVisualClause(clause)) continue;
     for (const field of matchedFields(clause, patterns)) {
       fields.add(field);
@@ -379,7 +422,7 @@ function fieldSummary<Field extends string>(
     for (const clause of splitClauses(item.text)) {
       owner = clauseOwner(clause, item, owner);
       if (!matchedFields(clause, patterns).includes(field)) continue;
-      if (!clauseBelongsToCurrentEntity(owner, item)) continue;
+      if (!clauseBelongsToCurrentEntity(owner, item, clause)) continue;
       if (isNonVisualClause(clause)) continue;
       result.push(clause.replace(/[。！？!?，,；;、]+$/u, '').trim());
     }
@@ -405,7 +448,7 @@ function fieldSummaryWithChapters<Field extends string>(
     for (const clause of splitClauses(item.text)) {
       owner = clauseOwner(clause, item, owner);
       if (!matchedFields(clause, patterns).includes(field)) continue;
-      if (!clauseBelongsToCurrentEntity(owner, item)) continue;
+      if (!clauseBelongsToCurrentEntity(owner, item, clause)) continue;
       if (isNonVisualClause(clause)) continue;
       const cleaned = clause.replace(/[。！？!?，,；;、]+$/u, '').trim();
       if (!cleaned) continue;

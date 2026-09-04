@@ -25,10 +25,10 @@ export async function locationRoutes(fastify: FastifyInstance) {
       return sendBookNotFound(reply);
     }
 
-    // reviewBucket=MAIN|LOW_CONFIDENCE|REJECTED；confidence=low 保留为兼容别名。
+    // reviewBucket=MAIN|LOW_CONFIDENCE|REJECTED|ALL；confidence=low 保留为兼容别名。
     const bucket = parseReviewBucket({ reviewBucket, confidence });
     if (!bucket) {
-      return reply.status(400).send({ error: 'reviewBucket 必须为 MAIN、LOW_CONFIDENCE 或 REJECTED' });
+      return reply.status(400).send({ error: 'reviewBucket 必须为 MAIN、LOW_CONFIDENCE、REJECTED 或 ALL' });
     }
 
     const parsedLimit = limit ? Math.min(Math.max(Number(limit) || 0, 1), 500) : undefined;

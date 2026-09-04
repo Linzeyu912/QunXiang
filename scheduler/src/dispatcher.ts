@@ -309,6 +309,14 @@ export class TaskDispatcher {
     }
     for (const bookId of books) {
       try {
+        // 孤儿 ExtractionSession 同样要收敛：任务已按孤儿标失败，但活动会话
+        //（QUEUED/RUNNING/PAUSED…）若不落终态，前端会永远轮询"当前运行进行中"，
+        // 且「一书一活动运行」约束会让重新提取持续 409（历史 bug）。
+        const orphanSession = await ExtractionSessionRepository.findActiveByBook(bookId) as { id: string } | null;
+        if (orphanSession) {
+          await ExtractionSessionRepository.markFailed(orphanSession.id, '服务重启导致运行中断');
+          console.log(`[调度器] 已收敛孤立运行会话 ${orphanSession.id}（书籍 ${bookId}）`);
+        }
         const tasks = await TaskRepository.findByBookId(bookId);
         const reviewerDone = tasks.some((t) => t.agentType === 'reviewer' && t.status === 'completed');
         const status = reviewerDone ? 'EXTRACTED' : 'FAILED';
@@ -562,10 +570,19 @@ export class TaskDispatcher {
       }
 
       // Pipeline completed successfully
-      await writePipelineFinalSummary(task.bookId, task.payload, result);
+      // 先收敛运行/书籍状态并广播完成事件，再落盘最终摘要。stage_complete(reviewer)
+      // 一到前端就显示"提取完成"并跳转审核页；若此处先做十几个产物文件的全量
+      // 读写（读库 + stringify + 对象存储双写），同进程的实体/产物接口会被
+      // 挤慢，用户在审核页长时间看到空列表、空提示词（历史 bug）。
       await this.finalizeRun(task.bookId, 'completed');
       await this.finalizePipeline(task.bookId, 'completed');
       eventBus.emit({ type: 'completed', bookId: task.bookId, progress: 100, timestamp: Date.now() });
+      try {
+        await writePipelineFinalSummary(task.bookId, task.payload, result);
+      } catch (err) {
+        // 摘要落盘失败不回滚已完成的运行；前端产物接口会短轮询补齐
+        console.error(`[调度器] 写入最终运行摘要失败（书籍 ${task.bookId}）：`, err);
+      }
       return task.id;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);

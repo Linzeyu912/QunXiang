@@ -146,6 +146,15 @@ export async function writePipelineFinalSummary(
   const filePath = join(finalDir, 'run-summary.json');
 
   const runSummaryBody = JSON.stringify(summary, null, 2) + '\n';
+
+  // Write final entity results to output/{dirName}/entities/ (from DB = truly final,
+  // after validation + resolution). Events come from the payload (preserved through
+  // the pipeline from the extractor's prescan result).
+  await writeEntityOutput(bookId, dirName, bookTitle, reviewerPayload, outputRoot);
+
+  // run-summary.json 必须最后写：产物接口以它判定该 run "available"。若先写它，
+  // entities/*.json（含提示词）还在写入时前端就会拿到"available 但提示词为空"
+  // 的响应并被 react-query 缓存住，表现为"提取完成了，提示词却迟迟不出现"。
   await mkdir(finalDir, { recursive: true });
   await writeFile(filePath, runSummaryBody, 'utf-8');
   // 双写到对象存储 + BookArtifact（logicalPath 不含 runDir，最新 run 覆盖）。
@@ -156,11 +165,6 @@ export async function writePipelineFinalSummary(
     body: runSummaryBody,
     mime: 'application/json',
   });
-
-  // Write final entity results to output/{dirName}/entities/ (from DB = truly final,
-  // after validation + resolution). Events come from the payload (preserved through
-  // the pipeline from the extractor's prescan result).
-  await writeEntityOutput(bookId, dirName, bookTitle, reviewerPayload, outputRoot);
 
   return filePath;
 }

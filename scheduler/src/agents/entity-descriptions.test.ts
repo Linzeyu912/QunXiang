@@ -196,6 +196,87 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(hanLi.fields.temperament).toContain('神色平静');
   });
 
+  it('does not attribute garments merely mentioned but never worn by the character', () => {
+    const packs = extractCharacterDescriptionPacks(
+      [{
+        name: '萧炎',
+        aliases: [],
+        description: '萧家少年。',
+        confidence: 0.9,
+        status: 'PENDING',
+        chapterAppearances: [1],
+        mentionCount: 5,
+        dialogueCount: 0,
+        coCharacters: [],
+        outfits: [],
+      }],
+      [{
+        index: 1,
+        content: '萧炎想起母亲留下的红裙，眼眶微红。萧炎走进成衣铺，柜台里摆着一件月白长裙，他并没有买。',
+      }]
+    );
+
+    // 遗物（母亲的红裙）与摆卖商品（柜台里的长裙）都只是"被提及"，
+    // 角色从未穿过，不得计入其服饰证据。
+    expect(packs[0].fields.clothing).not.toContain('红裙');
+    expect(packs[0].fields.clothing).not.toContain('月白长裙');
+  });
+
+  it('still counts garments the character personally wears, including borrowed ones', () => {
+    const packs = extractCharacterDescriptionPacks(
+      [{
+        name: '萧炎',
+        aliases: [],
+        description: '萧家少年。',
+        confidence: 0.9,
+        status: 'PENDING',
+        chapterAppearances: [1],
+        mentionCount: 5,
+        dialogueCount: 0,
+        coCharacters: [],
+        outfits: [],
+      }],
+      [{
+        index: 1,
+        content: '夜里降温，萧炎穿上母亲留下的旧衣衫，继续守在炉边。',
+      }]
+    );
+
+    // "穿上"是本人穿着动作：即使是他人衣物，穿着时的视觉形象成立，算该角色服饰
+    expect(packs[0].fields.clothing).toContain('旧衣衫');
+  });
+
+  it('keeps description evidence for a garment extracted as an item entity', () => {
+    const packs = extractItemDescriptionPacks(
+      [{
+        name: '红嫁衣',
+        aliases: [],
+        description: '母亲遗物。',
+        confidence: 0.8,
+        status: 'PENDING',
+        importanceScore: 0.7,
+        tier: 'supporting',
+        storyScore: 0.7,
+        productionScore: 0.6,
+        pillarCausal: 0.5,
+        pillarUniqueness: 0.5,
+        pillarTransition: 0.4,
+        mentionCount: 2,
+        firstChapter: 1,
+        lastChapter: 1,
+        chapterAppearances: [1],
+        owners: [],
+      }],
+      [{
+        index: 1,
+        content: '母亲留下的红嫁衣由上好绸缎裁成，边缘绣着金线。',
+      }]
+    );
+
+    // 目标实体本身就是服饰：归属守卫不得把它的自我描述句排除掉
+    expect(packs[0].fields.material).toContain('绸缎');
+  });
+
   it('extracts source-backed item visual fields without mixing other props', () => {
     const packs = extractItemDescriptionPacks(
       [{

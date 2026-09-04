@@ -109,8 +109,11 @@ export function EntityReviewPage({ type }: Props) {
   const category = sp.get('category') ?? undefined;
   const selectedId = sp.get('sel') ?? undefined;
 
+  // 缺省集合 MAIN 会排除已拒绝实体，审核页显式用 ALL：「全部状态」才包含已拒绝，
+  // 且与 待审核/已通过/已拒绝 三个单项筛选构成完整并集（低置信度待审仍由低置信度库承接）。
   const query = useEntities(type, bookId, {
     status,
+    reviewBucket: 'ALL',
     category: type === 'item' ? category : undefined,
   });
   const update = useUpdateEntity(type, bookId);

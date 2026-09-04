@@ -28,7 +28,7 @@ const KEYS: Record<EntityType, string> = {
 
 export const entitiesKey = {
   all: (bookId: string) => ['entities', bookId] as const,
-  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string; confidence?: 'low'; reviewBucket?: 'MAIN' | 'LOW_CONFIDENCE' | 'REJECTED' }) => {
+  list: (type: EntityType, bookId: string, filters?: { status?: EntityStatus; tier?: Tier; category?: string; confidence?: 'low'; reviewBucket?: 'MAIN' | 'LOW_CONFIDENCE' | 'REJECTED' | 'ALL' }) => {
     // 将 filters 序列化为稳定字符串，避免对象引用变化导致缓存键不稳定
     const filterKey = filters ? JSON.stringify(filters) : '';
     return ['entities', bookId, type, filterKey] as const;
@@ -97,8 +97,8 @@ interface ListParams {
   category?: string;
   /** 只取低置信度待审核实体（低置信度库，兼容别名） */
   confidence?: 'low';
-  /** 审核集合：主列表 / 低置信度库 / 已拒绝列表（新参数） */
-  reviewBucket?: 'MAIN' | 'LOW_CONFIDENCE' | 'REJECTED';
+  /** 审核集合：主列表 / 低置信度库 / 已拒绝列表 / 全部状态（ALL 含已拒绝，供审核页「全部状态」使用） */
+  reviewBucket?: 'MAIN' | 'LOW_CONFIDENCE' | 'REJECTED' | 'ALL';
 }
 
 function buildQuery(bookId: string, params?: ListParams): string {
