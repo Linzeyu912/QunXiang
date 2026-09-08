@@ -1,47 +1,31 @@
 ---
+created: 2026-07-09
+updated: 2026-09-08
 tags:
-  - Entity group
-  - Docs directory
-updated: 2026-07-13
+  - 文档目录
+  - 群像
 ---
 
-# 📁 docs · Entity Group Documentation Directory
+# docs · 群像产品文档目录
 
-Informational documents for the entity group (research / plans / workflows / design / progress) belong in this directory. Engineering code lives in other repository directories (`api/` `web/` `agent/` `core/` `entity-prescan/`, etc.) and is not placed here.
+本目录保存群像集成后的设计、部署与验证资料。完整实体研发以 YingHe-entity 为权威来源，故事策划以 YingHe-story 为权威来源，不能把随代码继承的研发资料视为另一份权威来源。
 
-The entity group is also responsible for the production of digital assets and images such as characters, scenes, and props. Cross-group asset schemas, visual-setting rules, generation flows, and quality standards go in `docs/`; specific runtime artifacts and images stay in the formal run archive and are not dumped directly into the documentation directory.
+## 导航
 
-## 📂 Current Structure
-
-This repository's docs have historically been kept **flat**; the current categories are:
-
-| File / Directory | Category |
+| 路径 | 内容 |
 | --- | --- |
-| `extraction-progress-research-report.md`, `web-frontend-research-report.md` | Research |
-| `ENTITY_PRESCAN_FLOW.md`, `pipeline-flowchart.md`, `pipeline-flowchart.html` | Workflow / Flow |
-| `entity-function-modules.canvas` | Workflow |
-| `PROJECT_STATUS.md` | Progress |
-| `web-story-arcs-frontend-design.md`, `web-extraction-artifacts-frontend.md` | Design |
-| `superpowers/plans/` | Phase plans |
-| `superpowers/specs/` | Design |
+| [根 README](../README.md) | 当前定位、进展、运行与验证入口 |
+| [ENTITY_PRESCAN_FLOW.md](ENTITY_PRESCAN_FLOW.md) | 预扫描流程 |
+| `superpowers/plans/`、`superpowers/specs/`、`superpowers/evidence/` | 阶段计划、设计和验证证据，以各文档日期与状态为准 |
+| `research/`、`plans/`、`workflows/`、`specs/` | 新增调研、计划、流程与设计的归档位置 |
+| [文档规范](文档规范.md)、[仓库管理规范](仓库管理规范.md) | 格式、中文约定、协作与 LFS 规则 |
 
-## 📂 Reserved Subdirectories (new content goes here)
+历史扁平文件保留原路径，不为整理目录破坏交叉引用；阶段报告不能替代根 README 的最新代码进展。
 
-To align with the unified four-repository convention, new documents are recommended to be filed into the following subdirectories (empty directories already created):
+## 跨组交接
 
-| Subdirectory | Content | Category tag |
-| --- | --- | --- |
-| `research/` | Tool / technology / solution research reports | `Research` |
-| `plans/` | Implementation plans, weekly plans, milestones | `Phase plans` |
-| `workflows/` | Flowcharts, Obsidian Canvas, flowchart | `Workflow` |
-| `specs/` | Technical design specs, data contracts | `Design` |
-
-> ⚠️ **Existing flat files are not relocated**: files such as `ENTITY_PRESCAN_FLOW.md` have relative-path cross-references between them, and forcing them into subdirectories would break those references. Just file new documents into the subdirectories.
-
-> This directory is the single source of truth for entity-group engineering documentation and is no longer copied wholesale to the coordination repository. Only research and progress are archived on demand by the information-retention group. Documentation conventions are in [文档规范.md](文档规范.md).
-
-## 🔗 Downstream Delivery
-
-- The story group references entity IDs, evidence snippets, and narrative events.
-- The video group references asset IDs, visual settings, images, prompts, and versions for characters, scenes, and props.
-- Delivery notes must specify the source path or commit to avoid replicating a second authoritative asset set in downstream repositories.
+- 故事组引用实体 ID、证据和版本，负责故事策划。
+- 音频组前期根据人物设定匹配音色，交付描述、样本与角色绑定关系，规划纳入群像人物资产；后期在声影制作链参与音频检查与修正。
+- 视频一组负责剧本和专业分镜，二组引用实体与已确认声音资产完成镜头生成、合成和交付。
+- 音频独立音效制作及已生成视频重新配音范围待确认；情绪对白保留按需先制作、试听确认再生成视频的流程。
+- 跨仓只登记来源仓库、路径、提交号和资产版本，统筹仓库不复制正文与附件。旧档案保留历史日期，不写入新工作。
