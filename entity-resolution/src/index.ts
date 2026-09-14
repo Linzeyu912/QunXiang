@@ -4,11 +4,14 @@ export { isSameName, sameNameDetector } from './detectors/same-name.js';
 export { isAliasMatch, aliasMatchDetector } from './detectors/alias-match.js';
 export {
   chooseCanonicalCharacterName,
+  dropRedundantHonorificAliases,
   implicitCharacterSignalAliases,
   isCollectiveCharacterAlias,
   isGenericCharacterAlias,
   isSafeAliasMatch,
   isSafeSharedAliasMatch,
+  isSurnameStrippedNameVariant,
+  pickCanonicalName,
   sanitizeCharacterAliases,
 } from './detectors/alias-safety.js';
 export { isSameChineseName, normalizeChineseName } from './detectors/same-chinese-name.js';
@@ -16,3 +19,5 @@ export { kinshipNormalize, isKinshipEquivalentName, isKinshipCollectiveName, isK
 export { mergeCharacters } from './merger.js';
 export { buildCharacterMergeCandidates, mergeCharacterRecords } from './review-candidates.js';
 export type { CharacterMergeCandidate, CharacterMergeReason, CharacterReviewSummary } from './review-candidates.js';
+export { MERGE_JUDGE_SYSTEM_PROMPT, calibrateJudgeConfidence, mergeJudgeSchema, summarizeMergeCandidateForPrompt } from './merge-judge.js';
+export type { MergeJudgeVerdict } from './merge-judge.js';

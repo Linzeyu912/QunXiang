@@ -168,14 +168,14 @@ async function llmFuseEntities<T extends {
   mentionCount?: number;
 }>(
   entities: T[],
-  options: { kindLabel: string; kinshipGuard?: boolean; merge?: (a: T, b: T) => T },
+  options: { kindLabel: string; kinshipGuard?: boolean; merge?: (a: T, b: T) => T; llmProfileId?: string },
 ): Promise<{ entities: T[]; judged: number; merged: number; message?: string }> {
   if (entities.length < 2) {
     return { entities, judged: 0, merged: 0 };
   }
   let provider: Awaited<ReturnType<typeof getDefaultProvider>>;
   try {
-    provider = await getDefaultProvider();
+    provider = await getDefaultProvider(options.llmProfileId);
     if (!(await provider.isConfigured())) {
       return { entities, judged: 0, merged: 0, message: '模型服务未配置，跳过 LLM 融合' };
     }
@@ -269,7 +269,7 @@ async function llmFuseEntities<T extends {
 }
 
 /** 道具分类补救：批量把 other 道具交 LLM 归类（失败静默跳过）。 */
-async function llmClassifyItems(items: PipelineItem[]): Promise<{ items: PipelineItem[]; classified: number }> {
+async function llmClassifyItems(items: PipelineItem[], llmProfileId?: string): Promise<{ items: PipelineItem[]; classified: number }> {
   const pending = items
     .map((item, index) => ({ item, index }))
     .filter(({ item }) => !item.category || item.category === 'other');
@@ -277,7 +277,7 @@ async function llmClassifyItems(items: PipelineItem[]): Promise<{ items: Pipelin
 
   let provider: Awaited<ReturnType<typeof getDefaultProvider>>;
   try {
-    provider = await getDefaultProvider();
+    provider = await getDefaultProvider(llmProfileId);
     if (!(await provider.isConfigured())) return { items, classified: 0 };
   } catch {
     return { items, classified: 0 };
@@ -310,7 +310,7 @@ async function llmClassifyItems(items: PipelineItem[]): Promise<{ items: Pipelin
 }
 
 export async function executeResolution(payload: unknown): Promise<ResolutionResult> {
-  const { characters, locations = [], items = [], characterDescriptions, itemDescriptions, locationDescriptions } = payload as ResolutionPayload;
+  const { characters, locations = [], items = [], characterDescriptions, itemDescriptions, locationDescriptions, llmProfileId } = payload as ResolutionPayload & { llmProfileId?: string };
 
   const result = resolve(characters);
 
@@ -327,25 +327,26 @@ export async function executeResolution(payload: unknown): Promise<ResolutionRes
       kindLabel: '角色',
       kinshipGuard: true,
       merge: fuseMergeCharacters,
+      llmProfileId,
     });
     fusedCharacters = charFusion.entities;
     judged += charFusion.judged;
     merged += charFusion.merged;
     if (charFusion.message) messages.push(charFusion.message);
 
-    const locFusion = await llmFuseEntities(fusedLocations, { kindLabel: '场景' });
+    const locFusion = await llmFuseEntities(fusedLocations, { kindLabel: '场景', llmProfileId });
     fusedLocations = locFusion.entities;
     judged += locFusion.judged;
     merged += locFusion.merged;
     if (locFusion.message) messages.push(locFusion.message);
 
-    const itemFusion = await llmFuseEntities(fusedItems, { kindLabel: '道具' });
+    const itemFusion = await llmFuseEntities(fusedItems, { kindLabel: '道具', llmProfileId });
     fusedItems = itemFusion.entities;
     judged += itemFusion.judged;
     merged += itemFusion.merged;
     if (itemFusion.message) messages.push(itemFusion.message);
 
-    const classifyResult = await llmClassifyItems(fusedItems);
+    const classifyResult = await llmClassifyItems(fusedItems, llmProfileId);
     fusedItems = classifyResult.items;
     classified = classifyResult.classified;
   } catch (error) {

@@ -120,6 +120,9 @@ importers:
       '@qunxiang/schemas':
         specifier: workspace:*
         version: link:../schemas
+      zod:
+        specifier: ^3.25.76
+        version: 3.25.76
 
   exporters:
     dependencies:
@@ -237,6 +240,9 @@ importers:
       '@qunxiang/core':
         specifier: workspace:*
         version: link:../core
+      '@qunxiang/entity-resolution':
+        specifier: workspace:*
+        version: link:../entity-resolution
       '@qunxiang/import':
         specifier: workspace:*
         version: link:../import
@@ -1595,7 +1601,6 @@ packages:
     resolution: {integrity: sha512-1SiZbzwdkaDURsew/tSOrooKiYy7EQGT6m8ufavAi9NEyQb/6VuIxFXAL1fqa4iZe3g4NbNk4P7J32z2tw5Mgg==}
     cpu: [riscv64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-musl@4.62.2':
     resolution: {integrity: sha512-nQts12zJ3NQRoE6uYljOH89v7szzLDvG2JD/vsX+vGXU8w/At1GowTZ5/7qeFQ8m7L55rpR8Okugnuo5bgjy2Q==}
@@ -1619,7 +1624,6 @@ packages:
     resolution: {integrity: sha512-uNN83XxQrRAh/w0/pmAfibcwyb6YWt4gP+dpnQKPVJshAloQ785ii8CT8ZCIxkGg9opVsvAlGhFitSm6D1Jjpg==}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-openbsd-x64@4.62.2':
     resolution: {integrity: sha512-srjEIxSH3LRnJN6THczDHWQplqEMFiAJrTab0msUryh9kwNpkICf3Ea6q6MN/2cZwRFUNx5w+h6Hpi4QuHS6Zg==}

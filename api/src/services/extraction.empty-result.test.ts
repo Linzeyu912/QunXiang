@@ -6,6 +6,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 vi.mock('@qunxiang/llm', () => ({
   getDefaultProvider: vi.fn(),
   getApiKeyCount: vi.fn(() => 1),
+  getTotalApiKeyCount: vi.fn(() => 1),
+  getRuntimeProfile: vi.fn(() => undefined),
+  normalizeApiKeys: vi.fn(() => []),
   LLM_PROVIDERS: {},
 }));
 

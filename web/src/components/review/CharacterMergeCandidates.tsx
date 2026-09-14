@@ -98,16 +98,35 @@ export function CharacterMergeCandidates({ bookId }: { bookId: string }) {
   // 本轮会话是否已生成过模型建议：已生成但卡片无建议 = 模型判不确定/低置信，需人工判断
   const [judgeRan, setJudgeRan] = useState(false);
 
-  if (!candidates.data?.candidates.length) return null;
+  const data = candidates.data;
+  // 候选为空且没有自动合并记录时不渲染；只剩自动合并提示时也要展示
+  if (!data || (!data.candidates.length && !data.autoMergedCount)) return null;
 
   const suggestionBy = new Map(
-    (candidates.data.suggestions ?? []).map((s) => [`${s.primaryId}:${s.secondaryId}`, s]),
+    (data.suggestions ?? []).map((s) => [`${s.primaryId}:${s.secondaryId}`, s]),
   );
+
+  // 无待确认候选：只显示最终审核的自动合并摘要
+  if (!data.candidates.length) {
+    return (
+      <section className="rounded-md border border-emerald-500/40 bg-emerald-500/10 p-3 text-sm">
+        <h3 className="font-medium">最终审核已完成</h3>
+        <p className="mt-1 text-xs text-muted-foreground">
+          提取收尾时模型已自动合并 {data.autoMergedCount} 对高置信同一角色（正式全名保留为正名），详情可在审核历史中查看。
+        </p>
+      </section>
+    );
+  }
 
   return (
     <section className="space-y-3 rounded-md border border-warning/40 bg-warning/10 p-3">
+      {(data.autoMergedCount ?? 0) > 0 && (
+        <p className="rounded border border-emerald-500/40 bg-emerald-500/10 p-2 text-xs text-emerald-700 dark:text-emerald-400">
+          提取收尾时模型已自动合并 {data.autoMergedCount} 对高置信同一角色（正式全名保留为正名），无需再处理；以下为证据不足、需人工确认的候选。
+        </p>
+      )}
       <div>
-        <h3 className="font-medium">疑似重复角色（{candidates.data.candidates.length}）</h3>
+        <h3 className="font-medium">疑似重复角色（{data.candidates.length}）</h3>
         <p className="text-xs text-muted-foreground">
           模型只提供建议，不会自动合并或排除；请逐对人工确认。
         </p>
@@ -138,7 +157,7 @@ export function CharacterMergeCandidates({ bookId }: { bookId: string }) {
         生成模型建议
       </Button>
 
-      {candidates.data.candidates.map((candidate) => (
+      {data.candidates.map((candidate) => (
         <div
           key={`${candidate.primaryId}-${candidate.secondaryId}`}
           className="space-y-2 rounded border bg-background p-3 text-sm"

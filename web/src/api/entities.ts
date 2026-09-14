@@ -56,7 +56,7 @@ export interface MergeSuggestion {
 export function useCharacterMergeCandidates(bookId: string | undefined) {
   return useQuery({
     queryKey: bookId ? entitiesKey.mergeCandidates(bookId) : ['character-merge-candidates', 'none'],
-    queryFn: () => apiFetch<{ candidates: CharacterMergeCandidate[]; suggestions: MergeSuggestion[] }>(`/characters/merge-candidates?bookId=${encodeURIComponent(bookId!)}`),
+    queryFn: () => apiFetch<{ candidates: CharacterMergeCandidate[]; suggestions: MergeSuggestion[]; autoMergedCount?: number }>(`/characters/merge-candidates?bookId=${encodeURIComponent(bookId!)}`),
     enabled: !!bookId,
   });
 }

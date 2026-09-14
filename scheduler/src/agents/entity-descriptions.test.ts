@@ -6,8 +6,8 @@ import {
 } from './entity-descriptions.js';
 
 describe('extractCharacterDescriptionPacks', () => {
-  it('extracts source-backed character visual fields without inventing missing details', () => {
-    const packs = extractCharacterDescriptionPacks(
+  it('extracts source-backed character visual fields without inventing missing details', async () => {
+    const packs = await extractCharacterDescriptionPacks(
       [{
         name: '萧炎',
         aliases: ['炎儿'],
@@ -56,8 +56,8 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(packs[0].sourceDescription).not.toContain('黑发');
   });
 
-  it('marks source coverage as none when the original text has no descriptive evidence', () => {
-    const packs = extractCharacterDescriptionPacks(
+  it('marks source coverage as none when the original text has no descriptive evidence', async () => {
+    const packs = await extractCharacterDescriptionPacks(
       [{
         name: '纳兰嫣然',
         aliases: [],
@@ -88,8 +88,8 @@ describe('extractCharacterDescriptionPacks', () => {
     ]);
   });
 
-  it('does not assign another named character appearance clause to the current character', () => {
-    const packs = extractCharacterDescriptionPacks(
+  it('does not assign another named character appearance clause to the current character', async () => {
+    const packs = await extractCharacterDescriptionPacks(
       [
         {
           name: '萧炎',
@@ -127,8 +127,8 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(xiaoYan?.fields.clothing).toContain('萧炎身穿黑色衣衫');
   });
 
-  it('does not inherit unnamed descriptive clauses from another character in the same sentence', () => {
-    const packs = extractCharacterDescriptionPacks(
+  it('does not inherit unnamed descriptive clauses from another character in the same sentence', async () => {
+    const packs = await extractCharacterDescriptionPacks(
       [
         {
           name: '萧炎',
@@ -169,8 +169,8 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(xunEr?.fields.temperament).toContain('气质淡雅从容');
   });
 
-  it('does not treat a character observing someone else as the observed appearance', () => {
-    const packs = extractCharacterDescriptionPacks(
+  it('does not treat a character observing someone else as the observed appearance', async () => {
+    const packs = await extractCharacterDescriptionPacks(
       [{
         name: '韩立',
         aliases: [],
@@ -196,8 +196,8 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(hanLi.fields.temperament).toContain('神色平静');
   });
 
-  it('does not attribute garments merely mentioned but never worn by the character', () => {
-    const packs = extractCharacterDescriptionPacks(
+  it('does not attribute garments merely mentioned but never worn by the character', async () => {
+    const packs = await extractCharacterDescriptionPacks(
       [{
         name: '萧炎',
         aliases: [],
@@ -222,8 +222,8 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(packs[0].fields.clothing).not.toContain('月白长裙');
   });
 
-  it('still counts garments the character personally wears, including borrowed ones', () => {
-    const packs = extractCharacterDescriptionPacks(
+  it('still counts garments the character personally wears, including borrowed ones', async () => {
+    const packs = await extractCharacterDescriptionPacks(
       [{
         name: '萧炎',
         aliases: [],
@@ -246,8 +246,8 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(packs[0].fields.clothing).toContain('旧衣衫');
   });
 
-  it('keeps description evidence for a garment extracted as an item entity', () => {
-    const packs = extractItemDescriptionPacks(
+  it('keeps description evidence for a garment extracted as an item entity', async () => {
+    const packs = await extractItemDescriptionPacks(
       [{
         name: '红嫁衣',
         aliases: [],
@@ -277,8 +277,8 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(packs[0].fields.material).toContain('绸缎');
   });
 
-  it('extracts source-backed item visual fields without mixing other props', () => {
-    const packs = extractItemDescriptionPacks(
+  it('extracts source-backed item visual fields without mixing other props', async () => {
+    const packs = await extractItemDescriptionPacks(
       [{
         name: '青木剑',
         aliases: [],
@@ -322,8 +322,8 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(packs[0].missingFields).toContain('condition');
   });
 
-  it('extracts source-backed location scene fields for later visual use', () => {
-    const packs = extractLocationDescriptionPacks(
+  it('extracts source-backed location scene fields for later visual use', async () => {
+    const packs = await extractLocationDescriptionPacks(
       [{
         name: '乌坦城大厅',
         aliases: ['大厅'],
@@ -367,8 +367,8 @@ describe('extractCharacterDescriptionPacks', () => {
     expect(packs[0].sourceDescription).not.toContain('云岚宗山门');
   });
 
-  it('does not use generic or cross-entity aliases when extracting location descriptions', () => {
-    const packs = extractLocationDescriptionPacks(
+  it('does not use generic or cross-entity aliases when extracting location descriptions', async () => {
+    const packs = await extractLocationDescriptionPacks(
       [
         {
           name: '太南谷',

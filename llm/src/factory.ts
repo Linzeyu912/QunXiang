@@ -5,10 +5,12 @@ import { createMockProvider } from './providers/mock.js';
 import { createImageProvider } from './providers/image-custom.js';
 import { LLMError, ProviderNotConfiguredError } from './errors.js';
 import { maskApiKey } from './keyVault.js';
-import type { RuntimeLlmConfig, RuntimeImageConfig } from './configStore.js';
+import type { RuntimeLlmConfig, RuntimeImageConfig, LlmProfile } from './configStore.js';
 import {
   saveConfigToDisk,
   loadConfigFromDisk,
+  loadProfilesFromDisk,
+  saveProfilesToDisk,
   normalizeApiKeys,
   saveImageConfigToDisk,
   loadImageConfigFromDisk,
@@ -59,8 +61,19 @@ let runtimeProviderOverride: 'llm' | 'mock' | 'auto' | undefined = undefined;
 /**
  * Runtime LLM configuration (set via UI, overrides env vars)
  * Priority: runtimeConfig > process.env
+ *
+ * 多档案（profiles）模式下 runtimeConfig 始终镜像「默认档案」，供旧的
+ * status/getApiKeyConfig 等单一配置消费方无感兼容。
  */
 let runtimeConfig: RuntimeLlmConfig | undefined = undefined;
+
+/**
+ * 服务商配置档案列表（多服务商支持）。不同厂商各一个档案；
+ * 每个档案内部可放同厂多个 key 轮询。未启用档案模式时为 undefined。
+ */
+let runtimeProfiles: LlmProfile[] | undefined = undefined;
+/** 默认档案 id（新运行/未显式指定档案时使用） */
+let activeProfileId: string | undefined = undefined;
 
 /**
  * 单例缓存：custom provider 持有 keyCursor/keyHealth 等闭包状态，
@@ -68,17 +81,137 @@ let runtimeConfig: RuntimeLlmConfig | undefined = undefined;
  * resolveProvider 每次都 new createCustomProvider() 会导致状态丢失
  *（游标永远从 0 开始、失败计数永远清零）——多 key 形同虚设。
  *
+ * 按「缓存槽」分键：'active'（默认档案/env）与 'profile:<id>'（指定档案）各自持有
+ * 独立的轮询游标与健康状态，多书并行时不同服务商互不干扰。
+ *
  * 用 Promise 缓存而非实例缓存：多 worker 并发首次调用 getDefaultProvider 时，
  * 同步赋值 in-flight Promise 可避免重复构建。
  */
-let cachedCustomProviderPromise: Promise<LLMProvider> | undefined;
-/** 缓存对应的配置指纹，配置变化即视为缓存失效 */
-let cachedProviderKey: string | undefined;
+interface ProviderCacheEntry {
+  /** 缓存对应的配置指纹，配置变化即视为缓存失效 */
+  fingerprint: string;
+  promise: Promise<LLMProvider>;
+}
+const providerCache = new Map<string, ProviderCacheEntry>();
 
-/** 使缓存的 custom provider 失效；下次 getDefaultProvider 会用最新配置重建。 */
+/** 使全部缓存的 custom provider 失效；下次 getDefaultProvider 会用最新配置重建。 */
 function invalidateProviderCache(): void {
-  cachedCustomProviderPromise = undefined;
-  cachedProviderKey = undefined;
+  providerCache.clear();
+}
+
+/** 获取（或按需创建并缓存）某缓存槽的 custom provider 单例。 */
+function getOrCreateCustomProvider(
+  slot: string,
+  fingerprint: string,
+  factory: () => LLMProvider
+): Promise<LLMProvider> {
+  const cached = providerCache.get(slot);
+  if (cached && cached.fingerprint === fingerprint) {
+    return cached.promise;
+  }
+  // 同步赋值 Promise（createCustomProvider 是同步工厂，包成 resolved Promise）
+  const entry: ProviderCacheEntry = { fingerprint, promise: Promise.resolve(factory()) };
+  providerCache.set(slot, entry);
+  return entry.promise;
+}
+
+/** 把档案转换成 RuntimeLlmConfig 镜像（provider 固定为 custom）。 */
+function profileToRuntimeConfig(profile: LlmProfile): RuntimeLlmConfig {
+  const keys = normalizeApiKeys(profile);
+  return {
+    provider: 'custom',
+    baseUrl: profile.baseUrl,
+    model: profile.model,
+    thinking: profile.thinking,
+    apiKeys: keys.length > 0 ? keys : undefined,
+    apiKey: keys[0],
+  };
+}
+
+/** 档案变化后同步 runtimeConfig 镜像与默认档案指针；档案清空时连镜像一并重置。 */
+function syncActiveFromProfiles(): void {
+  if (!runtimeProfiles || runtimeProfiles.length === 0) {
+    // 空档案列表 = 重置状态（正常运营至少保留一个档案，仅在测试中出现）
+    if (runtimeProfiles && runtimeProfiles.length === 0) runtimeConfig = undefined;
+    return;
+  }
+  if (!activeProfileId || !runtimeProfiles.some((p) => p.id === activeProfileId)) {
+    activeProfileId = runtimeProfiles[0].id;
+  }
+  const active = runtimeProfiles.find((p) => p.id === activeProfileId)!;
+  runtimeConfig = profileToRuntimeConfig(active);
+}
+
+/**
+ * 设置完整档案列表（UI 的 profiles CRUD 入口；整体替换）。
+ * persist=true 时按 v2 格式加密落盘。
+ */
+export function setRuntimeProfiles(
+  profiles: LlmProfile[],
+  nextActiveProfileId: string | undefined,
+  persist: boolean = true
+): void {
+  runtimeProfiles = profiles;
+  activeProfileId = nextActiveProfileId;
+  syncActiveFromProfiles();
+  if (persist) {
+    try {
+      saveProfilesToDisk(runtimeProfiles, activeProfileId ?? null);
+    } catch (err) {
+      console.warn('[factory] Failed to persist profiles:', err instanceof Error ? err.message : String(err));
+    }
+  }
+  invalidateProviderCache();
+}
+
+/** 当前档案列表（未启用档案模式时为 undefined）。 */
+export function getRuntimeProfiles(): LlmProfile[] | undefined {
+  return runtimeProfiles;
+}
+
+/** 默认档案 id。 */
+export function getActiveProfileId(): string | undefined {
+  return activeProfileId;
+}
+
+/** 按 id 取档案；不存在（含档案模式未启用）返回 undefined。 */
+export function getRuntimeProfile(profileId: string): LlmProfile | undefined {
+  return runtimeProfiles?.find((p) => p.id === profileId);
+}
+
+/** 全部档案的脱敏视图（安全下发前端）。 */
+export function getMaskedProfiles(): Array<{
+  id: string;
+  name: string;
+  baseUrl: string;
+  model: string;
+  thinking: string;
+  keyHints: string[];
+  keyCount: number;
+  isActive: boolean;
+}> | undefined {
+  if (!runtimeProfiles) return undefined;
+  return runtimeProfiles.map((profile) => {
+    const keys = normalizeApiKeys(profile);
+    return {
+      id: profile.id,
+      name: profile.name,
+      baseUrl: profile.baseUrl || '',
+      model: profile.model || '',
+      thinking: profile.thinking || '',
+      keyHints: keys.map((k) => maskApiKey(k)),
+      keyCount: keys.length,
+      isActive: profile.id === activeProfileId,
+    };
+  });
+}
+
+/** 全部档案的 key 总数（worker 并发度用；档案模式未启用时退回单配置计数）。 */
+export function getTotalApiKeyCount(): number {
+  if (runtimeProfiles && runtimeProfiles.length > 0) {
+    return runtimeProfiles.reduce((sum, profile) => sum + normalizeApiKeys(profile).length, 0);
+  }
+  return getApiKeyCount();
 }
 
 
@@ -119,10 +252,36 @@ export function setRuntimeConfig(config: Partial<RuntimeLlmConfig>, persist: boo
   }
   if (config.baseUrl !== undefined) runtimeConfig.baseUrl = config.baseUrl;
   if (config.model !== undefined) runtimeConfig.model = config.model;
+  // 思考模式：'' 视为清除（退回 env / 模型默认）
+  if (config.thinking !== undefined) runtimeConfig.thinking = config.thinking || undefined;
+
+  // 档案模式：把这次修改同步进默认档案，保持 runtimeConfig 镜像与档案列表一致
+  if (runtimeProfiles && runtimeProfiles.length > 0 && activeProfileId) {
+    const index = runtimeProfiles.findIndex((p) => p.id === activeProfileId);
+    if (index >= 0) {
+      const current = runtimeProfiles[index];
+      runtimeProfiles[index] = {
+        ...current,
+        baseUrl: config.baseUrl !== undefined ? config.baseUrl : current.baseUrl,
+        model: config.model !== undefined ? config.model : current.model,
+        thinking: config.thinking !== undefined ? (config.thinking || undefined) : current.thinking,
+        apiKeys: config.apiKeys !== undefined
+          ? (config.apiKeys.filter((k) => k && k.trim()).map((k) => k.trim()))
+          : config.apiKey !== undefined
+            ? (config.apiKey ? [config.apiKey] : [])
+            : current.apiKeys,
+      };
+    }
+    syncActiveFromProfiles();
+  }
 
   if (persist) {
     try {
-      saveConfigToDisk(runtimeConfig);
+      if (runtimeProfiles && runtimeProfiles.length > 0) {
+        saveProfilesToDisk(runtimeProfiles, activeProfileId ?? null);
+      } else {
+        saveConfigToDisk(runtimeConfig);
+      }
     } catch (err) {
       console.warn('[factory] Failed to persist config:', err instanceof Error ? err.message : String(err));
     }
@@ -164,7 +323,7 @@ export function getApiKeyCount(): number {
  *
  * keyHint 保留（第一个 key 的 mask，向后兼容）；新增 keyHints（全部 key 的 mask 数组）。
  */
-export function getMaskedConfig(): { provider: string; keyHint: string; keyHints: string[]; baseUrl: string; model: string } | undefined {
+export function getMaskedConfig(): { provider: string; keyHint: string; keyHints: string[]; baseUrl: string; model: string; thinking: string } | undefined {
   if (!runtimeConfig) return undefined;
   const keys = normalizeApiKeys(runtimeConfig);
   return {
@@ -173,14 +332,27 @@ export function getMaskedConfig(): { provider: string; keyHint: string; keyHints
     keyHints: keys.map((k) => maskApiKey(k)),
     baseUrl: runtimeConfig.baseUrl || '',
     model: runtimeConfig.model || '',
+    thinking: runtimeConfig.thinking || '',
   };
 }
 
 /**
  * Load persisted config from disk on startup.
  * Called once during API server initialization.
+ *
+ * v2 多档案文件（或 v1 单配置自动迁移）：加载档案列表并镜像默认档案；
+ * v1 mock 配置：维持旧的 provider 覆盖语义。
  */
 export function loadPersistedConfig(): void {
+  const profileState = loadProfilesFromDisk();
+  if (profileState) {
+    runtimeProfiles = profileState.profiles;
+    activeProfileId = profileState.activeProfileId ?? profileState.profiles[0]?.id;
+    syncActiveFromProfiles();
+    runtimeProviderOverride = 'llm';
+    return;
+  }
+
   const persisted = loadConfigFromDisk();
   if (persisted) {
     runtimeConfig = persisted;
@@ -211,45 +383,56 @@ export async function getRuntimeProviderName(): Promise<string> {
 }
 
 /**
- * 获取（或按需创建并缓存）custom provider 单例。
- * 同一配置指纹命中缓存 → 返回同一实例，使 custom.ts 内的 keyCursor/keyHealth
- * 跨调用保留；指纹变化或缓存被 invalidateProviderCache 清空则重建。
- *
- * 用 in-flight Promise 缓存：多 worker 并发首次调用时，Promise 工厂同步赋值，
- * 后续调用 await 同一个 Promise，避免重复构建。
- */
-function getOrCreateCustomProvider(
-  key: string,
-  factory: () => LLMProvider
-): Promise<LLMProvider> {
-  if (cachedProviderKey === key && cachedCustomProviderPromise) {
-    return cachedCustomProviderPromise;
-  }
-  // 同步赋值 Promise（createCustomProvider 是同步工厂，包成 resolved Promise）
-  cachedProviderKey = key;
-  cachedCustomProviderPromise = Promise.resolve(factory());
-  return cachedCustomProviderPromise;
-}
-
-/**
  * Internal: resolve provider from runtime config or environment variables.
- * Priority: runtimeConfig > process.env > LLM_MOCK_ENABLED > error
+ * Priority: 指定档案 > runtimeConfig(默认档案) > process.env > LLM_MOCK_ENABLED > error
  */
-async function resolveProvider(): Promise<LLMProvider> {
+async function resolveProvider(profileId?: string): Promise<LLMProvider> {
+  // 0. 指定档案（按书绑定服务商）：档案不存在时回退默认档案并告警，不中断在途运行
+  if (profileId && runtimeProfiles && runtimeProfiles.length > 0) {
+    const profile = runtimeProfiles.find((p) => p.id === profileId);
+    if (profile && profile.id !== activeProfileId) {
+      const keys = normalizeApiKeys(profile);
+      const fingerprint = JSON.stringify({
+        keys,
+        baseUrl: profile.baseUrl,
+        model: profile.model,
+        thinking: profile.thinking,
+      });
+      return getOrCreateCustomProvider(`profile:${profile.id}`, fingerprint, () =>
+        createCustomProvider({
+          apiKeys: keys,
+          baseUrl: profile.baseUrl,
+          model: profile.model,
+          thinking: profile.thinking,
+        })
+      );
+    }
+    if (!profile) {
+      console.warn(`[factory] LLM 配置档案 ${profileId} 不存在（可能已被删除），回退默认档案`);
+    }
+    // 命中默认档案 → 走下方 active 路径（共享同一个缓存槽）
+  }
+
   // 1. Check runtime config first
   if (runtimeConfig) {
     switch (runtimeConfig.provider) {
       case 'custom': {
         // 多 key：用 normalizeApiKeys 合并 apiKeys/apiKey，传给 provider 轮询
         const keys = normalizeApiKeys(runtimeConfig);
-        // 指纹：keys+baseUrl+model。setRuntimeConfig 已会 invalidate，这里指纹主要用于
+        // 指纹：keys+baseUrl+model+thinking。setRuntimeConfig 已会 invalidate，这里指纹主要用于
         // 防御（如直接改了 runtimeConfig 对象的极端情况）。
-        const fingerprint = JSON.stringify({ keys, baseUrl: runtimeConfig.baseUrl, model: runtimeConfig.model });
-        return getOrCreateCustomProvider(fingerprint, () =>
+        const fingerprint = JSON.stringify({
+          keys,
+          baseUrl: runtimeConfig.baseUrl,
+          model: runtimeConfig.model,
+          thinking: runtimeConfig.thinking,
+        });
+        return getOrCreateCustomProvider('active', fingerprint, () =>
           createCustomProvider({
             apiKeys: keys,
             baseUrl: runtimeConfig!.baseUrl,
             model: runtimeConfig!.model,
+            thinking: runtimeConfig!.thinking,
           })
         );
       }
@@ -265,7 +448,7 @@ async function resolveProvider(): Promise<LLMProvider> {
     switch (envProvider) {
       case 'custom':
         // env 运行期不变，用固定指纹；首次构建后常驻（直到 setter 失效）
-        return getOrCreateCustomProvider('env-custom', () => createCustomProvider());
+        return getOrCreateCustomProvider('env-custom', 'env-custom', () => createCustomProvider());
       case 'mock':
         return createMockProvider();
       case 'openai':
@@ -296,14 +479,17 @@ async function resolveProvider(): Promise<LLMProvider> {
  * 2. LLM_PROVIDER environment variable
  * 3. Explicit LLM_MOCK_ENABLED
  * 4. Error if no API provider is configured
+ *
+ * @param profileId 可选：按档案取 provider（书籍运行绑定的服务商）；
+ *                  缺省或档案不存在时用默认档案/env 配置。
  */
-export async function getDefaultProvider(): Promise<LLMProvider> {
+export async function getDefaultProvider(profileId?: string): Promise<LLMProvider> {
   // Runtime override takes highest priority
   if (runtimeProviderOverride === 'mock') {
     return createMockProvider();
   }
   // 'llm' or undefined — use runtime/env provider config
-  return resolveProvider();
+  return resolveProvider(profileId);
 }
 
 /**

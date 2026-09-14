@@ -77,8 +77,8 @@ export interface ImageProvider {
   }): Promise<{ buffer: Buffer; mime: string }>;
 }
 
-export { createProvider, getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig, getDefaultImageProvider, createImageProvider, isImageProviderAvailable, setRuntimeImageConfig, getRuntimeImageConfig, getMaskedImageConfig, loadPersistedImageConfig } from './factory.js';
-export type { RuntimeImageConfig } from './configStore.js';
+export { createProvider, getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig, getDefaultImageProvider, createImageProvider, isImageProviderAvailable, setRuntimeImageConfig, getRuntimeImageConfig, getMaskedImageConfig, loadPersistedImageConfig, setRuntimeProfiles, getRuntimeProfiles, getActiveProfileId, getRuntimeProfile, getMaskedProfiles, getTotalApiKeyCount } from './factory.js';
+export type { RuntimeImageConfig, LlmProfile } from './configStore.js';
 export { LLMError, ProviderNotConfiguredError } from './errors.js';
 export { maskApiKey } from './keyVault.js';
 export { normalizeApiKeys } from './configStore.js';

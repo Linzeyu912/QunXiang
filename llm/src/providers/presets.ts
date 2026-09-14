@@ -26,8 +26,10 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     name: 'DeepSeek（深度求索）',
     baseUrl: 'https://api.deepseek.com/v1',
     models: [
-      { id: 'deepseek-chat', name: 'DeepSeek Chat (V3)' },
-      { id: 'deepseek-reasoner', name: 'DeepSeek Reasoner (R1)' },
+      { id: 'deepseek-chat', name: 'DeepSeek Chat（推荐，自动指向最新 V4）' },
+      { id: 'deepseek-v4-pro', name: 'DeepSeek V4 Pro（最强）' },
+      { id: 'deepseek-v4-flash', name: 'DeepSeek V4 Flash（快速，高性价比）' },
+      { id: 'deepseek-reasoner', name: 'DeepSeek Reasoner（深度推理）' },
     ],
   },
   {
@@ -35,10 +37,10 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     name: '阿里通义千问',
     baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
     models: [
-      { id: 'qwen-plus', name: 'Qwen Plus（推荐）' },
-      { id: 'qwen-turbo', name: 'Qwen Turbo（快速）' },
-      { id: 'qwen-max', name: 'Qwen Max（最强）' },
-      { id: 'qwen-long', name: 'Qwen Long（长文本）' },
+      { id: 'qwen3.7-plus', name: 'Qwen3.7 Plus（推荐，均衡，1M 上下文）' },
+      { id: 'qwen3.8-max', name: 'Qwen3.8 Max（最强）' },
+      { id: 'qwen3.8-flash', name: 'Qwen3.8 Flash（快速）' },
+      { id: 'qwen-long', name: 'Qwen Long（长文本，经济）' },
     ],
   },
   {
@@ -46,9 +48,9 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     name: '智谱 AI（GLM）',
     baseUrl: 'https://open.bigmodel.cn/api/paas/v4',
     models: [
-      { id: 'glm-4-plus', name: 'GLM-4 Plus（推荐）' },
-      { id: 'glm-4-flash', name: 'GLM-4 Flash（快速）' },
-      { id: 'glm-4-long', name: 'GLM-4 Long（长文本）' },
+      { id: 'glm-5.3', name: 'GLM-5.3（推荐，旗舰）' },
+      { id: 'glm-5.3-flash', name: 'GLM-5.3 Flash（快速，低价）' },
+      { id: 'glm-5.2', name: 'GLM-5.2（上一代旗舰）' },
     ],
   },
   {
@@ -56,9 +58,17 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     name: 'Moonshot（Kimi）',
     baseUrl: 'https://api.moonshot.cn/v1',
     models: [
-      { id: 'moonshot-v1-8k', name: 'Kimi 8K' },
-      { id: 'moonshot-v1-32k', name: 'Kimi 32K' },
-      { id: 'moonshot-v1-128k', name: 'Kimi 128K（长文本）' },
+      { id: 'kimi-k3', name: 'Kimi K3（旗舰，1M 上下文，需充值解锁）' },
+      { id: 'kimi-k2.6', name: 'Kimi K2.6（推荐，262K 上下文）' },
+      { id: 'kimi-k2.5', name: 'Kimi K2.5' },
+    ],
+  },
+  {
+    id: 'kimi-token-plan',
+    name: 'Kimi 订阅（Token Plan 专属端点）',
+    baseUrl: 'https://api.kimi.com/coding/v1',
+    models: [
+      { id: 'kimi-k3', name: 'Kimi K3（旗舰，1M 上下文）' },
     ],
   },
   {
@@ -85,8 +95,9 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     name: 'MiniMax（国内）',
     baseUrl: 'https://api.minimaxi.com/v1',
     models: [
-      { id: 'MiniMax-M2', name: 'MiniMax M2' },
-      { id: 'abab6.5s-chat', name: 'ABAB 6.5S' },
+      { id: 'MiniMax-M2.7', name: 'MiniMax M2.7（推荐，1M 上下文）' },
+      { id: 'MiniMax-M2.7-highspeed', name: 'MiniMax M2.7 高速版（同效果，速度更快）' },
+      { id: 'MiniMax-M2', name: 'MiniMax M2（历史版本）' },
     ],
   },
   {
@@ -106,10 +117,11 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     name: 'OpenAI',
     baseUrl: 'https://api.openai.com/v1',
     models: [
-      { id: 'gpt-4o', name: 'GPT-4o（推荐）' },
-      { id: 'gpt-4o-mini', name: 'GPT-4o Mini（经济）' },
-      { id: 'gpt-4-turbo', name: 'GPT-4 Turbo' },
-      { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo' },
+      { id: 'gpt-5.5', name: 'GPT-5.5（推荐）' },
+      { id: 'gpt-5.5-pro', name: 'GPT-5.5 Pro（最强）' },
+      { id: 'gpt-5.4', name: 'GPT-5.4（标准）' },
+      { id: 'gpt-5.4-mini', name: 'GPT-5.4 Mini（经济）' },
+      { id: 'gpt-5.2', name: 'GPT-5.2（上一代）' },
     ],
   },
   {
@@ -117,19 +129,21 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     name: 'Anthropic（Claude）',
     baseUrl: 'https://api.anthropic.com/v1',
     models: [
-      { id: 'claude-sonnet-4-20250514', name: 'Claude Sonnet 4（推荐）' },
-      { id: 'claude-haiku-4-5-20251001', name: 'Claude Haiku 4.5（快速）' },
-      { id: 'claude-opus-4-20250514', name: 'Claude Opus 4（最强）' },
+      { id: 'claude-sonnet-5', name: 'Claude Sonnet 5（推荐）' },
+      { id: 'claude-opus-5', name: 'Claude Opus 5（最强）' },
+      { id: 'claude-haiku-4-5', name: 'Claude Haiku 4.5（快速，经济）' },
+      { id: 'claude-opus-4-8', name: 'Claude Opus 4.8（上一代）' },
     ],
   },
   {
     id: 'google',
     name: 'Google（Gemini）',
-    baseUrl: 'https://generativelanguage.googleapis.com/v1beta',
+    // 注意：必须用 OpenAI 兼容端点（/v1beta/openai），原生 /v1beta 路径不支持 chat/completions
+    baseUrl: 'https://generativelanguage.googleapis.com/v1beta/openai',
     models: [
-      { id: 'gemini-2.0-flash-exp', name: 'Gemini 2.0 Flash' },
-      { id: 'gemini-1.5-pro', name: 'Gemini 1.5 Pro' },
-      { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash' },
+      { id: 'gemini-3-flash', name: 'Gemini 3 Flash（推荐，Pro 级能力 + Flash 速度）' },
+      { id: 'gemini-3-pro', name: 'Gemini 3 Pro（最强）' },
+      { id: 'gemini-3.5-flash', name: 'Gemini 3.5 Flash（新一代快速）' },
     ],
   },
   {
@@ -137,7 +151,8 @@ export const PROVIDER_PRESETS: ProviderPreset[] = [
     name: 'MiniMax（国际）',
     baseUrl: 'https://api.minimax.io/v1',
     models: [
-      { id: 'MiniMax-M2', name: 'MiniMax M2' },
+      { id: 'MiniMax-M2.7', name: 'MiniMax M2.7（推荐，1M 上下文）' },
+      { id: 'MiniMax-M2.7-highspeed', name: 'MiniMax M2.7 高速版（同效果，速度更快）' },
     ],
   },
 ];

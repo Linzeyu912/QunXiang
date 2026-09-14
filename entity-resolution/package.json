@@ -7,6 +7,7 @@
   "dependencies": {
     "@qunxiang/core": "workspace:*",
     "@qunxiang/extractors": "workspace:*",
-    "@qunxiang/schemas": "workspace:*"
+    "@qunxiang/schemas": "workspace:*",
+    "zod": "^3.25.76"
   }
 }

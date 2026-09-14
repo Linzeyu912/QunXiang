@@ -11,10 +11,10 @@ vi.mock('@qunxiang/storage', () => ({
   EntityReviewRepository: { findByBook: vi.fn(async () => []), create: vi.fn() },
 }));
 
-import { calibrateJudgeConfidence } from './character-merge.service.js';
+import { calibrateJudgeConfidence } from '@qunxiang/entity-resolution';
 
 const mk = (reasons: string[], chaptersA: number[], chaptersB: number[]) => ({
-  reasons: reasons as Array<'称谓归一化' | '已提取别名匹配'>,
+  reasons: reasons as Array<'称谓归一化' | '已提取别名匹配' | '名称包含变体'>,
   primary: { name: 'A', aliases: [], description: '', confidence: 0.8, id: 'a', chapterAppearances: chaptersA },
   secondary: { name: 'B', aliases: [], description: '', confidence: 0.8, id: 'b', chapterAppearances: chaptersB },
 });
@@ -35,6 +35,17 @@ describe('calibrateJudgeConfidence 证据校准', () => {
   it('仅称谓归一：上限 0.90', () => {
     const c = mk(['称谓归一化'], [1], [1]);
     expect(calibrateJudgeConfidence(c, 0.95)).toBe(0.9);
+  });
+
+  it('仅名称包含变体（宁荣荣/荣荣型）：上限 0.95', () => {
+    const c = mk(['名称包含变体'], [5, 30], [8, 30]);
+    expect(calibrateJudgeConfidence(c, 0.99)).toBe(0.95);
+    expect(calibrateJudgeConfidence(c, 0.93)).toBe(0.93);
+  });
+
+  it('名称包含变体 + 称谓归一双证据：上限 0.98', () => {
+    const c = mk(['名称包含变体', '称谓归一化'], [1, 2], [2, 3]);
+    expect(calibrateJudgeConfidence(c, 1)).toBe(0.98);
   });
 
   it('same 但出现章节几乎零重叠：上限再降 0.15（同人不可能不同框）', () => {

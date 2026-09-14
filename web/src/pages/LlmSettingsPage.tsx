@@ -1,13 +1,14 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useLlmStatus } from '@/api/llm';
-import { TextModelSection } from '@/components/settings/TextModelSection';
+import { ProfilesSection } from '@/components/settings/ProfilesSection';
 import { ConcurrencySection } from '@/components/settings/ConcurrencySection';
+import { ParallelGuide } from '@/components/settings/ParallelGuide';
 import { ImageModelSection } from '@/components/settings/ImageModelSection';
 import { BaseUrlHelp } from '@/components/settings/BaseUrlHelp';
 
 /**
- * 模型与生成设置：按「文本模型 → 并发策略 → 文生图模型」分区。
+ * 模型与生成设置：按「文本模型档案 → 并发策略 → 并行指南 → 文生图模型」分区。
  * 各区块实现见 components/settings/，保存时机与请求体保持原语义。
  */
 export function LlmSettingsPage() {
@@ -21,11 +22,12 @@ export function LlmSettingsPage() {
     <div className="mx-auto max-w-2xl space-y-6">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">模型与生成设置</h1>
-        <p className="text-sm text-muted-foreground">配置文本提取模型与文生图模型</p>
+        <p className="text-sm text-muted-foreground">配置文本提取模型与文生图模型，支持多服务商档案</p>
       </div>
 
-      <TextModelSection />
+      <ProfilesSection />
       <ConcurrencySection />
+      <ParallelGuide />
       <ImageModelSection />
       <BaseUrlHelp />
     </div>

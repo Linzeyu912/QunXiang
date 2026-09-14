@@ -482,45 +482,68 @@ function confidenceFor<Field extends string>(
   return Number(((fieldScore * 0.7) + (evidenceScore * 0.3)).toFixed(2));
 }
 
-function extractDescriptionPacks<EntityType extends string, Field extends string>(
+/** 让出事件循环：长书的描述包提取是重计算，分片 yield 避免把 API 服务事件循环阻塞数秒以上 */
+function yieldToEventLoop(): Promise<void> {
+  return new Promise((resolve) => setImmediate(resolve));
+}
+
+async function extractDescriptionPacks<EntityType extends string, Field extends string>(
   entityType: EntityType,
   entities: EntityCandidate[],
   chapters: DescriptionChapter[],
   fieldOrder: Field[],
   patterns: Array<FieldPattern<Field>>,
   strongFieldCount: number
-): Array<EntityDescriptionPack<EntityType, Field>> {
+): Promise<Array<EntityDescriptionPack<EntityType, Field>>> {
   const primaryNames = new Set(entities.map((entity) => normalizeName(entity.name)));
+  // otherNames 判定沿用长度 ≥2 的过滤；预计算命中池则不过滤，保证 1 字别名行为不变
   const allNames = unique(
     entities
       .flatMap((entity) => entityNames(entity, primaryNames))
       .filter((name) => name.length >= 2)
   );
+  const precomputeNames = unique(entities.flatMap((entity) => entityNames(entity, primaryNames)));
 
-  return entities.map((entity) => {
+  // 全书按句只扫一次，预记录每句命中的名字集合；
+  // 原实现是每实体 × 每章 × 每句做 includes，几百实体 × 百万字是分钟级同步阻塞
+  const sentenceHits: Array<{ chapter: DescriptionChapter; sentence: string; hitNames: string[] }> = [];
+  for (let ci = 0; ci < chapters.length; ci++) {
+    const chapter = chapters[ci];
+    for (const sentence of splitSentences(chapter.content)) {
+      const hitNames = sentenceNames(sentence, precomputeNames);
+      if (hitNames.length > 0) {
+        sentenceHits.push({ chapter, sentence, hitNames });
+      }
+    }
+    if (ci % 10 === 9) await yieldToEventLoop();
+  }
+
+  const packs: Array<EntityDescriptionPack<EntityType, Field>> = [];
+  for (let ei = 0; ei < entities.length; ei++) {
+    const entity = entities[ei];
     const names = entityNames(entity, primaryNames);
     const targetNames = new Set(names.map(normalizeName));
     const otherNames = allNames.filter((name) => !targetNames.has(normalizeName(name)));
     const evidenceSnippets: Array<DescriptionEvidenceSnippet<Field>> = [];
 
-    for (const chapter of chapters) {
-      for (const sentence of splitSentences(chapter.content)) {
-        const matchedNames = sentenceNames(sentence, names);
-        if (matchedNames.length === 0) continue;
-        const fields = matchedFields(sentence, patterns);
-        if (fields.length === 0) continue;
-        const otherMatchedNames = sentenceNames(sentence, otherNames);
-        const ownedFields = ownedFieldsInSentence(sentence, matchedNames, otherMatchedNames, patterns);
-        if (ownedFields.length === 0) continue;
-        evidenceSnippets.push({
-          chapterIndex: chapter.index,
-          chapterTitle: chapter.title,
-          text: sentence,
-          matchedNames,
-          ...(otherMatchedNames.length > 0 ? { otherMatchedNames } : {}),
-          fields: ownedFields,
-        });
-      }
+    for (const { chapter, sentence, hitNames } of sentenceHits) {
+      // 等价于 sentenceNames(sentence, names/otherNames)：names、otherNames 均为
+      // 预计算池的子集，直接查该句命中集合即可
+      const matchedNames = names.filter((name) => hitNames.includes(name));
+      if (matchedNames.length === 0) continue;
+      const fields = matchedFields(sentence, patterns);
+      if (fields.length === 0) continue;
+      const otherMatchedNames = otherNames.filter((name) => hitNames.includes(name));
+      const ownedFields = ownedFieldsInSentence(sentence, matchedNames, otherMatchedNames, patterns);
+      if (ownedFields.length === 0) continue;
+      evidenceSnippets.push({
+        chapterIndex: chapter.index,
+        chapterTitle: chapter.title,
+        text: sentence,
+        matchedNames,
+        ...(otherMatchedNames.length > 0 ? { otherMatchedNames } : {}),
+        fields: ownedFields,
+      });
     }
 
     // fields 带章节出处（第x章），供 visual-description → prompt-generation 链路溯源
@@ -535,7 +558,7 @@ function extractDescriptionPacks<EntityType extends string, Field extends string
     const missingFields = fieldOrder.filter((field) => !fields[field]);
     const sourceCoverage = coverageFor(filledFields, evidenceSnippets.length, strongFieldCount);
 
-    return {
+    packs.push({
       entityType,
       name: entity.name,
       aliases: names.filter((name) => normalizeName(name) !== normalizeName(entity.name)),
@@ -546,14 +569,16 @@ function extractDescriptionPacks<EntityType extends string, Field extends string
       sourceCoverage,
       confidence: confidenceFor(filledFields, evidenceSnippets.length, fieldOrder),
       needsReview: sourceCoverage !== 'strong',
-    };
-  });
+    });
+    if (ei % 5 === 4) await yieldToEventLoop();
+  }
+  return packs;
 }
 
-export function extractCharacterDescriptionPacks(
+export async function extractCharacterDescriptionPacks(
   characters: CharacterCandidate[],
   chapters: DescriptionChapter[]
-): CharacterDescriptionPack[] {
+): Promise<CharacterDescriptionPack[]> {
   return extractDescriptionPacks(
     'character',
     characters,
@@ -564,10 +589,10 @@ export function extractCharacterDescriptionPacks(
   );
 }
 
-export function extractItemDescriptionPacks(
+export async function extractItemDescriptionPacks(
   items: ItemCandidate[],
   chapters: DescriptionChapter[]
-): ItemDescriptionPack[] {
+): Promise<ItemDescriptionPack[]> {
   return extractDescriptionPacks(
     'item',
     items,
@@ -578,10 +603,10 @@ export function extractItemDescriptionPacks(
   );
 }
 
-export function extractLocationDescriptionPacks(
+export async function extractLocationDescriptionPacks(
   locations: LocationCandidate[],
   chapters: DescriptionChapter[]
-): LocationDescriptionPack[] {
+): Promise<LocationDescriptionPack[]> {
   return extractDescriptionPacks(
     'location',
     locations,

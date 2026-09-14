@@ -3,6 +3,7 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { AlertCircle, CheckCircle2, FileSearch, Loader2, Play } from 'lucide-react';
 import { useStages, useExtractionStream, useResumeExtraction, useRunEstimate, useCreateRun, useCurrentRun, useRunAction, useRetryFailedChapters } from '@/api/extraction';
+import { ApiError } from '@/api/client';
 import { useExtractionArtifacts, useExtractionRuns, usePrescanArtifacts } from '@/api/artifacts';
 import { useLlmStatus } from '@/api/llm';
 import { Badge } from '@/components/ui/badge';
@@ -93,6 +94,13 @@ export function PipelinePage() {
       await createRun.mutateAsync();
       toast.success('运行已创建并开始提取');
     } catch (e) {
+      // 409 = 已有进行中的运行：这不是失败，引导用户看进度而不是红色报错
+      if (e instanceof ApiError && e.status === 409) {
+        toast.info('该书正在提取中，无需重复触发', {
+          description: '可在下方「当前运行」查看实时进度',
+        });
+        return;
+      }
       toast.error(`触发失败：${(e as Error).message}`);
     }
   }
@@ -102,7 +110,12 @@ export function PipelinePage() {
   }
 
   const data = stages.data;
-  const notStarted = !data || data.stages.every((s) => s.status === 'pending');
+  // claim 前所有 stage 都是 pending，但运行可能已经创建/排队：
+  // 这时不能显示「还没开始提取」的可点击卡片（会诱导重复触发 409）
+  const notStarted = (!data || data.stages.every((s) => s.status === 'pending'))
+    && !isRunning
+    && !activeRun;
+  const startPending = createRun.isPending;
 
   return (
     <div className="space-y-6">
@@ -197,6 +210,12 @@ export function PipelinePage() {
                 {activeRun.status === 'PAUSED' ? '已暂停' : activeRun.status === 'PAUSING' ? '暂停中（等待当前调用完成）' : activeRun.status === 'CANCELLING' ? '取消中' : '进行中'}
                 {activeRun.pauseRequestedAt && ' · 已请求暂停'}
               </span>
+              {activeRun.manifest?.llmProfileName && (
+                <span className="ml-2 inline-flex items-center rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
+                  服务商档案：{activeRun.manifest.llmProfileName}
+                  {activeRun.manifest.llmProfileModel ? `（${activeRun.manifest.llmProfileModel}）` : ''}
+                </span>
+              )}
             </div>
             <div className="flex items-center gap-2">
               {['RUNNING', 'QUEUED', 'PAUSING'].includes(activeRun.status) && (
@@ -237,13 +256,17 @@ export function PipelinePage() {
                 </p>
               )}
             </div>
-            <Button onClick={handleStart} disabled={createRun.isPending || !extractionGate.canStart} className="gap-2">
-              {createRun.isPending ? (
+            <Button
+              onClick={handleStart}
+              disabled={startPending || isRunning || !!activeRun || !extractionGate.canStart}
+              className="gap-2"
+            >
+              {startPending ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
                 <Play className="h-4 w-4" />
               )}
-              开始提取
+              {startPending ? '启动中…' : '开始提取'}
             </Button>
           </div>
         </Card>
@@ -266,12 +289,12 @@ export function PipelinePage() {
               <Button
                 variant="outline"
                 onClick={() => resume.mutate()}
-                disabled={resume.isPending || createRun.isPending || !extractionGate.canStart}
+                disabled={resume.isPending || startPending || !extractionGate.canStart}
                 title="从第一个失败的 stage 继续，已成功的 stage 不重跑"
               >
                 {resume.isPending ? '恢复中…' : '从停止处继续'}
               </Button>
-              <Button onClick={handleStart} disabled={createRun.isPending || resume.isPending || !extractionGate.canStart}>
+              <Button onClick={handleStart} disabled={startPending || resume.isPending || isRunning || !!activeRun || !extractionGate.canStart}>
                 重新开始
               </Button>
             </div>
@@ -291,7 +314,7 @@ export function PipelinePage() {
                 <AlertDialogTrigger asChild>
                   <Button
                     variant="outline"
-                    disabled={createRun.isPending || !extractionGate.canStart}
+                    disabled={startPending || !extractionGate.canStart}
                     title="重新运行完整管道，生成新一轮产物并设为当前生效运行"
                   >
                     重新提取
@@ -333,12 +356,12 @@ export function PipelinePage() {
               <Button
                 variant="outline"
                 onClick={() => resume.mutate()}
-                disabled={resume.isPending || createRun.isPending || !extractionGate.canStart}
+                disabled={resume.isPending || startPending || !extractionGate.canStart}
                 title="从第一个失败的 stage 继续，已成功的 stage 不重跑"
               >
                 {resume.isPending ? '恢复中…' : '从失败处继续'}
               </Button>
-              <Button variant="destructive" onClick={handleStart} disabled={createRun.isPending || resume.isPending || !extractionGate.canStart}>
+              <Button variant="destructive" onClick={handleStart} disabled={startPending || resume.isPending || !extractionGate.canStart}>
                 重新开始
               </Button>
             </div>

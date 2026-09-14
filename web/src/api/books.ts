@@ -12,6 +12,12 @@ export function useBooks() {
   return useQuery({
     queryKey: booksKey.all,
     queryFn: () => apiFetch<{ books: Book[] }>('/books').then((r) => r.books ?? []),
+    // 有书正在提取时短间隔轮询，让「提取」按钮的禁用态与状态徽标及时跟上，
+    // 避免缓存里的旧状态诱导用户重复触发（409 冲突）
+    refetchInterval: (query) =>
+      query.state.data?.some((book) => book.status === 'EXTRACTING' || book.status === 'SEED_PREPARING')
+        ? 5000
+        : false,
   });
 }
 

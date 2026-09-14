@@ -2,7 +2,7 @@ import { BookRepository, TaskRepository, prisma } from '@qunxiang/storage';
 import { TaskDispatcher, DatabaseTaskQueue, eventBus, EXTRACTION_PIPELINE } from '@qunxiang/scheduler';
 import type { PipelineEvent } from '@qunxiang/scheduler';
 import { CharacterRepository, LocationRepository, ItemRepository, WorldviewRepository } from '@qunxiang/storage';
-import { getDefaultProvider, getApiKeyCount } from '@qunxiang/llm';
+import { getDefaultProvider, getTotalApiKeyCount, getRuntimeProfile, normalizeApiKeys } from '@qunxiang/llm';
 import type { AgentType } from '@qunxiang/core';
 import { ConflictError, NotFoundError } from '../lib/errors.js';
 
@@ -44,8 +44,9 @@ function applyIntraBookConcurrency(mode: ConcurrencyMode): void {
     want('VISUAL_DESCRIPTION_MAX_CONCURRENT', 8);
   } else {
     // parallel-books：保守并发，避免单本占用过多额度导致并行多本时互相 429。
-    process.env.EXTRACTOR_MAX_CONCURRENT_BATCHES = String(Math.max(2, Math.min(4, getApiKeyCount() * 2 || 2)));
-    process.env.VISUAL_DESCRIPTION_MAX_CONCURRENT = String(Math.max(2, Math.min(4, getApiKeyCount() * 2 || 2)));
+    // 多档案模式下按全部档案的 key 总数估算（并行多本书可能分属不同服务商）。
+    process.env.EXTRACTOR_MAX_CONCURRENT_BATCHES = String(Math.max(2, Math.min(4, getTotalApiKeyCount() * 2 || 2)));
+    process.env.VISUAL_DESCRIPTION_MAX_CONCURRENT = String(Math.max(2, Math.min(4, getTotalApiKeyCount() * 2 || 2)));
   }
 }
 
@@ -55,7 +56,8 @@ function applyIntraBookConcurrency(mode: ConcurrencyMode): void {
  */
 export function applyConcurrency(): void {
   applyIntraBookConcurrency(concurrencyMode);
-  const keyCount = getApiKeyCount();
+  // 多档案模式：worker 数按全部档案的 key 总数计（不同书可绑定不同服务商并行）
+  const keyCount = getTotalApiKeyCount();
   const workerCount = computeWorkerCount(concurrencyMode, keyCount);
   dispatcher.startWorkers(workerCount, 1000);
 }
@@ -78,7 +80,7 @@ export function getConcurrencyStatus(): {
   workers: number;
   recommended: number;
 } {
-  const keyCount = getApiKeyCount();
+  const keyCount = getTotalApiKeyCount();
   return {
     mode: concurrencyMode,
     keyCount,
@@ -100,7 +102,7 @@ const PIPELINE_STAGES: { id: AgentType; name: string; weight: number }[] = [
   { id: 'reviewer', name: '审核入库', weight: 10 },
 ];
 
-export async function startExtraction(bookId: string, ownerId: string) {
+export async function startExtraction(bookId: string, ownerId: string, llmProfileId?: string) {
   // 幂等：该书已有 pending/running 任务 → 本次运行仍在进行，拒绝重复触发。
   // （孤儿 running 任务由 dispatcher 启动时的 recoverInterruptedTasks 回收，
   // 因此运行期出现的 running/running 即视为真实进行中。）
@@ -115,9 +117,21 @@ export async function startExtraction(bookId: string, ownerId: string) {
     throw new ConflictError('该书正在提取中，请等待当前运行结束');
   }
 
+  // 按书绑定服务商档案：显式指定时校验档案存在且有可用 key；
+  // 绑定后整个运行（含各阶段 agent）固定使用该档案，改全局配置不影响在途运行。
+  if (llmProfileId) {
+    const profile = getRuntimeProfile(llmProfileId);
+    if (!profile) {
+      throw new ConflictError('所选 LLM 配置档案不存在，请到「LLM 设置」检查');
+    }
+    if (normalizeApiKeys(profile).length === 0) {
+      throw new ConflictError(`档案「${profile.name}」未配置 API Key，请先补充密钥`);
+    }
+  }
+
   try {
     // Validate provider is available (will throw if not configured)
-    const provider = await getDefaultProvider();
+    const provider = await getDefaultProvider(llmProfileId);
 
     // 书级咨询锁 + 单事务：并发触发时后到者在锁内复检，拿到与顺序调用一致的
     // 409，修复「检查→删除→入队」check-then-act 竞态导致的同书双管线双计费。
@@ -141,7 +155,9 @@ export async function startExtraction(bookId: string, ownerId: string) {
         data: {
           bookId,
           agentType: 'extractor',
-          payload: { bookId, userId: ownerId },
+          payload: llmProfileId
+            ? { bookId, userId: ownerId, llmProfileId }
+            : { bookId, userId: ownerId },
           status: 'pending',
         },
         select: { id: true },
@@ -303,6 +319,8 @@ export interface ExtractionStageInfo {
   startedAt?: string;
   completedAt?: string;
   message?: string;
+  /** 阶段内进度详情（如提取阶段的「第 X/N 批」），仅运行中的阶段有值 */
+  detail?: string;
 }
 
 export interface ExtractionStagesResult {
@@ -336,6 +354,29 @@ export function buildExtractionWarnings(
     const reason = typeof b.error === 'string' && b.error ? `（${b.error.slice(0, 80)}）` : '';
     return `${range}提取失败${reason}，这些章节的角色、场景、道具可能缺失`;
   });
+}
+
+/** 每本书各阶段最新的阶段内进度（如「第 X/95 批」）。
+ *  进度事件只经内存 SSE 下发，前端 10s 兜底轮询的快照若不带批次号，会把
+ *  SSE 刚写入的 detail 覆盖掉。这里在 SSE 流的 handler 中顺带记录最新值，
+ *  getExtractionStages 快照携带它——轮询、页面刷新、SSE 重连后都能看到批次号。
+ *  只在有 SSE 连接（即有人在看）时更新；无人观看时不占任何 eventBus 监听器。 */
+const stageProgressByBook = new Map<string, Map<string, string>>();
+
+function recordStageProgressEvent(bookId: string, event: PipelineEvent): void {
+  if (event.type === 'stage_progress' && event.stageId && event.detail) {
+    let stages = stageProgressByBook.get(bookId);
+    if (!stages) {
+      stages = new Map();
+      stageProgressByBook.set(bookId, stages);
+    }
+    stages.set(event.stageId, event.detail);
+  } else if (event.type === 'stage_complete' || event.type === 'error') {
+    const stages = stageProgressByBook.get(bookId);
+    if (stages && event.stageId) stages.delete(event.stageId);
+  } else if (event.type === 'completed') {
+    stageProgressByBook.delete(bookId);
+  }
 }
 
 export async function getExtractionStages(bookId: string, ownerId: string): Promise<ExtractionStagesResult> {
@@ -381,6 +422,9 @@ export async function getExtractionStages(bookId: string, ownerId: string): Prom
       completedAt: task?.updatedAt ? task.updatedAt.toISOString() : undefined,
       message: task?.error
         || (task?.status === 'dead_lettered' ? '多次重试仍失败，已转入死信队列' : undefined),
+      detail: status === 'running'
+        ? stageProgressByBook.get(bookId)?.get(stage.id)
+        : undefined,
     };
   });
 
@@ -478,6 +522,8 @@ export async function* createExtractionStream(
   const eventQueue: PipelineEvent[] = [];
   let wakeWaiter: (() => void) | null = null;
   const handler = (event: PipelineEvent) => {
+    // 顺带记录最新阶段内进度，供 getExtractionStages 快照携带（见 recordStageProgressEvent）
+    recordStageProgressEvent(bookId, event);
     eventQueue.push(event);
     wakeWaiter?.();
   };

@@ -333,6 +333,8 @@ export interface ExtractionProgress {
 
 export interface ExtractorOptions {
   onProgress?: (progress: ExtractionProgress) => void;
+  /** 本次运行绑定的 LLM 配置档案（多服务商支持；缺省用全局默认档案） */
+  llmProfileId?: string;
 }
 
 export function createExtractor(options: ExtractorOptions = {}) {
@@ -340,7 +342,7 @@ export function createExtractor(options: ExtractorOptions = {}) {
     bookTitle: string,
     chapters: Chapter[]
   ): Promise<ExtractResult> {
-    const provider = await getDefaultProvider();
+    const provider = await getDefaultProvider(options.llmProfileId);
 
     const allCharacters: CharacterInputOutput[] = [];
     const allItems: ItemInputOutput[] = [];
@@ -540,11 +542,18 @@ export function createExtractor(options: ExtractorOptions = {}) {
     const charMap = new Map<string, CharacterCandidate>();
     const kinKey = (name: string) => norm(kinshipNormalize(name));
     const sourceText = chapters.map((chapter) => chapter.content).join('\n');
+    let processedCharacters = 0;
     const knownCharacterNames = allCharacters.map((character) => character.name).filter(Boolean);
     const knownAliasesByCharacter = Object.fromEntries(
       allCharacters.map((character) => [character.name, character.aliases ?? []])
     );
     for (const c of allCharacters) {
+      // 归并是重计算（全书正名推断/别名清洗），周期性让出事件循环，
+      // 避免长书把 API 服务（HTTP/心跳/SSE 同进程）冻住
+      if (processedCharacters % 25 === 24) {
+        await new Promise<void>((resolve) => setImmediate(resolve));
+      }
+      processedCharacters++;
       if (isCollectiveCharacterAlias(c.name)) continue;
 
       const chosen = chooseCanonicalCharacterName(c.name, c.aliases ?? [], {

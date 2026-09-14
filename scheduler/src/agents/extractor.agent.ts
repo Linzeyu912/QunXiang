@@ -107,7 +107,7 @@ function mapEntitiesToDb(
 }
 
 export async function executeExtractor(payload: unknown): Promise<ExtractorResult> {
-  const { bookId } = payload as ExtractorPayload;
+  const { bookId, llmProfileId } = payload as ExtractorPayload & { llmProfileId?: string };
 
   // Fetch book metadata
   const book = await BookRepository.findById(bookId);
@@ -127,9 +127,27 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
   // Parse TXT with enhanced pipeline (includes prescan)
   // Prescan intermediate files go to .intermediate/ (not output/) — keeps
   // output/ clean for final user-facing results only.
+  // prescan 阶段是数分钟的本地正则计算且无批次产出，不发事件的话管道页
+  // 进度会一直冻结在起始值，用户会误以为没点上而重复触发（409 冲突）
+  eventBus.emit({
+    type: 'stage_progress',
+    bookId,
+    stageId: 'extractor',
+    stageName: '角色提取',
+    detail: '预扫描中…',
+    timestamp: Date.now(),
+  });
   const enhanced = await parseTxtEnhanced(content, book.title, {
     bookId,
     prescanOutputPath: join('.intermediate', runDirName, 'prescan'),
+  });
+  eventBus.emit({
+    type: 'stage_progress',
+    bookId,
+    stageId: 'extractor',
+    stageName: '角色提取',
+    detail: '预扫描完成，开始分批提取',
+    timestamp: Date.now(),
   });
 
   const chapters = enhanced.chapters.map(ch => ({
@@ -141,6 +159,7 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
   // LLM extraction of characters + items in a single call per batch
   // 批进度透传：每批落定发 stage_progress 事件，管道页可显示"第 X/N 批"
   const extractEntities = createExtractor({
+    llmProfileId,
     onProgress: ({ completedBatches, totalBatches, bookTitle }) => {
       eventBus.emit({
         type: 'stage_progress',
@@ -356,9 +375,9 @@ export async function executeExtractor(payload: unknown): Promise<ExtractorResul
     }));
   }
 
-  const characterDescriptions = extractCharacterDescriptionPacks(characters, chapters);
-  const itemDescriptions = extractItemDescriptionPacks(items, chapters);
-  const locationDescriptions = extractLocationDescriptionPacks(locations, chapters);
+  const characterDescriptions = await extractCharacterDescriptionPacks(characters, chapters);
+  const itemDescriptions = await extractItemDescriptionPacks(items, chapters);
+  const locationDescriptions = await extractLocationDescriptionPacks(locations, chapters);
   console.log(`[Extractor] Entity descriptions: characters=${characterDescriptions.length}, items=${itemDescriptions.length}, locations=${locationDescriptions.length}`);
 
   // 世界观/体系设定：LLM 主提取（extractors 已跨批去重），不参与 prescan 重要性打分，

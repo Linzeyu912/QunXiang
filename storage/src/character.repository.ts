@@ -1,6 +1,7 @@
 import { prisma } from './prisma.js';
 import type { Character, Outfit } from '@qunxiang/core';
 import type { Prisma, PrismaClient } from '@prisma/client';
+import { dropRedundantHonorificAliases, pickCanonicalName } from '@qunxiang/entity-resolution';
 import { decodeJsonField, encodeJsonField } from './json-field.js';
 import { reviewBucketWhere, type ReviewBucketQuery } from './review-bucket.js';
 import type { ReviewBucketCounts } from './review-bucket.js';
@@ -322,14 +323,28 @@ export function createCharacterRepository(db: PrismaClient): CharacterRepository
       if (primaryId === secondaryId) return null;
       return db.$transaction(async (tx) => {
         if (!(await lockCharacterPair(tx, primaryId, secondaryId))) return null;
-        const [primary, secondary] = await Promise.all([
+        let [primary, secondary] = await Promise.all([
           tx.character.findFirst({ where: { id: primaryId, book: { userId: ownerId } } }),
           tx.character.findFirst({ where: { id: secondaryId, book: { userId: ownerId } } }),
         ]);
         if (!primary || !secondary || primary.bookId !== secondary.bookId) return null;
+        // 正名兜底：调用方按置信度/提及数排的 primary 若是去姓昵称（荣荣），
+        // 而 secondary 是规范全名（宁荣荣），交换存活方——手动合并与自动合并
+        // 统一保证"正式名字在前、昵称作别名"，不受调用方排序影响。
+        if (pickCanonicalName(primary.name, secondary.name) === secondary.name.trim()) {
+          [primary, secondary] = [secondary, primary];
+        }
         if (await hasMergeRejection(tx, primary.id, secondary.id, reviewerId)) return null;
-        const aliases = [...new Set([...decodeJsonField<string[]>(primary.aliases, []), ...decodeJsonField<string[]>(secondary.aliases, []), secondary.name])]
-          .filter((alias) => alias.trim().toLowerCase() !== primary.name.trim().toLowerCase());
+        // 别名降噪只作用于提取别名；被合并方的正名是身份证据（药老哥、荣荣），
+        // 最后并入保留，避免「primary 名 + 称谓后缀」的被合并名被误删。
+        const cleanedAliases = dropRedundantHonorificAliases(
+          primary.name,
+          [...new Set([...decodeJsonField<string[]>(primary.aliases, []), ...decodeJsonField<string[]>(secondary.aliases, [])])]
+            .filter((alias) => alias.trim().toLowerCase() !== primary.name.trim().toLowerCase()),
+        );
+        const aliases = secondary.name.trim().toLowerCase() !== primary.name.trim().toLowerCase()
+          ? [...new Set([...cleanedAliases, secondary.name])]
+          : cleanedAliases;
         const mergedIdentityNames = new Set([primary.name, ...aliases].map((name) => name.trim().toLowerCase()));
         const coCharacters = [...new Set([
           ...decodeJsonField<string[]>(primary.coCharacters, []),

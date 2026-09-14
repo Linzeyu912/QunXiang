@@ -14,8 +14,8 @@ export async function charactersRoutes(fastify: FastifyInstance) {
     if (!bookId) return reply.status(400).send({ error: '缺少 bookId 参数' });
     const ownerId = await resolveOwnerId(request);
     if (!(await loadOwnedBook(bookId, ownerId))) return sendBookNotFound(reply);
-    const { candidates, suggestions } = await findActiveMergeCandidates(bookId, ownerId!);
-    return { candidates, suggestions };
+    const { candidates, suggestions, autoMergedCount } = await findActiveMergeCandidates(bookId, ownerId!);
+    return { candidates, suggestions, autoMergedCount };
   });
 
   // 合并字段预览：展示将保留与合并的字段，不执行合并（实施包 A4）

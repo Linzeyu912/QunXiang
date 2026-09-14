@@ -4,7 +4,8 @@ import { toast } from 'sonner';
 import { AlertCircle, CheckCircle2, FileText, Loader2, MoreVertical, Play, Settings, Share, Trash2, Upload } from 'lucide-react';
 import { useBooks, useDeleteBook, useUploadBook } from '@/api/books';
 import { useStartExtraction } from '@/api/extraction';
-import { useLlmStatus } from '@/api/llm';
+import { ApiError } from '@/api/client';
+import { useLlmStatus, useLlmProfiles } from '@/api/llm';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -14,6 +15,16 @@ import { BookDownloadSection } from '@/components/BookDownloadSection';
 import { ShareDialog } from '@/components/ShareDialog';
 import { getExtractionStartGate } from '@/lib/extractionGate';
 import { formatBytes, formatDate } from '@/lib/utils';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -153,12 +164,35 @@ const BookRow = memo(function BookRow({ book, isSeed = false }: { book: Book; is
   const [shareOpen, setShareOpen] = useState(false);
   const start = useStartExtraction(book.id);
   const llm = useLlmStatus();
+  const profilesQ = useLlmProfiles();
+  // 多档案时弹窗选择本书用哪个服务商；选中项默认跟随全局默认档案
+  const [profilePickOpen, setProfilePickOpen] = useState(false);
+  const [pickedProfileId, setPickedProfileId] = useState<string>('');
+
+  const profiles = profilesQ.data?.profiles ?? [];
+  const activeProfileId = profilesQ.data?.activeProfileId ?? '';
 
   const extractionGate = getExtractionStartGate(llm.data, llm.isLoading);
   const isRunning = book.status === 'EXTRACTING';
   const isSeedPreparing = book.status === 'SEED_PREPARING';
   // 已成功提取过的书禁止在列表里重复触发；如需重新提取，去该书「管道」页二次确认。
   const isExtracted = book.status === 'EXTRACTED';
+
+  const doStart = async (providerProfileId?: string) => {
+    try {
+      await start.mutateAsync(providerProfileId ? { providerProfileId } : undefined);
+      toast.success('已开始提取');
+      navigate(`/books/${book.id}/pipeline`);
+    } catch (e) {
+      // 409 = 已有运行在进行：不是失败，直接带用户去看进度
+      if (e instanceof ApiError && e.status === 409) {
+        toast.info('该书正在提取中，已为你打开进度页');
+        navigate(`/books/${book.id}/pipeline`);
+        return;
+      }
+      toast.error(`触发失败：${(e as Error).message}`);
+    }
+  };
 
   const handleStart = async () => {
     if (!extractionGate.canStart) {
@@ -170,13 +204,19 @@ const BookRow = memo(function BookRow({ book, isSeed = false }: { book: Book; is
       });
       return;
     }
-    try {
-      await start.mutateAsync();
-      toast.success('已开始提取');
-      navigate(`/books/${book.id}/pipeline`);
-    } catch (e) {
-      toast.error(`触发失败：${(e as Error).message}`);
+    // 只有一个档案（或档案列表未就绪）→ 直接用默认档案启动；
+    // 多档案 → 弹窗让用户指定本书的服务商（多本书可各选各的并行）
+    if (profiles.length > 1) {
+      setPickedProfileId(activeProfileId || profiles[0].id);
+      setProfilePickOpen(true);
+      return;
     }
+    await doStart();
+  };
+
+  const confirmProfilePick = async () => {
+    setProfilePickOpen(false);
+    await doStart(pickedProfileId || undefined);
   };
 
   const handleDelete = async () => {
@@ -293,6 +333,45 @@ const BookRow = memo(function BookRow({ book, isSeed = false }: { book: Book; is
           <MoreVertical className="h-4 w-4" />
         </Button>
       </div>
+      {/* 多服务商档案选择：指定本书用哪个服务商提取（多本书可并行各用各的） */}
+      <Dialog open={profilePickOpen} onOpenChange={setProfilePickOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>选择本次提取的服务商</DialogTitle>
+            <DialogDescription>
+              《{book.title}》将使用所选配置档案提取，运行期间固定不变。多本书可分别选择不同档案并行提取。
+            </DialogDescription>
+          </DialogHeader>
+          <RadioGroup value={pickedProfileId} onValueChange={setPickedProfileId} className="gap-2">
+            {profiles.map((profile) => (
+              <Label
+                key={profile.id}
+                htmlFor={`profile-${profile.id}`}
+                className={`flex cursor-pointer items-start gap-3 rounded-md border p-3 font-normal ${pickedProfileId === profile.id ? 'border-primary bg-primary/5' : ''}`}
+              >
+                <RadioGroupItem id={`profile-${profile.id}`} value={profile.id} className="mt-0.5" />
+                <span className="min-w-0 flex-1">
+                  <span className="flex flex-wrap items-center gap-1.5 text-sm font-medium">
+                    {profile.name}
+                    {profile.isActive && <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[10px] text-primary">默认</span>}
+                  </span>
+                  <span className="mt-0.5 block text-xs text-muted-foreground">
+                    {profile.model || '未设置模型'} · {profile.keyCount} 个密钥
+                    {profile.baseUrl ? ` · ${profile.baseUrl}` : ''}
+                  </span>
+                </span>
+              </Label>
+            ))}
+          </RadioGroup>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setProfilePickOpen(false)}>取消</Button>
+            <Button onClick={confirmProfilePick} disabled={start.isPending || !pickedProfileId}>
+              {start.isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+              开始提取
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <ShareDialog bookId={book.id} bookTitle={book.title} open={shareOpen} onOpenChange={setShareOpen} />
     </Card>
   );

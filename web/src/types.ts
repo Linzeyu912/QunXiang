@@ -204,6 +204,12 @@ export interface ExtractionRun {
   status: string;
   kind: string;
   sourceRevision: number;
+  /** 运行快照：绑定的 LLM 档案（多服务商）、预算估算来源等 */
+  manifest?: {
+    llmProfileName?: string;
+    llmProfileModel?: string;
+    [key: string]: unknown;
+  } | null;
   startedAt?: string | null;
   completedAt?: string | null;
   pauseRequestedAt?: string | null;
@@ -502,6 +508,8 @@ export interface LlmStatus {
   keyCount?: number;
   baseUrl: string;
   model: string;
+  /** 思考模式：auto/off/low/high/max，空串=未设置（跟随 env/模型默认） */
+  thinking?: string;
   concurrency?: ConcurrencyStatus;
   timestamp: string;
   error?: string;

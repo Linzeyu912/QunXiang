@@ -1,9 +1,45 @@
 import { describe, expect, it } from 'vitest';
 import {
   chooseCanonicalCharacterName,
+  dropRedundantHonorificAliases,
   isCollectiveCharacterAlias,
+  isSurnameStrippedNameVariant,
+  pickCanonicalName,
   sanitizeCharacterAliases,
 } from './alias-safety.js';
+
+describe('isSurnameStrippedNameVariant / pickCanonicalName', () => {
+  it('去姓变体判定：宁荣荣/荣荣、萧薰儿/薰儿；无关名不算', () => {
+    expect(isSurnameStrippedNameVariant('宁荣荣', '荣荣')).toBe(true);
+    expect(isSurnameStrippedNameVariant('萧薰儿', '薰儿')).toBe(true);
+    expect(isSurnameStrippedNameVariant('王小明', '小明')).toBe(true); // 剥王姓后等于本名，候选合理
+    expect(isSurnameStrippedNameVariant('唐三', '三')).toBe(false); // 剥离后剩余 1 字
+    expect(isSurnameStrippedNameVariant('萧炎', '药老')).toBe(false); // 非变体
+  });
+
+  it('pickCanonicalName 返回带姓氏的全名，非变体对返回 null', () => {
+    expect(pickCanonicalName('荣荣', '宁荣荣')).toBe('宁荣荣');
+    expect(pickCanonicalName('宁荣荣', '荣荣')).toBe('宁荣荣');
+    expect(pickCanonicalName('萧炎', '药老')).toBeNull();
+  });
+});
+
+describe('dropRedundantHonorificAliases', () => {
+  it('删除与正名/其他别名只差称谓后缀的冗余别名', () => {
+    const kept = dropRedundantHonorificAliases('荣荣', ['宁荣荣', '宁荣荣小姐', '宁荣荣姑娘', '荣荣姐']);
+    expect(kept).toEqual(['宁荣荣']);
+  });
+
+  it('头衔型别名与无基座的称谓保留', () => {
+    const kept = dropRedundantHonorificAliases('宁荣荣', ['九彩斗罗', '七宝琉璃塔魂师', '宁小姐']);
+    expect(kept).toEqual(['九彩斗罗', '七宝琉璃塔魂师', '宁小姐']);
+  });
+
+  it('基座不足 2 字时不删（宁小姐 的基座「宁」是单字）', () => {
+    const kept = dropRedundantHonorificAliases('宁风致', ['宁小姐']);
+    expect(kept).toEqual(['宁小姐']);
+  });
+});
 
 describe('sanitizeCharacterAliases', () => {
   it('drops hallucinated aliases that do not appear in the source text', () => {

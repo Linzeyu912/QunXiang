@@ -55,6 +55,8 @@ export interface LlmConfigPatch {
   apiKeys?: string[];
   baseUrl?: string;
   model?: string;
+  /** 思考模式：auto（跟随模型默认）/ off（关闭思考）/ low / high / max（思考等级） */
+  thinking?: string;
 }
 
 export function useSetLlmConfig() {
@@ -94,6 +96,95 @@ export interface LlmTestResult {
 export function useTestLlmConnection() {
   return useMutation({
     mutationFn: () => apiFetch<LlmTestResult>('/health/llm/test', { method: 'POST' }),
+  });
+}
+
+// ── 服务商配置档案（多服务商支持）──
+// 不同厂商各建一个档案；同一厂商多个 key 填在同一档案内轮询。
+// 启动提取时可指定档案（多本书并行时各用各的服务商），缺省用默认档案。
+
+export interface LlmProfileView {
+  id: string;
+  name: string;
+  baseUrl: string;
+  model: string;
+  thinking: string;
+  keyHints: string[];
+  keyCount: number;
+  isActive: boolean;
+}
+
+export interface LlmProfilesResponse {
+  profiles: LlmProfileView[];
+  activeProfileId: string | null;
+}
+
+export interface LlmProfileInput {
+  name: string;
+  baseUrl?: string;
+  model?: string;
+  /** 未传=保留现有；传数组（含空数组）=整体替换 */
+  apiKeys?: string[];
+  thinking?: string;
+}
+
+export const llmProfilesKey = {
+  all: ['llm', 'profiles'] as const,
+};
+
+export function useLlmProfiles() {
+  return useQuery({
+    queryKey: llmProfilesKey.all,
+    queryFn: () => apiFetch<LlmProfilesResponse>('/health/llm/profiles'),
+    staleTime: 10_000,
+  });
+}
+
+function invalidateProfiles(qc: ReturnType<typeof useQueryClient>) {
+  qc.invalidateQueries({ queryKey: llmProfilesKey.all });
+  qc.invalidateQueries({ queryKey: llmKey.status });
+}
+
+export function useCreateLlmProfile() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (input: LlmProfileInput) =>
+      apiFetch<LlmProfilesResponse & { warning?: string }>('/health/llm/profiles', { method: 'POST', body: input }),
+    onSuccess: () => invalidateProfiles(qc),
+  });
+}
+
+export function useUpdateLlmProfile() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ profileId, input }: { profileId: string; input: Partial<LlmProfileInput> }) =>
+      apiFetch<LlmProfilesResponse & { warning?: string }>(`/health/llm/profiles/${profileId}`, { method: 'PATCH', body: input }),
+    onSuccess: () => invalidateProfiles(qc),
+  });
+}
+
+export function useDeleteLlmProfile() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (profileId: string) =>
+      apiFetch<LlmProfilesResponse>(`/health/llm/profiles/${profileId}`, { method: 'DELETE' }),
+    onSuccess: () => invalidateProfiles(qc),
+  });
+}
+
+export function useActivateLlmProfile() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (profileId: string) =>
+      apiFetch<LlmProfilesResponse>(`/health/llm/profiles/${profileId}/activate`, { method: 'POST' }),
+    onSuccess: () => invalidateProfiles(qc),
+  });
+}
+
+export function useTestLlmProfile() {
+  return useMutation({
+    mutationFn: (profileId: string) =>
+      apiFetch<LlmTestResult>(`/health/llm/profiles/${profileId}/test`, { method: 'POST' }),
   });
 }
 

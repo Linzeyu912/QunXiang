@@ -284,7 +284,8 @@ function deduplicateCharacters(characters: CharacterEntity[]): CharacterEntity[]
 }
 
 export async function executeDescriptionFusion(payload: unknown): Promise<DescriptionFusionResult> {
-  const source = payload as DescriptionFusionPayload;
+  const source = payload as DescriptionFusionPayload & { llmProfileId?: string };
+  const llmProfileId = source.llmProfileId;
   const preMergeKeys = (entities: { name: string }[]) =>
     new Set(entities.map((entity) => normalizeAliasKey(entity.name)));
   const characters = sanitizeEntityAliases(deduplicateCharacters(source.characters || []), {
@@ -312,7 +313,7 @@ export async function executeDescriptionFusion(payload: unknown): Promise<Descri
     };
   }
 
-  const provider = await getDefaultProvider();
+  const provider = await getDefaultProvider(llmProfileId);
   const fused = new Map<string, string>();
 
   // 组级容错：整组调用失败或 LLM 漏返部分实体时，把缺口拆半重试；
