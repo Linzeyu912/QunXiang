@@ -2,7 +2,12 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
 import {
   getDefaultProvider,
+  getRuntimeConfig,
+  getMaskedProfiles,
+  getRuntimeProfiles,
+  getTotalApiKeyCount,
   setRuntimeConfig,
+  setRuntimeProfiles,
   setRuntimeProvider,
 } from './factory.js';
 
@@ -143,5 +148,104 @@ describe('factory provider 单例化', () => {
     // key-1 出现次数应有限（达到阈值后被冷却）；最后几次应全是 key-2
     const lastThree = usedKeys.slice(-3);
     expect(lastThree.every((k) => k === 'key-2')).toBe(true);
+  });
+});
+
+describe('多档案（profiles）解析', () => {
+  const originalEnv = { ...process.env };
+
+  beforeEach(() => {
+    delete process.env.LLM_PROVIDER;
+    delete process.env.LLM_API_KEY;
+    delete process.env.LLM_API_KEYS;
+    delete process.env.LLM_BASE_URL;
+    delete process.env.LLM_MODEL;
+    delete process.env.LLM_MOCK_ENABLED;
+    setRuntimeProvider('auto');
+    // 基线：一个默认档案 + 一个独立档案
+    setRuntimeProfiles([
+      { id: 'p-main', name: '主力', baseUrl: 'https://main.test/v1', model: 'm1', apiKeys: ['key-main-1', 'key-main-2'] },
+      { id: 'p-alt', name: '备用', baseUrl: 'https://alt.test/v1', model: 'm2', apiKeys: ['key-alt'] },
+    ], 'p-main', false);
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    setRuntimeProfiles([], undefined, false);
+    for (const k of Object.keys(process.env)) {
+      if (!(k in originalEnv)) delete process.env[k];
+    }
+    Object.assign(process.env, originalEnv);
+  });
+
+  it('指定档案 id 取对应 provider，同档案复用单例、不同档案互不共享', async () => {
+    const mainA = await getDefaultProvider('p-main');
+    const mainB = await getDefaultProvider('p-main');
+    const alt = await getDefaultProvider('p-alt');
+
+    expect(mainA).toBe(mainB);
+    expect(mainA).not.toBe(alt);
+  });
+
+  it('不传档案 id 等价于默认档案（共享同一单例）', async () => {
+    const active = await getDefaultProvider();
+    const main = await getDefaultProvider('p-main');
+    expect(active).toBe(main);
+  });
+
+  it('档案不存在时回退默认档案不抛错', async () => {
+    const fallback = await getDefaultProvider('p-deleted');
+    const main = await getDefaultProvider('p-main');
+    expect(fallback).toBe(main);
+  });
+
+  it('指定档案的请求打到该档案的 baseUrl 与 key', async () => {
+    const urls: string[] = [];
+    const keys: string[] = [];
+    vi.stubGlobal('fetch', vi.fn(async (input: unknown, init?: RequestInit) => {
+      urls.push(String(input));
+      keys.push(((init?.headers as Record<string, string>)?.Authorization ?? '').replace('Bearer ', ''));
+      return new Response(JSON.stringify({
+        choices: [{ message: { content: '{"value":"ok"}' } }],
+      }), { status: 200 });
+    }));
+
+    const alt = await getDefaultProvider('p-alt');
+    await alt.chatExtract('s', 'u', z.object({ value: z.string() }));
+    expect(urls[0]).toBe('https://alt.test/v1/chat/completions');
+    expect(keys[0]).toBe('key-alt');
+  });
+
+  it('getMaskedProfiles 脱敏并标注默认档案；key 数汇总', () => {
+    const masked = getMaskedProfiles()!;
+    expect(masked).toHaveLength(2);
+    expect(masked[0]).toMatchObject({ id: 'p-main', name: '主力', isActive: true, keyCount: 2 });
+    expect(masked[1]).toMatchObject({ id: 'p-alt', isActive: false, keyCount: 1 });
+    // 脱敏：不出现完整 key
+    expect(JSON.stringify(masked)).not.toContain('key-main-1');
+    expect(JSON.stringify(masked)).not.toContain('key-alt');
+
+    expect(getTotalApiKeyCount()).toBe(3);
+  });
+
+  it('runtimeConfig 镜像默认档案，切换默认后镜像跟随', () => {
+    expect(getRuntimeConfig()).toMatchObject({
+      provider: 'custom',
+      baseUrl: 'https://main.test/v1',
+      model: 'm1',
+    });
+
+    setRuntimeProfiles(getRuntimeProfiles()!, 'p-alt', false);
+    expect(getRuntimeConfig()).toMatchObject({
+      baseUrl: 'https://alt.test/v1',
+      model: 'm2',
+    });
+  });
+
+  it('档案列表清空后退回单配置路径', () => {
+    setRuntimeProfiles([], undefined, false);
+    expect(getRuntimeProfiles()).toEqual([]);
+    // 不抛错即通过（无配置时由 env/错误路径兜底）
+    expect(getTotalApiKeyCount()).toBe(0);
   });
 });

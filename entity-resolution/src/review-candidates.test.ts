@@ -57,6 +57,50 @@ describe('buildCharacterMergeCandidates', () => {
     expect(candidates).toEqual([]);
   });
 
+  it('creates a candidate when one name is the surname-stripped variant of the other (宁荣荣/荣荣)', () => {
+    const candidates = buildCharacterMergeCandidates([
+      character({ id: 'char-ning-rongrong', name: '宁荣荣', chapterAppearances: [5, 30] }),
+      character({ id: 'char-rongrong', name: '荣荣', chapterAppearances: [8, 30] }),
+    ]);
+
+    expect(candidates).toHaveLength(1);
+    expect(candidates[0].reasons).toContain('名称包含变体');
+  });
+
+  it('去姓变体对以带姓氏的全名为 primary（宁荣荣），不按置信度/提及数排序', () => {
+    // 还原手动合并踩过的坑：荣荣提及数与置信度都更高，旧排序会以荣荣为保留方
+    const candidates = buildCharacterMergeCandidates([
+      character({ id: 'char-rongrong', name: '荣荣', confidence: 0.95, mentionCount: 9333, chapterAppearances: [31, 32] }),
+      character({ id: 'char-ning', name: '宁荣荣', confidence: 0.6, mentionCount: 100, chapterAppearances: [31, 40] }),
+    ]);
+
+    expect(candidates).toHaveLength(1);
+    expect(candidates[0].primaryId).toBe('char-ning');
+    expect(candidates[0].primary.name).toBe('宁荣荣');
+    expect(candidates[0].secondary.name).toBe('荣荣');
+  });
+
+  it('detects surname-stripped variants for compound given names (萧薰儿/薰儿)', () => {
+    const candidates = buildCharacterMergeCandidates([
+      character({ id: 'char-xiao-xun-er', name: '萧薰儿' }),
+      character({ id: 'char-xun-er', name: '薰儿' }),
+    ]);
+
+    expect(candidates).toHaveLength(1);
+    expect(candidates[0].reasons).toContain('名称包含变体');
+  });
+
+  it('does not treat unrelated names as surname-stripped variants', () => {
+    const candidates = buildCharacterMergeCandidates([
+      character({ id: 'char-tang-san', name: '唐三' }),
+      character({ id: 'char-xiao-wu', name: '小舞' }),
+      character({ id: 'char-wang-xiaoming', name: '王小明' }),
+      character({ id: 'char-dai-mubai', name: '戴沐白' }),
+    ]);
+
+    expect(candidates).toEqual([]);
+  });
+
   it('preserves the secondary name, evidence, and relationship fields when a reviewer accepts a merge', () => {
     const merged = mergeCharacterRecords(
       character({ id: 'primary', name: '萧炎', aliases: ['炎儿'], confidence: 0.9, chapterAppearances: [1], mentionCount: 3, coCharacters: ['药老'] }),

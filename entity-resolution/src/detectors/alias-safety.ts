@@ -181,7 +181,6 @@ const KNOWN_ALIAS_PAIRS = new Set([
   aliasPairKey('陈汉光', '陈府尹'),
   aliasPairKey('魏渊', '魏公'),
 ]);
-
 const COMMON_SURNAMES = new Set(Array.from(
   '赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨朱秦尤许何吕施张孔曹严华金魏陶姜戚谢邹喻柏水窦章云苏潘葛奚范彭郎鲁韦昌马苗凤花方俞任袁柳鲍史唐费廉岑薛雷贺倪汤滕殷罗毕安常乐于傅皮齐康伍余元卜顾孟平黄和穆萧尹姚邵汪祁毛禹狄米贝明计伏成戴宋茅庞熊纪舒屈项祝董梁杜阮蓝闵席季麻强贾路娄江童颜郭梅盛林钟徐邱骆高夏蔡田樊胡凌霍虞万支柯管卢莫解应宗丁宣邓单杭洪包左石崔吉龚程邢陆荣翁荀羊惠甄魏封靳松井段富巫焦巴牧山谷车侯全班秋仲宫宁仇甘厉祖武符刘景龙叶司黎薄白蒲燕尚温庄晏柴瞿阎充慕连习艾鱼容向古易戈廖终居衡耿满弘国文广东越师聂辛阚简饶曾沙养关盖益桓公'
 ));
@@ -340,6 +339,16 @@ const COLLECTIVE_ROLE_NOUNS = [
   '叔侄',
 ];
 
+// 预编译的集合称谓单一正则：量词×名词原先在嵌套循环里逐对 new RegExp（每个候选
+// 最多 ~2400 次编译+测试），fallback 扫描全书逐字取候选时是天文数字，必须合并。
+// 语义等价：原模式 ^[汉字]{0,8}Q[汉字]{0,4}R$ 的存在性判断 ⇔ 交替模式的可匹配性。
+const COLLECTIVE_ALIAS_RE = new RegExp(
+  `^[\\u4e00-\\u9fff]{0,8}(?:${COLLECTIVE_ROLE_QUANTIFIERS.join('|')})`
+    + `[\\u4e00-\\u9fff]{0,4}(?:${COLLECTIVE_ROLE_NOUNS.join('|')})$`
+);
+// 裸亲属词命中检测（用于 fallback 候选过滤，等价于 BARE_KINSHIP_TERMS 逐个 includes）
+const BARE_KINSHIP_TERM_RE = new RegExp(BARE_KINSHIP_TERMS.join('|'));
+
 function aliasPairKey(a: string, b: string): string {
   return [normalizeForAliasSafety(a), normalizeForAliasSafety(b)].sort().join('|');
 }
@@ -370,12 +379,7 @@ export function isCollectiveCharacterAlias(alias: string): boolean {
   // 本身即复数的亲属/关系称谓，无需量词前缀（如"韩立父母""X师兄弟"）
   if (normalized.length <= 8 && /(父母|双亲|爹娘|二老|全家|一家人|师兄弟|同门师兄弟)$/.test(normalized)) return true;
 
-  return COLLECTIVE_ROLE_QUANTIFIERS.some((quantifier) =>
-    COLLECTIVE_ROLE_NOUNS.some((role) => {
-      const pattern = new RegExp(`^[\\u4e00-\\u9fff]{0,8}${quantifier}[\\u4e00-\\u9fff]{0,4}${role}$`);
-      return pattern.test(normalized);
-    })
-  );
+  return COLLECTIVE_ALIAS_RE.test(normalized);
 }
 
 export function isGenericCharacterAlias(alias: string): boolean {
@@ -452,9 +456,21 @@ function sourceOccurrences(sourceText: string | undefined, value: string): numbe
   return positions;
 }
 
+// 裸称号（如"三长老"）范围推断的引用缓存，理由同亲属称谓缓存
+const scopedNumberedTitleCache: { text?: string; results?: Map<string, string | undefined> } = {};
+
 function inferScopedNumberedTitle(name: string, sourceText: string | undefined): string | undefined {
   const normalized = name.trim();
   if (!sourceText || !isBareNumberedTitle(normalized)) return undefined;
+  if (scopedNumberedTitleCache.text !== sourceText) {
+    scopedNumberedTitleCache.text = sourceText;
+    scopedNumberedTitleCache.results = new Map();
+  }
+  const cached = scopedNumberedTitleCache.results!.get(normalized);
+  if (cached !== undefined) return cached;
+
+  // 同一 scope 在多个称号出现位置会反复计数，做本次调用内的记忆化
+  const scopeCountCache = new Map<string, number>();
 
   let bestScope: string | undefined;
   let bestScore = Number.NEGATIVE_INFINITY;
@@ -468,9 +484,15 @@ function inferScopedNumberedTitle(name: string, sourceText: string | undefined):
       const scope = compactOrganizationScope(match[0]);
       if (!scope || scope.length < 2) continue;
 
+      let scopeCount = scopeCountCache.get(scope);
+      if (scopeCount === undefined) {
+        scopeCount = countOccurrences(sourceText, scope);
+        scopeCountCache.set(scope, scopeCount);
+      }
+
       const absoluteIndex = start + (match.index ?? 0);
       const distance = Math.abs(titleIndex - absoluteIndex);
-      const score = countOccurrences(sourceText, scope) * 20 - distance;
+      const score = scopeCount * 20 - distance;
       if (score > bestScore) {
         bestScore = score;
         bestScope = scope;
@@ -478,32 +500,69 @@ function inferScopedNumberedTitle(name: string, sourceText: string | undefined):
     }
   }
 
-  return bestScope ? `${bestScope}${normalized}` : undefined;
+  const result = bestScope ? `${bestScope}${normalized}` : undefined;
+  scopedNumberedTitleCache.results!.set(normalized, result);
+  return result;
 }
 
-function scoreKnownNameForKinship(sourceText: string, knownName: string, relation: string): number {
-  const occurrences = countOccurrences(sourceText, knownName);
-  if (occurrences === 0) return Number.NEGATIVE_INFINITY;
+/** 评分时（名字位置×关系位置）配对评估的硬上限，防御高频词密集共现的病态文本 */
+const MAX_KINSHIP_PAIR_EVALS = 200_000;
 
-  let score = occurrences * 20;
-  if (sourceText.includes(`${knownName}${relation}`)) score += 300;
-  if (sourceText.includes(`${knownName}的${relation}`)) score += 260;
+function scoreKnownNameForKinship(
+  sourceText: string,
+  knownName: string,
+  relation: string,
+  relationPositions: number[]
+): number {
+  const namePositions = sourceOccurrences(sourceText, knownName);
+  if (namePositions.length === 0) return Number.NEGATIVE_INFINITY;
 
-  for (const relationIndex of sourceOccurrences(sourceText, relation)) {
-    for (const nameIndex of sourceOccurrences(sourceText, knownName)) {
-      const distance = Math.abs(relationIndex - nameIndex);
+  let score = namePositions.length * 20;
+  let adjacent = false;
+  let adjacentWithDe = false;
+  let pairEvals = 0;
+  // 双指针：两组位置均为升序，只考察距离 ≤160 的配对。
+  // 原实现是全量笛卡尔积（关系词 × 名字的所有出现位置），长书上是天文数字。
+  let left = 0;
+  for (const namePos of namePositions) {
+    while (left < relationPositions.length && relationPositions[left] < namePos - 160) left++;
+    for (let k = left; k < relationPositions.length && relationPositions[k] <= namePos + 160; k++) {
+      const relationPos = relationPositions[k];
+      const distance = Math.abs(relationPos - namePos);
       if (distance > 160) continue;
-      score += nameIndex < relationIndex
-        ? 220 - distance
-        : Math.max(0, 40 - Math.floor(distance / 2));
+      if (pairEvals++ < MAX_KINSHIP_PAIR_EVALS) {
+        score += namePos < relationPos
+          ? 220 - distance
+          : Math.max(0, 40 - Math.floor(distance / 2));
+      }
+      // 紧邻判定直接用位置数组完成，替代两次全书 includes 扫描
+      if (relationPos === namePos + knownName.length) adjacent = true;
+      if (
+        relationPos === namePos + knownName.length + 1
+        && sourceText[namePos + knownName.length] === '的'
+      ) {
+        adjacentWithDe = true;
+      }
     }
   }
+  if (adjacent) score += 300;
+  if (adjacentWithDe) score += 260;
 
   return score;
 }
 
+/** fallback 候选上限：全书逐字扫描出的「疑似人名」只保留高频前 N 个，
+ *  防止百万字级文本把后续逐候选全书评分拖垮（低频名本来也评不上亲属归属） */
+const MAX_FALLBACK_NAME_CANDIDATES = 200;
+// 单条引用缓存：提取流程用同一 sourceText 引用逐角色反复调用，命中后零成本
+const fallbackNamesCache: { text?: string; names?: string[] } = {};
+
 function fallbackKnownCharacterNames(sourceText: string): string[] {
-  const names: string[] = [];
+  if (fallbackNamesCache.text === sourceText && fallbackNamesCache.names) {
+    return fallbackNamesCache.names;
+  }
+
+  const counts = new Map<string, number>();
   for (let i = 0; i < sourceText.length; i++) {
     for (const length of [3, 2]) {
       const candidate = sourceText.slice(i, i + length);
@@ -511,12 +570,33 @@ function fallbackKnownCharacterNames(sourceText: string): string[] {
       if (/^(和|与|及|在|有|是|这|那|他|她)/u.test(candidate)) continue;
       if (/[和与及在是有觉想说看拿走]$/u.test(candidate)) continue;
       if (candidate.includes('觉得')) continue;
-      if (BARE_KINSHIP_TERMS.some((term) => candidate.includes(term))) continue;
-      if (isLikelyProperChineseName(candidate)) names.push(candidate);
+      if (BARE_KINSHIP_TERM_RE.test(candidate)) continue;
+      if (isLikelyProperChineseName(candidate)) {
+        counts.set(candidate, (counts.get(candidate) ?? 0) + 1);
+      }
     }
   }
-  return [...new Set(names)];
+
+  // 超过上限时按出现频次保留（同名次短者优先，再按字典序保证确定性），
+  // 但输出保持书内首现顺序，与旧行为的候选次序一致
+  const entries = [...counts.entries()];
+  const kept = new Set(
+    [...entries]
+      .sort((a, b) => b[1] - a[1] || a[0].length - b[0].length || (a[0] < b[0] ? -1 : 1))
+      .slice(0, MAX_FALLBACK_NAME_CANDIDATES)
+      .map(([name]) => name),
+  );
+  const names = entries.filter(([name]) => kept.has(name)).map(([name]) => name);
+
+  fallbackNamesCache.text = sourceText;
+  fallbackNamesCache.names = names;
+  return names;
 }
+
+// 亲属称谓归属推断的引用缓存：同一 sourceText 下同一称谓的结果不变。
+// 键包含 knownCharacterNames 全量内容——只用长度的话，同长度不同内容的
+// 两轮调用会串到彼此的陈旧结果（重跑同一本书时可复现）。
+const scopedKinshipCache: { text?: string; results?: Map<string, string | undefined> } = {};
 
 function inferScopedKinshipName(
   name: string,
@@ -524,7 +604,16 @@ function inferScopedKinshipName(
   knownCharacterNames: string[] = []
 ): string | undefined {
   if (!sourceText || !isBareKinshipAlias(name)) return undefined;
+  if (scopedKinshipCache.text !== sourceText) {
+    scopedKinshipCache.text = sourceText;
+    scopedKinshipCache.results = new Map();
+  }
+  const cacheKey = `${name.trim()}\u0000${knownCharacterNames.join('\u0001')}`;
+  const cached = scopedKinshipCache.results!.get(cacheKey);
+  if (cached !== undefined) return cached;
+
   const relation = stripDemonstrative(name.trim());
+  const relationPositions = sourceOccurrences(sourceText, relation);
   const candidateNames = [...new Set([
     ...knownCharacterNames,
     ...fallbackKnownCharacterNames(sourceText),
@@ -533,8 +622,16 @@ function inferScopedKinshipName(
   for (const knownName of candidateNames) {
     const cleanName = knownName.trim();
     if (!cleanName) continue;
-    if (sourceText.includes(`${cleanName}${relation}`)) return `${cleanName}的${relation}`;
-    if (sourceText.includes(`${cleanName}的${relation}`)) return `${cleanName}的${relation}`;
+    if (sourceText.includes(`${cleanName}${relation}`)) {
+      const result = `${cleanName}的${relation}`;
+      scopedKinshipCache.results!.set(cacheKey, result);
+      return result;
+    }
+    if (sourceText.includes(`${cleanName}的${relation}`)) {
+      const result = `${cleanName}的${relation}`;
+      scopedKinshipCache.results!.set(cacheKey, result);
+      return result;
+    }
   }
 
   let bestName: string | undefined;
@@ -550,7 +647,7 @@ function inferScopedKinshipName(
     )) {
       continue;
     }
-    const score = scoreKnownNameForKinship(sourceText, cleanName, relation)
+    const score = scoreKnownNameForKinship(sourceText, cleanName, relation, relationPositions)
       + (explicitKnownNames.has(cleanName) ? 1000 : 0);
     if (score > bestScore) {
       bestScore = score;
@@ -558,9 +655,11 @@ function inferScopedKinshipName(
     }
   }
 
-  return bestName && bestScore > Number.NEGATIVE_INFINITY
+  const result = bestName && bestScore > Number.NEGATIVE_INFINITY
     ? `${bestName}的${relation}`
     : undefined;
+  scopedKinshipCache.results!.set(cacheKey, result);
+  return result;
 }
 
 function isInferredCanonicalNameCompatible(candidate: string, originalName: string): boolean {
@@ -603,6 +702,74 @@ function isNameScopedAddress(alias: string): boolean {
   const normalized = alias.trim();
   return startsWithKnownSurname(normalized)
     && /(族长|家主|宗主|长老|先生|老师|师父|师傅|叔叔|叔|伯父|伯伯|少爷|小姐|大人|父亲|母亲)$/.test(normalized);
+}
+
+/**
+ * 姓氏剥离变体检测：判断两个名字是否满足「长名去掉常见姓氏开头后等于短名」
+ * （如 宁荣荣→荣荣、萧薰儿→薰儿）。昵称截断是同一人物的强信号，
+ * 但本函数只负责生成合并候选，最终是否合并由 LLM 裁决/人工确认。
+ *
+ * 约束（控制误报）：
+ * - 直接比较原始名字（不做称谓归一——normalizeChineseName 会剥掉「薰儿」的
+ *   「儿」后缀，反而破坏变体关系；带称谓的变体由 isSameChineseName 单独覆盖）；
+ * - 两边须是 2-4 字纯中文；
+ * - 长名必须以常见姓氏（含复姓）开头，剥离后剩余 ≥2 字；
+ * - 短名不能是泛称（如「老师」「夫人」），避免头衔撞名。
+ */
+export function isSurnameStrippedNameVariant(a: string, b: string): boolean {
+  const na = a.trim();
+  const nb = b.trim();
+  if (na === nb || na.length === nb.length) return false;
+  if (!/^[\u4e00-\u9fff]{2,4}$/.test(na) || !/^[\u4e00-\u9fff]{2,4}$/.test(nb)) return false;
+
+  const longer = na.length > nb.length ? na : nb;
+  const shorter = na.length > nb.length ? nb : na;
+  if (shorter.length < 2) return false;
+  if (isGenericCharacterAlias(shorter) || isGenericCharacterAlias(longer)) return false;
+
+  // 复姓优先（如 慕容紫英 → 紫英 ✓；慕容复 → 复 剩余 1 字不满足）
+  for (const surname of COMPOUND_SURNAMES) {
+    if (longer.startsWith(surname) && longer.slice(surname.length) === shorter) {
+      return true;
+    }
+  }
+  // 单姓剥离（宁荣荣 → 荣荣、萧薰儿 → 薰儿）
+  return COMMON_SURNAMES.has(longer[0]) && longer.slice(1) === shorter;
+}
+
+/**
+ * 两个名字互为「去姓变体」时，返回更适合作正名的那个（带姓氏的更长名字，
+ * 如 宁荣荣 > 荣荣）；不是变体对返回 null（由调用方按原有顺序处理）。
+ */
+export function pickCanonicalName(a: string, b: string): string | null {
+  if (!isSurnameStrippedNameVariant(a, b)) return null;
+  return a.trim().length > b.trim().length ? a.trim() : b.trim();
+}
+
+/** 称谓后缀表（长在前优先匹配）：与正名/其他别名只差一个称谓后缀的别名视为冗余 */
+const HONORIFIC_SUFFIXES = [
+  '小姐', '姑娘', '少爷', '公子', '大人', '先生', '女士', '夫人', '太太', '殿下', '陛下',
+  '哥', '姐', '弟', '妹', '兄', '叔', '姨',
+];
+
+/**
+ * 同实体内别名降噪：去掉「正名/其他别名 + 称谓后缀」形态的冗余别名
+ * （如已有 宁荣荣 时删掉 宁荣荣小姐、宁荣荣姑娘；已有 荣荣 时删掉 荣荣姐）。
+ * 只动纯冗余项；头衔型别名（九彩斗罗、七宝琉璃塔魂师）与无基座的称谓保留。
+ */
+export function dropRedundantHonorificAliases(name: string, aliases: string[]): string[] {
+  const bases = new Set([name.trim(), ...aliases.map((a) => a.trim())].filter(Boolean));
+  return aliases.filter((alias) => {
+    const a = alias.trim();
+    for (const suffix of HONORIFIC_SUFFIXES) {
+      const base = a.slice(0, a.length - suffix.length);
+      // 剥离后剩余 ≥2 字才处理，避免「阿宁小姐→阿宁」这类把姓氏单字当基座的误删
+      if (a.length - suffix.length >= 2 && a.endsWith(suffix) && bases.has(base)) {
+        return false;
+      }
+    }
+    return true;
+  });
 }
 
 function isCompatibleAlias(alias: string, ownerName: string, targetName: string): boolean {

@@ -835,11 +835,11 @@ const polishSchema = z.object({
   locations: z.array(polishEntitySchemaRaw).optional().default([]),
 }).passthrough();
 
-async function polishWithLlm(prompts: GenerationPrompt[]): Promise<Map<string, string>> {
+async function polishWithLlm(prompts: GenerationPrompt[], llmProfileId?: string): Promise<Map<string, string>> {
   const result = new Map<string, string>();
   if (prompts.length === 0) return result;
 
-  const provider = await getDefaultProvider();
+  const provider = await getDefaultProvider(llmProfileId);
 
   // 组级容错：一次调用要返回整组实体的完整润色文本，长输出易被截断导致整组丢失。
   // 失败/漏返的缺口先拆半重试，缩小到少量实体后逐个单试（单实体输出极小，几乎必成），
@@ -968,6 +968,7 @@ const outfitPolishSchema = z.object({
 async function expandCharacterOutfitVariants(
   packByName: Map<string, any>,
   characterPrompts: GenerationPrompt[],
+  llmProfileId?: string,
 ): Promise<number> {
   // 1. 模板：每套非主套一张完整设计图
   const pending: Array<{ key: string; entityName: string; variant: OutfitVariant }> = [];
@@ -1001,7 +1002,7 @@ async function expandCharacterOutfitVariants(
   if (!USE_LLM) return 0;
 
   // 2. LLM 补写（按字符数分组，控制单次上下文）
-  const provider = await getDefaultProvider();
+  const provider = await getDefaultProvider(llmProfileId);
   const groups: Array<typeof pending> = [];
   let current: typeof pending = [];
   let currentChars = 0;
@@ -1090,7 +1091,8 @@ ${JSON.stringify(payload, null, 2)}`,
 // ── Main executor ──
 
 export async function executePromptGeneration(payload: unknown): Promise<PromptGenerationResult> {
-  const source = payload as PromptGenerationPayload;
+  const source = payload as PromptGenerationPayload & { llmProfileId?: string };
+  const llmProfileId = source.llmProfileId;
   // 低置信度实体只保留名字防遗漏，不生成提示词（与视觉补全的跳过策略一致）
   const lowConfidenceNames = new Set<string>();
   for (const entity of [...(source.characters || []), ...(source.items || []), ...(source.locations || [])]) {
@@ -1217,7 +1219,7 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
     if (current.length > 0) groups.push(current);
 
     for (const group of groups) {
-      const polished = await polishWithLlm(group);
+      const polished = await polishWithLlm(group, llmProfileId);
       for (const p of group) {
         const newPrompt = polished.get(p.entityName);
         if (newPrompt) {
@@ -1246,7 +1248,7 @@ export async function executePromptGeneration(payload: unknown): Promise<PromptG
   // 避免"其余服饰套系"只有一行参考导致不同服饰生图无差异。
   let outfitPolished = 0;
   try {
-    outfitPolished = await expandCharacterOutfitVariants(packByName, characterPrompts);
+      outfitPolished = await expandCharacterOutfitVariants(packByName, characterPrompts, llmProfileId);
   } catch (err) {
     console.warn(`[PromptGeneration] Outfit expansion failed: ${err instanceof Error ? err.message : String(err)}`);
   }

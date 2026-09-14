@@ -1,8 +1,8 @@
 import type { Character } from './types.js';
-import { isSafeAliasMatch } from './detectors/alias-safety.js';
+import { isSafeAliasMatch, isSurnameStrippedNameVariant, pickCanonicalName } from './detectors/alias-safety.js';
 import { isSameChineseName } from './detectors/same-chinese-name.js';
 
-export type CharacterMergeReason = '称谓归一化' | '已提取别名匹配';
+export type CharacterMergeReason = '称谓归一化' | '已提取别名匹配' | '名称包含变体';
 
 export interface CharacterReviewSummary {
   id: string;
@@ -75,6 +75,10 @@ function summarize(character: Character): CharacterReviewSummary {
 }
 
 function comparePrimary(a: Character, b: Character): [Character, Character] {
+  // 正名优先：去姓变体对（宁荣荣/荣荣）固定以带姓氏的全名为 primary，
+  // 让「合并为「宁荣荣」」成为审核页与自动合并的默认方向。
+  const canonical = pickCanonicalName(a.name, b.name);
+  if (canonical) return canonical === a.name.trim() ? [a, b] : [b, a];
   if (a.confidence !== b.confidence) return a.confidence > b.confidence ? [a, b] : [b, a];
   if (a.mentionCount !== b.mentionCount) return a.mentionCount > b.mentionCount ? [a, b] : [b, a];
   return a.id.localeCompare(b.id) <= 0 ? [a, b] : [b, a];
@@ -97,6 +101,7 @@ export function buildCharacterMergeCandidates(characters: Character[]): Characte
       const reasons: CharacterMergeReason[] = [];
       if (isSameChineseName(left.name, right.name)) reasons.push('称谓归一化');
       if (isSafeAliasMatch(left, right)) reasons.push('已提取别名匹配');
+      if (isSurnameStrippedNameVariant(left.name, right.name)) reasons.push('名称包含变体');
       if (reasons.length === 0) continue;
 
       const [primary, secondary] = comparePrimary(left, right);

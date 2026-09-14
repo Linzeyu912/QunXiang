@@ -52,11 +52,15 @@ export async function extractionRunRoutes(fastify: FastifyInstance) {
   fastify.post('/:bookId/extraction-runs', async (request, reply) => {
     const { bookId } = request.params as { bookId: string };
     const ownerId = await resolveOwnerId(request);
-    const body = (request.body ?? {}) as { maxCalls?: number; maxTokens?: number };
+    const body = (request.body ?? {}) as { maxCalls?: number; maxTokens?: number; providerProfileId?: string };
     try {
       const run = await createRun(bookId, ownerId!, {
         maxCalls: typeof body.maxCalls === 'number' ? body.maxCalls : undefined,
         maxTokens: typeof body.maxTokens === 'number' ? body.maxTokens : undefined,
+        // 按书绑定服务商档案（多服务商并行）；缺省用默认档案
+        providerProfileId: typeof body.providerProfileId === 'string' && body.providerProfileId
+          ? body.providerProfileId
+          : undefined,
       });
       return reply.status(201).send({ ...run, message: '运行已创建并开始提取' });
     } catch (err) {

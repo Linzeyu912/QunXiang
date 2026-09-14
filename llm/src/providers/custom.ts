@@ -2,6 +2,7 @@ import type { z } from 'zod';
 import { LLMError, mapProviderError, ProviderNotConfiguredError } from '../errors.js';
 import type { LLMProvider } from '../index.js';
 import { assertSafeOutboundUrl } from './net-guard.js';
+import type { ThinkingMode } from '../configStore.js';
 
 export interface ChatExtractOptions {
   /** 调用方中止信号（如连接测试的短超时）。中止时请求立即失败并映射为超时错误。 */
@@ -15,6 +16,8 @@ export interface CustomConfig {
   baseUrl?: string;
   model?: string;
   timeout?: number;
+  /** 思考模式（UI 设置）。未设置时退回 env：LLM_DISABLE_THINKING=1 → off，否则 auto。 */
+  thinking?: ThinkingMode;
 }
 
 const DEFAULT_TIMEOUT = 600000; // 10 minutes for large documents
@@ -27,6 +30,59 @@ const KEY_COOLDOWN_MS = 60_000;
 interface KeyHealth {
   failCount: number;
   cooldownUntil: number; // 0 = 可用
+}
+
+/**
+ * 参数容错：不同服务商对可选参数的支持差异很大（如 Kimi K3 / GLM-5.3 这类
+ * 「始终思考」模型拒绝 thinking.type=disabled；部分新模型只认 max_completion_tokens、
+ * 固定 temperature=1.0 等）。策略：请求被 400 拒绝且报文点名了某个可选参数时，
+ * 剔除该参数立即重试（最多剥 3 层），并按模型记住——后续调用直接不发，
+ * 避免每个请求都白挨一次 400。
+ */
+type TunableParam = 'thinking' | 'reasoning_effort' | 'temperature' | 'max_tokens' | 'response_format';
+
+const droppedParamsByModel = new Map<string, Set<TunableParam>>();
+
+/** 剔除记忆按「端点+模型」隔离：不同服务商可能暴露同名模型（如都有 kimi-k3），
+ *  一家拒绝过的参数不该影响另一家 */
+function droppedParamsKey(baseUrl: string, model: string): string {
+  return `${baseUrl}|${model}`;
+}
+
+/** 智谱「始终思考」拒绝（code 1210）：报文不点名参数名，语义上对应 thinking */
+function isAlwaysThinkingRejection(errorText: string): boolean {
+  return /"code"\s*:\s*1210|始终思考|不支持关闭思考/u.test(errorText);
+}
+
+/** 从 400 报文中识别被拒绝的参数；识别不出返回 undefined（不做剔除重试） */
+function detectRejectedParam(errorText: string): TunableParam | undefined {
+  if (isAlwaysThinkingRejection(errorText)) return 'thinking';
+  // reasoning_effort 先判：部分服务商称其为 thinking_level，避免被 thinking 规则抢先命中
+  if (/reasoning_effort|thinking_level|思考等级/i.test(errorText)) return 'reasoning_effort';
+  if (/thinking/i.test(errorText)) return 'thinking';
+  if (/temperature/i.test(errorText)) return 'temperature';
+  if (/max_tokens/i.test(errorText)) return 'max_tokens';
+  if (/response_format/i.test(errorText)) return 'response_format';
+  return undefined;
+}
+
+/** 按「端点+模型」记忆剔除某个参数 */
+function rememberDroppedParam(key: string, param: TunableParam): void {
+  let dropped = droppedParamsByModel.get(key);
+  if (!dropped) {
+    dropped = new Set();
+    droppedParamsByModel.set(key, dropped);
+  }
+  dropped.add(param);
+}
+
+/** 解析生效的思考模式：显式配置优先，env LLM_DISABLE_THINKING 兜底，默认 auto */
+function resolveThinkingMode(config?: CustomConfig): ThinkingMode {
+  if (config?.thinking) return config.thinking;
+  if (process.env.LLM_DISABLE_THINKING === '1' || process.env.LLM_DISABLE_THINKING === 'true') {
+    return 'off';
+  }
+  return 'auto';
 }
 
 function findFirstJsonValue(text: string): string | undefined {
@@ -136,10 +192,13 @@ export function salvageTruncatedJson(text: string): unknown | undefined {
 /**
  * 规范化 OpenAI 兼容 API 的 base URL，兼容用户在 UI / .env 里常见的几种填法：
  *   - 完整端点（…/chat/completions）         → 原样
- *   - 带版本号的根（…/v1 或 …/v4）            → 追加 /<endpoint>
+ *   - 带版本号的根（…/v1、…/v4、…/v1beta）    → 追加 /<endpoint>
  *   - 裸域名（…/api/paas、…/com 等）          → 追加 /v1/<endpoint>（OpenAI 标准）
+ *   - 网关前缀（…/v1beta/openai、…/api/llm）  → 追加 /<endpoint>
  * 末尾斜杠会被合并。避免用户只填根域名时拼成 /chat/completions（缺 /v1），
  * 进而打到服务商 nginx 网关层返回纯文本 404（而非 API 的 JSON 错误）。
+ * 用户若真填了不含 chat 关键词的非标准完整端点，chatExtract 的 404 兜底会用
+ * 原样地址再试一次，两种形态总有一种能通。
  */
 export function normalizeApiUrl(
   raw: string,
@@ -147,22 +206,18 @@ export function normalizeApiUrl(
 ): string {
   const url = raw.trim().replace(/\/+$/, '');
   if (url.endsWith(`/${endpoint}`)) return url;
-  // 判断 URL 是否已经是完整端点（含非标准路径如 /v1/image/create），
-  // 还是 API 版本前缀（如 /v1、/api/v3、/api/paas/v4）需要追加 endpoint。
-  //
-  // 规则：如果最后一段是版本号（v\d+）或整个路径只含版本前缀，则追加；
-  // 否则（路径含非版本段如 image/create）视为完整端点，原样返回。
-  const lastSeg = url.split('/').pop() ?? '';
-  // 最后一段是版本号（v1、v3、v4 等）→ 追加 endpoint
-  if (/^v\d+$/i.test(lastSeg)) return `${url}/${endpoint}`;
   // URL 已含 endpoint 关键词（chat/completions 或 images/generations 的变体）→ 原样
   if (/\/(chat|images?)\//i.test(url)) return url;
-  // 路径较短（≤2 段）且不含版本号 → 追加 /v1/endpoint
+  const lastSeg = url.split('/').pop() ?? '';
+  // 最后一段是版本号（v1、v3、v4、v1beta 等字母后缀变体）→ 追加 endpoint
+  if (/^v\d+[a-z]*$/i.test(lastSeg)) return `${url}/${endpoint}`;
+  // 路径较短（≤1 段）且不含版本号 → 追加 /v1/endpoint
   const afterHost = url.includes('://') ? url.slice(url.indexOf('://') + 3) : url;
   const pathSegs = afterHost.split('/').filter(Boolean).slice(1);
   if (pathSegs.length <= 1) return `${url}/v1/${endpoint}`;
-  // 其他情况（3+ 段但最后一段非版本号）→ 视为完整端点
-  return url;
+  // 其余（≥2 段且末段非版本号，如 /v1beta/openai、/api/llm）→ 追加 endpoint。
+  // 旧逻辑在此原样发送，等于把网关前缀当完整端点打出去，必然 404。
+  return `${url}/${endpoint}`;
 }
 
 export function createCustomProvider(config?: CustomConfig): LLMProvider {
@@ -197,6 +252,9 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
 
   const rawBaseUrl = config?.baseUrl || process.env.LLM_BASE_URL || 'https://api.openai.com/v1';
   const baseUrl = normalizeApiUrl(rawBaseUrl, 'chat/completions');
+  // 实际请求地址：规范化结果命中 404 时会回退用户原样地址一次（见 chatExtract），
+  // 成功后记住该形态，本 provider 实例后续调用直接使用。
+  let requestBaseUrl = baseUrl;
   const model = config?.model || process.env.LLM_MODEL || 'gpt-4o';
   // Support LLM_TIMEOUT env var (in milliseconds)
   const envTimeout = parseInt(process.env.LLM_TIMEOUT || '', 10);
@@ -295,6 +353,8 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
       const envMaxTokens = parseInt(process.env.LLM_MAX_TOKENS || '', 10);
 
       let response: Response;
+      // 若失败响应的 body 已在「始终思考」探测中读过，暂存于此避免二次消费
+      let prefetchedErrorText: string | null = null;
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeout);
@@ -319,12 +379,23 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
           if (process.env.LLM_JSON_MODE === '1' || process.env.LLM_JSON_MODE === 'true') {
             requestBody.response_format = { type: 'json_object' };
           }
-          // 部分兼容接口默认启用深度推理，长文本任务可能先耗尽推理额度。
-          // 仅在部署方明确开启时发送关闭参数。
-          if (process.env.LLM_DISABLE_THINKING === '1' || process.env.LLM_DISABLE_THINKING === 'true') {
+          // 思考模式：off → 混合推理模型发送关闭参数；low/high/max → reasoning_effort
+          // 等级（GLM-5.3 / Kimi K3 等纯思考模型的官方三档）；auto → 不发任何思考参数。
+          // 参数被服务商拒绝的情况由下方的「点名剔除重试」兜底，构建时不再特判。
+          const thinkingMode = resolveThinkingMode(config);
+          if (thinkingMode === 'off') {
             requestBody.thinking = { type: 'disabled' };
+          } else if (thinkingMode === 'low' || thinkingMode === 'high' || thinkingMode === 'max') {
+            requestBody.reasoning_effort = thinkingMode;
           }
-          response = await fetch(`${baseUrl}`, {
+
+          // 该「端点+模型」历史上被拒过的参数直接不发
+          const dropped = droppedParamsByModel.get(droppedParamsKey(baseUrl, model));
+          if (dropped) {
+            for (const param of dropped) delete requestBody[param];
+          }
+          // 若首个响应被读取用于探测，其文本暂存于此，避免重复消费 response body
+          const sendChatRequest = () => fetch(`${requestBaseUrl}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -333,15 +404,38 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
             signal: controller.signal,
             body: JSON.stringify(requestBody),
           });
+          response = await sendChatRequest();
+          // 参数容错：400 报文点名可选参数（thinking / reasoning_effort / temperature /
+          // max_tokens / response_format）时逐个剔除重试（最多 3 层），并按端点+模型记住。
+          // 探测读过的 body 暂存给错误处理复用，避免二次消费。
+          const droppedKey = droppedParamsKey(baseUrl, model);
+          let probeRounds = 0;
+          while (!response.ok && response.status === 400 && probeRounds < 3) {
+            const probeText = await response.text();
+            const paramToDrop = detectRejectedParam(probeText);
+            if (!paramToDrop || requestBody[paramToDrop] === undefined) {
+              prefetchedErrorText = probeText;
+              break;
+            }
+            rememberDroppedParam(droppedKey, paramToDrop);
+            delete requestBody[paramToDrop];
+            probeRounds++;
+            response = await sendChatRequest();
+          }
+          // 404 兜底：规范化追加的路径形态不被该网关接受时（少数中转只认原始路径），
+          // 用用户原样地址再试一次；成功则本实例后续调用都沿用原样地址。
+          if (!response.ok && response.status === 404 && requestBaseUrl !== rawBaseUrl) {
+            requestBaseUrl = rawBaseUrl;
+            response = await sendChatRequest();
+          }
         } finally {
           clearTimeout(timeoutId);
           externalSignal?.removeEventListener('abort', onExternalAbort);
         }
 
         if (!response.ok) {
-          const errorText = await response.text();
           const status = response.status;
-          const snippet = errorText.slice(0, 300);
+          const snippet = (prefetchedErrorText ?? await response.text()).slice(0, 300);
           // 429/5xx 属于瞬态错误，标记该 key 失败（多 key 下下次轮询会换 key）
           if (status === 429 || status >= 500) {
             markKeyFail(chosenKey, true);
@@ -357,7 +451,7 @@ export function createCustomProvider(config?: CustomConfig): LLMProvider {
           }
           if (status === 404) {
             throw new LLMError(
-              `接口或模型不存在（HTTP 404）。请检查 Base URL 末尾是否为 /v1（不要带 /chat/completions 以外的路径），以及模型名称是否正确。服务端返回：${snippet}`,
+              `接口或模型不存在（HTTP 404）。已自动尝试两种地址形态仍失败，请核对 Base URL 与模型名是否属于同一服务商（已尝试：${baseUrl} 与 ${rawBaseUrl}）。服务端返回：${snippet}`,
               'custom', 'MODEL_NOT_FOUND', false,
             );
           }

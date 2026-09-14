@@ -966,7 +966,7 @@ function countInferred(packs: AnyEnhancedPack[]): number {
 }
 
 export async function executeVisualDescription(payload: unknown): Promise<VisualDescriptionResult> {
-  const source = payload as VisualDescriptionPayload;
+  const source = payload as VisualDescriptionPayload & { llmProfileId?: string };
   // 低置信度实体只保留名字防遗漏，不参与视觉补写（与提示词生成的跳过策略一致）。
   // 注意：这里只过滤「补写输入」，载荷中的实体列表原样向后传递——
   // 低置信度实体要进低置信度库供人工裁决，若在此从载荷删除会导致它们彻底消失。
@@ -1002,7 +1002,7 @@ export async function executeVisualDescription(payload: unknown): Promise<Visual
   const completions = new Map<string, CompletionEntity>();
 
   if (llmInputs.length > 0) {
-    const provider = await getDefaultProvider();
+    const provider = await getDefaultProvider(source.llmProfileId);
     const groups = groupInputs(llmInputs);
     const total = groups.length;
 

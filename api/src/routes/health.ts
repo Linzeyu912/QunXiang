@@ -1,6 +1,14 @@
 import type { FastifyInstance } from 'fastify';
-import { getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig, getDefaultImageProvider, getMaskedImageConfig, setRuntimeImageConfig, loadPersistedImageConfig, PROVIDER_PRESETS, IMAGE_PROVIDER_PRESETS } from '@qunxiang/llm';
-import type { RuntimeLlmConfig, RuntimeImageConfig } from '@qunxiang/llm';
+import { randomUUID } from 'crypto';
+import {
+  getDefaultProvider, setRuntimeProvider, getRuntimeProviderName, setRuntimeConfig,
+  getRuntimeConfig, getMaskedConfig, getApiKeyCount, loadPersistedConfig, getDefaultImageProvider,
+  getMaskedImageConfig, setRuntimeImageConfig, loadPersistedImageConfig,
+  PROVIDER_PRESETS, IMAGE_PROVIDER_PRESETS,
+  getMaskedProfiles, getRuntimeProfiles, getActiveProfileId, setRuntimeProfiles,
+  getTotalApiKeyCount, normalizeApiKeys,
+} from '@qunxiang/llm';
+import type { RuntimeLlmConfig, RuntimeImageConfig, LlmProfile } from '@qunxiang/llm';
 import { reconfigureWorkers, getConcurrencyStatus, type ConcurrencyMode } from '../services/extraction.service.js';
 
 interface ConnectionTestResult {
@@ -11,9 +19,15 @@ interface ConnectionTestResult {
 /**
  * 用当前生效配置跑一次最小 LLM 请求，验证配置真实可用。
  * PATCH /llm/config（保存后自动验证）与 POST /llm/test（手动测试）共用。
+ *
+ * @param profileId 可选：测试指定档案（多服务商）；缺省测试默认档案/env 配置。
+ *
+ * 判定口径：连接测试的目的是验证「地址/密钥/模型」三元组正确。
+ * HTTP 200 但模型返回了纯文本/空内容（解析校验失败）说明接口本身通了，
+ * 应判定连接成功并附提示——旧逻辑一律报"连接失败"误导用户重配。
  */
-async function runLlmConnectionTest(): Promise<ConnectionTestResult> {
-  const provider = await getDefaultProvider();
+async function runLlmConnectionTest(profileId?: string): Promise<ConnectionTestResult> {
+  const provider = await getDefaultProvider(profileId);
   const isConfigured = await provider.isConfigured();
 
   if (!isConfigured) {
@@ -29,7 +43,9 @@ async function runLlmConnectionTest(): Promise<ConnectionTestResult> {
   try {
     const { z } = await import('zod');
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15秒超时
+    // 45 秒：思考类模型（reasoner/思考等级）首 token 可能要数十秒，
+    // 15 秒会把可用配置误判为超时。
+    const timeoutId = setTimeout(() => controller.abort(), 45000);
     try {
       // 信号传入 provider：中止时底层 fetch 立即失败，而不是挂满 provider
       // 自身的 600 秒超时（此前的 AbortController 是无效的死代码）。
@@ -46,9 +62,19 @@ async function runLlmConnectionTest(): Promise<ConnectionTestResult> {
   } catch (chatErr) {
     const msg = chatErr instanceof Error ? chatErr.message : String(chatErr);
     const lowerMsg = msg.toLowerCase();
-    
+
+    // 接口已通、仅返回内容不符合测试 JSON 契约（纯文本/空回复/被网关改写）
+    // → 判定连接成功，附提示。识别 LLMError 的 VALIDATION 类消息。
+    if (
+      lowerMsg.includes('empty response')
+      || lowerMsg.includes('failed to parse llm response as json')
+      || lowerMsg.includes('结构不符合预期')
+    ) {
+      return { success: true, message: '连接成功（接口与密钥可用；模型未按测试要求返回 JSON，正式提取通常不受影响）。' };
+    }
+
     // 认证错误
-    if (lowerMsg.includes('401') || lowerMsg.includes('unauthorized') || lowerMsg.includes('invalid api key') || lowerMsg.includes('authentication')) {
+    if (lowerMsg.includes('401') || lowerMsg.includes('unauthorized') || lowerMsg.includes('invalid api key') || lowerMsg.includes('authentication') || lowerMsg.includes('认证失败')) {
       return { success: false, message: 'API Key 无效或已过期，请检查密钥是否正确。' };
     }
     
@@ -142,6 +168,7 @@ export async function healthRoutes(fastify: FastifyInstance) {
         keyCount: getApiKeyCount(),
         baseUrl: maskedConfig?.baseUrl || '',
         model: maskedConfig?.model || '',
+        thinking: maskedConfig?.thinking || '',
         concurrency,
         timestamp: new Date().toISOString(),
       };
@@ -155,6 +182,7 @@ export async function healthRoutes(fastify: FastifyInstance) {
         keyCount: 0,
         baseUrl: '',
         model: '',
+        thinking: '',
         concurrency: { mode: 'parallel-books', keyCount: 0, workers: 0, recommended: 1 },
         error: error instanceof Error ? error.message : String(error),
         timestamp: new Date().toISOString(),
@@ -211,6 +239,7 @@ export async function healthRoutes(fastify: FastifyInstance) {
       apiKeys?: string[];
       baseUrl?: string;
       model?: string;
+      thinking?: string;
     } | undefined;
 
     if (!body || !body.provider) {
@@ -266,6 +295,13 @@ export async function healthRoutes(fastify: FastifyInstance) {
       }
     }
 
+    // 思考模式：空串=清除（退回 env/模型默认），否则必须是合法枚举
+    if (body.thinking !== undefined && body.thinking !== '') {
+      if (!['auto', 'off', 'low', 'high', 'max'].includes(body.thinking)) {
+        return reply.status(400).send({ error: 'thinking 参数无效，只允许 auto、off、low、high 或 max。' });
+      }
+    }
+
     try {
       const config: Partial<RuntimeLlmConfig> = {
         provider: body.provider,
@@ -275,6 +311,12 @@ export async function healthRoutes(fastify: FastifyInstance) {
       else if (body.apiKey !== undefined) config.apiKey = body.apiKey;
       if (body.baseUrl !== undefined) config.baseUrl = body.baseUrl;
       if (body.model !== undefined) config.model = body.model;
+      if (body.thinking !== undefined) {
+        // 空串=清除，交由 factory 归一为 undefined
+        config.thinking = body.thinking === ''
+          ? undefined
+          : body.thinking as RuntimeLlmConfig['thinking'];
+      }
 
       setRuntimeConfig(config, true);
 
@@ -307,6 +349,7 @@ export async function healthRoutes(fastify: FastifyInstance) {
         keyCount: getApiKeyCount(),
         baseUrl: maskedConfig?.baseUrl || '',
         model: maskedConfig?.model || '',
+        thinking: maskedConfig?.thinking || '',
         ...(warning ? { warning } : {}),
         concurrency,
         timestamp: new Date().toISOString(),
@@ -315,6 +358,259 @@ export async function healthRoutes(fastify: FastifyInstance) {
       request.log.error(error);
       return reply.status(500).send({
         error: '内部错误，请查看服务端日志',
+        timestamp: new Date().toISOString(),
+      });
+    }
+  });
+
+  // ── 服务商配置档案（多服务商支持）──
+  // 不同厂商各建一个档案；同一厂商多个 key 填在同一档案内轮询。
+  // 启动时旧的 v1 单配置文件已自动迁移为「默认配置」档案，此处统一以档案视角操作。
+
+  fastify.get('/llm/profiles', async () => {
+    const profiles = getMaskedProfiles();
+    if (profiles) {
+      return { profiles, activeProfileId: getActiveProfileId() ?? null };
+    }
+    // 档案模式未启用（无磁盘配置）：合成单配置视图，首次创建档案时完成迁移
+    const masked = getMaskedConfig();
+    const keyCount = getApiKeyCount();
+    if (masked || keyCount > 0) {
+      return {
+        profiles: [{
+          id: 'default',
+          name: '默认配置',
+          baseUrl: masked?.baseUrl || '',
+          model: masked?.model || '',
+          thinking: masked?.thinking || '',
+          keyHints: masked?.keyHints || [],
+          keyCount,
+          isActive: true,
+        }],
+        activeProfileId: 'default',
+      };
+    }
+    return { profiles: [], activeProfileId: null };
+  });
+
+  /** 档案入参校验（与旧 PATCH /llm/config 同一套规则）；返回错误消息或 null。 */
+  function validateProfilePayload(body: {
+    name?: unknown;
+    baseUrl?: unknown;
+    model?: unknown;
+    apiKeys?: unknown;
+    thinking?: unknown;
+  }, { requireName }: { requireName: boolean }): string | null {
+    const emailLike = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (requireName && (typeof body.name !== 'string' || !body.name.trim())) {
+      return '档案名称不能为空。';
+    }
+    if (body.name !== undefined && typeof body.name === 'string' && body.name.length > 64) {
+      return '档案名称过长（上限 64 字符）。';
+    }
+    if (Array.isArray(body.apiKeys)) {
+      for (const raw of body.apiKeys) {
+        const k = (raw || '').trim();
+        if (!k) continue; // 空串=清除该项，允许
+        if (emailLike.test(k)) {
+          return 'API Key 看起来像邮箱地址，请检查是否被浏览器自动填充了注册账号。';
+        }
+        if (/\s/.test(k)) {
+          return 'API Key 不应包含空白字符。';
+        }
+      }
+    }
+    if (typeof body.model === 'string' && body.model.trim() !== '') {
+      if (emailLike.test(body.model.trim())) {
+        return '模型名称看起来像邮箱地址，请检查是否被浏览器自动填充了注册账号。';
+      }
+      if (body.model.length > 128) {
+        return '模型名称过长（上限 128 字符）。';
+      }
+    }
+    if (typeof body.baseUrl === 'string' && body.baseUrl.trim() !== '') {
+      if (!/^https?:\/\//i.test(body.baseUrl.trim())) {
+        return 'Base URL 必须以 http:// 或 https:// 开头。';
+      }
+    }
+    if (body.thinking !== undefined && body.thinking !== '' && !['auto', 'off', 'low', 'high', 'max'].includes(body.thinking as string)) {
+      return 'thinking 参数无效，只允许 auto、off、low、high 或 max。';
+    }
+    return null;
+  }
+
+  /** 当前档案列表；档案模式未启用但存在单配置时，把单配置包装成「默认配置」档案。 */
+  function currentProfilesWithMigration(): LlmProfile[] {
+    const existing = getRuntimeProfiles();
+    if (existing && existing.length > 0) return existing.map((p) => ({ ...p }));
+    const single = getRuntimeConfig();
+    if (single && (single.baseUrl || single.model || normalizeApiKeys(single).length > 0)) {
+      return [{
+        id: 'default',
+        name: '默认配置',
+        baseUrl: single.baseUrl,
+        model: single.model,
+        apiKeys: normalizeApiKeys(single),
+        thinking: single.thinking,
+      }];
+    }
+    return [];
+  }
+
+  fastify.post('/llm/profiles', async (request, reply) => {
+    const body = (request.body ?? {}) as {
+      name?: string; baseUrl?: string; model?: string; apiKeys?: string[]; thinking?: string;
+    };
+    const invalid = validateProfilePayload(body, { requireName: true });
+    if (invalid) return reply.status(400).send({ error: invalid });
+
+    try {
+      const profiles = currentProfilesWithMigration();
+      const profileId = randomUUID();
+      const thinking = body.thinking && body.thinking !== ''
+        ? body.thinking as LlmProfile['thinking']
+        : undefined;
+      profiles.push({
+        id: profileId,
+        name: body.name!.trim(),
+        baseUrl: body.baseUrl?.trim() || undefined,
+        model: body.model?.trim() || undefined,
+        apiKeys: (body.apiKeys ?? []).map((k) => k.trim()).filter(Boolean),
+        thinking,
+      });
+      const activeId = getActiveProfileId() ?? profiles[0]?.id;
+      setRuntimeProfiles(profiles, activeId, true);
+      setRuntimeProvider('llm');
+      const concurrency = reconfigureWorkers(getConcurrencyStatus().mode);
+
+      // 保存后自动验证（不阻断保存），结果作为 warning 返回
+      let warning: string | undefined;
+      try {
+        const testResult = await runLlmConnectionTest(profileId);
+        if (!testResult.success) warning = `档案已保存，但连接测试失败：${testResult.message}`;
+      } catch {
+        // 测试抛错不影响保存
+      }
+      return {
+        profiles: getMaskedProfiles(),
+        activeProfileId: getActiveProfileId() ?? null,
+        concurrency,
+        ...(warning ? { warning } : {}),
+      };
+    } catch (error) {
+      request.log.error(error);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+    }
+  });
+
+  fastify.patch('/llm/profiles/:profileId', async (request, reply) => {
+    const { profileId } = request.params as { profileId: string };
+    const body = (request.body ?? {}) as {
+      name?: string; baseUrl?: string; model?: string; apiKeys?: string[]; thinking?: string;
+    };
+    const invalid = validateProfilePayload(body, { requireName: false });
+    if (invalid) return reply.status(400).send({ error: invalid });
+
+    const profiles = currentProfilesWithMigration();
+    const index = profiles.findIndex((p) => p.id === profileId);
+    if (index < 0) return reply.status(404).send({ error: '配置档案不存在。' });
+
+    try {
+      const current = profiles[index];
+      profiles[index] = {
+        ...current,
+        name: typeof body.name === 'string' && body.name.trim() ? body.name.trim() : current.name,
+        baseUrl: body.baseUrl !== undefined ? (body.baseUrl.trim() || undefined) : current.baseUrl,
+        model: body.model !== undefined ? (body.model.trim() || undefined) : current.model,
+        // apiKeys 未传=保留现有；传数组（含空数组）=整体替换
+        apiKeys: body.apiKeys !== undefined
+          ? body.apiKeys.map((k) => k.trim()).filter(Boolean)
+          : current.apiKeys,
+        thinking: body.thinking !== undefined
+          ? (body.thinking === '' ? undefined : body.thinking as LlmProfile['thinking'])
+          : current.thinking,
+      };
+      setRuntimeProfiles(profiles, getActiveProfileId(), true);
+      const concurrency = reconfigureWorkers(getConcurrencyStatus().mode);
+
+      let warning: string | undefined;
+      try {
+        const testResult = await runLlmConnectionTest(profileId);
+        if (!testResult.success) warning = `档案已保存，但连接测试失败：${testResult.message}`;
+      } catch {
+        // 测试抛错不影响保存
+      }
+      return {
+        profiles: getMaskedProfiles(),
+        activeProfileId: getActiveProfileId() ?? null,
+        concurrency,
+        ...(warning ? { warning } : {}),
+      };
+    } catch (error) {
+      request.log.error(error);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+    }
+  });
+
+  fastify.post('/llm/profiles/:profileId/activate', async (request, reply) => {
+    const { profileId } = request.params as { profileId: string };
+    const profiles = getRuntimeProfiles();
+    if (!profiles || !profiles.some((p) => p.id === profileId)) {
+      return reply.status(404).send({ error: '配置档案不存在。' });
+    }
+    try {
+      setRuntimeProfiles(profiles, profileId, true);
+      const concurrency = reconfigureWorkers(getConcurrencyStatus().mode);
+      return {
+        profiles: getMaskedProfiles(),
+        activeProfileId: profileId,
+        concurrency,
+        timestamp: new Date().toISOString(),
+      };
+    } catch (error) {
+      request.log.error(error);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+    }
+  });
+
+  fastify.delete('/llm/profiles/:profileId', async (request, reply) => {
+    const { profileId } = request.params as { profileId: string };
+    const profiles = getRuntimeProfiles();
+    if (!profiles || !profiles.some((p) => p.id === profileId)) {
+      return reply.status(404).send({ error: '配置档案不存在。' });
+    }
+    if (profiles.length <= 1) {
+      return reply.status(409).send({ error: '至少保留一个配置档案。' });
+    }
+    if (profileId === getActiveProfileId()) {
+      return reply.status(409).send({ error: '默认档案不可删除，请先把其他档案设为默认。' });
+    }
+    try {
+      setRuntimeProfiles(profiles.filter((p) => p.id !== profileId), getActiveProfileId(), true);
+      const concurrency = reconfigureWorkers(getConcurrencyStatus().mode);
+      return { profiles: getMaskedProfiles(), activeProfileId: getActiveProfileId() ?? null, concurrency };
+    } catch (error) {
+      request.log.error(error);
+      return reply.status(500).send({ error: '内部错误，请查看服务端日志' });
+    }
+  });
+
+  // 按档案测试连接（真实调用外部 LLM，限流防滥用）
+  fastify.post('/llm/profiles/:profileId/test', {
+    config: { rateLimit: { max: 6, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
+    const { profileId } = request.params as { profileId: string };
+    const profiles = getRuntimeProfiles();
+    if (!profiles || !profiles.some((p) => p.id === profileId)) {
+      return reply.status(404).send({ error: '配置档案不存在，请先保存档案再测试。' });
+    }
+    try {
+      const result = await runLlmConnectionTest(profileId);
+      return { ...result, timestamp: new Date().toISOString() };
+    } catch (error) {
+      return reply.status(500).send({
+        success: false,
+        message: error instanceof Error ? error.message : String(error),
         timestamp: new Date().toISOString(),
       });
     }

@@ -9,6 +9,15 @@ import { encrypt, decrypt } from './keyVault.js';
  * 多 key 支持：apiKeys（数组）优先于 apiKey（单值，向后兼容）。
  * 调用方读取时应统一用 normalizeApiKeys(config) 合并两者。
  */
+/**
+ * 思考模式：
+ * - auto：不发送任何思考相关参数（跟随模型默认）
+ * - off：发送 thinking.type=disabled（混合推理模型省 token；纯思考模型会被拒并自动降级）
+ * - low / high / max：发送 reasoning_effort 等级（GLM-5.3 等纯思考模型的官方三档）
+ */
+export type ThinkingMode = 'auto' | 'off' | 'low' | 'high' | 'max';
+export const THINKING_MODES: readonly ThinkingMode[] = ['auto', 'off', 'low', 'high', 'max'];
+
 export interface RuntimeLlmConfig {
   provider: 'custom' | 'mock';
   apiKey?: string;
@@ -16,6 +25,8 @@ export interface RuntimeLlmConfig {
   apiKeys?: string[];
   baseUrl?: string;
   model?: string;
+  /** 思考模式（UI 设置；未设置时退回 env LLM_DISABLE_THINKING） */
+  thinking?: ThinkingMode;
 }
 
 /** Internal persisted format — includes encrypted apiKeys */
@@ -25,7 +36,42 @@ interface PersistedConfig {
   encryptedApiKeys?: string[]; // AES-256-GCM encrypted（多 key）
   baseUrl?: string;
   model?: string;
+  thinking?: string;
 }
+
+/**
+ * 服务商配置档案：一份完整的 LLM 接入配置（不同厂商各建一个档案，
+ * 同一厂商的多个 API Key 放同一档案内轮询）。
+ */
+export interface LlmProfile {
+  id: string;
+  /** 档案显示名（如「Kimi 订阅」「DeepSeek」） */
+  name: string;
+  baseUrl?: string;
+  model?: string;
+  /** 同一服务商的多个 key，轮询使用 */
+  apiKeys?: string[];
+  thinking?: ThinkingMode;
+}
+
+/** v2 持久化格式：多档案列表 + 默认档案指针 */
+interface PersistedProfile {
+  id: string;
+  name: string;
+  baseUrl?: string;
+  model?: string;
+  thinking?: string;
+  encryptedApiKeys?: string[];
+}
+
+interface PersistedConfigV2 {
+  version: 2;
+  activeProfileId: string | null;
+  profiles: PersistedProfile[];
+}
+
+/** v1（单配置）文件迁移为档案时的默认档案 id */
+export const DEFAULT_PROFILE_ID = 'default';
 
 /**
  * 把 config 里的 apiKey / apiKeys 合并成规范化的非空 key 数组。
@@ -184,6 +230,7 @@ export function saveConfigToDisk(config: RuntimeLlmConfig): void {
     provider: config.provider,
     baseUrl: config.baseUrl,
     model: config.model,
+    thinking: config.thinking,
   };
 
   const keys = normalizeApiKeys(config);
@@ -204,51 +251,190 @@ export function saveConfigToDisk(config: RuntimeLlmConfig): void {
 }
 
 /**
- * Load runtime config from encrypted file.
- * Returns null if no config file exists or decryption fails.
+ * Save multiple provider profiles to encrypted file (v2 format, same file as v1).
  *
- * 读取时同时兼容旧的单 key 文件（encryptedApiKey）和新的多 key 文件（encryptedApiKeys）。
+ * v1 文件被 v2 覆盖后，旧版本程序将无法读取（version 字段缺失其 provider 校验会返回 null），
+ * 属预期的一次性升级；反向不兼容期结束后可移除 v1 读取路径。
  */
-export function loadConfigFromDisk(): RuntimeLlmConfig | null {
+export function saveProfilesToDisk(profiles: LlmProfile[], activeProfileId: string | null): void {
+  const secret = getMasterSecret();
+  const persisted: PersistedConfigV2 = {
+    version: 2,
+    activeProfileId,
+    profiles: profiles.map((profile) => {
+      const keys = normalizeApiKeys(profile);
+      const entry: PersistedProfile = {
+        id: profile.id,
+        name: profile.name,
+        baseUrl: profile.baseUrl,
+        model: profile.model,
+        thinking: profile.thinking,
+      };
+      if (keys.length > 0) entry.encryptedApiKeys = keys.map((k) => encrypt(k, secret));
+      return entry;
+    }),
+  };
+  const configPath = getConfigPath();
+  mkdirSync(getConfigDirectory(), { recursive: true });
+  const encrypted = encrypt(JSON.stringify(persisted), secret);
+  writeFileSync(configPath, encrypted, 'utf8');
+}
+
+/** 读取并解密配置文件原始 JSON；文件不存在或解密失败返回 null。 */
+function readPersistedConfigJson(): Record<string, unknown> | null {
   const preferredPath = getConfigPath();
   const configPath = existsSync(preferredPath) ? preferredPath : getLegacyConfigPath();
   if (!existsSync(configPath)) return null;
-
   try {
     const secret = getMasterSecret();
     const encrypted = readFileSync(configPath, 'utf8').trim();
     const jsonStr = decrypt(encrypted, secret);
-    const persisted = JSON.parse(jsonStr) as Partial<PersistedConfig> & { provider?: string };
-
-    if (persisted.provider !== 'custom' && persisted.provider !== 'mock') {
-      return null;
-    }
-
-    const result: RuntimeLlmConfig = {
-      provider: persisted.provider,
-      baseUrl: persisted.baseUrl,
-      model: persisted.model,
-    };
-
-    if (Array.isArray(persisted.encryptedApiKeys) && persisted.encryptedApiKeys.length > 0) {
-      // 多 key 文件：解密数组，过滤解密失败/空值
-      result.apiKeys = persisted.encryptedApiKeys
-        .map((c) => {
-          try { return decrypt(c, secret); } catch { return ''; }
-        })
-        .filter((k): k is string => Boolean(k));
-      // 兼容：单 key 时同步写回 apiKey 字段
-      if (result.apiKeys.length === 1) result.apiKey = result.apiKeys[0];
-    } else if (persisted.encryptedApiKey) {
-      // 旧的单 key 文件
-      result.apiKey = decrypt(persisted.encryptedApiKey, secret);
-    }
-
-    return result;
+    return JSON.parse(jsonStr) as Record<string, unknown>;
   } catch (error) {
     console.warn('[configStore] Failed to load encrypted config:', error instanceof Error ? error.message : String(error));
     return null;
   }
+}
+
+/**
+ * Load provider profiles from encrypted file.
+ * - v2 文件：直接读取档案列表；
+ * - v1 单配置文件：无感迁移为单个档案（id=default，名称「默认配置」），下次保存时落盘为 v2；
+ * - 无文件/解密失败：返回 null（走 env 兜底）。
+ */
+export function loadProfilesFromDisk(): { profiles: LlmProfile[]; activeProfileId: string | null } | null {
+  const persisted = readPersistedConfigJson();
+  if (!persisted) return null;
+
+  if (persisted.version === 2 && Array.isArray(persisted.profiles)) {
+    const secret = getMasterSecret();
+    const profiles: LlmProfile[] = [];
+    for (const raw of persisted.profiles as Array<Record<string, unknown>>) {
+      if (typeof raw.id !== 'string' || !raw.id) continue;
+      const apiKeys = Array.isArray(raw.encryptedApiKeys)
+        ? (raw.encryptedApiKeys as string[])
+            .map((c) => {
+              try { return decrypt(c, secret); } catch { return ''; }
+            })
+            .filter((k): k is string => Boolean(k))
+        : undefined;
+      profiles.push({
+        id: raw.id,
+        name: typeof raw.name === 'string' && raw.name ? raw.name : raw.id,
+        baseUrl: typeof raw.baseUrl === 'string' ? raw.baseUrl : undefined,
+        model: typeof raw.model === 'string' ? raw.model : undefined,
+        apiKeys: apiKeys && apiKeys.length > 0 ? apiKeys : undefined,
+        thinking: THINKING_MODES.includes(raw.thinking as ThinkingMode)
+          ? raw.thinking as ThinkingMode
+          : undefined,
+      });
+    }
+    if (profiles.length === 0) return null;
+    const activeId = typeof persisted.activeProfileId === 'string' ? persisted.activeProfileId : null;
+    return {
+      profiles,
+      activeProfileId: activeId && profiles.some((p) => p.id === activeId) ? activeId : profiles[0].id,
+    };
+  }
+
+  // v1 单配置 → 包装为单个档案
+  if (persisted.provider !== 'custom' && persisted.provider !== 'mock') return null;
+  const profile = configFromPersistedV1(persisted);
+  if (!profile) return null;
+  return { profiles: [profile], activeProfileId: profile.id };
+}
+
+/** v1 持久化结构 → 迁移档案（与 loadConfigFromDisk 的解析规则一致）。 */
+function configFromPersistedV1(persisted: Record<string, unknown>): LlmProfile | null {
+  const secret = getMasterSecret();
+  const apiKeys: string[] = [];
+  if (Array.isArray(persisted.encryptedApiKeys)) {
+    for (const c of persisted.encryptedApiKeys as string[]) {
+      try {
+        const key = decrypt(c, secret);
+        if (key) apiKeys.push(key);
+      } catch {
+        // 单个 key 解密失败跳过
+      }
+    }
+  } else if (typeof persisted.encryptedApiKey === 'string') {
+    try {
+      const key = decrypt(persisted.encryptedApiKey, secret);
+      if (key) apiKeys.push(key);
+    } catch {
+      // 旧单 key 解密失败视为无 key
+    }
+  }
+  return {
+    id: DEFAULT_PROFILE_ID,
+    name: '默认配置',
+    baseUrl: typeof persisted.baseUrl === 'string' ? persisted.baseUrl : undefined,
+    model: typeof persisted.model === 'string' ? persisted.model : undefined,
+    apiKeys: apiKeys.length > 0 ? apiKeys : undefined,
+    thinking: THINKING_MODES.includes(persisted.thinking as ThinkingMode)
+      ? persisted.thinking as ThinkingMode
+      : undefined,
+  };
+}
+
+/**
+ * Load runtime config from encrypted file.
+ * Returns null if no config file exists or decryption fails.
+ *
+ * v2 多档案文件：返回「默认档案」对应的单份配置（向后兼容旧调用方，
+ * 完整档案列表请用 loadProfilesFromDisk）。
+ * 读取时同时兼容旧的单 key 文件（encryptedApiKey）和新的多 key 文件（encryptedApiKeys）。
+ */
+export function loadConfigFromDisk(): RuntimeLlmConfig | null {
+  const persisted = readPersistedConfigJson();
+  if (!persisted) return null;
+
+  if (persisted.version === 2) {
+    const profileState = loadProfilesFromDisk();
+    if (!profileState) return null;
+    const active = profileState.profiles.find((p) => p.id === profileState.activeProfileId)
+      ?? profileState.profiles[0];
+    const keys = normalizeApiKeys(active);
+    return {
+      provider: 'custom',
+      baseUrl: active.baseUrl,
+      model: active.model,
+      thinking: active.thinking,
+      apiKeys: keys.length > 0 ? keys : undefined,
+      apiKey: keys[0],
+    };
+  }
+
+  if (persisted.provider !== 'custom' && persisted.provider !== 'mock') {
+    return null;
+  }
+
+  const secret = getMasterSecret();
+  const result: RuntimeLlmConfig = {
+    provider: persisted.provider,
+    baseUrl: typeof persisted.baseUrl === 'string' ? persisted.baseUrl : undefined,
+    model: typeof persisted.model === 'string' ? persisted.model : undefined,
+    // 兼容历史文件：只在合法枚举内恢复，否则丢弃（等价于未设置）
+    thinking: THINKING_MODES.includes(persisted.thinking as ThinkingMode)
+      ? persisted.thinking as ThinkingMode
+      : undefined,
+  };
+
+  if (Array.isArray(persisted.encryptedApiKeys) && (persisted.encryptedApiKeys as string[]).length > 0) {
+    // 多 key 文件：解密数组，过滤解密失败/空值
+    result.apiKeys = (persisted.encryptedApiKeys as string[])
+      .map((c) => {
+        try { return decrypt(c, secret); } catch { return ''; }
+      })
+      .filter((k): k is string => Boolean(k));
+    // 兼容：单 key 时同步写回 apiKey 字段
+    if (result.apiKeys.length === 1) result.apiKey = result.apiKeys[0];
+  } else if (typeof persisted.encryptedApiKey === 'string') {
+    // 旧的单 key 文件
+    result.apiKey = decrypt(persisted.encryptedApiKey, secret);
+  }
+
+  return result;
 }
 
 /**

@@ -88,10 +88,11 @@ function calcBehaviorDrive(
 
   // Action verb co-occurrence density
   const actionVerbs = '说笑道怒喝骂问答走来去出入开关抓拿推拉打杀救保护帮助攻击防守';
+  const chapterByIndex = new Map(chapters.map(c => [c.index, c]));
   let actionCount = 0;
   let windowsWithAction = 0;
   for (const m of mentions) {
-    const chapter = chapters.find(c => c.index === m.chapterIndex);
+    const chapter = chapterByIndex.get(m.chapterIndex);
     if (chapter && m.position >= 0) {
       const pos = m.position;
       const window = chapter.content.slice(Math.max(0, pos - 50), pos + 50);
@@ -150,6 +151,40 @@ function calcIrreplaceability(text: string, allEntities: string[]): number {
 
 // ─── Pillar 2: Information Uniqueness (信息唯一性) ───
 
+/** 单个 UTF-16 码元是否为中文字符（等价于 /[一-鿿]/ 的单字判断，避免逐字正则） */
+function isCJKCode(code: number): boolean {
+  return code >= 0x4e00 && code <= 0x9fff;
+}
+
+// 中文 bigram → 出现过的章节索引列表（升序去重），按 chapters 引用缓存。
+// 原实现每个实体都对「非实体章节」做全书逐字扫描构建 bigram 集合，
+// 几百实体 × 百万字级文本是分钟到几十分钟级，是提取卡死的第二元凶。
+const bigramChapterIndexCache: { chapters?: ScanChapter[]; index?: Map<string, number[]> } = {};
+
+function getBigramChapterIndex(chapters: ScanChapter[]): Map<string, number[]> {
+  if (bigramChapterIndexCache.chapters === chapters && bigramChapterIndexCache.index) {
+    return bigramChapterIndexCache.index;
+  }
+  const index = new Map<string, number[]>();
+  for (const chapter of chapters) {
+    const content = chapter.content;
+    for (let i = 0; i < content.length - 1; i++) {
+      if (!isCJKCode(content.charCodeAt(i)) || !isCJKCode(content.charCodeAt(i + 1))) continue;
+      const bigram = content.slice(i, i + 2);
+      const list = index.get(bigram);
+      // 章节按序处理，末尾判重即可跳过同章重复 bigram
+      if (list) {
+        if (list[list.length - 1] !== chapter.index) list.push(chapter.index);
+      } else {
+        index.set(bigram, [chapter.index]);
+      }
+    }
+  }
+  bigramChapterIndexCache.chapters = chapters;
+  bigramChapterIndexCache.index = index;
+  return index;
+}
+
 /**
  * Calculate information uniqueness score.
  * Measures how much unique information the entity carries.
@@ -166,36 +201,30 @@ function calcInfoUniqueness(
   // Entity's chapter indices
   const entityChapters = new Set(mentions.map(m => m.chapterIndex));
 
+  const chapterByIndex = new Map(chapters.map(c => [c.index, c]));
+
   // Get bigrams from entity's context (surrounding text)
   const entityBigrams = new Set<string>();
   for (const m of mentions) {
-    const chapter = chapters.find(c => c.index === m.chapterIndex);
+    const chapter = chapterByIndex.get(m.chapterIndex);
     if (chapter && m.position >= 0) {
       const pos = m.position;
       const window = chapter.content.slice(Math.max(0, pos - 150), pos + 150);
       for (let i = 0; i < window.length - 1; i++) {
-        if (/[一-鿿]/.test(window[i]) && /[一-鿿]/.test(window[i + 1])) {
+        if (isCJKCode(window.charCodeAt(i)) && isCJKCode(window.charCodeAt(i + 1))) {
           entityBigrams.add(window.slice(i, i + 2));
         }
       }
     }
   }
 
-  // Get bigrams from the REST of the text (excluding entity's chapters)
-  const restBigrams = new Set<string>();
-  for (const ch of chapters) {
-    if (entityChapters.has(ch.index)) continue;  // skip entity's own chapters
-    for (let i = 0; i < ch.content.length - 1; i++) {
-      if (/[一-鿿]/.test(ch.content[i]) && /[一-鿿]/.test(ch.content[i + 1])) {
-        restBigrams.add(ch.content.slice(i, i + 2));
-      }
-    }
-  }
-
-  // Count bigrams unique to entity context (not in rest)
+  // Count bigrams unique to entity context (not in rest):
+  // 某个 bigram 属于「其余文本」⟺ 存在包含它的章节不在该实体的章节集合里
+  const bigramChapters = getBigramChapterIndex(chapters);
   let uniqueToEntity = 0;
   for (const bg of entityBigrams) {
-    if (!restBigrams.has(bg)) uniqueToEntity++;
+    const chapterList = bigramChapters.get(bg);
+    if (!chapterList || !chapterList.some(idx => !entityChapters.has(idx))) uniqueToEntity++;
   }
 
   // Uniqueness ratio: what fraction of entity's context is unique
@@ -231,8 +260,9 @@ function calcStateTransition(
   let transitionCount = 0;
   let totalWindows = 0;
 
+  const chapterByIndex = new Map(chapters.map(c => [c.index, c]));
   for (const m of mentions) {
-    const chapter = chapters.find(c => c.index === m.chapterIndex);
+    const chapter = chapterByIndex.get(m.chapterIndex);
     if (chapter && m.position >= 0) {
       const pos = m.position;
       const window = chapter.content.slice(Math.max(0, pos - 100), pos + 100);
@@ -297,8 +327,9 @@ function calcProductionValue(
     '打伤', '击杀', '抓住', '下令', '派遣', '拔刀', '挥刀',
   ];
 
+  const chapterByIndex = new Map(chapters.map(c => [c.index, c]));
   for (const m of mentions) {
-    const chapter = chapters.find(c => c.index === m.chapterIndex);
+    const chapter = chapterByIndex.get(m.chapterIndex);
     if (chapter && m.position >= 0) {
       const pos = m.position;
       const window = chapter.content.slice(Math.max(0, pos - 100), pos + 100);

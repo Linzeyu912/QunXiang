@@ -1,6 +1,13 @@
 import { CharacterRepository, ReviewRepository, EntityReviewRepository } from '@qunxiang/storage';
-import { buildCharacterMergeCandidates, type CharacterMergeCandidate } from '@qunxiang/entity-resolution';
-import { z } from 'zod';
+import {
+  buildCharacterMergeCandidates,
+  calibrateJudgeConfidence,
+  MERGE_JUDGE_SYSTEM_PROMPT,
+  mergeJudgeSchema,
+  summarizeMergeCandidateForPrompt,
+  type CharacterMergeCandidate,
+  type MergeJudgeVerdict,
+} from '@qunxiang/entity-resolution';
 import { getDefaultProvider } from '@qunxiang/llm';
 
 /** 单次裁决最多处理的角色对数量（控制 LLM 调用成本）。 */
@@ -21,7 +28,7 @@ export interface MergeSuggestion {
 export async function findActiveMergeCandidates(
   bookId: string,
   ownerId: string,
-): Promise<{ candidates: CharacterMergeCandidate[]; suggestions: MergeSuggestion[] }> {
+): Promise<{ candidates: CharacterMergeCandidate[]; suggestions: MergeSuggestion[]; autoMergedCount: number }> {
   const [characters, rejections, reviews] = await Promise.all([
     CharacterRepository.findByOwnedBookId(bookId, ownerId),
     ReviewRepository.findMergeRejectionsByOwnedBook(bookId, ownerId),
@@ -33,8 +40,15 @@ export async function findActiveMergeCandidates(
   );
   // 取每对最近一次模型建议（MERGE_SUGGESTED），供前端展示；不自动执行
   const latest = new Map<string, MergeSuggestion>();
-  for (const review of reviews as Array<{ entityType: string; action: string; entityId: string; afterValue: unknown }>) {
-    if (review.entityType !== 'character' || review.action !== 'MERGE_SUGGESTED') continue;
+  let autoMergedCount = 0;
+  for (const review of reviews as Array<{ entityType: string; action: string; actorType?: string; entityId: string; afterValue: unknown }>) {
+    if (review.entityType !== 'character') continue;
+    // 最终审核自动合并数（actorType=SYSTEM 的 MERGE_ACCEPTED），供审核页提示
+    if (review.action === 'MERGE_ACCEPTED' && review.actorType === 'SYSTEM') {
+      autoMergedCount++;
+      continue;
+    }
+    if (review.action !== 'MERGE_SUGGESTED') continue;
     const value = review.afterValue as { primaryId?: string; secondaryId?: string; verdict?: string; confidence?: number; reason?: string } | null;
     if (!value?.primaryId || !value?.secondaryId || !value.verdict) continue;
     latest.set(`${value.primaryId}:${value.secondaryId}`, {
@@ -48,7 +62,7 @@ export async function findActiveMergeCandidates(
   const suggestions = candidates
     .map((c) => latest.get(`${c.primaryId}:${c.secondaryId}`))
     .filter((s): s is MergeSuggestion => Boolean(s));
-  return { candidates, suggestions };
+  return { candidates, suggestions, autoMergedCount };
 }
 
 /** 合并字段预览：不执行合并，展示将保留与合并的字段（实施包 A4）。 */
@@ -83,63 +97,11 @@ export async function buildMergePreview(
   };
 }
 
-/** LLM 对单个角色对的裁决结果 */
-const mergeJudgeSchema = z.object({
-  verdict: z.enum(['same', 'different', 'uncertain']),
-  confidence: z.number().min(0).max(1),
-  reason: z.string().optional(),
-});
-
-const MERGE_JUDGE_SYSTEM_PROMPT = [
-  '你是小说角色消歧助手。根据两个角色条目的信息，判断它们是否指同一个角色。',
-  '判断要点：',
-  '1. 称谓变体（如"萧炎"与"萧炎哥"、"古德里安"与"古德里安教授"、"薰儿"与"萧薰儿"）通常是同一角色。',
-  '2. 名称带"小/老/大"前缀需谨慎：可能指幼体、后代或另一个独立个体（如"紫晶翼狮王"与"小紫晶翼狮王"可能是两代魔兽），必须结合描述判断，描述冲突时倾向 different。',
-  '3. 别名互相包含对方名字时，强烈倾向 same。',
-  '4. 两个角色的描述若指向明显不同的身份、实力或经历，应为 different。',
-  '5. 信息不足以判断时返回 uncertain，不要猜测。',
-  '',
-  '置信度必须按证据强度分档，不要一律给高分：',
-  '- 0.90 以上：仅限"别名互相指认（A 的别名恰为 B 的正名或反之）且描述身份/经历一致"这种有硬证据的情形。',
-  '- 0.75~0.89：名称高度相近、描述不冲突但一方信息有限。',
-  '- 0.70 以下：仅凭称谓风格相近、描述几乎无信息——此时应直接返回 uncertain 而不是给低置信结论。',
-  '- different 的置信度同理：描述指向明确不同身份才可给 0.85 以上。',
-  '只返回 JSON，格式：{"verdict": "same" | "different" | "uncertain", "confidence": 0.0-1.0, "reason": "简短中文理由，须点名依据（名称/别名/描述/章节）"}',
-].join('\n');
-
-function summarizeForPrompt(candidate: CharacterMergeCandidate, side: 'primary' | 'secondary'): string {
-  const entity = candidate[side];
-  const chapters = entity.chapterAppearances ?? [];
-  return [
-    `名称：${entity.name}`,
-    `别名：${entity.aliases.length > 0 ? entity.aliases.join('、') : '无'}`,
-    `描述：${entity.description || '无'}`,
-    `出现章节：${chapters.length > 0 ? `第 ${chapters.slice(0, 10).join('、')} 章${chapters.length > 10 ? ` 等共 ${chapters.length} 章` : ''}` : '未知'}`,
-  ].join('\n');
-}
+/** LLM 对单个角色对的裁决结果（prompt/schema/校准/摘要已下沉到 entity-resolution 共享） */
 
 /**
- * 证据校准：LLM 自报置信度有锚定倾向（无锚点时一律 0.9+），
- * 用客观信号（候选成对原因 + 章节重叠率）给显示值设上限。
- * 别名互指是硬证据（0.99）；仅称谓归一是弱证据（0.90）；
- * same 判定但两实体出现章节几乎零重叠时再降 0.15（同人不可能不同框）。
+ * 证据校准已下沉至 entity-resolution/merge-judge.ts（与调度器最终审核共享口径）。
  */
-export function calibrateJudgeConfidence(
-  candidate: Pick<CharacterMergeCandidate, 'reasons' | 'primary' | 'secondary'>,
-  selfReported: number,
-): number {
-  const hasAliasLink = candidate.reasons.includes('已提取别名匹配');
-  const hasNameNorm = candidate.reasons.includes('称谓归一化');
-  let cap = hasAliasLink && hasNameNorm ? 0.99 : hasAliasLink ? 0.95 : 0.9;
-  const a = new Set(candidate.primary.chapterAppearances ?? []);
-  const b = candidate.secondary.chapterAppearances ?? [];
-  const overlap = b.filter((ch) => a.has(ch)).length;
-  const minLen = Math.min(a.size, b.length);
-  if (minLen > 0 && overlap / minLen < 0.1) {
-    cap = Math.max(0.7, cap - 0.15);
-  }
-  return Math.round(Math.min(selfReported, cap) * 100) / 100;
-}
 
 export interface MergeJudgeOutcome {
   /** 模型建议「同一角色」的对（仅建议，等待人工确认合并） */
@@ -190,7 +152,7 @@ export async function judgeMergeCandidates(
 
   // 并发 3 路裁决（单次 LLM 调用秒级，串行 50 对要数分钟）；结果按候选顺序回填
   const CONCURRENCY = 3;
-  const verdicts: Array<{ candidate: (typeof toJudge)[number]; verdict: z.infer<typeof mergeJudgeSchema> | null }> = new Array(toJudge.length);
+  const verdicts: Array<{ candidate: (typeof toJudge)[number]; verdict: MergeJudgeVerdict | null }> = new Array(toJudge.length);
   let cursor = 0;
   async function worker() {
     for (;;) {
@@ -201,16 +163,16 @@ export async function judgeMergeCandidates(
         verdicts[index] = { candidate, verdict: null };
         continue;
       }
-      let verdict: z.infer<typeof mergeJudgeSchema> | null = null;
+      let verdict: MergeJudgeVerdict | null = null;
       try {
         const userPrompt = [
           '请判断以下两个角色条目是否指同一角色。',
           '',
           '【角色一】',
-          summarizeForPrompt(candidate, 'primary'),
+          summarizeMergeCandidateForPrompt(candidate, 'primary'),
           '',
           '【角色二】',
-          summarizeForPrompt(candidate, 'secondary'),
+          summarizeMergeCandidateForPrompt(candidate, 'secondary'),
         ].join('\n');
         const raw = await provider.chatExtract(MERGE_JUDGE_SYSTEM_PROMPT, userPrompt, mergeJudgeSchema);
         // 部分 provider（如 mock）不按契约校验 schema，这里再验一次结果

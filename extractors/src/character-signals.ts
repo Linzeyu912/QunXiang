@@ -29,21 +29,37 @@ export function extractCharacterSignals(
     });
   }
 
+  // 匹配器只构建一次：原来在「章节×名字」双重循环里逐个 new RegExp，
+  // 长书（几百章 × 上百名字）上是几十万次重复编译
+  const matchers = characterNames.map((name) => {
+    // \b doesn't work for CJK characters in JavaScript, so skip it for
+    // names containing Chinese characters
+    const hasCJK = /[一-鿿]/.test(name);
+    const boundary = hasCJK ? '' : '\\b';
+    const pattern = new RegExp(`${boundary}${escapeRegex(name)}${boundary}`, 'gi');
+    return { name, hasCJK, pattern };
+  });
+
   for (const chapter of chapters) {
     const chapterCharsInThisChapter: string[] = [];
 
     // 1. 统计 mentionCount
-    for (const charName of characterNames) {
-      // \b doesn't work for CJK characters in JavaScript, so skip it for
-      // names containing Chinese characters
-      const hasCJK = /[一-鿿]/.test(charName);
-      const boundary = hasCJK ? '' : '\\b';
-      const pattern = new RegExp(`${boundary}${escapeRegex(charName)}${boundary}`, 'gi');
-      const matches = chapter.content.match(pattern);
-      if (matches) {
-        const existing = signals.get(charName)!;
-        existing.mentionCount += matches.length;
-        chapterCharsInThisChapter.push(charName);
+    for (const { name, hasCJK, pattern } of matchers) {
+      // 中文名没有 \b 语义，match 计数与非重叠 indexOf 计数完全等价，后者更快
+      let count = 0;
+      if (hasCJK) {
+        let index = chapter.content.indexOf(name);
+        while (index !== -1) {
+          count++;
+          index = chapter.content.indexOf(name, index + name.length);
+        }
+      } else {
+        count = chapter.content.match(pattern)?.length ?? 0;
+      }
+      if (count > 0) {
+        const existing = signals.get(name)!;
+        existing.mentionCount += count;
+        chapterCharsInThisChapter.push(name);
       }
     }
 

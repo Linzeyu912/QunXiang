@@ -65,13 +65,14 @@ function createRecordingQueue(tasks: Array<Partial<Task> & { agentType: AgentTyp
         agentType: task.agentType,
         payload: (task.payload ?? {}) as Record<string, unknown>,
       });
+      const { status = 'pending', retryCount = 0, ...taskRest } = task;
       rows.push({
+        ...taskRest,
+        status,
+        retryCount,
         id: `task-${rows.length}`,
         createdAt: new Date(),
         updatedAt: new Date(),
-        status: 'pending',
-        retryCount: 0,
-        ...task,
       } as Task);
       return `task-${rows.length - 1}`;
     },

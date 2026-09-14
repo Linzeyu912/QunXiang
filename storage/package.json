@@ -23,6 +23,7 @@
     "@aws-sdk/client-s3": "^3.1090.0",
     "@aws-sdk/s3-request-presigner": "^3.1090.0",
     "@qunxiang/core": "workspace:*",
+    "@qunxiang/entity-resolution": "workspace:*",
     "@qunxiang/import": "workspace:*",
     "@prisma/client": "^5.10.0"
   },

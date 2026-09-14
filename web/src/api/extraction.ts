@@ -30,11 +30,18 @@ export function useStages(bookId: string | undefined) {
 export function useStartExtraction(bookId: string) {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: () =>
-      apiFetch<{ taskId: string; message: string }>(`/books/${bookId}/extract`, { method: 'POST' }),
+    // 走「运行」接口而非旧的 /extract：会创建 ExtractionSession，
+    // 管道页才有「当前运行」卡片（暂停/取消）与预算估算。
+    // providerProfileId：绑定本次运行使用的 LLM 服务商档案（多服务商并行）。
+    mutationFn: (options?: { providerProfileId?: string }) =>
+      apiFetch<{ runId: string; taskId: string; message: string }>(`/books/${bookId}/extraction-runs`, {
+        method: 'POST',
+        body: options?.providerProfileId ? { providerProfileId: options.providerProfileId } : undefined,
+      }),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: booksKey.all });
       qc.invalidateQueries({ queryKey: extractionKey.stages(bookId) });
+      qc.invalidateQueries({ queryKey: extractionKey.currentRun(bookId) });
     },
   });
 }
@@ -252,14 +259,23 @@ export function useExtractionStream(bookId: string | undefined, enabled: boolean
       }
     };
 
-    void openAuthenticatedSse(`/books/${bookId}/extract/stream`, {
-      signal: controller.signal,
-      onEvent: ({ event, data }) => applyEvent(data, event === 'message' ? undefined : event),
-    }).catch((error) => {
-      if (!(error instanceof DOMException && error.name === 'AbortError')) {
-        qc.invalidateQueries({ queryKey: key });
+    void (async () => {
+      // 流意外结束（网络抖动、开发模式服务热重载）时自动重连：
+      // 运行期间进度不能因断流失效；正常结束时 enabled 翻 false 由 cleanup 中止
+      while (!controller.signal.aborted) {
+        try {
+          await openAuthenticatedSse(`/books/${bookId}/extract/stream`, {
+            signal: controller.signal,
+            onEvent: ({ event, data }) => applyEvent(data, event === 'message' ? undefined : event),
+          });
+        } catch (error) {
+          if (error instanceof DOMException && error.name === 'AbortError') return;
+          qc.invalidateQueries({ queryKey: key });
+        }
+        if (controller.signal.aborted) return;
+        await new Promise((resolve) => setTimeout(resolve, 5000));
       }
-    });
+    })();
 
     return () => {
       controller.abort();

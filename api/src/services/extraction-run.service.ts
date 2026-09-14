@@ -14,13 +14,15 @@ import {
   prisma,
 } from '@qunxiang/storage';
 import { ConflictError, NotFoundError } from '../lib/errors.js';
-import { getDefaultProvider, getApiKeyCount } from '@qunxiang/llm';
+import { getDefaultProvider, getApiKeyCount, getRuntimeProfile } from '@qunxiang/llm';
 import { getSharedAssetSourceResolver } from '@qunxiang/storage';
 import { startExtraction, resumeExtraction } from './extraction.service.js';
 
 export interface CreateRunOptions {
   maxCalls?: number;
   maxTokens?: number;
+  /** 本次运行绑定的 LLM 配置档案 id（多服务商并行）；缺省用默认档案 */
+  providerProfileId?: string;
 }
 
 export interface RunEstimates {
@@ -91,7 +93,12 @@ export async function createRun(bookId: string, ownerId: string, opts: CreateRun
     throw new ConflictError('该书已有进行中的运行，请先等待完成、暂停或取消');
   }
 
-  const provider = await getDefaultProvider();
+  // 按书绑定服务商档案：绑定档案的 provider/key 信息快照进 manifest，
+  // 运行期间改全局配置不影响本次运行（payload 携带档案 id 一路透传到各阶段 agent）。
+  const provider = await getDefaultProvider(opts.providerProfileId);
+  const boundProfile = opts.providerProfileId
+    ? getRuntimeProfile(opts.providerProfileId)
+    : undefined;
   const estimates = await estimateRun(bookId, ownerId, opts);
 
   let runId: string;
@@ -110,6 +117,14 @@ export async function createRun(bookId: string, ownerId: string, opts: CreateRun
         provider: provider.name,
         apiKeys: getApiKeyCount(),
         estimatedAt: new Date().toISOString(),
+        ...(boundProfile
+          ? {
+              llmProfileId: boundProfile.id,
+              llmProfileName: boundProfile.name,
+              llmProfileBaseUrl: boundProfile.baseUrl,
+              llmProfileModel: boundProfile.model,
+            }
+          : {}),
       },
     });
     runId = id;
@@ -125,7 +140,7 @@ export async function createRun(bookId: string, ownerId: string, opts: CreateRun
   // 启动失败（如模型未配置）必须把会话收敛为 FAILED——否则 QUEUED 会话属于
   // 活动态，一书被唯一索引锁死，后续 createRun 永远 409。
   try {
-    const { taskId } = await startExtraction(bookId, ownerId);
+    const { taskId } = await startExtraction(bookId, ownerId, opts.providerProfileId);
     // 任务绑定运行（实施包第五节 Task.extractionSessionId）
     await prisma.task.updateMany({ where: { id: taskId }, data: { extractionSessionId: runId } });
     return { runId, taskId };
