@@ -107,6 +107,16 @@ start.bat
 - 网页：`http://localhost:5173`
 - API：`http://localhost:3001`
 
+如需从桌面无窗口启动，在仓库根目录运行一次：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-desktop-shortcut.ps1
+```
+
+之后双击桌面“群像”快捷方式即可后台启动并打开网页。启动日志位于 `logs/startup.log`，API 与网页日志位于 `logs/api.log`、`logs/web.log`，错误日志分别使用 `.err.log` 后缀。Docker Desktop 未运行时，脚本会尝试启动并等待就绪。
+
+运行 `stop.bat` 停止本地服务；如需同时停止 PostgreSQL 容器，运行 `stop.bat --db`。
+
 若只想用模拟模型验证页面和流程，运行：
 
 ```bat
