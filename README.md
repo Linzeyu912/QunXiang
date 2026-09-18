@@ -107,13 +107,15 @@ start.bat
 - 网页：`http://localhost:5173`
 - API：`http://localhost:3001`
 
-如需从桌面无窗口启动，在仓库根目录运行一次：
+如需从桌面快捷方式启动，在仓库根目录运行一次：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-desktop-shortcut.ps1
 ```
 
-之后双击桌面“群像”快捷方式即可后台启动并打开网页。启动日志位于 `logs/startup.log`，API 与网页日志位于 `logs/api.log`、`logs/web.log`，错误日志分别使用 `.err.log` 后缀。Docker Desktop 未运行时，脚本会尝试启动并等待就绪。
+之后双击桌面“群像”快捷方式即可启动并打开网页。启动进度会显示在窗口中，API 在独立的“群像 API”窗口运行；网页在后台运行，日志位于 `logs/web.log`，错误日志位于 `logs/web.err.log`。启动成功后进度窗口会自动关闭，失败时会保留错误信息。Docker Desktop 未运行时，脚本会尝试启动并等待就绪。
+
+`start.bat` 与 `stop.bat` 使用 GBK（CP936）编码，请勿改存为 UTF-8；PowerShell 脚本使用 UTF-8 BOM。
 
 运行 `stop.bat` 停止本地服务；如需同时停止 PostgreSQL 容器，运行 `stop.bat --db`。
 

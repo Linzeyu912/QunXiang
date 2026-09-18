@@ -4,7 +4,8 @@ import { describe, expect, it } from 'vitest';
 const root = new URL('../../', import.meta.url);
 
 async function readRootFile(path: string): Promise<string> {
-  return readFile(new URL(path, root), 'utf8');
+  const bytes = await readFile(new URL(path, root));
+  return new TextDecoder(path === 'start.bat' || path === 'stop.bat' ? 'gbk' : 'utf-8', { fatal: true }).decode(bytes);
 }
 
 describe('PostgreSQL 启动入口', () => {

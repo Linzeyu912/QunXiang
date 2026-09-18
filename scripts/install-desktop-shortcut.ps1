@@ -1,4 +1,4 @@
-﻿# 在桌面创建“群像”快捷方式（无窗口静默启动 + 自动打开浏览器）
+﻿# 在桌面创建“群像”快捷方式（可见启动窗口 + API 后端窗口 + 自动打开浏览器）
 # 用法：powershell -ExecutionPolicy Bypass -File scripts\install-desktop-shortcut.ps1
 $ErrorActionPreference = 'Stop'
 
@@ -80,4 +80,4 @@ $sc.WindowStyle      = 1
 $sc.Save()
 
 Write-Host "已创建桌面快捷方式：$lnkPath"
-Write-Host '双击即可静默启动群像并打开浏览器；停止服务请运行项目目录下的 stop.bat。'
+Write-Host '双击即可启动群像并打开浏览器；API 后端窗口会保持打开，停止全部服务请运行项目目录下的 stop.bat。'
