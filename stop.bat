@@ -1,17 +1,18 @@
 @echo off
-chcp 65001 >nul 2>&1
+rem ×¢Òâ£º±¾ÎÄ¼þ±ØÐëÒÔ GBK(ANSI/CP936) ±àÂë±£´æ£¬´úÂëÒ³±£³Ö 936£¨Ô­ÒòÍ¬ start.bat Í·²¿×¢ÊÍ£©¡£
+chcp 936 >nul 2>&1
 setlocal enabledelayedexpansion
 set "ROOT=%~dp0"
 set "LOGDIR=%ROOT%logs"
 
 echo ========================================
-echo   ç¾¤åƒ - åœæ­¢æœåŠ¡
+echo   ÈºÏñ - Í£Ö¹·þÎñ
 echo ========================================
 echo.
 
 set "STOPPED="
 
-:: ä¼˜å…ˆæŒ‰å¯åŠ¨æ—¶è®°å½•çš„ PID åœæ­¢ï¼ˆé™é»˜æ¨¡å¼å¯åŠ¨çš„æœåŠ¡ï¼‰
+:: ÓÅÏÈ°´Æô¶¯Ê±¼ÇÂ¼µÄ PID Í£Ö¹£¨¾²Ä¬Ä£Ê½Æô¶¯µÄ·þÎñ£©
 for %%N in (api web) do (
     set "SVC_PID="
     if exist "%LOGDIR%\%%N.pid" (
@@ -20,32 +21,37 @@ for %%N in (api web) do (
     )
     if defined SVC_PID (
         taskkill /PID !SVC_PID! /T /F >nul 2>&1 && (
-            echo [âˆš] %%N æœåŠ¡å·²åœæ­¢ï¼ˆPID !SVC_PID!ï¼‰
+            echo [¡Ì] %%N ·þÎñÒÑÍ£Ö¹£¨PID !SVC_PID!£©
             set "STOPPED=1"
         )
     )
 )
 
-:: å…œåº•ï¼šæŒ‰ç«¯å£æ¸…ç†ï¼ˆå…¼å®¹çª—å£æ–¹å¼æˆ–å…¶ä»–æ–¹å¼å¯åŠ¨çš„æœåŠ¡ï¼‰
+:: ¶µµ×£º°´¶Ë¿ÚÇåÀí£¨¼æÈÝ´°¿Ú·½Ê½»òÆäËû·½Ê½Æô¶¯µÄ·þÎñ£©
 for %%P in (3001 5173) do (
     for /f "tokens=5" %%a in ('netstat -ano ^| findstr /C:":%%P " ^| findstr /I "LISTENING"') do (
         taskkill /PID %%a /T /F >nul 2>&1 && (
-            echo [âˆš] ç«¯å£ %%P çš„æœåŠ¡å·²åœæ­¢ï¼ˆPID %%aï¼‰
+            echo [¡Ì] ¶Ë¿Ú %%P µÄ·þÎñÒÑÍ£Ö¹£¨PID %%a£©
             set "STOPPED=1"
         )
     )
 )
 
-:: å¯é€‰ï¼šstop.bat --db åŒæ—¶åœæ­¢ PostgreSQL å®¹å™¨ï¼ˆé»˜è®¤ä¿æŒè¿è¡Œï¼Œä¸‹æ¬¡å¯åŠ¨æ›´å¿«ï¼‰
+:: ¹Ø±Õ¿ì½Ý·½Ê½Ä£Ê½µ¯³öµÄ·þÎñ´°¿Ú£¨·þÎñ±»É±ºó cmd /k ´°¿Ú»á²ÐÁôÎª¿Õ°×ÌáÊ¾·û£©
+for %%T in ("ÈºÏñ API" "ÈºÏñ Web") do (
+    taskkill /FI "WINDOWTITLE eq %%~T*" /T /F >nul 2>&1 && echo [¡Ì] %%~T ´°¿ÚÒÑ¹Ø±Õ
+)
+
+:: ¿ÉÑ¡£ºstop.bat --db Í¬Ê±Í£Ö¹ PostgreSQL ÈÝÆ÷£¨Ä¬ÈÏ±£³ÖÔËÐÐ£¬ÏÂ´ÎÆô¶¯¸ü¿ì£©
 if /i "%~1"=="--db" (
-    docker compose -f "%ROOT%docker-compose.yml" stop postgres >nul 2>&1 && echo [âˆš] PostgreSQL å®¹å™¨å·²åœæ­¢
+    docker compose -f "%ROOT%docker-compose.yml" stop postgres >nul 2>&1 && echo [¡Ì] PostgreSQL ÈÝÆ÷ÒÑÍ£Ö¹
 )
 
 if not defined STOPPED (
-    echo   æ²¡æœ‰å‘çŽ°æ­£åœ¨è¿è¡Œçš„æœåŠ¡ã€‚
+    echo   Ã»ÓÐ·¢ÏÖÕýÔÚÔËÐÐµÄ·þÎñ¡£
 ) else (
     echo.
-    echo   å·²å…¨éƒ¨åœæ­¢ã€‚æ•°æ®åº“å®¹å™¨ä»åœ¨è¿è¡Œï¼ˆåœæ­¢è¯·åŠ å‚æ•°ï¼šstop.bat --dbï¼‰
+    echo   ÒÑÈ«²¿Í£Ö¹¡£Êý¾Ý¿âÈÝÆ÷ÈÔÔÚÔËÐÐ£¨Í£Ö¹Çë¼Ó²ÎÊý£ºstop.bat --db£©
 )
 echo.
 pause

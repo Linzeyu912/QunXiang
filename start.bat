@@ -1,34 +1,41 @@
 @echo off
-chcp 65001 >nul 2>&1
+rem ×¢Òâ£º±¾ÎÄ¼þ±ØÐëÒÔ GBK(ANSI/CP936) ±àÂë±£´æ£¬´úÂëÒ³±£³Ö 936¡£
+rem ²»Òª¸Ä»Ø UTF-8 + chcp 65001£ºcmd Åú½âÎöÆ÷ÔÚ 65001 ÏÂ¶Ô¶à×Ö½Ú×Ö·û
+rem ´æÔÚÎÄ¼þÆ«ÒÆ¼ÆËãÈ±ÏÝ£¬»áµ¼ÖÂÖÐÎÄÐÐ±»Ëæ»ú½Ø¶ÏÖ´ÐÐ£¨±íÏÖÎªËæ»ú±¨"²»ÊÇÄÚ²¿»òÍâ²¿ÃüÁî"£©¡£
+chcp 936 >nul 2>&1
 setlocal enabledelayedexpansion
 set "ROOT=%~dp0"
 set "DB_URL=postgresql://qunxiang:change_me_in_production@127.0.0.1:5432/qunxiang"
 
-:: é™é»˜æ¨¡å¼ï¼ˆæ¡Œé¢å¿«æ·æ–¹å¼ç”¨ï¼‰ï¼šæ— çª—å£åŽå°è¿è¡Œï¼Œæ—¥å¿—å†™å…¥ logs\ï¼Œå¤±è´¥æ—¶å¼¹çª—æç¤º
+:: ¿ì½Ý·½Ê½Ä£Ê½£¨--silent£©£ºÆô¶¯Æ÷´°¿Ú¿É¼û£¬API ºó¶Ëµ¯³ö¶ÀÁ¢´°¿Ú£¬
+:: Web Ç°¶ËºóÌ¨ÔËÐÐ£¨ÈÕÖ¾ logs\web.log£©£¬Æô¶¯Íê³Éºó×Ô¶¯´ò¿ªä¯ÀÀÆ÷
 set "SILENT="
 if /i "%~1"=="--silent" set "SILENT=1"
 set "LOGDIR=%~dp0logs"
 if defined SILENT (
     if not exist "%LOGDIR%" mkdir "%LOGDIR%" >nul 2>&1
-    rem æœåŠ¡å·²åœ¨è¿è¡Œæ—¶ç›´æŽ¥æ‰“å¼€é¡µé¢ï¼Œé¿å…é‡å¤å¯åŠ¨é€ æˆç«¯å£å†²çª
+    rem ÇåÀíÉÏ´ÎÔËÐÐ²ÐÁôµÄ PID ¼ÇÂ¼£¬±ÜÃâ stop.bat ÎóÉ±¸´ÓÃÁË¾É PID µÄ½ø³Ì
+    del "%LOGDIR%\api.pid" "%LOGDIR%\web.pid" >nul 2>&1
+    rem ·þÎñÒÑÔÚÔËÐÐÊ±Ö±½Ó´ò¿ªÒ³Ãæ£¬±ÜÃâÖØ¸´Æô¶¯Ôì³É¶Ë¿Ú³åÍ»
     netstat -ano | findstr /C:":5173 " | findstr /I "LISTENING" >nul 2>&1 && netstat -ano | findstr /C:":3001 " | findstr /I "LISTENING" >nul 2>&1 && (
-        echo æœåŠ¡å·²åœ¨è¿è¡Œï¼Œç›´æŽ¥æ‰“å¼€é¡µé¢ã€‚
+        echo ·þÎñÒÑÔÚÔËÐÐ£¬Ö±½Ó´ò¿ªÒ³Ãæ¡£
         start "" http://localhost:5173
+        timeout /t 5 >nul
         exit /b 0
     )
 )
 
 echo ========================================
-echo   ç¾¤åƒ - å¯åŠ¨è„šæœ¬
+echo   ÈºÏñ - Æô¶¯½Å±¾
 echo ========================================
 echo.
 
 :: [1/6] Check Node.js
-echo [1/6] æ£€æŸ¥ Node.js...
+echo [1/6] ¼ì²é Node.js...
 where node >nul 2>&1
 if errorlevel 1 (
-    echo [é”™è¯¯] æœªå®‰è£… Node.jsã€‚
-    echo è¯·å…ˆå®‰è£… Node.jsï¼šhttps://nodejs.org/
+    echo [´íÎó] Î´°²×° Node.js¡£
+    echo ÇëÏÈ°²×° Node.js£ºhttps://nodejs.org/
     call :on_error
     exit /b 1
 )
@@ -36,19 +43,19 @@ node --version
 echo.
 
 :: [2/6] Check pnpm
-echo [2/6] æ£€æŸ¥ pnpm...
+echo [2/6] ¼ì²é pnpm...
 where pnpm >nul 2>&1
 if errorlevel 1 (
-    echo       æœªæ‰¾åˆ° pnpmï¼Œæ­£åœ¨å®‰è£…...
+    echo       Î´ÕÒµ½ pnpm£¬ÕýÔÚ°²×°...
     cmd /c npm install -g pnpm
     if errorlevel 1 (
-        echo [é”™è¯¯] pnpm å®‰è£…å¤±è´¥ã€‚
+        echo [´íÎó] pnpm °²×°Ê§°Ü¡£
         call :on_error
         exit /b 1
     )
     cmd /c where pnpm >nul 2>&1
     if errorlevel 1 (
-        echo [é”™è¯¯] pnpm å·²å®‰è£…ä½†æœªç”Ÿæ•ˆã€‚è¯·æ‰‹åŠ¨è¿è¡Œï¼šnpm install -g pnpm
+        echo [´íÎó] pnpm ÒÑ°²×°µ«Î´ÉúÐ§¡£ÇëÊÖ¶¯ÔËÐÐ£ºnpm install -g pnpm
         call :on_error
         exit /b 1
     )
@@ -57,22 +64,22 @@ cmd /c pnpm --version
 echo.
 
 :: [3/6] Install dependencies
-echo [3/6] å®‰è£…ä¾èµ–...
+echo [3/6] °²×°ÒÀÀµ...
 if not exist "node_modules" (
-    echo       æ­£åœ¨å®‰è£…æ ¹ä¾èµ–ï¼ˆé¦–æ¬¡éœ€ä¸‹è½½åµŒå…¥å¼ PostgreSQLï¼Œçº¦ 30MBï¼‰...
+    echo       ÕýÔÚ°²×°¸ùÒÀÀµ£¨Ê×´ÎÐèÏÂÔØÇ¶ÈëÊ½ PostgreSQL£¬Ô¼ 30MB£©...
     cmd /c pnpm install
     if errorlevel 1 (
-        echo [é”™è¯¯] ä¾èµ–å®‰è£…å¤±è´¥ã€‚
+        echo [´íÎó] ÒÀÀµ°²×°Ê§°Ü¡£
         call :on_error
         exit /b 1
     )
 )
 if not exist "api\node_modules" (
-    echo       æ­£åœ¨å®‰è£… API ä¾èµ–...
+    echo       ÕýÔÚ°²×° API ÒÀÀµ...
     cd /d "%~dp0api"
     cmd /c pnpm install
     if errorlevel 1 (
-        echo [é”™è¯¯] API ä¾èµ–å®‰è£…å¤±è´¥ã€‚
+        echo [´íÎó] API ÒÀÀµ°²×°Ê§°Ü¡£
         call :on_error
         exit /b 1
     )
@@ -80,11 +87,11 @@ if not exist "api\node_modules" (
 )
 
 if not exist "web\node_modules" (
-    echo       æ­£åœ¨å®‰è£… Web å‰ç«¯ä¾èµ–...
+    echo       ÕýÔÚ°²×° Web Ç°¶ËÒÀÀµ...
     cd /d "%~dp0web"
     cmd /c pnpm install
     if errorlevel 1 (
-        echo [é”™è¯¯] Web ä¾èµ–å®‰è£…å¤±è´¥ã€‚
+        echo [´íÎó] Web ÒÀÀµ°²×°Ê§°Ü¡£
         call :on_error
         exit /b 1
     )
@@ -93,26 +100,26 @@ if not exist "web\node_modules" (
 
 if exist "entity-resolution" (
     if not exist "entity-resolution\node_modules" (
-        echo       æ­£åœ¨å®‰è£…å®žä½“æ¶ˆæ­§æ¨¡å—ä¾èµ–...
+        echo       ÕýÔÚ°²×°ÊµÌåÏûÆçÄ£¿éÒÀÀµ...
         cd /d "%~dp0entity-resolution"
         cmd /c pnpm install
         if errorlevel 1 (
-            echo [é”™è¯¯] å®žä½“æ¶ˆæ­§æ¨¡å—ä¾èµ–å®‰è£…å¤±è´¥ã€‚
+            echo [´íÎó] ÊµÌåÏûÆçÄ£¿éÒÀÀµ°²×°Ê§°Ü¡£
             call :on_error
             exit /b 1
         )
         cd /d "%~dp0"
     )
 )
-echo       å®Œæˆã€‚
+echo       Íê³É¡£
 echo.
 
 :: [4/6] Environment config
-echo [4/6] é…ç½®çŽ¯å¢ƒ...
+echo [4/6] ÅäÖÃ»·¾³...
 set "API_DIR=%~dp0api"
 
 if not exist "%API_DIR%\.env" (
-    echo       æ­£åœ¨åˆ›å»º api/.env æ–‡ä»¶...
+    echo       ÕýÔÚ´´½¨ api/.env ÎÄ¼þ...
 
     set "JWT_SECRET=qunxiang-jwt-secret-key-2024"
 
@@ -134,196 +141,182 @@ echo KEY_VAULTS_SECRET=qunxiang-local-dev-key-change-before-production
 echo OBJECT_STORAGE_PROVIDER=fs
 echo OBJECT_STORAGE_SIGN_SECRET=qunxiang-local-object-sign-secret-change-before-production) > "%API_DIR%\.env"
 
-    echo       å·²åˆ›å»ºã€‚
+    echo       ÒÑ´´½¨¡£
 ) else (
-    echo       api/.env å·²å­˜åœ¨ï¼Œè·³è¿‡ã€‚
+    echo       api/.env ÒÑ´æÔÚ£¬Ìø¹ý¡£
 )
 if not exist "%~dp0storage\.env" (
     (echo DATABASE_URL=!DB_URL!
 echo DIRECT_DATABASE_URL=!DB_URL!) > "%~dp0storage\.env"
-    echo       å·²åˆ›å»º storage/.envã€‚
+    echo       ÒÑ´´½¨ storage/.env¡£
 ) else (
-    echo       storage/.env å·²å­˜åœ¨ï¼Œè·³è¿‡ã€‚
+    echo       storage/.env ÒÑ´æÔÚ£¬Ìø¹ý¡£
 )
 
-:: è‡ªåŠ¨ä¿®å¤æ—§ç‰ˆ SQLite é…ç½®ä¸º PostgreSQL
-echo       æ£€æŸ¥æ•°æ®åº“é…ç½®...
+:: ×Ô¶¯ÐÞ¸´¾É°æ SQLite ÅäÖÃÎª PostgreSQL
+echo       ¼ì²éÊý¾Ý¿âÅäÖÃ...
 call :fix_sqlite_env "%API_DIR%\.env"
 call :fix_sqlite_env "%~dp0storage\.env"
 
-:: ç¡®ä¿æœ‰ DIRECT_DATABASE_URL
+:: È·±£ÓÐ DIRECT_DATABASE_URL
 findstr /B /I /C:"DIRECT_DATABASE_URL=" "%API_DIR%\.env" >nul 2>&1
 if errorlevel 1 (
     echo DIRECT_DATABASE_URL=!DB_URL! >> "%API_DIR%\.env"
-    echo       å·²è¡¥å…… api/.env çš„ DIRECT_DATABASE_URLã€‚
+    echo       ÒÑ²¹³ä api/.env µÄ DIRECT_DATABASE_URL¡£
 )
 findstr /B /I /C:"DIRECT_DATABASE_URL=" "%~dp0storage\.env" >nul 2>&1
 if errorlevel 1 (
     echo DIRECT_DATABASE_URL=!DB_URL! >> "%~dp0storage\.env"
-    echo       å·²è¡¥å…… storage/.env çš„ DIRECT_DATABASE_URLã€‚
+    echo       ÒÑ²¹³ä storage/.env µÄ DIRECT_DATABASE_URL¡£
 )
 findstr /B /I /C:"OBJECT_STORAGE_PROVIDER=" "%API_DIR%\.env" >nul 2>&1
 if errorlevel 1 (
     echo OBJECT_STORAGE_PROVIDER=fs >> "%API_DIR%\.env"
-    echo       å·²è¡¥å…… api/.env çš„å¯¹è±¡å­˜å‚¨ç±»åž‹ã€‚
+    echo       ÒÑ²¹³ä api/.env µÄ¶ÔÏó´æ´¢ÀàÐÍ¡£
 )
 findstr /B /I /C:"OBJECT_STORAGE_SIGN_SECRET=" "%API_DIR%\.env" >nul 2>&1
 if errorlevel 1 (
     echo OBJECT_STORAGE_SIGN_SECRET=qunxiang-local-object-sign-secret-change-before-production >> "%API_DIR%\.env"
-    echo       å·²è¡¥å…… api/.env çš„å¯¹è±¡å­˜å‚¨ç­¾åå¯†é’¥ã€‚
+    echo       ÒÑ²¹³ä api/.env µÄ¶ÔÏó´æ´¢Ç©ÃûÃÜÔ¿¡£
 )
-echo       æ•°æ®åº“é…ç½®æ£€æŸ¥å®Œæˆã€‚
+echo       Êý¾Ý¿âÅäÖÃ¼ì²éÍê³É¡£
 echo.
 
 :: [4.5/6] Start PostgreSQL (Docker)
-echo [4.5/6] å¯åŠ¨ PostgreSQLï¼ˆDockerï¼‰...
+echo [4.5/6] Æô¶¯ PostgreSQL£¨Docker£©...
 docker info >nul 2>&1
 if errorlevel 1 (
-    echo       Docker Desktop æœªè¿è¡Œï¼Œæ­£åœ¨å°è¯•å¯åŠ¨å¹¶ç­‰å¾…å°±ç»ªï¼ˆæœ€é•¿ 120 ç§’ï¼‰...
+    echo       Docker Desktop Î´ÔËÐÐ£¬ÕýÔÚ³¢ÊÔÆô¶¯²¢µÈ´ý¾ÍÐ÷£¨×î³¤ 120 Ãë£©...
     if exist "%ProgramFiles%\Docker\Docker\Docker Desktop.exe" start "" "%ProgramFiles%\Docker\Docker\Docker Desktop.exe"
     call :wait_docker_ready
 )
 docker info >nul 2>&1
 if errorlevel 1 (
-    echo [é”™è¯¯] Docker Desktop æœªè¿è¡Œã€‚è¯·å…ˆå¯åŠ¨ Docker Desktop åŽé‡è¯•ã€‚
+    echo [´íÎó] Docker Desktop Î´ÔËÐÐ¡£ÇëÏÈÆô¶¯ Docker Desktop ºóÖØÊÔ¡£
     call :on_error
     exit /b 1
 )
 docker compose -f "%~dp0docker-compose.yml" up -d --wait postgres
 if errorlevel 1 (
-    echo [é”™è¯¯] PostgreSQL å®¹å™¨å¯åŠ¨å¤±è´¥ã€‚è¯·æ£€æŸ¥ Docker ä¸Ž docker-compose.ymlã€‚
+    echo [´íÎó] PostgreSQL ÈÝÆ÷Æô¶¯Ê§°Ü¡£Çë¼ì²é Docker Óë docker-compose.yml¡£
     call :on_error
     exit /b 1
 )
 echo.
 
 :: [4.6/6] Run database migrations
-echo [4.6/6] è¿è¡Œæ•°æ®åº“è¿ç§»...
-:: è¿ç§»å‰å…ˆåŒæ­¥æ•°æ®åº“å¯†ç ï¼Œä¿®å¤ PostgreSQL volume å¯†ç æ¼‚ç§»å¯¼è‡´çš„ P1000 è®¤è¯å¤±è´¥
-echo       åŒæ­¥æ•°æ®åº“å¯†ç ï¼ˆè‡ªåŠ¨ä¿®å¤ volume å¯†ç æ¼‚ç§»ï¼‰...
+echo [4.6/6] ÔËÐÐÊý¾Ý¿âÇ¨ÒÆ...
+:: Ç¨ÒÆÇ°ÏÈÍ¬²½Êý¾Ý¿âÃÜÂë£¬ÐÞ¸´ PostgreSQL volume ÃÜÂëÆ¯ÒÆµ¼ÖÂµÄ P1000 ÈÏÖ¤Ê§°Ü
+echo       Í¬²½Êý¾Ý¿âÃÜÂë£¨×Ô¶¯ÐÞ¸´ volume ÃÜÂëÆ¯ÒÆ£©...
 cmd /c node "%~dp0scripts\sync-db-password.mjs"
 if errorlevel 1 (
-    echo [é”™è¯¯] æ•°æ®åº“å¯†ç åŒæ­¥å¤±è´¥ï¼Œè¿ç§»æ— æ³•ç»§ç»­ã€‚
+    echo [´íÎó] Êý¾Ý¿âÃÜÂëÍ¬²½Ê§°Ü£¬Ç¨ÒÆÎÞ·¨¼ÌÐø¡£
     call :on_error
     exit /b 1
 )
 cd /d "%~dp0storage"
 cmd /c pnpm exec prisma migrate deploy --schema=./prisma/schema.prisma
 if errorlevel 1 (
-    echo [é”™è¯¯] PostgreSQL è¿ç§»å¤±è´¥ã€‚
+    echo [´íÎó] PostgreSQL Ç¨ÒÆÊ§°Ü¡£
     call :on_error
     exit /b 1
 )
 cd /d "%~dp0"
-echo       æ­£åœ¨ç”Ÿæˆ Prisma Client...
+echo       ÕýÔÚÉú³É Prisma Client...
 cd /d "%~dp0storage"
 cmd /c pnpm exec prisma generate --schema=./prisma/schema.prisma
 cd /d "%~dp0"
-echo       å®Œæˆã€‚
+echo       Íê³É¡£
 echo.
 
 :: [5/6] Start API service
-echo [5/6] å¯åŠ¨ API æœåŠ¡...
-if defined SILENT (
-    powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\start-service-hidden.ps1" -Name api -WorkDir "%~dp0api" -LogDir "%LOGDIR%"
-    if errorlevel 1 (
-        echo [é”™è¯¯] API æœåŠ¡åŽå°å¯åŠ¨å¤±è´¥ã€‚
-        call :on_error
-        exit /b 1
-    )
-    echo       API æœåŠ¡å·²åœ¨åŽå°å¯åŠ¨ï¼šhttp://localhost:3001ï¼ˆæ—¥å¿—ï¼šlogs\api.logï¼‰
-) else (
-    cd /d "%~dp0api"
-    start "ç¾¤åƒ API" cmd /k "chcp 65001>nul & pnpm dev"
-    cd /d "%~dp0"
-    echo       API æœåŠ¡å·²å¯åŠ¨ï¼šhttp://localhost:3001
-)
+echo [5/6] Æô¶¯ API ·þÎñ...
+cd /d "%~dp0api"
+start "ÈºÏñ API" cmd /k "chcp 65001>nul & pnpm dev"
+cd /d "%~dp0"
+echo       API ·þÎñÒÑÔÚ¶ÀÁ¢´°¿ÚÆô¶¯£ºhttp://localhost:3001
 echo.
 
 :: [6/6] Start Web frontend
-echo [6/6] å¯åŠ¨ Web å‰ç«¯...
+echo [6/6] Æô¶¯ Web Ç°¶Ë...
 if defined SILENT (
     powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\start-service-hidden.ps1" -Name web -WorkDir "%~dp0web" -LogDir "%LOGDIR%"
     if errorlevel 1 (
-        echo [é”™è¯¯] Web æœåŠ¡åŽå°å¯åŠ¨å¤±è´¥ã€‚
+        echo [´íÎó] Web ·þÎñºóÌ¨Æô¶¯Ê§°Ü¡£
         call :on_error
         exit /b 1
     )
-    echo       Web æœåŠ¡å·²åœ¨åŽå°å¯åŠ¨ï¼šhttp://localhost:5173ï¼ˆæ—¥å¿—ï¼šlogs\web.logï¼‰
+    echo       Web ·þÎñÒÑÔÚºóÌ¨Æô¶¯£ºhttp://localhost:5173£¨ÈÕÖ¾£ºlogs\web.log£©
 ) else (
     cd /d "%~dp0web"
-    start "ç¾¤åƒ Web" cmd /k "chcp 65001>nul & pnpm dev"
+    start "ÈºÏñ Web" cmd /k "chcp 65001>nul & pnpm dev"
     cd /d "%~dp0"
-    echo       Web æœåŠ¡å·²å¯åŠ¨ï¼šhttp://localhost:5173
+    echo       Web ·þÎñÒÑÆô¶¯£ºhttp://localhost:5173
 )
 echo.
 
 echo ========================================
-echo   å¯åŠ¨å®Œæˆï¼
+echo   Æô¶¯Íê³É£¡
 echo ========================================
 echo.
 echo   API:  http://localhost:3001
 echo   Web:  http://localhost:5173
 echo.
-echo   æ­£åœ¨æ‰“å¼€æµè§ˆå™¨...
+echo   ÕýÔÚ´ò¿ªä¯ÀÀÆ÷...
 
 if defined SILENT (
-    echo   ç­‰å¾… Web æœåŠ¡å°±ç»ª...
+    echo   µÈ´ý Web ·þÎñ¾ÍÐ÷...
     call :wait_web_ready
     if errorlevel 1 (
-        echo [é”™è¯¯] Web æœåŠ¡ 60 ç§’å†…æœªå°±ç»ªï¼Œè¯·æŸ¥çœ‹ logs\web.log ä¸Ž logs\web.err.logã€‚
+        echo [´íÎó] Web ·þÎñ 60 ÃëÄÚÎ´¾ÍÐ÷£¬Çë²é¿´ logs\web.log Óë logs\web.err.log¡£
         call :on_error
         exit /b 1
     )
     start "" http://localhost:5173
     echo.
-    echo   å¯åŠ¨å®Œæˆï¼ŒæœåŠ¡æ­£åœ¨åŽå°éšè—è¿è¡Œã€‚
-    echo   åœæ­¢æœåŠ¡è¯·è¿è¡Œ stop.batï¼Œæ—¥å¿—åœ¨ logs\ ç›®å½•ã€‚
+    echo   Æô¶¯Íê³É£¡
+    echo   - API ºó¶ËÔÚ¡¸ÈºÏñ API¡¹´°¿ÚÔËÐÐ£¬¹Ø±Õ¸Ã´°¿Ú¼´Í£Ö¹ API
+    echo   - Web Ç°¶ËÔÚºóÌ¨ÔËÐÐ£¨ÈÕÖ¾£ºlogs\web.log£©
+    echo   - Í£Ö¹È«²¿·þÎñÇëÔËÐÐ stop.bat
+    echo.
+    echo   ±¾´°¿Ú 5 Ãëºó×Ô¶¯¹Ø±Õ...
+    timeout /t 5 >nul
     exit /b 0
 )
 
-:: ç­‰å¾…æœåŠ¡å¯åŠ¨
+:: µÈ´ý·þÎñÆô¶¯
 timeout /t 3 /nobreak >nul
 start http://localhost:5173
 
-echo   è¯·å‹¿å…³é—­æ­¤çª—å£ï¼ŒæœåŠ¡åœ¨åŽå°è¿è¡Œä¸­...
+echo   ÇëÎð¹Ø±Õ´Ë´°¿Ú£¬·þÎñÔÚºóÌ¨ÔËÐÐÖÐ...
 pause >nul
 exit /b 0
 
-:: â”€â”€ è¾…åŠ©å‡½æ•°ï¼šé”™è¯¯å¤„ç†ï¼ˆé™é»˜æ¨¡å¼å¼¹çª—å¹¶æ‰“å¼€æ—¥å¿—ï¼Œæ™®é€šæ¨¡å¼æš‚åœï¼‰ â”€â”€
+:: ©¤©¤ ¸¨Öúº¯Êý£º´íÎó´¦Àí£¨´°¿Ú±£³Ö´ò¿ª£¬±ãÓÚ²é¿´´íÎó£© ©¤©¤
 :on_error
-if defined SILENT (
-    echo.
-    echo å¯åŠ¨å¤±è´¥ï¼Œé”™è¯¯è¯¦æƒ…è§ä¸Šæ–¹æ—¥å¿—ã€‚
-    start "" notepad.exe "%LOGDIR%\startup.log"
-    call :show_error_popup
-) else (
-    pause
-)
+echo.
+echo Æô¶¯Ê§°Ü£¬´íÎóÏêÇé¼ûÉÏ·½Êä³ö¡£´°¿Ú±£³Ö´ò¿ª£¬°´ÈÎÒâ¼ü¹Ø±Õ¡£
+pause >nul
 exit /b 0
 
-:show_error_popup
-powershell -NoProfile -WindowStyle Hidden -Command "Add-Type -AssemblyName System.Windows.Forms; [void][System.Windows.Forms.MessageBox]::Show('ç¾¤åƒå¯åŠ¨å¤±è´¥ï¼Œå·²è‡ªåŠ¨æ‰“å¼€æ—¥å¿—æ–‡ä»¶ï¼Œè¯·æ ¹æ®æç¤ºå¤„ç†åŽé‡è¯•ã€‚','ç¾¤åƒ','OK','Error')"
-exit /b 0
-
-:: â”€â”€ è¾…åŠ©å‡½æ•°ï¼šç­‰å¾… Docker Desktop å°±ç»ªï¼ˆæœ€é•¿ 120 ç§’ï¼‰ â”€â”€
+:: ©¤©¤ ¸¨Öúº¯Êý£ºµÈ´ý Docker Desktop ¾ÍÐ÷£¨×î³¤ 120 Ãë£© ©¤©¤
 :wait_docker_ready
 powershell -NoProfile -Command "$i=0; while ($i -lt 40) { docker info 2>$null | Out-Null; if ($LASTEXITCODE -eq 0) { exit 0 }; Start-Sleep -Seconds 3; $i++ }; exit 1" >nul 2>&1
 exit /b 0
 
-:: â”€â”€ è¾…åŠ©å‡½æ•°ï¼šç­‰å¾… Web æœåŠ¡å°±ç»ªï¼ˆæœ€é•¿ 60 ç§’ï¼‰ â”€â”€
+:: ©¤©¤ ¸¨Öúº¯Êý£ºµÈ´ý Web ·þÎñ¾ÍÐ÷£¨×î³¤ 60 Ãë£© ©¤©¤
 :wait_web_ready
 powershell -NoProfile -Command "for ($i=0; $i -lt 60; $i++) { try { $r = Invoke-WebRequest -UseBasicParsing -Uri 'http://localhost:5173' -TimeoutSec 2; if ($r.StatusCode -lt 500) { exit 0 } } catch {}; Start-Sleep -Seconds 1 }; exit 1"
 exit /b %errorlevel%
 
-:: â”€â”€ è¾…åŠ©å‡½æ•°ï¼šè‡ªåŠ¨ä¿®å¤ SQLite é…ç½® â”€â”€
+:: ©¤©¤ ¸¨Öúº¯Êý£º×Ô¶¯ÐÞ¸´ SQLite ÅäÖÃ ©¤©¤
 :fix_sqlite_env
 set "FIX_FILE=%~1"
 if not exist "%FIX_FILE%" exit /b 0
 findstr /B /I /C:"DATABASE_URL=file:" "%FIX_FILE%" >nul 2>&1
 if errorlevel 1 exit /b 0
-echo       æ£€æµ‹åˆ° %FIX_FILE% ä½¿ç”¨æ—§ç‰ˆ SQLiteï¼Œè‡ªåŠ¨ä¿®æ­£ä¸º PostgreSQL...
-:: è¯»å–é™¤ DATABASE_URL å¤–çš„æ‰€æœ‰è¡Œï¼Œå†™å…¥ä¸´æ—¶æ–‡ä»¶
+echo       ¼ì²âµ½ %FIX_FILE% Ê¹ÓÃ¾É°æ SQLite£¬×Ô¶¯ÐÞÕýÎª PostgreSQL...
+:: ¶ÁÈ¡³ý DATABASE_URL ÍâµÄËùÓÐÐÐ£¬Ð´ÈëÁÙÊ±ÎÄ¼þ
 set "TMP_FILE=%FIX_FILE%.tmp"
 > "%TMP_FILE%" (
     for /f "usebackq delims=" %%a in ("%FIX_FILE%") do (
@@ -337,5 +330,5 @@ set "TMP_FILE=%FIX_FILE%.tmp"
     )
 )
 move /y "%TMP_FILE%" "%FIX_FILE%" >nul
-echo       å·²è‡ªåŠ¨ä¿®æ­£ã€‚
+echo       ÒÑ×Ô¶¯ÐÞÕý¡£
 exit /b 0

@@ -92,3 +92,7 @@ output/
 .zcode/
 # 本地验证临时产物（嵌入式测试库、EXPLAIN 造数脚本等）
 .tmp-*
+
+.mimosa/
+
+scripts/_tmp-*
